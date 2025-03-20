@@ -7,8 +7,7 @@ export const titlePro = "THE LABX VIRTUAL COLLECTIBLES";
 export const descriptionPro =
   "Commemorate your participation in todays LabX event with a unique virtual collectible.";
 export const baseUrl = "https://labx.voyage.co.id";
-export const previewImage =
-  "https://labx.voyage.co.id/screenshot-galeri-harmoni-bukhari-istiqlal.png";
+export const previewImage = "https://labx.voyage.co.id/preview-image.png";
 export const logoUrl = "/logos/oslo.png";
 export const artLogin = "/images/art-login.png";
 export const bannerLogin = "/images/banner-login.png";
