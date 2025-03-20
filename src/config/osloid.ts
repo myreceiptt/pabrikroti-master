@@ -3,6 +3,10 @@
 /**
  * All os/o ID should be exported from this file.
  */
+export const titlePro = "THE LABX VIRTUAL COLLECTIBLES";
+export const descriptionPro = "Commemorate your participation in todays LabX event with a unique virtual collectible.";
+export const baseUrl = "https://labx.voyage.co.id";
+export const previewImage = "https://labx.voyage.co.id/screenshot-galeri-harmoni-bukhari-istiqlal.png";
 export const entityMonth = "February";
 export const entityDate = "20";
 export const entityYear = "2025";

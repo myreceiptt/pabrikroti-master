@@ -6,15 +6,23 @@ import { Inter } from "next/font/google";
 import { ThirdwebProvider } from "thirdweb/react";
 import { Analytics } from "@vercel/analytics/react";
 
+// Blockchain configurations
+import {
+  titlePro,
+  descriptionPro,
+  baseUrl,
+  previewImage,
+} from "@/config/osloid";
+
 // CSS Styling
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: "Bukhari Islamic Art Gallery - Harmoni Istiqlal",
-  description: "Galeri Seni Islam Bukhari",
-  metadataBase: new URL("https://galeri.harmoniistiqlal.com"),
+  title: titlePro, // Title
+  description: descriptionPro, // Description
+  metadataBase: new URL(baseUrl), // Base URL
   authors: [
     { name: "MyReceipt", url: "https://myreceipt.endhonesa.com" },
     { name: "Prof. NOTA", url: "https://nota.endhonesa.com" },
@@ -25,17 +33,17 @@ export const metadata: Metadata = {
     canonical: "/",
   },
   openGraph: {
-    title: "Bukhari Islamic Art Gallery - Harmoni Istiqlal",
-    description: "Galeri Seni Islam Bukhari",
-    url: "https://galeri.harmoniistiqlal.com",
-    siteName: "Bukhari Islamic Art Gallery - Harmoni Istiqlal",
+    title: titlePro, // Title
+    description: descriptionPro, // Description
+    url: baseUrl, // Base URL
+    siteName: titlePro, // Title
     locale: "en-US",
     images: [
       {
-        url: "https://galeri.harmoniistiqlal.com/screenshot-galeri-harmoni-bukhari-istiqlal.png",
+        url: previewImage, // Preview Image URL
         width: 1920,
         height: 1080,
-        alt: "Galeri Seni Islam Bukhari",
+        alt: titlePro, // Title
       },
     ],
     type: "website",
@@ -45,10 +53,10 @@ export const metadata: Metadata = {
     siteId: "@MyReceiptTT",
     creator: "@MyReceiptTT",
     creatorId: "@MyReceiptTT",
-    title: "Bukhari Islamic Art Gallery - Harmoni Istiqlal",
-    description: "Galeri Seni Islam Bukhari",
+    title: titlePro, // Title
+    description: descriptionPro, // Description
     images: [
-      "https://galeri.harmoniistiqlal.com/screenshot-galeri-harmoni-bukhari-istiqlal.png",
+      previewImage, // Preview Image URL
     ],
   },
 };
