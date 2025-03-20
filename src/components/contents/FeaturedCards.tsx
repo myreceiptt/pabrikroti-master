@@ -50,13 +50,7 @@ export default function FeaturedCards() {
               type="button"
               className="w-full hover:scale-105 transition-transform duration-300 ease-in-out relative group">
               {/* Main image */}
-              <Image
-                src={src}
-                width={640}
-                height={725}
-                alt={alt}
-                priority
-              />
+              <Image src={src} width={640} height={725} alt={alt} priority />
             </button>
           </Link>
         ))}
