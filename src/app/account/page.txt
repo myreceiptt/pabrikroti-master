@@ -1,0 +1,37 @@
+// /src/app/account/page.tsx
+
+"use client";
+
+// External libraries
+import React from "react";
+import { useActiveAccount } from "thirdweb/react";
+
+// Components libraries
+import DynamicLoginPage from "@/components/logins/DynamicLogin";
+import { ErrorBoundary } from "@/components/logins/ErrorBoundary";
+import OwnedNFTs from "@/components/account/OwnedNfts";
+import WalletInfo from "@/components/account/WalletInfo";
+
+export default function AccountPage() {
+  const account = useActiveAccount();
+
+  return (
+    <DynamicLoginPage
+      ContentComponent={() => (
+        <ErrorBoundary>
+          <div className="flex flex-col items-center justify-center min-h-screen bg-back-ground p-6">
+            <h1 className="text-2xl font-bold text-hitam-judul-body mb-4">
+              My Account
+            </h1>
+
+            {/* Wallet Info Component */}
+            <WalletInfo account={account ?? null} />
+
+            {/* Owned NFTs Component */}
+            <OwnedNFTs account={account ?? null} />
+          </div>
+        </ErrorBoundary>
+      )}
+    />
+  );
+}
