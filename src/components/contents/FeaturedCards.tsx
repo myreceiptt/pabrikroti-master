@@ -5,7 +5,16 @@ import Link from "next/link";
 import Image from "next/image";
 
 // Blockchain configurations
-import { featuredTitle1, featuredTitle2 } from "@/config/osloid";
+import {
+  featuredTitle1,
+  featuredTitle2,
+  featuredPaid,
+  paidTitle,
+  featuredFree,
+  freeTitle,
+  featuredCoin,
+  coinTitle,
+} from "@/config/osloid";
 
 export default function FeaturedCards() {
   return (
@@ -22,19 +31,18 @@ export default function FeaturedCards() {
         {[
           {
             href: "/paid",
-            // src: "/images/bukhari-fa-paid.png",
-            src: "/images/bukhari-fa-login-02-17.png",
-            alt: "Affordable Exclusive Digital Souvenir",
+            src: featuredPaid,
+            alt: paidTitle,
           },
           {
             href: "/free",
-            src: "/images/bukhari-fa-free.png",
-            alt: "Free Exclusive Digital Souvenir",
+            src: featuredFree,
+            alt: freeTitle,
           },
           {
             href: "/redeem",
-            src: "/images/bukhari-fa-redeem.png",
-            alt: "Redeem Priceless Coins Reward",
+            src: featuredCoin,
+            alt: coinTitle,
           },
         ].map(({ href, src, alt }, index) => (
           <Link href={href} key={index}>

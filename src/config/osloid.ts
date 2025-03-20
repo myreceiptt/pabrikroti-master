@@ -27,6 +27,12 @@ export const factoryAddress = "0x82EC684C86b84AC60b5e162EC87d6DCF4213D468";
 
 export const featuredTitle1 = "LABX VIRTUAL";
 export const featuredTitle2 = "COLLECTIBLES";
+export const featuredPaid = "/images/featured-paid.png";
+export const paidTitle = "Paid Virtual Collectible";
+export const featuredFree = "/images/featured-free.png";
+export const freeTitle = "Free Virtual Collectible";
+export const featuredCoin = "/images/featured-coin.png";
+export const coinTitle = "Redeem Coins Reward";
 
 export const entityMonth = "March";
 export const entityDate = "20";
