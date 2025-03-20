@@ -12,6 +12,8 @@ import {
   loginPower,
   loginCall,
   loginReason,
+  loginAgreement,
+  loginTermsPolicy,
 } from "@/config/osloid";
 
 const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
@@ -49,9 +51,9 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <div className="w-full h-auto flex flex-col gap-4 justify-start items-start">
         {children}
         <h4 className="text-left text-xs font-normal text-icon-wording">
-          By connecting, you agree to the{" "}
+          {loginAgreement}{" "}
           <Link href="/terms" target="_blank" className="text-hitam-judul-body">
-            Terms of Service & Privacy Policy
+            {loginTermsPolicy}
           </Link>
         </h4>
       </div>
