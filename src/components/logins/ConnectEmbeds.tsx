@@ -47,8 +47,6 @@ const ConnectEmbeds: React.FC = () => {
           sponsorGas: true,
         }}
         chains={chains}
-        privacyPolicyUrl="/terms"
-        termsOfServiceUrl="/terms"
         showThirdwebBranding={false}
         theme={lightTheme({
           colors: {

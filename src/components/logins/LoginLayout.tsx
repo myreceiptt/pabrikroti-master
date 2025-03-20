@@ -42,11 +42,19 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
         <h1 className="flex text-left text-3xl lg:text-4xl xl:text-5xl font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
           {loginCall}
         </h1>
-        <h2 className="flex text-left text-xs md:text-sm lg:text-base xl:text-lg font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
+        <h2 className="flex text-left text-sm lg:text-base xl:text-lg font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
           {loginReason}
         </h2>
       </div>
-      {children}
+      <div className="w-full h-auto flex flex-col gap-4 justify-start items-start">
+        {children}
+        <h4 className="text-left text-xs font-normal text-icon-wording">
+          By connecting, you agree to the{" "}
+          <Link href="/terms" target="_blank" className="text-hitam-judul-body">
+            Terms of Service & Privacy Policy
+          </Link>
+        </h4>
+      </div>
       {/* Footerssss */}
       <Link href="https://voyage.co.id/" target="_blank">
         <Image
