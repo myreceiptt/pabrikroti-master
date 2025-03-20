@@ -39,7 +39,7 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
         />
       </Link>
       <div id="headers" className="w-full flex flex-col gap-2">
-        <h1 className="flex text-left text-1xl md:text-2xl lg:text-3xl xl:text-4xl font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
+        <h1 className="flex text-left text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
           {loginCall}
         </h1>
         <h2 className="flex text-left text-xs md:text-sm lg:text-base xl:text-lg font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
