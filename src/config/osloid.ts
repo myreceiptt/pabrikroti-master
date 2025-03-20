@@ -15,7 +15,7 @@ export const artLogin = "/images/art-login.png";
 export const bannerLogin = "/images/banner-login.png";
 export const loginCall = "Get Ready!";
 export const loginReason =
-  "Register now to immerse yourself in LabX Con Digital Experience!";
+  "Register now to immerse yourself in LabX Digital Experience!";
 export const loginAgreement = "By connecting, you agree to the";
 export const loginTermsPolicy = "Terms of Service & Privacy Policy";
 export const loginPower = "/images/login-power.png";
