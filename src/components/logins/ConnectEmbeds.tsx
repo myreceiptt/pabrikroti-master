@@ -7,8 +7,14 @@ import { ConnectEmbed, lightTheme } from "thirdweb/react";
 // Blockchain configurations
 import { client } from "@/config/client";
 import { dompets } from "@/config/dompets";
-import { base } from "@/config/rantais";
-import { baseSepolia } from "@/config/rantais";
+import {
+  titlePro,
+  descriptionPro,
+  baseUrl,
+  logoUrl,
+  factoryAddress,
+} from "@/config/osloid";
+import { base, baseSepolia } from "@/config/rantais";
 
 const chains = [base, baseSepolia];
 
@@ -29,21 +35,19 @@ const ConnectEmbeds: React.FC = () => {
           title: " ",
         }}
         appMetadata={{
-          name: "Login Bukhari Islamic Art Gallery",
-          url: "https://galeri.harmoniistiqlal.com",
-          description:
-            "Login to Bukhari Islamic Art Gallery in Harmoni Istiqlal.",
-          logoUrl: "https://galeri.harmoniistiqlal.com/logo/oslo.png",
+          name: titlePro,
+          url: baseUrl,
+          description: descriptionPro,
+          logoUrl: logoUrl,
         }}
         wallets={dompets}
         accountAbstraction={{
-          factoryAddress: "0x82EC684C86b84AC60b5e162EC87d6DCF4213D468",
+          factoryAddress: factoryAddress,
           chain: base,
-          // chain: baseSepolia,
           sponsorGas: true,
         }}
         chains={chains}
-        privacyPolicyUrl="/privacy"
+        privacyPolicyUrl="/terms"
         termsOfServiceUrl="/terms"
         showThirdwebBranding={false}
         theme={lightTheme({

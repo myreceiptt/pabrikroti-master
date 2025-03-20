@@ -8,6 +8,13 @@ import { ConnectButton } from "thirdweb/react";
 // Blockchain configurations
 import { client } from "@/config/client";
 import { dompets } from "@/config/dompets";
+import {
+  titlePro,
+  descriptionPro,
+  baseUrl,
+  logoUrl,
+  factoryAddress,
+} from "@/config/osloid";
 import { base, baseSepolia } from "@/config/rantais";
 import { tekeks } from "@/config/tekeks";
 import { tokeks } from "@/config/tokeks";
@@ -20,16 +27,14 @@ const ConnectButtons: React.FC = () => {
       <ConnectButton
         client={client}
         appMetadata={{
-          name: "Login Bukhari Islamic Art Gallery",
-          url: "https://galeri.harmoniistiqlal.com",
-          description:
-            "Login to Bukhari Islamic Art Gallery in Harmoni Istiqlal.",
-          logoUrl:
-            "https://galeri.harmoniistiqlal.com/images/bukhari-fa-login-02-11.png",
+          name: titlePro,
+          url: baseUrl,
+          description: descriptionPro,
+          logoUrl: logoUrl,
         }}
         wallets={dompets}
         accountAbstraction={{
-          factoryAddress: "0x82EC684C86b84AC60b5e162EC87d6DCF4213D468",
+          factoryAddress: factoryAddress,
           chain: base,
           sponsorGas: true,
         }}

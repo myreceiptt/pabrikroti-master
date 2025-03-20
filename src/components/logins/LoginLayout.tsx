@@ -5,16 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-// Image configurations
-import art from "../../../public/images/bukhari-fa-login-02.png";
-import banner from "../../../public/images/bukhari-fa-login-04-crop.png";
-import powered from "../../../public/images/bukhari-fa-login-06-crop.png";
+// Blockchain configurations
+import { artLogin, bannerLogin, loginPower, titlePro, descriptionPro } from "@/config/osloid";
 
 const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="w-full h-screen grid grid-cols-1 md:grid-cols-2">
     <div className="w-full relative hidden md:block overflow-hidden">
       <Image
-        src={art}
+        src={artLogin}
         alt="Bukhari Islamic Art Background for Login Page."
         width={1080}
         height={1103}
@@ -26,7 +24,7 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       {/* Headerssss */}
       <Link href="/">
         <Image
-          src={banner}
+          src={bannerLogin}
           alt="Bukhari Islamic Art Banner with Partners Logo."
           width={1080}
           height={149}
@@ -36,18 +34,17 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       </Link>
       <div id="headers" className="w-full flex flex-col gap-2">
         <h1 className="flex text-left text-1xl md:text-2xl lg:text-3xl xl:text-4xl font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
-          Get Ready!
+          {titlePro}
         </h1>
         <h2 className="flex text-left text-xs md:text-sm lg:text-base xl:text-lg font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
-          Register Now to Immerse Yourself in Galeri Harmoni Istiqlal Digital
-          Experience
+          {descriptionPro}
         </h2>
       </div>
       {children}
       {/* Footerssss */}
       <Link href="https://voyage.co.id/" target="_blank">
         <Image
-          src={powered}
+          src={loginPower}
           alt="Bukhari Islamic Art Powered by VOYAGE."
           width={1080}
           height={108}
