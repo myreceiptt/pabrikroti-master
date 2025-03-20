@@ -25,7 +25,7 @@ const DynamicLoginPage: React.FC<DynamicLoginPageProps> = ({
       <>
         {/* Headersss */}
         <Header />
-        <div className="flex flex-col gap-4 my-4 md:my-8 lg:my-12 content-normal px-0 md:px-20 m-4">
+        <div className="flex flex-col gap-4 content-normal md:px-20 py-4 px-4 lg:my-12 md:my-8 my-4">
           <ContentComponent />
         </div>
         {/* Footersss */}

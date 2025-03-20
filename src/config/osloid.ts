@@ -8,7 +8,9 @@ export const descriptionPro =
   "Commemorate your participation in todays LabX event with a unique virtual collectible.";
 export const baseUrl = "https://labx.voyage.co.id";
 export const previewImage = "https://labx.voyage.co.id/preview-image.png";
+
 export const logoUrl = "/logos/oslo.png";
+
 export const artLogin = "/images/art-login.png";
 export const bannerLogin = "/images/banner-login.png";
 export const loginCall = "Get Ready!";
@@ -17,9 +19,15 @@ export const loginReason =
 export const loginAgreement = "By connecting, you agree to the";
 export const loginTermsPolicy = "Terms of Service & Privacy Policy";
 export const loginPower = "/images/login-power.png";
+
 export const headerLogo = "/images/header-logo.png";
+
 export const factoryAddress = "0x82EC684C86b84AC60b5e162EC87d6DCF4213D468";
 // expost const diplayBonBase = ""
+
+export const featuredTitle1 = "LABX VIRTUAL";
+export const featuredTitle2 = "COLLECTIBLES";
+
 export const entityMonth = "March";
 export const entityDate = "20";
 export const entityYear = "2025";
