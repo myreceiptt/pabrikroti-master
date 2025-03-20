@@ -11,8 +11,11 @@ export const previewImage =
   "https://labx.voyage.co.id/screenshot-galeri-harmoni-bukhari-istiqlal.png";
 export const logoUrl = "/logos/oslo.png";
 export const artLogin = "/images/art-login.png";
-export const bannerLogin = "/images/bukhari-fa-login-04-crop.png";
-export const loginPower = "/images/bukhari-fa-login-06-crop.png";
+export const bannerLogin = "/images/banner-login.png";
+export const loginCall = "Get Ready!";
+export const loginReason =
+  "Register now to immerse yourself in LabX Con Digital Experience!";
+export const loginPower = "/images/login-power.png";
 export const factoryAddress = "0x82EC684C86b84AC60b5e162EC87d6DCF4213D468";
 // expost const diplayBonBase = ""
 export const entityMonth = "March";

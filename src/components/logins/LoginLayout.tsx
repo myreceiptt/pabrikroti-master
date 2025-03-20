@@ -6,7 +6,13 @@ import Link from "next/link";
 import React from "react";
 
 // Blockchain configurations
-import { artLogin, bannerLogin, loginPower, titlePro, descriptionPro } from "@/config/osloid";
+import {
+  artLogin,
+  bannerLogin,
+  loginPower,
+  loginCall,
+  loginReason,
+} from "@/config/osloid";
 
 const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <div className="w-full h-screen grid grid-cols-1 md:grid-cols-2">
@@ -15,7 +21,7 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
         src={artLogin}
         alt="Bukhari Islamic Art Background for Login Page."
         width={1080}
-        height={1103}
+        height={1129}
         className="absolute inset-0 w-full h-full object-cover object-right"
         priority
       />
@@ -34,10 +40,10 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       </Link>
       <div id="headers" className="w-full flex flex-col gap-2">
         <h1 className="flex text-left text-1xl md:text-2xl lg:text-3xl xl:text-4xl font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
-          {titlePro}
+          {loginCall}
         </h1>
         <h2 className="flex text-left text-xs md:text-sm lg:text-base xl:text-lg font-normal text-hitam-judul-body tracking-tighter justify-start align-middle">
-          {descriptionPro}
+          {loginReason}
         </h2>
       </div>
       {children}
@@ -47,7 +53,7 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
           src={loginPower}
           alt="Bukhari Islamic Art Powered by VOYAGE."
           width={1080}
-          height={108}
+          height={107}
           className="z-0 object-contain w-full"
           priority
         />
