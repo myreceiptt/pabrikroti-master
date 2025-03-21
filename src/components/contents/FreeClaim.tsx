@@ -4,7 +4,6 @@
 
 // External libraries
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { canClaim, getNFT, balanceOf } from "thirdweb/extensions/erc1155";
 import {
@@ -24,48 +23,59 @@ import { base } from "@/config/rantais";
 import Loader from "./ReusableLoader";
 
 const FreeClaim: React.FC = () => {
-  const router = useRouter();
-  const activeAccount = useActiveAccount();
-
-  const tokenId = tokenNumber;
-  const tokenIdString = Array.isArray(tokenId) ? tokenId[0] : tokenId ?? "0";
-  const tokenIdBigInt = BigInt(tokenIdString);
-  const tokenIdNumber = parseInt(tokenIdString, 10);
-
   // Ensure state variables are properly declared
+  const [currentTime, setCurrentTime] = useState<Date>(new Date());
+  const countdownTarget = new Date("2025-03-21T08:30:00Z");
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const getCountdownString = () => {
+    const totalSeconds = Math.floor(
+      (countdownTarget.getTime() - currentTime.getTime()) / 1000
+    );
+
+    if (totalSeconds <= 0) return null;
+
+    const days = Math.floor(totalSeconds / (3600 * 24));
+    const hours = Math.floor((totalSeconds % (3600 * 24)) / 3600);
+    const minutes = Math.floor((totalSeconds % 3600) / 60);
+    const seconds = totalSeconds % 60;
+
+    return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+  };
+
   const [isProcessing, setIsProcessing] = useState(false);
   const [erc1155Claimed, setErc1155Claimed] = useState(true);
+
   const [pesanTunggu, setPesanTunggu] = useState<string | null>(null);
   const [pesanKirim, setPesanKirim] = useState<string | null>(null);
   const [pesanSukses, setPesanSukses] = useState<string | null>(null);
   const [pesanGagal, setPesanGagal] = useState<string | null>(null);
 
-  // Fetch NFT metadata
-  const { data: nft, isLoading: isNftLoading } = useReadContract(getNFT, {
-    contract: labXpoap,
-    tokenId: tokenIdBigInt,
-  });
+  const activeAccount = useActiveAccount();
 
-  // Fetch user's owned NFTs
-  const { data: ownedNfts } = useReadContract(balanceOf, {
-    contract: labXpoap,
-    owner: activeAccount?.address ?? "",
-    tokenId: tokenIdBigInt,
-    queryOptions: { enabled: !!activeAccount?.address && !!tokenId },
-  });
+  const tokenIdString = tokenNumber;
+  const tokenIdBigInt = BigInt(tokenIdString);
+  const tokenIdNumber = parseInt(tokenIdString, 10);
 
   // Fetch Claimability using "canClaim"
   useEffect(() => {
     async function checkClaimability() {
-      if (!activeAccount?.address || !tokenIdBigInt) return;
-
       try {
         const canClaimResult = await canClaim({
           contract: labXpoap,
-          tokenId: tokenIdBigInt,
+          claimer: activeAccount?.address ?? "",
           quantity: 1n,
-          claimer: activeAccount?.address,
+          tokenId: tokenIdBigInt,
         });
+
+        console.log("Can Claim:", canClaimResult);
 
         // Check if the user can claim or not,
         setErc1155Claimed(!canClaimResult.result);
@@ -78,6 +88,20 @@ const FreeClaim: React.FC = () => {
     checkClaimability();
   }, [activeAccount?.address, tokenIdBigInt]);
 
+  // Fetch NFT metadata
+  const { data: nft, isLoading: isNftLoading } = useReadContract(getNFT, {
+    contract: labXpoap,
+    tokenId: tokenIdBigInt,
+  });
+
+  // Fetch user's owned NFTs
+  const { data: ownedNfts } = useReadContract(balanceOf, {
+    contract: labXpoap,
+    owner: activeAccount?.address ?? "",
+    tokenId: tokenIdBigInt,
+    queryOptions: { enabled: !!activeAccount?.address && !!tokenIdString },
+  });
+
   // Calculate price (fixed values: 0.00 for 0-22, 4.74 for 23+)
   const calculatePrice = () => {
     if (isNaN(tokenIdNumber)) return "0.00";
@@ -85,19 +109,11 @@ const FreeClaim: React.FC = () => {
     return tokenIdNumber >= 23 ? "x.xx" : "0.00";
   };
 
-  // Ensure tokenId exists, otherwise redirect
-  useEffect(() => {
-    if (!tokenId) {
-      router.push("/");
-    }
-  }, [tokenId, router]);
-
-  if (!tokenId || isNftLoading) {
+  // Ensure tokenId exists
+  if (!tokenIdString || isNftLoading) {
     return (
       <main className="grid gap-4 place-items-center">
-        <h2 className="text-left text-sm font-medium text-icon-wording">
-          Loading...
-        </h2>
+        <Loader message="Loading..." />
       </main>
     );
   }
@@ -235,7 +251,11 @@ const FreeClaim: React.FC = () => {
               setPesanSukses("Successful! Virtual Collectible claimed.");
               setErc1155Claimed(true);
             }}>
-            {erc1155Claimed ? "Coming Soon" : "Collect Now"}
+            {currentTime < countdownTarget ? (
+              <span>Available in: {getCountdownString()}</span>
+            ) : (
+              <span>{erc1155Claimed ? "Already Claimed" : "Claim Now"}</span>
+            )}
           </ClaimButton>
           <h4 className="text-left text-xs font-medium text-icon-wording">
             &#42;Maximum 1 edition per owner.
@@ -282,26 +302,6 @@ const NFTDescription: React.FC<{
           ))}
       {isLongDescription && (
         <div className="flex justify-end items-center gap-4 pt-2 mb-2">
-          {isExpanded && (
-            <>
-              {/* <Link
-                href={`https://opensea.io/assets/base/0xc226653e9c043674a48c6b7be33526771c34389a/${tokenIdNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-medium text-hitam-judul-body hover:underline cursor-pointer">
-                View on OpenSea
-              </Link> */}
-
-              {/* <Link
-                href={`https://rarible.com/token/base/0xc226653e9c043674a48c6b7be33526771c34389a:${tokenIdNumber}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-xs font-medium text-hitam-judul-body hover:underline cursor-pointer">
-                View on Rarible
-              </Link> */}
-            </>
-          )}
-
           {/* Read More / Read Less */}
           <p
             className="text-xs font-medium text-hitam-judul-body hover:underline cursor-pointer"
