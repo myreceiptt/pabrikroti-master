@@ -15,23 +15,28 @@ import {
   entityMonth,
   entityName,
   entityYear,
+  titlePro,
+  poweredBy,
+  footerPower,
+  entityAlias1,
+  copyRight,
+  officiallyLicensed,
+  anchorPrivacy,
+  anchorTerms,
+  headerLogo,
 } from "@/config/osloid";
 
 export default function Terms() {
   return (
     <>
       {/* Top Image */}
-      <header className="w-full flex items-center justify-center bg-back-ground py-4 px-4 md:px-20">
-        <Link href="/">
-          <Image
-            src="/images/bukhari-fa-login-04-crop.png"
-            alt="Bukhari Islamic Art Banner with Partners Logo."
-            width={1080}
-            height={149}
-            className="object-contain w-full max-w-max"
-            priority
-          />
-        </Link>
+      <header className="w-full flex items-center justify-between bg-back-ground py-4 px-4 md:px-20">
+        {/* Logo Section */}
+        <div className="w-1/4 sm:w-1/6 flex justify-start">
+          <Link href="/">
+            <Image src={headerLogo} alt={titlePro} width={144} height={75} />
+          </Link>
+        </div>
       </header>
 
       {/* Content Section */}
@@ -710,35 +715,32 @@ export default function Terms() {
       <footer className="w-full bg-hitam-judul-body py-4 px-4 md:px-20">
         <div className="w-full border-t border-border-tombol mt-4 pt-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
           {/* Copyrights (Left on lg, Center on md) */}
-          <div className="w-full text-xs text-center sm:text-left text-icon-wording">
+          <div className="w-full text-xs text-center sm:text-left text-back-ground">
             <p>
-              © 2025 Harmoni Istiqlal X Bukhari Creative Group. All rights
-              reserved.
+              &copy; {new Date().getFullYear()} {entityAlias1}. {copyRight}
+            </p>
+            <p>
+              {officiallyLicensed} {entityAlias1}.
             </p>
             <div className="flex justify-center sm:justify-start gap-4 mt-2">
               <Link
                 href="/terms"
                 target="_blank"
                 className="text-xs text-center sm:text-left text-back-ground">
-                Terms of Service
+                {anchorPrivacy}
               </Link>
               <Link
-                href="/privacy"
+                href="/terms"
                 target="_blank"
                 className="text-xs text-center sm:text-left text-back-ground">
-                Privacy Policy
+                {anchorTerms}
               </Link>
             </div>
           </div>
 
           {/* Logo & Powered By (Right on lg, Center on md) */}
-          <div className="w-full flex justify-center sm:justify-end">
-            <Image
-              src="/images/bukhari-fa-logo-footer.png"
-              alt="Harmoni Istiqlal X Bukhari Creative Group"
-              width={768}
-              height={60}
-            />
+          <div className="w-full flex justify-center sm:justify-end cursor-pointer">
+            <Image src={footerPower} alt={poweredBy} width={563} height={75} />
           </div>
         </div>
       </footer>
