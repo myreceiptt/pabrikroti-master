@@ -8,8 +8,8 @@ import Link from "next/link";
 // Blockchain configurations
 import {
   entityAddress,
-  // entityAlias1,
-  // entityAlias2,
+  entityAlias1,
+  entityAlias2,
   entityDate,
   entityEmail,
   entityMonth,
@@ -18,7 +18,6 @@ import {
   titlePro,
   poweredBy,
   footerPower,
-  entityAlias1,
   copyRight,
   officiallyLicensed,
   anchorPrivacy,
@@ -67,15 +66,16 @@ export default function Terms() {
               about your rights and obligations.
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              {entityName} is a platform that allows you to collect, issue, and
-              display NFTs. This {entityName} Terms and conditions of Use
+              {entityAlias2} is a platform that allows you to collect, issue,
+              and display NFTs. This {entityName} Terms and conditions of Use
               (&quot;Terms and Conditions&quot;, &quot;Agreement&quot;) document
               is entered into by user or users (&quot;User&quot;,
-              &quot;Users&quot; or &quot;You&quot;) and {entityName} (&quot;
+              &quot;Users&quot; or &quot;You&quot;), {entityAlias1}, and{" "}
+              {entityAlias2} (&quot;
               {entityName},&quot; &quot;We&quot; or &quot;Us&quot;). It contains
-              terms and conditions you have agreed to abide by upon accessing
+              terms and conditions you have agreed to abide by upon accessing{" "}
               {baseUrl} (&quot;Site&quot;). The terms govern your access and use
-              of the {entityName} ecosystem, including content, features, and
+              of the {entityAlias2} ecosystem, including content, features, and
               functionality. By signing up to use an account through the Site,
               or any associated websites, APIs, or mobile applications, you
               agree that you have read, understood, and accept all of the terms
@@ -84,12 +84,12 @@ export default function Terms() {
           </section>
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              Basic {entityName} Services
+              Basic {entityAlias2} Services
             </h3>
             <ul className="list-disc list-outside space-y-2">
               <li className="text-sm font-medium text-icon-wording leading-relaxed">
-                Eligibility. To be eligible to use the {entityName} services,
-                you must register an account on {entityName} Site.
+                Eligibility. To be eligible to use the {entityAlias2} services,
+                you must register an account on {entityAlias2} Site.
               </li>
               <li className="text-sm font-medium text-icon-wording leading-relaxed">
                 {entityName} Services. Your account encompasses the following
