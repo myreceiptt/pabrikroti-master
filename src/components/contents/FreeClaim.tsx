@@ -173,7 +173,7 @@ const FreeClaim: React.FC = () => {
             unstyled
             className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
               ${
-                isProcessing || (ownedNfts && Number(ownedNfts) >= 2)
+                isProcessing || (ownedNfts && Number(ownedNfts) >= 1)
                   ? "border-2 border-solid border-border-tombol bg-back-ground text-hitam-judul-body"
                   : "border-2 border-solid border-back-ground text-back-ground bg-hitam-judul-body"
               }
@@ -192,7 +192,7 @@ const FreeClaim: React.FC = () => {
             // )}
             disabled={Boolean(
               isProcessing ||
-                (ownedNfts && Number(ownedNfts) >= 2) ||
+                (ownedNfts && Number(ownedNfts) >= 1) ||
                 // Number(calculatePrice()) > 0 // 🔥 Disable if price is greater than 0
                 Number(calculatePrice()) !== 0 // 🔥 Disable if price is greater than 0
             )}
