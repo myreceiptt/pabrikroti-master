@@ -66,8 +66,8 @@ export default function Terms() {
               about your rights and obligations.
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              {entityName} is a platform that allows you to collect, issue, and
-              display NFTs. This {entityName} Terms and conditions of Use
+              {entityAlias2} is a platform that allows you to collect, issue,
+              and display NFTs. This {entityName} Terms and conditions of Use
               (&quot;Terms and Conditions&quot;, &quot;Agreement&quot;) document
               is entered into by user or users (&quot;User&quot;,
               &quot;Users&quot; or &quot;You&quot;), {entityAlias1}, and{" "}
@@ -84,15 +84,15 @@ export default function Terms() {
           </section>
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              Basic {entityName} Services
+              Basic {entityAlias2} Services
             </h3>
             <ul className="list-disc list-outside space-y-2">
               <li className="text-sm font-medium text-icon-wording leading-relaxed">
-                Eligibility. To be eligible to use the {entityName} services,
+                Eligibility. To be eligible to use the {entityAlias2} services,
                 you must register an account on {entityName} Site.
               </li>
               <li className="text-sm font-medium text-icon-wording leading-relaxed">
-                {entityName} Services. Your account encompasses the following
+                {entityAlias2} Services. Your account encompasses the following
                 basic services: Access to collect virtual collectibles in a form
                 of Non Fungible Tokens; Access to issue and publish NFTs;
                 Privilege tagged to NFTs that you, as an NFT collector
@@ -128,14 +128,14 @@ export default function Terms() {
               Modification to these Terms and Conditions
             </h3>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              {entityName} may modify these Terms and Conditions when{" "}
-              {entityName} deems it to be necessary, within the scope of the
-              purposes of the Services. In such a case, {entityName} will
+              {entityAlias2} may modify these Terms and Conditions when{" "}
+              {entityAlias2} deems it to be necessary, within the scope of the
+              purposes of the Services. In such a case, {entityAlias2} will
               indicate the contents of the modified version of these Terms and
               Conditions, as well as the effective date of the modification, on
               the Services or on {entityName}&apos;s website, or will publicize
               the same to Users by notifying Users in the manner prescribed by{" "}
-              {entityName}.
+              {entityAlias2}.
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
               The modified version of these Terms and Conditions shall become
@@ -145,11 +145,11 @@ export default function Terms() {
 
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              {entityName} ACCOUNT
+              {entityAlias2} ACCOUNT
             </h3>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              Registration of {entityName} account. In order to use the{" "}
-              {entityName} Site, you will need to register for a {entityName}{" "}
+              Registration of {entityAlias2} account. In order to use the{" "}
+              {entityName} Site, you will need to register for a {entityAlias2}{" "}
               account by providing your information (&quot;Personal
               Information&quot;), including your email address, password, and
               accepting the terms of this Agreement and our Privacy Policy. We
@@ -196,31 +196,71 @@ export default function Terms() {
               Intellectual Property Rights Protection Provisions
             </h3>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              Information, services, and prices are subject to change without
-              notice. We reserve the right at any time to modify or discontinue
-              the Service (or any part or content thereof) without notice at any
-              time.
+              Intellectual Property Rights. The term &quot;Intellectual Property
+              Rights&quot; means all (i) patents, patent applications, patent
+              disclosures and inventions, (ii) Internet Domain names,
+              trademarks, service marks, trade dress, trade names, logos and
+              corporate names and registrations and applications for
+              registration thereof together with all of the goodwill associated
+              therewith, (iii) copyrights (registered or unregistered) and
+              copyrightable works and registrations and applications for
+              registration thereof, (iv) mask works and registrations and
+              applications thereof, (v) computer software, data, databases and
+              documentation thereof, (vi) trade secrets and other confidential
+              information, including ideas, formulas, compositions, inventions
+              (whether patentable or unpatentable and whether or not reduced to
+              practice), know-how, manufacturing and production processes and
+              techniques, research and development information, drawings,
+              specifications, designs, plans, proposals, technical data, and
+              copyrightable works, financial and marketing plans and customer
+              and supplier lists and information, and (vii) copies and tangible
+              embodiments thereof (in whatever form or medium).
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              We shall not be liable to you or any third party for any
-              modification, price change, suspension, or discontinuance of the
-              Service.
+              This Terms and Conditions contains how you and {entityAlias2} will
+              protect your Intellectual Property on {entityAlias2} services
+              exclusively.
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              Prices for our products on merchant applications to which our
-              links point, such as OpenSea.io, may be subject to change. Please
-              note that we are not responsible for any of our products offered
-              on OpenSea.io or other merchant applications when such offers
-              originate from third parties (secondary market).
+              You acknowledge that:
+            </p>
+            <ol className="list-disc list-outside space-y-2">
+              <li className="text-sm font-medium text-icon-wording leading-relaxed">
+                You are the original owner or holder of the intellectual
+                property rights of NFTs published on {entityName} site.
+              </li>
+              <li className="text-sm font-medium text-icon-wording leading-relaxed">
+                You hereby declare that you fully own the intellectual property
+                rights to the NFTs published on {entityName} site exclusively
+                and guarantee that there are no claims from third parties for
+                the ownership of the NFTs
+              </li>
+            </ol>
+            <p className="text-sm font-medium text-icon-wording leading-relaxed">
+              {entityAlias2} hereby grants you a limited, non-exclusive,
+              non-transferable royalty-free right to use or display the brand,
+              trade name, logo, site content, headings and other distinguishing
+              marks and names of {entityAlias1} and {entityAlias2} on the site
+              and limited for the purpose of implementing this Agreement.
+            </p>
+            <p className="text-sm font-medium text-icon-wording leading-relaxed">
+              Breach of Intellectual Property. {entityAlias2} wil take
+              responsibility for any finding NFTs that are infringing
+              Intellectual Property Rights. If you as Collector find indications
+              of infringement of intellectual property rights on NFTs in{" "}
+              {entityAlias2}, you can contact {entityAlias2} and {entityAlias2}{" "}
+              will help to remove them from {entityName} site. Other than that,
+              it will be the responsibility of you and the IP owners and should
+              be directly resolved between you and the IP owners.
             </p>
           </section>
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              SECTION 5 - PRODUCTS OR SERVICES (if applicable)
+              Restricted Matters
             </h3>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              Certain products or services may be available exclusively online
-              through the application.
+              {entityAlias2} prohibits you from engaging in any of the following
+              acts when using the Services:
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
               We have made every effort to display the colors and images of our
