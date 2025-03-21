@@ -7,23 +7,23 @@ import Link from "next/link";
 
 // Blockchain configurations
 import {
-  entityAddress,
+  entityMonth,
+  entityDate,
+  entityYear,
+  entityName,
   entityAlias1,
   entityAlias2,
-  entityDate,
-  entityEmail,
-  entityMonth,
-  entityName,
-  entityYear,
+  // entityAddress,
+  // entityEmail,
   titlePro,
+  baseUrl,
   poweredBy,
-  footerPower,
+  headerLogo,
   copyRight,
   officiallyLicensed,
   anchorPrivacy,
   anchorTerms,
-  headerLogo,
-  baseUrl,
+  footerPower,
 } from "@/config/osloid";
 
 export default function Terms() {
