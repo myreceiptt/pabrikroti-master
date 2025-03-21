@@ -317,7 +317,22 @@ const RedeemForm: React.FC = () => {
             setIsProcessing(false);
             setPesanKirim(null);
             setPesanSukses("Successful! $BON Dosh claimed.");
-            setErc20Claimed(true);
+            try {
+              // Refetch claim condition
+              const activeCondition20 = await claimCondition20({
+                contract: bonVoyageDrop,
+                claimer: activeAccount?.address ?? "",
+                quantity: "1",
+              });
+
+              if (!activeCondition20.result) {
+                setErc20Claimed(true);
+              } else {
+                setErc20Claimed(false);
+              }
+            } catch (error) {
+              console.error("Error refetching claim condition:", error);
+            }
           }}>
           {erc20Claimed ? "Already Claimed" : "Claim Now"}
         </ClaimButton>
