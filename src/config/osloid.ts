@@ -36,6 +36,7 @@ export const headerLogo = "/images/header-logo.png";
 export const factoryAddress = "0x82EC684C86b84AC60b5e162EC87d6DCF4213D468";
 // expost const diplayBonBase = ""
 
+// featured cards
 export const featuredTitle1 = "LABX VIRTUAL";
 export const featuredTitle2 = "COLLECTIBLES";
 export const featuredPaid = "/images/featured-paid.png";
@@ -45,7 +46,7 @@ export const freeTitle = "Free Virtual Collectible";
 export const featuredCoin = "/images/featured-coin.png";
 export const coinTitle = "Redeem Coins Reward";
 
-export const footerBackground = "#F36823";
+// subscribe form
 export const inputEmail = "Please enter a valid email address.";
 export const subscribeSubject = "Subscription to " + titlePro;
 export const subscribeName = "Visitor of " + baseUrl;
@@ -54,6 +55,8 @@ export const subscribeSuccess = "Thank you for subscribing!";
 export const subscribeFailed = "Subscription failed. Please try again.";
 export const subscribeTitle = "Catch our latest updates";
 export const subscribePlaceholder = "Enter your email address";
+
+// social links
 export const socialTitle = "Join the Community";
 export const linkLinkedIn =
   "https://www.linkedin.com/company/voyage-web3/about/";
@@ -62,8 +65,13 @@ export const linkYouTube = "https://www.youtube.com/@voyageweb3";
 export const linkEmail = "mailto:hello@voyage.co.id";
 export const linkWhatsApp =
   "https://api.whatsapp.com/send?phone=6281808038000&text=Hello%2C%20Voyagers!%20Help%20us%20integrate%20decentralized%20technologies%20into%20our%20operations%20and%20business%20models%2C%20please!";
+
+// copyright
 export const copyRight = "All rights reserved.";
 export const officiallyLicensed = "Officially licensed product of ";
 export const anchorPrivacy = "Privacy Policy";
 export const anchorTerms = "Terms of Service";
+
+// footer
 export const footerPower = "/images/footer-power.png";
+export const footerBackground = "#F36823";
