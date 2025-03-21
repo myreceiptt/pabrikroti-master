@@ -58,7 +58,8 @@ export const collectButton = "Collect Virtual Collectibles!";
 export const bannerContent = "/images/banner-content.png";
 
 // claim form
-
+export const tokenNumber = "0";
+export const tokenMedia = "/images/virtual-collectible.png";
 
 // subscribe form
 export const inputEmail = "Please enter a valid email address.";

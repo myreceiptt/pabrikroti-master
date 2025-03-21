@@ -8,6 +8,13 @@ import { client } from "@/config/client";
 import { base, baseSepolia } from "@/config/rantais";
 
 // All Non-Fungible Tokens Contracts
+// LabX POAP on Base.
+export const labXpoap = getContract({
+  address: "0x365a4245ee96F08927f9B960b87A961dA7F0Ab3C",
+  chain: base,
+  client,
+});
+
 // Bukhari Open Door on Base.
 export const bukhariOpenDoor = getContract({
   address: "0xc226653E9C043674a48C6b7Be33526771C34389A",

@@ -10,7 +10,7 @@ import { useReadContract } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { bukhariOpenDoor } from "@/config/contracts";
+import { labXpoap } from "@/config/contracts";
 
 interface TokenCheckProps {
   userAddress: string;
@@ -23,8 +23,8 @@ const TokenCheck: React.FC<TokenCheckProps> = ({
 }) => {
   const contract = getContract({
     client,
-    address: bukhariOpenDoor.address,
-    chain: bukhariOpenDoor.chain,
+    address: labXpoap.address,
+    chain: labXpoap.chain,
   });
 
   // Generate an array of token IDs from 0 to 22

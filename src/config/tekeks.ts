@@ -11,8 +11,8 @@ type SupportedNFTs = {
 // Define `tekeks` with the proper type
 export const tekeks: SupportedNFTs = {
   [base.id]: [
+    "0x365a4245ee96F08927f9B960b87A961dA7F0Ab3C", // LabX POAP
     "0x1925B991C5e2eC45BA1f34786BAd405d58202140", // MEMORA ONE
-    "0xc226653E9C043674a48C6b7Be33526771C34389A", // Bukhari Open Door
   ],
   [baseSepolia.id]: [
     // "0xc3046681149f96746b362a64472fD4B1cd1E33B2", // MEMORA ZER0

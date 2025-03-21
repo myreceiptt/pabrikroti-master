@@ -6,11 +6,11 @@
 import React from "react";
 
 // Components libraries
-import SouvenirDetails from "@/components/contents/SouvenirDetails";
+import FreeClaim from "@/components/contents/FreeClaim";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
 const PageToken: React.FC = () => (
-  <DynamicLoginPage ContentComponent={() => <SouvenirDetails />} />
+  <DynamicLoginPage ContentComponent={() => <FreeClaim />} />
 );
 
 export default PageToken;
