@@ -10,7 +10,7 @@ export const entityName = "LabX X Voyage";
 export const entityAlias1 = "LabX";
 export const entityAlias2 = "Voyage";
 export const entityAddress =
-  "Perkantoran Masjid Istiqlal Ruang 17-18 (FBN, Jl. Veteran I, Gambir, Kecamatan Sawah Besar, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10110, INDONESIA";
+  "Jl. Kartika Utama Blok SM No. 29, Pd. Pinang, Kec. Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12310, INDONESIA";
 export const entityEmail = "partnership@bukharicreative.group";
 
 export const titlePro = "LABX VIRTUAL COLLECTIBLES";
