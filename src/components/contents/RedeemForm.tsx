@@ -308,18 +308,18 @@ const RedeemForm: React.FC = () => {
             setPesanKirim("Claiming your $BON Dosh.");
           }}
           onError={(error) => {
-            setPesanGagal(`${error.message}`);
-            setPesanSukses(null);
             setIsProcessing(false);
             setPesanTunggu(null);
+            setPesanKirim(null);
+            setPesanGagal(`${error.message}`);
           }}
           onTransactionConfirmed={async () => {
-            setPesanSukses("Alhamdulillah! Successful!");
-            setPesanGagal(null);
             setIsProcessing(false);
-            setPesanTunggu(null);
+            setPesanKirim(null);
+            setPesanSukses("Successful! $BON Dosh claimed.");
+            setErc20Claimed(true);
           }}>
-          Claim Now
+          {erc20Claimed ? "Already Claimed" : "Claim Now"}
         </ClaimButton>
       </div>
     </div>
