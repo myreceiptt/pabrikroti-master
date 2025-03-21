@@ -5,13 +5,17 @@
 // External libraries
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { FaSackDollar, FaXmark } from "react-icons/fa6";
-import { ClaimButton } from "thirdweb/react";
+import { canClaim as claimCondition20 } from "thirdweb/extensions/erc20";
+import { ClaimButton, useActiveAccount } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
 import { bonVoyageDrop } from "@/config/contracts";
+
+// Components libraries
+import Loader from "./ReusableLoader";
 
 const RedeemForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -32,10 +36,37 @@ const RedeemForm: React.FC = () => {
     }
   };
 
+  const [erc20Claimed, setErc20Claimed] = useState(true);
+  const [isProcessing, setIsProcessing] = useState(false);
   const [pesanTunggu, setPesanTunggu] = useState<string | null>(null);
+  const [pesanKirim, setPesanKirim] = useState<string | null>(null);
   const [pesanSukses, setPesanSukses] = useState<string | null>(null);
   const [pesanGagal, setPesanGagal] = useState<string | null>(null);
-  const [isProcessing, setIsProcessing] = useState(false);
+
+  const activeAccount = useActiveAccount();
+
+  // Fetch ERC20 Claim Condition (to get `result`)
+  useEffect(() => {
+    async function fetchClaimCondition20() {
+      try {
+        const activeCondition20 = await claimCondition20({
+          contract: bonVoyageDrop,
+          claimer: activeAccount?.address ?? "",
+          quantity: "1",
+        });
+
+        if (!activeCondition20.result) {
+          setErc20Claimed(true);
+        } else {
+          setErc20Claimed(false);
+        }
+      } catch (error) {
+        console.error("Error fetching claim condition:", error);
+      }
+    }
+
+    fetchClaimCondition20();
+  }, [activeAccount?.address]);
 
   return (
     <div className="w-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">
@@ -221,21 +252,10 @@ const RedeemForm: React.FC = () => {
         </h2>
 
         {/* Success or Error Messages */}
-        {pesanTunggu && (
-          <h4 className="text-left text-sm font-medium text-icon-wording">
-            {pesanTunggu}
-          </h4>
-        )}
-        {pesanSukses && (
-          <h4 className="text-left text-sm font-medium text-icon-wording">
-            {pesanSukses}
-          </h4>
-        )}
-        {pesanGagal && (
-          <h4 className="text-left text-sm font-medium text-icon-wording">
-            {pesanGagal}
-          </h4>
-        )}
+        {pesanTunggu && <Loader message={pesanTunggu} />}
+        {pesanKirim && <Loader message={pesanKirim} />}
+        {pesanSukses && <Loader message={pesanSukses} />}
+        {pesanGagal && <Loader message={pesanGagal} />}
 
         {/* Amount Input */}
         <div className="w-full grid grid-cols-2">
@@ -264,7 +284,7 @@ const RedeemForm: React.FC = () => {
           unstyled
           className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
             ${
-              isProcessing
+              isProcessing || erc20Claimed
                 ? "border-2 border-solid border-border-tombol bg-back-ground text-hitam-judul-body"
                 : "border-2 border-solid border-back-ground text-back-ground bg-hitam-judul-body"
             }
@@ -276,18 +296,16 @@ const RedeemForm: React.FC = () => {
             type: "ERC20",
             quantity: amount,
           }}
-          disabled={isProcessing || !amount}
+          disabled={Boolean(isProcessing || !amount || erc20Claimed)}
           onClick={() => {
             setIsProcessing(true);
-            setPesanTunggu("Bismillah! Be patient and wait.");
+            setPesanTunggu("Processing. Be patient and wait.");
             setPesanSukses(null);
             setPesanGagal(null);
           }}
           onTransactionSent={() => {
-            setIsProcessing(true);
-            setPesanTunggu("Bismillah! Be patient and wait.");
-            setPesanSukses(null);
-            setPesanGagal(null);
+            setPesanTunggu(null);
+            setPesanKirim("Claiming your $BON Dosh.");
           }}
           onError={(error) => {
             setPesanGagal(`${error.message}`);

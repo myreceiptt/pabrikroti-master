@@ -30,15 +30,15 @@ export default function FeaturedCards() {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
         {[
           {
+            href: "/free",
+            src: featuredFree,
+            alt: freeTitle,
+          },
+          {
             // href: "/paid",
             href: "#",
             src: featuredPaid,
             alt: paidTitle,
-          },
-          {
-            href: "/free",
-            src: featuredFree,
-            alt: freeTitle,
           },
           {
             href: "/redeem",
