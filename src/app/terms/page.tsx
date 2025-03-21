@@ -24,6 +24,7 @@ import {
   anchorPrivacy,
   anchorTerms,
   headerLogo,
+  baseUrl,
 } from "@/config/osloid";
 
 export default function Terms() {
@@ -73,13 +74,12 @@ export default function Terms() {
               &quot;Users&quot; or &quot;You&quot;) and {entityName} (&quot;
               {entityName},&quot; &quot;We&quot; or &quot;Us&quot;). It contains
               terms and conditions you have agreed to abide by upon accessing
-              https://galeri.harmoniistiqlal.com/ (&quot;Site&quot;). The terms
-              govern your access and use of the {entityName} ecosystem,
-              including content, features, and functionality. By signing up to
-              use an account through the Site, or any associated websites, APIs,
-              or mobile applications, you agree that you have read, understood,
-              and accept all of the terms and conditions contained in this
-              Agreement.
+              {baseUrl} (&quot;Site&quot;). The terms govern your access and use
+              of the {entityName} ecosystem, including content, features, and
+              functionality. By signing up to use an account through the Site,
+              or any associated websites, APIs, or mobile applications, you
+              agree that you have read, understood, and accept all of the terms
+              and conditions contained in this Agreement.
             </p>
           </section>
           <section className="space-y-4">
