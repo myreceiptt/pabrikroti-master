@@ -9,11 +9,12 @@ import { useActiveAccount } from "thirdweb/react";
 
 // Components libraries
 import AccessMessage from "./AccessMessage";
-import ClaimForm from "./RedeemForm";
+import RedeemForm from "./RedeemForm";
 import Loader from "./ReusableLoader";
 
 // Blockchain configurations
 import TokenCheck from "@/config/checker";
+import { loginFirst, loaderChecking, accessMessage1 } from "@/config/osloid";
 
 const CoinRedeem: React.FC = () => {
   const router = useRouter();
@@ -24,7 +25,7 @@ const CoinRedeem: React.FC = () => {
     return (
       <main className="grid gap-4 place-items-center">
         <h2 className="text-left text-sm font-medium text-icon-wording">
-          Please log in first.
+          {loginFirst}
         </h2>
       </main>
     );
@@ -36,14 +37,14 @@ const CoinRedeem: React.FC = () => {
         userAddress={activeAccount.address}
         onAccessChange={setHasAccess}
       />
-      {hasAccess === null && <Loader message="Checking..." />}
+      {hasAccess === null && <Loader message={loaderChecking} />}
       {hasAccess === false && (
         <AccessMessage
           onRedirect={() => router.push("/")}
-          message="You don't have access!"
+          message={accessMessage1}
         />
       )}
-      {hasAccess && <ClaimForm />}
+      {hasAccess && <RedeemForm />}
     </main>
   );
 };

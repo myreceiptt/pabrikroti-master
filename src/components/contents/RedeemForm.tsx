@@ -13,7 +13,7 @@ import { ClaimButton } from "thirdweb/react";
 import { client } from "@/config/client";
 import { bonVoyageDrop } from "@/config/contracts";
 
-const ClaimForm: React.FC = () => {
+const RedeemForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const [amount, setAmount] = useState<string>("1");
@@ -308,4 +308,4 @@ const ClaimForm: React.FC = () => {
   );
 };
 
-export default ClaimForm;
+export default RedeemForm;

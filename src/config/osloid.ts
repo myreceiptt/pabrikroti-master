@@ -46,6 +46,20 @@ export const freeTitle = "Free Virtual Collectible";
 export const featuredCoin = "/images/featured-coin.png";
 export const coinTitle = "Redeem Coins Reward";
 
+// coin redeem
+export const loginFirst = "Please log in first.";
+export const loaderChecking = "Checking...";
+export const accessMessage1 = "You don't have access!";
+
+// access message
+export const accessMessage2 =
+  "Please get your access by collecting any Virtual Collectibles at least one edition.";
+export const collectButton = "Collect Virtual Collectibles!";
+export const bannerContent = "/images/banner-content.png";
+
+// claim form
+
+
 // subscribe form
 export const inputEmail = "Please enter a valid email address.";
 export const subscribeSubject = "Subscription to " + titlePro;
