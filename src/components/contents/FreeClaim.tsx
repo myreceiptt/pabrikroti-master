@@ -6,7 +6,7 @@
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { getNFT, balanceOf } from "thirdweb/extensions/erc1155";
+import { canClaim, getNFT, balanceOf } from "thirdweb/extensions/erc1155";
 import {
   ClaimButton,
   MediaRenderer,
@@ -25,7 +25,7 @@ import Loader from "./ReusableLoader";
 
 const FreeClaim: React.FC = () => {
   const router = useRouter();
-  const smartAccount = useActiveAccount();
+  const activeAccount = useActiveAccount();
 
   const tokenId = tokenNumber;
   const tokenIdString = Array.isArray(tokenId) ? tokenId[0] : tokenId ?? "0";
@@ -34,6 +34,7 @@ const FreeClaim: React.FC = () => {
 
   // Ensure state variables are properly declared
   const [isProcessing, setIsProcessing] = useState(false);
+  const [erc1155Claimed, setErc1155Claimed] = useState(true);
   const [pesanTunggu, setPesanTunggu] = useState<string | null>(null);
   const [pesanKirim, setPesanKirim] = useState<string | null>(null);
   const [pesanSukses, setPesanSukses] = useState<string | null>(null);
@@ -48,10 +49,34 @@ const FreeClaim: React.FC = () => {
   // Fetch user's owned NFTs
   const { data: ownedNfts } = useReadContract(balanceOf, {
     contract: labXpoap,
-    owner: smartAccount?.address ?? "",
+    owner: activeAccount?.address ?? "",
     tokenId: tokenIdBigInt,
-    queryOptions: { enabled: !!smartAccount?.address && !!tokenId },
+    queryOptions: { enabled: !!activeAccount?.address && !!tokenId },
   });
+
+  // Fetch Claimability using "canClaim"
+  useEffect(() => {
+    async function checkClaimability() {
+      if (!activeAccount?.address || !tokenIdBigInt) return;
+
+      try {
+        const canClaimResult = await canClaim({
+          contract: labXpoap,
+          tokenId: tokenIdBigInt,
+          quantity: 1n,
+          claimer: activeAccount?.address,
+        });
+
+        // Check if the user can claim or not,
+        setErc1155Claimed(!canClaimResult.result);
+      } catch (error) {
+        console.error("Error:", error);
+        setErc1155Claimed(true); // Assume claimed (can't claim) if an error occurs
+      }
+    }
+
+    checkClaimability();
+  }, [activeAccount?.address, tokenIdBigInt]);
 
   // Calculate price (fixed values: 0.00 for 0-22, 4.74 for 23+)
   const calculatePrice = () => {
@@ -173,7 +198,7 @@ const FreeClaim: React.FC = () => {
             unstyled
             className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
               ${
-                isProcessing || (ownedNfts && Number(ownedNfts) >= 1)
+                isProcessing || erc1155Claimed
                   ? "border-2 border-solid border-border-tombol bg-back-ground text-hitam-judul-body"
                   : "border-2 border-solid border-back-ground text-back-ground bg-hitam-judul-body"
               }
@@ -187,15 +212,7 @@ const FreeClaim: React.FC = () => {
               quantity: 1n,
               tokenId: tokenIdBigInt,
             }}
-            // disabled={Boolean(
-            //   isProcessing || (ownedNfts && Number(ownedNfts) >= 2)
-            // )}
-            disabled={Boolean(
-              isProcessing ||
-                (ownedNfts && Number(ownedNfts) >= 1) ||
-                // Number(calculatePrice()) > 0 // 🔥 Disable if price is greater than 0
-                Number(calculatePrice()) !== 0 // 🔥 Disable if price is greater than 0
-            )}
+            disabled={Boolean(isProcessing || erc1155Claimed)}
             onClick={() => {
               setIsProcessing(true);
               setPesanTunggu("Processing. Be patient and wait.");
@@ -216,9 +233,9 @@ const FreeClaim: React.FC = () => {
               setIsProcessing(false);
               setPesanKirim(null);
               setPesanSukses("Successful! Virtual Collectible claimed.");
+              setErc1155Claimed(true);
             }}>
-            {/* {Number(calculatePrice()) > 0 ? "Coming Soon" : "Collect Now"} */}
-            {Number(calculatePrice()) !== 0 ? "Coming Soon" : "Collect Now"}
+            {erc1155Claimed ? "Coming Soon" : "Collect Now"}
           </ClaimButton>
           <h4 className="text-left text-xs font-medium text-icon-wording">
             &#42;Maximum 1 edition per owner.
