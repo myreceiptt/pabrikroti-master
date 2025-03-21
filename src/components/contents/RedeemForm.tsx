@@ -336,6 +336,9 @@ const RedeemForm: React.FC = () => {
           }}>
           {erc20Claimed ? "Already Claimed" : "Claim Now"}
         </ClaimButton>
+        <h4 className="text-left text-xs font-medium text-icon-wording">
+          &#42;Maximum 11 supply per owner.
+        </h4>
       </div>
     </div>
   );
