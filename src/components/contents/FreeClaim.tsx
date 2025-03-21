@@ -5,7 +5,12 @@
 // External libraries
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
-import { canClaim, getNFT, balanceOf } from "thirdweb/extensions/erc1155";
+import {
+  canClaim,
+  getNFT,
+  getClaimConditionById,
+  balanceOf,
+} from "thirdweb/extensions/erc1155";
 import {
   ClaimButton,
   MediaRenderer,
@@ -24,8 +29,8 @@ import Loader from "./ReusableLoader";
 
 const FreeClaim: React.FC = () => {
   // Ensure state variables are properly declared
-  const [currentTime, setCurrentTime] = useState<Date>(new Date());
-  const countdownTarget = new Date("2025-03-21T08:30:00Z");
+  const [currentTime, setCurrentTime] = useState(new Date());
+  const [startTime, setStartTime] = useState<Date | null>(null);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -36,8 +41,10 @@ const FreeClaim: React.FC = () => {
   }, []);
 
   const getCountdownString = () => {
+    if (!startTime) return null;
+
     const totalSeconds = Math.floor(
-      (countdownTarget.getTime() - currentTime.getTime()) / 1000
+      (startTime.getTime() - currentTime.getTime()) / 1000
     );
 
     if (totalSeconds <= 0) return null;
@@ -49,6 +56,9 @@ const FreeClaim: React.FC = () => {
 
     return `${days}d ${hours}h ${minutes}m ${seconds}s`;
   };
+
+  const [claimedSupply, setClaimedSupply] = useState<bigint | null>(null);
+  const [maxSupply, setMaxSupply] = useState<bigint | null>(null);
 
   const [isProcessing, setIsProcessing] = useState(false);
   const [erc1155Claimed, setErc1155Claimed] = useState(true);
@@ -63,6 +73,31 @@ const FreeClaim: React.FC = () => {
   const tokenIdString = tokenNumber;
   const tokenIdBigInt = BigInt(tokenIdString);
   const tokenIdNumber = parseInt(tokenIdString, 10);
+
+  // Fetch Active Claim Condition
+  useEffect(() => {
+    async function checkActiveClaimCondition() {
+      try {
+        const activeClaimCondition = await getClaimConditionById({
+          contract: labXpoap,
+          tokenId: tokenIdBigInt,
+          conditionId: 0n,
+        });
+        console.log("Active Claim:", activeClaimCondition);
+
+        // Convert dan Simpan timestamp to Date
+        const timestamp = Number(activeClaimCondition.startTimestamp);
+        setStartTime(new Date(timestamp * 1000));
+
+        // Simpan supply
+        setClaimedSupply(activeClaimCondition.supplyClaimed);
+        setMaxSupply(activeClaimCondition.maxClaimableSupply);
+      } catch (error) {
+        console.error("Error:", error);
+      }
+    }
+    checkActiveClaimCondition();
+  }, [tokenIdBigInt]);
 
   // Fetch Claimability using "canClaim"
   useEffect(() => {
@@ -202,7 +237,9 @@ const FreeClaim: React.FC = () => {
               ${calculatePrice()}
             </h2>
             <h2 className="text-left text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-hitam-judul-body">
-              45
+              {claimedSupply !== null && maxSupply !== null
+                ? `${(claimedSupply - 2n).toString()}/${maxSupply.toString()}`
+                : "Loading..."}
             </h2>
             <h2 className="text-left text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-hitam-judul-body">
               {ownedNfts ? ownedNfts.toString() : "0"}
@@ -251,8 +288,8 @@ const FreeClaim: React.FC = () => {
               setPesanSukses("Successful! Virtual Collectible claimed.");
               setErc1155Claimed(true);
             }}>
-            {currentTime < countdownTarget ? (
-              <span>Available in {getCountdownString()}</span>
+            {startTime && currentTime < startTime ? (
+              <span>Available in: {getCountdownString()}</span>
             ) : (
               <span>{erc1155Claimed ? "Already Claimed" : "Claim Now"}</span>
             )}
