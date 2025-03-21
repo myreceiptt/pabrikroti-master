@@ -20,7 +20,7 @@ import Loader from "./ReusableLoader";
 const RedeemForm: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  const [amount, setAmount] = useState<string>("1");
+  const [amount, setAmount] = useState<string>("11");
   const handleAmountChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
 
@@ -28,7 +28,7 @@ const RedeemForm: React.FC = () => {
     if (/^\d*$/.test(value)) {
       const numericValue = parseInt(value, 10);
 
-      if (!isNaN(numericValue) && numericValue >= 1 && numericValue <= 11) {
+      if (!isNaN(numericValue) && numericValue >= 11 && numericValue <= 11) {
         setAmount(value); // Valid number within range
       } else if (value === "") {
         setAmount(""); // Allow empty input for clearing the field
@@ -262,7 +262,7 @@ const RedeemForm: React.FC = () => {
           <label
             htmlFor="amount"
             className="w-full text-left text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body place-content-center">
-            Amount (1-11)
+            Max. Claim Amount:
           </label>
           <div className="w-full flex bg-box-icon items-center justify-center px-4 py-2 rounded-lg">
             <FaSackDollar className="w-5 h-5 text-hitam-judul-body" />
@@ -271,7 +271,7 @@ const RedeemForm: React.FC = () => {
               type="number"
               value={amount}
               onChange={handleAmountChange}
-              min="1"
+              min="11"
               max="11"
               placeholder={"Enter amount (1-11)"}
               className="ml-2 w-full bg-transparent outline-hidden text-xs md:text-sm text-hitam-judul-body placeholder-icon-wording"

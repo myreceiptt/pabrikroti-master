@@ -252,7 +252,7 @@ const FreeClaim: React.FC = () => {
               setErc1155Claimed(true);
             }}>
             {currentTime < countdownTarget ? (
-              <span>Available in: {getCountdownString()}</span>
+              <span>Available in {getCountdownString()}</span>
             ) : (
               <span>{erc1155Claimed ? "Already Claimed" : "Claim Now"}</span>
             )}
