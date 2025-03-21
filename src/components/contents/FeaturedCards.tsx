@@ -27,7 +27,7 @@ export default function FeaturedCards() {
           {featuredTitle2}
         </h2>
       </div>
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
         {[
           {
             href: "/paid",
@@ -48,9 +48,9 @@ export default function FeaturedCards() {
           <Link href={href} key={index}>
             <button
               type="button"
-              className="w-full hover:scale-105 transition-transform duration-300 ease-in-out relative group">
+              className="w-full hover:scale-105 transition-transform duration-300 ease-in-out relative group cursor-pointer">
               {/* Main image */}
-              <Image src={src} width={640} height={725} alt={alt} priority />
+              <Image src={src} width={1080} height={1225} alt={alt} priority />
             </button>
           </Link>
         ))}

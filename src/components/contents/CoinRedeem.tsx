@@ -17,10 +17,10 @@ import TokenCheck from "@/config/checker";
 
 const CoinRedeem: React.FC = () => {
   const router = useRouter();
-  const smartAccount = useActiveAccount();
+  const activeAccount = useActiveAccount();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
 
-  if (!smartAccount?.address) {
+  if (!activeAccount?.address) {
     return (
       <main className="grid gap-4 place-items-center">
         <h2 className="text-left text-sm font-medium text-icon-wording">
@@ -33,7 +33,7 @@ const CoinRedeem: React.FC = () => {
   return (
     <main className="grid gap-4 place-items-center">
       <TokenCheck
-        userAddress={smartAccount.address}
+        userAddress={activeAccount.address}
         onAccessChange={setHasAccess}
       />
       {hasAccess === null && <Loader message="Checking..." />}

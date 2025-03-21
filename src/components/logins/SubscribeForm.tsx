@@ -1,6 +1,19 @@
 // /src/components/logins/SubscribeForm.tsx
 
+// External libraries
 import { useState } from "react";
+
+// Blockchain configurations
+import {
+  inputEmail,
+  subscribeSubject,
+  subscribeName,
+  subscribeMessage,
+  subscribeSuccess,
+  subscribeFailed,
+  subscribeTitle,
+  subscribePlaceholder,
+} from "@/config/osloid";
 
 export default function Subscribe() {
   const [email, setEmail] = useState("");
@@ -13,7 +26,7 @@ export default function Subscribe() {
 
     // Basic Email Validation
     if (!email || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setStatusMessage("Please enter a valid email address.");
+      setStatusMessage(inputEmail);
       return;
     }
 
@@ -28,20 +41,19 @@ export default function Subscribe() {
         },
         body: JSON.stringify({
           access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
-          subject: "Subscription to HI-Bukhari Islamic Art Digital Gallery.",
-          name: "Visitor of HI-Bukhari Islamic Art Digital Gallery.",
+          subject: subscribeSubject,
+          name: subscribeName,
           email,
-          message:
-            "Assalamualaikum! I want to subscribe to your latest updates.",
+          message: subscribeMessage,
         }),
       });
 
       const result = await response.json();
       if (result.success) {
-        setStatusMessage("Thank you for subscribing!");
+        setStatusMessage(subscribeSuccess);
         setEmail(""); // Clear input field
       } else {
-        setStatusMessage("Subscription failed. Please try again.");
+        setStatusMessage(subscribeFailed);
       }
     } finally {
       setLoading(false);
@@ -49,9 +61,9 @@ export default function Subscribe() {
   }
 
   return (
-    <div className="w-full flex flex-col justify-center sm:justify-start items-center sm:items-start">
-      <h3 className="text-center sm:text-left text-sm md:text-base font-semibold text-back-ground">
-        Catch our latest updates
+    <>
+      <h3 className="text-center sm:text-left text-xs sm:text-sm md:text-base font-semibold text-back-ground">
+        {subscribeTitle}
       </h3>
 
       <form onSubmit={handleSubmit} className="w-full">
@@ -59,15 +71,15 @@ export default function Subscribe() {
           <input
             type="email"
             name="email"
-            placeholder="Enter your email address"
+            placeholder={subscribePlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border border-border-tombol rounded-l-lg bg-transparent focus:outline-hidden placeholder-icon-wording text-border-tombol"
+            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border border-border-tombol rounded-l-lg bg-transparent focus:outline-hidden placeholder-border-tombol text-back-ground"
             disabled={loading}
           />
           <button
             type="submit"
-            className="text-xs md:text-sm px-6 py-2 bg-back-ground font-semibold rounded-r-lg text-hitam-judul-body"
+            className="text-xs md:text-sm px-6 py-2 bg-back-ground font-semibold rounded-r-lg text-hitam-judul-body cursor-pointer"
             disabled={loading}>
             {loading ? "Subscribing..." : "Subscribe"}
           </button>
@@ -76,10 +88,10 @@ export default function Subscribe() {
 
       {/* Success/Error Message */}
       {statusMessage && (
-        <h4 className="text-left text-sm font-medium text-icon-wording mt-2">
+        <h4 className="text-center sm:text-left text-sm font-medium text-back-ground mt-2">
           {statusMessage}
         </h4>
       )}
-    </div>
+    </>
   );
 }

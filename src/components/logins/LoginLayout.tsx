@@ -7,6 +7,8 @@ import React from "react";
 
 // Blockchain configurations
 import {
+  titlePro,
+  poweredBy,
   artLogin,
   bannerLogin,
   loginPower,
@@ -21,7 +23,7 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <div className="w-full relative hidden md:block overflow-hidden">
       <Image
         src={artLogin}
-        alt="Bukhari Islamic Art Background for Login Page."
+        alt={titlePro}
         width={1080}
         height={1129}
         className="absolute inset-0 w-full h-full object-cover object-right"
@@ -33,7 +35,7 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <Link href="/">
         <Image
           src={bannerLogin}
-          alt="Bukhari Islamic Art Banner with Partners Logo."
+          alt={titlePro}
           width={1080}
           height={149}
           className="z-0 object-contain w-full"
@@ -61,7 +63,7 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
       <Link href="https://voyage.co.id/" target="_blank">
         <Image
           src={loginPower}
-          alt="Bukhari Islamic Art Powered by VOYAGE."
+          alt={poweredBy}
           width={1080}
           height={107}
           className="z-0 object-contain w-full"

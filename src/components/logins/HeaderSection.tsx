@@ -17,7 +17,7 @@ export default function Header() {
       {/* Logo Section */}
       <div className="w-1/4 sm:w-1/6 flex justify-start">
         <Link href="/">
-          <Image src={headerLogo} alt={titlePro} width={540} height={282} />
+          <Image src={headerLogo} alt={titlePro} width={144} height={75} />
         </Link>
       </div>
 
