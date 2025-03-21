@@ -66,8 +66,8 @@ export default function Terms() {
               about your rights and obligations.
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              {entityAlias2} is a platform that allows you to collect, issue,
-              and display NFTs. This {entityName} Terms and conditions of Use
+              {entityName} is a platform that allows you to collect, issue, and
+              display NFTs. This {entityName} Terms and conditions of Use
               (&quot;Terms and Conditions&quot;, &quot;Agreement&quot;) document
               is entered into by user or users (&quot;User&quot;,
               &quot;Users&quot; or &quot;You&quot;), {entityAlias1}, and{" "}
@@ -84,15 +84,15 @@ export default function Terms() {
           </section>
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              Basic {entityAlias2} Services
+              Basic {entityName} Services
             </h3>
             <ul className="list-disc list-outside space-y-2">
               <li className="text-sm font-medium text-icon-wording leading-relaxed">
-                Eligibility. To be eligible to use the {entityAlias2} services,
-                you must register an account on {entityAlias2} Site.
+                Eligibility. To be eligible to use the {entityName} services,
+                you must register an account on {entityName} Site.
               </li>
               <li className="text-sm font-medium text-icon-wording leading-relaxed">
-                {entityName} Services. Your account encompasses the following
+                {entityName} Services. Your account encompasses the following
                 basic services: Access to collect virtual collectibles in a form
                 of Non Fungible Tokens; Access to issue and publish NFTs;
                 Privilege tagged to NFTs that you, as an NFT collector
@@ -102,7 +102,7 @@ export default function Terms() {
           </section>
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              Agreement to these Terms & Conditions
+              Agreement to these Terms and Conditions
             </h3>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
               All Users shall use the Services in accordance with these Terms
@@ -125,16 +125,17 @@ export default function Terms() {
           </section>
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              Modification to these Terms and Condition
+              Modification to these Terms and Conditions
             </h3>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              Voyage may modify these Terms and Conditions when Voyage deems it
-              to be necessary, within the scope of the purposes of the Services.
-              In such a case, Voyage will indicate the contents of the modified
-              version of these Terms and Conditions, as well as the effective
-              date of the modification, on the Services or on Voyage’s website,
-              or will publicize the same to Users by notifying Users in the
-              manner prescribed by Voyage.
+              {entityName} may modify these Terms and Conditions when{" "}
+              {entityName} deems it to be necessary, within the scope of the
+              purposes of the Services. In such a case, {entityName} will
+              indicate the contents of the modified version of these Terms and
+              Conditions, as well as the effective date of the modification, on
+              the Services or on {entityName}&apos;s website, or will publicize
+              the same to Users by notifying Users in the manner prescribed by{" "}
+              {entityName}.
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
               The modified version of these Terms and Conditions shall become
@@ -144,44 +145,55 @@ export default function Terms() {
 
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              SECTION 2 - GENERAL CONDITIONS
+              {entityName} ACCOUNT
             </h3>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              You must not transmit any worms, viruses, or any code of a
-              destructive nature. A breach or violation of any of the Terms will
-              immediately terminate our services to you.
+              Registration of {entityName} account. In order to use the{" "}
+              {entityName} Site, you will need to register for a {entityName}{" "}
+              account by providing your information (&quot;Personal
+              Information&quot;), including your email address, password, and
+              accepting the terms of this Agreement and our Privacy Policy. We
+              may, in our sole discretion, decide to remove your account if we
+              find out a violation in your activities within the {entityName}{" "}
+              Site.
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              You agree not to reproduce, duplicate, copy, sell, resell, or
-              exploit any portion of the Service, the use of the Service, access
-              to the Service, or any contact on the application through which
-              the Service is provided, without express written permission from
-              us.
+              Access. To access the {entityName} Site, you must have the
+              necessary equipment or device and the associated telecommunication
+              service subscriptions to access the Internet.
             </p>
           </section>
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              SECTION 3 - ACCURACY, COMPLETENESS, AND TIMELINESS OF INFORMATION
+              Role-specific terms
             </h3>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              We are not responsible if the information made available on this
-              application is not accurate, complete, or current. The material on
-              this application is provided for general information only and
-              should not be relied upon or used as the sole basis for making
-              decisions without consulting primary, more accurate, more
-              complete, or more timely sources of information. Any reliance on
-              the material in this application is at your own risk.
+              Collector. As a Collector, you will gain access to browse through
+              NFTs that are displayed on the {entityName} Site. You may obtain
+              the ownership of any of the available NFTs by exchanging with
+              approved tokens. You may also choose to keep the NFTs as your
+              collection, exchange them for tokens with other Collectors or use
+              them to redeem products and services offered by our partners if
+              applicable. Specifically for claiming procedures, our partners
+              have the right to set their own disclaimers. {entityName} Site is
+              not responsible for failure to comply with the disclaimers that
+              lead to unsuccessful NFTs redemption.
             </p>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
-              We reserve the right to modify the contents of this application at
-              any time, but we are not obligated to update any information. You
-              agree that it is your responsibility to monitor changes to our
-              application.
+              You will also gain access to publish NFTs that you have collected
+              to be displayed and made available to be exchanged with approved
+              tokens, if preferable. In a case where you transfer ownership of
+              an NFT with a tagged product or service to another Collector, you
+              will also transfer the title of the product or service.
+            </p>
+            <p className="text-sm font-medium text-icon-wording leading-relaxed">
+              The ownership of the NFTs does not give you the right to have the
+              ownership of the Intellectual Property rights of those NFTs.
             </p>
           </section>
           <section className="space-y-4">
             <h3 className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold text-hitam-judul-body uppercase">
-              SECTION 4 - MODIFICATIONS TO THE INFORMATION, SERVICE, AND PRICES
+              Intellectual Property Rights Protection Provisions
             </h3>
             <p className="text-sm font-medium text-icon-wording leading-relaxed">
               Information, services, and prices are subject to change without
