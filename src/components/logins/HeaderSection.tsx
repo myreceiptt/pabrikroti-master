@@ -3,7 +3,7 @@
 // External libraries
 import Image from "next/image";
 import Link from "next/link";
-import { FaClockRotateLeft, FaUser, FaWallet } from "react-icons/fa6";
+// import { FaClockRotateLeft, FaUser, FaWallet } from "react-icons/fa6";
 
 // Blockchain configurations
 import { titlePro, headerLogo } from "@/config/osloid";
@@ -25,7 +25,7 @@ export default function Header() {
         {/* Icons Section */}
         <div className="flex space-x-4">
           <ConnectButtons />
-          <button className="sm:w-10 w-8 sm:h-10 h-8 flex items-center justify-center text-xl rounded-lg bg-box-icon text-icon-wording">
+          {/* <button className="sm:w-10 w-8 sm:h-10 h-8 flex items-center justify-center text-xl rounded-lg bg-box-icon text-icon-wording">
             <Link href="/user">
               <FaUser />
             </Link>
@@ -39,7 +39,7 @@ export default function Header() {
             <Link href="/records">
               <FaClockRotateLeft />
             </Link>
-          </button>
+          </button> */}
         </div>
       </div>
     </header>
