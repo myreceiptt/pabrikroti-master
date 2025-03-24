@@ -238,7 +238,7 @@ const FreeClaim: React.FC = () => {
             </h2>
             <h2 className="text-left text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-hitam-judul-body">
               {claimedSupply !== null && maxSupply !== null
-                ? `${(claimedSupply - 2n).toString()}/${maxSupply.toString()}`
+                ? `${claimedSupply.toString()}/${maxSupply.toString()}`
                 : "Loading..."}
             </h2>
             <h2 className="text-left text-lg md:text-xl lg:text-2xl xl:text-3xl font-semibold text-hitam-judul-body">
@@ -291,7 +291,7 @@ const FreeClaim: React.FC = () => {
             {startTime && currentTime < startTime ? (
               <span>Available in: {getCountdownString()}</span>
             ) : (
-              <span>{erc1155Claimed ? "Already Claimed" : "Claim Now"}</span>
+              <span>{erc1155Claimed ? "Already Closed" : "Claim Now"}</span>
             )}
           </ClaimButton>
           <h4 className="text-left text-xs font-medium text-icon-wording">
