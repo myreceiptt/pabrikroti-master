@@ -63,6 +63,7 @@ const FreeClaim: React.FC = () => {
   const [isProcessing, setIsProcessing] = useState(false);
   const [erc1155Claimed, setErc1155Claimed] = useState(true);
 
+  const [canClaimReason, setCanClaimReason] = useState<string | null>(null);
   const [pesanTunggu, setPesanTunggu] = useState<string | null>(null);
   const [pesanKirim, setPesanKirim] = useState<string | null>(null);
   const [pesanSukses, setPesanSukses] = useState<string | null>(null);
@@ -114,6 +115,7 @@ const FreeClaim: React.FC = () => {
 
         // Check if the user can claim or not,
         setErc1155Claimed(!canClaimResult.result);
+        setCanClaimReason(canClaimResult.reason || null);
       } catch (error) {
         console.error("Error:", error);
         setErc1155Claimed(true); // Assume claimed (can't claim) if an error occurs
@@ -288,11 +290,21 @@ const FreeClaim: React.FC = () => {
               setPesanSukses("Successful! Virtual Collectible claimed.");
               setErc1155Claimed(true);
             }}>
-            {startTime && currentTime < startTime ? (
-              <span>Available in: {getCountdownString()}</span>
-            ) : (
-              <span>{erc1155Claimed ? "Already Closed" : "Claim Now"}</span>
-            )}
+            <span>
+              {startTime && currentTime < startTime ? (
+                <>Available in: {getCountdownString()}</>
+              ) : erc1155Claimed ? (
+                canClaimReason?.includes("DropClaimExceedLimit") ? (
+                  "Already Claimed"
+                ) : canClaimReason?.includes("DropClaimExceedMaxSupply") ? (
+                  "Claim Closed"
+                ) : (
+                  "Already Closed"
+                )
+              ) : (
+                "Claim Now"
+              )}
+            </span>
           </ClaimButton>
           <h4 className="text-left text-xs font-medium text-icon-wording">
             &#42;Maximum 1 edition per owner.
