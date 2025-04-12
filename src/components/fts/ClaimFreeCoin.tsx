@@ -1,4 +1,4 @@
-// /src/components/contents/CoinRedeem.tsx
+// /src/components/fts/ClaimFreeCoin.tsx
 
 "use client";
 
@@ -7,16 +7,21 @@ import { useRouter } from "next/navigation";
 import React, { useState } from "react";
 import { useActiveAccount } from "thirdweb/react";
 
-// Components libraries
-import AccessMessage from "./AccessMessage";
-import RedeemForm from "./RedeemForm";
-import Loader from "./ReusableLoader";
-
 // Blockchain configurations
-import TokenCheck from "@/config/checker";
-import { loginFirst, loaderChecking, accessMessage1 } from "@/config/osloid";
+import CheckErc1155 from "@/config/checker";
+import {
+  loginFirst,
+  loaderChecking,
+  accessMessage1,
+  colorAccent,
+} from "@/config/myreceipt";
 
-const CoinRedeem: React.FC = () => {
+// Components libraries
+import AccessMessage from "@/components/fts/AccessMessage";
+import FreeCoinForm from "@/components/fts/FreeCoinForm";
+import Loader from "@/components/sections/ReusableLoader";
+
+const ClaimFreeCoin: React.FC = () => {
   const router = useRouter();
   const activeAccount = useActiveAccount();
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
@@ -24,7 +29,9 @@ const CoinRedeem: React.FC = () => {
   if (!activeAccount?.address) {
     return (
       <main className="grid gap-4 place-items-center">
-        <h2 className="text-left text-sm font-medium text-icon-wording">
+        <h2
+          style={{ color: colorAccent }}
+          className="text-left text-sm font-medium">
           {loginFirst}
         </h2>
       </main>
@@ -33,8 +40,8 @@ const CoinRedeem: React.FC = () => {
 
   return (
     <main className="grid gap-4 place-items-center">
-      <TokenCheck
-        userAddress={activeAccount.address}
+      <CheckErc1155
+        activeAddress={activeAccount.address}
         onAccessChange={setHasAccess}
       />
       {hasAccess === null && <Loader message={loaderChecking} />}
@@ -44,9 +51,9 @@ const CoinRedeem: React.FC = () => {
           message={accessMessage1}
         />
       )}
-      {hasAccess && <RedeemForm />}
+      {hasAccess && <FreeCoinForm />}
     </main>
   );
 };
 
-export default CoinRedeem;
+export default ClaimFreeCoin;

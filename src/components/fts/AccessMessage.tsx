@@ -1,15 +1,19 @@
-// /src/components/contents/AccessMessage.tsx
+// /src/components/fts/AccessMessage.tsx
 
 // External libraries
 import Image from "next/image";
 import React from "react";
 
+// Blockchain configurations
 import {
-  titlePro,
+  proTitle,
   accessMessage2,
   collectButton,
-  bannerContent,
-} from "@/config/osloid";
+  contentBanner,
+  colorSecondary,
+  colorIcon,
+  colorPrimary,
+} from "@/config/myreceipt";
 
 interface AccessMessageProps {
   message: string;
@@ -23,10 +27,14 @@ const AccessMessage: React.FC<AccessMessageProps> = ({
   <>
     {/* Top Section - Content Box */}
     <div className="w-full flex flex-col gap-2 items-center justify-center text-center px-0 sm:px-4">
-      <h2 className="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-hitam-judul-body">
+      <h2
+        style={{ color: colorSecondary }}
+        className="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal">
         {message}
       </h2>
-      <h3 className="text-center text-sm font-medium text-icon-wording">
+      <h3
+        style={{ color: colorIcon }}
+        className="text-center text-sm font-medium">
         {accessMessage2}
       </h3>
     </div>
@@ -34,7 +42,8 @@ const AccessMessage: React.FC<AccessMessageProps> = ({
       {/* Collect Button */}
       <button
         type="button"
-        className="rounded-lg py-4 px-12 text-back-ground bg-hitam-judul-body text-base font-semibold cursor-pointer"
+        style={{ color: colorPrimary, backgroundColor: colorSecondary }}
+        className="rounded-lg py-4 px-12 text-base font-semibold cursor-pointer"
         onClick={onRedirect}>
         {collectButton}
       </button>
@@ -43,8 +52,8 @@ const AccessMessage: React.FC<AccessMessageProps> = ({
     {/* Bottom Section - Background Image */}
     <div className="bottom-0 left-0 w-full h-full">
       <Image
-        src={bannerContent}
-        alt={titlePro}
+        src={contentBanner}
+        alt={proTitle}
         width={4096}
         height={1109}
         objectFit="cover"

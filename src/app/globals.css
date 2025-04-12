@@ -5,11 +5,11 @@
 @source './globals.css';
 
 @theme {
-  --color-back-ground: #f9f9f9;
-  --color-border-tombol: #dfdfdf;
-  --color-icon-wording: #707070;
-  --color-box-icon: #f0f0f0;
-  --color-hitam-judul-body: #171717;
+  --color-back-ground: #f9f9f9; /* Terang */
+  --color-border-tombol: #dfdfdf; /* Abu2 Terang */
+  --color-icon-wording: #707070; /* Abu2 Gelap */
+  --color-box-icon: #f0f0f0;  /* Terang Dikit */
+  --color-hitam-judul-body: #171717; /* Gelap */
   --color-back-box-icon: #262525;
   --color-background-box-border-line: #d3d2d2;
   --color-tulisan-search-price: #666666;

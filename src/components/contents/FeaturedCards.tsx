@@ -14,19 +14,15 @@ import {
   freeTitle,
   featuredCoin,
   coinTitle,
-} from "@/config/osloid";
+} from "@/config/myreceipt";
+
+// Components libraries
+import Title from "@/components/sections/ReusableTitle";
 
 export default function FeaturedCards() {
   return (
     <main className="grid gap-4 place-items-center">
-      <div className="w-full flex flex-col gap-2 sm:items-start items-center">
-        <h1 className="text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-hitam-judul-body">
-          {featuredTitle1}
-        </h1>
-        <h2 className="text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold text-hitam-judul-body">
-          {featuredTitle2}
-        </h2>
-      </div>
+      <Title title1={featuredTitle1} title2={featuredTitle2} />
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 sm:gap-8">
         {[
           {
@@ -36,12 +32,12 @@ export default function FeaturedCards() {
           },
           {
             // href: "/paid",
-            href: "#",
+            href: "/paid",
             src: featuredPaid,
             alt: paidTitle,
           },
           {
-            href: "/redeem",
+            href: "/coin",
             src: featuredCoin,
             alt: coinTitle,
           },

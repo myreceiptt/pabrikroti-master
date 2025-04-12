@@ -1,19 +1,24 @@
-// /src/components/logins/SubscribeForm.tsx
+// /src/components/sections/SubscribeForm.tsx
 
 // External libraries
 import { useState } from "react";
 
 // Blockchain configurations
 import {
-  inputEmail,
-  subscribeSubject,
-  subscribeName,
-  subscribeMessage,
-  subscribeSuccess,
+  colorBorder,
+  colorPrimary,
+  colorSecondary,
+  subscribeInput,
   subscribeFailed,
-  subscribeTitle,
+  subscribeMessage,
+  subscribeName,
   subscribePlaceholder,
-} from "@/config/osloid";
+  subscribeSubject,
+  subscribeSuccess,
+  subscribeTitle,
+  subscribeButtonLoading,
+  subscribeButton,
+} from "@/config/myreceipt";
 
 export default function Subscribe() {
   const [email, setEmail] = useState("");
@@ -24,9 +29,9 @@ export default function Subscribe() {
     e.preventDefault();
     setStatusMessage(""); // Clear previous messages
 
-    // Basic Email Validation
+    // Basic email validation
     if (!email || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setStatusMessage(inputEmail);
+      setStatusMessage(subscribeInput);
       return;
     }
 
@@ -62,7 +67,9 @@ export default function Subscribe() {
 
   return (
     <>
-      <h3 className="text-center sm:text-left text-xs sm:text-sm md:text-base font-semibold text-back-ground">
+      <h3
+        style={{ color: colorPrimary }}
+        className="text-center sm:text-left text-xs sm:text-sm md:text-base font-semibold">
         {subscribeTitle}
       </h3>
 
@@ -74,21 +81,25 @@ export default function Subscribe() {
             placeholder={subscribePlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border border-border-tombol rounded-l-lg bg-transparent focus:outline-hidden placeholder-border-tombol text-back-ground"
+            style={{ borderColor: colorBorder, color: colorPrimary }}
+            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border rounded-l-lg bg-transparent focus:outline-hidden"
             disabled={loading}
           />
           <button
             type="submit"
-            className="text-xs md:text-sm px-6 py-2 bg-back-ground font-semibold rounded-r-lg text-hitam-judul-body cursor-pointer"
+            style={{ backgroundColor: colorPrimary, color: colorSecondary }}
+            className="text-xs md:text-sm px-6 py-2 font-semibold rounded-r-lg cursor-pointer"
             disabled={loading}>
-            {loading ? "Subscribing..." : "Subscribe"}
+            {loading ? subscribeButtonLoading : subscribeButton}
           </button>
         </div>
       </form>
 
       {/* Success/Error Message */}
       {statusMessage && (
-        <h4 className="text-center sm:text-left text-sm font-medium text-back-ground mt-2">
+        <h4
+          style={{ color: colorPrimary }}
+          className="text-center sm:text-left text-sm font-medium mt-2">
           {statusMessage}
         </h4>
       )}

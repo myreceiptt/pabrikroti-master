@@ -1,4 +1,4 @@
-// /src/components/logins/HeaderSection.tsx
+// /src/components/sections/HeaderSection.tsx
 
 // External libraries
 import Image from "next/image";
@@ -6,18 +6,20 @@ import Link from "next/link";
 // import { FaClockRotateLeft, FaUser, FaWallet } from "react-icons/fa6";
 
 // Blockchain configurations
-import { titlePro, headerLogo } from "@/config/osloid";
+import { colorPrimary, headerLogo, proTitle } from "@/config/myreceipt";
 
 // Components libraries
-import ConnectButtons from "./ConnectButtons";
+import ConnectButtons from "@/components/logins/ConnectButtons";
 
 export default function Header() {
   return (
-    <header className="w-full flex items-center justify-between bg-back-ground py-4 px-4 md:px-20">
+    <header
+      style={{ backgroundColor: colorPrimary }}
+      className="w-full flex items-center justify-between py-4 px-4 md:px-20">
       {/* Logo Section */}
       <div className="w-1/4 sm:w-1/6 flex justify-start">
         <Link href="/">
-          <Image src={headerLogo} alt={titlePro} width={144} height={75} />
+          <Image src={headerLogo} alt={proTitle} width={144} height={75} />
         </Link>
       </div>
 

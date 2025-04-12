@@ -10,23 +10,23 @@
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
-    "framer-motion": "^12.5.0",
-    "next": "15.2.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "framer-motion": "^12.6.3",
+    "next": "15.2.5",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "thirdweb": "^5.93.4"
+    "thirdweb": "^5.93.14"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@tailwindcss/postcss": "^4.0.15",
-    "@types/node": "^22.13.13",
-    "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
-    "eslint": "^9.23.0",
-    "eslint-config-next": "15.2.3",
+    "@tailwindcss/postcss": "^4.1.3",
+    "@types/node": "^22.14.0",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.1",
+    "eslint": "^9.24.0",
+    "eslint-config-next": "15.2.5",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.0.15",
-    "typescript": "^5.8.2"
+    "tailwindcss": "^4.1.3",
+    "typescript": "^5.8.3"
   }
 }
