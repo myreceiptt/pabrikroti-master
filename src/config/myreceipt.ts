@@ -5,7 +5,7 @@
  */
 
 // app metadata
-export const proTitle = "M3M0R4 VIRTUAL COLLECTIBLES";
+export const proTitle = "MEMORA VIRTUAL COLLECTIBLES";
 export const proDescription =
   "Commemorate your memorabilia experience today with a unique virtual collectible by MeMoRa.";
 export const proUrl = "https://memora.voyage.co.id";
