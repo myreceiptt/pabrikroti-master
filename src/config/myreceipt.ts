@@ -5,11 +5,11 @@
  */
 
 // app metadata
-export const proTitle = "LABX VIRTUAL COLLECTIBLES";
+export const proTitle = "M3M0R4 VIRTUAL COLLECTIBLES";
 export const proDescription =
-  "Commemorate your participation in todays LabX event with a unique virtual collectible.";
-export const proUrl = "https://labx.voyage.co.id";
-export const proImage = "https://labx.voyage.co.id/preview-image.png";
+  "Commemorate your memorabilia experience today with a unique virtual collectible by MeMoRa.";
+export const proUrl = "https://memora.voyage.co.id";
+export const proImage = "https://memora.voyage.co.id/preview-image.png";
 
 // error boundary
 export const proErrorCought = "Error caught in ErrorBoundary:";
@@ -23,7 +23,7 @@ export const loginArt = "/images/login-art.png";
 export const loginBanner = "/images/login-banner.png";
 export const loginCall = "Get Ready!";
 export const loginReason =
-  "Register now to immerse yourself in LabX Digital Experience!";
+  "Register now to immerse yourself in MeMoRa Experience!";
 export const loginAgreement = "By connecting, you agree to the";
 export const loginTermsPolicy = "Terms of Service & Privacy Policy";
 export const loginPower = "/images/login-power.png";
@@ -32,7 +32,7 @@ export const loginPower = "/images/login-power.png";
 export const headerLogo = "/images/header-logo.png";
 
 // featured cards
-export const featuredTitle1 = "LABX VIRTUAL";
+export const featuredTitle1 = "MEMORA VIRTUAL";
 export const featuredTitle2 = "COLLECTIBLES";
 export const featuredPaid = "/images/featured-paid.png";
 export const paidTitle = "Paid Virtual Collectible";
@@ -45,9 +45,9 @@ export const coinTitle = "Claim Points Reward";
 export const loaderChecking = "Loading..."; // nfts list, nft lister, nft details, free coin form fts,
 
 // nfts list
-export const listTitle1Free = "Freemium";
+export const listTitle1Free = "All Free";
 export const listTitle2Free = "Virtual Collectibles";
-export const listTitle1Paid = "Premium";
+export const listTitle1Paid = "All Paid";
 export const listTitle2Paid = "Virtual Collectibles";
 export const listFailReason = "ClaimNotActive"; // nft details
 export const listConsoleWarn = "canClaim failed for tokenId"; // nft details
@@ -79,23 +79,23 @@ export const fallMessage2 =
 export const fallMessage3 = "Go Back to Home Page!";
 
 // nft form
-export const nftFormByLink = "https://lab-x.co/";
+export const nftFormByLink = "https://voyage.co.id/";
 export const nftFormBy = "by";
-export const nftFormByName = "Bukhari Creative Group";
+export const nftFormByName = "VOYAGE.CO.ID";
 export const nftFormEdition = "Edition";
 export const nftFormOwned = "Owned";
 export const nftFormRefresh = "Refresh";
 export const nftFormTunggu = "Processing. Be patient and wait.";
 export const nftFormKirim = "Claiming your Virtual Collectible.";
-export const nftFormSukses = "Successful! Virtual Collectible claimed.";
+export const nftFormSukses = "Virtual Collectible successfully claimed.";
 export const nftFormMax = "*Maximum";
 export const nftFormPerWallet = "editions per owner.";
 
 // nft description
 export const readMeMoRaTitle = "";
-export const readMeMoRa = "Read on MeMoRa (SOON)";
+export const readMeMoRa = "Read on MeMoRa MarketPlace (SOON)";
 export const readEndhonesaTitle = "";
-export const readEndhonesa = "";
+export const readEndhonesa = "Read on ENDHONESA.COM (GOON)";
 export const readLess = "Read Less";
 export const readMore = "Read More";
 
