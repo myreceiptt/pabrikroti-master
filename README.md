@@ -1,4 +1,4 @@
-FUCK YOU MOTHER FUCKERS!!!!
+PABRIK ROTI: Staging MeMoRa by LabX
 
 ## Usage
 
