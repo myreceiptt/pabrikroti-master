@@ -1,4 +1,4 @@
-// /src/app/coin/page.tsx
+// /src/app/coins/page.tsx
 
 "use client";
 
@@ -10,7 +10,7 @@ import CoinsList from "@/components/fts/CoinsList";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
 const FreeCoin: React.FC = () => (
-  <DynamicLoginPage ContentComponent={() => <CoinsList variant="free" />} />
+  <DynamicLoginPage ContentComponent={() => <CoinsList />} />
 );
 
 export default FreeCoin;

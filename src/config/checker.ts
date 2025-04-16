@@ -8,7 +8,7 @@ import { balanceOfBatch, nextTokenIdToMint } from "thirdweb/extensions/erc1155";
 import { useReadContract } from "thirdweb/react";
 
 // Blockchain configurations
-import { erc1155BaseMainnet1 } from "@/config/contracts";
+import { erc1155Launched } from "@/config/contracts";
 
 interface CheckErc1155Props {
   activeAddress: string;
@@ -21,7 +21,7 @@ const CheckErc1155: React.FC<CheckErc1155Props> = ({
 }) => {
   // Fetch the "nextTokenIdToMint"
   const { data: lastTokenId } = useReadContract(nextTokenIdToMint, {
-    contract: erc1155BaseMainnet1,
+    contract: erc1155Launched,
   });
 
   // Generate array of tokenIds
@@ -35,7 +35,7 @@ const CheckErc1155: React.FC<CheckErc1155Props> = ({
 
   // Use "balanceOfBatch" to fetch all balances in a single call
   const { data: balances } = useReadContract(balanceOfBatch, {
-    contract: erc1155BaseMainnet1,
+    contract: erc1155Launched,
     owners,
     tokenIds,
   });

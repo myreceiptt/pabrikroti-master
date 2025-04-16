@@ -6,8 +6,7 @@
 
 // app metadata
 export const proTitle = "MEMORA VIRTUAL COLLECTIBLES";
-export const proDescription =
-  "Commemorate your memorabilia experience today with a unique virtual collectible by MeMoRa.";
+export const proDescription = `MeMoRa means "to remember" or "to be mindful of". MeMoRa refers to something that serves as a reminder or is used for remembering. So, commemorate your memorabilia experiences today with a unique virtual collectible by MeMoRa.`;
 export const proUrl = "https://memora.voyage.co.id";
 export const proImage = "https://memora.voyage.co.id/preview-image.png";
 

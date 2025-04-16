@@ -37,7 +37,7 @@ export default function FeaturedCards() {
             alt: paidTitle,
           },
           {
-            href: "/coin",
+            href: "/coins",
             src: featuredCoin,
             alt: coinTitle,
           },

@@ -17,7 +17,7 @@ import { ClaimButton, useActiveAccount, useReadContract } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { erc20BaseMainnet3 } from "@/config/contracts";
+import { erc20BONBase } from "@/config/contracts";
 import { loaderChecking } from "@/config/myreceipt";
 
 // Components libraries
@@ -40,19 +40,19 @@ const FreeCoinForm: React.FC = () => {
 
   // Retrieves the token decimals
   const { data: tokenDecimals } = useReadContract(decimals, {
-    contract: erc20BaseMainnet3,
+    contract: erc20BONBase,
   });
 
   // Fetch coin total supply
   const { data: coinSupply } = useReadContract(totalSupply, {
-    contract: erc20BaseMainnet3,
+    contract: erc20BONBase,
   });
 
   // Fetch active claim condition
   const { data: activeClaimCondition } = useReadContract(
     getActiveClaimCondition,
     {
-      contract: erc20BaseMainnet3,
+      contract: erc20BONBase,
     }
   );
 
@@ -76,7 +76,7 @@ const FreeCoinForm: React.FC = () => {
 
   // Fetch can claim "result"
   const { data: canClaimErc20 } = useReadContract(canClaim, {
-    contract: erc20BaseMainnet3,
+    contract: erc20BONBase,
     claimer: activeAccount?.address ?? "",
     quantity: amount,
   });
@@ -90,7 +90,7 @@ const FreeCoinForm: React.FC = () => {
 
   // Fetch user's owned Coins
   const { data: ownedCoins } = useReadContract(balanceOf, {
-    contract: erc20BaseMainnet3,
+    contract: erc20BONBase,
     address: activeAccount?.address ?? "",
   });
 
@@ -134,7 +134,7 @@ const FreeCoinForm: React.FC = () => {
         </div>
         <h2 className="text-left text-sm font-medium text-icon-wording">
           Redeem your coins rewards by claiming the $BON Dosh, the ERC20 tokens
-          on the {erc20BaseMainnet3.chain.name} blockchain using your Smart
+          on the {erc20BONBase.chain.name} blockchain using your Smart
           Account wallet.
         </h2>
 
@@ -188,8 +188,8 @@ const FreeCoinForm: React.FC = () => {
                 : "border-2 border-solid border-back-ground text-back-ground bg-hitam-judul-body cursor-pointer"
             }
           `}
-          contractAddress={erc20BaseMainnet3.address}
-          chain={erc20BaseMainnet3.chain}
+          contractAddress={erc20BONBase.address}
+          chain={erc20BONBase.chain}
           client={client}
           claimParams={{
             type: "ERC20",
@@ -219,7 +219,7 @@ const FreeCoinForm: React.FC = () => {
             try {
               // Refetch claim condition
               const activeCondition20 = await canClaim({
-                contract: erc20BaseMainnet3,
+                contract: erc20BONBase,
                 claimer: activeAccount?.address ?? "",
                 quantity: "1",
               });

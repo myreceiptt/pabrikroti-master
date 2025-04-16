@@ -7,12 +7,7 @@ import { ThirdwebProvider } from "thirdweb/react";
 import { Analytics } from "@vercel/analytics/react";
 
 // Blockchain configurations
-import {
-  proTitle,
-  proDescription,
-  proUrl,
-  proImage,
-} from "@/config/myreceipt";
+import { proTitle, proDescription, proUrl, proImage } from "@/config/myreceipt";
 
 // CSS Styling
 import "./globals.css";

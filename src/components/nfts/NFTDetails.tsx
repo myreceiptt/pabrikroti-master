@@ -12,7 +12,7 @@ import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import { erc1155BaseMainnet1 } from "@/config/contracts";
+import { erc1155Launched } from "@/config/contracts";
 import {
   listConsoleWarn,
   listError,
@@ -69,7 +69,7 @@ const NFTDetails: React.FC = () => {
 
     try {
       const claimCondition = await getClaimConditionById({
-        contract: erc1155BaseMainnet1,
+        contract: erc1155Launched,
         tokenId,
         conditionId: 0n,
       });
@@ -81,9 +81,9 @@ const NFTDetails: React.FC = () => {
 
       if (claimCondition.currency.toLowerCase() !== nativeETH) {
         const currencyContract = getContract({
-          client: erc1155BaseMainnet1.client,
+          client: erc1155Launched.client,
           address: claimCondition.currency,
-          chain: erc1155BaseMainnet1.chain,
+          chain: erc1155Launched.chain,
         });
 
         currencyDecimals = await decimals({ contract: currencyContract });
@@ -91,8 +91,8 @@ const NFTDetails: React.FC = () => {
         // Fetch wallet balance
         const balanceResult = await getWalletBalance({
           address: activeAccount.address,
-          chain: erc1155BaseMainnet1.chain,
-          client: erc1155BaseMainnet1.client,
+          chain: erc1155Launched.chain,
+          client: erc1155Launched.client,
           tokenAddress: claimCondition.currency,
         });
 
@@ -101,8 +101,8 @@ const NFTDetails: React.FC = () => {
         // Native token balance
         const balanceResult = await getWalletBalance({
           address: activeAccount.address,
-          chain: erc1155BaseMainnet1.chain,
-          client: erc1155BaseMainnet1.client,
+          chain: erc1155Launched.chain,
+          client: erc1155Launched.client,
         });
 
         currencyDecimals = balanceResult.decimals ?? 18;
@@ -120,7 +120,7 @@ const NFTDetails: React.FC = () => {
       // Fetch can claim status
       try {
         const claimStatus = await canClaim({
-          contract: erc1155BaseMainnet1,
+          contract: erc1155Launched,
           tokenId,
           quantity: 1n,
           claimer: activeAccount.address,
@@ -198,7 +198,7 @@ const NFTDetails: React.FC = () => {
     <main className="grid gap-4 place-items-center">
       {nft && (
         <NFTForm
-          dropContract={erc1155BaseMainnet1}
+          dropContract={erc1155Launched}
           setRefreshToken={setRefreshToken}
           {...nft}
         />

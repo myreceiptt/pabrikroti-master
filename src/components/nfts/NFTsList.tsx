@@ -17,7 +17,7 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import { erc1155BaseMainnet1 } from "@/config/contracts";
+import { erc1155Launched } from "@/config/contracts";
 import {
   colorPrimary,
   colorSecondary,
@@ -82,7 +82,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
 
   // Fetch next token ID to mint
   const { data: lastTokenId } = useReadContract(nextTokenIdToMint, {
-    contract: erc1155BaseMainnet1,
+    contract: erc1155Launched,
   });
 
   // Fetch claim condition for any data
@@ -97,7 +97,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
       const results = await Promise.allSettled(
         tokenIds.map(async (tokenId) => {
           const claimCondition = await getClaimConditionById({
-            contract: erc1155BaseMainnet1,
+            contract: erc1155Launched,
             tokenId,
             conditionId: 0n,
           });
@@ -109,9 +109,9 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
 
           if (claimCondition.currency.toLowerCase() !== nativeETH) {
             const currencyContract = getContract({
-              client: erc1155BaseMainnet1.client,
+              client: erc1155Launched.client,
               address: claimCondition.currency,
-              chain: erc1155BaseMainnet1.chain,
+              chain: erc1155Launched.chain,
             });
 
             currencyDecimals = await decimals({ contract: currencyContract });
@@ -119,8 +119,8 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             // Fetch wallet balance
             const balanceResult = await getWalletBalance({
               address: activeAccount?.address || "",
-              chain: erc1155BaseMainnet1.chain,
-              client: erc1155BaseMainnet1.client,
+              chain: erc1155Launched.chain,
+              client: erc1155Launched.client,
               tokenAddress: claimCondition.currency,
             });
 
@@ -129,8 +129,8 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             // Native token balance
             const balanceResult = await getWalletBalance({
               address: activeAccount?.address || "",
-              chain: erc1155BaseMainnet1.chain,
-              client: erc1155BaseMainnet1.client,
+              chain: erc1155Launched.chain,
+              client: erc1155Launched.client,
             });
 
             currencyDecimals = balanceResult.decimals ?? 18;
@@ -148,7 +148,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
           // Fetch can claim status
           try {
             const claimStatus = await canClaim({
-              contract: erc1155BaseMainnet1,
+              contract: erc1155Launched,
               tokenId,
               quantity: 1n,
               claimer: activeAccount?.address || "",
@@ -224,6 +224,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
   // Set token IDs to show
   const nftListToShow = variant === "free" ? freeNFTs : paidNFTs;
 
+  // Placeholder loader
   if (loading || lastTokenId === undefined) {
     return (
       <main className="grid gap-4 place-items-center">
@@ -256,7 +257,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}>
             <NFTLister
-              dropContract={erc1155BaseMainnet1}
+              dropContract={erc1155Launched}
               refreshToken={refreshToken}
               {...nft}
             />

@@ -4,53 +4,43 @@
 
 // External libraries
 import { motion } from "framer-motion";
-import React, { useCallback, useEffect, useRef, useState } from "react";
+import React, { useState, useEffect, useCallback, useRef } from "react";
 import { FaRotate } from "react-icons/fa6";
 import { getContract } from "thirdweb";
 import {
   canClaim,
+  decimals,
   getClaimConditionById,
-  nextTokenIdToMint,
-} from "thirdweb/extensions/erc1155";
-import { decimals } from "thirdweb/extensions/erc20";
-import { useActiveAccount, useReadContract } from "thirdweb/react";
+} from "thirdweb/extensions/erc20";
+import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import { erc1155BaseMainnet1 } from "@/config/contracts";
+import { erc20ContractsLaunched } from "@/config/contracts";
 import {
-  colorPrimary,
-  colorSecondary,
-  listConsoleWarn,
-  listError,
-  listFailReason,
+  listTitle1Paid,
+  listTitle2Paid,
+  loaderChecking,
   listMessage1,
   listMessage2,
   listMessage3,
-  listNext,
+  colorPrimary,
+  colorSecondary,
   listPrevious,
-  listSetError,
-  listTitle1Free,
-  listTitle1Paid,
-  listTitle2Free,
-  listTitle2Paid,
-  listUknownError,
-  loaderChecking,
+  listNext,
 } from "@/config/myreceipt";
 
 // Components libraries
-import NFTLister from "@/components/nfts/NFTLister";
+import CoinLister from "@/components/fts/CoinLister";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
-type CoinsListProps = {
-  variant: "free" | "paid";
-};
-
-type NFTData = {
-  tokenId: bigint;
-  tokenIdString: string;
+type CoinData = {
+  tokenAddress: string;
+  symbol: string;
+  name: string;
+  icon: string;
   price: bigint;
   adjustedPrice: number;
   currency: string;
@@ -64,7 +54,7 @@ type NFTData = {
 const INITIAL_ITEMS = 6;
 const ITEMS_PER_LOAD = 3;
 
-const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
+const CoinsList: React.FC = () => {
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -72,33 +62,25 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
   const [refreshToken, setRefreshToken] = useState(Date.now());
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [visibleCount, setVisibleCount] = useState(INITIAL_ITEMS);
-  const [freeNFTs, setFreeNFTs] = useState<NFTData[]>([]);
-  const [paidNFTs, setPaidNFTs] = useState<NFTData[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [coinDataList, setCoinDataList] = useState<CoinData[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-
-  const title1 = variant === "free" ? listTitle1Free : listTitle1Paid;
-  const title2 = variant === "free" ? listTitle2Free : listTitle2Paid;
-
-  // Fetch next token ID to mint
-  const { data: lastTokenId } = useReadContract(nextTokenIdToMint, {
-    contract: erc1155BaseMainnet1,
-  });
 
   // Fetch claim condition for any data
   const fetchAll = useCallback(async () => {
-    if (lastTokenId == null || !activeAccount?.address) return;
+    if (!activeAccount?.address) return;
 
     try {
-      const tokenIds = Array.from({ length: Number(lastTokenId) }, (_, i) =>
-        BigInt(i)
-      );
-
       const results = await Promise.allSettled(
-        tokenIds.map(async (tokenId) => {
+        erc20ContractsLaunched.map(async (erc20ContractLaunched) => {
+          const erc20Contract = getContract({
+            client: erc20ContractLaunched.client,
+            address: erc20ContractLaunched.address,
+            chain: erc20ContractLaunched.chain,
+          });
+
           const claimCondition = await getClaimConditionById({
-            contract: erc1155BaseMainnet1,
-            tokenId,
+            contract: erc20Contract,
             conditionId: 0n,
           });
 
@@ -109,9 +91,9 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
 
           if (claimCondition.currency.toLowerCase() !== nativeETH) {
             const currencyContract = getContract({
-              client: erc1155BaseMainnet1.client,
+              client: erc20ContractLaunched.client,
               address: claimCondition.currency,
-              chain: erc1155BaseMainnet1.chain,
+              chain: erc20ContractLaunched.chain,
             });
 
             currencyDecimals = await decimals({ contract: currencyContract });
@@ -119,8 +101,8 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
             // Fetch wallet balance
             const balanceResult = await getWalletBalance({
               address: activeAccount?.address || "",
-              chain: erc1155BaseMainnet1.chain,
-              client: erc1155BaseMainnet1.client,
+              chain: erc20ContractLaunched.chain,
+              client: erc20ContractLaunched.client,
               tokenAddress: claimCondition.currency,
             });
 
@@ -129,8 +111,8 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
             // Native token balance
             const balanceResult = await getWalletBalance({
               address: activeAccount?.address || "",
-              chain: erc1155BaseMainnet1.chain,
-              client: erc1155BaseMainnet1.client,
+              chain: erc20ContractLaunched.chain,
+              client: erc20ContractLaunched.client,
             });
 
             currencyDecimals = balanceResult.decimals ?? 18;
@@ -148,24 +130,25 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
           // Fetch can claim status
           try {
             const claimStatus = await canClaim({
-              contract: erc1155BaseMainnet1,
-              tokenId,
-              quantity: 1n,
+              contract: erc20Contract,
+              quantity: "1",
               claimer: activeAccount?.address || "",
             });
 
             isClaimable = claimStatus.result;
             reason = claimStatus.reason ?? null;
-          } catch (innerErr) {
+          } catch (e) {
             // Continue if check failed
             isClaimable = false;
-            reason = listFailReason;
-            console.warn(`${listConsoleWarn} ${tokenId}`, innerErr);
+            reason = "Eligibility check failed";
+            console.warn("canClaim failed:", e);
           }
 
           return {
-            tokenId,
-            tokenIdString: tokenId.toString(),
+            tokenAddress: erc20ContractLaunched.address,
+            symbol: erc20ContractLaunched.symbol,
+            name: erc20ContractLaunched.name,
+            icon: erc20ContractLaunched.icon,
             price: claimCondition.pricePerToken,
             adjustedPrice,
             currency: claimCondition.currency,
@@ -178,53 +161,44 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
         })
       );
 
-      const free: NFTData[] = [];
-      const paid: NFTData[] = [];
+      const coins: CoinData[] = [];
 
       results.forEach((result) => {
         if (result.status === "fulfilled") {
-          const nft = result.value;
-          if (nft.price === 0n) free.push(nft);
-          else paid.push(nft);
+          coins.push(result.value);
         }
       });
 
-      setFreeNFTs(free);
-      setPaidNFTs(paid);
-    } catch (err: unknown) {
-      setError(listSetError);
-      if (err instanceof Error) {
-        console.error(listError, err.message);
-      } else {
-        console.error(listUknownError, err);
-      }
+      setCoinDataList(coins);
+      setError(null);
+    } catch (err) {
+      console.error("FetchAll Error:", err);
+      setError("Gagal mengambil data token.");
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
-  }, [lastTokenId, activeAccount?.address]);
+  }, [activeAccount?.address]);
 
   useEffect(() => {
     fetchAll();
   }, [fetchAll]);
 
-  // Scrolls smoothly when new NFTs are loaded
+  // Scrolls smoothly when new FTs are loaded
   useEffect(() => {
     if (listRef.current) {
       listRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
     }
   }, [visibleCount]);
 
-  // Load more NFTs
+  // Load more FTs
   const handleLoadMore = () => setVisibleCount((prev) => prev + ITEMS_PER_LOAD);
 
-  // Unload some NFTs
+  // Unload some FTs
   const handleUnload = () =>
     setVisibleCount((prev) => Math.max(prev - ITEMS_PER_LOAD, INITIAL_ITEMS));
 
-  // Set token IDs to show
-  const nftListToShow = variant === "free" ? freeNFTs : paidNFTs;
-
-  if (loading || lastTokenId === undefined) {
+  // Placeholder loader
+  if (isLoading) {
     return (
       <main className="grid gap-4 place-items-center">
         <Loader message={loaderChecking} />
@@ -232,7 +206,7 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
     );
   }
 
-  if (error || nftListToShow.length === 0) {
+  if (error || coinDataList.length === 0) {
     return (
       <main className="grid gap-4 place-items-center">
         <Message
@@ -246,26 +220,22 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
 
   return (
     <main className="grid gap-4 place-items-center">
-      <Title title1={title1} title2={title2} />
+      <Title title1={listTitle1Paid} title2={listTitle2Paid} />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" ref={listRef}>
-        {nftListToShow.slice(0, visibleCount).map((nft, index) => (
+        {coinDataList.slice(0, visibleCount).map((coin, index) => (
           <motion.div
-            key={nft.tokenIdString}
+            key={coin.tokenAddress}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}>
-            <NFTLister
-              dropContract={erc1155BaseMainnet1}
-              refreshToken={refreshToken}
-              {...nft}
-            />
+            <CoinLister refreshToken={refreshToken} {...coin} />
           </motion.div>
         ))}
       </div>
 
       <div className="flex items-center justify-center gap-4 mt-4">
-        {nftListToShow.length > INITIAL_ITEMS && (
+        {coinDataList.length > INITIAL_ITEMS && (
           <button
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
@@ -281,7 +251,7 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
             await fetchAll(); // 🔄 jalankan ulang semua fetch
-            setRefreshToken(Date.now()); // 🔁 trigger NFTLister refresh
+            setRefreshToken(Date.now()); // 🔁 trigger CoinLister refresh
             setIsRefreshing(false); // ✅ selesai loading
           }}
           style={{ color: colorPrimary, background: colorSecondary }}
@@ -298,13 +268,13 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
             <FaRotate />
           </motion.div>
         </button>
-        {nftListToShow.length > INITIAL_ITEMS && (
+        {coinDataList.length > INITIAL_ITEMS && (
           <button
             onClick={handleLoadMore}
-            disabled={visibleCount >= nftListToShow.length}
+            disabled={visibleCount >= coinDataList.length}
             style={{ color: colorPrimary, background: colorSecondary }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
-              visibleCount >= nftListToShow.length ? "" : "cursor-pointer"
+              visibleCount >= coinDataList.length ? "" : "cursor-pointer"
             }`}>
             {listNext}
           </button>
