@@ -42,7 +42,7 @@ import {
 import { getCountdownString } from "@/config/utils";
 
 // Components libraries
-import CoinDescription from "@/components/fts/CoinDescription";
+// import CoinDescription from "@/components/fts/CoinDescription";
 import Loader from "@/components/sections/ReusableLoader";
 
 interface CoinFormProps {

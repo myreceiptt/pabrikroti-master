@@ -97,7 +97,7 @@ export const nftFormPrice = "Price"; // coin form,
 export const nftFormMax = "*Maximum"; // coin form,
 export const nftFormPerWallet = "editions per owner.";
 
-// nft description
+// nft description -- hutang external link
 export const nftMeMoRaTitle = "";
 export const nftMeMoRa = "Read on MeMoRa MarketPlace (SOON)";
 export const nftEndhonesaTitle = "";
