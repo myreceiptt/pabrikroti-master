@@ -6,10 +6,15 @@
 
 @theme {
   --color-back-ground: #f9f9f9;
+  /* Terang */
   --color-border-tombol: #dfdfdf;
+  /* Abu2 Terang */
   --color-icon-wording: #707070;
+  /* Abu2 Gelap */
   --color-box-icon: #f0f0f0;
+  /* Terang Dikit */
   --color-hitam-judul-body: #171717;
+  /* Gelap */
   --color-back-box-icon: #262525;
   --color-background-box-border-line: #d3d2d2;
   --color-tulisan-search-price: #666666;
@@ -27,6 +32,7 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+
   *,
   ::after,
   ::before,
@@ -57,7 +63,7 @@
 }
 
 @layer base {
-	body {
-		@apply text-icon-wording bg-back-ground;
-	}
+  body {
+    @apply text-icon-wording bg-back-ground;
+  }
 }
