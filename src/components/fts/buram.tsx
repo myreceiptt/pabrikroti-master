@@ -21,20 +21,20 @@ import { erc1155Launched } from "@/config/contracts";
 import {
   colorPrimary,
   colorSecondary,
-  listConsoleWarn,
-  listError,
-  listFailReason,
-  listMessage1,
-  listMessage2,
-  listMessage3,
-  listNext,
-  listPrevious,
-  listSetError,
-  listTitle1Free,
-  listTitle1Paid,
-  listTitle2Free,
-  listTitle2Paid,
-  listUknownError,
+  nftsConsoleWarn,
+  nftsError,
+  nftsFailReason,
+  nftsMessage1,
+  nftsMessage2,
+  nftsMessage3,
+  nftsNext,
+  nftsPrevious,
+  nftsSetError,
+  nftsTitle1Free,
+  nftsTitle1Paid,
+  nftsTitle2Free,
+  nftsTitle2Paid,
+  nftsUknownError,
   loaderChecking,
 } from "@/config/myreceipt";
 
@@ -77,8 +77,8 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const title1 = variant === "free" ? listTitle1Free : listTitle1Paid;
-  const title2 = variant === "free" ? listTitle2Free : listTitle2Paid;
+  const title1 = variant === "free" ? nftsTitle1Free : nftsTitle1Paid;
+  const title2 = variant === "free" ? nftsTitle2Free : nftsTitle2Paid;
 
   // Fetch next token ID to mint
   const { data: lastTokenId } = useReadContract(nextTokenIdToMint, {
@@ -159,8 +159,8 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
           } catch (innerErr) {
             // Continue if check failed
             isClaimable = false;
-            reason = listFailReason;
-            console.warn(`${listConsoleWarn} ${tokenId}`, innerErr);
+            reason = nftsFailReason;
+            console.warn(`${nftsConsoleWarn} ${tokenId}`, innerErr);
           }
 
           return {
@@ -192,11 +192,11 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
       setFreeNFTs(free);
       setPaidNFTs(paid);
     } catch (err: unknown) {
-      setError(listSetError);
+      setError(nftsSetError);
       if (err instanceof Error) {
-        console.error(listError, err.message);
+        console.error(nftsError, err.message);
       } else {
-        console.error(listUknownError, err);
+        console.error(nftsUknownError, err);
       }
     } finally {
       setLoading(false);
@@ -236,9 +236,9 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
     return (
       <main className="grid gap-4 place-items-center">
         <Message
-          message1={error ?? listMessage1}
-          message2={listMessage2}
-          message3={listMessage3}
+          message1={error ?? nftsMessage1}
+          message2={nftsMessage2}
+          message3={nftsMessage3}
         />
       </main>
     );
@@ -273,7 +273,7 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
-            {listPrevious}
+            {nftsPrevious}
           </button>
         )}
         <button
@@ -306,7 +306,7 @@ const CoinsList: React.FC<CoinsListProps> = ({ variant }) => {
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
               visibleCount >= nftListToShow.length ? "" : "cursor-pointer"
             }`}>
-            {listNext}
+            {nftsNext}
           </button>
         )}
       </div>

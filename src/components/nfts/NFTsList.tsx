@@ -11,6 +11,7 @@ import {
   canClaim,
   getClaimConditionById,
   nextTokenIdToMint,
+  totalSupply,
 } from "thirdweb/extensions/erc1155";
 import { decimals } from "thirdweb/extensions/erc20";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
@@ -21,20 +22,20 @@ import { erc1155Launched } from "@/config/contracts";
 import {
   colorPrimary,
   colorSecondary,
-  listConsoleWarn,
-  listError,
-  listFailReason,
-  listMessage1,
-  listMessage2,
-  listMessage3,
-  listNext,
-  listPrevious,
-  listSetError,
-  listTitle1Free,
-  listTitle1Paid,
-  listTitle2Free,
-  listTitle2Paid,
-  listUknownError,
+  nftsConsoleWarn,
+  nftsError,
+  nftsFailReason,
+  nftsMessage1,
+  nftsMessage2,
+  nftsMessage3,
+  nftsNext,
+  nftsPrevious,
+  nftsSetError,
+  nftsTitle1Free,
+  nftsTitle1Paid,
+  nftsTitle2Free,
+  nftsTitle2Paid,
+  nftsUknownError,
   loaderChecking,
 } from "@/config/myreceipt";
 
@@ -49,15 +50,14 @@ type NFTsListProps = {
 };
 
 type NFTData = {
-  tokenId: bigint;
-  tokenIdString: string;
-  price: bigint;
+  nftId: bigint;
+  nftIdString: string;
   adjustedPrice: number;
-  currency: string;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
-  balanceRaw: bigint;
+  supply: bigint;
+  maxClaim: bigint;
   adjustedBalance: number;
 };
 
@@ -77,32 +77,39 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const title1 = variant === "free" ? listTitle1Free : listTitle1Paid;
-  const title2 = variant === "free" ? listTitle2Free : listTitle2Paid;
+  const title1 = variant === "free" ? nftsTitle1Free : nftsTitle1Paid;
+  const title2 = variant === "free" ? nftsTitle2Free : nftsTitle2Paid;
 
   // Fetch next token ID to mint
-  const { data: lastTokenId } = useReadContract(nextTokenIdToMint, {
+  const { data: nextNFTId } = useReadContract(nextTokenIdToMint, {
     contract: erc1155Launched,
   });
 
-  // Fetch claim condition for any data
-  const fetchAll = useCallback(async () => {
-    if (lastTokenId == null || !activeAccount?.address) return;
+  // Fetch any data
+  const fetchNFTsList = useCallback(async () => {
+    if (nextNFTId == null || !activeAccount?.address) return;
 
     try {
-      const tokenIds = Array.from({ length: Number(lastTokenId) }, (_, i) =>
+      const nftIds = Array.from({ length: Number(nextNFTId) }, (_, i) =>
         BigInt(i)
       );
 
       const results = await Promise.allSettled(
-        tokenIds.map(async (tokenId) => {
+        nftIds.map(async (nftId) => {
+          // Fetch total supply
+          const nftSupply = await totalSupply({
+            contract: erc1155Launched,
+            id: nftId,
+          });
+
+          // Fetch claim condition
           const claimCondition = await getClaimConditionById({
             contract: erc1155Launched,
-            tokenId,
+            tokenId: nftId,
             conditionId: 0n,
           });
 
-          // Fetch currency, price, and decimals
+          // Fetch currency and decimals
           let currencyDecimals = 18;
           let balanceRaw = 0n;
           const nativeETH = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
@@ -116,7 +123,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
 
             currencyDecimals = await decimals({ contract: currencyContract });
 
-            // Fetch wallet balance
+            // Fetch currency balance
             const balanceResult = await getWalletBalance({
               address: activeAccount?.address || "",
               chain: erc1155Launched.chain,
@@ -126,7 +133,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
 
             balanceRaw = balanceResult.value ?? 0n;
           } else {
-            // Native token balance
+            // Native currency balance
             const balanceResult = await getWalletBalance({
               address: activeAccount?.address || "",
               chain: erc1155Launched.chain,
@@ -142,14 +149,14 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
           const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
 
+          // Fetch can claim status
           let isClaimable = false;
           let reason: string | null = null;
 
-          // Fetch can claim status
           try {
             const claimStatus = await canClaim({
               contract: erc1155Launched,
-              tokenId,
+              tokenId: nftId,
               quantity: 1n,
               claimer: activeAccount?.address || "",
             });
@@ -159,20 +166,19 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
           } catch (innerErr) {
             // Continue if check failed
             isClaimable = false;
-            reason = listFailReason;
-            console.warn(`${listConsoleWarn} ${tokenId}`, innerErr);
+            reason = nftsFailReason;
+            console.warn(`${nftsConsoleWarn} ${nftId}`, innerErr);
           }
 
           return {
-            tokenId,
-            tokenIdString: tokenId.toString(),
-            price: claimCondition.pricePerToken,
+            nftId,
+            nftIdString: nftId.toString(),
             adjustedPrice,
-            currency: claimCondition.currency,
             startTimestamp: claimCondition.startTimestamp,
             isClaimable,
             reason,
-            balanceRaw,
+            supply: nftSupply,
+            maxClaim: claimCondition.maxClaimableSupply,
             adjustedBalance,
           };
         })
@@ -184,7 +190,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
       results.forEach((result) => {
         if (result.status === "fulfilled") {
           const nft = result.value;
-          if (nft.price === 0n) free.push(nft);
+          if (nft.adjustedPrice === 0) free.push(nft);
           else paid.push(nft);
         }
       });
@@ -192,20 +198,21 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
       setFreeNFTs(free);
       setPaidNFTs(paid);
     } catch (err: unknown) {
-      setError(listSetError);
+      setError(nftsSetError);
       if (err instanceof Error) {
-        console.error(listError, err.message);
+        console.error(nftsError, err.message);
       } else {
-        console.error(listUknownError, err);
+        console.error(nftsUknownError, err);
       }
     } finally {
       setLoading(false);
     }
-  }, [lastTokenId, activeAccount?.address]);
+  }, [nextNFTId, activeAccount?.address]);
 
+  // Refetch NFT details
   useEffect(() => {
-    fetchAll();
-  }, [fetchAll]);
+    fetchNFTsList();
+  }, [fetchNFTsList]);
 
   // Scrolls smoothly when new NFTs are loaded
   useEffect(() => {
@@ -225,7 +232,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
   const nftListToShow = variant === "free" ? freeNFTs : paidNFTs;
 
   // Placeholder loader
-  if (loading || lastTokenId === undefined) {
+  if (loading || nextNFTId === undefined) {
     return (
       <main className="grid gap-4 place-items-center">
         <Loader message={loaderChecking} />
@@ -233,13 +240,14 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
     );
   }
 
+  // Fallback message for no nftListToShow
   if (error || nftListToShow.length === 0) {
     return (
       <main className="grid gap-4 place-items-center">
         <Message
-          message1={error ?? listMessage1}
-          message2={listMessage2}
-          message3={listMessage3}
+          message1={error ?? nftsMessage1}
+          message2={nftsMessage2}
+          message3={nftsMessage3}
         />
       </main>
     );
@@ -252,7 +260,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" ref={listRef}>
         {nftListToShow.slice(0, visibleCount).map((nft, index) => (
           <motion.div
-            key={nft.tokenIdString}
+            key={nft.nftIdString}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}>
@@ -274,14 +282,14 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
-            {listPrevious}
+            {nftsPrevious}
           </button>
         )}
         <button
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
-            await fetchAll(); // 🔄 jalankan ulang semua fetch
+            await fetchNFTsList(); // 🔄 jalankan ulang semua fetch
             setRefreshToken(Date.now()); // 🔁 trigger NFTLister refresh
             setIsRefreshing(false); // ✅ selesai loading
           }}
@@ -307,7 +315,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
               visibleCount >= nftListToShow.length ? "" : "cursor-pointer"
             }`}>
-            {listNext}
+            {nftsNext}
           </button>
         )}
       </div>

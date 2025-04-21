@@ -6,22 +6,27 @@
 import { useParams, useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 import { getContract } from "thirdweb";
-import { canClaim, getClaimConditionById } from "thirdweb/extensions/erc1155";
+import {
+  canClaim,
+  getClaimConditionById,
+  nextTokenIdToMint,
+  totalSupply,
+} from "thirdweb/extensions/erc1155";
 import { decimals } from "thirdweb/extensions/erc20";
-import { useActiveAccount } from "thirdweb/react";
+import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
 import { erc1155Launched } from "@/config/contracts";
 import {
-  listConsoleWarn,
-  listError,
-  listFailReason,
-  listMessage1,
-  listMessage2,
-  listMessage3,
-  listSetError,
-  listUknownError,
+  nftMessage1,
+  nftMessage2,
+  nftSetError,
+  nftsConsoleWarn,
+  nftsError,
+  nftsFailReason,
+  nftsMessage3,
+  nftsUknownError,
   loaderChecking,
 } from "@/config/myreceipt";
 
@@ -31,9 +36,8 @@ import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
 type NFTData = {
-  tokenId: bigint;
-  tokenIdString: string;
-  price: bigint;
+  nftId: bigint;
+  nftIdString: string;
   adjustedPrice: number;
   currency: string;
   startTimestamp: bigint;
@@ -42,39 +46,57 @@ type NFTData = {
   supply: bigint;
   maxClaim: bigint;
   perWallet: bigint;
-  balanceRaw: bigint;
   adjustedBalance: number;
 };
+
+function getNFTIdFromParams(params: ReturnType<typeof useParams>): bigint {
+  const val = params.idNFT;
+  return BigInt(Array.isArray(val) ? val[0] : val ?? "0");
+}
 
 const NFTDetails: React.FC = () => {
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
+  const nftId = getNFTIdFromParams(params);
 
   // Ensure state variables are properly declared
   const [refreshToken, setRefreshToken] = useState(Date.now());
-  const [nft, setNft] = useState<NFTData | null>(null);
+  const [nft, setNFT] = useState<NFTData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const tokenIdParams = params.tokenId;
-  const tokenIdString = Array.isArray(tokenIdParams)
-    ? tokenIdParams[0]
-    : tokenIdParams ?? "0";
-  const tokenId = BigInt(tokenIdString);
+  // Fetch next token ID to mint
+  const { data: nextNFTId } = useReadContract(nextTokenIdToMint, {
+    contract: erc1155Launched,
+  });
 
-  // Fetch claim condition for any data
+  // Fetch any data
   const fetchNFTDetails = useCallback(async () => {
-    if (tokenId == null || !activeAccount?.address) return;
+    if (!activeAccount?.address) return;
+
+    // Check nftId exist based on nextNFTId
+    if (nextNFTId !== undefined && nftId >= nextNFTId) {
+      setError(nftMessage1);
+      setLoading(false);
+      return;
+    }
 
     try {
+      // Fetch total supply
+      const nftSupply = await totalSupply({
+        contract: erc1155Launched,
+        id: nftId,
+      });
+
+      // Fetch claim condition
       const claimCondition = await getClaimConditionById({
         contract: erc1155Launched,
-        tokenId,
+        tokenId: nftId,
         conditionId: 0n,
       });
 
-      // Fetch currency, price, and decimals
+      // Fetch currency and decimals
       let currencyDecimals = 18;
       let balanceRaw = 0n;
       const nativeETH = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
@@ -88,7 +110,7 @@ const NFTDetails: React.FC = () => {
 
         currencyDecimals = await decimals({ contract: currencyContract });
 
-        // Fetch wallet balance
+        // Fetch currency balance
         const balanceResult = await getWalletBalance({
           address: activeAccount.address,
           chain: erc1155Launched.chain,
@@ -98,7 +120,7 @@ const NFTDetails: React.FC = () => {
 
         balanceRaw = balanceResult.value ?? 0n;
       } else {
-        // Native token balance
+        // Native currency balance
         const balanceResult = await getWalletBalance({
           address: activeAccount.address,
           chain: erc1155Launched.chain,
@@ -114,14 +136,14 @@ const NFTDetails: React.FC = () => {
         Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
       const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
 
+      // Fetch can claim status
       let isClaimable = false;
       let reason: string | null = null;
 
-      // Fetch can claim status
       try {
         const claimStatus = await canClaim({
           contract: erc1155Launched,
-          tokenId,
+          tokenId: nftId,
           quantity: 1n,
           claimer: activeAccount.address,
         });
@@ -131,50 +153,51 @@ const NFTDetails: React.FC = () => {
       } catch (innerErr) {
         // Continue if check failed
         isClaimable = false;
-        reason = listFailReason;
-        console.warn(`${listConsoleWarn} ${tokenId}`, innerErr);
+        reason = nftsFailReason;
+        console.warn(`${nftsConsoleWarn} ${nftId}`, innerErr);
       }
 
-      setNft({
-        tokenId,
-        tokenIdString: tokenId.toString(),
-        price: claimCondition.pricePerToken,
+      setNFT({
+        nftId,
+        nftIdString: nftId.toString(),
         adjustedPrice,
         currency: claimCondition.currency,
         startTimestamp: claimCondition.startTimestamp,
         isClaimable,
         reason,
-        supply: claimCondition.supplyClaimed,
+        supply: nftSupply,
         maxClaim: claimCondition.maxClaimableSupply,
         perWallet: claimCondition.quantityLimitPerWallet,
-        balanceRaw,
         adjustedBalance,
       });
     } catch (err: unknown) {
-      setError(listSetError);
+      setError(nftSetError);
       if (err instanceof Error) {
-        console.error(listError, err.message);
+        console.error(nftsError, err.message);
       } else {
-        console.error(listUknownError, err);
+        console.error(nftsUknownError, err);
       }
     } finally {
       setLoading(false);
     }
-  }, [tokenId, activeAccount?.address]);
+  }, [nextNFTId, nftId, activeAccount?.address]);
 
   // Refetch NFT details
   useEffect(() => {
-    fetchNFTDetails();
-  }, [refreshToken, fetchNFTDetails]);
+    if (nextNFTId !== undefined) {
+      fetchNFTDetails();
+    }
+  }, [refreshToken, fetchNFTDetails, nextNFTId]);
 
   // Ensure tokenId exists, otherwise redirect
   useEffect(() => {
-    if (params.tokenId == null) {
+    if (params.idNFT == null) {
       router.push("/");
     }
-  }, [params.tokenId, router]);
+  }, [params.idNFT, router]);
 
-  if (loading || tokenId === undefined) {
+  // Placeholder loader
+  if (loading) {
     return (
       <main className="grid gap-4 place-items-center">
         <Loader message={loaderChecking} />
@@ -182,13 +205,14 @@ const NFTDetails: React.FC = () => {
     );
   }
 
+  // Fallback message nftId not found
   if (error) {
     return (
       <main className="grid gap-4 place-items-center">
         <Message
-          message1={error ?? listMessage1}
-          message2={listMessage2}
-          message3={listMessage3}
+          message1={error}
+          message2={nftMessage2}
+          message3={nftsMessage3}
         />
       </main>
     );

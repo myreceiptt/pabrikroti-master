@@ -20,24 +20,24 @@ const CheckErc1155: React.FC<CheckErc1155Props> = ({
   onAccessChange,
 }) => {
   // Fetch the "nextTokenIdToMint"
-  const { data: lastTokenId } = useReadContract(nextTokenIdToMint, {
+  const { data: nextNFTId } = useReadContract(nextTokenIdToMint, {
     contract: erc1155Launched,
   });
 
-  // Generate array of tokenIds
-  const tokenIds = React.useMemo(() => {
-    if (lastTokenId === undefined) return [];
-    return Array.from({ length: Number(lastTokenId) }, (_, i) => BigInt(i));
-  }, [lastTokenId]);
+  // Generate array of nftIds
+  const nftIds = React.useMemo(() => {
+    if (nextNFTId === undefined) return [];
+    return Array.from({ length: Number(nextNFTId) }, (_, i) => BigInt(i));
+  }, [nextNFTId]);
 
   // Repeat the "activeAddress" for each token ID (required for batch query)
-  const owners = new Array(tokenIds.length).fill(activeAddress);
+  const owners = new Array(nftIds.length).fill(activeAddress);
 
   // Use "balanceOfBatch" to fetch all balances in a single call
   const { data: balances } = useReadContract(balanceOfBatch, {
     contract: erc1155Launched,
     owners,
-    tokenIds,
+    tokenIds: nftIds,
   });
 
   useEffect(() => {

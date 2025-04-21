@@ -97,7 +97,7 @@ export const erc1155Launched = getContract({
 // ...
 
 // FT contracts Base Mainnet
-const addressErc20PoinIGF = "0x01460F06aC46aBc2185db9Fa529564798eEC33C3"; // Poin IGF
+const addressErc20PoinIGF = "0x2F2080A9EfcfF05B1175b0D613a61B992544AcE1"; // Poin Resmi IGF
 export const erc20OPoinIGF = getContract({
   address: addressErc20PoinIGF,
   chain: baseMainnet,
@@ -184,13 +184,13 @@ export const erc20OiOiMonadTestnet = getContract({
 // ...
 
 // All supported FTs
-const namePoinIGF = "Poin IGF"; // Poin IGF
+const namePoinIGF = "Poin Resmi IGF"; // Poin IGF
 const symbolPoinIGF = "IGF"; // Poin IGF
-const iconPoinIGF = "/erc20-icons/oioi.png"; // Poin IGF
+const iconPoinIGF = "/erc20-icons/igf.png"; // Poin IGF
 
-const namePoinIstiqlal = "Poin Istiqlal"; // Poin Masjid Istiqlal
+const namePoinIstiqlal = "Poin Masjid Istiqlal"; // Poin Masjid Istiqlal
 const symbolPoinIstiqlal = "PMI"; // Poin Masjid Istiqlal
-const iconPoinIstiqlal = "/erc20-icons/oioi.png"; // Poin Masjid Istiqlal
+const iconPoinIstiqlal = "/erc20-icons/pmi.png"; // Poin Masjid Istiqlal
 
 const nameOiOiToken = "OiOi Token"; // OiOi Token
 const symbolOiOiToken = "OiOi"; // OiOi Token
@@ -292,6 +292,8 @@ export const erc20ContractsLaunched = [
     name: namePoinIGF,
     symbol: symbolPoinIGF,
     icon: iconPoinIGF,
+    by: "Istiqlal Global Fund",
+    link: "https://igf.or.id/",
     chain: erc20OPoinIGF.chain,
     client: erc20OPoinIGF.client,
   },
@@ -300,6 +302,8 @@ export const erc20ContractsLaunched = [
     name: namePoinIstiqlal,
     symbol: symbolPoinIstiqlal,
     icon: iconPoinIstiqlal,
+    by: "Badan Pengelola Masjid Istiqlal",
+    link: "https://istiqlal.or.id/",
     chain: erc20OPoinIstiqlal.chain,
     client: erc20OPoinIstiqlal.client,
   },
@@ -308,16 +312,10 @@ export const erc20ContractsLaunched = [
     name: nameBONDosh,
     symbol: symbolBONDosh,
     icon: iconBONDosh,
+    by: "VOYAGE.CO.ID",
+    link: "https://voyage.co.id/",
     chain: erc20BONBase.chain,
     client: erc20BONBase.client,
-  },
-  {
-    address: addressErc20BONBaseSepolia,
-    name: nameBONDosh,
-    symbol: symbolBONDosh,
-    icon: iconBONDosh,
-    chain: erc20BONBaseSepolia.chain,
-    client: erc20BONBaseSepolia.client,
   },
 ];
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //

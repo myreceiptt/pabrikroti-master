@@ -41,62 +41,104 @@ export const featuredCoin = "/images/featured-coin.png";
 export const coinTitle = "Claim Points Reward";
 
 // reusable loader section
-export const loaderChecking = "Loading..."; // nfts list, nft lister, nft details, free coin form fts,
+export const loaderChecking = "Loading..."; // nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
 // nfts list
-export const listTitle1Free = "All Free";
-export const listTitle2Free = "Virtual Collectibles";
-export const listTitle1Paid = "All Paid";
-export const listTitle2Paid = "Virtual Collectibles";
-export const listFailReason = "ClaimNotActive"; // nft details
-export const listConsoleWarn = "canClaim failed for tokenId"; // nft details
-export const listSetError = "Failed to fetch NFT data."; // nft details
-export const listError = "Lho, Error:"; // nft details
-export const listUknownError = "Kok, Error:"; // nft details
-export const listMessage1 = "No collectibles!"; // nft details
-export const listMessage2 =
-  "There are no collectibles available for now. Please try again later or go back to Home Page."; // nft details
-export const listMessage3 = "Go Back to Home Page!"; // nft details
-export const listPrevious = "Previous";
-export const listNext = "Next";
+export const nftsTitle1Free = "All Free";
+export const nftsTitle2Free = "Virtual Collectibles";
+export const nftsTitle1Paid = "All Paid";
+export const nftsTitle2Paid = "Virtual Collectibles";
+export const nftsFailReason = "ClaimNotActive"; // nft details, coins list, coin details,
+export const nftsConsoleWarn = "canClaim failed for nftId"; // nft details,
+export const nftsSetError = "Failed to fetch any collectibles.";
+export const nftsError = "Lho, Error:"; // nft details, coins list, coin details,
+export const nftsUknownError = "Kok, Error:"; // nft details, coins list, coin details,
+export const nftsMessage1 = "No collectibles!";
+export const nftsMessage2 =
+  "There are no collectibles available for now. Please try again later or go back to Home Page.";
+export const nftsMessage3 = "Go Back to Home Page!"; // nft details, coins list, coin details,
+export const nftsPrevious = "Previous"; // coins list,
+export const nftsNext = "Next"; // coins list,
 
 // nft lister
-export const listerButton = "Collect Now"; // nft form
-export const listerSoon = "Available in:"; // nft form
-export const listerInsufficient = "Insufficient Balance"; // nft form
-export const listerClaimed = "Collected"; // nft form
-export const listerClosed = "Closed"; // nft form
-export const listerImage = "/medias/virtual-collectible.png"; // nft form
-export const listerName = "A Virtual Collectible"; // nft form
-export const listerPrice = "Price"; // nft form
-export const listerNoData = "No data available.";
+export const nftButton = "Collect Now"; // nft form,
+export const nftSoon = "Available in:"; // nft form, coin lister, coin form,
+export const nftInsufficient = "Insufficient Balance"; // nft form, coin lister, coin form,
+export const nftClaimed = "Collected"; // nft form,
+export const nftClosed = "Closed"; // nft form, coin lister, coin form,
+export const nftListerImage = "/medias/virtual-collectible.png"; // nft form,
+export const nftListerName = "A Virtual Collectible"; // nft form,
+export const nftEditions = "Edition:";
+export const nftNoData = "No data available.";
 
 // nft fallback
-export const fallMessage1 = "Invalid token page!";
-export const fallMessage2 =
-  "Please use a valid token ID in the URL or go back to the home page and start over.";
-export const fallMessage3 = "Go Back to Home Page!";
+export const nftFallMessage1 = "No collectible ID used.";
+export const nftFallMessage2 =
+  "Please use a valid collectible ID in the URL or go back to the home page and start over.";
+export const nftFallMessage3 = "Go Back to Home Page!";
+
+// nft details
+export const nftSetError = "Failed to fetch the collectible.";
+export const nftMessage1 = "The collectible not found.";
+export const nftMessage2 =
+  "The specified collectible ID was not found. Please try again later or go back to Home Page.";
 
 // nft form
 export const nftFormByLink = "https://voyage.co.id/";
-export const nftFormBy = "by";
+export const nftFormBy = "by"; // coin form,
 export const nftFormByName = "VOYAGE.CO.ID";
 export const nftFormEdition = "Edition";
-export const nftFormOwned = "Owned";
-export const nftFormRefresh = "Refresh";
-export const nftFormTunggu = "Processing. Be patient and wait.";
+export const nftFormOwned = "Owned"; // coin form,
+export const nftFormRefresh = "Refresh"; // coin form,
+export const nftFormTunggu = "Processing. Be patient and wait."; // coin form,
 export const nftFormKirim = "Claiming your Virtual Collectible.";
 export const nftFormSukses = "Virtual Collectible successfully claimed.";
-export const nftFormMax = "*Maximum";
+export const nftFormPrice = "Price"; // coin form,
+export const nftFormMax = "*Maximum"; // coin form,
 export const nftFormPerWallet = "editions per owner.";
 
 // nft description
-export const readMeMoRaTitle = "";
-export const readMeMoRa = "Read on MeMoRa MarketPlace (SOON)";
-export const readEndhonesaTitle = "";
-export const readEndhonesa = "Read on ENDHONESA.COM (GOON)";
-export const readLess = "Read Less";
-export const readMore = "Read More";
+export const nftMeMoRaTitle = "";
+export const nftMeMoRa = "Read on MeMoRa MarketPlace (SOON)";
+export const nftEndhonesaTitle = "";
+export const nftEndhonesa = "Read on ENDHONESA.COM (GOON)";
+export const nftReadLess = "Read Less";
+export const nftReadMore = "Read More";
+
+// coins list
+export const coinsConsoleWarn = "canClaim failed for coinAddress:"; // coin details,
+export const coinsSetError = "Failed to fetch any points.";
+export const coinsMessage1 = "No claimable points";
+export const coinsMessage2 =
+  "There are no claimable points available for now. Please try again later or go back to Home Page.";
+export const coinsTitle1 = "Claim All";
+export const coinsTitle2 = "Points Reward";
+
+// coin lister
+export const coinButton = "Claim Now"; // coin form,
+export const coinNoAccess = "No Access"; // coin form,
+export const coinClaimed = "Claimed"; // coin form,
+export const coinListerImage = "/medias/bon-voyage.gif"; // coin form,
+export const coinListerName = "A Point Reward"; // coin form,
+export const coinSupply = "Supply:";
+export const coinOf = "of"; // coin form,
+
+// coin fallback
+export const coinFallMessage1 = "Invalid address page!";
+export const coinFallMessage2 =
+  "Please use a valid point address in the URL or go back to the home page and start over.";
+
+// coin details
+export const coinSetError = "Failed to fetch the point.";
+export const coinMessage1 = "The point not found.";
+export const coinMessage2 =
+  "The specified point address was not found. Please try again later or go back to Home Page.";
+
+// coin form
+export const coinFormSupply = "Supply";
+export const coinFormKirim = "Claiming your Point Reward.";
+export const coinFormSukses = "Point Reward successfully claimed.";
+export const coinFormPerWallet = "supply per owner.";
 
 // buram.tsx
 export const tokenNumber = "0";

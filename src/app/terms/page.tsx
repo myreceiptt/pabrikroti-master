@@ -94,7 +94,7 @@ import {
 import Footer from "@/components/sections/FooterSection";
 import Header from "@/components/sections/HeaderSection";
 
-export default function TermsPage() {
+export default function PageTerms() {
   return (
     <>
       {/* Headersss */}

@@ -1,4 +1,4 @@
-// /src/components/nfts/NFTDescription.tsx
+// /src/components/fts/CoinDescription.tsx
 
 // External libraries
 import Link from "next/link";
@@ -14,12 +14,12 @@ import {
   nftReadMore,
 } from "@/config/myreceipt";
 
-interface NFTDescriptionProps {
+interface CoinDescriptionProps {
   description: string;
   nftIdString: string;
 }
 
-const NFTDescription: React.FC<NFTDescriptionProps> = ({
+const CoinDescription: React.FC<CoinDescriptionProps> = ({
   description,
   nftIdString,
 }) => {
@@ -104,4 +104,4 @@ const NFTDescription: React.FC<NFTDescriptionProps> = ({
   );
 };
 
-export default NFTDescription;
+export default CoinDescription;

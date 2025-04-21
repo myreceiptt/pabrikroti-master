@@ -3,7 +3,6 @@
 "use client";
 
 // External libraries
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -13,21 +12,20 @@ import { MediaRenderer, useReadContract } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { currencyMap } from "@/config/contracts";
 import {
   colorBorder,
   colorIcon,
   colorPrimary,
   colorSecondary,
-  listerButton,
-  listerClaimed,
-  listerClosed,
-  listerImage,
-  listerInsufficient,
-  listerName,
-  listerNoData,
-  listerPrice,
-  listerSoon,
+  nftButton,
+  nftClaimed,
+  nftClosed,
+  nftListerImage,
+  nftInsufficient,
+  nftListerName,
+  nftNoData,
+  nftEditions,
+  nftSoon,
   loaderChecking,
 } from "@/config/myreceipt";
 import { getCountdownString } from "@/config/utils";
@@ -37,30 +35,28 @@ import Loader from "@/components/sections/ReusableLoader";
 
 type NFTListerProps = {
   dropContract: ThirdwebContract;
-  tokenId: bigint;
-  tokenIdString: string;
-  price: bigint;
+  nftId: bigint;
+  nftIdString: string;
   adjustedPrice: number;
-  currency: string;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
-  balanceRaw: bigint;
+  supply: bigint;
+  maxClaim: bigint;
   adjustedBalance: number;
   refreshToken: number;
 };
 
 const NFTLister: React.FC<NFTListerProps> = ({
   dropContract,
-  tokenId,
-  tokenIdString,
-  price,
+  nftId,
+  nftIdString,
   adjustedPrice,
-  currency,
   startTimestamp,
   isClaimable,
   reason,
-  balanceRaw,
+  supply,
+  maxClaim,
   adjustedBalance,
   refreshToken,
 }) => {
@@ -70,10 +66,6 @@ const NFTLister: React.FC<NFTListerProps> = ({
   // Ensure state variables are properly declared
   const [currentTime, setCurrentTime] = useState(new Date());
 
-  console.log(
-    `Token #${tokenIdString} | Start: ${startTime} | Price: ${price} | The Price ${adjustedPrice} | Claimable: ${isClaimable} | Reason: ${reason} | Balance ${balanceRaw} | The Balance ${adjustedBalance}`
-  );
-
   // Fetch NFT metadata
   const {
     data: nft,
@@ -81,8 +73,18 @@ const NFTLister: React.FC<NFTListerProps> = ({
     refetch,
   } = useReadContract(getNFT, {
     contract: dropContract,
-    tokenId: tokenId,
+    tokenId: nftId,
   });
+
+  // Refetch NFT metadata
+  useEffect(() => {
+    refetch();
+  }, [refreshToken, refetch]);
+
+  // Destructuring NFT metadata
+  const nftMetadata = nft?.metadata;
+  const nftImage = nftMetadata?.image || nftListerImage;
+  const nftName = nftMetadata?.name || nftListerName;
 
   // Real-time clock
   useEffect(() => {
@@ -93,46 +95,30 @@ const NFTLister: React.FC<NFTListerProps> = ({
     return () => clearInterval(interval);
   }, []);
 
-  // Refetch NFT metadata
-  useEffect(() => {
-    refetch();
-  }, [refreshToken, refetch]);
-
   // Determine button status
-  let buttonLabel = listerButton;
+  let buttonLabel = nftButton;
   let buttonDisabled = false;
 
   if (currentTime < startTime) {
-    buttonLabel = `${listerSoon} ${getCountdownString(startTime, currentTime)}`;
+    // Belum waktunya
+    buttonLabel = `${nftSoon} ${getCountdownString(startTime, currentTime)}`;
     buttonDisabled = true;
-  }
-  if (adjustedBalance < adjustedPrice) {
-    buttonLabel = listerInsufficient;
+  } else if (adjustedBalance < adjustedPrice) {
+    // Tidak cukup saldo
+    buttonLabel = nftInsufficient;
     buttonDisabled = true;
   } else if (!isClaimable) {
-    const safeReason = reason ?? "";
-    if (safeReason.includes("DropClaimExceedLimit")) {
-      buttonLabel = listerClaimed;
-    } else if (safeReason.includes("DropClaimExceedMaxSupply")) {
-      buttonLabel = listerClosed;
+    // Tidak bisa diklaim karena alasan lain
+    const safeReason = (reason ?? "").toLowerCase();
+    if (safeReason.includes("dropclaimexceedlimit")) {
+      buttonLabel = nftClaimed;
+    } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+      buttonLabel = nftClosed;
     } else {
-      buttonLabel = listerClosed;
+      buttonLabel = nftClosed; // fallback
     }
     buttonDisabled = true;
   }
-
-  // Determine the currency symbol
-  const tokenCurrency = currencyMap[currency.toLowerCase()] || {
-    symbol: "TOKEN",
-    name: "Unknown FT",
-    icon: "/erc20-icons/nota.png",
-  };
-
-  // Format the price
-  const formattedPrice = `${adjustedPrice.toLocaleString("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 6,
-  })} ${tokenCurrency.symbol}`;
 
   return (
     <div
@@ -142,11 +128,11 @@ const NFTLister: React.FC<NFTListerProps> = ({
         <Loader message={loaderChecking} />
       ) : nft ? (
         <>
-          <Link href={`/token/${tokenIdString}`}>
+          <Link href={`/token/${nftIdString}`}>
             <MediaRenderer
               client={client}
-              src={nft?.metadata?.image || listerImage}
-              alt={nft?.metadata?.name || listerName}
+              src={nftImage}
+              alt={nftName}
               className="rounded-2xl w-full"
             />
           </Link>
@@ -154,27 +140,22 @@ const NFTLister: React.FC<NFTListerProps> = ({
             <h2
               style={{ color: colorSecondary }}
               className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold">
-              {nft?.metadata?.name || listerName}
+              {nftName}
             </h2>
             <div
               style={{ color: colorIcon }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
-              <span>{listerPrice}</span>
-              <Image
-                src={tokenCurrency.icon}
-                alt={tokenCurrency.symbol}
-                width={16}
-                height={16}
-              />
-              <span>{formattedPrice}</span>
+              <span>{nftEditions}</span>
+              {supply.toString()}/{maxClaim.toString()}
             </div>
           </div>
 
           <button
+            title={buttonLabel}
             disabled={buttonDisabled}
             onClick={() => {
               if (!buttonDisabled) {
-                router.push(`/token/${tokenIdString}`);
+                router.push(`/token/${nftIdString}`);
               }
             }}
             style={{
@@ -193,7 +174,7 @@ const NFTLister: React.FC<NFTListerProps> = ({
         <h2
           style={{ color: colorIcon }}
           className="text-left text-sm font-medium">
-          {listerNoData}
+          {nftNoData}
         </h2>
       )}
     </div>

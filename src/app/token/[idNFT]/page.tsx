@@ -1,4 +1,4 @@
-// /src/app/token/[tokenId]/page.tsx
+// /src/app/token/[idNFT]/page.tsx
 
 "use client";
 
@@ -9,8 +9,8 @@ import React from "react";
 import NFTDetails from "@/components/nfts/NFTDetails";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
-const PageToken: React.FC = () => (
+const PageNFT: React.FC = () => (
   <DynamicLoginPage ContentComponent={() => <NFTDetails />} />
 );
 
-export default PageToken;
+export default PageNFT;

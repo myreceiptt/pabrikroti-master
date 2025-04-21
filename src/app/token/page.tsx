@@ -9,8 +9,8 @@ import React from "react";
 import NFTFallback from "@/components/nfts/NFTFallback";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
-const FallbackPage: React.FC = () => (
+const FallbackNFT: React.FC = () => (
   <DynamicLoginPage ContentComponent={() => <NFTFallback />} />
 );
 
-export default FallbackPage;
+export default FallbackNFT;

@@ -1,126 +1,102 @@
-// /src/components/nfts/NFTForm.tsx
+// /src/components/fts/CoinForm.tsx
 
 "use client";
 
 // External libraries
 import { motion } from "framer-motion";
+import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaRotate } from "react-icons/fa6";
-import { ThirdwebContract } from "thirdweb";
-import { balanceOf, getNFT } from "thirdweb/extensions/erc1155";
-import {
-  ClaimButton,
-  MediaRenderer,
-  useActiveAccount,
-  useReadContract,
-} from "thirdweb/react";
+import { Chain } from "thirdweb";
+import { ClaimButton, TokenIcon, TokenProvider } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
 import { currencyMap } from "@/config/contracts";
 import {
+  coinButton,
+  coinClaimed,
+  coinFormKirim,
+  coinFormPerWallet,
+  coinFormSukses,
+  coinFormSupply,
+  coinListerImage,
+  coinListerName,
+  coinNoAccess,
+  coinOf,
   colorBorder,
   colorIcon,
   colorPrimary,
   colorSecondary,
-  nftButton,
-  nftClaimed,
   nftClosed,
-  nftListerImage,
-  nftInsufficient,
-  nftListerName,
-  nftSoon,
   nftFormBy,
-  nftFormByLink,
-  nftFormByName,
-  nftFormEdition,
-  nftFormKirim,
   nftFormMax,
   nftFormOwned,
-  nftFormPerWallet,
   nftFormRefresh,
-  nftFormSukses,
-  nftFormTunggu,
   nftFormPrice,
+  nftFormTunggu,
+  nftInsufficient,
+  nftSoon,
 } from "@/config/myreceipt";
 import { getCountdownString } from "@/config/utils";
 
 // Components libraries
-import NFTDescription from "@/components/nfts/NFTDescription";
+import CoinDescription from "@/components/fts/CoinDescription";
 import Loader from "@/components/sections/ReusableLoader";
 
-interface NFTFormProps {
-  dropContract: ThirdwebContract;
-  nftId: bigint;
-  nftIdString: string;
+interface CoinFormProps {
+  coinAddress: string;
+  coinChain: Chain;
+  coinName: string;
+  coinBy: string;
+  coinLink: string;
   adjustedPrice: number;
   currency: string;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
-  supply: bigint;
-  maxClaim: bigint;
-  perWallet: bigint;
   adjustedBalance: number;
+  adjustedCoinOwned: number;
+  adjustedSupply: number;
+  adjustedMaxClaim: number;
+  adjustedPerWallet: number;
+  hasAccess: boolean | null;
   setRefreshToken: (val: number) => void;
+  refreshToken: number;
 }
 
-const NFTForm: React.FC<NFTFormProps> = ({
-  dropContract,
-  nftId,
-  nftIdString,
+const CoinForm: React.FC<CoinFormProps> = ({
+  coinAddress,
+  coinChain,
+  coinName,
+  coinBy,
+  coinLink,
   adjustedPrice,
   currency,
   startTimestamp,
   isClaimable,
   reason,
-  supply,
-  maxClaim,
-  perWallet,
   adjustedBalance,
+  adjustedCoinOwned,
+  adjustedSupply,
+  adjustedMaxClaim,
+  adjustedPerWallet,
+  hasAccess,
   setRefreshToken,
+  refreshToken,
 }) => {
-  const activeAccount = useActiveAccount();
   const startTime = new Date(Number(startTimestamp) * 1000);
 
   // Ensure state variables are properly declared
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [hasError, setHasError] = useState(false);
   const [isProcessing, setIsProcessing] = useState(false);
   const [pesanTunggu, setPesanTunggu] = useState<string | null>(null);
   const [pesanKirim, setPesanKirim] = useState<string | null>(null);
   const [pesanSukses, setPesanSukses] = useState<string | null>(null);
   const [pesanGagal, setPesanGagal] = useState<string | null>(null);
-
-  // Fetch NFT metadata
-  const { data: nft, refetch: refetchNFT } = useReadContract(getNFT, {
-    contract: dropContract,
-    tokenId: nftId,
-  });
-
-  // Destructuring NFT metadata
-  const nftMetadata = nft?.metadata;
-  const nftImage = nftMetadata?.image || nftListerImage;
-  const nftName = nftMetadata?.name || nftListerName;
-  const nftDescription = nft?.metadata.description ?? "";
-
-  // Fetch user's owned NFTs
-  const { data: ownedNFTs, refetch: refetchOwnedNFTs } = useReadContract(
-    balanceOf,
-    {
-      contract: dropContract,
-      owner: activeAccount?.address ?? "",
-      tokenId: nftId,
-      queryOptions: { enabled: !!activeAccount?.address && !!nftIdString },
-    }
-  );
-
-  // Refetch NFT metadata
-  useEffect(() => {
-    refetchNFT();
-    refetchOwnedNFTs();
-  }, [refetchNFT, refetchOwnedNFTs]);
 
   // Real-time clock
   useEffect(() => {
@@ -132,28 +108,34 @@ const NFTForm: React.FC<NFTFormProps> = ({
   }, []);
 
   // Determine button status
-  let buttonLabel = nftButton;
+  let buttonLabel = coinButton;
   let buttonDisabled = false;
 
-  if (currentTime < startTime) {
-    // Belum waktunya
-    buttonLabel = `${nftSoon} ${getCountdownString(startTime, currentTime)}`;
+  // Belum punya akses
+  if (hasAccess === null || hasAccess === false) {
+    buttonLabel = coinNoAccess;
     buttonDisabled = true;
-  } else if (adjustedBalance < adjustedPrice) {
-    // Tidak cukup saldo
-    buttonLabel = nftInsufficient;
-    buttonDisabled = true;
-  } else if (!isClaimable) {
-    // Tidak bisa diklaim karena alasan lain
-    const safeReason = (reason ?? "").toLowerCase();
-    if (safeReason.includes("dropclaimexceedlimit")) {
-      buttonLabel = nftClaimed;
-    } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-      buttonLabel = nftClosed;
-    } else {
-      buttonLabel = nftClosed; // fallback
+  } else {
+    if (currentTime < startTime) {
+      // Belum waktunya
+      buttonLabel = `${nftSoon} ${getCountdownString(startTime, currentTime)}`;
+      buttonDisabled = true;
+    } else if (adjustedBalance < adjustedPrice) {
+      // Tidak cukup saldo
+      buttonLabel = nftInsufficient;
+      buttonDisabled = true;
+    } else if (!isClaimable) {
+      // Tidak bisa diklaim karena alasan lain
+      const safeReason = (reason ?? "").toLowerCase();
+      if (safeReason.includes("dropclaimexceedlimit")) {
+        buttonLabel = coinClaimed;
+      } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+        buttonLabel = nftClosed;
+      } else {
+        buttonLabel = nftClosed;
+      }
+      buttonDisabled = true;
     }
-    buttonDisabled = true;
   }
 
   // Determine the currency symbol
@@ -169,16 +151,52 @@ const NFTForm: React.FC<NFTFormProps> = ({
     maximumFractionDigits: 6,
   })} ${tokenCurrency.symbol}`;
 
+  // Format the supply, max. claim, owned, and per wallet
+  function formatNumberCompact(value: number): string {
+    const round = (val: number) =>
+      val % 1 === 0 ? val.toFixed(0) : val.toFixed(2);
+
+    if (value >= 1_000_000_000) {
+      return `${round(value / 1_000_000_000)}B`;
+    } else if (value >= 1_000_000) {
+      return `${round(value / 1_000_000)}M`;
+    } else if (value >= 1_000) {
+      return `${round(value / 1_000)}K`;
+    } else {
+      return value.toString();
+    }
+  }
+
+  // Reset hasError state
+  useEffect(() => {
+    setHasError(false);
+  }, [refreshToken]);
+
   return (
     <div className="w-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">
       {/* MediaRenderer (Left Column) */}
       <div className="rounded-3xl overflow-hidden w-full">
-        <MediaRenderer
+        <TokenProvider
+          key={refreshToken}
+          address={coinAddress}
           client={client}
-          src={nftImage}
-          alt={nftName}
-          className="rounded-3xl w-full"
-        />
+          chain={coinChain}>
+          {!hasError ? (
+            <TokenIcon
+              alt={coinName}
+              className="rounded-2xl w-full"
+              onError={() => setHasError(true)}
+            />
+          ) : (
+            <Image
+              src={coinListerImage}
+              alt={coinName ?? coinListerName}
+              width={755}
+              height={545}
+              className="rounded-2xl w-full"
+            />
+          )}
+        </TokenProvider>
       </div>
 
       {/* Right Column */}
@@ -188,7 +206,7 @@ const NFTForm: React.FC<NFTFormProps> = ({
           <h1
             style={{ color: colorSecondary }}
             className="text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
-            {nftName}
+            {coinName}
           </h1>
         </div>
 
@@ -204,17 +222,17 @@ const NFTForm: React.FC<NFTFormProps> = ({
           <h1
             style={{ color: colorIcon }}
             className="text-left text-sm font-medium">
-            <Link href={nftFormByLink} target="_blank">
-              {nftFormByName}
+            <Link href={coinLink} target="_blank">
+              {coinBy}
             </Link>
           </h1>
         </div>
 
         {/* Description with Expand/Collapse */}
-        <NFTDescription
-          description={nftDescription}
-          nftIdString={nftIdString}
-        />
+        {/* <NFTDescription
+          description={nft?.metadata.description ?? ""}
+          tokenIdString={tokenIdString}
+        /> */}
 
         {/* Success or Error Messages */}
         {pesanTunggu && <Loader message={pesanTunggu} />}
@@ -232,7 +250,7 @@ const NFTForm: React.FC<NFTFormProps> = ({
           <h2
             style={{ color: colorIcon }}
             className="col-span-3 text-left text-xs font-medium">
-            {nftFormEdition}
+            {coinFormSupply}
           </h2>
           <h2
             style={{ color: colorIcon }}
@@ -253,20 +271,22 @@ const NFTForm: React.FC<NFTFormProps> = ({
           <h2
             style={{ color: colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
-            {supply.toString()}/{maxClaim.toString()}
+            <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
+              {formatNumberCompact(adjustedSupply)}/
+              {formatNumberCompact(adjustedMaxClaim)}
+            </span>
           </h2>
           <h2
             style={{ color: colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
-            {ownedNFTs ? ownedNFTs.toString() : "0"}
+            {adjustedCoinOwned}
           </h2>
           <button
             disabled={isRefreshing}
             onClick={async () => {
               setIsRefreshing(true); // ⏳ mulai loading
-              setRefreshToken(Date.now()); // 🔁 trigger NFTDetails refresh
-              await refetchNFT(); // 🔄 jalankan ulang fetch NFT metadata
-              await refetchOwnedNFTs(); // 🔄 jalankan ulang fetch owned NFT
+              setRefreshToken(Date.now()); // 🔁 trigger CoinDetails refresh
+              await new Promise((resolve) => setTimeout(resolve, 747)); // ⏳ beri waktu animasi jalan
               setIsRefreshing(false); // ✅ selesai loading
             }}
             style={{ color: colorPrimary, background: colorSecondary }}
@@ -300,13 +320,12 @@ const NFTForm: React.FC<NFTFormProps> = ({
           className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
               ${isProcessing || buttonDisabled ? "" : "cursor-pointer"}
             `}
-          contractAddress={dropContract.address}
-          chain={dropContract.chain}
+          contractAddress={coinAddress}
+          chain={coinChain}
           client={client}
           claimParams={{
-            type: "ERC1155",
-            quantity: 1n,
-            tokenId: nftId,
+            type: "ERC20",
+            quantity: adjustedPerWallet.toString(),
           }}
           disabled={isProcessing || buttonDisabled}
           onClick={() => {
@@ -318,10 +337,10 @@ const NFTForm: React.FC<NFTFormProps> = ({
           }}
           onTransactionSent={() => {
             setPesanTunggu(null);
-            setPesanKirim(nftFormKirim);
+            setPesanKirim(coinFormKirim);
           }}
           onError={(error) => {
-            setRefreshToken(Date.now()); // 🔁 trigger NFTDetails refresh
+            setRefreshToken(Date.now()); // 🔁 trigger CoinDetails refresh
             setIsRefreshing(false); // ✅ selesai loading
             setIsProcessing(false);
             setPesanTunggu(null);
@@ -329,11 +348,11 @@ const NFTForm: React.FC<NFTFormProps> = ({
             setPesanGagal(`${error.message}`);
           }}
           onTransactionConfirmed={async () => {
-            setRefreshToken(Date.now()); // 🔁 trigger NFTDetails refresh
+            setRefreshToken(Date.now()); // 🔁 trigger CoinDetails refresh
             setIsRefreshing(false); // ✅ selesai loading
             setIsProcessing(false);
             setPesanKirim(null);
-            setPesanSukses(nftFormSukses);
+            setPesanSukses(coinFormSukses);
             setPesanGagal(null);
           }}>
           {buttonLabel}
@@ -341,11 +360,11 @@ const NFTForm: React.FC<NFTFormProps> = ({
         <h4
           style={{ color: colorIcon }}
           className="text-left text-xs font-medium">
-          {`${nftFormMax} ${perWallet} ${nftFormPerWallet}`}
+          {`${nftFormMax} ${adjustedPerWallet} ${coinFormPerWallet}`}
         </h4>
       </div>
     </div>
   );
 };
 
-export default NFTForm;
+export default CoinForm;

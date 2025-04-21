@@ -7,66 +7,68 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import React, { useEffect, useState } from "react";
-import { MediaRenderer } from "thirdweb/react";
+import { Chain } from "thirdweb";
+import { TokenProvider, TokenIcon } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { currencyMap } from "@/config/contracts";
 import {
+  coinButton,
+  coinClaimed,
+  coinNoAccess,
+  coinSupply,
   colorBorder,
   colorIcon,
   colorPrimary,
   colorSecondary,
-  listerButton,
-  listerClaimed,
-  listerClosed,
-  listerImage,
-  listerInsufficient,
-  listerName,
-  listerPrice,
-  listerSoon,
+  nftClosed,
+  nftInsufficient,
+  nftSoon,
+  loaderChecking,
+  coinOf,
+  coinListerImage,
+  coinListerName,
 } from "@/config/myreceipt";
 import { getCountdownString } from "@/config/utils";
 
+// Components libraries
+import Loader from "@/components/sections/ReusableLoader";
+
 type CoinListerProps = {
-  tokenAddress: string;
-  symbol: string;
-  name: string;
-  icon: string;
-  price: bigint;
+  coinAddress: string;
+  coinChain: Chain;
+  coinName: string;
   adjustedPrice: number;
-  currency: string;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
-  balanceRaw: bigint;
+  adjustedSupply: number;
+  adjustedMaxClaim: number;
   adjustedBalance: number;
+  hasAccess: boolean | null;
   refreshToken: number;
 };
 
 const CoinLister: React.FC<CoinListerProps> = ({
-  tokenAddress,
-  symbol,
-  name,
-  icon,
-  price,
+  coinAddress,
+  coinChain,
+  coinName,
   adjustedPrice,
-  currency,
   startTimestamp,
   isClaimable,
   reason,
-  balanceRaw,
+  adjustedSupply,
+  adjustedMaxClaim,
   adjustedBalance,
+  hasAccess,
+  refreshToken,
 }) => {
   const router = useRouter();
   const startTime = new Date(Number(startTimestamp) * 1000);
 
   // Ensure state variables are properly declared
   const [currentTime, setCurrentTime] = useState(new Date());
-
-  console.log(
-    `${icon} Token ${name} | Address ${tokenAddress} | Symbol ${symbol} | Start: ${startTime} | Price: ${price} | The Price ${adjustedPrice} | Claimable: ${isClaimable} | Reason: ${reason} | Balance ${balanceRaw} | The Balance ${adjustedBalance}`
-  );
+  const [hasError, setHasError] = useState(false);
 
   // Real-time clock
   useEffect(() => {
@@ -78,91 +80,120 @@ const CoinLister: React.FC<CoinListerProps> = ({
   }, []);
 
   // Determine button status
-  let buttonLabel = listerButton;
+  let buttonLabel = coinButton;
   let buttonDisabled = false;
 
-  if (currentTime < startTime) {
-    buttonLabel = `${listerSoon} ${getCountdownString(startTime, currentTime)}`;
+  if (hasAccess === null || hasAccess === false) {
+    buttonLabel = coinNoAccess;
     buttonDisabled = true;
-  }
-  if (adjustedBalance < adjustedPrice) {
-    buttonLabel = listerInsufficient;
-    buttonDisabled = true;
-  } else if (!isClaimable) {
-    const safeReason = reason ?? "";
-    if (safeReason.includes("DropClaimExceedLimit")) {
-      buttonLabel = listerClaimed;
-    } else if (safeReason.includes("DropClaimExceedMaxSupply")) {
-      buttonLabel = listerClosed;
-    } else {
-      buttonLabel = listerClosed;
+  } else {
+    if (currentTime < startTime) {
+      // Belum waktunya
+      buttonLabel = `${nftSoon} ${getCountdownString(startTime, currentTime)}`;
+      buttonDisabled = true;
+    } else if (adjustedBalance < adjustedPrice) {
+      // Tidak cukup saldo
+      buttonLabel = nftInsufficient;
+      buttonDisabled = true;
+    } else if (!isClaimable) {
+      // Tidak bisa diklaim karena alasan lain
+      const safeReason = (reason ?? "").toLowerCase();
+      if (safeReason.includes("dropclaimexceedlimit")) {
+        buttonLabel = coinClaimed;
+      } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+        buttonLabel = nftClosed;
+      } else {
+        buttonLabel = nftClosed; // fallback
+      }
+      buttonDisabled = true;
     }
-    buttonDisabled = true;
   }
 
-  // Determine the currency symbol
-  const tokenCurrency = currencyMap[currency.toLowerCase()] || {
-    symbol: "TOKEN",
-    name: "Unknown FT",
-    icon: "/erc20-icons/nota.png",
-  };
+  // Format the supply, max. claim, owned, and per wallet
+  function formatNumberCompact(value: number): string {
+    const round = (val: number) =>
+      val % 1 === 0 ? val.toFixed(0) : val.toFixed(2);
 
-  // Format the price
-  const formattedPrice = `${adjustedPrice.toLocaleString("en-US", {
-    minimumFractionDigits: 2,
-    maximumFractionDigits: 6,
-  })} ${tokenCurrency.symbol}`;
+    if (value >= 1_000_000_000) {
+      return `${round(value / 1_000_000_000)}B`;
+    } else if (value >= 1_000_000) {
+      return `${round(value / 1_000_000)}M`;
+    } else if (value >= 1_000) {
+      return `${round(value / 1_000)}K`;
+    } else {
+      return value.toString();
+    }
+  }
 
   return (
     <div
       style={{ borderColor: colorBorder }}
       className="w-full grid grid-cols-1 gap-4 p-4 border rounded-3xl">
-      <Link href={`/token/${tokenAddress}`}>
-        <MediaRenderer
-          client={client}
-          src={icon || listerImage}
-          alt={name || listerName}
-          className="rounded-2xl w-full"
-        />
-      </Link>
-      <div className="grid grid-cols-1 gap-2">
-        <h2
-          style={{ color: colorSecondary }}
-          className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold">
-          {name || listerName}
-        </h2>
-        <div
-          style={{ color: colorIcon }}
-          className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
-          <span>{listerPrice}</span>
-          <Image
-            src={tokenCurrency.icon}
-            alt={tokenCurrency.symbol}
-            width={16}
-            height={16}
-          />
-          <span>{formattedPrice}</span>
-        </div>
-      </div>
+      {hasAccess === null ? (
+        <Loader message={loaderChecking} />
+      ) : (
+        <>
+          <Link href={`/address/${coinAddress}`}>
+            <TokenProvider
+              key={refreshToken}
+              address={coinAddress}
+              client={client}
+              chain={coinChain}>
+              {!hasError ? (
+                <TokenIcon
+                  alt={coinName}
+                  className="rounded-2xl w-full"
+                  onError={() => setHasError(true)}
+                />
+              ) : (
+                <Image
+                  src={coinListerImage}
+                  alt={coinName ?? coinListerName}
+                  width={755}
+                  height={545}
+                  className="rounded-2xl w-full"
+                />
+              )}
+            </TokenProvider>
+          </Link>
+          <div className="grid grid-cols-1 gap-2">
+            <h2
+              style={{ color: colorSecondary }}
+              className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold">
+              {coinName}
+            </h2>
+            <div
+              style={{ color: colorIcon }}
+              className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
+              <span>{coinSupply}</span>
+              <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
+                {formatNumberCompact(adjustedSupply)}/
+                {formatNumberCompact(adjustedMaxClaim)}
+              </span>
+            </div>
+          </div>
 
-      <button
-        disabled={buttonDisabled}
-        onClick={() => {
-          if (!buttonDisabled) {
-            router.push(`/token/${tokenAddress}`);
-          }
-        }}
-        style={{
-          color: buttonDisabled ? colorSecondary : colorPrimary,
-          backgroundColor: buttonDisabled ? "transparent" : colorSecondary,
-          border: "2px solid",
-          borderColor: buttonDisabled ? colorBorder : colorSecondary,
-        }}
-        className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
-          !buttonDisabled ? "cursor-pointer" : ""
-        }`}>
-        {buttonLabel}
-      </button>
+          <button
+            title={buttonLabel}
+            disabled={buttonDisabled}
+            onClick={() => {
+              if (!buttonDisabled) {
+                router.push(`/address/${coinAddress}`);
+              }
+            }}
+            style={{
+              color: buttonDisabled ? colorSecondary : colorPrimary,
+              backgroundColor: buttonDisabled ? "transparent" : colorSecondary,
+              border: "2px solid",
+              borderColor: buttonDisabled ? colorBorder : colorSecondary,
+            }}
+            className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
+              !buttonDisabled ? "cursor-pointer" : ""
+            }`}>
+            {buttonLabel}
+          </button>
+        </>
+      )}
     </div>
   );
 };
