@@ -1,4 +1,4 @@
-PABRIK ROTI: Staging MeMoRa by LabX
+PABRIK ROTI: Staging MeMoRa Alpha
 
 ## Usage
 

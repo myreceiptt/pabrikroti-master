@@ -5,11 +5,11 @@ import React from "react";
 import { useActiveAccount } from "thirdweb/react";
 
 // Components libraries
-import ConnectEmbeds from "./ConnectEmbeds";
-import { ErrorBoundary } from "./ErrorBoundary";
-import Footer from "./FooterSection";
-import Header from "./HeaderSection";
-import LoginLayout from "./LoginLayout";
+import ConnectEmbeds from "@/components/logins/ConnectEmbeds";
+import { ErrorBoundary } from "@/components/logins/ErrorBoundary";
+import LoginLayout from "@/components/logins/LoginLayout";
+import Footer from "@/components/sections/FooterSection";
+import Header from "@/components/sections/HeaderSection";
 
 interface DynamicLoginPageProps {
   ContentComponent: React.FC;
@@ -18,9 +18,9 @@ interface DynamicLoginPageProps {
 const DynamicLoginPage: React.FC<DynamicLoginPageProps> = ({
   ContentComponent,
 }) => {
-  const account = useActiveAccount();
+  const activeAcccount = useActiveAccount();
 
-  if (account) {
+  if (activeAcccount) {
     return (
       <>
         {/* Headersss */}
