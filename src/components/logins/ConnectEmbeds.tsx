@@ -8,7 +8,7 @@ import { ConnectEmbed, lightTheme } from "thirdweb/react";
 import { client } from "@/config/client";
 import { theAccountFactory } from "@/config/contracts";
 import { dompets } from "@/config/dompets";
-import { proUrl, proDescription, proLogo, proTitle } from "@/config/myreceipt";
+import { proDescription, proLogo, proTitle, proUrl } from "@/config/myreceipt";
 import { chain, chains } from "@/config/rantais";
 
 const ConnectEmbeds: React.FC = () => {

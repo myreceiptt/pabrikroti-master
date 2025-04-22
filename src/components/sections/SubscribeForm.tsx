@@ -8,16 +8,16 @@ import {
   colorBorder,
   colorPrimary,
   colorSecondary,
-  subscribeInput,
+  subscribeButton,
+  subscribeButtonLoading,
   subscribeFailed,
+  subscribeInput,
   subscribeMessage,
   subscribeName,
   subscribePlaceholder,
   subscribeSubject,
   subscribeSuccess,
   subscribeTitle,
-  subscribeButtonLoading,
-  subscribeButton,
 } from "@/config/myreceipt";
 
 export default function Subscribe() {

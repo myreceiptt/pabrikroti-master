@@ -6,14 +6,14 @@ import Image from "next/image";
 
 // Blockchain configurations
 import {
+  coinTitle,
+  featuredCoin,
+  featuredFree,
+  featuredPaid,
   featuredTitle1,
   featuredTitle2,
-  featuredPaid,
-  paidTitle,
-  featuredFree,
   freeTitle,
-  featuredCoin,
-  coinTitle,
+  paidTitle,
 } from "@/config/myreceipt";
 
 // Components libraries

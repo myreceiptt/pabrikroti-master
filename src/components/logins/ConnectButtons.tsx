@@ -15,12 +15,12 @@ import {
 } from "@/config/contracts";
 import { dompets } from "@/config/dompets";
 import {
-  proUrl,
   colorBoxIcon,
   colorIcon,
   proDescription,
   proLogo,
   proTitle,
+  proUrl,
 } from "@/config/myreceipt";
 import { chain, chains } from "@/config/rantais";
 

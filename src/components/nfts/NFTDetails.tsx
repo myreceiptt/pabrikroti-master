@@ -19,6 +19,7 @@ import { getWalletBalance } from "thirdweb/wallets";
 // Blockchain configurations
 import { erc1155Launched } from "@/config/contracts";
 import {
+  loaderChecking,
   nftMessage1,
   nftMessage2,
   nftSetError,
@@ -27,7 +28,6 @@ import {
   nftsFailReason,
   nftsMessage3,
   nftsUknownError,
-  loaderChecking,
 } from "@/config/myreceipt";
 
 // Components libraries

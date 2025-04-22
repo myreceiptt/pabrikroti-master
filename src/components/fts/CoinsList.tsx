@@ -20,20 +20,20 @@ import { getWalletBalance } from "thirdweb/wallets";
 import CheckErc1155 from "@/config/checker";
 import { erc20ContractsLaunched } from "@/config/contracts";
 import {
-  loaderChecking,
-  nftsMessage3,
-  colorPrimary,
-  colorSecondary,
-  nftsPrevious,
-  nftsNext,
   coinsConsoleWarn,
-  coinsSetError,
   coinsMessage1,
   coinsMessage2,
+  coinsSetError,
   coinsTitle1,
   coinsTitle2,
-  nftsFailReason,
+  colorPrimary,
+  colorSecondary,
+  loaderChecking,
   nftsError,
+  nftsFailReason,
+  nftsMessage3,
+  nftsNext,
+  nftsPrevious,
   nftsUknownError,
 } from "@/config/myreceipt";
 

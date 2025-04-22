@@ -7,10 +7,10 @@ import React from "react";
 
 // Blockchain configurations
 import {
+  coinAccessBanner,
   colorIcon,
   colorPrimary,
   colorSecondary,
-  contentBanner,
   proTitle,
 } from "@/config/myreceipt";
 
@@ -51,7 +51,7 @@ const Message: React.FC<MessageProps> = ({ message1, message2, message3 }) => {
       {/* Bottom Section - Background Image */}
       <div className="bottom-0 left-0 w-full h-full">
         <Image
-          src={contentBanner}
+          src={coinAccessBanner}
           alt={proTitle}
           width={4096}
           height={1109}

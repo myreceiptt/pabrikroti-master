@@ -134,6 +134,13 @@ export const coinSetError = "Failed to fetch the point.";
 export const coinMessage1 = "The point not found.";
 export const coinMessage2 =
   "The specified point address was not found. Please try again later or go back to Home Page.";
+export const coinAccessMessage1 = "You don't have access!";
+
+// coin access
+export const coinAccessMessage2 =
+  "Please get your access by collecting any Virtual Collectibles at least one edition.";
+export const coinAccessButton = "Collect Virtual Collectibles!";
+export const coinAccessBanner = "/images/content-banner.png";
 
 // coin form
 export const coinFormSupply = "Supply";
@@ -141,18 +148,8 @@ export const coinFormKirim = "Claiming your Point Reward.";
 export const coinFormSukses = "Point Reward successfully claimed.";
 export const coinFormPerWallet = "supply per owner.";
 
-// buram.tsx
-export const tokenNumber = "0";
-
-// access message fts
-export const accessMessage2 =
-  "Please get your access by collecting any Virtual Collectibles at least one edition.";
-export const collectButton = "Collect Virtual Collectibles!";
-export const contentBanner = "/images/content-banner.png";
-
 // claim free coin fts
 export const loginFirst = "Please log in first.";
-export const accessMessage1 = "You don't have access!";
 
 // bon dosh modal fts
 export const bonTitle = "$BON Dosh!!!!";
@@ -320,10 +317,8 @@ export const linkWhatsApp =
 
 // colors hex libraries
 export const colorPrimary = "#F9F9F9"; // Terang
-export const colorSecondary = "#707070"; // Abu2 Gelap
-// export const colorSecondary = "#171717"; // Gelap
+export const colorSecondary = "#262525"; // Gelap XXX
 export const colorAccent = "#171717"; // Gelap
-// export const colorAccent = "#F36823"; // Oranye Terang
 export const colorBoxIcon = "#F0F0F0"; // Terang Dikit
 export const colorIcon = "#707070"; // Abu2 Gelap
 export const colorBorder = "#DFDFDF"; // Abu2 Terang

@@ -6,8 +6,8 @@
 import React from "react";
 
 // Components libraries
-import NFTDetails from "@/components/nfts/NFTDetails";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
+import NFTDetails from "@/components/nfts/NFTDetails";
 
 const PageNFT: React.FC = () => (
   <DynamicLoginPage ContentComponent={() => <NFTDetails />} />

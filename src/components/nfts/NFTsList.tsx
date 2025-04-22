@@ -22,6 +22,7 @@ import { erc1155Launched } from "@/config/contracts";
 import {
   colorPrimary,
   colorSecondary,
+  loaderChecking,
   nftsConsoleWarn,
   nftsError,
   nftsFailReason,
@@ -36,7 +37,6 @@ import {
   nftsTitle2Free,
   nftsTitle2Paid,
   nftsUknownError,
-  loaderChecking,
 } from "@/config/myreceipt";
 
 // Components libraries

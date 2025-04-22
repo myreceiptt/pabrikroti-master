@@ -18,11 +18,13 @@ import {
 import hexToRgba, {
   anchorPrivacy,
   anchorTerms,
+  colorAccent,
+  colorBorder,
+  colorPrimary,
+  colorSecondary,
   copyRight,
   entityAlias1,
-  colorAccent,
   footerPower,
-  colorPrimary,
   linkEmail,
   linkInstagram,
   linkLinkedIn,
@@ -32,8 +34,6 @@ import hexToRgba, {
   officiallyLicensed,
   poweredBy,
   socialTitle,
-  colorSecondary,
-  colorBorder,
 } from "@/config/myreceipt";
 
 // Components libraries
@@ -62,7 +62,7 @@ const Footer: React.FC = () => {
               target="_blank"
               style={{
                 color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 0.5),
+                backgroundColor: hexToRgba(colorSecondary, 1.0),
               }}
               className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
               <FaLinkedin />
@@ -72,7 +72,7 @@ const Footer: React.FC = () => {
               target="_blank"
               style={{
                 color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 0.5),
+                backgroundColor: hexToRgba(colorSecondary, 1.0),
               }}
               className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
               <FaInstagram />
@@ -82,7 +82,7 @@ const Footer: React.FC = () => {
               target="_blank"
               style={{
                 color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 0.5),
+                backgroundColor: hexToRgba(colorSecondary, 1.0),
               }}
               className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
               <FaYoutube />
@@ -92,7 +92,7 @@ const Footer: React.FC = () => {
               target="_blank"
               style={{
                 color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 0.5),
+                backgroundColor: hexToRgba(colorSecondary, 1.0),
               }}
               className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
               <FaEnvelope />
@@ -102,7 +102,7 @@ const Footer: React.FC = () => {
               target="_blank"
               style={{
                 color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 0.5),
+                backgroundColor: hexToRgba(colorSecondary, 1.0),
               }}
               className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
               <FaWhatsapp />

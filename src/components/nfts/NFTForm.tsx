@@ -27,10 +27,6 @@ import {
   nftButton,
   nftClaimed,
   nftClosed,
-  nftListerImage,
-  nftInsufficient,
-  nftListerName,
-  nftSoon,
   nftFormBy,
   nftFormByLink,
   nftFormByName,
@@ -39,10 +35,14 @@ import {
   nftFormMax,
   nftFormOwned,
   nftFormPerWallet,
+  nftFormPrice,
   nftFormRefresh,
   nftFormSukses,
   nftFormTunggu,
-  nftFormPrice,
+  nftInsufficient,
+  nftListerImage,
+  nftListerName,
+  nftSoon,
 } from "@/config/myreceipt";
 import { getCountdownString } from "@/config/utils";
 
