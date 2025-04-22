@@ -9,6 +9,8 @@ export const proTitle = "Bukhari Islamic Art Gallery";
 export const proDescription =
   "Bukhari Islamic Art Gallery in Harmoni Istiqlal.";
 export const proUrl = "https://bukhari.voyage.co.id";
+export const proPublisher = "VOYAGE.CO.ID";
+export const proLocale = "en-US";
 export const proImage = "https://bukhari.voyage.co.id/preview-image.png";
 
 // error boundary

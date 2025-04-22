@@ -8,10 +8,10 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Chain, getContract } from "thirdweb";
 import {
   canClaim,
+  decimals,
   getActiveClaimCondition,
   totalSupply,
 } from "thirdweb/extensions/erc20";
-import { decimals } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 

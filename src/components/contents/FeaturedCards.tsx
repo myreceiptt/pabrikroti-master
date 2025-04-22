@@ -1,8 +1,8 @@
 // /src/components/contents/FeaturedCards.tsx
 
 // External libraries
-import Link from "next/link";
 import Image from "next/image";
+import Link from "next/link";
 
 // Blockchain configurations
 import {

@@ -7,7 +7,7 @@
   "license": "MIT",
   "receipt": {
     "codename": "hi-bukhari",
-    "maintainer": "VOYAGE.CO.ID"
+    "publisher": "VOYAGE.CO.ID"
   },
   "homepage": "https://nota.endhonesa.com/profile/breads",
   "keywords": [
@@ -19,7 +19,8 @@
     "nft",
     "crypto",
     "token",
-    "dapp"
+    "dapp",
+    "prof. nota inc."
   ],
   "scripts": {
     "dev": "next dev --turbopack",
