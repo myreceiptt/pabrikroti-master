@@ -79,7 +79,7 @@ type SupportedNFTs = {
 
 // Define `tekeks` (NFTs) with the proper type - Tentukan satu atau lebih dari daftar NFT sesuai rantainya
 export const tekeks: SupportedNFTs = {
-  [baseMainnet.id]: [addressErc1155BukhariOD, addressErc1155MeMoRa1],
+  [baseMainnet.id]: [addressErc1155MeMoRa1, addressErc1155BukhariOD],
   [baseSepolia.id]: [addressErc1155TryError, addressErc1155MeMoRa0],
 };
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
