@@ -7,10 +7,17 @@ import { ThirdwebProvider } from "thirdweb/react";
 import { Analytics } from "@vercel/analytics/react";
 
 // Blockchain configurations
-import { proTitle, proDescription, proUrl, proImage } from "@/config/myreceipt";
+import {
+  proDescription,
+  proImage,
+  proLocale,
+  proPublisher,
+  proTitle,
+  proUrl,
+} from "@/config/myreceipt";
 
 // CSS Styling
-import "./globals.css";
+import "@/globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,8 +29,8 @@ export const metadata: Metadata = {
     { name: "MyReceipt", url: "https://myreceipt.endhonesa.com" },
     { name: "Prof. NOTA", url: "https://nota.endhonesa.com" },
   ],
-  creator: "MyReceipt and Friends",
-  publisher: "Voyage.co.id",
+  creator: "MyReceipt and Prof. NOTA Inc.",
+  publisher: proPublisher,
   alternates: {
     canonical: "/",
   },
@@ -32,7 +39,7 @@ export const metadata: Metadata = {
     description: proDescription, // Description
     url: proUrl, // Base URL
     siteName: proTitle, // Title
-    locale: "en-US",
+    locale: proLocale,
     images: [
       {
         url: proImage, // Preview Image URL
