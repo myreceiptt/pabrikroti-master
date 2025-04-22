@@ -17,7 +17,7 @@ import {
 } from "@/config/myreceipt";
 
 // CSS Styling
-import "@/globals.css";
+import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
 
