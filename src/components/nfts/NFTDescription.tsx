@@ -9,8 +9,8 @@ import {
   colorIcon,
   colorSecondary,
   nftEndhonesa,
-  nftReadLess,
   nftMeMoRa,
+  nftReadLess,
   nftReadMore,
 } from "@/config/myreceipt";
 

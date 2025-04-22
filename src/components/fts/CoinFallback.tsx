@@ -6,7 +6,11 @@
 import React from "react";
 
 // Blockchain configurations
-import { coinFallMessage1, coinFallMessage2, nftFallMessage3 } from "@/config/myreceipt";
+import {
+  coinFallMessage1,
+  coinFallMessage2,
+  nftFallMessage3,
+} from "@/config/myreceipt";
 
 // Components libraries
 import Message from "@/components/sections/ReusableMessage";

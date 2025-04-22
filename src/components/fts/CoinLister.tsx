@@ -15,19 +15,19 @@ import { client } from "@/config/client";
 import {
   coinButton,
   coinClaimed,
+  coinListerImage,
+  coinListerName,
   coinNoAccess,
+  coinOf,
   coinSupply,
   colorBorder,
   colorIcon,
   colorPrimary,
   colorSecondary,
+  loaderChecking,
   nftClosed,
   nftInsufficient,
   nftSoon,
-  loaderChecking,
-  coinOf,
-  coinListerImage,
-  coinListerName,
 } from "@/config/myreceipt";
 import { getCountdownString } from "@/config/utils";
 

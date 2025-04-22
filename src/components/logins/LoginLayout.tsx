@@ -7,18 +7,18 @@ import React from "react";
 
 // Blockchain configurations
 import {
-  loginArt,
-  loginBanner,
+  colorIcon,
+  colorSecondary,
   linkPower,
   loginAgreement,
+  loginArt,
+  loginBanner,
   loginCall,
   loginPower,
   loginReason,
   loginTermsPolicy,
   poweredBy,
   proTitle,
-  colorSecondary,
-  colorIcon,
 } from "@/config/myreceipt";
 
 const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (

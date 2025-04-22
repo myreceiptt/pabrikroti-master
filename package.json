@@ -1,12 +1,32 @@
 {
-  "name": "memora",
-  "version": "0.1.11",
+  "name": "pabrik-roti",
+  "version": "1.3.1",
   "private": true,
+  "description": "The Breads Factory is a factory that produces Programmed Bread (tokenized assets) with a Framework of Playing, Learning, and Working or PLW. Here's what's trying to be provided and built in...",
+  "author": "Prof. NOTA",
+  "license": "MIT",
+  "receipt": {
+    "codename": "hi-bukhari",
+    "maintainer": "VOYAGE.CO.ID"
+  },
+  "homepage": "https://nota.endhonesa.com/profile/breads",
+  "keywords": [
+    "nextjs",
+    "typescript",
+    "tailwind",
+    "web3",
+    "blockchain",
+    "nft",
+    "crypto",
+    "token",
+    "dapp"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
@@ -28,5 +48,9 @@
     "postcss": "^8.5.3",
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=22.14.0",
+    "yarn": ">=1.22.0"
   }
 }

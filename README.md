@@ -1,4 +1,4 @@
-PABRIK ROTI: Staging MeMoRa Alpha
+PABRIK ROTI: Staging MeMoRa by Bukhari Creative Group
 
 ## Usage
 

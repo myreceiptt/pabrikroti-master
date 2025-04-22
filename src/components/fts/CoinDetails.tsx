@@ -19,18 +19,20 @@ import { getWalletBalance } from "thirdweb/wallets";
 import CheckErc1155 from "@/config/checker";
 import { erc20ContractsLaunched } from "@/config/contracts";
 import {
-  nftsMessage3,
-  loaderChecking,
+  coinAccessMessage1,
   coinMessage1,
-  nftsFailReason,
-  coinsConsoleWarn,
-  coinSetError,
-  nftsError,
-  nftsUknownError,
   coinMessage2,
+  coinSetError,
+  coinsConsoleWarn,
+  loaderChecking,
+  nftsError,
+  nftsFailReason,
+  nftsMessage3,
+  nftsUknownError,
 } from "@/config/myreceipt";
 
 // Components libraries
+import CoinAccess from "@/components/fts/CoinAccess";
 import CoinForm from "@/components/fts/CoinForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
@@ -270,6 +272,7 @@ const CoinDetails: React.FC = () => {
 
   return (
     <main className="grid gap-4 place-items-center">
+      {/* Step 1: Check Access */}
       {activeAccount?.address && (
         <CheckErc1155
           key={refreshToken}
@@ -277,7 +280,20 @@ const CoinDetails: React.FC = () => {
           onAccessChange={setHasAccess}
         />
       )}
-      {coin && (
+
+      {/* Step 2: Access is being checked */}
+      {hasAccess === null && <Loader message={loaderChecking} />}
+
+      {/* Step 3: Access denied */}
+      {hasAccess === false && (
+        <CoinAccess
+          onRedirect={() => router.push("/")}
+          message={coinAccessMessage1}
+        />
+      )}
+
+      {/* Step 4: Access granted → Render CoinForm */}
+      {hasAccess === true && coin && (
         <CoinForm
           hasAccess={hasAccess}
           setRefreshToken={setRefreshToken}

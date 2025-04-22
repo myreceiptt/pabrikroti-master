@@ -17,16 +17,16 @@ import {
   colorIcon,
   colorPrimary,
   colorSecondary,
+  loaderChecking,
   nftButton,
   nftClaimed,
   nftClosed,
-  nftListerImage,
+  nftEditions,
   nftInsufficient,
+  nftListerImage,
   nftListerName,
   nftNoData,
-  nftEditions,
   nftSoon,
-  loaderChecking,
 } from "@/config/myreceipt";
 import { getCountdownString } from "@/config/utils";
 

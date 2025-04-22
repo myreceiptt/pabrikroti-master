@@ -5,10 +5,11 @@
  */
 
 // app metadata
-export const proTitle = "MEMORA VIRTUAL COLLECTIBLES";
-export const proDescription = `MeMoRa means "to remember" or "to be mindful of". MeMoRa refers to something that serves as a reminder or is used for remembering. So, commemorate your memorabilia experiences today with a unique virtual collectible by MeMoRa.`;
-export const proUrl = "https://memora.voyage.co.id";
-export const proImage = "https://memora.voyage.co.id/preview-image.png";
+export const proTitle = "Bukhari Islamic Art Gallery";
+export const proDescription =
+  "Bukhari Islamic Art Gallery in Harmoni Istiqlal.";
+export const proUrl = "https://bukhari.voyage.co.id";
+export const proImage = "https://bukhari.voyage.co.id/preview-image.png";
 
 // error boundary
 export const proErrorCought = "Error caught in ErrorBoundary:";
@@ -22,7 +23,7 @@ export const loginArt = "/images/login-art.png";
 export const loginBanner = "/images/login-banner.png";
 export const loginCall = "Get Ready!";
 export const loginReason =
-  "Register now to immerse yourself in MeMoRa Experience!";
+  "Register Now to Immerse Yourself in Bukhari Islamic Art Digital Experience!";
 export const loginAgreement = "By connecting, you agree to the";
 export const loginTermsPolicy = "Terms of Service & Privacy Policy";
 export const loginPower = "/images/login-power.png";
@@ -31,8 +32,8 @@ export const loginPower = "/images/login-power.png";
 export const headerLogo = "/images/header-logo.png";
 
 // featured cards
-export const featuredTitle1 = "MEMORA VIRTUAL";
-export const featuredTitle2 = "COLLECTIBLES";
+export const featuredTitle1 = "Bukhari Islamic Art";
+export const featuredTitle2 = "Virtual Gallery";
 export const featuredPaid = "/images/featured-paid.png";
 export const paidTitle = "Paid Virtual Collectible";
 export const featuredFree = "/images/featured-free.png";
@@ -44,9 +45,9 @@ export const coinTitle = "Claim Points Reward";
 export const loaderChecking = "Loading..."; // nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
 // nfts list
-export const nftsTitle1Free = "All Free";
+export const nftsTitle1Free = "Freemium";
 export const nftsTitle2Free = "Virtual Collectibles";
-export const nftsTitle1Paid = "All Paid";
+export const nftsTitle1Paid = "Exclusive";
 export const nftsTitle2Paid = "Virtual Collectibles";
 export const nftsFailReason = "ClaimNotActive"; // nft details, coins list, coin details,
 export const nftsConsoleWarn = "canClaim failed for nftId"; // nft details,
@@ -66,7 +67,7 @@ export const nftSoon = "Available in:"; // nft form, coin lister, coin form,
 export const nftInsufficient = "Insufficient Balance"; // nft form, coin lister, coin form,
 export const nftClaimed = "Collected"; // nft form,
 export const nftClosed = "Closed"; // nft form, coin lister, coin form,
-export const nftListerImage = "/medias/virtual-collectible.png"; // nft form,
+export const nftListerImage = "/medias/virtual-collectible.gif"; // nft form,
 export const nftListerName = "A Virtual Collectible"; // nft form,
 export const nftEditions = "Edition:";
 export const nftNoData = "No data available.";
@@ -84,9 +85,9 @@ export const nftMessage2 =
   "The specified collectible ID was not found. Please try again later or go back to Home Page.";
 
 // nft form
-export const nftFormByLink = "https://voyage.co.id/";
+export const nftFormByLink = "https://bukharicreative.group/";
 export const nftFormBy = "by"; // coin form,
-export const nftFormByName = "VOYAGE.CO.ID";
+export const nftFormByName = "Bukhari Creative Group";
 export const nftFormEdition = "Edition";
 export const nftFormOwned = "Owned"; // coin form,
 export const nftFormRefresh = "Refresh"; // coin form,
@@ -133,6 +134,13 @@ export const coinSetError = "Failed to fetch the point.";
 export const coinMessage1 = "The point not found.";
 export const coinMessage2 =
   "The specified point address was not found. Please try again later or go back to Home Page.";
+export const coinAccessMessage1 = "You don't have access!";
+
+// coin access
+export const coinAccessMessage2 =
+  "Please get your access by collecting any Virtual Collectibles at least one edition.";
+export const coinAccessButton = "Collect Virtual Collectibles!";
+export const coinAccessBanner = "/images/content-banner.png";
 
 // coin form
 export const coinFormSupply = "Supply";
@@ -140,18 +148,8 @@ export const coinFormKirim = "Claiming your Point Reward.";
 export const coinFormSukses = "Point Reward successfully claimed.";
 export const coinFormPerWallet = "supply per owner.";
 
-// buram.tsx
-export const tokenNumber = "0";
-
-// access message fts
-export const accessMessage2 =
-  "Please get your access by collecting any Virtual Collectibles at least one edition.";
-export const collectButton = "Collect Virtual Collectibles!";
-export const contentBanner = "/images/content-banner.png";
-
 // claim free coin fts
 export const loginFirst = "Please log in first.";
-export const accessMessage1 = "You don't have access!";
 
 // bon dosh modal fts
 export const bonTitle = "$BON Dosh!!!!";
@@ -182,14 +180,14 @@ export const bonImageAlt = "BON VOYAGE Token Illustration";
 // free coin form fts
 
 // terms page
-export const entityName = "LabX X Voyage";
-export const entityAlias1 = "LabX"; // footer section
+export const entityName = "Bukhari Creative Group (BCG) X Voyage";
+export const entityAlias1 = "Bukhari Creative Group"; // footer section
 export const entityAlias2 = "Voyage";
 export const entityAddress =
   "Jl. Kartika Utama Blok SM No. 29, Pd. Pinang, Kec. Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12310, INDONESIA"; // nulled
 export const entityEmail = "hello@voyage.co.id";
 export const termsTitle = "T and C of Use";
-export const termsMonth = "March";
+export const termsMonth = "Februray";
 export const termsDate = "20";
 export const termsYear = "2025";
 export const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
@@ -319,8 +317,8 @@ export const linkWhatsApp =
 
 // colors hex libraries
 export const colorPrimary = "#F9F9F9"; // Terang
-export const colorSecondary = "#171717"; // Gelap
-export const colorAccent = "#F36823"; // Oranye Terang
+export const colorSecondary = "#262525"; // Gelap XXX
+export const colorAccent = "#171717"; // Gelap
 export const colorBoxIcon = "#F0F0F0"; // Terang Dikit
 export const colorIcon = "#707070"; // Abu2 Gelap
 export const colorBorder = "#DFDFDF"; // Abu2 Terang

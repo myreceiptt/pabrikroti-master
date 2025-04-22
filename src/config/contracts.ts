@@ -85,7 +85,7 @@ export const tekeks: SupportedNFTs = {
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // Launched NFT contracts - Pilih satu dari daftar NFT untuk digunakan
-const addressErc1155Launched = addressErc1155MeMoRa1;
+const addressErc1155Launched = addressErc1155BukhariOD;
 export const erc1155Launched = getContract({
   address: addressErc1155Launched,
   chain: baseMainnet,
