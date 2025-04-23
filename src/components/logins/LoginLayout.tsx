@@ -22,7 +22,7 @@ import {
 } from "@/config/myreceipt";
 
 const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <div className="w-full h-screen grid grid-cols-1 md:grid-cols-2">
+  <div className="w-full grid grid-cols-1 md:grid-cols-2">
     <div className="w-full relative hidden md:block overflow-hidden">
       <Image
         src={loginArt}
