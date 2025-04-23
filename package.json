@@ -1,32 +1,57 @@
 {
-  "name": "labx-voyage",
-  "version": "1.1.1",
+  "name": "pabrik-roti",
+  "version": "1.3.1",
   "private": true,
+  "description": "The Breads Factory is a factory that produces Programmed Bread (tokenized assets) with a Framework of Playing, Learning, and Working or PLW. Here's what's trying to be provided and built in...",
+  "author": "Prof. NOTA",
+  "license": "MIT",
+  "receipt": {
+    "codename": "hi-bukhari",
+    "publisher": "VOYAGE.CO.ID"
+  },
+  "homepage": "https://nota.endhonesa.com/profile/breads",
+  "keywords": [
+    "nextjs",
+    "typescript",
+    "tailwind",
+    "web3",
+    "blockchain",
+    "nft",
+    "crypto",
+    "token",
+    "dapp",
+    "prof. nota inc."
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --write ."
   },
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
-    "framer-motion": "^12.5.0",
-    "next": "15.2.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "framer-motion": "^12.7.4",
+    "next": "15.3.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "thirdweb": "^5.93.4"
+    "thirdweb": "^5.95.2"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
-    "@tailwindcss/postcss": "^4.0.15",
-    "@types/node": "^22.13.13",
-    "@types/react": "^19.0.12",
-    "@types/react-dom": "^19.0.4",
-    "eslint": "^9.23.0",
-    "eslint-config-next": "15.2.3",
+    "@tailwindcss/postcss": "^4.1.4",
+    "@types/node": "^22.14.1",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "eslint": "^9.25.1",
+    "eslint-config-next": "15.3.1",
     "postcss": "^8.5.3",
-    "tailwindcss": "^4.0.15",
-    "typescript": "^5.8.2"
+    "tailwindcss": "^4.1.4",
+    "typescript": "^5.8.3"
+  },
+  "engines": {
+    "node": ">=22.14.0",
+    "yarn": ">=1.22.0"
   }
 }

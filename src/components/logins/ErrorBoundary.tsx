@@ -3,6 +3,9 @@
 // External libraries
 import React from "react";
 
+// Blockchain configurations
+import { colorAccent, proError, proErrorCought } from "@/config/myreceipt";
+
 type ErrorBoundaryProps = {
   children: React.ReactNode;
 };
@@ -25,15 +28,17 @@ export class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error("Error caught in ErrorBoundary:", error, errorInfo);
+    console.error(proErrorCought, error, errorInfo);
   }
 
   render() {
     if (this.state.hasError) {
       return (
         <div className="flex justify-center items-center h-screen">
-          <h2 className="text-left text-sm font-medium text-icon-wording">
-            Something went wrong. Please try again later.
+          <h2
+            style={{ color: colorAccent }}
+            className="text-left text-sm font-medium">
+            {proError}
           </h2>
         </div>
       );

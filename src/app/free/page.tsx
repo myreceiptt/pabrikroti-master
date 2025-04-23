@@ -6,11 +6,11 @@
 import React from "react";
 
 // Components libraries
-import FreeClaim from "@/components/contents/FreeClaim";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
+import NFTsList from "@/components/nfts/NFTsList";
 
-const PageToken: React.FC = () => (
-  <DynamicLoginPage ContentComponent={() => <FreeClaim />} />
+const PageFree: React.FC = () => (
+  <DynamicLoginPage ContentComponent={() => <NFTsList variant="free" />} />
 );
 
-export default PageToken;
+export default PageFree;

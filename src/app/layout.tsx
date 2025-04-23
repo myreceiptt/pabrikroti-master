@@ -8,11 +8,13 @@ import { Analytics } from "@vercel/analytics/react";
 
 // Blockchain configurations
 import {
-  titlePro,
-  descriptionPro,
-  baseUrl,
-  previewImage,
-} from "@/config/osloid";
+  proDescription,
+  proImage,
+  proLocale,
+  proPublisher,
+  proTitle,
+  proUrl,
+} from "@/config/myreceipt";
 
 // CSS Styling
 import "./globals.css";
@@ -20,30 +22,30 @@ import "./globals.css";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
-  title: titlePro, // Title
-  description: descriptionPro, // Description
-  metadataBase: new URL(baseUrl), // Base URL
+  title: proTitle, // Title
+  description: proDescription, // Description
+  metadataBase: new URL(proUrl), // Base URL
   authors: [
     { name: "MyReceipt", url: "https://myreceipt.endhonesa.com" },
     { name: "Prof. NOTA", url: "https://nota.endhonesa.com" },
   ],
-  creator: "MyReceipt and Friends",
-  publisher: "Voyage.co.id",
+  creator: "MyReceipt and Prof. NOTA Inc.",
+  publisher: proPublisher,
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: titlePro, // Title
-    description: descriptionPro, // Description
-    url: baseUrl, // Base URL
-    siteName: titlePro, // Title
-    locale: "en-US",
+    title: proTitle, // Title
+    description: proDescription, // Description
+    url: proUrl, // Base URL
+    siteName: proTitle, // Title
+    locale: proLocale,
     images: [
       {
-        url: previewImage, // Preview Image URL
+        url: proImage, // Preview Image URL
         width: 1920,
         height: 1080,
-        alt: titlePro, // Title
+        alt: proTitle, // Title
       },
     ],
     type: "website",
@@ -53,10 +55,10 @@ export const metadata: Metadata = {
     siteId: "@MyReceiptTT",
     creator: "@MyReceiptTT",
     creatorId: "@MyReceiptTT",
-    title: titlePro, // Title
-    description: descriptionPro, // Description
+    title: proTitle, // Title
+    description: proDescription, // Description
     images: [
-      previewImage, // Preview Image URL
+      proImage, // Preview Image URL
     ],
   },
 };
