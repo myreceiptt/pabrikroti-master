@@ -53,8 +53,15 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
         </h1>
         <h2
           style={{ color: colorSecondary }}
-          className="flex text-left text-sm lg:text-base xl:text-lg font-normal tracking-tighter justify-start align-middle">
-          {loginReason}
+          className="flex flex-wrap text-left text-sm lg:text-base xl:text-lg font-normal tracking-tighter justify-start items-center">
+          {loginReason.text}
+          <Link
+            href={loginReason.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline hover:underline transition-all duration-200">
+            {loginReason.anchor}
+          </Link>
         </h2>
       </div>
       <div className="w-full h-auto flex flex-col gap-4 justify-start items-start">

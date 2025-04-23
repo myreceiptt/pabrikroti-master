@@ -5,13 +5,13 @@
  */
 
 // app metadata
-export const proTitle = "Bukhari Islamic Art Gallery";
+export const proTitle = "Breads Factory";
 export const proDescription =
-  "Bukhari Islamic Art Gallery in Harmoni Istiqlal.";
-export const proUrl = "https://bukhari.voyage.co.id";
-export const proPublisher = "VOYAGE.CO.ID";
+  "The Breads Factory is a factory that produces Programmed Bread (tokenized assets) with a Framework of Playing, Learning, and Working or PLW.";
+export const proUrl = "https://pabrikroti.endhonesa.com";
+export const proPublisher = "Prof. NOTA Inc.";
 export const proLocale = "en-US";
-export const proImage = "https://bukhari.voyage.co.id/preview-image.png";
+export const proImage = "https://pabrikroti.endhonesa.com/preview-image.png";
 
 // error boundary
 export const proErrorCought = "Error caught in ErrorBoundary:";
@@ -23,9 +23,12 @@ export const proLogo = "/logos/logo.png";
 // login layout
 export const loginArt = "/images/login-art.png";
 export const loginBanner = "/images/login-banner.png";
-export const loginCall = "Get Ready!";
-export const loginReason =
-  "Register Now to Immerse Yourself in Bukhari Islamic Art Digital Experience!";
+export const loginCall = "In The Breads Factory...";
+export const loginReason = {
+  text: "many kinds of Bread were Designed, Produced, Programmed, also Distributed",
+  anchor: "...",
+  link: "https://nota.endhonesa.com/profile/breads",
+};
 export const loginAgreement = "By connecting, you agree to the";
 export const loginTermsPolicy = "Terms of Service & Privacy Policy";
 export const loginPower = "/images/login-power.png";

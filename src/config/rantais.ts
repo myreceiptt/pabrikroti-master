@@ -7,6 +7,7 @@ import {
   base,
   baseSepolia as baseTestnet,
   ethereum,
+  mode,
   optimism,
   zora,
 } from "thirdweb/chains";
@@ -21,12 +22,21 @@ export const baseMainnet = base; // Base Mainnet
 export const baseSepolia = baseTestnet; // Base Sepolia Testnet
 // export const baseSepolia = defineChain(84532); // Base Sepolia Testnet
 
+export const bobBitcoin = defineChain(60808); // BOB (Buitl On Bitcoin)
+
 export const customChain = defineChain(0.001); // Not exist. Don't actually use this!
 
 export const ethereumEvm = ethereum; // Ethereum Mainnet
 // export const ethereumEvm = defineChain(1); // Ethereum Mainnet
 
 export const humanityTest = defineChain(1942999413); // Humanity Testnet
+
+export const inkChain = defineChain(57073); // Ink On Chain
+
+export const mintChain = defineChain(185); // Mint Blockchain
+
+export const modeNetwork = mode; // Mode Network
+// export const modeNetwork = defineChain(34443); // Mode Network
 
 export const monadTestnet = defineChain(10143); // Monad Testnet
 
@@ -35,9 +45,17 @@ export const opMainnet = optimism; // OP Mainnet
 
 export const shapeNetwork = defineChain(360); // Shape Network
 
+export const soneiumMainnet = defineChain(1868); // Soneium Mainnet
+
+export const superseedChain = defineChain(5330); // Superseed Blockchain
+
+export const unichainBlock = defineChain(130); // Unichain Blockchain
+
+export const worldChain = defineChain(480); // World Chain
+
 export const zoraMainnet = zora; // Zora Mainnet
 // export const zoraMainnet = defineChain(7777777); // Zora Mainnet
 
 // All chain and chains combinations - Tentukan Dulu Rantainya.
 export const chain = baseMainnet; // Default Chain
-export const chains = [baseMainnet, baseSepolia]; // Supported Chains
+export const chains = [baseMainnet, baseSepolia, monadTestnet, shapeNetwork]; // Supported Chains
