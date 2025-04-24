@@ -11,7 +11,7 @@ import {
   canClaim,
   decimals,
   getActiveClaimCondition,
-  totalSupply,
+  // totalSupply,
 } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
@@ -89,12 +89,12 @@ const CoinsList: React.FC = () => {
           const coinDecimals = await decimals({ contract: erc20Contract });
 
           // Fetch coin supply
-          const coinSupply = await totalSupply({
-            contract: erc20Contract,
-          });
+          // const coinSupply = await totalSupply({
+          // contract: erc20Contract,
+          // });
 
           // Adjust coin supply
-          const adjustedSupply = Number(coinSupply) / 10 ** coinDecimals;
+          // const adjustedSupply = Number(coinSupply) / 10 ** coinDecimals;
 
           // Fetch claim condition
           const claimCondition = await getActiveClaimCondition({
@@ -103,6 +103,10 @@ const CoinsList: React.FC = () => {
 
           if (!claimCondition || claimCondition.pricePerToken === undefined)
             return null;
+
+          // Fetch coin supply based on claim condition
+          const adjustedSupply =
+            Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
 
           // Fetch and adjust max. claim
           const adjustedMaxClaim =

@@ -49,6 +49,9 @@ export const erc1155MeMoRa0 = getContract({
   client,
 });
 
+// NFT contracts BOB (Buitl On Bitcoin)
+// ...
+
 // NFT contracts Custom Chain
 // ...
 
@@ -58,6 +61,15 @@ export const erc1155MeMoRa0 = getContract({
 // NFT contracts Humanity Testnet
 // ...
 
+// NFT contracts Ink On Chain
+// ...
+
+// NFT contracts Mint Blockchain
+// ...
+
+// NFT contracts Mode Network
+// ...
+
 // NFT contracts Monad Testnet
 // ...
 
@@ -65,6 +77,18 @@ export const erc1155MeMoRa0 = getContract({
 // ...
 
 // NFT contracts on Shape Network
+// ...
+
+// NFT contracts on Soneium Mainnet
+// ...
+
+// NFT contracts on Superseed Blockchain
+// ...
+
+// NFT contracts on Unichain Blockchain
+// ...
+
+// NFT contracts on World Chain
 // ...
 
 // NFT contracts Zora Mainnet
