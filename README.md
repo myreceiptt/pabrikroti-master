@@ -1,5 +1,18 @@
 PABRIK ROTI: Staging NFT Indonesia by Ngelaras Roso!
 
+## 📜 License
+
+This project is licensed under a **Custom Limited License** by [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/).
+
+- 🏛️ [English (UK)](./LICENSE_UK.md)
+- 🇮🇩 [Bahasa Indonesia](./licenses/LICENSE_ID.md)
+- 🇺🇿 [Oʻzbekcha](./licenses/LICENSE_UZ.md)
+- 🇭🇰 [Cantonese – Hong Kong](./licenses/LICENSE_HK.md)
+- 🇲🇾 [Bahasa Malaysia](./licenses/LICENSE_MY.md)
+- 🇦🇪 [العربية – الإمارات](./licenses/LICENSE_AE.md)
+
+> 📩 For permission or inquiries, contact: [nota@endhonesa.com](mailto:nota@endhonesa.com)
+
 ## Usage
 
 ### Install dependencies

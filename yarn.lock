@@ -2703,13 +2703,13 @@ for-each@^0.3.3, for-each@^0.3.5:
   dependencies:
     is-callable "^1.2.7"
 
-framer-motion@^12.8.2:
-  version "12.8.2"
-  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.8.2.tgz#d006f28381b58fd68d86f7c7ecb2121a20c100a5"
-  integrity sha512-JCGFJPfVmvxL4rRJgCcVCnbzPniKj5N3Sa8XQ5/TQI1bN4PyVlKDHPWfWJ7AbnFuGm9IQvZysjk+ABFbkErCrA==
+framer-motion@^12.9.1:
+  version "12.9.1"
+  resolved "https://registry.yarnpkg.com/framer-motion/-/framer-motion-12.9.1.tgz#89f22079610b6656fbbaa7e9b498a5be75f7d623"
+  integrity sha512-dZBp2TO0a39Cc24opshlLoM0/OdTZVKzcXWuhntfwy2Qgz3t9+N4sTyUqNANyHaRFiJUWbwwsXeDvQkEBPky+g==
   dependencies:
-    motion-dom "^12.8.1"
-    motion-utils "^12.7.5"
+    motion-dom "^12.9.1"
+    motion-utils "^12.8.3"
     tslib "^2.4.0"
 
 function-bind@^1.1.2:
@@ -3525,17 +3525,17 @@ mipd@0.0.7:
   resolved "https://registry.yarnpkg.com/mipd/-/mipd-0.0.7.tgz#bb5559e21fa18dc3d9fe1c08902ef14b7ce32fd9"
   integrity sha512-aAPZPNDQ3uMTdKbuO2YmAw2TxLHO0moa4YKAyETM/DTj5FloZo+a+8tU+iv4GmW+sOxKLSRwcSFuczk+Cpt6fg==
 
-motion-dom@^12.8.1:
-  version "12.8.1"
-  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.8.1.tgz#8960a69c599f0254b2e2c7c528aedbf9af64f244"
-  integrity sha512-ap7SvhLzSaYiY7/YzPB/dXarHqjlABJRBXGvSr7S7Sk9bwnU5J9X8+WgS3uu4w5C+JD0Xh/qZkWoRYNDjNeesg==
+motion-dom@^12.9.1:
+  version "12.9.1"
+  resolved "https://registry.yarnpkg.com/motion-dom/-/motion-dom-12.9.1.tgz#1e128c7db7f98994a305933df3b11d47b7467085"
+  integrity sha512-xqXEwRLDYDTzOgXobSoWtytRtGlf7zdkRfFbrrdP7eojaGQZ5Go4OOKtgnx7uF8sAkfr1ZjMvbCJSCIT2h6fkQ==
   dependencies:
-    motion-utils "^12.7.5"
+    motion-utils "^12.8.3"
 
-motion-utils@^12.7.5:
-  version "12.7.5"
-  resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.7.5.tgz#d77df2c6e336540766d9927498e62571b81b66bd"
-  integrity sha512-JIgrmEq7Vw1x0AUrjvkRp7oMMQkGqSUMT50O/Ag6RRCQWG3gRRTkOI+BirBAJT6m+GIPoiyxkJ1u98GgF/a6TQ==
+motion-utils@^12.8.3:
+  version "12.8.3"
+  resolved "https://registry.yarnpkg.com/motion-utils/-/motion-utils-12.8.3.tgz#d72bd9712574266088f0903f69466a9d3ad206c4"
+  integrity sha512-GYVauZEbca8/zOhEiYOY9/uJeedYQld6co/GJFKOy//0c/4lDqk0zB549sBYqqV2iMuX+uHrY1E5zd8A2L+1Lw==
 
 motion@10.16.2:
   version "10.16.2"
