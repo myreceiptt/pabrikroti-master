@@ -240,17 +240,12 @@ const CoinForm: React.FC<CoinFormProps> = ({
         {pesanSukses && <Loader message={pesanSukses} />}
         {pesanGagal && <Loader message={pesanGagal} />}
 
-        {/* NFT Info */}
-        <div className="w-full grid grid-cols-12">
-          <h2
-            style={{ color: colorIcon }}
-            className="col-span-4 text-left text-xs font-medium">
-            {nftFormPrice}
-          </h2>
+        {/* FT Info */}
+        <div className="w-full grid grid-cols-8">
           <h2
             style={{ color: colorIcon }}
             className="col-span-3 text-left text-xs font-medium">
-            {coinFormSupply}
+            {nftFormPrice}
           </h2>
           <h2
             style={{ color: colorIcon }}
@@ -265,16 +260,8 @@ const CoinForm: React.FC<CoinFormProps> = ({
 
           <h2
             style={{ color: colorSecondary }}
-            className="col-span-4 text-left text-base lg:text-md xl:text-xl font-semibold">
-            {formattedPrice}
-          </h2>
-          <h2
-            style={{ color: colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
-            <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
-              {formatNumberCompact(adjustedSupply)}/
-              {formatNumberCompact(adjustedMaxClaim)}
-            </span>
+            {formattedPrice}
           </h2>
           <h2
             style={{ color: colorSecondary }}
@@ -303,6 +290,23 @@ const CoinForm: React.FC<CoinFormProps> = ({
               <FaRotate className="text-base lg:text-md xl:text-xl font-semibold " />
             </motion.div>
           </button>
+        </div>
+
+        <div className="w-full grid grid-cols-8">
+          <h2
+            style={{ color: colorIcon }}
+            className="col-span-8 text-left text-xs font-medium">
+            {coinFormSupply}
+          </h2>
+
+          <h2
+            style={{ color: colorSecondary }}
+            className="col-span-8 text-left text-base lg:text-md xl:text-xl font-semibold">
+            <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
+              {formatNumberCompact(adjustedSupply)}/
+              {formatNumberCompact(adjustedMaxClaim)}
+            </span>
+          </h2>
         </div>
 
         {/* Claim Button */}
