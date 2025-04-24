@@ -10,7 +10,7 @@ import {
   canClaim,
   decimals,
   getActiveClaimCondition,
-  totalSupply,
+  // totalSupply,
 } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
