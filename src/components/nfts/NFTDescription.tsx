@@ -9,7 +9,9 @@ import {
   colorIcon,
   colorSecondary,
   nftEndhonesa,
+  nftEndhonesaTitle,
   nftMeMoRa,
+  nftMeMoRaTitle,
   nftReadLess,
   nftReadMore,
 } from "@/config/myreceipt";
@@ -64,28 +66,33 @@ const NFTDescription: React.FC<NFTDescriptionProps> = ({
         <div className="w-full flex flex-col items-end gap-2 mb-4">
           {isExpanded && (
             <>
-              <Link
-                href="#"
-                title={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${nftIdString}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: colorSecondary,
-                }}
-                className="text-xs font-medium hover:underline cursor-pointer">
-                {nftMeMoRa}
-              </Link>
-              <Link
-                href="#"
-                title={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${nftIdString}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: colorSecondary,
-                }}
-                className="text-xs font-medium hover:underline cursor-pointer">
-                {nftEndhonesa}
-              </Link>
+              {nftMeMoRaTitle && (
+                <Link
+                  href={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${nftIdString}`}
+                  title={nftMeMoRaTitle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: colorSecondary,
+                  }}
+                  className="text-xs font-medium hover:underline cursor-pointer">
+                  {nftMeMoRa}
+                </Link>
+              )}
+
+              {nftEndhonesaTitle && (
+                <Link
+                  href={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${nftIdString}`}
+                  title={nftEndhonesaTitle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: colorSecondary,
+                  }}
+                  className="text-xs font-medium hover:underline cursor-pointer">
+                  {nftEndhonesa}
+                </Link>
+              )}
             </>
           )}
 

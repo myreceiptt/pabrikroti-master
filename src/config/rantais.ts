@@ -57,6 +57,16 @@ export const zoraMainnet = zora; // Zora Mainnet
 // export const zoraMainnet = defineChain(7777777); // Zora Mainnet
 
 // All chain and chains combinations - Tentukan Dulu Rantainya.
+export const rotiChain = baseSepolia; // Default Chain
+export const rotiChains = [
+  baseMainnet,
+  baseSepolia,
+  monadTestnet,
+  shapeNetwork,
+]; // Supported Chains
+
+export const receiptChain = baseSepolia; // Default Chain
+export const receiptChains = [baseMainnet, baseSepolia]; // Supported Chains
+
 export const chain = baseSepolia; // Default Chain
-// export const chains = [baseMainnet, baseSepolia, monadTestnet, shapeNetwork]; // Supported Chains by Prof. NOTA Inc.
-export const chains = [baseMainnet, baseSepolia, monadTestnet]; // Supported Chains
+export const chains = [baseSepolia]; // Supported Chains

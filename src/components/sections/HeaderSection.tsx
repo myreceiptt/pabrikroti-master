@@ -17,9 +17,16 @@ export default function Header() {
       style={{ backgroundColor: colorPrimary }}
       className="w-full flex items-center justify-between py-4 px-4 md:px-20">
       {/* Logo Section */}
-      <div className="w-1/4 sm:w-1/6 flex justify-start">
+      <div className="w-1/2 flex justify-start">
         <Link href="/">
-          <Image src={headerLogo} alt={proTitle} width={144} height={75} />
+          <Image
+            src={headerLogo}
+            alt={proTitle}
+            width={2400}
+            height={400}
+            sizes="(max-width: 425px) 125vw, (max-width: 768px) 100vw, 50vw"
+            className="h-auto w-auto object-contain"
+          />
         </Link>
       </div>
 

@@ -29,7 +29,7 @@ const LoginLayout: React.FC<{ children: React.ReactNode }> = ({ children }) => (
         alt={proTitle}
         width={1080}
         height={1129}
-        className="absolute inset-0 w-full h-full object-cover object-right"
+        className="absolute inset-0 w-full h-full rounded-r-3xl object-cover object-right"
         priority
       />
     </div>

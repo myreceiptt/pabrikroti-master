@@ -13,20 +13,13 @@ export const accountFactoryVoyage =
   "0x186b1740d24bc028D220838796441441dc444f9A"; // BON VOYAGE
 
 // Factory address contract - pilih satu dari daftar factory untuk digunakan
-export const theAccountFactory = accountFactoryVoyage;
+export const theAccountFactory = accountFactoryNOTA;
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // NFT contracts Avalanche C-Chain
 // ...
 
 // NFT contracts Base Mainnet
-const addressErc1155BukhariOD = "0xc226653E9C043674a48C6b7Be33526771C34389A"; // Bukhari Open Door
-export const erc1155BukhariOD = getContract({
-  address: addressErc1155BukhariOD,
-  chain: baseMainnet,
-  client,
-});
-
 const addressErc1155MeMoRa1 = "0x1925B991C5e2eC45BA1f34786BAd405d58202140"; // MeMoRa One - Default
 export const erc1155MeMoRa1 = getContract({
   address: addressErc1155MeMoRa1,
@@ -103,16 +96,16 @@ type SupportedNFTs = {
 
 // Define `tekeks` (NFTs) with the proper type - Tentukan satu atau lebih dari daftar NFT sesuai rantainya
 export const tekeks: SupportedNFTs = {
-  [baseMainnet.id]: [addressErc1155MeMoRa1, addressErc1155BukhariOD],
-  [baseSepolia.id]: [addressErc1155TryError, addressErc1155MeMoRa0],
+  [baseMainnet.id]: [addressErc1155MeMoRa1],
+  [baseSepolia.id]: [addressErc1155TryError],
 };
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // Launched NFT contracts - Pilih satu dari daftar NFT untuk digunakan
-const addressErc1155Launched = addressErc1155BukhariOD;
+const addressErc1155Launched = addressErc1155TryError;
 export const erc1155Launched = getContract({
   address: addressErc1155Launched,
-  chain: baseMainnet,
+  chain: baseSepolia,
   client,
 });
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
@@ -121,20 +114,6 @@ export const erc1155Launched = getContract({
 // ...
 
 // FT contracts Base Mainnet
-const addressErc20PoinIGF = "0x2F2080A9EfcfF05B1175b0D613a61B992544AcE1"; // Poin Resmi IGF
-export const erc20OPoinIGF = getContract({
-  address: addressErc20PoinIGF,
-  chain: baseMainnet,
-  client,
-});
-
-const addressErc20PoinIstiqlal = "0x01460F06aC46aBc2185db9Fa529564798eEC33C3"; // Poin Masjid Istiqlal
-export const erc20OPoinIstiqlal = getContract({
-  address: addressErc20PoinIstiqlal,
-  chain: baseMainnet,
-  client,
-});
-
 const addressErc20OiOiBase = "0xba0032620d88D9b16752CbDE75593c080C3d38de"; // OiOi Token  - Default
 export const erc20OiOiBase = getContract({
   address: addressErc20OiOiBase,
@@ -180,6 +159,9 @@ export const erc20USDCBaseSepolia = getContract({
   client,
 });
 
+// FT contracts BOB (Buitl On Bitcoin)
+// ...
+
 // FT contracts Custom Chain
 // ...
 
@@ -187,6 +169,15 @@ export const erc20USDCBaseSepolia = getContract({
 // ...
 
 // FT contracts Humanity Testnet
+// ...
+
+// FT contracts Ink On Chain
+// ...
+
+// FT contracts Mint Blockchain
+// ...
+
+// FT contracts Mode Network
 // ...
 
 // FT contracts Monad Tesnet
@@ -201,21 +192,25 @@ export const erc20OiOiMonadTestnet = getContract({
 // FT contracts OP Mainnet
 // ...
 
-// NFT contracts on Shape Network
+// FT contracts on Shape Network
+// ...
+
+// FT contracts on Soneium Mainnet
+// ...
+
+// FT contracts on Superseed Blockchain
+// ...
+
+// FT contracts on Unichain Blockchain
+// ...
+
+// FT contracts on World Chain
 // ...
 
 // FT contracts Zora Mainnet
 // ...
 
 // All supported FTs
-const namePoinIGF = "Poin Resmi IGF"; // Poin IGF
-const symbolPoinIGF = "IGF"; // Poin IGF
-const iconPoinIGF = "/erc20-icons/igf.png"; // Poin IGF
-
-const namePoinIstiqlal = "Poin Masjid Istiqlal"; // Poin Masjid Istiqlal
-const symbolPoinIstiqlal = "PMI"; // Poin Masjid Istiqlal
-const iconPoinIstiqlal = "/erc20-icons/pmi.png"; // Poin Masjid Istiqlal
-
 const nameOiOiToken = "OiOi Token"; // OiOi Token
 const symbolOiOiToken = "OiOi"; // OiOi Token
 const iconOiOiToken = "/erc20-icons/oioi.png"; // OiOi Token
@@ -231,18 +226,6 @@ const iconUSDCoin = "/erc20-icons/usdc.png"; // USD Coin
 // Define `tokeks` (FTs) with the proper type - Tentukan satu atau lebih dari daftar FT sesuai rantainya
 export const tokeks = {
   [baseMainnet.id]: [
-    {
-      address: addressErc20PoinIGF,
-      name: namePoinIGF,
-      symbol: symbolPoinIGF,
-      icon: iconPoinIGF,
-    },
-    {
-      address: addressErc20PoinIstiqlal,
-      name: namePoinIstiqlal,
-      symbol: symbolPoinIstiqlal,
-      icon: iconPoinIstiqlal,
-    },
     {
       address: addressErc20BONBase,
       name: nameBONDosh,
@@ -283,8 +266,8 @@ export const tokeks = {
 
 // Displayed balance FTs - Tentukan satu dari daftar NFT sesuai rantainya
 export const displayedTekeks = {
-  [baseMainnet.id]: addressErc20BONBase,
-  [baseSepolia.id]: addressErc20BONBaseSepolia,
+  [baseMainnet.id]: addressErc20OiOiBase,
+  [baseSepolia.id]: addressErc20OiOiBaseSepolia,
   [monadTestnet.id]: addressErc20OiOiMonadTestnet,
 };
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
@@ -312,34 +295,14 @@ currencyMap["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] = {
 // Launched FT contracts - Tentukan satu atau lebih dari daftar FT sesuai rantainya untuk digunakan
 export const erc20ContractsLaunched = [
   {
-    address: addressErc20PoinIGF,
-    name: namePoinIGF,
-    symbol: symbolPoinIGF,
-    icon: iconPoinIGF,
-    by: "Istiqlal Global Fund",
-    link: "https://igf.or.id/",
-    chain: erc20OPoinIGF.chain,
-    client: erc20OPoinIGF.client,
-  },
-  {
-    address: addressErc20PoinIstiqlal,
-    name: namePoinIstiqlal,
-    symbol: symbolPoinIstiqlal,
-    icon: iconPoinIstiqlal,
-    by: "Badan Pengelola Masjid Istiqlal",
-    link: "https://istiqlal.or.id/",
-    chain: erc20OPoinIstiqlal.chain,
-    client: erc20OPoinIstiqlal.client,
-  },
-  {
-    address: addressErc20BONBase,
-    name: nameBONDosh,
-    symbol: symbolBONDosh,
-    icon: iconBONDosh,
-    by: "VOYAGE.CO.ID",
-    link: "https://voyage.co.id/",
-    chain: erc20BONBase.chain,
-    client: erc20BONBase.client,
+    address: addressErc20OiOiBaseSepolia,
+    name: nameOiOiToken,
+    symbol: symbolOiOiToken,
+    icon: iconOiOiToken,
+    by: "Prof. NOTA Inc.",
+    link: "https://nota.endhonesa.com/",
+    chain: erc20OiOiBaseSepolia.chain,
+    client: erc20OiOiBaseSepolia.client,
   },
 ];
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
