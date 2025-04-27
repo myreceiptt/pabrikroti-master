@@ -130,7 +130,7 @@ export const nftNoData = "No data available.";
 export const nftFallMessage1 = "No valid stock ID used.";
 export const nftFallMessage2 =
   "Please use a valid stock ID in the URL or return to the home page and start over.";
-export const nftFallMessage3 = "Go Back to Home Page!";
+export const nftFallMessage3 = "Return to the Home Page!";
 
 // nft details
 export const nftSetError = "Failed to fetch the stock ID.";
