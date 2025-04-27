@@ -291,7 +291,7 @@ const CoinsList: React.FC = () => {
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
             {nftsPrevious}
@@ -306,7 +306,7 @@ const CoinsList: React.FC = () => {
             setIsRefreshing(false); // ✅ selesai loading
           }}
           style={{ color: colorPrimary, background: colorSecondary }}
-          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
           }`}>
           <motion.div
@@ -324,7 +324,7 @@ const CoinsList: React.FC = () => {
             onClick={handleLoadMore}
             disabled={visibleCount >= coinListToShow.length}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= coinListToShow.length ? "" : "cursor-pointer"
             }`}>
             {nftsNext}

@@ -142,7 +142,7 @@ const CoinLister: React.FC<CoinListerProps> = ({
               {!hasError ? (
                 <TokenIcon
                   alt={coinName}
-                  className="rounded-2xl w-full"
+                  className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
                   onError={() => setHasError(true)}
                 />
               ) : (
@@ -151,7 +151,7 @@ const CoinLister: React.FC<CoinListerProps> = ({
                   alt={coinName ?? coinListerName}
                   width={755}
                   height={545}
-                  className="rounded-2xl w-full"
+                  className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
                 />
               )}
             </TokenProvider>

@@ -133,7 +133,7 @@ const NFTLister: React.FC<NFTListerProps> = ({
               client={client}
               src={nftImage}
               alt={nftName}
-              className="rounded-2xl w-full"
+              className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
             />
           </Link>
           <div className="grid grid-cols-1 gap-2">

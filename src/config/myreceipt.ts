@@ -65,7 +65,7 @@ export const linkInstagram = "https://www.instagram.com/nftindonesia_/";
 export const linkFacebook = "";
 export const linkDiscord = "https://discord.com/invite/3AvJSYPJK6";
 export const linkYouTube = "";
-export const linkEmail = "hallonftindonesia@gmail.com";
+export const linkEmail = "mailto:hallonftindonesia@gmail.com";
 export const linkWhatsApp = "";
 export const linkWebsite = "https://www.nftindonesia.xyz/";
 
@@ -173,7 +173,7 @@ export const coinsTitle2 = "Claimable Shares";
 export const coinButton = "Claim Now"; // coin form,
 export const coinNoAccess = "No Access"; // coin form,
 export const coinClaimed = "Claimed"; // coin form,
-export const coinListerImage = "/medias/artisan-bread.png"; // coin form,
+export const coinListerImage = "/medias/batch-bread.png"; // coin form,
 export const coinListerName = "A Claimable Share"; // coin form,
 export const coinSupply = "Supply:";
 export const coinOf = "of"; // coin form,
@@ -235,7 +235,7 @@ export const bonImageAlt = "BON VOYAGE Token Illustration";
 
 // terms page
 export const entityName = "Ngelaras Roso X NFT Indonesia";
-export const entityAlias1 = "Ngelaras Roso!"; // footer section
+export const entityAlias1 = "Ngelaras Roso"; // footer section
 export const entityAlias2 = "NFT Indonesia";
 export const entityAddress =
   "Jl. Al Inayah No.86, Rawakalong, Kec. Gn. Sindur, Kabupaten Bogor, Jawa Barat 16340, INDONESIA"; // nulled

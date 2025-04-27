@@ -270,7 +270,7 @@ const NFTForm: React.FC<NFTFormProps> = ({
               setIsRefreshing(false); // ✅ selesai loading
             }}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`col-span-2 aspect-auto rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`col-span-2 aspect-auto rounded-lg mt-1 disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
             } flex items-center justify-center`}>
             <motion.div

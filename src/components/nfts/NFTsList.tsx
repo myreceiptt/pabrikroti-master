@@ -279,7 +279,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
             {nftsPrevious}
@@ -294,7 +294,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             setIsRefreshing(false); // ✅ selesai loading
           }}
           style={{ color: colorPrimary, background: colorSecondary }}
-          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
           }`}>
           <motion.div
@@ -312,7 +312,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             onClick={handleLoadMore}
             disabled={visibleCount >= nftListToShow.length}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= nftListToShow.length ? "" : "cursor-pointer"
             }`}>
             {nftsNext}

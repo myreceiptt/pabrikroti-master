@@ -55,6 +55,7 @@ const Message: React.FC<MessageProps> = ({ message1, message2, message3 }) => {
           alt={proTitle}
           width={4096}
           height={1109}
+          className="rounded-3xl"
           objectFit="cover"
           objectPosition="top"
           priority

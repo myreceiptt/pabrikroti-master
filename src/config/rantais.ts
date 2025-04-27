@@ -65,8 +65,11 @@ export const rotiChains = [
   shapeNetwork,
 ]; // Supported Chains
 
-export const receiptChain = baseSepolia; // Default Chain
-export const receiptChains = [baseMainnet, baseSepolia]; // Supported Chains
+export const memoraChain = baseMainnet; // Default Chain
+export const memoraChains = [baseMainnet, baseSepolia]; // Supported Chains
+
+export const istiqlalChain = baseMainnet; // Default Chain
+export const istiqlalChains = [baseMainnet]; // Supported Chains
 
 export const chain = baseSepolia; // Default Chain
 export const chains = [baseSepolia]; // Supported Chains

@@ -45,7 +45,7 @@ export default function FeaturedCards() {
             <Link href={href} key={index}>
               <button
                 type="button"
-                className="w-full hover:scale-105 transition-transform duration-300 ease-in-out relative group cursor-pointer">
+                className="w-full hover:scale-95 transition-transform duration-300 ease-in-out relative group cursor-pointer">
                 {/* Main image */}
                 <Image
                   src={src}
