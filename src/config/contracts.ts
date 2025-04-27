@@ -161,7 +161,7 @@ export const erc20BONBase = getContract({
 });
 
 export const erc20IstiqlalDL = getContract({
-  address: "0x848a5F7CE782d183606C729d1dd9b089b54437d9", // USD C0in - Default
+  address: "0x848a5F7CE782d183606C729d1dd9b089b54437d9", // IDL Token - Default
   chain: baseMainnet,
   client,
 });
@@ -313,6 +313,12 @@ export const memoraTokeks = {
 export const istiqlalTokeks = {
   [baseMainnet.id]: [
     {
+      address: erc20USDCBase.address,
+      name: nameUSDCoin,
+      symbol: symbolUSDCoin,
+      icon: iconUSDCoin,
+    },
+    {
       address: erc20BONBase.address,
       name: nameBONDosh,
       symbol: symbolBONDosh,
@@ -328,25 +334,9 @@ export const istiqlalTokeks = {
 };
 
 export const tokeks = {
-  [baseMainnet.id]: [
-    {
-      address: erc20OiOiBase.address,
-      name: nameOiOiToken,
-      symbol: symbolOiOiToken,
-      icon: iconOiOiToken,
-    },
-  ],
   [baseSepolia.id]: [
     {
       address: erc20OiOiBaseSepolia.address,
-      name: nameOiOiToken,
-      symbol: symbolOiOiToken,
-      icon: iconOiOiToken,
-    },
-  ],
-  [monadTestnet.id]: [
-    {
-      address: erc20OiOiMonadTestnet.address,
       name: nameOiOiToken,
       symbol: symbolOiOiToken,
       icon: iconOiOiToken,
@@ -372,9 +362,7 @@ export const istiqlalDisplayedTekeks = {
 };
 
 export const displayedTekeks = {
-  [baseMainnet.id]: erc20OiOiBase.address,
   [baseSepolia.id]: erc20OiOiBaseSepolia.address,
-  [monadTestnet.id]: erc20OiOiMonadTestnet.address,
 };
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
@@ -401,6 +389,16 @@ currencyMap["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] = {
 // Launched FT contracts - Tentukan satu atau lebih dari daftar FT sesuai rantainya untuk digunakan
 export const rotiErc20ContractsLaunched = [
   {
+    address: erc20OiOiBase.address,
+    name: nameOiOiToken,
+    symbol: symbolOiOiToken,
+    icon: iconOiOiToken,
+    by: "Prof. NOTA Inc.",
+    link: "https://nota.endhonesa.com/",
+    chain: erc20OiOiBase.chain,
+    client,
+  },
+  {
     address: erc20OiOiBaseSepolia.address,
     name: nameOiOiToken,
     symbol: symbolOiOiToken,
@@ -408,6 +406,16 @@ export const rotiErc20ContractsLaunched = [
     by: "Prof. NOTA Inc.",
     link: "https://nota.endhonesa.com/",
     chain: erc20OiOiBaseSepolia.chain,
+    client,
+  },
+  {
+    address: erc20OiOiMonadTestnet.address,
+    name: nameOiOiToken,
+    symbol: symbolOiOiToken,
+    icon: iconOiOiToken,
+    by: "Prof. NOTA Inc.",
+    link: "https://nota.endhonesa.com/",
+    chain: erc20OiOiMonadTestnet.chain,
     client,
   },
 ];
@@ -421,6 +429,16 @@ export const memoraErc20ContractsLaunched = [
     by: "Voyage.Co.Id",
     link: "https://www.voyage.co.id/",
     chain: erc20BONBase.chain,
+    client,
+  },
+  {
+    address: erc20BONBaseSepolia.address,
+    name: nameBONDosh,
+    symbol: symbolBONDosh,
+    icon: iconBONDosh,
+    by: "Voyage.Co.Id",
+    link: "https://www.voyage.co.id/",
+    chain: erc20BONBaseSepolia.chain,
     client,
   },
 ];
