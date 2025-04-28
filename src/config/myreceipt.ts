@@ -25,9 +25,9 @@ export const loginArt = "/images/login-art.png";
 export const loginBanner = "/images/login-banner.png";
 export const loginCall = "It's about letting go,";
 export const loginReason = {
-  text: "surrending... and at the same time...",
+  text: "and at the same time, welcoming in...",
   anchor: "...",
-  link: "https://ngelarasroso.id",
+  link: "https://ngelarasroso.id/medias/ngelaras-roso-2024.pdf",
 };
 export const loginAgreement = "By connecting, you agree to the";
 export const loginTermsPolicy = "Terms of Service & Privacy Policy";
@@ -85,7 +85,7 @@ export default function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-// featured cards
+// featured cards - hide card by nulled the paidTitle, freeTitle, or coinTitle
 export const featuredTitle1 = "Fill It Up With All";
 export const featuredTitle2 = "That You Need & Desire";
 export const featuredPaid = "/images/featured-paid.png";

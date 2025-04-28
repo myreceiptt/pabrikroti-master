@@ -16,7 +16,7 @@ export const accountFactoryVoyage =
 export const rotiAccountFactory = accountFactoryNOTA;
 export const memoraAccountFactory = accountFactoryVoyage;
 export const istiqlalAccountFactory = accountFactoryVoyage;
-export const theAccountFactory = accountFactoryNOTA;
+export const theAccountFactory = accountFactoryNOTA; // Dynamic
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // NFT contracts Avalanche C-Chain
@@ -108,7 +108,7 @@ export const istiqlalTekeks: SupportedNFTs = {
 };
 
 export const tekeks: SupportedNFTs = {
-  [baseSepolia.id]: [erc1155TryError.address],
+  [baseSepolia.id]: [erc1155TryError.address], // Dynamic
 };
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
@@ -135,7 +135,7 @@ export const erc1155Launched = getContract({
   address: erc1155TryError.address,
   chain: erc1155TryError.chain,
   client,
-});
+}); // Dynamic
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // FT contracts Avalanche C-Chain
@@ -247,9 +247,9 @@ const nameBONDosh = "BON Dosh"; // BON Voyage
 const symbolBONDosh = "BON"; // BON Voyage
 const iconBONDosh = "/erc20-icons/bon.png"; // BON Voyage
 
-const nameIDLToken = "IDL Token"; // USD Coin
-const symbolIDLToken = "IDL"; // USD Coin
-const iconIDLToken = "/erc20-icons/idl.png"; // USD Coin
+const nameIDLToken = "IDL Token"; // IDL Token
+const symbolIDLToken = "IDL"; // IDL Token
+const iconIDLToken = "/erc20-icons/idl.png"; // IDL Token
 
 // Define `tokeks` (FTs) with the proper type - Tentukan satu atau lebih dari daftar FT sesuai rantainya
 export const rotiTokeks = {
@@ -342,7 +342,7 @@ export const tokeks = {
       icon: iconOiOiToken,
     },
   ],
-};
+}; // Dynamic
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // Displayed balance FTs - Tentukan satu dari daftar NFT sesuai rantainya
@@ -363,7 +363,7 @@ export const istiqlalDisplayedTekeks = {
 
 export const displayedTekeks = {
   [baseSepolia.id]: erc20OiOiBaseSepolia.address,
-};
+}; // Dynamic
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // Flatten tokeks into a simple address-to-metadata mapping
@@ -385,6 +385,8 @@ currencyMap["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] = {
   symbol: "ETH",
   icon: "/erc20-icons/eth.png",
 };
+// Add native token manually (MON)
+// icon: "/erc20-icons/mon.png",
 
 // Launched FT contracts - Tentukan satu atau lebih dari daftar FT sesuai rantainya untuk digunakan
 export const rotiErc20ContractsLaunched = [
