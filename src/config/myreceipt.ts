@@ -182,8 +182,8 @@ export const bonImageAlt = "BON VOYAGE Token Illustration";
 // free coin form fts
 
 // terms page
-export const entityName = "LabX X Voyage";
-export const entityAlias1 = "LabX"; // footer section
+export const entityName = "MeMoRa by Voyage";
+export const entityAlias1 = "Voyage.Co.Id"; // footer section
 export const entityAlias2 = "Voyage";
 export const entityAddress =
   "Jl. Kartika Utama Blok SM No. 29, Pd. Pinang, Kec. Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12310, INDONESIA"; // nulled
