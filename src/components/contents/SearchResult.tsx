@@ -13,7 +13,7 @@ import { MediaRenderer, useReadContract } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { bukhariOpenDoor } from "@/config/contracts";
+import { erc1155Launched } from "@/config/contracts";
 
 type SearchResultProps = {
   tokenIds: string[];
@@ -100,7 +100,7 @@ const SearchResult: React.FC<SearchResultProps> = ({
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.3, delay: index * 0.05 }}>
-                <NFTLister dropContract={bukhariOpenDoor} tokenId={tokenId} />
+                <NFTLister dropContract={erc1155Launched} tokenId={tokenId} />
               </motion.div>
             ))}
           </div>

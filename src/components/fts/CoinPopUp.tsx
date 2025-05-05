@@ -1,4 +1,4 @@
-// /src/components/fts/BonDoshModal.tsx
+// /src/components/fts/CoinPopUp.tsx
 
 // External libraries
 import Image from "next/image";
@@ -30,12 +30,12 @@ import hexToRgba, {
   colorSecondary,
 } from "@/config/myreceipt";
 
-interface BonDoshModalProps {
+interface CoinPopUpProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
-const BonDoshModal: React.FC<BonDoshModalProps> = ({ isOpen, onClose }) => {
+const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
   if (!isOpen) return null;
 
   return (
@@ -175,4 +175,4 @@ const BonDoshModal: React.FC<BonDoshModalProps> = ({ isOpen, onClose }) => {
   );
 };
 
-export default BonDoshModal;
+export default CoinPopUp;

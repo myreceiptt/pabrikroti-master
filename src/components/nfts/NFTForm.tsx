@@ -105,6 +105,8 @@ const NFTForm: React.FC<NFTFormProps> = ({
   const nftName = nftMetadata?.name || nftListerName;
   const nftDescription = nft?.metadata.description ?? "";
 
+  console.log(`OiOi: ${nftDescription}`);
+
   // Fetch user's owned NFTs
   const { data: ownedNFTs, refetch: refetchOwnedNFTs } = useReadContract(
     balanceOf,
@@ -211,10 +213,7 @@ const NFTForm: React.FC<NFTFormProps> = ({
         </div>
 
         {/* Description with Expand/Collapse */}
-        <NFTDescription
-          description={nftDescription}
-          nftIdString={nftIdString}
-        />
+        <NFTDescription description={nftDescription} id={nftIdString} />
 
         {/* Success or Error Messages */}
         {pesanTunggu && <Loader message={pesanTunggu} />}

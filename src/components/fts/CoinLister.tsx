@@ -18,8 +18,8 @@ import {
   coinListerImage,
   coinListerName,
   coinNoAccess,
-  coinOf,
-  coinSupply,
+  coinListerOf,
+  coinListerSupply,
   colorBorder,
   colorIcon,
   colorPrimary,
@@ -165,8 +165,8 @@ const CoinLister: React.FC<CoinListerProps> = ({
             <div
               style={{ color: colorIcon }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
-              <span>{coinSupply}</span>
-              <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
+              <span>{coinListerSupply}</span>
+              <span title={`${adjustedSupply} ${coinListerOf} ${adjustedMaxClaim}`}>
                 {formatNumberCompact(adjustedSupply)}/
                 {formatNumberCompact(adjustedMaxClaim)}
               </span>

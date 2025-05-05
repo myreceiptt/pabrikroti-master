@@ -127,8 +127,8 @@ export const coinNoAccess = "No Access"; // coin form,
 export const coinClaimed = "Claimed"; // coin form,
 export const coinListerImage = "/medias/bon-voyage.gif"; // coin form,
 export const coinListerName = "A Point Reward"; // coin form,
-export const coinSupply = "Supply:";
-export const coinOf = "of"; // coin form,
+export const coinListerSupply = "Supply:";
+export const coinListerOf = "of"; // coin form,
 
 // coin fallback
 export const coinFallMessage1 = "Invalid address page!";
@@ -140,10 +140,10 @@ export const coinSetError = "Failed to fetch the point.";
 export const coinMessage1 = "The point not found.";
 export const coinMessage2 =
   "The specified point address was not found. Please try again later or go back to Home Page.";
-export const coinAccessMessage1 = "You don't have access!";
+export const coinAccessTitle = "You don't have access!";
 
 // coin access
-export const coinAccessMessage2 =
+export const coinAccessMessage =
   "Please get your access by collecting any Virtual Collectibles at least one edition.";
 export const coinAccessButton = "Collect Virtual Collectibles!";
 export const coinAccessBanner = "/images/content-banner.png";

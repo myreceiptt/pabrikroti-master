@@ -19,7 +19,7 @@ import { getWalletBalance } from "thirdweb/wallets";
 import CheckErc1155 from "@/config/checker";
 import { erc20ContractsLaunched } from "@/config/contracts";
 import {
-  coinAccessMessage1,
+  coinAccessTitle,
   coinMessage1,
   coinMessage2,
   coinSetError,
@@ -292,7 +292,7 @@ const CoinDetails: React.FC = () => {
       {hasAccess === false && (
         <CoinAccess
           onRedirect={() => router.push("/")}
-          message={coinAccessMessage1}
+          message={coinAccessTitle}
         />
       )}
 

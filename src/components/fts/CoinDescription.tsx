@@ -16,12 +16,12 @@ import {
 
 interface CoinDescriptionProps {
   description: string;
-  nftIdString: string;
+  address: string;
 }
 
 const CoinDescription: React.FC<CoinDescriptionProps> = ({
   description,
-  nftIdString,
+  address,
 }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
@@ -66,7 +66,7 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
             <>
               <Link
                 href="#"
-                title={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${nftIdString}`}
+                title={`https://memora.voyage.co.id/[chain-name]/${address}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -77,7 +77,7 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
               </Link>
               <Link
                 href="#"
-                title={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${nftIdString}`}
+                title={`https://store.endhonesa.com/digital/[chain-name]/${address}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

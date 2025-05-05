@@ -17,6 +17,7 @@ import { currencyMap } from "@/config/contracts";
 import {
   coinButton,
   coinClaimed,
+  coinDescription,
   coinFormKirim,
   coinFormPerWallet,
   coinFormSukses,
@@ -24,7 +25,7 @@ import {
   coinListerImage,
   coinListerName,
   coinNoAccess,
-  coinOf,
+  coinListerOf,
   colorBorder,
   colorIcon,
   colorPrimary,
@@ -42,7 +43,7 @@ import {
 import { getCountdownString } from "@/config/utils";
 
 // Components libraries
-// import CoinDescription from "@/components/fts/CoinDescription";
+import CoinDescription from "@/components/fts/CoinDescription";
 import Loader from "@/components/sections/ReusableLoader";
 
 interface CoinFormProps {
@@ -229,10 +230,7 @@ const CoinForm: React.FC<CoinFormProps> = ({
         </div>
 
         {/* Description with Expand/Collapse */}
-        {/* <NFTDescription
-          description={nft?.metadata.description ?? ""}
-          tokenIdString={tokenIdString}
-        /> */}
+        <CoinDescription description={coinDescription} address={coinAddress} />
 
         {/* Success or Error Messages */}
         {pesanTunggu && <Loader message={pesanTunggu} />}
@@ -302,7 +300,8 @@ const CoinForm: React.FC<CoinFormProps> = ({
           <h2
             style={{ color: colorSecondary }}
             className="col-span-8 text-left text-base lg:text-md xl:text-xl font-semibold">
-            <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
+            <span
+              title={`${adjustedSupply} ${coinListerOf} ${adjustedMaxClaim}`}>
               {formatNumberCompact(adjustedSupply)}/
               {formatNumberCompact(adjustedMaxClaim)}
             </span>

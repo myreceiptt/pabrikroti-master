@@ -11,7 +11,7 @@ import { getNFTs } from "thirdweb/extensions/erc1155";
 import SearchResult from "@/components/contents/SearchResult";
 
 // Blockchain configurations
-import { bukhariOpenDoor } from "@/config/contracts";
+import { erc1155Launched } from "@/config/contracts";
 
 // Type definition for NFTs
 type NFTData = {
@@ -34,7 +34,7 @@ const SearchWrapper = () => {
 
       try {
         const nfts: NFTData[] = await getNFTs({
-          contract: bukhariOpenDoor,
+          contract: erc1155Launched,
           start: 0,
           count: 23,
         });

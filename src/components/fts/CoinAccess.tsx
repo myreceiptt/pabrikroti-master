@@ -8,7 +8,7 @@ import React from "react";
 import {
   coinAccessBanner,
   coinAccessButton,
-  coinAccessMessage2,
+  coinAccessMessage,
   colorIcon,
   colorPrimary,
   colorSecondary,
@@ -32,7 +32,7 @@ const CoinAccess: React.FC<CoinAccessProps> = ({ message, onRedirect }) => (
       <h3
         style={{ color: colorIcon }}
         className="text-center text-sm font-medium">
-        {coinAccessMessage2}
+        {coinAccessMessage}
       </h3>
     </div>
     <div className="grid grid-cols-1 mt-2 md:mt-4 mb-4 md:mb-8 lg:mb-12">

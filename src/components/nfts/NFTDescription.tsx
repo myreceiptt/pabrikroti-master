@@ -18,13 +18,10 @@ import {
 
 interface NFTDescriptionProps {
   description: string;
-  nftIdString: string;
+  id: string;
 }
 
-const NFTDescription: React.FC<NFTDescriptionProps> = ({
-  description,
-  nftIdString,
-}) => {
+const NFTDescription: React.FC<NFTDescriptionProps> = ({ description, id }) => {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const paragraphs = description
@@ -68,7 +65,7 @@ const NFTDescription: React.FC<NFTDescriptionProps> = ({
             <>
               {nftMeMoRaTitle && (
                 <Link
-                  href={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${nftIdString}`}
+                  href={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${id}`}
                   title={nftMeMoRaTitle}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -82,7 +79,7 @@ const NFTDescription: React.FC<NFTDescriptionProps> = ({
 
               {nftEndhonesaTitle && (
                 <Link
-                  href={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${nftIdString}`}
+                  href={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${id}`}
                   title={nftEndhonesaTitle}
                   target="_blank"
                   rel="noopener noreferrer"

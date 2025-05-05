@@ -4,71 +4,6 @@
  * All receipts should be exported from this file.
  */
 
-// app metadata
-export const proTitle = "Ngelaras Roso";
-export const proDescription =
-  "You create this space so you can then fill it up with all that you need and desire. It's about letting go, surrending... and at the same time... welcoming in, receiving.";
-export const proUrl = "https://ngelarasroso.id";
-export const proPublisher = "NFT Indonesia";
-export const proLocale = "en-US";
-export const proImage = "https://ngelarasroso.id/preview-image.png";
-
-// error boundary
-export const proErrorCought = "Error caught in ErrorBoundary:";
-export const proError = "Something went wrong. Please try again later.";
-
-// login logo
-export const proLogo = "/logos/logo.png";
-
-// login layout
-export const loginArt = "/images/login-art.png";
-export const loginBanner = "/images/login-banner.png";
-export const loginCall = "It's about letting go,";
-export const loginReason = {
-  text: "and at the same time, welcoming in...",
-  anchor: "...",
-  link: "https://ngelarasroso.id/medias/ngelaras-roso-2024.pdf",
-};
-export const loginAgreement = "By connecting, you agree to the";
-export const loginTermsPolicy = "Terms of Service & Privacy Policy";
-export const loginPower = "/images/login-power.png";
-
-// header section
-export const headerLogo = "/images/header-logo.png";
-
-// footer section
-export const copyRight = "All rights reserved.";
-export const officiallyLicensed = "Officially licensed product of";
-export const anchorPrivacy = "Privacy Policy";
-export const anchorTerms = "Terms of Service";
-export const linkPower = "https://nftindonesia.xyz/"; // login layout
-export const footerPower = "/images/footer-power.png";
-export const poweredBy = "Deployed by NFT Indonesia"; // login layout
-
-// subscribe form section
-export const subscribeInput = "Please enter a valid email address.";
-export const subscribeSubject = `Subscription to ${proTitle}`;
-export const subscribeName = `Visitor of ${proUrl}`;
-export const subscribeMessage = "I want to subscribe to your latest updates.";
-export const subscribeSuccess = "Thank you for subscribing!";
-export const subscribeFailed = "Subscription failed. Please try again.";
-export const subscribeTitle = "Catch our latest updates";
-export const subscribePlaceholder = "Enter your email address";
-export const subscribeButton = "Subscribe";
-export const subscribeButtonLoading = "Subscribing...";
-
-// social links on footer
-export const socialTitle = "Catch up with our update!";
-export const linkXTwitter = "https://x.com/NFTindonesia_";
-export const linkLinkedIn = "";
-export const linkInstagram = "https://www.instagram.com/nftindonesia_/";
-export const linkFacebook = "";
-export const linkDiscord = "https://discord.com/invite/3AvJSYPJK6";
-export const linkYouTube = "";
-export const linkEmail = "mailto:hallonftindonesia@gmail.com";
-export const linkWhatsApp = "";
-export const linkWebsite = "https://www.nftindonesia.xyz/";
-
 // colors hex libraries
 export const colorPrimary = "#F9F9F9"; // Terang
 export const colorSecondary = "#262525"; // Gelap XXX
@@ -85,7 +20,70 @@ export default function hexToRgba(hex: string, alpha: number): string {
   return `rgba(${r}, ${g}, ${b}, ${alpha})`;
 }
 
-// featured cards - hide card by nulled the paidTitle, freeTitle, or coinTitle
+// layout...
+export const proTitle = "Ngelaras Roso"; // coin access, connect buttons, connect embeds, login layout, header section, reusable message,
+export const proDescription =
+  "You create this space so you can then fill it up with all that you need and desire. It's about letting go, surrending... and at the same time... welcoming in, receiving."; // connect buttons, connect embeds,
+export const proUrl = "https://ngelarasroso.id"; // connect buttons, connect embeds,
+export const proPublisher = "NFT Indonesia";
+export const proLocale = "en-US";
+export const proImage = "https://ngelarasroso.id/preview-image.png";
+
+// error boundary section
+export const proErrorCought = "Error caught in ErrorBoundary:";
+export const proError = "Something went wrong. Please try again later.";
+
+// connect buttons section
+export const proLogo = "/logos/logo.png"; // connect embeds,
+
+// login layout section
+export const loginArt = "/images/login-art.png";
+export const loginBanner = "/images/login-banner.png";
+export const loginCall = "It's about letting go,";
+export const loginReason = {
+  text: "and at the same time, welcoming in",
+  anchor: "...",
+  link: "https://ngelarasroso.id/medias/ngelaras-roso-2024.pdf",
+};
+export const loginAgreement = "By connecting, you agree to the";
+export const loginTermsPolicy = "Terms of Service & Privacy Policy";
+export const linkPower = "https://nftindonesia.xyz/"; // footer section
+export const loginPower = "/images/login-power.png";
+export const poweredBy = "Deployed by NFT Indonesia"; // footer section
+
+// header section
+export const headerLogo = "/images/header-logo.png";
+
+// footer section - hide social icon by nulled the link
+export const copyRight = "All rights reserved.";
+export const officiallyLicensed = "Officially licensed product of";
+export const anchorPrivacy = "Privacy Policy";
+export const anchorTerms = "Terms of Service";
+export const footerPower = "/images/footer-power.png";
+export const socialTitle = "Catch up with our update!";
+export const linkXTwitter = "https://x.com/NFTindonesia_";
+export const linkLinkedIn = "";
+export const linkInstagram = "https://www.instagram.com/nftindonesia_/";
+export const linkFacebook = "";
+export const linkDiscord = "https://discord.com/invite/3AvJSYPJK6";
+export const linkYouTube = "";
+export const linkEmail = "mailto:hallonftindonesia@gmail.com";
+export const linkWhatsApp = "";
+export const linkWebsite = "https://www.nftindonesia.xyz/";
+
+// subscribe form section
+export const subscribeInput = "Please enter a valid email address.";
+export const subscribeSubject = `Subscription to ${proTitle}`;
+export const subscribeName = `Visitor of ${proUrl}`;
+export const subscribeMessage = "I want to subscribe to your latest updates.";
+export const subscribeSuccess = "Thank you for subscribing!";
+export const subscribeFailed = "Subscription failed. Please try again.";
+export const subscribeTitle = "Catch our latest updates";
+export const subscribePlaceholder = "Enter your email address";
+export const subscribeButton = "Subscribe";
+export const subscribeButtonLoading = "Subscribing...";
+
+// featured cards page - hide card by nulled the title
 export const featuredTitle1 = "Fill It Up With All";
 export const featuredTitle2 = "That You Need & Desire";
 export const featuredPaid = "/images/featured-paid.png";
@@ -98,7 +96,7 @@ export const coinTitle = "All Claimable Shares";
 // reusable loader section
 export const loaderChecking = "Loading..."; // nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
-// nfts list
+// nfts list page
 export const nftsTitle1Free = "All";
 export const nftsTitle2Free = "Free Stocks";
 export const nftsTitle1Paid = "All";
@@ -110,49 +108,48 @@ export const nftsError = "Lho, Error:"; // nft details, coins list, coin details
 export const nftsUknownError = "Kok, Error:"; // nft details, coins list, coin details,
 export const nftsMessage1 = "No available stock!";
 export const nftsMessage2 =
-  "There are no stock available right now. Please try again later or return to the home page.";
-export const nftsMessage3 = "Return to the Home Page!"; // nft details, coins list, nft fallback, coin details,
+  "There are no available stock right now. Please try again later or return to the home page.";
+export const nftsMessage3 = "Return to the Home Page!"; // nft fallback, nft details, coins list, coin fallback, coin details,
 export const nftsPrevious = "Previous"; // coins list,
 export const nftsNext = "Next"; // coins list,
 
-// nft lister
-export const nftButton = "Swallow Now"; // nft form,
+// nft lister section
+export const nftButton = "Get Now"; // nft form,
 export const nftSoon = "Available in:"; // nft form, coin lister, coin form,
-export const nftInsufficient = "Insufficient Hunger"; // nft form, coin lister, coin form,
-export const nftClaimed = "Swallowed"; // nft form,
-export const nftClosed = "Devoured"; // nft form, coin lister, coin form,
+export const nftInsufficient = "Insufficient Balance"; // nft form, coin lister, coin form,
+export const nftClaimed = "Got It"; // nft form,
+export const nftClosed = "Out of Stock"; // nft form, coin lister, coin form,
 export const nftListerImage = "/medias/artisan-bread.png"; // nft form,
 export const nftListerName = "An Available Stock"; // nft form,
 export const nftEditions = "Edition:";
 export const nftNoData = "No data available.";
 
-// nft fallback
+// nft fallback page
 export const nftFallMessage1 = "No valid stock ID used.";
 export const nftFallMessage2 =
   "Please use a valid stock ID in the URL or return to the home page and start over.";
-export const nftFallMessage3 = "Return to the Home Page!";
 
-// nft details
+// nft details page
 export const nftSetError = "Failed to fetch the stock ID.";
 export const nftMessage1 = "The stock ID not found.";
 export const nftMessage2 =
   "The specified stock ID was not found. Please try again later or return to the home page.";
 
-// nft form
+// nft form section
 export const nftFormByLink = "https://ngelarasroso.id/";
 export const nftFormBy = "by"; // coin form,
 export const nftFormByName = "Ngelaras Roso!";
 export const nftFormEdition = "Edition";
-export const nftFormOwned = "Swallowed"; // coin form,
-export const nftFormRefresh = "Scoring"; // coin form,
-export const nftFormTunggu = "Baking. Be patient and wait."; // coin form,
-export const nftFormKirim = "Cooling your stock.";
-export const nftFormSukses = "Stock successfully swallowed.";
+export const nftFormOwned = "Got It"; // coin form,
+export const nftFormRefresh = "Refresh"; // coin form,
+export const nftFormTunggu = "Processing. Be patient and wait."; // coin form,
+export const nftFormKirim = "Claiming your stock.";
+export const nftFormSukses = "Stock successfully claimed.";
 export const nftFormPrice = "Price"; // coin form,
 export const nftFormMax = "*Maximum"; // coin form,
-export const nftFormPerWallet = "edition swallowed.";
+export const nftFormPerWallet = "edition per holder.";
 
-// nft description -- hutang external link
+// nft description section - hide link by nulled the title
 export const nftMeMoRaTitle = "";
 export const nftMeMoRa = "Read on MeMoRa MarketPlace (SOON)";
 export const nftEndhonesaTitle = "";
@@ -160,7 +157,7 @@ export const nftEndhonesa = "Read on ENDHONESA.COM (GOON)";
 export const nftReadLess = "Read Less";
 export const nftReadMore = "Read More";
 
-// coins list
+// coins list page
 export const coinsConsoleWarn = "canClaim failed for coinAddress:"; // coin details,
 export const coinsSetError = "Failed to fetch any claimable share.";
 export const coinsMessage1 = "No claimable shares";
@@ -169,67 +166,44 @@ export const coinsMessage2 =
 export const coinsTitle1 = "All";
 export const coinsTitle2 = "Claimable Shares";
 
-// coin lister
+// coin lister section
 export const coinButton = "Claim Now"; // coin form,
 export const coinNoAccess = "No Access"; // coin form,
 export const coinClaimed = "Claimed"; // coin form,
 export const coinListerImage = "/medias/batch-bread.png"; // coin form,
 export const coinListerName = "A Claimable Share"; // coin form,
-export const coinSupply = "Supply:";
-export const coinOf = "of"; // coin form,
+export const coinListerSupply = "Supply:"; // coin details,
+export const coinListerOf = "of"; // coin form,
 
-// coin fallback
-export const coinFallMessage1 = "Invalid address page!";
+// coin fallback page
+export const coinFallMessage1 = "Invalid share address used.";
 export const coinFallMessage2 =
   "Please use a valid address of the claimable share in the URL or return to the home page and start over.";
 
-// coin details
-export const coinSetError = "Failed to fetch the share.";
-export const coinMessage1 = "The share not found.";
+// coin details page
+export const coinSetError = "Failed to fetch the share address.";
+export const coinMessage1 = "The share address not found.";
 export const coinMessage2 =
   "The specified address of the share was not found. Please try again later or return to the home page.";
-export const coinAccessMessage1 = "You don't have access!";
+export const coinAccessTitle = "You don't have access!";
 
-// coin access
-export const coinAccessMessage2 =
-  "Please get your access by swallowing any available stock at least one edition.";
-export const coinAccessButton = "Swallow Available Stock!";
+// coin access section
+export const coinAccessMessage =
+  "Please get your access by get any available stock at least one edition.";
+export const coinAccessButton = "Get The Available Stock!";
 export const coinAccessBanner = "/images/content-banner.png";
 
-// coin form
+// coin form section
 export const coinFormSupply = "Supply";
-export const coinFormKirim = "Cooling your share.";
+export const coinFormKirim = "Claiming your share.";
 export const coinFormSukses = "Share successfully claimed.";
-export const coinFormPerWallet = "supply claimed.";
+export const coinFormPerWallet = "supply per holder.";
+
+// coin description section
+export const coinDescription = "Ethereum L2 $OiOi fungible tokens.";
 
 // claim free coin fts
 export const loginFirst = "Please log in first.";
-
-// bon dosh modal fts
-export const bonTitle = "$BON Dosh!!!!";
-export const bonP1 = "At a certain point in time… in the Realm of Reality.";
-export const bonP2 =
-  "On EARTH #474, after traversing 4.5 billion years in the vastness of the cosmos, a group of individuals embarked on an extraordinary journey. They did not merely traverse land, but also crossed the oceans and even ventured into the boundless expanse of space. Thus, the VOYAGE began—not merely a physical expedition, but a pursuit of values, encounters, and growth.";
-export const bonP3 =
-  "As time unfolded, their efforts met challenges and opportunities alike. Revenue flowed in and out, weaving a pattern akin to the ceaseless tides of the sea. Every meeting with a new soul, every crossroads encountered, every farewell, and every joyous reunion—each left an indelible mark upon the tapestry of this great journey.";
-export const bonP4 =
-  "The call &quot;BON VOYAGE!&quot; grew louder, reverberating not only in the minds of those undertaking the VOYAGE but also weaving itself into the very fabric of decentralised data traffic. What was once a mere expression of well-wishes, BON had now evolved into something far greater—a unit of measure for the VOYAGE itself.";
-export const bonUlLi1 = "🔹 How far has the VOYAGE taken them?";
-export const bonUlLi2 = "🔹 How much value has been forged along the way?";
-export const bonUlLi3 = "🔹 How many encounters have shaped the path?";
-export const bonUlLi4 =
-  "🔹 How much revenue has been channelled and exchanged?";
-export const bonP5 =
-  "BON stands as a measure that immortalises experience, a token of equivalence (ERC-20) that encapsulates the influence of every participant in the VOYAGE .";
-export const bonP6 =
-  "BON is not just a figure—it is proof of the steps taken, the values cultivated, and the impact left behind.";
-export const bonP7 =
-  "And at the culmination of every journey—whether at its inception or after traversing great distances—one call continues to resonate, carrying forth the spirit of adventure and purpose:";
-export const bonP8 = "BON VOYAGE! 🚀";
-export const bonP9 = "🍌☕🍌☕";
-export const bonP10 = "Prof. NOTA v.11.11.11";
-export const bonImage = "/medias/bon-voyage.gif";
-export const bonImageAlt = "BON VOYAGE Token Illustration";
 
 // free coin form fts
 

@@ -9,7 +9,7 @@ import React from "react";
 import {
   coinFallMessage1,
   coinFallMessage2,
-  nftFallMessage3,
+  nftsMessage3,
 } from "@/config/myreceipt";
 
 // Components libraries
@@ -21,7 +21,7 @@ const CoinFallback: React.FC = () => {
       <Message
         message1={coinFallMessage1}
         message2={coinFallMessage2}
-        message3={nftFallMessage3}
+        message3={nftsMessage3}
       />
     </main>
   );
