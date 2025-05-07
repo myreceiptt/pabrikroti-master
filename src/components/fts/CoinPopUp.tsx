@@ -7,27 +7,31 @@ import { FaXmark } from "react-icons/fa6";
 
 // Blockchain configurations
 import hexToRgba, {
-  bonImage,
-  bonImageAlt,
-  bonP1,
-  bonP10,
-  bonP2,
-  bonP3,
-  bonP4,
-  bonP5,
-  bonP6,
-  bonP7,
-  bonP8,
-  bonP9,
-  bonTitle,
-  bonUlLi1,
-  bonUlLi2,
-  bonUlLi3,
-  bonUlLi4,
   colorBoxIcon,
   colorIcon,
   colorPrimary,
   colorSecondary,
+  popUpImage,
+  popUpImageAlt,
+  popUpP1,
+  popUpP2,
+  popUpP3,
+  popUpP4,
+  popUpP5,
+  popUpP6,
+  popUpP7,
+  popUpP8,
+  popUpP9,
+  popUpP10,
+  popUpP11,
+  popUpP12,
+  popUpTitle,
+  popUpUlLi1,
+  popUpUlLi2,
+  popUpUlLi3,
+  popUpUlLi4,
+  popUpUlLi5,
+  popUpUlLi6,
 } from "@/config/myreceipt";
 
 interface CoinPopUpProps {
@@ -68,14 +72,14 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
               color: colorSecondary,
             }}
             className="text-xl font-semibold text-left mb-2">
-            {bonTitle}
+            {popUpTitle}
           </h2>
           <p
             style={{
               color: colorIcon,
             }}
             className="text-sm font-medium">
-            {bonP1}
+            {popUpP1}
           </p>
           <br />
           <p
@@ -83,7 +87,7 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
               color: colorIcon,
             }}
             className="text-sm font-medium">
-            {bonP2}
+            {popUpP2}
           </p>
           <br />
           <p
@@ -91,7 +95,7 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
               color: colorIcon,
             }}
             className="text-sm font-medium">
-            {bonP3}
+            {popUpP3}
           </p>
           <br />
           <p
@@ -99,7 +103,39 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
               color: colorIcon,
             }}
             className="text-sm font-medium">
-            {bonP4}
+            {popUpP4}
+          </p>
+          <br />
+          <p
+            style={{
+              color: colorIcon,
+            }}
+            className="text-sm font-medium">
+            {popUpP5}
+          </p>
+          <br />
+          <p
+            style={{
+              color: colorIcon,
+            }}
+            className="text-sm font-medium">
+            {popUpP6}
+          </p>
+          <br />
+          <p
+            style={{
+              color: colorIcon,
+            }}
+            className="text-sm font-medium">
+            {popUpP7}
+          </p>
+          <br />
+          <p
+            style={{
+              color: colorIcon,
+            }}
+            className="text-sm font-medium">
+            {popUpP8}
           </p>
           <br />
           <ul
@@ -107,10 +143,12 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
               color: colorIcon,
             }}
             className="text-sm font-medium">
-            <li>{bonUlLi1}</li>
-            <li>{bonUlLi2}</li>
-            <li>{bonUlLi3}</li>
-            <li>{bonUlLi4}</li>
+            <li>{popUpUlLi1}</li>
+            <li>{popUpUlLi2}</li>
+            <li>{popUpUlLi3}</li>
+            <li>{popUpUlLi4}</li>
+            <li>{popUpUlLi5}</li>
+            <li>{popUpUlLi6}</li>
           </ul>
           <br />
           <p
@@ -118,7 +156,7 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
               color: colorIcon,
             }}
             className="text-sm font-medium">
-            {bonP5}
+            {popUpP9}
           </p>
           <br />
           <p
@@ -126,7 +164,7 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
               color: colorIcon,
             }}
             className="text-sm font-medium">
-            {bonP6}
+            {popUpP10}
           </p>
           <br />
           <p
@@ -134,7 +172,7 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
               color: colorIcon,
             }}
             className="text-sm font-medium">
-            {bonP7}
+            {popUpP11}
           </p>
           <br />
           <p
@@ -142,28 +180,12 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
               color: colorIcon,
             }}
             className="text-sm font-medium">
-            {bonP8}
-          </p>
-          <br />
-          <p
-            style={{
-              color: colorIcon,
-            }}
-            className="text-sm font-medium">
-            {bonP9}
-          </p>
-          <br />
-          <p
-            style={{
-              color: colorIcon,
-            }}
-            className="text-sm font-medium">
-            {bonP10}
+            {popUpP12}
           </p>
           <br />
           <Image
-            src={bonImage}
-            alt={bonImageAlt}
+            src={popUpImage}
+            alt={popUpImageAlt}
             width={747}
             height={747}
             className="rounded-3xl w-full"

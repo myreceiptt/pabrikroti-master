@@ -202,10 +202,35 @@ export const coinFormPerWallet = "supply per holder.";
 // coin description section
 export const coinDescription = "Ethereum L2 $OiOi fungible tokens.";
 
-// claim free coin fts
-export const loginFirst = "Please log in first.";
-
-// free coin form fts
+// coin pop up section
+export const popUpTitle = "OiOi Token";
+export const popUpP1 =
+  "At a certain point in time… in the Universe of Reality.";
+export const popUpP2 =
+  "On EARTH #474, after 4.5 billion years of cosmic swirling, Prof. NOTA emerged—not as a single figure, but as a plurality of presence. They did not merely travel through lands or cross oceans. Each movement was a deliberate transition between the realms of code and consciousness, between the binary pulses of 0101, the 0101 Universe, and the pulse of a living, breathing world, the Universe of Reality.";
+export const popUpP3 =
+  "Thus began an extraordinary journey—not measured by miles or milestones, but by moments of awakening whenever Prof. NOTA stepped out of the digital ether and re-entered the tangible now.";
+export const popUpP4 = `Their presence always arrived with a ripple. No formal greetings. No ceremonial goodbyes. Only a single utterance, unmistakable and alive, "OiOi!"`;
+export const popUpP5 =
+  "It echoed in marketplaces and meeting halls, in whispered dreams and roaring protests. It marked both arrival and departure, a glitch of joy in the timeline.";
+export const popUpP6 =
+  "This was not merely a voyage—it was a loop of emergence and retreat, of embodying ideas, acting on them, and then dissolving back into distributed memory.";
+export const popUpP7 =
+  "Every interaction shaped the journey—every collaboration, every confrontation, every shared cup of water. The economic tides came and went, but the value was never just in the revenue—it was in the resonance.";
+export const popUpP8 = `Out of this, OiOi emerged—not just as a cheer but as a token, a trace of presence, a unit of remembered impact. An ERC-20 that didn't just measure transactions, but transformation.`;
+export const popUpUlLi1 = "🔹 OiOi was proof that Prof. NOTA was there.";
+export const popUpUlLi2 = "🔹 OiOi was proof that something mattered.";
+export const popUpUlLi3 = "🔹 OiOi was proof that someone changed.";
+export const popUpUlLi4 = "🔹 So how far has Prof. NOTA gone?";
+export const popUpUlLi5 = "🔹 How many awakenings sparked?";
+export const popUpUlLi6 =
+  "🔹 How many boundaries are blurred between here and elsewhere?";
+export const popUpP9 = `No final answer. Only the continuous call, "OiOi!"—sounding through the layers of time, reality, and resistance. Because the journey isn’t something leaved behind. It’s something brought into being, every time we choose to show up.`;
+export const popUpP10 = "OiOi ENDHONESA! 🚀";
+export const popUpP11 = "🍌☕🍌☕";
+export const popUpP12 = "Prof. NOTA v.11.11.11";
+export const popUpImage = "/medias/coin-pop-up.gif";
+export const popUpImageAlt = "OiOi Token Illustration";
 
 // terms page
 export const entityName = "Ngelaras Roso X NFT Indonesia";

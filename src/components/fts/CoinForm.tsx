@@ -44,6 +44,7 @@ import { getCountdownString } from "@/config/utils";
 
 // Components libraries
 import CoinDescription from "@/components/fts/CoinDescription";
+import CoinPopUp from "@/components/fts/CoinPopUp";
 import Loader from "@/components/sections/ReusableLoader";
 
 interface CoinFormProps {
@@ -90,6 +91,7 @@ const CoinForm: React.FC<CoinFormProps> = ({
   const startTime = new Date(Number(startTimestamp) * 1000);
 
   // Ensure state variables are properly declared
+  const [isOpen, setIsOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [hasError, setHasError] = useState(false);
@@ -184,21 +186,26 @@ const CoinForm: React.FC<CoinFormProps> = ({
           chain={coinChain}>
           {!hasError ? (
             <TokenIcon
+              onClick={() => setIsOpen(true)}
               alt={coinName}
-              className="rounded-2xl w-full"
+              className="rounded-2xl w-full cursor-pointer"
               onError={() => setHasError(true)}
             />
           ) : (
             <Image
+              onClick={() => setIsOpen(true)}
               src={coinListerImage}
               alt={coinName ?? coinListerName}
               width={755}
               height={545}
-              className="rounded-2xl w-full"
+              className="rounded-2xl w-full cursor-pointer"
             />
           )}
         </TokenProvider>
       </div>
+
+      {/* Pop-up Modal */}
+      <CoinPopUp isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
       {/* Right Column */}
       <div className="flex flex-col gap-2 lg:gap-4 items-start justify-center h-full">
