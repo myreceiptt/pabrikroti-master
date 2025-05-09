@@ -68,7 +68,7 @@ interface CoinFormProps {
   refreshToken: number;
 }
 
-const CoinForm: React.FC<CoinFormProps> = ({
+export default function CoinForm({
   coinAddress,
   coinChain,
   coinName,
@@ -87,7 +87,7 @@ const CoinForm: React.FC<CoinFormProps> = ({
   hasAccess,
   setRefreshToken,
   refreshToken,
-}) => {
+}: CoinFormProps) {
   const startTime = new Date(Number(startTimestamp) * 1000);
 
   // Ensure state variables are properly declared
@@ -375,6 +375,4 @@ const CoinForm: React.FC<CoinFormProps> = ({
       </div>
     </div>
   );
-};
-
-export default CoinForm;
+}

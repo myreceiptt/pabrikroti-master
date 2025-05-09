@@ -35,7 +35,7 @@ import NFTForm from "@/components/nfts/NFTForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
-type NFTData = {
+interface NFTData {
   nftId: bigint;
   nftIdString: string;
   adjustedPrice: number;
@@ -47,14 +47,14 @@ type NFTData = {
   maxClaim: bigint;
   perWallet: bigint;
   adjustedBalance: number;
-};
+}
 
 function getNFTIdFromParams(params: ReturnType<typeof useParams>): bigint {
   const val = params.idNFT;
   return BigInt(Array.isArray(val) ? val[0] : val ?? "0");
 }
 
-const NFTDetails: React.FC = () => {
+export default function NFTDetails() {
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
@@ -229,6 +229,4 @@ const NFTDetails: React.FC = () => {
       )}
     </main>
   );
-};
-
-export default NFTDetails;
+}

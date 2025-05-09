@@ -47,7 +47,7 @@ import hexToRgba, {
 // Components libraries
 import Subscribe from "@/components/sections/SubscribeForm";
 
-const Footer: React.FC = () => {
+export default function Footer() {
   return (
     <footer
       style={{ backgroundColor: colorAccent }}
@@ -223,6 +223,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -12,7 +12,9 @@ import { FaSistrix } from "react-icons/fa6";
 import {
   colorAccent,
   colorBoxIcon,
+  colorIcon,
   colorPrimary,
+  headerGo,
   headerLogo,
   proTitle,
 } from "@/config/myreceipt";
@@ -59,11 +61,10 @@ export default function Header() {
           <FaSistrix style={{ color: colorAccent }} className="w-5 h-5" />
           <input
             type="text"
-            placeholder="Search"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{ color: colorAccent }}
-            className="ml-2 w-full bg-transparent outline-hidden text-xs md:text-sm placeholder-icon-wording"
+            className="ml-2 w-full bg-transparent outline-hidden text-xs md:text-sm"
           />
         </form>
 
@@ -71,7 +72,8 @@ export default function Header() {
         <div className="flex space-x-4">
           {/* Mobile Search Button (Below 640px) */}
           <button
-            className="sm:hidden w-10 h-10 flex items-center justify-center text-xl rounded-lg bg-box-icon text-icon-wording"
+            style={{ backgroundColor: colorBoxIcon, color: colorIcon }}
+            className="sm:hidden w-10 h-10 flex items-center justify-center text-xl rounded-lg"
             onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}>
             <FaSistrix />
           </button>
@@ -80,17 +82,18 @@ export default function Header() {
           {isMobileSearchOpen && (
             <form
               onSubmit={handleSearch}
-              className="absolute top-16 left-0 w-full bg-back-ground px-4 py-2 flex items-center shadow-md">
-              <FaSistrix className="w-5 h-5 text-hitam-judul-body" />
+              style={{ backgroundColor: colorPrimary }}
+              className="absolute top-16 left-0 w-full px-4 py-2 flex items-center shadow-md">
+              <FaSistrix style={{ color: colorAccent }} className="w-5 h-5" />
               <input
                 type="text"
-                placeholder="Search"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="ml-2 w-full bg-transparent outline-hidden text-sm text-hitam-judul-body placeholder-icon-wording"
+                style={{ color: colorAccent }}
+                className="ml-2 w-full bg-transparent outline-hidden text-sm"
               />
               <button type="submit" className="text-sm font-semibold px-4">
-                Go
+                {headerGo}
               </button>
             </form>
           )}

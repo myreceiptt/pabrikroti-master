@@ -15,12 +15,12 @@ interface DynamicLoginPageProps {
   ContentComponent: React.FC;
 }
 
-const DynamicLoginPage: React.FC<DynamicLoginPageProps> = ({
+export default function DynamicLoginPage({
   ContentComponent,
-}) => {
-  const activeAcccount = useActiveAccount();
+}: DynamicLoginPageProps) {
+  const activeAccount = useActiveAccount();
 
-  if (activeAcccount) {
+  if (activeAccount) {
     return (
       <>
         {/* Headersss */}
@@ -41,6 +41,4 @@ const DynamicLoginPage: React.FC<DynamicLoginPageProps> = ({
       </LoginLayout>
     </ErrorBoundary>
   );
-};
-
-export default DynamicLoginPage;
+}

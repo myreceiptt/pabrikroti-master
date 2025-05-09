@@ -20,7 +20,11 @@ interface MessageProps {
   message3: string;
 }
 
-const Message: React.FC<MessageProps> = ({ message1, message2, message3 }) => {
+export default function Message({
+  message1,
+  message2,
+  message3,
+}: MessageProps) {
   return (
     <>
       {/* Top Section - Content Box */}
@@ -63,6 +67,4 @@ const Message: React.FC<MessageProps> = ({ message1, message2, message3 }) => {
       </div>
     </>
   );
-};
-
-export default Message;
+}

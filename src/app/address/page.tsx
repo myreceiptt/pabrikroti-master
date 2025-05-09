@@ -9,8 +9,6 @@ import React from "react";
 import CoinFallback from "@/components/fts/CoinFallback";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
-const FallbackFT: React.FC = () => (
-  <DynamicLoginPage ContentComponent={() => <CoinFallback />} />
-);
-
-export default FallbackFT;
+export default function FallbackFT() {
+  return <DynamicLoginPage ContentComponent={CoinFallback} />;
+}

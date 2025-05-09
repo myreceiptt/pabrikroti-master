@@ -10,6 +10,7 @@ import { Analytics } from "@vercel/analytics/react";
 import {
   proDescription,
   proImage,
+  proLang,
   proLocale,
   proPublisher,
   proTitle,
@@ -63,13 +64,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang={proLang}>
       <body className={inter.className}>
         <ThirdwebProvider>{children}</ThirdwebProvider>
         <Analytics />

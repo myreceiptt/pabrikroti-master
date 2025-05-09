@@ -43,7 +43,7 @@ import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
-type CoinData = {
+interface CoinData {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
@@ -54,12 +54,12 @@ type CoinData = {
   adjustedSupply: number;
   adjustedMaxClaim: number;
   adjustedBalance: number;
-};
+}
 
 const INITIAL_ITEMS = 6;
 const ITEMS_PER_LOAD = 3;
 
-const CoinsList: React.FC = () => {
+export default function CoinsList() {
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -333,6 +333,4 @@ const CoinsList: React.FC = () => {
       </div>
     </main>
   );
-};
-
-export default CoinsList;
+}

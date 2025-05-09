@@ -15,7 +15,7 @@ import {
 // Components libraries
 import Message from "@/components/sections/ReusableMessage";
 
-const CoinFallback: React.FC = () => {
+export default function CoinFallback() {
   return (
     <main className="grid gap-4 place-items-center">
       <Message
@@ -25,6 +25,4 @@ const CoinFallback: React.FC = () => {
       />
     </main>
   );
-};
-
-export default CoinFallback;
+}

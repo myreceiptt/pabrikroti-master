@@ -15,7 +15,7 @@ import {
 // Components libraries
 import Message from "@/components/sections/ReusableMessage";
 
-const NFTFallback: React.FC = () => {
+export default function NFTFallback() {
   return (
     <main className="grid gap-4 place-items-center">
       <Message
@@ -25,6 +25,4 @@ const NFTFallback: React.FC = () => {
       />
     </main>
   );
-};
-
-export default NFTFallback;
+}

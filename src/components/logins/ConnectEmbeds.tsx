@@ -11,7 +11,7 @@ import { dompets } from "@/config/dompets";
 import { proDescription, proLogo, proTitle, proUrl } from "@/config/myreceipt";
 import { chain, chains } from "@/config/rantais";
 
-const ConnectEmbeds: React.FC = () => {
+export default function ConnectEmbeds() {
   const embedStyle: React.CSSProperties = {
     width: "100%",
     background: "transparent",
@@ -78,6 +78,4 @@ const ConnectEmbeds: React.FC = () => {
       />
     </div>
   );
-};
-
-export default ConnectEmbeds;
+}

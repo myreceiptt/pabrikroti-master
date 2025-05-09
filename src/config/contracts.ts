@@ -88,13 +88,13 @@ export const erc1155TryError = getContract({
 // ...
 
 // All supported NFTs
-// Define the type explicitly
-type SupportedNFTs = {
+// Define the interface explicitly
+interface SupportedNFTs {
   // Keys are numbers, values are arrays of Ethereum addresses
   [key: number]: `0x${string}`[];
-};
+}
 
-// Define `tekeks` (NFTs) with the proper type - Tentukan satu atau lebih dari daftar NFT sesuai rantainya
+// Define `tekeks` (NFTs) with the proper interface - Tentukan satu atau lebih dari daftar NFT sesuai rantainya
 export const rotiTekeks: SupportedNFTs = {
   [baseSepolia.id]: [erc1155TryError.address],
 };
@@ -251,7 +251,7 @@ const nameIDLToken = "IDL Token"; // IDL Token
 const symbolIDLToken = "IDL"; // IDL Token
 const iconIDLToken = "/erc20-icons/idl.png"; // IDL Token
 
-// Define `tokeks` (FTs) with the proper type - Tentukan satu atau lebih dari daftar FT sesuai rantainya
+// Define `tokeks` (FTs) - Tentukan satu atau lebih dari daftar FT sesuai rantainya
 export const rotiTokeks = {
   [baseMainnet.id]: [
     {

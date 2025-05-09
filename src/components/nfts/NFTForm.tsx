@@ -66,7 +66,7 @@ interface NFTFormProps {
   setRefreshToken: (val: number) => void;
 }
 
-const NFTForm: React.FC<NFTFormProps> = ({
+export default function NFTForm({
   dropContract,
   nftId,
   nftIdString,
@@ -80,7 +80,7 @@ const NFTForm: React.FC<NFTFormProps> = ({
   perWallet,
   adjustedBalance,
   setRefreshToken,
-}) => {
+}: NFTFormProps) {
   const activeAccount = useActiveAccount();
   const startTime = new Date(Number(startTimestamp) * 1000);
 
@@ -345,6 +345,4 @@ const NFTForm: React.FC<NFTFormProps> = ({
       </div>
     </div>
   );
-};
-
-export default NFTForm;
+}

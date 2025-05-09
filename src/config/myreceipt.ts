@@ -28,10 +28,12 @@ export const proUrl = "https://ngelarasroso.id"; // connect buttons, connect emb
 export const proPublisher = "NFT Indonesia";
 export const proLocale = "en-US";
 export const proImage = "https://ngelarasroso.id/preview-image.png";
+export const proLang = "en";
 
 // error boundary section
 export const proErrorCought = "Error caught in ErrorBoundary:";
 export const proError = "Something went wrong. Please try again later.";
+export const proButton = "Try Again";
 
 // connect buttons section
 export const proLogo = "/logos/logo.png"; // connect embeds,
@@ -53,6 +55,7 @@ export const poweredBy = "Deployed by NFT Indonesia"; // footer section
 
 // header section
 export const headerLogo = "/images/header-logo.png";
+export const headerGo = "Search Now";
 
 // footer section - hide social icon by nulled the link
 export const copyRight = "All rights reserved.";
@@ -96,22 +99,28 @@ export const coinTitle = "All Claimable Shares";
 // reusable loader section
 export const loaderChecking = "Loading..."; // nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
+// search wrapper page
+export const searchMessage1 = "No data found.";
+export const searchMessage2 =
+  "There is no data found matching your search terms. Please try searching again using other terms or return to the home page.";
+export const searchTitle = "Search Terms Result";
+
 // nfts list page
 export const nftsTitle1Free = "All";
 export const nftsTitle2Free = "Free Stocks";
 export const nftsTitle1Paid = "All";
 export const nftsTitle2Paid = "Paid Stocks";
-export const nftsFailReason = "ClaimNotActive"; // nft details, coins list, coin details,
-export const nftsConsoleWarn = "canClaim failed for nftId"; // nft details,
-export const nftsSetError = "Failed to fetch any available stock.";
-export const nftsError = "Lho, Error:"; // nft details, coins list, coin details,
-export const nftsUknownError = "Kok, Error:"; // nft details, coins list, coin details,
+export const nftsFailReason = "ClaimNotActive"; // search wrapper, nft details, coins list, coin details,
+export const nftsConsoleWarn = "canClaim failed for nftId"; // search wrapper, nft details,
+export const nftsSetError = "Failed to fetch any available stock."; // search wrapper,
+export const nftsError = "Lho, Error:"; // search wrapper, nft details, coins list, coin details,
+export const nftsUknownError = "Kok, Error:"; // search wrapper, nft details, coins list, coin details,
 export const nftsMessage1 = "No available stock!";
 export const nftsMessage2 =
   "There are no available stock right now. Please try again later or return to the home page.";
-export const nftsMessage3 = "Return to the Home Page!"; // nft fallback, nft details, coins list, coin fallback, coin details,
-export const nftsPrevious = "Previous"; // coins list,
-export const nftsNext = "Next"; // coins list,
+export const nftsMessage3 = "Return to the Home Page!"; // search wrapper, nft fallback, nft details, coins list, coin fallback, coin details,
+export const nftsPrevious = "Previous"; // search wrapper, coins list,
+export const nftsNext = "Next"; // search wrapper, coins list,
 
 // nft lister section
 export const nftButton = "Get Now"; // nft form,

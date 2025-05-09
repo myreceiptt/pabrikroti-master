@@ -34,7 +34,7 @@ import { getCountdownString } from "@/config/utils";
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
 
-type CoinListerProps = {
+interface CoinListerProps {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
@@ -47,9 +47,9 @@ type CoinListerProps = {
   adjustedBalance: number;
   hasAccess: boolean | null;
   refreshToken: number;
-};
+}
 
-const CoinLister: React.FC<CoinListerProps> = ({
+export default function CoinLister({
   coinAddress,
   coinChain,
   coinName,
@@ -62,7 +62,7 @@ const CoinLister: React.FC<CoinListerProps> = ({
   adjustedBalance,
   hasAccess,
   refreshToken,
-}) => {
+}: CoinListerProps) {
   const router = useRouter();
   const startTime = new Date(Number(startTimestamp) * 1000);
 
@@ -166,7 +166,8 @@ const CoinLister: React.FC<CoinListerProps> = ({
               style={{ color: colorIcon }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
               <span>{coinListerSupply}</span>
-              <span title={`${adjustedSupply} ${coinListerOf} ${adjustedMaxClaim}`}>
+              <span
+                title={`${adjustedSupply} ${coinListerOf} ${adjustedMaxClaim}`}>
                 {formatNumberCompact(adjustedSupply)}/
                 {formatNumberCompact(adjustedMaxClaim)}
               </span>
@@ -196,6 +197,4 @@ const CoinLister: React.FC<CoinListerProps> = ({
       )}
     </div>
   );
-};
-
-export default CoinLister;
+}

@@ -21,7 +21,10 @@ interface NFTDescriptionProps {
   id: string;
 }
 
-const NFTDescription: React.FC<NFTDescriptionProps> = ({ description, id }) => {
+export default function NFTDescription({
+  description,
+  id,
+}: NFTDescriptionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const paragraphs = description
@@ -106,6 +109,4 @@ const NFTDescription: React.FC<NFTDescriptionProps> = ({ description, id }) => {
       )}
     </>
   );
-};
-
-export default NFTDescription;
+}

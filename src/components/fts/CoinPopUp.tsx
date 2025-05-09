@@ -39,7 +39,7 @@ interface CoinPopUpProps {
   onClose: () => void;
 }
 
-const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
+export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
   if (!isOpen) return null;
 
   return (
@@ -195,6 +195,4 @@ const CoinPopUp: React.FC<CoinPopUpProps> = ({ isOpen, onClose }) => {
       </div>
     </div>
   );
-};
-
-export default CoinPopUp;
+}

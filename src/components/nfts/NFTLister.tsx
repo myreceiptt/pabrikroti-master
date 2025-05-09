@@ -33,7 +33,7 @@ import { getCountdownString } from "@/config/utils";
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
 
-type NFTListerProps = {
+interface NFTListerProps {
   dropContract: ThirdwebContract;
   nftId: bigint;
   nftIdString: string;
@@ -45,9 +45,9 @@ type NFTListerProps = {
   maxClaim: bigint;
   adjustedBalance: number;
   refreshToken: number;
-};
+}
 
-const NFTLister: React.FC<NFTListerProps> = ({
+export default function NFTLister({
   dropContract,
   nftId,
   nftIdString,
@@ -59,7 +59,7 @@ const NFTLister: React.FC<NFTListerProps> = ({
   maxClaim,
   adjustedBalance,
   refreshToken,
-}) => {
+}: NFTListerProps) {
   const router = useRouter();
   const startTime = new Date(Number(startTimestamp) * 1000);
 
@@ -179,6 +179,4 @@ const NFTLister: React.FC<NFTListerProps> = ({
       )}
     </div>
   );
-};
-
-export default NFTLister;
+}

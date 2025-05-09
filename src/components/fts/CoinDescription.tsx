@@ -19,10 +19,10 @@ interface CoinDescriptionProps {
   address: string;
 }
 
-const CoinDescription: React.FC<CoinDescriptionProps> = ({
+export default function CoinDescription({
   description,
   address,
-}) => {
+}: CoinDescriptionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const paragraphs = description
@@ -102,6 +102,4 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
       )}
     </>
   );
-};
-
-export default CoinDescription;
+}

@@ -24,14 +24,18 @@ export default function Subscribe() {
   const [email, setEmail] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isInvalid, setIsInvalid] = useState(false);
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatusMessage(""); // Clear previous messages
+    setStatusMessage("");
+    setIsInvalid(false);
 
     // Basic email validation
-    if (!email || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!email || !emailRegex.test(email)) {
       setStatusMessage(subscribeInput);
+      setIsInvalid(true);
       return;
     }
 
@@ -81,9 +85,13 @@ export default function Subscribe() {
             placeholder={subscribePlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{ borderColor: colorBorder, color: colorPrimary }}
-            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border rounded-l-lg bg-transparent focus:outline-hidden"
+            style={{
+              borderColor: isInvalid ? colorPrimary : colorBorder,
+              color: colorPrimary,
+            }}
+            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border rounded-l-lg bg-transparent focus:outline-none"
             disabled={loading}
+            aria-invalid={isInvalid}
           />
           <button
             type="submit"
@@ -98,6 +106,7 @@ export default function Subscribe() {
       {/* Success/Error Message */}
       {statusMessage && (
         <h4
+          aria-live="polite"
           style={{ color: colorPrimary }}
           className="text-center sm:text-left text-sm font-medium mt-2">
           {statusMessage}

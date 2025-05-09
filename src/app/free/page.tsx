@@ -9,8 +9,8 @@ import React from "react";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 import NFTsList from "@/components/nfts/NFTsList";
 
-const PageFree: React.FC = () => (
-  <DynamicLoginPage ContentComponent={() => <NFTsList variant="free" />} />
-);
-
-export default PageFree;
+export default function PageFree() {
+  return (
+    <DynamicLoginPage ContentComponent={() => <NFTsList variant="free" />} />
+  );
+}

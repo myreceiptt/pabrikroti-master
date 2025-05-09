@@ -11,7 +11,7 @@ interface TitleProps {
   title2: string;
 }
 
-const Title: React.FC<TitleProps> = ({ title1, title2 }) => {
+export default function Title({ title1, title2 }: TitleProps) {
   return (
     <div className="w-full flex flex-col gap-2 sm:items-start items-center">
       <h1
@@ -30,6 +30,4 @@ const Title: React.FC<TitleProps> = ({ title1, title2 }) => {
       </h2>
     </div>
   );
-};
-
-export default Title;
+}

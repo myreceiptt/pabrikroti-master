@@ -24,7 +24,7 @@ import {
 } from "@/config/myreceipt";
 import { chain, chains } from "@/config/rantais";
 
-const ConnectButtons: React.FC = () => {
+export default function ConnectButtons() {
   return (
     <div id="connected">
       <ConnectButton
@@ -80,6 +80,4 @@ const ConnectButtons: React.FC = () => {
       />
     </div>
   );
-};
-
-export default ConnectButtons;
+}

@@ -45,11 +45,11 @@ import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
-type NFTsListProps = {
+interface NFTsListProps {
   variant: "free" | "paid";
-};
+}
 
-type NFTData = {
+interface NFTData {
   nftId: bigint;
   nftIdString: string;
   adjustedPrice: number;
@@ -59,12 +59,12 @@ type NFTData = {
   supply: bigint;
   maxClaim: bigint;
   adjustedBalance: number;
-};
+}
 
 const INITIAL_ITEMS = 6;
 const ITEMS_PER_LOAD = 3;
 
-const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
+export default function NFTsList({ variant }: NFTsListProps) {
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -321,6 +321,4 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
       </div>
     </main>
   );
-};
-
-export default NFTsList;
+}
