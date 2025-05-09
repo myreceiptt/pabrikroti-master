@@ -103,7 +103,7 @@ export const loaderChecking = "Loading..."; // nfts list, nft lister, nft detail
 export const searchMessage1 = "No data found.";
 export const searchMessage2 =
   "There is no data found matching your search terms. Please try searching again using other terms or return to the home page.";
-export const searchTitle = "Search Terms Result";
+export const searchTitle = "Search Result:";
 
 // nfts list page
 export const nftsTitle1Free = "All";
