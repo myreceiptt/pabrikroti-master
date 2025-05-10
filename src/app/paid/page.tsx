@@ -9,8 +9,8 @@ import React from "react";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 import NFTsList from "@/components/nfts/NFTsList";
 
-const PagePaid: React.FC = () => (
-  <DynamicLoginPage ContentComponent={() => <NFTsList variant="paid" />} />
-);
+const PaidNFTsList = () => <NFTsList variant="paid" />;
 
-export default PagePaid;
+export default function PagePaid() {
+  return <DynamicLoginPage ContentComponent={PaidNFTsList} />;
+}

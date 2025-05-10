@@ -6,13 +6,10 @@ import Link from "next/link";
 import React from "react";
 
 // Blockchain configurations
-import {
-  coinAccessBanner,
-  colorIcon,
-  colorPrimary,
-  colorSecondary,
-  proTitle,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { coinAccessBanner, colorIcon, colorPrimary, colorSecondary, proTitle } =
+  getActiveReceipt();
 
 interface MessageProps {
   message1: string;
@@ -20,7 +17,11 @@ interface MessageProps {
   message3: string;
 }
 
-const Message: React.FC<MessageProps> = ({ message1, message2, message3 }) => {
+export default function Message({
+  message1,
+  message2,
+  message3,
+}: MessageProps) {
   return (
     <>
       {/* Top Section - Content Box */}
@@ -55,6 +56,7 @@ const Message: React.FC<MessageProps> = ({ message1, message2, message3 }) => {
           alt={proTitle}
           width={4096}
           height={1109}
+          className="rounded-3xl"
           objectFit="cover"
           objectPosition="top"
           priority
@@ -62,6 +64,4 @@ const Message: React.FC<MessageProps> = ({ message1, message2, message3 }) => {
       </div>
     </>
   );
-};
-
-export default Message;
+}

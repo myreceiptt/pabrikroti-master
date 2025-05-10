@@ -18,7 +18,14 @@ import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
 import { erc1155Launched } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import NFTForm from "@/components/nfts/NFTForm";
+import Loader from "@/components/sections/ReusableLoader";
+import Message from "@/components/sections/ReusableMessage";
+
+const {
   loaderChecking,
   nftMessage1,
   nftMessage2,
@@ -28,14 +35,9 @@ import {
   nftsFailReason,
   nftsMessage3,
   nftsUknownError,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
-// Components libraries
-import NFTForm from "@/components/nfts/NFTForm";
-import Loader from "@/components/sections/ReusableLoader";
-import Message from "@/components/sections/ReusableMessage";
-
-type NFTData = {
+interface NFTData {
   nftId: bigint;
   nftIdString: string;
   adjustedPrice: number;
@@ -47,14 +49,14 @@ type NFTData = {
   maxClaim: bigint;
   perWallet: bigint;
   adjustedBalance: number;
-};
+}
 
 function getNFTIdFromParams(params: ReturnType<typeof useParams>): bigint {
   const val = params.idNFT;
   return BigInt(Array.isArray(val) ? val[0] : val ?? "0");
 }
 
-const NFTDetails: React.FC = () => {
+export default function NFTDetails() {
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
@@ -229,6 +231,4 @@ const NFTDetails: React.FC = () => {
       )}
     </main>
   );
-};
-
-export default NFTDetails;
+}

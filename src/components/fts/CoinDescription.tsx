@@ -5,24 +5,26 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+const {
   colorIcon,
   colorSecondary,
   nftEndhonesa,
   nftMeMoRa,
   nftReadLess,
   nftReadMore,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
 interface CoinDescriptionProps {
   description: string;
-  nftIdString: string;
+  address: string;
 }
 
-const CoinDescription: React.FC<CoinDescriptionProps> = ({
+export default function CoinDescription({
   description,
-  nftIdString,
-}) => {
+  address,
+}: CoinDescriptionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const paragraphs = description
@@ -66,7 +68,7 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
             <>
               <Link
                 href="#"
-                title={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${nftIdString}`}
+                title={`https://memora.voyage.co.id/[chain-name]/${address}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -77,7 +79,7 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
               </Link>
               <Link
                 href="#"
-                title={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${nftIdString}`}
+                title={`https://store.endhonesa.com/digital/[chain-name]/${address}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
@@ -102,6 +104,4 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
       )}
     </>
   );
-};
-
-export default CoinDescription;
+}

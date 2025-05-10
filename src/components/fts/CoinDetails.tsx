@@ -10,16 +10,23 @@ import {
   canClaim,
   decimals,
   getActiveClaimCondition,
-  // totalSupply,
 } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import CheckErc1155 from "@/config/checker";
+import { CheckErc1155 } from "@/config/checker";
 import { erc20ContractsLaunched } from "@/config/contracts";
-import {
-  coinAccessMessage1,
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import CoinAccess from "@/components/fts/CoinAccess";
+import CoinForm from "@/components/fts/CoinForm";
+import Loader from "@/components/sections/ReusableLoader";
+import Message from "@/components/sections/ReusableMessage";
+
+const {
+  coinAccessTitle,
   coinMessage1,
   coinMessage2,
   coinSetError,
@@ -29,15 +36,9 @@ import {
   nftsFailReason,
   nftsMessage3,
   nftsUknownError,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
-// Components libraries
-import CoinAccess from "@/components/fts/CoinAccess";
-import CoinForm from "@/components/fts/CoinForm";
-import Loader from "@/components/sections/ReusableLoader";
-import Message from "@/components/sections/ReusableMessage";
-
-type CoinData = {
+interface CoinData {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
@@ -53,7 +54,7 @@ type CoinData = {
   adjustedSupply: number;
   adjustedMaxClaim: number;
   adjustedPerWallet: number;
-};
+}
 
 function getCoinAddressFromParams(
   params: ReturnType<typeof useParams>
@@ -64,24 +65,21 @@ function getCoinAddressFromParams(
     : val ?? "0x0000000000000000000000000000000000000000";
 }
 
-const CoinDetails: React.FC = () => {
+export default function CoinDetails() {
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
   const coinAddress = getCoinAddressFromParams(params);
 
-  // Ensure state variables are properly declared
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [refreshToken, setRefreshToken] = useState(Date.now());
   const [coin, setCoin] = useState<CoinData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch any data
   const fetchCoinDetails = useCallback(async () => {
     if (!coinAddress || !activeAccount?.address) return;
 
-    // Check coinAddress exist based on erc20ContractsLaunched
     const erc20ContractLaunched = erc20ContractsLaunched.find(
       (c) => c.address.toLowerCase() === coinAddress.toLowerCase()
     );
@@ -99,18 +97,8 @@ const CoinDetails: React.FC = () => {
         chain: erc20ContractLaunched.chain,
       });
 
-      // Fetch coin decimals
       const coinDecimals = await decimals({ contract: erc20Contract });
 
-      // Fetch coin supply
-      // const coinSupply = await totalSupply({
-        // contract: erc20Contract,
-      // });
-
-      // Adjust coin supply
-      // const adjustedSupply = Number(coinSupply) / 10 ** coinDecimals;
-
-      // Fetch user's owned coins
       const coinOwned = await getWalletBalance({
         address: activeAccount.address,
         chain: erc20ContractLaunched.chain,
@@ -121,7 +109,6 @@ const CoinDetails: React.FC = () => {
       const coinOwnedRaw = coinOwned.value ?? 0n;
       const adjustedCoinOwned = Number(coinOwnedRaw) / 10 ** coinDecimals;
 
-      // Fetch claim condition
       const claimCondition = await getActiveClaimCondition({
         contract: erc20Contract,
       });
@@ -132,19 +119,13 @@ const CoinDetails: React.FC = () => {
         return;
       }
 
-      // Fetch coin supply based on claim condition
       const adjustedSupply =
         Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
-
-      // Fetch and adjust max. claim
       const adjustedMaxClaim =
         Number(claimCondition.maxClaimableSupply) / 10 ** coinDecimals;
-
-      // Fetch and adjust limit per wallet
       const adjustedPerWallet =
         Number(claimCondition.quantityLimitPerWallet) / 10 ** coinDecimals;
 
-      // Fetch currency and decimals
       let currencyDecimals = 18;
       let balanceRaw = 0n;
       const nativeETH = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
@@ -158,7 +139,6 @@ const CoinDetails: React.FC = () => {
 
         currencyDecimals = await decimals({ contract: currencyContract });
 
-        // Fetch wallet balance
         const balanceResult = await getWalletBalance({
           address: activeAccount.address,
           chain: erc20ContractLaunched.chain,
@@ -168,7 +148,6 @@ const CoinDetails: React.FC = () => {
 
         balanceRaw = balanceResult.value ?? 0n;
       } else {
-        // Native token balance
         const balanceResult = await getWalletBalance({
           address: activeAccount.address,
           chain: erc20ContractLaunched.chain,
@@ -179,12 +158,10 @@ const CoinDetails: React.FC = () => {
         balanceRaw = balanceResult.value ?? 0n;
       }
 
-      // Adjust price and balance
       const adjustedPrice =
         Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
       const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
 
-      // Fetch can claim status
       let isClaimable = false;
       let reason: string | null = null;
 
@@ -198,7 +175,6 @@ const CoinDetails: React.FC = () => {
         isClaimable = claimStatus.result;
         reason = claimStatus.reason ?? null;
       } catch (innerErr) {
-        // Continue if check failed
         isClaimable = false;
         reason = nftsFailReason;
         console.warn(
@@ -238,21 +214,14 @@ const CoinDetails: React.FC = () => {
     }
   }, [coinAddress, activeAccount?.address]);
 
-  // Refetch coin details
   useEffect(() => {
-    if (coinAddress !== "") {
-      fetchCoinDetails();
-    }
+    if (coinAddress !== "") fetchCoinDetails();
   }, [refreshToken, fetchCoinDetails, coinAddress]);
 
-  // Ensure coinAddress exists, otherwise redirect
   useEffect(() => {
-    if (params.coinAddress == null) {
-      router.push("/");
-    }
+    if (params.coinAddress == null) router.push("/");
   }, [params.coinAddress, router]);
 
-  // Placeholder loader
   if (loading || coinAddress === "") {
     return (
       <main className="grid gap-4 place-items-center">
@@ -261,7 +230,6 @@ const CoinDetails: React.FC = () => {
     );
   }
 
-  // Fallback message coinAddress not found
   if (error) {
     return (
       <main className="grid gap-4 place-items-center">
@@ -276,7 +244,6 @@ const CoinDetails: React.FC = () => {
 
   return (
     <main className="grid gap-4 place-items-center">
-      {/* Step 1: Check Access */}
       {activeAccount?.address && (
         <CheckErc1155
           key={refreshToken}
@@ -284,19 +251,13 @@ const CoinDetails: React.FC = () => {
           onAccessChange={setHasAccess}
         />
       )}
-
-      {/* Step 2: Access is being checked */}
       {hasAccess === null && <Loader message={loaderChecking} />}
-
-      {/* Step 3: Access denied */}
       {hasAccess === false && (
         <CoinAccess
           onRedirect={() => router.push("/")}
-          message={coinAccessMessage1}
+          message={coinAccessTitle}
         />
       )}
-
-      {/* Step 4: Access granted → Render CoinForm */}
       {hasAccess === true && coin && (
         <CoinForm
           hasAccess={hasAccess}
@@ -307,6 +268,4 @@ const CoinDetails: React.FC = () => {
       )}
     </main>
   );
-};
-
-export default CoinDetails;
+}

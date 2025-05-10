@@ -19,7 +19,14 @@ import {
 // Blockchain configurations
 import { client } from "@/config/client";
 import { currencyMap } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+import { getCountdownString } from "@/config/utils";
+
+// Components libraries
+import NFTDescription from "@/components/nfts/NFTDescription";
+import Loader from "@/components/sections/ReusableLoader";
+
+const {
   colorBorder,
   colorIcon,
   colorPrimary,
@@ -43,12 +50,7 @@ import {
   nftListerImage,
   nftListerName,
   nftSoon,
-} from "@/config/myreceipt";
-import { getCountdownString } from "@/config/utils";
-
-// Components libraries
-import NFTDescription from "@/components/nfts/NFTDescription";
-import Loader from "@/components/sections/ReusableLoader";
+} = getActiveReceipt();
 
 interface NFTFormProps {
   dropContract: ThirdwebContract;
@@ -66,7 +68,7 @@ interface NFTFormProps {
   setRefreshToken: (val: number) => void;
 }
 
-const NFTForm: React.FC<NFTFormProps> = ({
+export default function NFTForm({
   dropContract,
   nftId,
   nftIdString,
@@ -80,7 +82,7 @@ const NFTForm: React.FC<NFTFormProps> = ({
   perWallet,
   adjustedBalance,
   setRefreshToken,
-}) => {
+}: NFTFormProps) {
   const activeAccount = useActiveAccount();
   const startTime = new Date(Number(startTimestamp) * 1000);
 
@@ -104,6 +106,8 @@ const NFTForm: React.FC<NFTFormProps> = ({
   const nftImage = nftMetadata?.image || nftListerImage;
   const nftName = nftMetadata?.name || nftListerName;
   const nftDescription = nft?.metadata.description ?? "";
+
+  console.log(`OiOi: ${nftDescription}`);
 
   // Fetch user's owned NFTs
   const { data: ownedNFTs, refetch: refetchOwnedNFTs } = useReadContract(
@@ -211,10 +215,7 @@ const NFTForm: React.FC<NFTFormProps> = ({
         </div>
 
         {/* Description with Expand/Collapse */}
-        <NFTDescription
-          description={nftDescription}
-          nftIdString={nftIdString}
-        />
+        <NFTDescription description={nftDescription} id={nftIdString} />
 
         {/* Success or Error Messages */}
         {pesanTunggu && <Loader message={pesanTunggu} />}
@@ -270,7 +271,7 @@ const NFTForm: React.FC<NFTFormProps> = ({
               setIsRefreshing(false); // ✅ selesai loading
             }}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`col-span-2 aspect-auto rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`col-span-2 aspect-auto rounded-lg mt-1 disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
             } flex items-center justify-center`}>
             <motion.div
@@ -346,6 +347,4 @@ const NFTForm: React.FC<NFTFormProps> = ({
       </div>
     </div>
   );
-};
-
-export default NFTForm;
+}

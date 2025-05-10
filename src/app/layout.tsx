@@ -7,17 +7,20 @@ import { ThirdwebProvider } from "thirdweb/react";
 import { Analytics } from "@vercel/analytics/react";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// CSS Styling
+import "./globals.css";
+
+const {
   proDescription,
   proImage,
+  proLang,
   proLocale,
   proPublisher,
   proTitle,
   proUrl,
-} from "@/config/myreceipt";
-
-// CSS Styling
-import "./globals.css";
+} = getActiveReceipt();
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -63,13 +66,13 @@ export const metadata: Metadata = {
   },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
+interface RootLayoutProps {
   children: React.ReactNode;
-}>) {
+}
+
+export default function RootLayout({ children }: RootLayoutProps) {
   return (
-    <html lang="en">
+    <html lang={proLang}>
       <body className={inter.className}>
         <ThirdwebProvider>{children}</ThirdwebProvider>
         <Analytics />

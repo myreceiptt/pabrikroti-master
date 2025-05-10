@@ -14,17 +14,13 @@ import {
   tokeks,
 } from "@/config/contracts";
 import { dompets } from "@/config/dompets";
-import {
-  colorBoxIcon,
-  colorIcon,
-  proDescription,
-  proLogo,
-  proTitle,
-  proUrl,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
 
-const ConnectButtons: React.FC = () => {
+const { colorBoxIcon, colorIcon, proDescription, proLogo, proTitle, proUrl } =
+  getActiveReceipt();
+
+export default function ConnectButtons() {
   return (
     <div id="connected">
       <ConnectButton
@@ -80,6 +76,4 @@ const ConnectButtons: React.FC = () => {
       />
     </div>
   );
-};
-
-export default ConnectButtons;
+}

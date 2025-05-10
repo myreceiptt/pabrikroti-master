@@ -19,10 +19,19 @@ import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
 import { erc1155Launched } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import NFTLister from "@/components/nfts/NFTLister";
+import Loader from "@/components/sections/ReusableLoader";
+import Message from "@/components/sections/ReusableMessage";
+import Title from "@/components/sections/ReusableTitle";
+
+const {
   colorPrimary,
   colorSecondary,
   loaderChecking,
+  nftsAria,
   nftsConsoleWarn,
   nftsError,
   nftsFailReason,
@@ -37,19 +46,15 @@ import {
   nftsTitle2Free,
   nftsTitle2Paid,
   nftsUknownError,
-} from "@/config/myreceipt";
+  searchAria1,
+  searchAria3,
+} = getActiveReceipt();
 
-// Components libraries
-import NFTLister from "@/components/nfts/NFTLister";
-import Loader from "@/components/sections/ReusableLoader";
-import Message from "@/components/sections/ReusableMessage";
-import Title from "@/components/sections/ReusableTitle";
-
-type NFTsListProps = {
+interface NFTsListProps {
   variant: "free" | "paid";
-};
+}
 
-type NFTData = {
+interface NFTData {
   nftId: bigint;
   nftIdString: string;
   adjustedPrice: number;
@@ -59,12 +64,12 @@ type NFTData = {
   supply: bigint;
   maxClaim: bigint;
   adjustedBalance: number;
-};
+}
 
 const INITIAL_ITEMS = 6;
 const ITEMS_PER_LOAD = 3;
 
-const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
+export default function NFTsList({ variant }: NFTsListProps) {
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -276,16 +281,18 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
       <div className="flex items-center justify-center gap-4 mt-4">
         {nftListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria1}
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
             {nftsPrevious}
           </button>
         )}
         <button
+          aria-label={nftsAria}
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
@@ -294,7 +301,7 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
             setIsRefreshing(false); // ✅ selesai loading
           }}
           style={{ color: colorPrimary, background: colorSecondary }}
-          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
           }`}>
           <motion.div
@@ -309,10 +316,11 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
         </button>
         {nftListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria3}
             onClick={handleLoadMore}
             disabled={visibleCount >= nftListToShow.length}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= nftListToShow.length ? "" : "cursor-pointer"
             }`}>
             {nftsNext}
@@ -321,6 +329,4 @@ const NFTsList: React.FC<NFTsListProps> = ({ variant }) => {
       </div>
     </main>
   );
-};
-
-export default NFTsList;
+}

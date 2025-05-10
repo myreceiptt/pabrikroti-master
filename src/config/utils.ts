@@ -1,6 +1,14 @@
 // /src/config/utils.ts
 
-// Countdown
+// convert hex to rgba
+export function hexToRgba(hex: string, alpha: number): string {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+// countdown
 export function getCountdownString(
   startTime: Date,
   currentTime: Date = new Date()
@@ -20,7 +28,7 @@ export function getCountdownString(
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
 }
 
-// Fetch ETH price
+// fetch eth price
 export async function FetchEthereumPrice(): Promise<number | null> {
   try {
     const response = await fetch(
