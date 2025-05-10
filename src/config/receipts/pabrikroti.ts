@@ -34,7 +34,7 @@ export const pabrikroti = {
   // layout...
   proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
   proDescription:
-    "The Breads Factory is a factory that produces Programmed Bread (tokenized assets) with a Framework of Playing, Learning, and Working or PLW.", // layout, connect buttons, connect embeds,
+    "The Breads Factory is a factory that produces Programmed Bread (tokenization) with a Framework of Playing, Learning, and Working or PLW.", // layout, connect buttons, connect embeds,
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "Prof. NOTA Inc.", // layout,
   proLocale: "en-US", // layout,
@@ -71,12 +71,12 @@ export const pabrikroti = {
   headerSearch: "Search Query", // header,
 
   // footer section - hide social icon by nulled the link
-  copyRight: "All rights reserved.", // footer,
-  officiallyLicensed: "Officially licensed product of", // footer,
+  copyRight: "Every stomach must be hungry.", // footer,
+  officiallyLicensed: "Officially hungry and satiated by", // footer,
   anchorPrivacy: "Privacy Policy", // footer,
   anchorTerms: "Terms of Service", // footer,
   footerPower: "/roti/images/footer-power.png", // footer,
-  socialTitle: "Catch up with our update!", // footer,
+  socialTitle: "Eat all our updates for free!", // footer,
   linkXTwitter: "https://x.com/MyReceiptTT", // footer,
   linkLinkedIn: "https://www.linkedin.com/in/prof-nota-56554a351/", // footer,
   linkInstagram: "https://www.instagram.com/myreceipt/", // footer,
@@ -96,20 +96,20 @@ export const pabrikroti = {
   subscribeMessage: "I want to subscribe to the latest updates.", // subscribe form,
   subscribeSuccess: "Thank you for subscribing!", // subscribe form,
   subscribeFailed: "Subscription failed. Please try again.", // subscribe form,
-  subscribeTitle: "Catch the latest updates", // subscribe form,
+  subscribeTitle: "Eat our latest updates", // subscribe form,
   subscribePlaceholder: "Enter your email address", // subscribe form,
   subscribeButton: "Subscribe", // subscribe form,
   subscribeButtonLoading: "Subscribing...", // subscribe form,
 
   // featured cards page - hide card by nulled the title
-  featuredTitle1: "Fill It Up With All", // featured cards,
-  featuredTitle2: "That You Need & Desire", // featured cards,
-  featuredPaid: "/images/featured-paid.png", // featured cards,
-  paidTitle: "", // featured cards,
-  featuredFree: "/images/featured-free.png", // featured cards,
-  freeTitle: "All Free Stocks", // featured cards,
-  featuredCoin: "/images/featured-coin.png", // featured cards,
-  coinTitle: "All Claimable Shares", // featured cards,
+  featuredTitle1: "All Breads", // featured cards,
+  featuredTitle2: "That You Can Eat", // featured cards,
+  featuredPaid: "/roti/images/featured-paid.png", // featured cards,
+  paidTitle: "All Paid Artisan Breads", // featured cards,
+  featuredFree: "/roti/images/featured-free.png", // featured cards,
+  freeTitle: "All Free Artisan Breads", // featured cards,
+  featuredCoin: "/roti/images/featured-coin.png", // featured cards,
+  coinTitle: "All Packaged Breads", // featured cards,
   featuredAria: `Navigate to`, // featured cards,
 
   // reusable loader section
@@ -125,58 +125,58 @@ export const pabrikroti = {
   searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
 
   // nfts list page
-  nftsTitle1Free: "All", // nfts list,
-  nftsTitle2Free: "Free Stocks", // nfts list,
-  nftsTitle1Paid: "All", // nfts list,
-  nftsTitle2Paid: "Paid Stocks", // nfts list,
+  nftsTitle1Free: "All Free", // nfts list,
+  nftsTitle2Free: "Artisan Breads", // nfts list,
+  nftsTitle1Paid: "All Paid", // nfts list,
+  nftsTitle2Paid: "Artisan Breads", // nfts list,
   nftsFailReason: "ClaimNotActive", // search wrapper, nfts list, nft details, coins list, coin details,
   nftsConsoleWarn: "canClaim failed for nftId", // search wrapper, nfts list, nft details,
-  nftsSetError: "Failed to fetch any available stock.", // search wrapper, nfts list,
+  nftsSetError: "Failed to fetch any artisan breads.", // search wrapper, nfts list,
   nftsError: "Lho, Error:", // search wrapper, nfts list, nft details, coins list, coin details,
   nftsUknownError: "Kok, Error:", // search wrapper, nfts list, nft details, coins list, coin details,
-  nftsMessage1: "No available stock!", // nfts list,
+  nftsMessage1: "No artisan breads!", // nfts list,
   nftsMessage2:
-    "There are no available stock right now. Please try again later or return to the home page.", // nfts list,
+    "There are no artisan breads right now. Please try again later or return to the home page.", // nfts list,
   nftsMessage3: "Return to the Home Page!", // search wrapper, nfts list, nft fallback, nft details, coins list, coin fallback, coin details,
   nftsPrevious: "Previous", // search wrapper, nfts list, coins list,
   nftsNext: "Next", // search wrapper, nfts list, coins list,
-  nftsAria: "Refresh stocks data.", // nfts list,
+  nftsAria: "Refresh breads data.", // nfts list,
 
   // nft lister section
-  nftButton: "Get Now", // nft lister, nft form,
-  nftSoon: "Available in:", // nft lister, nft form, coin lister, coin form,
+  nftButton: "Swallow Now", // nft lister, nft form,
+  nftSoon: "Plating in:", // nft lister, nft form, coin lister, coin form,
   nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
-  nftClaimed: "Got It", // nft lister, nft form,
-  nftClosed: "Out of Stock", // nft lister, nft form, coin lister, coin form,
-  nftListerImage: "/medias/artisan-bread.png", // nft lister, nft form,
-  nftListerName: "An Available Stock", // nft lister, nft form,
-  nftEditions: "Edition:", // nft lister,
-  nftNoData: "No data available.", // nft lister,
+  nftClaimed: "Swallowed", // nft lister, nft form,
+  nftClosed: "Out of the Oven", // nft lister, nft form, coin lister, coin form,
+  nftListerImage: "/roti/medias/artisan-bread.png", // nft lister, nft form,
+  nftListerName: "An Artisan Bread", // nft lister, nft form,
+  nftEditions: "Slices of Loaf:", // nft lister,
+  nftNoData: "No bread available.", // nft lister,
 
   // nft fallback page
-  nftFallMessage1: "No valid stock ID used.", // nft fallback,
+  nftFallMessage1: "No valid artisan bread ID used.", // nft fallback,
   nftFallMessage2:
-    "Please use a valid stock ID in the URL or return to the home page and start over.", // nft fallback,
+    "Please use a valid artisan bread ID in the URL or return to the home page and start over.", // nft fallback,
 
   // nft details page
-  nftSetError: "Failed to fetch the stock ID.", // nft details,
-  nftMessage1: "The stock ID not found.", // nft details,
+  nftSetError: "Failed to fetch the artisan bread ID.", // nft details,
+  nftMessage1: "The artisan bread ID not found.", // nft details,
   nftMessage2:
-    "The specified stock ID was not found. Please try again later or return to the home page.", // nft details,
+    "The specified artisan bread ID was not found. Please try again later or return to the home page.", // nft details,
 
   // nft form section
-  nftFormByLink: "https://ngelarasroso.id/", // nft form,
+  nftFormByLink: "https://nota.endhonesa.com/", // nft form,
   nftFormBy: "by", // nft form, coin form,
-  nftFormByName: "Ngelaras Roso!", // nft form,
-  nftFormEdition: "Edition", // nft form,
-  nftFormOwned: "Got It", // nft form, coin form,
+  nftFormByName: "Prof. NOTA Inc.", // nft form,
+  nftFormEdition: "Slices of Loaf", // nft form,
+  nftFormOwned: "Swallowed", // nft form, coin form,
   nftFormRefresh: "Refresh", // nft form, coin form,
-  nftFormTunggu: "Processing. Be patient and wait.", // nft form, coin form,
-  nftFormKirim: "Claiming your stock.", // nft form,
-  nftFormSukses: "Stock successfully claimed.", // nft form,
+  nftFormTunggu: "Baking. Be patient and wait.", // nft form, coin form,
+  nftFormKirim: "Serving your artisan bread.", // nft form,
+  nftFormSukses: "Artisan bread successfully served.", // nft form,
   nftFormPrice: "Price", // nft form, coin form,
   nftFormMax: "*Maximum", // nft form, coin form,
-  nftFormPerWallet: "edition per holder.", // nft form,
+  nftFormPerWallet: "slices of loaf per bread eater.", // nft form,
 
   // nft description section - hide link by nulled the title
   nftMeMoRaTitle: "", // nft description,
@@ -188,46 +188,46 @@ export const pabrikroti = {
 
   // coins list page
   coinsConsoleWarn: "canClaim failed for coinAddress:", // coins list, coin details,
-  coinsSetError: "Failed to fetch any claimable share.", // coins list,
-  coinsMessage1: "No claimable shares", // coins list,
+  coinsSetError: "Failed to fetch any packaged breads.", // coins list,
+  coinsMessage1: "No packaged breads", // coins list,
   coinsMessage2:
-    "There are no claimable share available right now. Please try again later or return to the home page.", // coins list,
+    "There are no packaged breads available right now. Please try again later or return to the home page.", // coins list,
   coinsTitle1: "All", // coins list,
-  coinsTitle2: "Claimable Shares", // coins list,
-  coinsAria: "Refresh shares data.", // coins list,
+  coinsTitle2: "Packaged Breads", // coins list,
+  coinsAria: "Refresh breads data.", // coins list,
 
   // coin lister section
-  coinButton: "Claim Now", // coin lister, coin form,
+  coinButton: "Swallow Now", // coin lister, coin form,
   coinNoAccess: "No Access", // coin lister, coin form,
-  coinClaimed: "Claimed", // coin lister, coin form,
-  coinListerImage: "/medias/batch-bread.png", // coin lister, coin form,
-  coinListerName: "A Claimable Share", // coin lister, coin form,
-  coinListerSupply: "Supply:", // coin lister, coin details,
+  coinClaimed: "Swallowed", // coin lister, coin form,
+  coinListerImage: "/roti/medias/batch-bread.png", // coin lister, coin form,
+  coinListerName: "A Packaged Bread", // coin lister, coin form,
+  coinListerSupply: "Crumb of Batch:", // coin lister, coin details,
   coinListerOf: "of", // coin lister, coin form,
 
   // coin fallback page
-  coinFallMessage1: "Invalid share address used.", // coin fallback,
+  coinFallMessage1: "Invalid address of the packaged breads.", // coin fallback,
   coinFallMessage2:
-    "Please use a valid address of the claimable share in the URL or return to the home page and start over.", // coin fallback,
+    "Please use a valid address of the packaged breads in the URL or return to the home page and start over.", // coin fallback,
 
   // coin details page
-  coinSetError: "Failed to fetch the share address.", // coin details,
-  coinMessage1: "The share address not found.", // coin details,
+  coinSetError: "Failed to fetch the address of the packaged breads.", // coin details,
+  coinMessage1: "The address of the packaged breads not found.", // coin details,
   coinMessage2:
-    "The specified address of the share was not found. Please try again later or return to the home page.", // coin details,
+    "The specified address of the packaged breads was not found. Please try again later or return to the home page.", // coin details,
   coinAccessTitle: "You don't have access!", // coin details,
 
   // coin access section
   coinAccessMessage:
-    "Please get your access by get any available stock at least one edition.", // coin access,
-  coinAccessButton: "Get The Available Stock!", // coin access,
-  coinAccessBanner: "/images/content-banner.png", // coin access,
+    "Please get your access by swallow any artisan breads at least one slice of loaf.", // coin access,
+  coinAccessButton: "Get The Artisan Breads!", // coin access,
+  coinAccessBanner: "/roti/images/content-banner.png", // coin access,
 
   // coin form section
-  coinFormSupply: "Supply", // coin form,
-  coinFormKirim: "Claiming your share.", // coin form,
-  coinFormSukses: "Share successfully claimed.", // coin form,
-  coinFormPerWallet: "supply per holder.", // coin form,
+  coinFormSupply: "Crumb of Batch", // coin form,
+  coinFormKirim: "Serving your packaged bread.", // coin form,
+  coinFormSukses: "Packaged bread successfully served.", // coin form,
+  coinFormPerWallet: "crumb of batch per bread eater.", // coin form,
 
   // coin description section
   coinDescription: "Ethereum L2 $OiOi fungible tokens.", // coin description,

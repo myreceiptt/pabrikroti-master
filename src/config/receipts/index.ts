@@ -1,8 +1,6 @@
 // /src/config/receipts/index.ts
 
 // Blockchain configurations
-import { istiqlal } from "@/config/receipts/istiqlal";
-import { memora } from "@/config/receipts/memora";
 import { myreceipt } from "@/config/receipts/myreceipt";
 import { pabrikroti } from "@/config/receipts/pabrikroti";
 
@@ -12,8 +10,6 @@ type ReceiptType = typeof myreceipt;
 // Subdomain-based config mapping
 const subdomainMap: Record<string, ReceiptType> = {
   pabrikroti,
-  memora,
-  istiqlal,
 };
 
 // Fungsi ambil subdomain dari host string
