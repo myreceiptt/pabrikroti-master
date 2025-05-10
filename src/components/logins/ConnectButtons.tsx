@@ -7,59 +7,73 @@ import { ConnectButton } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { dompets } from "@/config/dompets";
 import {
-  titlePro,
-  descriptionPro,
-  baseUrl,
-  logoUrl,
-  factoryAddress,
-} from "@/config/osloid";
-import { base, baseSepolia } from "@/config/rantais";
-import { tekeks } from "@/config/tekeks";
-import { tokeks } from "@/config/tokeks";
+  displayedTekeks,
+  tekeks,
+  theAccountFactory,
+  tokeks,
+} from "@/config/contracts";
+import { dompets } from "@/config/dompets";
+import { getActiveReceipt } from "@/config/receipts";
+import { chain, chains } from "@/config/rantais";
 
-const chains = [base, baseSepolia];
+const { colorBoxIcon, colorIcon, proDescription, proLogo, proTitle, proUrl } =
+  getActiveReceipt();
 
-const ConnectButtons: React.FC = () => {
+export default function ConnectButtons() {
   return (
     <div id="connected">
       <ConnectButton
         client={client}
         appMetadata={{
-          name: titlePro,
-          url: baseUrl,
-          description: descriptionPro,
-          logoUrl: logoUrl,
+          name: proTitle,
+          url: proUrl,
+          description: proDescription,
+          logoUrl: proLogo,
+        }}
+        connectButton={{
+          className: " ",
+          label: <FaUserLarge />,
+          style: {
+            width: "2.5rem",
+            height: "2.5rem",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            fontSize: "1.25rem",
+            borderRadius: "0.5rem",
+            backgroundColor: colorBoxIcon,
+            color: colorIcon,
+          },
+        }}
+        connectModal={{
+          showThirdwebBranding: false,
+          title: "Log In",
         }}
         wallets={dompets}
         accountAbstraction={{
-          factoryAddress: factoryAddress,
-          chain: base,
+          factoryAddress: theAccountFactory,
+          chain: chain,
           sponsorGas: true,
         }}
         chains={chains}
         supportedTokens={tokeks}
         supportedNFTs={tekeks}
         detailsButton={{
-          displayBalanceToken: {
-            [base.id]: "0x237b1188F8BAC61f2E4e0EdF2D933F827262157C",
-            [baseSepolia.id]: "0x204717A95a9362660dCF026cdE4cEB1586FfD576",
-          },
+          displayBalanceToken: displayedTekeks,
           render: () => (
-            <button className="w-10 h-10 flex items-center justify-center text-xl rounded-lg bg-box-icon text-icon-wording">
+            <button
+              style={{ color: colorIcon, backgroundColor: colorBoxIcon }}
+              className="w-10 h-10 flex items-center justify-center text-xl rounded-lg">
               <FaUserLarge />
             </button>
           ),
         }}
         detailsModal={{
           assetTabs: ["token", "nft"],
-          // assetTabs: [],
         }}
         theme="light"
       />
     </div>
   );
-};
-
-export default ConnectButtons;
+}

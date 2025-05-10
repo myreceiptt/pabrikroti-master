@@ -6,19 +6,14 @@ import { ConnectEmbed, lightTheme } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
+import { theAccountFactory } from "@/config/contracts";
 import { dompets } from "@/config/dompets";
-import {
-  titlePro,
-  descriptionPro,
-  baseUrl,
-  logoUrl,
-  factoryAddress,
-} from "@/config/osloid";
-import { base, baseSepolia } from "@/config/rantais";
+import { getActiveReceipt } from "@/config/receipts";
+import { chain, chains } from "@/config/rantais";
 
-const chains = [base, baseSepolia];
+const { proDescription, proLogo, proTitle, proUrl } = getActiveReceipt();
 
-const ConnectEmbeds: React.FC = () => {
+export default function ConnectEmbeds() {
   const embedStyle: React.CSSProperties = {
     width: "100%",
     background: "transparent",
@@ -35,15 +30,15 @@ const ConnectEmbeds: React.FC = () => {
           title: " ",
         }}
         appMetadata={{
-          name: titlePro,
-          url: baseUrl,
-          description: descriptionPro,
-          logoUrl: logoUrl,
+          name: proTitle,
+          url: proUrl,
+          description: proDescription,
+          logoUrl: proLogo,
         }}
         wallets={dompets}
         accountAbstraction={{
-          factoryAddress: factoryAddress,
-          chain: base,
+          factoryAddress: theAccountFactory,
+          chain: chain,
           sponsorGas: true,
         }}
         chains={chains}
@@ -85,6 +80,4 @@ const ConnectEmbeds: React.FC = () => {
       />
     </div>
   );
-};
-
-export default ConnectEmbeds;
+}
