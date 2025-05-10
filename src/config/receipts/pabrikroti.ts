@@ -36,37 +36,37 @@ export const pabrikroti = {
   proDescription:
     "The Breads Factory is a factory that produces Programmed Bread (tokenized assets) with a Framework of Playing, Learning, and Working or PLW.", // layout, connect buttons, connect embeds,
   proUrl, // layout, connect buttons, connect embeds,
-  proPublisher: "NFT Indonesia", // layout,
+  proPublisher: "Prof. NOTA Inc.", // layout,
   proLocale: "en-US", // layout,
-  proImage: "https://ngelarasroso.id/preview-image.png", // layout,
+  proImage: "https://pabrikroti.endhonesa.com/roti/preview-image.png", // layout,
   proLang: "en", // layout,
 
   // error boundary section
-  proErrorCought: "Error caught in ErrorBoundary:", // error boundary,
-  proError: "Something went wrong. Please try again later.", // error boundary,
+  proErrorCought: "Error caught in the middle of ErrorBoundary:", // error boundary,
+  proError: "Something went wrong. Please eat and try again later.", // error boundary,
   proButton: "Try Again", // error boundary,
 
   // connect buttons section
-  proLogo: "/logos/logo.png", // connect buttons, connect embeds,
+  proLogo: "/roti/logos/logo.png", // connect buttons, connect embeds,
 
   // login layout section
-  loginArt: "/images/login-art.png", // login layout,
-  loginBanner: "/images/login-banner.png", // login layout,
+  loginArt: "/roti/images/login-art.png", // login layout,
+  loginBanner: "/roti/images/login-banner.png", // login layout,
   loginAria: "Call to action for login.", // login layout,
-  loginCall: "It's about letting go,", // login layout,
+  loginCall: "In The Breads Factory...", // login layout,
   loginReason: {
-    text: "and at the same time, welcoming in",
+    text: "many kinds of Bread were Designed, Produced, Programmed, also Distributed",
     anchor: "...",
-    link: "https://ngelarasroso.id/medias/ngelaras-roso-2024.pdf",
+    link: "https://nota.endhonesa.com/profile/breads",
   }, // login layout,
-  loginAgreement: "By connecting, you agree to the", // login layout,
+  loginAgreement: "By connecting, you agree to eat these", // login layout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // login layout,
-  linkPower: "https://nftindonesia.xyz/", // login layout, footer section
-  loginPower: "/images/login-power.png", // login layout,
-  poweredBy: "Deployed by NFT Indonesia", // login layout, footer section
+  linkPower: "https://nota.endhonesa.com/", // login layout, footer section
+  loginPower: "/roti/images/login-power.png", // login layout,
+  poweredBy: "Baked by Prof. NOTA Inc.", // login layout, footer section
 
   // header section
-  headerLogo: "/images/header-logo.png", // header,
+  headerLogo: "/roti/images/header-logo.png", // header,
   headerGo: "Search Now", // header,
   headerSearch: "Search Query", // header,
 
@@ -75,17 +75,17 @@ export const pabrikroti = {
   officiallyLicensed: "Officially licensed product of", // footer,
   anchorPrivacy: "Privacy Policy", // footer,
   anchorTerms: "Terms of Service", // footer,
-  footerPower: "/images/footer-power.png", // footer,
+  footerPower: "/roti/images/footer-power.png", // footer,
   socialTitle: "Catch up with our update!", // footer,
-  linkXTwitter: "https://x.com/NFTindonesia_", // footer,
-  linkLinkedIn: "", // footer,
-  linkInstagram: "https://www.instagram.com/nftindonesia_/", // footer,
-  linkFacebook: "", // footer,
-  linkDiscord: "https://discord.com/invite/3AvJSYPJK6", // footer,
-  linkYouTube: "", // footer,
-  linkEmail: "mailto:hallonftindonesia@gmail.com", // footer,
-  linkWhatsApp: "", // footer,
-  linkWebsite: "https://www.nftindonesia.xyz/", // footer,
+  linkXTwitter: "https://x.com/MyReceiptTT", // footer,
+  linkLinkedIn: "https://www.linkedin.com/in/prof-nota-56554a351/", // footer,
+  linkInstagram: "https://www.instagram.com/myreceipt/", // footer,
+  linkFacebook: "https://www.facebook.com/myreceiptt", // footer,
+  linkDiscord: "https://discord.gg/5KrsT6MbFm", // footer,
+  linkYouTube: "https://www.youtube.com/@MyReceipt/", // footer,
+  linkEmail: "mailto:nota@endhonesa.com", // footer,
+  linkWhatsApp: "https://wa.me/message/DPRNCTJA2Q52L1", // footer,
+  linkWebsite: "https://nota.endhonesa.com/", // footer,
 
   // subscribe form section
   subscribeWarn:
@@ -93,10 +93,10 @@ export const pabrikroti = {
   subscribeInput: "Please enter a valid email address.", // subscribe form,
   subscribeSubject: `Subscription to ${proTitle}`, // subscribe form,
   subscribeName: `Visitor of ${proUrl}`, // subscribe form,
-  subscribeMessage: "I want to subscribe to your latest updates.", // subscribe form,
+  subscribeMessage: "I want to subscribe to the latest updates.", // subscribe form,
   subscribeSuccess: "Thank you for subscribing!", // subscribe form,
   subscribeFailed: "Subscription failed. Please try again.", // subscribe form,
-  subscribeTitle: "Catch our latest updates", // subscribe form,
+  subscribeTitle: "Catch the latest updates", // subscribe form,
   subscribePlaceholder: "Enter your email address", // subscribe form,
   subscribeButton: "Subscribe", // subscribe form,
   subscribeButtonLoading: "Subscribing...", // subscribe form,
