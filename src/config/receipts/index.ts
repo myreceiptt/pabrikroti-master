@@ -16,14 +16,21 @@ const subdomainMap: Record<string, ReceiptType> = {
   istiqlal,
 };
 
-function getSubdomain(): string | null {
-  if (typeof window === "undefined") return null; // SSR safety
-  const host = window.location.hostname;
+// Fungsi ambil subdomain dari host string
+function extractSubdomain(host: string): string | null {
   const parts = host.split(".");
   return parts.length >= 3 ? parts[0] : null;
 }
 
-export function getActiveReceipt() {
-  const subdomain = getSubdomain();
+// Fungsi utama
+export function getActiveReceipt(host?: string): ReceiptType {
+  let subdomain: string | null = null;
+
+  if (host) {
+    subdomain = extractSubdomain(host);
+  } else if (typeof window !== "undefined") {
+    subdomain = extractSubdomain(window.location.hostname);
+  }
+
   return subdomainMap[subdomain || ""] || myreceipt;
 }
