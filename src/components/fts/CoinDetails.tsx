@@ -15,9 +15,17 @@ import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import CheckErc1155 from "@/config/checker";
+import { CheckErc1155 } from "@/config/checker";
 import { erc20ContractsLaunched } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import CoinAccess from "@/components/fts/CoinAccess";
+import CoinForm from "@/components/fts/CoinForm";
+import Loader from "@/components/sections/ReusableLoader";
+import Message from "@/components/sections/ReusableMessage";
+
+const {
   coinAccessTitle,
   coinMessage1,
   coinMessage2,
@@ -28,13 +36,7 @@ import {
   nftsFailReason,
   nftsMessage3,
   nftsUknownError,
-} from "@/config/myreceipt";
-
-// Components libraries
-import CoinAccess from "@/components/fts/CoinAccess";
-import CoinForm from "@/components/fts/CoinForm";
-import Loader from "@/components/sections/ReusableLoader";
-import Message from "@/components/sections/ReusableMessage";
+} = getActiveReceipt();
 
 interface CoinData {
   coinAddress: string;

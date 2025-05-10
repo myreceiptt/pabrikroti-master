@@ -6,7 +6,9 @@
 import React from "react";
 
 // Blockchain configurations
-import { colorSecondary, colorIcon } from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { colorSecondary, colorIcon } = getActiveReceipt();
 
 interface TermsSectionProps {
   title: string;
@@ -25,12 +27,14 @@ export default function TermsSection({
 }: TermsSectionProps) {
   return (
     <section className="space-y-4">
+      {/* Section Title */}
       <h3
         style={{ color: colorSecondary }}
         className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold uppercase">
         {title}
       </h3>
 
+      {/* Main Paragraphs */}
       {paragraphs?.map((text, i) => (
         <p
           key={`p-${i}`}
@@ -40,7 +44,8 @@ export default function TermsSection({
         </p>
       ))}
 
-      {unorderedList && (
+      {/* Unordered List */}
+      {unorderedList?.length && (
         <ul className="list-disc list-outside space-y-2">
           {unorderedList.map((item, i) => (
             <li
@@ -53,6 +58,7 @@ export default function TermsSection({
         </ul>
       )}
 
+      {/* Ordered List */}
       {orderedList && (
         <ol className="list-decimal list-outside space-y-2">
           {orderedList.map((item, i) => (
@@ -66,6 +72,7 @@ export default function TermsSection({
         </ol>
       )}
 
+      {/* Additional Paragraphs After List */}
       {paragraphsAfterList?.map((text, i) => (
         <p
           key={`after-${i}`}

@@ -14,15 +14,11 @@ import {
   tokeks,
 } from "@/config/contracts";
 import { dompets } from "@/config/dompets";
-import {
-  colorBoxIcon,
-  colorIcon,
-  proDescription,
-  proLogo,
-  proTitle,
-  proUrl,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
+
+const { colorBoxIcon, colorIcon, proDescription, proLogo, proTitle, proUrl } =
+  getActiveReceipt();
 
 export default function ConnectButtons() {
   return (

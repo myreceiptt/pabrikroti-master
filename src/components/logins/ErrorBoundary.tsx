@@ -4,14 +4,16 @@
 import React from "react";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+const {
   colorAccent,
   colorPrimary,
   colorSecondary,
   proButton,
   proError,
   proErrorCought,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -47,6 +49,7 @@ export class ErrorBoundary extends React.Component<
       return (
         <div className="flex flex-col justify-center items-center h-screen gap-4">
           <h2
+            role="alert"
             style={{ color: colorAccent }}
             className="text-center text-sm font-medium">
             {proError}

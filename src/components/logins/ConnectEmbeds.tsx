@@ -8,8 +8,10 @@ import { ConnectEmbed, lightTheme } from "thirdweb/react";
 import { client } from "@/config/client";
 import { theAccountFactory } from "@/config/contracts";
 import { dompets } from "@/config/dompets";
-import { proDescription, proLogo, proTitle, proUrl } from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
+
+const { proDescription, proLogo, proTitle, proUrl } = getActiveReceipt();
 
 export default function ConnectEmbeds() {
   const embedStyle: React.CSSProperties = {

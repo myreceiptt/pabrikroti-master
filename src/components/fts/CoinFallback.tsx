@@ -6,14 +6,12 @@
 import React from "react";
 
 // Blockchain configurations
-import {
-  coinFallMessage1,
-  coinFallMessage2,
-  nftsMessage3,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import Message from "@/components/sections/ReusableMessage";
+
+const { coinFallMessage1, coinFallMessage2, nftsMessage3 } = getActiveReceipt();
 
 export default function CoinFallback() {
   return (

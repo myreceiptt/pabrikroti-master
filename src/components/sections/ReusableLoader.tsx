@@ -4,7 +4,9 @@
 import React from "react";
 
 // Blockchain configurations
-import { colorAccent } from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { colorAccent } = getActiveReceipt();
 
 interface LoaderProps {
   message: string;

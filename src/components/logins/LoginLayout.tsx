@@ -6,11 +6,14 @@ import Link from "next/link";
 import React from "react";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+const {
   colorIcon,
   colorSecondary,
   linkPower,
   loginAgreement,
+  loginAria,
   loginArt,
   loginBanner,
   loginCall,
@@ -19,7 +22,7 @@ import {
   loginTermsPolicy,
   poweredBy,
   proTitle,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
 interface LoginLayoutProps {
   children: React.ReactNode;
@@ -52,6 +55,7 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
         </Link>
         <div id="headers" className="w-full flex flex-col gap-2">
           <h1
+            aria-label={loginAria}
             style={{ color: colorSecondary }}
             className="flex text-left text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tighter justify-start align-middle">
             {loginCall}

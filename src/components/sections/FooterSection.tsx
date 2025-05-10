@@ -19,7 +19,13 @@ import {
 } from "react-icons/fa6";
 
 // Blockchain configurations
-import hexToRgba, {
+import { getActiveReceipt } from "@/config/receipts";
+import { hexToRgba } from "@/config/utils";
+
+// Components libraries
+import Subscribe from "@/components/sections/SubscribeForm";
+
+const {
   anchorPrivacy,
   anchorTerms,
   colorAccent,
@@ -42,10 +48,7 @@ import hexToRgba, {
   officiallyLicensed,
   poweredBy,
   socialTitle,
-} from "@/config/myreceipt";
-
-// Components libraries
-import Subscribe from "@/components/sections/SubscribeForm";
+} = getActiveReceipt();
 
 export default function Footer() {
   return (

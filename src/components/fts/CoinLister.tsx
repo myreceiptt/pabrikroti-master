@@ -12,7 +12,10 @@ import { TokenProvider, TokenIcon } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+import { getCountdownString } from "@/config/utils";
+
+const {
   coinButton,
   coinClaimed,
   coinListerImage,
@@ -28,8 +31,7 @@ import {
   nftClosed,
   nftInsufficient,
   nftSoon,
-} from "@/config/myreceipt";
-import { getCountdownString } from "@/config/utils";
+} = getActiveReceipt();
 
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";

@@ -4,7 +4,9 @@
 import { useState } from "react";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+const {
   colorBorder,
   colorPrimary,
   colorSecondary,
@@ -18,13 +20,20 @@ import {
   subscribeSubject,
   subscribeSuccess,
   subscribeTitle,
-} from "@/config/myreceipt";
+  subscribeWarn,
+} = getActiveReceipt();
 
 export default function Subscribe() {
   const [email, setEmail] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [isInvalid, setIsInvalid] = useState(false);
+
+  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+  if (!accessKey) {
+    console.warn(subscribeWarn);
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -49,7 +58,7 @@ export default function Subscribe() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
+          access_key: accessKey,
           subject: subscribeSubject,
           name: subscribeName,
           email,

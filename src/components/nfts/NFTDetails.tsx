@@ -18,7 +18,14 @@ import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
 import { erc1155Launched } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import NFTForm from "@/components/nfts/NFTForm";
+import Loader from "@/components/sections/ReusableLoader";
+import Message from "@/components/sections/ReusableMessage";
+
+const {
   loaderChecking,
   nftMessage1,
   nftMessage2,
@@ -28,12 +35,7 @@ import {
   nftsFailReason,
   nftsMessage3,
   nftsUknownError,
-} from "@/config/myreceipt";
-
-// Components libraries
-import NFTForm from "@/components/nfts/NFTForm";
-import Loader from "@/components/sections/ReusableLoader";
-import Message from "@/components/sections/ReusableMessage";
+} = getActiveReceipt();
 
 interface NFTData {
   nftId: bigint;

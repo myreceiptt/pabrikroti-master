@@ -5,7 +5,9 @@ import Image from "next/image";
 import React from "react";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+const {
   coinAccessBanner,
   coinAccessButton,
   coinAccessMessage,
@@ -13,7 +15,7 @@ import {
   colorPrimary,
   colorSecondary,
   proTitle,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
 interface CoinAccessProps {
   message: string;

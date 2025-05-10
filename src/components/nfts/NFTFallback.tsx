@@ -6,14 +6,12 @@
 import React from "react";
 
 // Blockchain configurations
-import {
-  nftFallMessage1,
-  nftFallMessage2,
-  nftsMessage3,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import Message from "@/components/sections/ReusableMessage";
+
+const { nftFallMessage1, nftFallMessage2, nftsMessage3 } = getActiveReceipt();
 
 export default function NFTFallback() {
   return (

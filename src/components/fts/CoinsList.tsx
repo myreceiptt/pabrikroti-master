@@ -17,9 +17,18 @@ import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import CheckErc1155 from "@/config/checker";
+import { CheckErc1155 } from "@/config/checker";
 import { erc20ContractsLaunched } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import CoinLister from "@/components/fts/CoinLister";
+import Loader from "@/components/sections/ReusableLoader";
+import Message from "@/components/sections/ReusableMessage";
+import Title from "@/components/sections/ReusableTitle";
+
+const {
+  coinsAria,
   coinsConsoleWarn,
   coinsMessage1,
   coinsMessage2,
@@ -35,13 +44,9 @@ import {
   nftsNext,
   nftsPrevious,
   nftsUknownError,
-} from "@/config/myreceipt";
-
-// Components libraries
-import CoinLister from "@/components/fts/CoinLister";
-import Loader from "@/components/sections/ReusableLoader";
-import Message from "@/components/sections/ReusableMessage";
-import Title from "@/components/sections/ReusableTitle";
+  searchAria1,
+  searchAria3,
+} = getActiveReceipt();
 
 interface CoinData {
   coinAddress: string;
@@ -288,6 +293,7 @@ export default function CoinsList() {
       <div className="flex items-center justify-center gap-4 mt-4">
         {coinListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria1}
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
             style={{ color: colorPrimary, background: colorSecondary }}
@@ -298,6 +304,7 @@ export default function CoinsList() {
           </button>
         )}
         <button
+          aria-label={coinsAria}
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
@@ -321,6 +328,7 @@ export default function CoinsList() {
         </button>
         {coinListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria3}
             onClick={handleLoadMore}
             disabled={visibleCount >= coinListToShow.length}
             style={{ color: colorPrimary, background: colorSecondary }}

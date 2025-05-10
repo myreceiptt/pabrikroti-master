@@ -8,9 +8,8 @@ import { client } from "@/config/client";
 import { baseMainnet, baseSepolia, monadTestnet } from "@/config/rantais";
 
 // List factory address contract
-export const accountFactoryNOTA = "0x186b1740d24bc028D220838796441441dc444f9A"; // Prof. NOTA Inc.
-export const accountFactoryVoyage =
-  "0x186b1740d24bc028D220838796441441dc444f9A"; // BON VOYAGE
+const accountFactoryNOTA = "0x186b1740d24bc028D220838796441441dc444f9A"; // Prof. NOTA Inc.
+const accountFactoryVoyage = "0x186b1740d24bc028D220838796441441dc444f9A"; // BON VOYAGE
 
 // Factory address contract - pilih satu dari daftar factory untuk digunakan
 export const rotiAccountFactory = accountFactoryNOTA;
@@ -23,20 +22,20 @@ export const theAccountFactory = accountFactoryNOTA; // Dynamic
 // ...
 
 // NFT contracts Base Mainnet
-export const erc1155MeMoRa1 = getContract({
+const erc1155MeMoRa1 = getContract({
   address: "0xba0032620d88D9b16752CbDE75593c080C3d38de", // MeMoRa One - Default
   chain: baseMainnet,
   client,
 });
 
-export const erc1155IstiqlalDL = getContract({
+const erc1155IstiqlalDL = getContract({
   address: "0x937F5A27C0d6c979d5b9EBddebD1C666B70b88C1", // Istiqlal Digital Legacy - Default
   chain: baseMainnet,
   client,
 });
 
 // NFT contracts Base Sepolia
-export const erc1155TryError = getContract({
+const erc1155TryError = getContract({
   address: "0xdf9F3A962875cAAAC9f62d6Cc505B9b61E06c34c", // Try and Error - Default
   chain: baseSepolia,
   client,
@@ -142,44 +141,44 @@ export const erc1155Launched = getContract({
 // ...
 
 // FT contracts Base Mainnet
-export const erc20USDCBase = getContract({
+const erc20USDCBase = getContract({
   address: "0x833589fcd6edb6e08f4c7c32d4f71b54bda02913", // USD Coin - Default
   chain: baseMainnet,
   client,
 });
 
-export const erc20OiOiBase = getContract({
+const erc20OiOiBase = getContract({
   address: "0xba0032620d88D9b16752CbDE75593c080C3d38de", // OiOi Token  - Default
   chain: baseMainnet,
   client,
 });
 
-export const erc20BONBase = getContract({
+const erc20BONBase = getContract({
   address: "0x237b1188F8BAC61f2E4e0EdF2D933F827262157C", // BON Voyage - Default
   chain: baseMainnet,
   client,
 });
 
-export const erc20IstiqlalDL = getContract({
+const erc20IstiqlalDL = getContract({
   address: "0x848a5F7CE782d183606C729d1dd9b089b54437d9", // IDL Token - Default
   chain: baseMainnet,
   client,
 });
 
 // FT contracts Base Sepolia
-export const erc20USDCBaseSepolia = getContract({
+const erc20USDCBaseSepolia = getContract({
   address: "0x5dEaC602762362FE5f135FA5904351916053cF70", // USD C0in - Default
   chain: baseSepolia,
   client,
 });
 
-export const erc20OiOiBaseSepolia = getContract({
+const erc20OiOiBaseSepolia = getContract({
   address: "0xcB2208E9Fb77591D3A0688C4459d976b1f16Ab53", // OiOi Token - Default
   chain: baseSepolia,
   client,
 });
 
-export const erc20BONBaseSepolia = getContract({
+const erc20BONBaseSepolia = getContract({
   address: "0x204717A95a9362660dCF026cdE4cEB1586FfD576", // B0N V0yage - Default
   chain: baseSepolia,
   client,
@@ -207,7 +206,7 @@ export const erc20BONBaseSepolia = getContract({
 // ...
 
 // FT contracts Monad Tesnet
-export const erc20OiOiMonadTestnet = getContract({
+const erc20OiOiMonadTestnet = getContract({
   address: "0x8d7402Ae89CdF92D3477d9D63517F5e609caBcb2", // OiOi Token - Default
   chain: monadTestnet,
   client,

@@ -14,7 +14,15 @@ import { ClaimButton, TokenIcon, TokenProvider } from "thirdweb/react";
 // Blockchain configurations
 import { client } from "@/config/client";
 import { currencyMap } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+import { getCountdownString } from "@/config/utils";
+
+// Components libraries
+import CoinDescription from "@/components/fts/CoinDescription";
+import CoinPopUp from "@/components/fts/CoinPopUp";
+import Loader from "@/components/sections/ReusableLoader";
+
+const {
   coinButton,
   coinClaimed,
   coinDescription,
@@ -39,13 +47,7 @@ import {
   nftFormTunggu,
   nftInsufficient,
   nftSoon,
-} from "@/config/myreceipt";
-import { getCountdownString } from "@/config/utils";
-
-// Components libraries
-import CoinDescription from "@/components/fts/CoinDescription";
-import CoinPopUp from "@/components/fts/CoinPopUp";
-import Loader from "@/components/sections/ReusableLoader";
+} = getActiveReceipt();
 
 interface CoinFormProps {
   coinAddress: string;

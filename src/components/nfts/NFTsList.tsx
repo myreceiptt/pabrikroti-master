@@ -19,10 +19,19 @@ import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
 import { erc1155Launched } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import NFTLister from "@/components/nfts/NFTLister";
+import Loader from "@/components/sections/ReusableLoader";
+import Message from "@/components/sections/ReusableMessage";
+import Title from "@/components/sections/ReusableTitle";
+
+const {
   colorPrimary,
   colorSecondary,
   loaderChecking,
+  nftsAria,
   nftsConsoleWarn,
   nftsError,
   nftsFailReason,
@@ -37,13 +46,9 @@ import {
   nftsTitle2Free,
   nftsTitle2Paid,
   nftsUknownError,
-} from "@/config/myreceipt";
-
-// Components libraries
-import NFTLister from "@/components/nfts/NFTLister";
-import Loader from "@/components/sections/ReusableLoader";
-import Message from "@/components/sections/ReusableMessage";
-import Title from "@/components/sections/ReusableTitle";
+  searchAria1,
+  searchAria3,
+} = getActiveReceipt();
 
 interface NFTsListProps {
   variant: "free" | "paid";
@@ -276,6 +281,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
       <div className="flex items-center justify-center gap-4 mt-4">
         {nftListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria1}
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
             style={{ color: colorPrimary, background: colorSecondary }}
@@ -286,6 +292,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
           </button>
         )}
         <button
+          aria-label={nftsAria}
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
@@ -309,6 +316,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
         </button>
         {nftListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria3}
             onClick={handleLoadMore}
             disabled={visibleCount >= nftListToShow.length}
             style={{ color: colorPrimary, background: colorSecondary }}

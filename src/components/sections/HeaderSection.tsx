@@ -9,18 +9,21 @@ import { FaSistrix } from "react-icons/fa6";
 // import { FaClockRotateLeft, FaUser, FaWallet } from "react-icons/fa6";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import ConnectButtons from "@/components/logins/ConnectButtons";
+
+const {
   colorAccent,
   colorBoxIcon,
   colorIcon,
   colorPrimary,
   headerGo,
   headerLogo,
+  headerSearch,
   proTitle,
-} from "@/config/myreceipt";
-
-// Components libraries
-import ConnectButtons from "@/components/logins/ConnectButtons";
+} = getActiveReceipt();
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
@@ -61,6 +64,7 @@ export default function Header() {
           <FaSistrix style={{ color: colorAccent }} className="w-5 h-5" />
           <input
             type="text"
+            aria-label={headerSearch}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{ color: colorAccent }}
@@ -87,6 +91,7 @@ export default function Header() {
               <FaSistrix style={{ color: colorAccent }} className="w-5 h-5" />
               <input
                 type="text"
+                aria-label={headerSearch}
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 style={{ color: colorAccent }}

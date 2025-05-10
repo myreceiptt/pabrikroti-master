@@ -24,7 +24,11 @@ import Title from "@/components/sections/ReusableTitle";
 
 // Blockchain configurations
 import { erc1155Launched } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+import { decimals } from "thirdweb/extensions/erc20";
+import { getWalletBalance } from "thirdweb/wallets";
+
+const {
   colorPrimary,
   colorSecondary,
   loaderChecking,
@@ -36,12 +40,13 @@ import {
   nftsPrevious,
   nftsSetError,
   nftsUknownError,
+  searchAria1,
+  searchAria2,
+  searchAria3,
   searchMessage1,
   searchMessage2,
   searchTitle,
-} from "@/config/myreceipt";
-import { decimals } from "thirdweb/extensions/erc20";
-import { getWalletBalance } from "thirdweb/wallets";
+} = getActiveReceipt();
 
 // Interface definition for NFTs
 interface NFTData {
@@ -279,6 +284,7 @@ export default function SearchWrapper() {
       <div className="flex items-center justify-center gap-4 mt-4">
         {searchResults.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria1}
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
             style={{ color: colorPrimary, background: colorSecondary }}
@@ -289,6 +295,7 @@ export default function SearchWrapper() {
           </button>
         )}
         <button
+          aria-label={searchAria2}
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
@@ -312,6 +319,7 @@ export default function SearchWrapper() {
         </button>
         {searchResults.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria3}
             onClick={handleLoadMore}
             disabled={visibleCount >= searchResults.length}
             style={{ color: colorPrimary, background: colorSecondary }}

@@ -7,7 +7,12 @@ import { ThirdwebProvider } from "thirdweb/react";
 import { Analytics } from "@vercel/analytics/react";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// CSS Styling
+import "./globals.css";
+
+const {
   proDescription,
   proImage,
   proLang,
@@ -15,10 +20,7 @@ import {
   proPublisher,
   proTitle,
   proUrl,
-} from "@/config/myreceipt";
-
-// CSS Styling
-import "./globals.css";
+} = getActiveReceipt();
 
 const inter = Inter({ subsets: ["latin"] });
 

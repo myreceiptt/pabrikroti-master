@@ -5,7 +5,9 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+const {
   colorIcon,
   colorSecondary,
   nftEndhonesa,
@@ -14,7 +16,7 @@ import {
   nftMeMoRaTitle,
   nftReadLess,
   nftReadMore,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
 interface NFTDescriptionProps {
   description: string;

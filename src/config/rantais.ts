@@ -24,8 +24,6 @@ export const baseSepolia = baseTestnet; // Base Sepolia Testnet
 
 export const bobBitcoin = defineChain(60808); // BOB (Buitl On Bitcoin)
 
-export const customChain = defineChain(0.001); // Not exist. Don't actually use this!
-
 export const ethereumEvm = ethereum; // Ethereum Mainnet
 // export const ethereumEvm = defineChain(1); // Ethereum Mainnet
 

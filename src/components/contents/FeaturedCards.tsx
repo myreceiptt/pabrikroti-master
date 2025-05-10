@@ -5,8 +5,14 @@ import Image from "next/image";
 import Link from "next/link";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import Title from "@/components/sections/ReusableTitle";
+
+const {
   coinTitle,
+  featuredAria,
   featuredCoin,
   featuredFree,
   featuredPaid,
@@ -14,10 +20,7 @@ import {
   featuredTitle2,
   freeTitle,
   paidTitle,
-} from "@/config/myreceipt";
-
-// Components libraries
-import Title from "@/components/sections/ReusableTitle";
+} = getActiveReceipt();
 
 export default function FeaturedCards() {
   return (
@@ -45,6 +48,7 @@ export default function FeaturedCards() {
             <Link href={href} key={index}>
               <button
                 type="button"
+                aria-label={`${featuredAria} ${alt}`}
                 className="w-full hover:scale-95 transition-transform duration-300 ease-in-out relative group cursor-pointer">
                 {/* Main image */}
                 <Image

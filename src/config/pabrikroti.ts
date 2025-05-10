@@ -4,39 +4,6 @@
  * All receipts should be exported from this file.
  */
 
-// app metadata
-export const proTitle = "Breads Factory";
-export const proDescription =
-  "The Breads Factory is a factory that produces Programmed Bread (tokenized assets) with a Framework of Playing, Learning, and Working or PLW.";
-export const proUrl = "https://pabrikroti.endhonesa.com";
-export const proPublisher = "Prof. NOTA Inc.";
-export const proLocale = "en-US";
-export const proImage =
-  "https://pabrikroti.endhonesa.com/roti/preview-image.png";
-
-// error boundary
-export const proErrorCought = "Error caught in ErrorBoundary:";
-export const proError = "Something went wrong. Please try again later.";
-
-// login logo
-export const proLogo = "/roti/logos/logo.png";
-
-// login layout
-export const loginArt = "/roti/images/login-art.png";
-export const loginBanner = "/roti/images/login-banner.png";
-export const loginCall = "In The Breads Factory...";
-export const loginReason = {
-  text: "many kinds of Bread were Designed, Produced, Programmed, also Distributed",
-  anchor: "...",
-  link: "https://nota.endhonesa.com/profile/breads",
-};
-export const loginAgreement = "By connecting, you agree to the";
-export const loginTermsPolicy = "Terms of Service & Privacy Policy";
-export const loginPower = "/roti/images/login-power.png";
-
-// header section
-export const headerLogo = "/roti/images/header-logo.png";
-
 // featured cards
 export const featuredTitle1 = "Bukhari Islamic Art";
 export const featuredTitle2 = "Virtual Gallery";
@@ -320,19 +287,3 @@ export const linkYouTube = "https://www.youtube.com/@voyageweb3";
 export const linkEmail = "mailto:hello@voyage.co.id";
 export const linkWhatsApp =
   "https://api.whatsapp.com/send?phone=6281808038000&text=Hello%2C%20Voyagers!%20Help%20us%20integrate%20decentralized%20technologies%20into%20our%20operations%20and%20business%20models%2C%20please!";
-
-// colors hex libraries
-export const colorPrimary = "#F9F9F9"; // Terang
-export const colorSecondary = "#262525"; // Gelap XXX
-export const colorAccent = "#171717"; // Gelap
-export const colorBoxIcon = "#F0F0F0"; // Terang Dikit
-export const colorIcon = "#707070"; // Abu2 Gelap
-export const colorBorder = "#DFDFDF"; // Abu2 Terang
-
-// convert hex to rgba
-export default function hexToRgba(hex: string, alpha: number): string {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-}

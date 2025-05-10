@@ -6,13 +6,10 @@ import Link from "next/link";
 import React from "react";
 
 // Blockchain configurations
-import {
-  coinAccessBanner,
-  colorIcon,
-  colorPrimary,
-  colorSecondary,
-  proTitle,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { coinAccessBanner, colorIcon, colorPrimary, colorSecondary, proTitle } =
+  getActiveReceipt();
 
 interface MessageProps {
   message1: string;

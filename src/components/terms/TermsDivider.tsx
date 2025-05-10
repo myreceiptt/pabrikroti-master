@@ -6,7 +6,9 @@
 import React from "react";
 
 // Blockchain configurations
-import { colorIcon } from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { colorIcon } = getActiveReceipt();
 
 export default function TermsDivider() {
   return (

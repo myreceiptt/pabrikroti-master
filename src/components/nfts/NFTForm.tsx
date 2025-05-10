@@ -19,7 +19,14 @@ import {
 // Blockchain configurations
 import { client } from "@/config/client";
 import { currencyMap } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+import { getCountdownString } from "@/config/utils";
+
+// Components libraries
+import NFTDescription from "@/components/nfts/NFTDescription";
+import Loader from "@/components/sections/ReusableLoader";
+
+const {
   colorBorder,
   colorIcon,
   colorPrimary,
@@ -43,12 +50,7 @@ import {
   nftListerImage,
   nftListerName,
   nftSoon,
-} from "@/config/myreceipt";
-import { getCountdownString } from "@/config/utils";
-
-// Components libraries
-import NFTDescription from "@/components/nfts/NFTDescription";
-import Loader from "@/components/sections/ReusableLoader";
+} = getActiveReceipt();
 
 interface NFTFormProps {
   dropContract: ThirdwebContract;

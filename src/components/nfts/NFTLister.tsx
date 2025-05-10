@@ -12,7 +12,13 @@ import { MediaRenderer, useReadContract } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+import { getCountdownString } from "@/config/utils";
+
+// Components libraries
+import Loader from "@/components/sections/ReusableLoader";
+
+const {
   colorBorder,
   colorIcon,
   colorPrimary,
@@ -27,11 +33,7 @@ import {
   nftListerName,
   nftNoData,
   nftSoon,
-} from "@/config/myreceipt";
-import { getCountdownString } from "@/config/utils";
-
-// Components libraries
-import Loader from "@/components/sections/ReusableLoader";
+} = getActiveReceipt();
 
 interface NFTListerProps {
   dropContract: ThirdwebContract;

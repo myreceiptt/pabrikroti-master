@@ -6,7 +6,10 @@ import React from "react";
 import { FaXmark } from "react-icons/fa6";
 
 // Blockchain configurations
-import hexToRgba, {
+import { getActiveReceipt } from "@/config/receipts";
+import { hexToRgba } from "@/config/utils";
+
+const {
   colorBoxIcon,
   colorIcon,
   colorPrimary,
@@ -32,7 +35,7 @@ import hexToRgba, {
   popUpUlLi4,
   popUpUlLi5,
   popUpUlLi6,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
 interface CoinPopUpProps {
   isOpen: boolean;

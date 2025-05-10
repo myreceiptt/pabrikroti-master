@@ -4,7 +4,9 @@
 import React from "react";
 
 // Blockchain configurations
-import { colorSecondary } from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { colorSecondary } = getActiveReceipt();
 
 interface TitleProps {
   title1: string;
