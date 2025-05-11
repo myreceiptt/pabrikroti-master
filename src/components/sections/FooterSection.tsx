@@ -7,15 +7,25 @@ import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import {
+  FaDiscord,
   FaEnvelope,
+  FaFacebook,
+  FaGlobe,
   FaInstagram,
   FaLinkedin,
+  FaTwitter,
   FaWhatsapp,
   FaYoutube,
 } from "react-icons/fa6";
 
 // Blockchain configurations
-import hexToRgba, {
+import { getActiveReceipt } from "@/config/receipts";
+import { hexToRgba } from "@/config/utils";
+
+// Components libraries
+import Subscribe from "@/components/sections/SubscribeForm";
+
+const {
   anchorPrivacy,
   anchorTerms,
   colorAccent,
@@ -25,21 +35,22 @@ import hexToRgba, {
   copyRight,
   entityAlias1,
   footerPower,
+  linkDiscord,
   linkEmail,
+  linkFacebook,
   linkInstagram,
   linkLinkedIn,
   linkPower,
+  linkWebsite,
   linkWhatsApp,
+  linkXTwitter,
   linkYouTube,
   officiallyLicensed,
   poweredBy,
   socialTitle,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
-// Components libraries
-import Subscribe from "@/components/sections/SubscribeForm";
-
-const Footer: React.FC = () => {
+export default function Footer() {
   return (
     <footer
       style={{ backgroundColor: colorAccent }}
@@ -57,56 +68,122 @@ const Footer: React.FC = () => {
             {socialTitle}
           </h3>
           <div className="flex gap-2 mt-2 sm:justify-end justify-center">
-            <Link
-              href={linkLinkedIn}
-              target="_blank"
-              style={{
-                color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 1.0),
-              }}
-              className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
-              <FaLinkedin />
-            </Link>
-            <Link
-              href={linkInstagram}
-              target="_blank"
-              style={{
-                color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 1.0),
-              }}
-              className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
-              <FaInstagram />
-            </Link>
-            <Link
-              href={linkYouTube}
-              target="_blank"
-              style={{
-                color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 1.0),
-              }}
-              className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
-              <FaYoutube />
-            </Link>
-            <Link
-              href={linkEmail}
-              target="_blank"
-              style={{
-                color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 1.0),
-              }}
-              className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
-              <FaEnvelope />
-            </Link>
-            <Link
-              href={linkWhatsApp}
-              target="_blank"
-              style={{
-                color: colorPrimary,
-                backgroundColor: hexToRgba(colorSecondary, 1.0),
-              }}
-              className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
-              <FaWhatsapp />
-            </Link>
+            {linkXTwitter && (
+              <Link
+                href={linkXTwitter}
+                target="_blank"
+                style={{
+                  color: colorPrimary,
+                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaTwitter />
+              </Link>
+            )}
+
+            {linkLinkedIn && (
+              <Link
+                href={linkLinkedIn}
+                target="_blank"
+                style={{
+                  color: colorPrimary,
+                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaLinkedin />
+              </Link>
+            )}
+
+            {linkInstagram && (
+              <Link
+                href={linkInstagram}
+                target="_blank"
+                style={{
+                  color: colorPrimary,
+                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaInstagram />
+              </Link>
+            )}
+
+            {linkFacebook && (
+              <Link
+                href={linkFacebook}
+                target="_blank"
+                style={{
+                  color: colorPrimary,
+                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaFacebook />
+              </Link>
+            )}
+
+            {linkDiscord && (
+              <Link
+                href={linkDiscord}
+                target="_blank"
+                style={{
+                  color: colorPrimary,
+                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaDiscord />
+              </Link>
+            )}
+
+            {linkYouTube && (
+              <Link
+                href={linkYouTube}
+                target="_blank"
+                style={{
+                  color: colorPrimary,
+                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaYoutube />
+              </Link>
+            )}
+
+            {linkEmail && (
+              <Link
+                href={linkEmail}
+                target="_blank"
+                style={{
+                  color: colorPrimary,
+                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaEnvelope />
+              </Link>
+            )}
+
+            {linkWhatsApp && (
+              <Link
+                href={linkWhatsApp}
+                target="_blank"
+                style={{
+                  color: colorPrimary,
+                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaWhatsapp />
+              </Link>
+            )}
+
+            {linkWebsite && (
+              <Link
+                href={linkWebsite}
+                target="_blank"
+                style={{
+                  color: colorPrimary,
+                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaGlobe />
+              </Link>
+            )}
           </div>
         </div>
       </div>
@@ -149,6 +226,4 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
-
-export default Footer;
+}

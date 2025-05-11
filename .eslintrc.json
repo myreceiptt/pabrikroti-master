@@ -13,13 +13,13 @@
   ],
   "plugins": ["@typescript-eslint", "react-hooks", "tailwindcss"],
   "rules": {
-    // "no-console": "warn",
-    // "semi": ["error", "never"],
-    // "quotes": ["error", "double"],
-    // "react-hooks/rules-of-hooks": "error",
-    // "react-hooks/exhaustive-deps": "warn",
-    // "@typescript-eslint/no-unused-vars": ["warn"],
-    // "tailwindcss/no-custom-classname": "off"
+    "no-console": "warn",
+    "semi": ["error", "never"],
+    "quotes": ["error", "double"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "@typescript-eslint/no-unused-vars": ["warn"],
+    "tailwindcss/no-custom-classname": "off"
   },
   "overrides": [
     {

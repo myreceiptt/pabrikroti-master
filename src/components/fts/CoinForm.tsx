@@ -14,9 +14,18 @@ import { ClaimButton, TokenIcon, TokenProvider } from "thirdweb/react";
 // Blockchain configurations
 import { client } from "@/config/client";
 import { currencyMap } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+import { getCountdownString } from "@/config/utils";
+
+// Components libraries
+import CoinDescription from "@/components/fts/CoinDescription";
+import CoinPopUp from "@/components/fts/CoinPopUp";
+import Loader from "@/components/sections/ReusableLoader";
+
+const {
   coinButton,
   coinClaimed,
+  coinDescription,
   coinFormKirim,
   coinFormPerWallet,
   coinFormSukses,
@@ -24,7 +33,7 @@ import {
   coinListerImage,
   coinListerName,
   coinNoAccess,
-  coinOf,
+  coinListerOf,
   colorBorder,
   colorIcon,
   colorPrimary,
@@ -38,12 +47,7 @@ import {
   nftFormTunggu,
   nftInsufficient,
   nftSoon,
-} from "@/config/myreceipt";
-import { getCountdownString } from "@/config/utils";
-
-// Components libraries
-// import CoinDescription from "@/components/fts/CoinDescription";
-import Loader from "@/components/sections/ReusableLoader";
+} = getActiveReceipt();
 
 interface CoinFormProps {
   coinAddress: string;
@@ -66,7 +70,7 @@ interface CoinFormProps {
   refreshToken: number;
 }
 
-const CoinForm: React.FC<CoinFormProps> = ({
+export default function CoinForm({
   coinAddress,
   coinChain,
   coinName,
@@ -85,10 +89,11 @@ const CoinForm: React.FC<CoinFormProps> = ({
   hasAccess,
   setRefreshToken,
   refreshToken,
-}) => {
+}: CoinFormProps) {
   const startTime = new Date(Number(startTimestamp) * 1000);
 
   // Ensure state variables are properly declared
+  const [isOpen, setIsOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [hasError, setHasError] = useState(false);
@@ -183,21 +188,26 @@ const CoinForm: React.FC<CoinFormProps> = ({
           chain={coinChain}>
           {!hasError ? (
             <TokenIcon
+              onClick={() => setIsOpen(true)}
               alt={coinName}
-              className="rounded-2xl w-full"
+              className="rounded-2xl w-full cursor-pointer"
               onError={() => setHasError(true)}
             />
           ) : (
             <Image
+              onClick={() => setIsOpen(true)}
               src={coinListerImage}
               alt={coinName ?? coinListerName}
               width={755}
               height={545}
-              className="rounded-2xl w-full"
+              className="rounded-2xl w-full cursor-pointer"
             />
           )}
         </TokenProvider>
       </div>
+
+      {/* Pop-up Modal */}
+      <CoinPopUp isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
       {/* Right Column */}
       <div className="flex flex-col gap-2 lg:gap-4 items-start justify-center h-full">
@@ -229,10 +239,7 @@ const CoinForm: React.FC<CoinFormProps> = ({
         </div>
 
         {/* Description with Expand/Collapse */}
-        {/* <NFTDescription
-          description={nft?.metadata.description ?? ""}
-          tokenIdString={tokenIdString}
-        /> */}
+        <CoinDescription description={coinDescription} address={coinAddress} />
 
         {/* Success or Error Messages */}
         {pesanTunggu && <Loader message={pesanTunggu} />}
@@ -277,7 +284,7 @@ const CoinForm: React.FC<CoinFormProps> = ({
               setIsRefreshing(false); // ✅ selesai loading
             }}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`col-span-2 aspect-auto rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`col-span-2 aspect-auto rounded-lg mt-1 disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
             } flex items-center justify-center`}>
             <motion.div
@@ -302,7 +309,8 @@ const CoinForm: React.FC<CoinFormProps> = ({
           <h2
             style={{ color: colorSecondary }}
             className="col-span-8 text-left text-base lg:text-md xl:text-xl font-semibold">
-            <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
+            <span
+              title={`${adjustedSupply} ${coinListerOf} ${adjustedMaxClaim}`}>
               {formatNumberCompact(adjustedSupply)}/
               {formatNumberCompact(adjustedMaxClaim)}
             </span>
@@ -369,6 +377,4 @@ const CoinForm: React.FC<CoinFormProps> = ({
       </div>
     </div>
   );
-};
-
-export default CoinForm;
+}

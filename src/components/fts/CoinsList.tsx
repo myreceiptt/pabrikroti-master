@@ -17,9 +17,18 @@ import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import CheckErc1155 from "@/config/checker";
+import { CheckErc1155 } from "@/config/checker";
 import { erc20ContractsLaunched } from "@/config/contracts";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+// Components libraries
+import CoinLister from "@/components/fts/CoinLister";
+import Loader from "@/components/sections/ReusableLoader";
+import Message from "@/components/sections/ReusableMessage";
+import Title from "@/components/sections/ReusableTitle";
+
+const {
+  coinsAria,
   coinsConsoleWarn,
   coinsMessage1,
   coinsMessage2,
@@ -35,15 +44,11 @@ import {
   nftsNext,
   nftsPrevious,
   nftsUknownError,
-} from "@/config/myreceipt";
+  searchAria1,
+  searchAria3,
+} = getActiveReceipt();
 
-// Components libraries
-import CoinLister from "@/components/fts/CoinLister";
-import Loader from "@/components/sections/ReusableLoader";
-import Message from "@/components/sections/ReusableMessage";
-import Title from "@/components/sections/ReusableTitle";
-
-type CoinData = {
+interface CoinData {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
@@ -54,12 +59,12 @@ type CoinData = {
   adjustedSupply: number;
   adjustedMaxClaim: number;
   adjustedBalance: number;
-};
+}
 
 const INITIAL_ITEMS = 6;
 const ITEMS_PER_LOAD = 3;
 
-const CoinsList: React.FC = () => {
+export default function CoinsList() {
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -288,16 +293,18 @@ const CoinsList: React.FC = () => {
       <div className="flex items-center justify-center gap-4 mt-4">
         {coinListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria1}
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
             {nftsPrevious}
           </button>
         )}
         <button
+          aria-label={coinsAria}
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
@@ -306,7 +313,7 @@ const CoinsList: React.FC = () => {
             setIsRefreshing(false); // ✅ selesai loading
           }}
           style={{ color: colorPrimary, background: colorSecondary }}
-          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
           }`}>
           <motion.div
@@ -321,10 +328,11 @@ const CoinsList: React.FC = () => {
         </button>
         {coinListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={searchAria3}
             onClick={handleLoadMore}
             disabled={visibleCount >= coinListToShow.length}
             style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= coinListToShow.length ? "" : "cursor-pointer"
             }`}>
             {nftsNext}
@@ -333,6 +341,4 @@ const CoinsList: React.FC = () => {
       </div>
     </main>
   );
-};
-
-export default CoinsList;
+}

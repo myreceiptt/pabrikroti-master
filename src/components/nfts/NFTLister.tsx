@@ -12,7 +12,13 @@ import { MediaRenderer, useReadContract } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+import { getCountdownString } from "@/config/utils";
+
+// Components libraries
+import Loader from "@/components/sections/ReusableLoader";
+
+const {
   colorBorder,
   colorIcon,
   colorPrimary,
@@ -27,13 +33,9 @@ import {
   nftListerName,
   nftNoData,
   nftSoon,
-} from "@/config/myreceipt";
-import { getCountdownString } from "@/config/utils";
+} = getActiveReceipt();
 
-// Components libraries
-import Loader from "@/components/sections/ReusableLoader";
-
-type NFTListerProps = {
+interface NFTListerProps {
   dropContract: ThirdwebContract;
   nftId: bigint;
   nftIdString: string;
@@ -45,9 +47,9 @@ type NFTListerProps = {
   maxClaim: bigint;
   adjustedBalance: number;
   refreshToken: number;
-};
+}
 
-const NFTLister: React.FC<NFTListerProps> = ({
+export default function NFTLister({
   dropContract,
   nftId,
   nftIdString,
@@ -59,7 +61,7 @@ const NFTLister: React.FC<NFTListerProps> = ({
   maxClaim,
   adjustedBalance,
   refreshToken,
-}) => {
+}: NFTListerProps) {
   const router = useRouter();
   const startTime = new Date(Number(startTimestamp) * 1000);
 
@@ -133,7 +135,7 @@ const NFTLister: React.FC<NFTListerProps> = ({
               client={client}
               src={nftImage}
               alt={nftName}
-              className="rounded-2xl w-full"
+              className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
             />
           </Link>
           <div className="grid grid-cols-1 gap-2">
@@ -179,6 +181,4 @@ const NFTLister: React.FC<NFTListerProps> = ({
       )}
     </div>
   );
-};
-
-export default NFTLister;
+}

@@ -5,24 +5,28 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 // Blockchain configurations
-import {
+import { getActiveReceipt } from "@/config/receipts";
+
+const {
   colorIcon,
   colorSecondary,
   nftEndhonesa,
+  nftEndhonesaTitle,
   nftMeMoRa,
+  nftMeMoRaTitle,
   nftReadLess,
   nftReadMore,
-} from "@/config/myreceipt";
+} = getActiveReceipt();
 
 interface NFTDescriptionProps {
   description: string;
-  nftIdString: string;
+  id: string;
 }
 
-const NFTDescription: React.FC<NFTDescriptionProps> = ({
+export default function NFTDescription({
   description,
-  nftIdString,
-}) => {
+  id,
+}: NFTDescriptionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const paragraphs = description
@@ -64,28 +68,33 @@ const NFTDescription: React.FC<NFTDescriptionProps> = ({
         <div className="w-full flex flex-col items-end gap-2 mb-4">
           {isExpanded && (
             <>
-              <Link
-                href="#"
-                title={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${nftIdString}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: colorSecondary,
-                }}
-                className="text-xs font-medium hover:underline cursor-pointer">
-                {nftMeMoRa}
-              </Link>
-              <Link
-                href="#"
-                title={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${nftIdString}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: colorSecondary,
-                }}
-                className="text-xs font-medium hover:underline cursor-pointer">
-                {nftEndhonesa}
-              </Link>
+              {nftMeMoRaTitle && (
+                <Link
+                  href={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${id}`}
+                  title={nftMeMoRaTitle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: colorSecondary,
+                  }}
+                  className="text-xs font-medium hover:underline cursor-pointer">
+                  {nftMeMoRa}
+                </Link>
+              )}
+
+              {nftEndhonesaTitle && (
+                <Link
+                  href={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${id}`}
+                  title={nftEndhonesaTitle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: colorSecondary,
+                  }}
+                  className="text-xs font-medium hover:underline cursor-pointer">
+                  {nftEndhonesa}
+                </Link>
+              )}
             </>
           )}
 
@@ -102,6 +111,4 @@ const NFTDescription: React.FC<NFTDescriptionProps> = ({
       )}
     </>
   );
-};
-
-export default NFTDescription;
+}

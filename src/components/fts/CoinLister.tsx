@@ -12,14 +12,17 @@ import { TokenProvider, TokenIcon } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import {
+import { getActiveReceipt } from "@/config/receipts";
+import { getCountdownString } from "@/config/utils";
+
+const {
   coinButton,
   coinClaimed,
   coinListerImage,
   coinListerName,
   coinNoAccess,
-  coinOf,
-  coinSupply,
+  coinListerOf,
+  coinListerSupply,
   colorBorder,
   colorIcon,
   colorPrimary,
@@ -28,13 +31,12 @@ import {
   nftClosed,
   nftInsufficient,
   nftSoon,
-} from "@/config/myreceipt";
-import { getCountdownString } from "@/config/utils";
+} = getActiveReceipt();
 
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
 
-type CoinListerProps = {
+interface CoinListerProps {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
@@ -47,9 +49,9 @@ type CoinListerProps = {
   adjustedBalance: number;
   hasAccess: boolean | null;
   refreshToken: number;
-};
+}
 
-const CoinLister: React.FC<CoinListerProps> = ({
+export default function CoinLister({
   coinAddress,
   coinChain,
   coinName,
@@ -62,7 +64,7 @@ const CoinLister: React.FC<CoinListerProps> = ({
   adjustedBalance,
   hasAccess,
   refreshToken,
-}) => {
+}: CoinListerProps) {
   const router = useRouter();
   const startTime = new Date(Number(startTimestamp) * 1000);
 
@@ -142,7 +144,7 @@ const CoinLister: React.FC<CoinListerProps> = ({
               {!hasError ? (
                 <TokenIcon
                   alt={coinName}
-                  className="rounded-2xl w-full"
+                  className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
                   onError={() => setHasError(true)}
                 />
               ) : (
@@ -151,7 +153,7 @@ const CoinLister: React.FC<CoinListerProps> = ({
                   alt={coinName ?? coinListerName}
                   width={755}
                   height={545}
-                  className="rounded-2xl w-full"
+                  className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
                 />
               )}
             </TokenProvider>
@@ -165,8 +167,9 @@ const CoinLister: React.FC<CoinListerProps> = ({
             <div
               style={{ color: colorIcon }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
-              <span>{coinSupply}</span>
-              <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
+              <span>{coinListerSupply}</span>
+              <span
+                title={`${adjustedSupply} ${coinListerOf} ${adjustedMaxClaim}`}>
                 {formatNumberCompact(adjustedSupply)}/
                 {formatNumberCompact(adjustedMaxClaim)}
               </span>
@@ -196,6 +199,4 @@ const CoinLister: React.FC<CoinListerProps> = ({
       )}
     </div>
   );
-};
-
-export default CoinLister;
+}
