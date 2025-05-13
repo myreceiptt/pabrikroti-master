@@ -1,32 +1,44 @@
 // /src/config/receipts/index.ts
 
 // Blockchain configurations
+import { istiqlal } from "@/config/receipts/istiqlal";
+import { memora } from "@/config/receipts/memora";
 import { myreceipt } from "@/config/receipts/myreceipt";
 import { pabrikroti } from "@/config/receipts/pabrikroti";
 
 // Use `typeof` from one of the receipt (structure must same)
 type ReceiptType = typeof myreceipt;
 
-// Subdomain-based config mapping
-const subdomainMap: Record<string, ReceiptType> = {
-  pabrikroti,
+// Doman-based or Subdomain-based config mapping
+const hostMap: Record<string, ReceiptType> = {
+  "istiqlal.endhonesa.com": istiqlal,
+  "nft.istiqlal.or.id": istiqlal,
+  "memora.endhonesa.com": memora,
+  "memora.voyage.co.id": memora,
+  "pabrikroti.endhonesa.com": pabrikroti,
 };
 
-// Fungsi ambil subdomain dari host string
-function extractSubdomain(host: string): string | null {
-  const parts = host.split(".");
-  return parts.length >= 3 ? parts[0] : null;
-}
-
-// Fungsi utama
+// Main function (checking full host first, then fallback checking subdomain)
 export function getActiveReceipt(host?: string): ReceiptType {
-  let subdomain: string | null = null;
+  let resolvedHost = "";
 
   if (host) {
-    subdomain = extractSubdomain(host);
+    resolvedHost = host.toLowerCase();
   } else if (typeof window !== "undefined") {
-    subdomain = extractSubdomain(window.location.hostname);
+    resolvedHost = window.location.hostname.toLowerCase();
   }
 
-  return subdomainMap[subdomain || ""] || myreceipt;
+  // Full host match first
+  if (hostMap[resolvedHost]) {
+    return hostMap[resolvedHost];
+  }
+
+  // Try take subdomain
+  const subdomain = resolvedHost.split(".")[0];
+  if (hostMap[subdomain]) {
+    return hostMap[subdomain];
+  }
+
+  // Fallback
+  return myreceipt;
 }
