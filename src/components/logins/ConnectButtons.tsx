@@ -14,11 +14,7 @@ import {
   tokeks,
 } from "@/config/contracts";
 import { dompets } from "@/config/dompets";
-import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
-
-const { colorBoxIcon, colorIcon, proDescription, proLogo, proTitle, proUrl } =
-  getActiveReceipt();
 
 export default function ConnectButtons() {
   return (
@@ -26,10 +22,11 @@ export default function ConnectButtons() {
       <ConnectButton
         client={client}
         appMetadata={{
-          name: proTitle,
-          url: proUrl,
-          description: proDescription,
-          logoUrl: proLogo,
+          name: "Breads Factory",
+          url: "https://pabrikroti.endhonesa.com",
+          description:
+            "The Breads Factory is a factory that produces Programmed Bread (tokenization) with a Framework of Playing, Learning, and Working or PLW.",
+          logoUrl: "/logos/logo.png",
         }}
         connectButton={{
           className: " ",
@@ -42,8 +39,8 @@ export default function ConnectButtons() {
             justifyContent: "center",
             fontSize: "1.25rem",
             borderRadius: "0.5rem",
-            backgroundColor: colorBoxIcon,
-            color: colorIcon,
+            backgroundColor: "#F0F0F0",
+            color: "#707070",
           },
         }}
         connectModal={{
@@ -63,7 +60,7 @@ export default function ConnectButtons() {
           displayBalanceToken: displayedTekeks,
           render: () => (
             <button
-              style={{ color: colorIcon, backgroundColor: colorBoxIcon }}
+              style={{ color: "#707070", backgroundColor: "#F0F0F0" }}
               className="w-10 h-10 flex items-center justify-center text-xl rounded-lg">
               <FaUserLarge />
             </button>

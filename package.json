@@ -4,10 +4,10 @@
   "private": true,
   "description": "The Breads Factory is a factory that produces Programmed Bread (tokenized assets) with a Framework of Playing, Learning, and Working or PLW. Here's what's trying to be provided and built in...",
   "author": "Prof. NOTA",
-  "license": "MIT",
+  "license": "UNLICENSED - SEE LICENSE IN LICENSE",
   "receipt": {
-    "codename": "ngelaras",
-    "publisher": "NFT Indonesia"
+    "codename": "init",
+    "publisher": "Prof. NOTA Inc."
   },
   "homepage": "https://nota.endhonesa.com/profile/breads",
   "keywords": [

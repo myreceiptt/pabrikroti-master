@@ -7,9 +7,6 @@ import { headers } from "next/headers";
 import { ThirdwebProvider } from "thirdweb/react";
 import { Analytics } from "@vercel/analytics/react";
 
-// Blockchain configurations
-import { getActiveReceipt } from "@/config/receipts";
-
 // CSS Styling
 import "./globals.css";
 
@@ -17,40 +14,34 @@ const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
   const host = (await headers()).get("host") || "";
-  const {
-    proDescription,
-    proImage,
-    proLocale,
-    proPublisher,
-    proTitle,
-    proUrl,
-  } = getActiveReceipt(host);
 
   return {
-    title: proTitle, // Title
-    description: proDescription, // Description
-    metadataBase: new URL(proUrl), // Base URL
+    title: "Breads Factory of Prof. NOTA Inc.", // Title
+    description:
+      "The Breads Factory is a factory that produces Programmed Bread (tokenization) with a Framework of Playing, Learning, and Working or PLW.", // Description
+    metadataBase: new URL(`https://${host}`), // Base URL
     authors: [
       { name: "MyReceipt", url: "https://myreceipt.endhonesa.com" },
       { name: "Prof. NOTA", url: "https://nota.endhonesa.com" },
     ],
     creator: "MyReceipt and Prof. NOTA Inc.",
-    publisher: proPublisher,
+    publisher: "Prof. NOTA Inc.",
     alternates: {
       canonical: "/",
     },
     openGraph: {
-      title: proTitle, // Title
-      description: proDescription, // Description
-      url: proUrl, // Base URL
-      siteName: proTitle, // Title
-      locale: proLocale,
+      title: "Breads Factory of Prof. NOTA Inc.", // Title
+      description:
+        "The Breads Factory is a factory that produces Programmed Bread (tokenization) with a Framework of Playing, Learning, and Working or PLW.", // Description
+      url: `https://${host}`, // Base URL
+      siteName: "Breads Factory of Prof. NOTA Inc.", // Title
+      locale: "en-US",
       images: [
         {
-          url: proImage, // Preview Image URL
+          url: `https://${host}/preview-image.png`, // Preview Image URL
           width: 1920,
           height: 1080,
-          alt: proTitle, // Title
+          alt: "Breads Factory of Prof. NOTA Inc.", // Title
         },
       ],
       type: "website",
@@ -60,10 +51,11 @@ export async function generateMetadata(): Promise<Metadata> {
       siteId: "@MyReceiptTT",
       creator: "@MyReceiptTT",
       creatorId: "@MyReceiptTT",
-      title: proTitle, // Title
-      description: proDescription, // Description
+      title: "Breads Factory of Prof. NOTA Inc.", // Title
+      description:
+        "The Breads Factory is a factory that produces Programmed Bread (tokenization) with a Framework of Playing, Learning, and Working or PLW.", // Description
       images: [
-        proImage, // Preview Image URL
+        `https://${host}/preview-image.png`, // Preview Image URL
       ],
     },
   };
@@ -74,9 +66,8 @@ interface RootLayoutProps {
 }
 
 export default function RootLayout({ children }: RootLayoutProps) {
-  const { proLang } = getActiveReceipt();
   return (
-    <html lang={proLang}>
+    <html lang="en">
       <body className={inter.className}>
         <ThirdwebProvider>{children}</ThirdwebProvider>
         <Analytics />
