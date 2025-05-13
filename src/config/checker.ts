@@ -3,53 +3,45 @@
 "use client";
 
 // External libraries
-import React, { useEffect } from "react";
-import { getContract } from "thirdweb";
+import { useEffect, useMemo } from "react";
+import { balanceOfBatch, nextTokenIdToMint } from "thirdweb/extensions/erc1155";
 import { useReadContract } from "thirdweb/react";
-// import { balanceOfBatch } from "thirdweb/extensions/erc1155";
 
 // Blockchain configurations
-import { client } from "@/config/client";
-import { labXpoap } from "@/config/contracts";
+import { erc1155Launched } from "@/config/contracts";
 
-interface TokenCheckProps {
-  userAddress: string;
+interface CheckErc1155Props {
+  activeAddress: string;
   onAccessChange: (hasAccess: boolean | null) => void;
 }
 
-const TokenCheck: React.FC<TokenCheckProps> = ({
-  userAddress,
+export const CheckErc1155 = ({
+  activeAddress,
   onAccessChange,
-}) => {
-  const contract = getContract({
-    client,
-    address: labXpoap.address,
-    chain: labXpoap.chain,
+}: CheckErc1155Props) => {
+  const { data: nextNFTId } = useReadContract(nextTokenIdToMint, {
+    contract: erc1155Launched,
   });
 
-  // Generate an array of token IDs from 0 to 22
-  const tokenIds = Array.from({ length: 23 }, (_, index) => BigInt(index));
+  const nftIds = useMemo(() => {
+    if (nextNFTId === undefined) return [];
+    return Array.from({ length: Number(nextNFTId) }, (_, i) => BigInt(i));
+  }, [nextNFTId]);
 
-  // Repeat the user's address for each token ID (required for batch query)
-  const userAddresses = new Array(tokenIds.length).fill(userAddress);
+  const owners = new Array(nftIds.length).fill(activeAddress);
 
-  // Use `balanceOfBatch` to fetch all balances in a single call
-  const { data: balances } = useReadContract({
-    contract,
-    method:
-      "function balanceOfBatch(address[] accounts, uint256[] ids) returns (uint256[])",
-    params: [userAddresses, tokenIds],
+  const { data: balances } = useReadContract(balanceOfBatch, {
+    contract: erc1155Launched,
+    owners,
+    tokenIds: nftIds,
   });
 
   useEffect(() => {
     if (balances !== undefined) {
-      // Check if user owns any token (balance > 0)
       const hasTokens = balances.some((balance: bigint) => balance > 0n);
       onAccessChange(hasTokens);
     }
   }, [balances, onAccessChange]);
 
-  return null; // This component doesn't render anything itself
+  return null;
 };
-
-export default TokenCheck;
