@@ -56,4 +56,10 @@ export const zoraMainnet = zora; // Zora Mainnet
 
 // All chain and chains combinations - Tentukan Dulu Rantainya.
 export const chain = baseMainnet; // Default Chain
-export const chains = [baseMainnet, baseSepolia, monadTestnet, shapeNetwork]; // Supported Chains
+export const chains = [
+  baseMainnet,
+  baseSepolia,
+  monadTestnet,
+  opMainnet,
+  shapeNetwork,
+]; // Supported Chains
