@@ -1,4 +1,8 @@
-PABRIK ROTI: Staging MeMoRa by Bukhari Creative Group
+PABRIK ROTI: Staging MeMoRa of Voyage.Co.Id by Bukhari Creative Group
+
+Link #1: https://galeri.harmoniistiqlal.com/
+Link #2: https://bukhari.voyage.co.id/
+Link #3: https://bukhari.endhonesa.com/
 
 ## Usage
 
@@ -52,4 +56,4 @@ yarn start
 
 ## Join Prof. NOTA Discord!
 
-For any questions or suggestions, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).
+For questions or suggestions, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).
