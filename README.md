@@ -1,6 +1,6 @@
 PABRIK ROTI: Staging MeMoRa of Voyage.Co.Id by LabX
 
-Link #1: https://labx.voyage.co.id/
+Link #1: https://labx.voyage.co.id/  
 Link #2: https://labx.endhonesa.com/
 
 ## Usage
