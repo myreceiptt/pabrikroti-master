@@ -1,4 +1,4 @@
-// /src/config/contracts.ts
+// /src/config/contractsOld.ts
 
 // External libraries
 import { getContract } from "thirdweb";
@@ -6,132 +6,6 @@ import { getContract } from "thirdweb";
 // Blockchain configurations
 import { client } from "@/config/client";
 import { baseMainnet, baseSepolia, monadTestnet } from "@/config/rantais";
-
-// List factory address contract - tambahkan sesuai kebutuhan dan akan dipilih satu di index.ts
-export const factoryNOTA = "0x186b1740d24bc028D220838796441441dc444f9A"; // Prof. NOTA Inc.
-export const factoryVoyage = "0x186b1740d24bc028D220838796441441dc444f9A"; // BON VOYAGE
-
-// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
-
-// NFT contracts Avalanche C-Chain
-// ...
-
-// NFT contracts Base Mainnet
-const erc1155MeMoRa1 = getContract({
-  address: "0x1925B991C5e2eC45BA1f34786BAd405d58202140", // MeMoRa One - Default
-  chain: baseMainnet,
-  client,
-});
-
-const erc1155IstiqlalDL = getContract({
-  address: "0x937F5A27C0d6c979d5b9EBddebD1C666B70b88C1", // Istiqlal Digital Legacy - Default
-  chain: baseMainnet,
-  client,
-});
-
-// NFT contracts Base Sepolia
-const erc1155TryError = getContract({
-  address: "0xdf9F3A962875cAAAC9f62d6Cc505B9b61E06c34c", // Try and Error - Default
-  chain: baseSepolia,
-  client,
-});
-
-// NFT contracts BOB (Buitl On Bitcoin)
-// ...
-
-// NFT contracts Custom Chain
-// ...
-
-// NFT contracts Ethereum Mainnet
-// ...
-
-// NFT contracts Humanity Testnet
-// ...
-
-// NFT contracts Ink On Chain
-// ...
-
-// NFT contracts Mint Blockchain
-// ...
-
-// NFT contracts Mode Network
-// ...
-
-// NFT contracts Monad Testnet
-// ...
-
-// NFT contracts OP Mainnet
-// ...
-
-// NFT contracts on Shape Network
-// ...
-
-// NFT contracts on Soneium Mainnet
-// ...
-
-// NFT contracts on Superseed Blockchain
-// ...
-
-// NFT contracts on Unichain Blockchain
-// ...
-
-// NFT contracts on World Chain
-// ...
-
-// NFT contracts Zora Mainnet
-// ...
-
-// All supported NFTs
-// Define the interface explicitly
-interface SupportedNFTs {
-  // Keys are numbers, values are arrays of Ethereum addresses
-  [key: number]: `0x${string}`[];
-}
-
-// Define `tekeks` (NFTs) with the proper interface - Tentukan satu atau lebih dari daftar NFT sesuai rantainya
-export const istiqlalTekeks: SupportedNFTs = {
-  [baseMainnet.id]: [erc1155IstiqlalDL.address],
-};
-
-export const memoraTekeks: SupportedNFTs = {
-  [baseMainnet.id]: [erc1155MeMoRa1.address],
-};
-
-export const pabrikrotiTekeks: SupportedNFTs = {
-  [baseSepolia.id]: [erc1155TryError.address],
-};
-
-export const tekeks: SupportedNFTs = {
-  [baseMainnet.id]: [erc1155MeMoRa1.address, erc1155IstiqlalDL.address],
-  [baseSepolia.id]: [erc1155TryError.address],
-}; // Dynamic
-// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
-
-// Launched NFT contracts - Pilih satu dari daftar NFT untuk digunakan
-export const rotiErc1155Launched = getContract({
-  address: erc1155TryError.address,
-  chain: erc1155TryError.chain,
-  client,
-});
-
-export const memoraErc1155Launched = getContract({
-  address: erc1155MeMoRa1.address,
-  chain: erc1155MeMoRa1.chain,
-  client,
-});
-
-export const istiqlalErc1155Launched = getContract({
-  address: erc1155IstiqlalDL.address,
-  chain: erc1155IstiqlalDL.chain,
-  client,
-});
-
-export const erc1155Launched = getContract({
-  address: erc1155TryError.address,
-  chain: erc1155TryError.chain,
-  client,
-}); // Dynamic
-// // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // FT contracts Avalanche C-Chain
 // ...
@@ -341,22 +215,22 @@ export const tokeks = {
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // Displayed balance FTs - Tentukan satu dari daftar NFT sesuai rantainya
-export const rotiDisplayedTekeks = {
+export const rotiDisplayedTokeks = {
   [baseMainnet.id]: erc20OiOiBase.address,
   [baseSepolia.id]: erc20OiOiBaseSepolia.address,
   [monadTestnet.id]: erc20OiOiMonadTestnet.address,
 };
 
-export const memoraDisplayedTekeks = {
+export const memoraDisplayedTokeks = {
   [baseMainnet.id]: erc20BONBase.address,
   [baseSepolia.id]: erc20BONBaseSepolia.address,
 };
 
-export const istiqlalDisplayedTekeks = {
+export const istiqlalDisplayedTokeks = {
   [baseMainnet.id]: erc20IstiqlalDL.address,
 };
 
-export const displayedTekeks = {
+export const displayedTokeks = {
   [baseSepolia.id]: erc20OiOiBaseSepolia.address,
 }; // Dynamic
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //

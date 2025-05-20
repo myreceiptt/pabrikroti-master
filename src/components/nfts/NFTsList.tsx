@@ -18,7 +18,6 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import { erc1155Launched } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
@@ -27,7 +26,7 @@ import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
-const { receipt } = getActiveReceipt();
+const { receipt, erc1155Launched } = getActiveReceipt();
 
 interface NFTsListProps {
   variant: "free" | "paid";

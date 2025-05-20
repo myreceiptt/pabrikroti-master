@@ -16,7 +16,7 @@ import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
 import { CheckErc1155 } from "@/config/checker";
-import { erc20ContractsLaunched } from "@/config/contracts";
+import { erc20ContractsLaunched } from "@/config/contractsOld";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries

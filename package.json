@@ -36,12 +36,12 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "thirdweb": "^5.99.2"
+    "thirdweb": "^5.99.3"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
     "@tailwindcss/postcss": "^4.1.7",
-    "@types/node": "^22.15.18",
+    "@types/node": "^22.15.19",
     "@types/react": "^19.1.4",
     "@types/react-dom": "^19.1.5",
     "eslint": "^9.27.0",

@@ -17,7 +17,6 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import { erc1155Launched } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
@@ -25,7 +24,7 @@ import NFTForm from "@/components/nfts/NFTForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
-const { receipt } = getActiveReceipt();
+const { receipt, erc1155Launched } = getActiveReceipt();
 
 interface NFTData {
   nftId: bigint;

@@ -7,12 +7,12 @@ import { ConnectButton } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { displayedTekeks, tekeks, tokeks } from "@/config/contracts";
+import { displayedTokeks, tokeks } from "@/config/contractsOld";
 import { dompets } from "@/config/dompets";
 import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
 
-const { receipt, factoryAddress } = getActiveReceipt();
+const { receipt, factoryAddress, supportedNFTs } = getActiveReceipt();
 
 export default function ConnectButtons() {
   return (
@@ -52,9 +52,9 @@ export default function ConnectButtons() {
         }}
         chains={chains}
         supportedTokens={tokeks}
-        supportedNFTs={tekeks}
+        supportedNFTs={supportedNFTs}
         detailsButton={{
-          displayBalanceToken: displayedTekeks,
+          displayBalanceToken: displayedTokeks,
           render: () => (
             <button
               style={{

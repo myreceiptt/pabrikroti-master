@@ -13,7 +13,7 @@ import { ClaimButton, TokenIcon, TokenProvider } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { currencyMap } from "@/config/contracts";
+import { currencyMap } from "@/config/contractsOld";
 import { getActiveReceipt } from "@/config/receipts";
 import { getCountdownString } from "@/config/utils";
 

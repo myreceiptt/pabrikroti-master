@@ -1,7 +1,9 @@
 PABRIK ROTI v.2.2.22: Staging NFT Indonesia by Istiqlal Digital Legacy!
 
 Link #1: https://nft.istiqlal.or.id/  
-Link #2: https://istiqlal.or.id/
+Link #2: https://login.istiqlal.or.id/
+Link #3: https://leminerale.istiqlal.or.id/
+Link #4: https://istiqlal.endhonesa.com/
 
 ## 📜 License
 

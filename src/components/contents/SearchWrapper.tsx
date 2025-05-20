@@ -23,12 +23,11 @@ import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
 // Blockchain configurations
-import { erc1155Launched } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
 import { decimals } from "thirdweb/extensions/erc20";
 import { getWalletBalance } from "thirdweb/wallets";
 
-const { receipt } = getActiveReceipt();
+const { receipt, erc1155Launched } = getActiveReceipt();
 
 // Interface definition for NFTs
 interface NFTData {
