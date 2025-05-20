@@ -27,28 +27,7 @@ import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
-const {
-  colorPrimary,
-  colorSecondary,
-  loaderChecking,
-  nftsAria,
-  nftsConsoleWarn,
-  nftsError,
-  nftsFailReason,
-  nftsMessage1,
-  nftsMessage2,
-  nftsMessage3,
-  nftsNext,
-  nftsPrevious,
-  nftsSetError,
-  nftsTitle1Free,
-  nftsTitle1Paid,
-  nftsTitle2Free,
-  nftsTitle2Paid,
-  nftsUknownError,
-  searchAria1,
-  searchAria3,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface NFTsListProps {
   variant: "free" | "paid";
@@ -82,8 +61,10 @@ export default function NFTsList({ variant }: NFTsListProps) {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  const title1 = variant === "free" ? nftsTitle1Free : nftsTitle1Paid;
-  const title2 = variant === "free" ? nftsTitle2Free : nftsTitle2Paid;
+  const title1 =
+    variant === "free" ? receipt.nftsTitle1Free : receipt.nftsTitle1Paid;
+  const title2 =
+    variant === "free" ? receipt.nftsTitle2Free : receipt.nftsTitle2Paid;
 
   // Fetch next token ID to mint
   const { data: nextNFTId } = useReadContract(nextTokenIdToMint, {
@@ -171,8 +152,8 @@ export default function NFTsList({ variant }: NFTsListProps) {
           } catch (innerErr) {
             // Continue if check failed
             isClaimable = false;
-            reason = nftsFailReason;
-            console.warn(`${nftsConsoleWarn} ${nftId}`, innerErr);
+            reason = receipt.nftsFailReason;
+            console.warn(`${receipt.nftsConsoleWarn} ${nftId}`, innerErr);
           }
 
           return {
@@ -203,11 +184,11 @@ export default function NFTsList({ variant }: NFTsListProps) {
       setFreeNFTs(free);
       setPaidNFTs(paid);
     } catch (err: unknown) {
-      setError(nftsSetError);
+      setError(receipt.nftsSetError);
       if (err instanceof Error) {
-        console.error(nftsError, err.message);
+        console.error(receipt.nftsError, err.message);
       } else {
-        console.error(nftsUknownError, err);
+        console.error(receipt.nftsUknownError, err);
       }
     } finally {
       setLoading(false);
@@ -240,7 +221,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
   if (loading || nextNFTId === undefined) {
     return (
       <main className="grid gap-4 place-items-center">
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       </main>
     );
   }
@@ -250,9 +231,9 @@ export default function NFTsList({ variant }: NFTsListProps) {
     return (
       <main className="grid gap-4 place-items-center">
         <Message
-          message1={error ?? nftsMessage1}
-          message2={nftsMessage2}
-          message3={nftsMessage3}
+          message1={error ?? receipt.nftsMessage1}
+          message2={receipt.nftsMessage2}
+          message3={receipt.nftsMessage3}
         />
       </main>
     );
@@ -281,18 +262,21 @@ export default function NFTsList({ variant }: NFTsListProps) {
       <div className="flex items-center justify-center gap-4 mt-4">
         {nftListToShow.length > INITIAL_ITEMS && (
           <button
-            aria-label={searchAria1}
+            aria-label={receipt.searchAria1}
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
-            style={{ color: colorPrimary, background: colorSecondary }}
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
-            {nftsPrevious}
+            {receipt.nftsPrevious}
           </button>
         )}
         <button
-          aria-label={nftsAria}
+          aria-label={receipt.nftsAria}
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
@@ -300,7 +284,10 @@ export default function NFTsList({ variant }: NFTsListProps) {
             setRefreshToken(Date.now()); // 🔁 trigger NFTLister refresh
             setIsRefreshing(false); // ✅ selesai loading
           }}
-          style={{ color: colorPrimary, background: colorSecondary }}
+          style={{
+            color: receipt.colorPrimary,
+            background: receipt.colorSecondary,
+          }}
           className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
           }`}>
@@ -316,14 +303,17 @@ export default function NFTsList({ variant }: NFTsListProps) {
         </button>
         {nftListToShow.length > INITIAL_ITEMS && (
           <button
-            aria-label={searchAria3}
+            aria-label={receipt.searchAria3}
             onClick={handleLoadMore}
             disabled={visibleCount >= nftListToShow.length}
-            style={{ color: colorPrimary, background: colorSecondary }}
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= nftListToShow.length ? "" : "cursor-pointer"
             }`}>
-            {nftsNext}
+            {receipt.nftsNext}
           </button>
         )}
       </div>

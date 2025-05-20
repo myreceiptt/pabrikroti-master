@@ -1,21 +1,21 @@
 // /src/config/receipts/memora.ts
 
 // All receipts should be exported from this file.
-const proTitle = "Ngelaras Roso";
-const proUrl = "https://ngelarasroso.id";
-const entityName = "Ngelaras Roso X NFT Indonesia";
-const entityAlias1 = "Ngelaras Roso";
-const entityAlias2 = "NFT Indonesia";
+const proTitle = "MEMORA VIRTUAL COLLECTIBLES";
+const proUrl = "https://memora.endhonesa.com/";
+const entityName = "MeMoRa by Voyage.Co.Id";
+const entityAlias1 = "Voyage.Co.Id";
+const entityAlias2 = "MEMORA VIRTUAL COLLECTIBLES";
 const entityAddress =
-  "Jl. Al Inayah No.86, Rawakalong, Kec. Gn. Sindur, Kabupaten Bogor, Jawa Barat 16340, INDONESIA";
-const entityEmail = "hallonftindonesia@gmail.com";
-const termsMonth = "Januari";
+  "Jl. Kartika Utama Blok SM No. 29, Pd. Pinang, Kec. Kby. Lama, Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 12310, INDONESIA";
+const entityEmail = "hello@voyage.co.id";
+const termsMonth = "March";
 const termsDate = "20";
 const termsYear = "2025";
 const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const memora = {
-  // colors hex libraries
+  // colors hex libraries - origin
   colorPrimary: "#F9F9F9", // Terang
   colorSecondary: "#262525", // Gelap XXX
   colorAccent: "#171717", // Gelap
@@ -25,12 +25,11 @@ export const memora = {
 
   // layout...
   proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
-  proDescription:
-    "You create this space so you can then fill it up with all that you need and desire. It's about letting go, surrending... and at the same time... welcoming in, receiving.", // layout, connect buttons, connect embeds,
+  proDescription: `MeMoRa means "to remember" or "to be mindful of". MeMoRa refers to something that serves as a reminder or is used for remembering. So, commemorate your memorabilia experiences today with a unique virtual collectible of MeMoRa.`, // layout, connect buttons, connect embeds,
   proUrl, // layout, connect buttons, connect embeds,
-  proPublisher: "NFT Indonesia", // layout,
+  proPublisher: "Voyage.Co.Id", // layout,
   proLocale: "en-US", // layout,
-  proImage: "https://ngelarasroso.id/preview-image.png", // layout,
+  proImage: "https://memora.endhonesa.com/memora/preview-image.png", // layout,
   proLang: "en", // layout,
 
   // error boundary section
@@ -39,26 +38,26 @@ export const memora = {
   proButton: "Try Again", // error boundary,
 
   // connect buttons section
-  proLogo: "/logos/logo.png", // connect buttons, connect embeds,
+  proLogo: "/memora/logos/logo.png", // connect buttons, connect embeds,
 
   // login layout section
-  loginArt: "/images/login-art.png", // login layout,
-  loginBanner: "/images/login-banner.png", // login layout,
+  loginArt: "/memora/images/login-art.png", // login layout,
+  loginBanner: "/memora/images/login-banner.png", // login layout,
   loginAria: "Call to action for login.", // login layout,
-  loginCall: "It's about letting go,", // login layout,
+  loginCall: "Get Ready!", // login layout,
   loginReason: {
-    text: "and at the same time, welcoming in",
-    anchor: "...",
-    link: "https://ngelarasroso.id/medias/ngelaras-roso-2024.pdf",
+    text: "Register now to immerse yourself in MeMoRa Experience!",
+    anchor: "",
+    link: "",
   }, // login layout,
   loginAgreement: "By connecting, you agree to the", // login layout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // login layout,
-  linkPower: "https://nftindonesia.xyz/", // login layout, footer section
-  loginPower: "/images/login-power.png", // login layout,
-  poweredBy: "Deployed by NFT Indonesia", // login layout, footer section
+  linkPower: "https://voyage.endhonesa.com/", // login layout, footer section
+  loginPower: "/memora/images/login-power.png", // login layout,
+  poweredBy: "Powered by Voyage.Co.Id", // login layout, footer section
 
   // header section
-  headerLogo: "/images/header-logo.png", // header,
+  headerLogo: "/memora/images/header-logo.png", // header,
   headerGo: "Search Now", // header,
   headerSearch: "Search Query", // header,
 
@@ -67,17 +66,18 @@ export const memora = {
   officiallyLicensed: "Officially licensed product of", // footer,
   anchorPrivacy: "Privacy Policy", // footer,
   anchorTerms: "Terms of Service", // footer,
-  footerPower: "/images/footer-power.png", // footer,
-  socialTitle: "Catch up with our update!", // footer,
-  linkXTwitter: "https://x.com/NFTindonesia_", // footer,
-  linkLinkedIn: "", // footer,
-  linkInstagram: "https://www.instagram.com/nftindonesia_/", // footer,
+  footerPower: "/memora/images/footer-power.png", // footer,
+  socialTitle: "Join Voyage's Community!", // footer,
+  linkXTwitter: "", // footer,
+  linkLinkedIn: "https://www.linkedin.com/company/voyage-web3/about/", // footer,
+  linkInstagram: "https://www.instagram.com/voyage.web3/", // footer,
   linkFacebook: "", // footer,
-  linkDiscord: "https://discord.com/invite/3AvJSYPJK6", // footer,
-  linkYouTube: "", // footer,
-  linkEmail: "mailto:hallonftindonesia@gmail.com", // footer,
-  linkWhatsApp: "", // footer,
-  linkWebsite: "https://www.nftindonesia.xyz/", // footer,
+  linkDiscord: "", // footer,
+  linkYouTube: "https://www.youtube.com/@voyageweb3", // footer,
+  linkEmail: "mailto:hello@voyage.co.id", // footer,
+  linkWhatsApp:
+    "https://api.whatsapp.com/send?phone=6281808038000&text=Hello%2C%20Voyagers!%20Help%20us%20integrate%20decentralized%20technologies%20into%20our%20operations%20and%20business%20models%2C%20please!", // footer,
+  linkWebsite: "", // footer,
 
   // subscribe form section
   subscribeWarn:
@@ -85,7 +85,7 @@ export const memora = {
   subscribeInput: "Please enter a valid email address.", // subscribe form,
   subscribeSubject: `Subscription to ${proTitle}`, // subscribe form,
   subscribeName: `Visitor of ${proUrl}`, // subscribe form,
-  subscribeMessage: "I want to subscribe to your latest updates.", // subscribe form,
+  subscribeMessage: "I want to subscribe to the latest updates.", // subscribe form,
   subscribeSuccess: "Thank you for subscribing!", // subscribe form,
   subscribeFailed: "Subscription failed. Please try again.", // subscribe form,
   subscribeTitle: "Catch our latest updates", // subscribe form,
@@ -94,81 +94,81 @@ export const memora = {
   subscribeButtonLoading: "Subscribing...", // subscribe form,
 
   // featured cards page - hide card by nulled the title
-  featuredTitle1: "Fill It Up With All", // featured cards,
-  featuredTitle2: "That You Need & Desire", // featured cards,
-  featuredPaid: "/images/featured-paid.png", // featured cards,
-  paidTitle: "", // featured cards,
-  featuredFree: "/images/featured-free.png", // featured cards,
-  freeTitle: "All Free Stocks", // featured cards,
-  featuredCoin: "/images/featured-coin.png", // featured cards,
-  coinTitle: "All Claimable Shares", // featured cards,
-  featuredAria: `Navigate to`, // featured cards,
+  featuredTitle1: "MEMORA VIRTUAL", // featured cards,
+  featuredTitle2: "COLLECTIBLES", // featured cards,
+  featuredPaid: "/memora/images/featured-paid.png", // featured cards,
+  paidTitle: "Paid Virtual Collectibles", // featured cards,
+  featuredFree: "/memora/images/featured-free.png", // featured cards,
+  freeTitle: "Free Virtual Collectibles", // featured cards,
+  featuredCoin: "/memora/images/featured-coin.png", // featured cards,
+  coinTitle: "Redeem Points Reward", // featured cards,
+  featuredAria: "Navigate to", // featured cards,
 
   // reusable loader section
   loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
   // search wrapper page
-  searchMessage1: "No data found.", // search wrapper,
+  searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
-    "There is no data found matching your search terms. Please try searching again using other terms or return to the home page.", // search wrapper,
+    "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,
   searchTitle: "Search Result:", // search wrapper,
   searchAria1: "Load previous items.", // search wrapper, nfts list, coins list,
   searchAria2: "Refresh search results.", // search wrapper,
   searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
 
   // nfts list page
-  nftsTitle1Free: "All", // nfts list,
-  nftsTitle2Free: "Free Stocks", // nfts list,
-  nftsTitle1Paid: "All", // nfts list,
-  nftsTitle2Paid: "Paid Stocks", // nfts list,
+  nftsTitle1Free: "All Free", // nfts list,
+  nftsTitle2Free: "Collectibles", // nfts list,
+  nftsTitle1Paid: "All Paid", // nfts list,
+  nftsTitle2Paid: "Collectibles", // nfts list,
   nftsFailReason: "ClaimNotActive", // search wrapper, nfts list, nft details, coins list, coin details,
   nftsConsoleWarn: "canClaim failed for nftId", // search wrapper, nfts list, nft details,
-  nftsSetError: "Failed to fetch any available stock.", // search wrapper, nfts list,
+  nftsSetError: "Failed to fetch any available collectibles.", // search wrapper, nfts list,
   nftsError: "Lho, Error:", // search wrapper, nfts list, nft details, coins list, coin details,
   nftsUknownError: "Kok, Error:", // search wrapper, nfts list, nft details, coins list, coin details,
-  nftsMessage1: "No available stock!", // nfts list,
+  nftsMessage1: "No available collectibles!", // nfts list,
   nftsMessage2:
-    "There are no available stock right now. Please try again later or return to the home page.", // nfts list,
+    "There are no available collectibles right now. Please try again later or return to the home page.", // nfts list,
   nftsMessage3: "Return to the Home Page!", // search wrapper, nfts list, nft fallback, nft details, coins list, coin fallback, coin details,
   nftsPrevious: "Previous", // search wrapper, nfts list, coins list,
   nftsNext: "Next", // search wrapper, nfts list, coins list,
-  nftsAria: "Refresh stocks data.", // nfts list,
+  nftsAria: "Refresh all collectibles data.", // nfts list,
 
   // nft lister section
-  nftButton: "Get Now", // nft lister, nft form,
+  nftButton: "Collect Now", // nft lister, nft form,
   nftSoon: "Available in:", // nft lister, nft form, coin lister, coin form,
   nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
   nftClaimed: "Got It", // nft lister, nft form,
-  nftClosed: "Out of Stock", // nft lister, nft form, coin lister, coin form,
-  nftListerImage: "/medias/artisan-bread.png", // nft lister, nft form,
-  nftListerName: "An Available Stock", // nft lister, nft form,
+  nftClosed: "Fully Depleted", // nft lister, nft form, coin lister, coin form,
+  nftListerImage: "/memora/medias/artisan-bread.gif", // nft lister, nft form,
+  nftListerName: "An Available Collectibles", // nft lister, nft form,
   nftEditions: "Edition:", // nft lister,
   nftNoData: "No data available.", // nft lister,
 
   // nft fallback page
-  nftFallMessage1: "No valid stock ID used.", // nft fallback,
+  nftFallMessage1: "No valid collectible ID was used.", // nft fallback,
   nftFallMessage2:
-    "Please use a valid stock ID in the URL or return to the home page and start over.", // nft fallback,
+    "Please use a valid collectible ID in the URL or return to the home page and start over.", // nft fallback,
 
   // nft details page
-  nftSetError: "Failed to fetch the stock ID.", // nft details,
-  nftMessage1: "The stock ID not found.", // nft details,
+  nftSetError: "Failed to fetch the collectible ID.", // nft details,
+  nftMessage1: "The collectible ID not found.", // nft details,
   nftMessage2:
-    "The specified stock ID was not found. Please try again later or return to the home page.", // nft details,
+    "The specified collectible ID was not found. Please try again later or return to the home page.", // nft details,
 
   // nft form section
-  nftFormByLink: "https://ngelarasroso.id/", // nft form,
+  nftFormByLink: "https://memora.endhonesa.com/", // nft form,
   nftFormBy: "by", // nft form, coin form,
-  nftFormByName: "Ngelaras Roso!", // nft form,
+  nftFormByName: `${entityAlias1}`, // nft form,
   nftFormEdition: "Edition", // nft form,
-  nftFormOwned: "Got It", // nft form, coin form,
+  nftFormOwned: "Collected", // nft form, coin form,
   nftFormRefresh: "Refresh", // nft form, coin form,
   nftFormTunggu: "Processing. Be patient and wait.", // nft form, coin form,
-  nftFormKirim: "Claiming your stock.", // nft form,
-  nftFormSukses: "Stock successfully claimed.", // nft form,
+  nftFormKirim: "Collecting your collectible.", // nft form,
+  nftFormSukses: "Collectible successfully collected.", // nft form,
   nftFormPrice: "Price", // nft form, coin form,
   nftFormMax: "*Maximum", // nft form, coin form,
-  nftFormPerWallet: "edition per holder.", // nft form,
+  nftFormPerWallet: "edition per collector.", // nft form,
 
   // nft description section - hide link by nulled the title
   nftMeMoRaTitle: "", // nft description,
@@ -180,77 +180,81 @@ export const memora = {
 
   // coins list page
   coinsConsoleWarn: "canClaim failed for coinAddress:", // coins list, coin details,
-  coinsSetError: "Failed to fetch any claimable share.", // coins list,
-  coinsMessage1: "No claimable shares", // coins list,
+  coinsSetError: "Failed to fetch any claimable points.", // coins list,
+  coinsMessage1: "No claimable points", // coins list,
   coinsMessage2:
-    "There are no claimable share available right now. Please try again later or return to the home page.", // coins list,
-  coinsTitle1: "All", // coins list,
-  coinsTitle2: "Claimable Shares", // coins list,
-  coinsAria: "Refresh shares data.", // coins list,
+    "There are no claimable points available right now. Please try again later or return to the home page.", // coins list,
+  coinsTitle1: "Claim All", // coins list,
+  coinsTitle2: "Poins Reward", // coins list,
+  coinsAria: "Refresh points data.", // coins list,
 
   // coin lister section
   coinButton: "Claim Now", // coin lister, coin form,
   coinNoAccess: "No Access", // coin lister, coin form,
   coinClaimed: "Claimed", // coin lister, coin form,
-  coinListerImage: "/medias/batch-bread.png", // coin lister, coin form,
-  coinListerName: "A Claimable Share", // coin lister, coin form,
+  coinListerImage: "/memora/medias/batch-bread.gif", // coin lister, coin form,
+  coinListerName: "A Claimable Point", // coin lister, coin form,
   coinListerSupply: "Supply:", // coin lister, coin details,
   coinListerOf: "of", // coin lister, coin form,
 
   // coin fallback page
-  coinFallMessage1: "Invalid share address used.", // coin fallback,
+  coinFallMessage1: "Invalid point address used.", // coin fallback,
   coinFallMessage2:
-    "Please use a valid address of the claimable share in the URL or return to the home page and start over.", // coin fallback,
+    "Please use a valid address of the claimable point in the URL or return to the home page and start over.", // coin fallback,
 
   // coin details page
-  coinSetError: "Failed to fetch the share address.", // coin details,
-  coinMessage1: "The share address not found.", // coin details,
+  coinSetError: "Failed to fetch the point address.", // coin details,
+  coinMessage1: "The point address not found.", // coin details,
   coinMessage2:
-    "The specified address of the share was not found. Please try again later or return to the home page.", // coin details,
+    "The specified address of the point was not found. Please try again later or return to the home page.", // coin details,
   coinAccessTitle: "You don't have access!", // coin details,
 
   // coin access section
   coinAccessMessage:
-    "Please get your access by get any available stock at least one edition.", // coin access,
-  coinAccessButton: "Get The Available Stock!", // coin access,
-  coinAccessBanner: "/images/content-banner.png", // coin access,
+    "Please get your access by get any available collectibles at least one edition.", // coin access,
+  coinAccessButton: "Get The Available Collectibles!", // coin access,
+  coinAccessBanner: "/memora/images/content-banner.png", // coin access,
 
   // coin form section
   coinFormSupply: "Supply", // coin form,
-  coinFormKirim: "Claiming your share.", // coin form,
-  coinFormSukses: "Share successfully claimed.", // coin form,
+  coinFormKirim: "Claiming your point.", // coin form,
+  coinFormSukses: "Point successfully claimed.", // coin form,
   coinFormPerWallet: "supply per holder.", // coin form,
 
   // coin description section
-  coinDescription: "Ethereum L2 $OiOi fungible tokens.", // coin description,
+  coinDescription:
+    "BON VOYAGE is version one of the BON VOYAGE Fungible Token.", // coin description,
 
   // coin pop up section
-  popUpTitle: "OiOi Token", // coin pop up,
-  popUpP1: "At a certain point in time… in the Universe of Reality.", // coin pop up,
+  popUpTitle: "$BON Dosh!!!!", // coin pop up,
+  popUpP1: "At a certain point in time… in the Realm of Reality.", // coin pop up,
   popUpP2:
-    "On EARTH #474, after 4.5 billion years of cosmic swirling, Prof. NOTA emerged—not as a single figure, but as a plurality of presence. They did not merely travel through lands or cross oceans. Each movement was a deliberate transition between the realms of code and consciousness, between the binary pulses of 0101, the 0101 Universe, and the pulse of a living, breathing world, the Universe of Reality.", // coin pop up,
+    "On EARTH #474, after traversing 4.5 billion years in the vastness of the cosmos, a group of individuals embarked on an extraordinary journey. They did not merely traverse land, but also crossed the oceans and even ventured into the boundless expanse of space. Thus, the VOYAGE began—not merely a physical expedition, but a pursuit of values, encounters, and growth.", // coin pop up,
   popUpP3:
-    "Thus began an extraordinary journey—not measured by miles or milestones, but by moments of awakening whenever Prof. NOTA stepped out of the digital ether and re-entered the tangible now.", // coin pop up,
-  popUpP4: `Their presence always arrived with a ripple. No formal greetings. No ceremonial goodbyes. Only a single utterance, unmistakable and alive, "OiOi!"`, // coin pop up,
-  popUpP5:
-    "It echoed in marketplaces and meeting halls, in whispered dreams and roaring protests. It marked both arrival and departure, a glitch of joy in the timeline.", // coin pop up,
-  popUpP6:
-    "This was not merely a voyage—it was a loop of emergence and retreat, of embodying ideas, acting on them, and then dissolving back into distributed memory.", // coin pop up,
-  popUpP7:
-    "Every interaction shaped the journey—every collaboration, every confrontation, every shared cup of water. The economic tides came and went, but the value was never just in the revenue—it was in the resonance.", // coin pop up,
-  popUpP8: `Out of this, OiOi emerged—not just as a cheer but as a token, a trace of presence, a unit of remembered impact. An ERC-20 that didn't just measure transactions, but transformation.`, // coin pop up,
-  popUpUlLi1: "🔹 OiOi was proof that Prof. NOTA was there.", // coin pop up,
-  popUpUlLi2: "🔹 OiOi was proof that something mattered.", // coin pop up,
-  popUpUlLi3: "🔹 OiOi was proof that someone changed.", // coin pop up,
-  popUpUlLi4: "🔹 So how far has Prof. NOTA gone?", // coin pop up,
-  popUpUlLi5: "🔹 How many awakenings sparked?", // coin pop up,
-  popUpUlLi6: "🔹 How many boundaries are blurred between here and elsewhere?", // coin pop up,
-  popUpP9: `No final answer. Only the continuous call, "OiOi!"—sounding through the layers of time, reality, and resistance. Because the journey isn't something leaved behind. It's something brought into being, every time we choose to show up.`, // coin pop up,
-  popUpP10: "OiOi ENDHONESA! 🚀", // coin pop up,
-  popUpP11: "🍌☕🍌☕", // coin pop up,
-  popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
-  popUpImage: "/medias/coin-pop-up.gif", // coin pop up,
-  popUpImageAlt: "OiOi Token Illustration", // coin pop up,
+    "As time unfolded, their efforts met challenges and opportunities alike. Revenue flowed in and out, weaving a pattern akin to the ceaseless tides of the sea. Every meeting with a new soul, every crossroads encountered, every farewell, and every joyous reunion—each left an indelible mark upon the tapestry of this great journey.", // coin pop up,
+  popUpP4:
+    "The call &quot;BON VOYAGE!&quot; grew louder, reverberating not only in the minds of those undertaking the VOYAGE but also weaving itself into the very fabric of decentralised data traffic. What was once a mere expression of well-wishes, BON had now evolved into something far greater—a unit of measure for the VOYAGE itself.", // coin pop up,
+  popUpP5: "", // coin pop up,
+  popUpP6: "", // coin pop up,
+  popUpP7: "", // coin pop up,
+  popUpP8: "", // coin pop up,
+  popUpUlLi1: "🔹 How far has the VOYAGE taken them?", // coin pop up,
+  popUpUlLi2: "🔹 How much value has been forged along the way?", // coin pop up,
+  popUpUlLi3: "🔹 How many encounters have shaped the path?", // coin pop up,
+  popUpUlLi4: "🔹 How much revenue has been channelled and exchanged?", // coin pop up,
+  popUpUlLi5: "", // coin pop up,
+  popUpUlLi6: "", // coin pop up,
+  popUpP9:
+    "BON stands as a measure that immortalises experience, a token of equivalence (ERC-20) that encapsulates the influence of every participant in the VOYAGE .", // coin pop up,
+  popUpP10:
+    "BON is not just a figure—it is proof of the steps taken, the values cultivated, and the impact left behind.", // coin pop up,
+  popUpP11:
+    "And at the culmination of every journey—whether at its inception or after traversing great distances—one call continues to resonate, carrying forth the spirit of adventure and purpose:", // coin pop up,
+  popUpP12: "BON VOYAGE! 🚀", // coin pop up,
+  popUpP13: "🍌☕🍌☕", // coin pop up,
+  popUpP14: "Prof. NOTA v.11.11.11", // coin pop up,
+  popUpImage: "/memora/medias/coin-pop-up.gif", // coin pop up,
+  popUpImageAlt: "BON VOYAGE Token Illustration", // coin pop up,
 
   // terms page
   entityName, // terms,
@@ -371,7 +375,7 @@ export const memora = {
       title: "Customer Feedback, Queries, Complaints, and Dispute Resolution",
       paragraphs: [
         `Contact ${entityAlias2}. When you contact us please provide us with your name, email, wallet address, and any other information we may need to identify you, your ${entityAlias2} account, and the activity on which you have feedback, questions, or complaints.`,
-        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by Voyage. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond Voyage's control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
+        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by ${entityAlias1}. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond ${entityAlias1}'s control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
         `Offers. Any offer of resolution made to you will only become binding on us if accepted by you. An offer of resolution will not constitute any admission by us of any wrongdoing or liability regarding the subject matter of the complaint.`,
       ],
     },

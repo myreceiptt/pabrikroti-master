@@ -11,15 +11,15 @@ import { getActiveReceipt } from "@/config/receipts";
 // Components libraries
 import Message from "@/components/sections/ReusableMessage";
 
-const { coinFallMessage1, coinFallMessage2, nftsMessage3 } = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 export default function CoinFallback() {
   return (
     <main className="grid gap-4 place-items-center">
       <Message
-        message1={coinFallMessage1}
-        message2={coinFallMessage2}
-        message3={nftsMessage3}
+        message1={receipt.coinFallMessage1}
+        message2={receipt.coinFallMessage2}
+        message3={receipt.nftsMessage3}
       />
     </main>
   );

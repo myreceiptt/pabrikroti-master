@@ -7,15 +7,10 @@ import { getContract } from "thirdweb";
 import { client } from "@/config/client";
 import { baseMainnet, baseSepolia, monadTestnet } from "@/config/rantais";
 
-// List factory address contract
-const accountFactoryNOTA = "0x186b1740d24bc028D220838796441441dc444f9A"; // Prof. NOTA Inc.
-const accountFactoryVoyage = "0x186b1740d24bc028D220838796441441dc444f9A"; // BON VOYAGE
+// List factory address contract - tambahkan sesuai kebutuhan dan akan dipilih satu di index.ts
+export const factoryNOTA = "0x186b1740d24bc028D220838796441441dc444f9A"; // Prof. NOTA Inc.
+export const factoryVoyage = "0x186b1740d24bc028D220838796441441dc444f9A"; // BON VOYAGE
 
-// Factory address contract - pilih satu dari daftar factory untuk digunakan
-export const rotiAccountFactory = accountFactoryNOTA;
-export const memoraAccountFactory = accountFactoryVoyage;
-export const istiqlalAccountFactory = accountFactoryVoyage;
-export const theAccountFactory = accountFactoryNOTA; // Dynamic
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // NFT contracts Avalanche C-Chain
@@ -23,7 +18,7 @@ export const theAccountFactory = accountFactoryNOTA; // Dynamic
 
 // NFT contracts Base Mainnet
 const erc1155MeMoRa1 = getContract({
-  address: "0xba0032620d88D9b16752CbDE75593c080C3d38de", // MeMoRa One - Default
+  address: "0x1925B991C5e2eC45BA1f34786BAd405d58202140", // MeMoRa One - Default
   chain: baseMainnet,
   client,
 });
@@ -94,21 +89,22 @@ interface SupportedNFTs {
 }
 
 // Define `tekeks` (NFTs) with the proper interface - Tentukan satu atau lebih dari daftar NFT sesuai rantainya
-export const rotiTekeks: SupportedNFTs = {
-  [baseSepolia.id]: [erc1155TryError.address],
+export const istiqlalTekeks: SupportedNFTs = {
+  [baseMainnet.id]: [erc1155IstiqlalDL.address],
 };
 
 export const memoraTekeks: SupportedNFTs = {
   [baseMainnet.id]: [erc1155MeMoRa1.address],
 };
 
-export const istiqlalTekeks: SupportedNFTs = {
-  [baseMainnet.id]: [erc1155IstiqlalDL.address],
+export const pabrikrotiTekeks: SupportedNFTs = {
+  [baseSepolia.id]: [erc1155TryError.address],
 };
 
 export const tekeks: SupportedNFTs = {
-  [baseSepolia.id]: [erc1155TryError.address], // Dynamic
-};
+  [baseMainnet.id]: [erc1155MeMoRa1.address, erc1155IstiqlalDL.address],
+  [baseSepolia.id]: [erc1155TryError.address],
+}; // Dynamic
 // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // // //
 
 // Launched NFT contracts - Pilih satu dari daftar NFT untuk digunakan

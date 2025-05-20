@@ -15,23 +15,7 @@ import { client } from "@/config/client";
 import { getActiveReceipt } from "@/config/receipts";
 import { getCountdownString } from "@/config/utils";
 
-const {
-  coinButton,
-  coinClaimed,
-  coinListerImage,
-  coinListerName,
-  coinNoAccess,
-  coinListerOf,
-  coinListerSupply,
-  colorBorder,
-  colorIcon,
-  colorPrimary,
-  colorSecondary,
-  loaderChecking,
-  nftClosed,
-  nftInsufficient,
-  nftSoon,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
@@ -82,30 +66,33 @@ export default function CoinLister({
   }, []);
 
   // Determine button status
-  let buttonLabel = coinButton;
+  let buttonLabel = receipt.coinButton;
   let buttonDisabled = false;
 
   if (hasAccess === null || hasAccess === false) {
-    buttonLabel = coinNoAccess;
+    buttonLabel = receipt.coinNoAccess;
     buttonDisabled = true;
   } else {
     if (currentTime < startTime) {
       // Belum waktunya
-      buttonLabel = `${nftSoon} ${getCountdownString(startTime, currentTime)}`;
+      buttonLabel = `${receipt.nftSoon} ${getCountdownString(
+        startTime,
+        currentTime
+      )}`;
       buttonDisabled = true;
     } else if (adjustedBalance < adjustedPrice) {
       // Tidak cukup saldo
-      buttonLabel = nftInsufficient;
+      buttonLabel = receipt.nftInsufficient;
       buttonDisabled = true;
     } else if (!isClaimable) {
       // Tidak bisa diklaim karena alasan lain
       const safeReason = (reason ?? "").toLowerCase();
       if (safeReason.includes("dropclaimexceedlimit")) {
-        buttonLabel = coinClaimed;
+        buttonLabel = receipt.coinClaimed;
       } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-        buttonLabel = nftClosed;
+        buttonLabel = receipt.nftClosed;
       } else {
-        buttonLabel = nftClosed; // fallback
+        buttonLabel = receipt.nftClosed; // fallback
       }
       buttonDisabled = true;
     }
@@ -129,10 +116,10 @@ export default function CoinLister({
 
   return (
     <div
-      style={{ borderColor: colorBorder }}
+      style={{ borderColor: receipt.colorBorder }}
       className="w-full grid grid-cols-1 gap-4 p-4 border rounded-3xl">
       {hasAccess === null ? (
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       ) : (
         <>
           <Link href={`/address/${coinAddress}`}>
@@ -149,8 +136,8 @@ export default function CoinLister({
                 />
               ) : (
                 <Image
-                  src={coinListerImage}
-                  alt={coinName ?? coinListerName}
+                  src={receipt.coinListerImage}
+                  alt={coinName ?? receipt.coinListerName}
                   width={755}
                   height={545}
                   className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
@@ -160,16 +147,16 @@ export default function CoinLister({
           </Link>
           <div className="grid grid-cols-1 gap-2">
             <h2
-              style={{ color: colorSecondary }}
+              style={{ color: receipt.colorSecondary }}
               className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold">
               {coinName}
             </h2>
             <div
-              style={{ color: colorIcon }}
+              style={{ color: receipt.colorIcon }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
-              <span>{coinListerSupply}</span>
+              <span>{receipt.coinListerSupply}</span>
               <span
-                title={`${adjustedSupply} ${coinListerOf} ${adjustedMaxClaim}`}>
+                title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxClaim}`}>
                 {formatNumberCompact(adjustedSupply)}/
                 {formatNumberCompact(adjustedMaxClaim)}
               </span>
@@ -185,10 +172,16 @@ export default function CoinLister({
               }
             }}
             style={{
-              color: buttonDisabled ? colorSecondary : colorPrimary,
-              backgroundColor: buttonDisabled ? "transparent" : colorSecondary,
+              color: buttonDisabled
+                ? receipt.colorSecondary
+                : receipt.colorPrimary,
+              backgroundColor: buttonDisabled
+                ? "transparent"
+                : receipt.colorSecondary,
               border: "2px solid",
-              borderColor: buttonDisabled ? colorBorder : colorSecondary,
+              borderColor: buttonDisabled
+                ? receipt.colorBorder
+                : receipt.colorSecondary,
             }}
             className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
               !buttonDisabled ? "cursor-pointer" : ""

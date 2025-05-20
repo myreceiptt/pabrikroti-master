@@ -27,26 +27,7 @@ import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
-const {
-  coinsAria,
-  coinsConsoleWarn,
-  coinsMessage1,
-  coinsMessage2,
-  coinsSetError,
-  coinsTitle1,
-  coinsTitle2,
-  colorPrimary,
-  colorSecondary,
-  loaderChecking,
-  nftsError,
-  nftsFailReason,
-  nftsMessage3,
-  nftsNext,
-  nftsPrevious,
-  nftsUknownError,
-  searchAria1,
-  searchAria3,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface CoinData {
   coinAddress: string;
@@ -177,9 +158,9 @@ export default function CoinsList() {
           } catch (innerErr) {
             // Continue if check failed
             isClaimable = false;
-            reason = nftsFailReason;
+            reason = receipt.nftsFailReason;
             console.warn(
-              `${coinsConsoleWarn} ${erc20ContractLaunched.address}`,
+              `${receipt.coinsConsoleWarn} ${erc20ContractLaunched.address}`,
               innerErr
             );
           }
@@ -210,11 +191,11 @@ export default function CoinsList() {
       setCoinListToShow(coins);
       setError(null);
     } catch (err: unknown) {
-      setError(coinsSetError);
+      setError(receipt.coinsSetError);
       if (err instanceof Error) {
-        console.error(nftsError, err.message);
+        console.error(receipt.nftsError, err.message);
       } else {
-        console.error(nftsUknownError, err);
+        console.error(receipt.nftsUknownError, err);
       }
     } finally {
       setIsLoading(false);
@@ -244,7 +225,7 @@ export default function CoinsList() {
   if (isLoading) {
     return (
       <main className="grid gap-4 place-items-center">
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       </main>
     );
   }
@@ -254,9 +235,9 @@ export default function CoinsList() {
     return (
       <main className="grid gap-4 place-items-center">
         <Message
-          message1={error ?? coinsMessage1}
-          message2={coinsMessage2}
-          message3={nftsMessage3}
+          message1={error ?? receipt.coinsMessage1}
+          message2={receipt.coinsMessage2}
+          message3={receipt.nftsMessage3}
         />
       </main>
     );
@@ -272,7 +253,7 @@ export default function CoinsList() {
         />
       )}
 
-      <Title title1={coinsTitle1} title2={coinsTitle2} />
+      <Title title1={receipt.coinsTitle1} title2={receipt.coinsTitle2} />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" ref={listRef}>
         {coinListToShow.slice(0, visibleCount).map((coin, index) => (
@@ -293,18 +274,21 @@ export default function CoinsList() {
       <div className="flex items-center justify-center gap-4 mt-4">
         {coinListToShow.length > INITIAL_ITEMS && (
           <button
-            aria-label={searchAria1}
+            aria-label={receipt.searchAria1}
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
-            style={{ color: colorPrimary, background: colorSecondary }}
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
-            {nftsPrevious}
+            {receipt.nftsPrevious}
           </button>
         )}
         <button
-          aria-label={coinsAria}
+          aria-label={receipt.coinsAria}
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
@@ -312,7 +296,10 @@ export default function CoinsList() {
             setRefreshToken(Date.now()); // 🔁 trigger CoinLister refresh
             setIsRefreshing(false); // ✅ selesai loading
           }}
-          style={{ color: colorPrimary, background: colorSecondary }}
+          style={{
+            color: receipt.colorPrimary,
+            background: receipt.colorSecondary,
+          }}
           className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
           }`}>
@@ -328,14 +315,17 @@ export default function CoinsList() {
         </button>
         {coinListToShow.length > INITIAL_ITEMS && (
           <button
-            aria-label={searchAria3}
+            aria-label={receipt.searchAria3}
             onClick={handleLoadMore}
             disabled={visibleCount >= coinListToShow.length}
-            style={{ color: colorPrimary, background: colorSecondary }}
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= coinListToShow.length ? "" : "cursor-pointer"
             }`}>
-            {nftsNext}
+            {receipt.nftsNext}
           </button>
         )}
       </div>

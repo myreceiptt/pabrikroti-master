@@ -1,5 +1,8 @@
 PABRIK ROTI v.2.2.22: Staging NFT Indonesia by Istiqlal Digital Legacy!
 
+Link #1: https://nft.istiqlal.or.id/  
+Link #2: https://istiqlal.or.id/
+
 ## 📜 License
 
 This project is licensed under a **Custom Limited License** by [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/).
@@ -65,4 +68,4 @@ yarn start
 
 ## Join Prof. NOTA Discord!
 
-For any questions or suggestions, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).
+For questions or suggestions, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).

@@ -70,4 +70,4 @@ export const istiqlalChain = baseMainnet; // Default Chain
 export const istiqlalChains = [baseMainnet]; // Supported Chains
 
 export const chain = baseSepolia; // Default Chain
-export const chains = [baseSepolia]; // Supported Chains
+export const chains = [baseMainnet, baseSepolia]; // Supported Chains

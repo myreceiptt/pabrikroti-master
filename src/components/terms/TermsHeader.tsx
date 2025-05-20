@@ -8,32 +8,25 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const {
-  colorSecondary,
-  colorIcon,
-  termsTitle,
-  termsUpdate,
-  termsAria1,
-  termsAria2,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 export default function TermsHeader() {
   return (
     <div className="text-center">
       <h1
-        style={{ color: colorSecondary }}
+        style={{ color: receipt.colorSecondary }}
         className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal"
-        aria-label={termsAria1}>
-        {termsTitle}
+        aria-label={receipt.termsAria1}>
+        {receipt.termsTitle}
       </h1>
-      <span style={{ color: colorIcon }} className="text-xs leading-10">
+      <span style={{ color: receipt.colorIcon }} className="text-xs leading-10">
         &#9673; &#9673; &#9673; &#9673;
       </span>
       <h2
-        style={{ color: colorIcon }}
+        style={{ color: receipt.colorIcon }}
         className="text-sm font-medium"
-        aria-label={termsAria2}>
-        {termsUpdate}
+        aria-label={receipt.termsAria2}>
+        {receipt.termsUpdate}
       </h2>
     </div>
   );

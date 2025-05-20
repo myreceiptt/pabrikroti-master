@@ -7,14 +7,7 @@ import React, { useState } from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const {
-  colorIcon,
-  colorSecondary,
-  nftEndhonesa,
-  nftMeMoRa,
-  nftReadLess,
-  nftReadMore,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface CoinDescriptionProps {
   description: string;
@@ -43,7 +36,7 @@ export default function CoinDescription({
     <>
       <div
         style={{
-          color: colorIcon,
+          color: receipt.colorIcon,
         }}
         className="w-full flex flex-col items-start gap-2">
         {isExpanded
@@ -72,10 +65,10 @@ export default function CoinDescription({
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: colorSecondary,
+                  color: receipt.colorSecondary,
                 }}
                 className="text-xs font-medium hover:underline cursor-pointer">
-                {nftMeMoRa}
+                {receipt.nftMeMoRa}
               </Link>
               <Link
                 href="#"
@@ -83,10 +76,10 @@ export default function CoinDescription({
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: colorSecondary,
+                  color: receipt.colorSecondary,
                 }}
                 className="text-xs font-medium hover:underline cursor-pointer">
-                {nftEndhonesa}
+                {receipt.nftEndhonesa}
               </Link>
             </>
           )}
@@ -94,11 +87,11 @@ export default function CoinDescription({
           {/* Read More / Read Less */}
           <p
             style={{
-              color: colorSecondary,
+              color: receipt.colorSecondary,
             }}
             className="text-xs font-medium hover:underline cursor-pointer"
             onClick={() => setIsExpanded(!isExpanded)}>
-            {isExpanded ? nftReadLess : nftReadMore}
+            {isExpanded ? receipt.nftReadLess : receipt.nftReadMore}
           </p>
         </div>
       )}

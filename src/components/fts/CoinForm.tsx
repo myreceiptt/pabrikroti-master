@@ -22,32 +22,7 @@ import CoinDescription from "@/components/fts/CoinDescription";
 import CoinPopUp from "@/components/fts/CoinPopUp";
 import Loader from "@/components/sections/ReusableLoader";
 
-const {
-  coinButton,
-  coinClaimed,
-  coinDescription,
-  coinFormKirim,
-  coinFormPerWallet,
-  coinFormSukses,
-  coinFormSupply,
-  coinListerImage,
-  coinListerName,
-  coinNoAccess,
-  coinListerOf,
-  colorBorder,
-  colorIcon,
-  colorPrimary,
-  colorSecondary,
-  nftClosed,
-  nftFormBy,
-  nftFormMax,
-  nftFormOwned,
-  nftFormPrice,
-  nftFormRefresh,
-  nftFormTunggu,
-  nftInsufficient,
-  nftSoon,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface CoinFormProps {
   coinAddress: string;
@@ -113,31 +88,34 @@ export default function CoinForm({
   }, []);
 
   // Determine button status
-  let buttonLabel = coinButton;
+  let buttonLabel = receipt.coinButton;
   let buttonDisabled = false;
 
   // Belum punya akses
   if (hasAccess === null || hasAccess === false) {
-    buttonLabel = coinNoAccess;
+    buttonLabel = receipt.coinNoAccess;
     buttonDisabled = true;
   } else {
     if (currentTime < startTime) {
       // Belum waktunya
-      buttonLabel = `${nftSoon} ${getCountdownString(startTime, currentTime)}`;
+      buttonLabel = `${receipt.nftSoon} ${getCountdownString(
+        startTime,
+        currentTime
+      )}`;
       buttonDisabled = true;
     } else if (adjustedBalance < adjustedPrice) {
       // Tidak cukup saldo
-      buttonLabel = nftInsufficient;
+      buttonLabel = receipt.nftInsufficient;
       buttonDisabled = true;
     } else if (!isClaimable) {
       // Tidak bisa diklaim karena alasan lain
       const safeReason = (reason ?? "").toLowerCase();
       if (safeReason.includes("dropclaimexceedlimit")) {
-        buttonLabel = coinClaimed;
+        buttonLabel = receipt.coinClaimed;
       } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-        buttonLabel = nftClosed;
+        buttonLabel = receipt.nftClosed;
       } else {
-        buttonLabel = nftClosed;
+        buttonLabel = receipt.nftClosed;
       }
       buttonDisabled = true;
     }
@@ -196,8 +174,8 @@ export default function CoinForm({
           ) : (
             <Image
               onClick={() => setIsOpen(true)}
-              src={coinListerImage}
-              alt={coinName ?? coinListerName}
+              src={receipt.coinListerImage}
+              alt={coinName ?? receipt.coinListerName}
               width={755}
               height={545}
               className="rounded-2xl w-full cursor-pointer"
@@ -214,7 +192,7 @@ export default function CoinForm({
         <div className="w-full flex flex-row gap-2 items-start justify-between">
           {/* Title */}
           <h1
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
             {coinName}
           </h1>
@@ -222,15 +200,17 @@ export default function CoinForm({
 
         <div className="flex flex-row gap-2">
           <h1
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="text-left text-sm font-medium">
-            {nftFormBy}
+            {receipt.nftFormBy}
           </h1>
-          <span style={{ color: colorIcon }} className="text-3xl leading-6">
+          <span
+            style={{ color: receipt.colorIcon }}
+            className="text-3xl leading-6">
             &#9673;
           </span>
           <h1
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="text-left text-sm font-medium">
             <Link href={coinLink} target="_blank">
               {coinBy}
@@ -239,7 +219,10 @@ export default function CoinForm({
         </div>
 
         {/* Description with Expand/Collapse */}
-        <CoinDescription description={coinDescription} address={coinAddress} />
+        <CoinDescription
+          description={receipt.coinDescription}
+          address={coinAddress}
+        />
 
         {/* Success or Error Messages */}
         {pesanTunggu && <Loader message={pesanTunggu} />}
@@ -250,28 +233,28 @@ export default function CoinForm({
         {/* FT Info */}
         <div className="w-full grid grid-cols-8">
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-3 text-left text-xs font-medium">
-            {nftFormPrice}
+            {receipt.nftFormPrice}
           </h2>
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-3 text-left text-xs font-medium">
-            {nftFormOwned}
+            {receipt.nftFormOwned}
           </h2>
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-2 text-left text-xs font-medium">
-            {nftFormRefresh}
+            {receipt.nftFormRefresh}
           </h2>
 
           <h2
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
             {formattedPrice}
           </h2>
           <h2
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
             {adjustedCoinOwned}
           </h2>
@@ -283,7 +266,10 @@ export default function CoinForm({
               await new Promise((resolve) => setTimeout(resolve, 747)); // ⏳ beri waktu animasi jalan
               setIsRefreshing(false); // ✅ selesai loading
             }}
-            style={{ color: colorPrimary, background: colorSecondary }}
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
             className={`col-span-2 aspect-auto rounded-lg mt-1 disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
             } flex items-center justify-center`}>
@@ -301,16 +287,16 @@ export default function CoinForm({
 
         <div className="w-full grid grid-cols-8">
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-8 text-left text-xs font-medium">
-            {coinFormSupply}
+            {receipt.coinFormSupply}
           </h2>
 
           <h2
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="col-span-8 text-left text-base lg:text-md xl:text-xl font-semibold">
             <span
-              title={`${adjustedSupply} ${coinListerOf} ${adjustedMaxClaim}`}>
+              title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxClaim}`}>
               {formatNumberCompact(adjustedSupply)}/
               {formatNumberCompact(adjustedMaxClaim)}
             </span>
@@ -322,12 +308,18 @@ export default function CoinForm({
           unstyled
           style={{
             color:
-              isProcessing || buttonDisabled ? colorSecondary : colorPrimary,
+              isProcessing || buttonDisabled
+                ? receipt.colorSecondary
+                : receipt.colorPrimary,
             backgroundColor:
-              isProcessing || buttonDisabled ? "transparent" : colorSecondary,
+              isProcessing || buttonDisabled
+                ? "transparent"
+                : receipt.colorSecondary,
             border: "2px solid",
             borderColor:
-              isProcessing || buttonDisabled ? colorBorder : colorSecondary,
+              isProcessing || buttonDisabled
+                ? receipt.colorBorder
+                : receipt.colorSecondary,
           }}
           className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
               ${isProcessing || buttonDisabled ? "" : "cursor-pointer"}
@@ -343,13 +335,13 @@ export default function CoinForm({
           onClick={() => {
             setIsRefreshing(true); // ⏳ mulai loading
             setIsProcessing(true);
-            setPesanTunggu(nftFormTunggu);
+            setPesanTunggu(receipt.nftFormTunggu);
             setPesanSukses(null);
             setPesanGagal(null);
           }}
           onTransactionSent={() => {
             setPesanTunggu(null);
-            setPesanKirim(coinFormKirim);
+            setPesanKirim(receipt.coinFormKirim);
           }}
           onError={(error) => {
             setRefreshToken(Date.now()); // 🔁 trigger CoinDetails refresh
@@ -364,15 +356,15 @@ export default function CoinForm({
             setIsRefreshing(false); // ✅ selesai loading
             setIsProcessing(false);
             setPesanKirim(null);
-            setPesanSukses(coinFormSukses);
+            setPesanSukses(receipt.coinFormSukses);
             setPesanGagal(null);
           }}>
           {buttonLabel}
         </ClaimButton>
         <h4
-          style={{ color: colorIcon }}
+          style={{ color: receipt.colorIcon }}
           className="text-left text-xs font-medium">
-          {`${nftFormMax} ${adjustedPerWallet} ${coinFormPerWallet}`}
+          {`${receipt.nftFormMax} ${adjustedPerWallet} ${receipt.coinFormPerWallet}`}
         </h4>
       </div>
     </div>

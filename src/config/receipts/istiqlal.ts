@@ -1,154 +1,154 @@
 // /src/config/receipts/istiqlal.ts
 
 // All receipts should be exported from this file.
-const proTitle = "Ngelaras Roso";
-const proUrl = "https://ngelarasroso.id";
-const entityName = "Ngelaras Roso X NFT Indonesia";
-const entityAlias1 = "Ngelaras Roso";
+const proTitle = "Istiqlal Digital Legacy - LPM-BPMI";
+const proUrl = "https://nft.istiqlal.or.id";
+const entityName = "LPM-BPMI X NFT Indonesia";
+const entityAlias1 = "LPM-BPMI";
 const entityAlias2 = "NFT Indonesia";
 const entityAddress =
-  "Jl. Al Inayah No.86, Rawakalong, Kec. Gn. Sindur, Kabupaten Bogor, Jawa Barat 16340, INDONESIA";
+  "Jl. Taman Wijaya Kusuma, Pasar Baru, Sawah Besar, Central Jakarta City, Jakarta 10710, INDONESIA";
 const entityEmail = "hallonftindonesia@gmail.com";
-const termsMonth = "Januari";
+const termsMonth = "April";
 const termsDate = "20";
 const termsYear = "2025";
-const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
+const termsUpdate = `Terakhir diperbarui pada ${termsDate} ${termsMonth}, ${termsYear}.`;
 
 export const istiqlal = {
-  // colors hex libraries
-  colorPrimary: "#F9F9F9", // Terang
-  colorSecondary: "#262525", // Gelap XXX
-  colorAccent: "#171717", // Gelap
-  colorBoxIcon: "#F0F0F0", // Terang Dikit
-  colorIcon: "#707070", // Abu2 Gelap
-  colorBorder: "#DFDFDF", // Abu2 Terang
+  // colors hex libraries - mystic coral
+  colorPrimary: "#FFF8F7", // Putih Pink Coral Laut
+  colorSecondary: "#523B3A", // Coklat Batu Karang Gelap
+  colorAccent: "#291D1D", // Hitam Coral Tua
+  colorBoxIcon: "#F5EAE9", // Coral Putih
+  colorIcon: "#8A6665", // Abu Coral Tua
+  colorBorder: "#E0CFCF", // Abu Coral Terang
 
   // layout...
   proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
   proDescription:
-    "You create this space so you can then fill it up with all that you need and desire. It's about letting go, surrending... and at the same time... welcoming in, receiving.", // layout, connect buttons, connect embeds,
+    "Istiqlal Digital Legacy (IDL) adalah program berbasis Web3 yang bertujuan untuk meningkatkan partisipasi jamaah dalam melestarikan warisan seni-budaya Islam, dan memajukan ekosistem digital di lingkungan masjid Istiqlal.", // layout, connect buttons, connect embeds,
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "NFT Indonesia", // layout,
-  proLocale: "en-US", // layout,
-  proImage: "https://ngelarasroso.id/preview-image.png", // layout,
-  proLang: "en", // layout,
+  proLocale: "id-ID", // layout,
+  proImage: "https://nft.istiqlal.or.id/istiqlal/preview-image.png", // layout,
+  proLang: "id", // layout,
 
   // error boundary section
-  proErrorCought: "Error caught in ErrorBoundary:", // error boundary,
-  proError: "Something went wrong. Please try again later.", // error boundary,
-  proButton: "Try Again", // error boundary,
+  proErrorCought: "Terjadi kesalahan di ErrorBoundary:", // error boundary,
+  proError: "Terjadi kesalahan. Coba lagi nanti.", // error boundary,
+  proButton: "Coba Lagi", // error boundary,
 
   // connect buttons section
-  proLogo: "/logos/logo.png", // connect buttons, connect embeds,
+  proLogo: "/istiqlal/logos/logo.png", // connect buttons, connect embeds,
 
   // login layout section
-  loginArt: "/images/login-art.png", // login layout,
-  loginBanner: "/images/login-banner.png", // login layout,
-  loginAria: "Call to action for login.", // login layout,
-  loginCall: "It's about letting go,", // login layout,
+  loginArt: "/istiqlal/images/login-art.png", // login layout,
+  loginBanner: "/istiqlal/images/login-banner.png", // login layout,
+  loginAria: "Ajakan bertindak untuk masuk.", // login layout,
+  loginCall: "Log In Sekarang!", // login layout,
   loginReason: {
-    text: "and at the same time, welcoming in",
-    anchor: "...",
-    link: "https://ngelarasroso.id/medias/ngelaras-roso-2024.pdf",
+    text: "Raih berkah kejutan spesial! Nikmati pengalaman seru, kartu kolektibel, kupon digital, dan hadiah menarik. Jangan sampai ketinggalan!",
+    anchor: "",
+    link: "",
   }, // login layout,
-  loginAgreement: "By connecting, you agree to the", // login layout,
-  loginTermsPolicy: "Terms of Service & Privacy Policy", // login layout,
+  loginAgreement: "Dengan melanjutkan, Anda setuju dengan", // login layout,
+  loginTermsPolicy: "Syarat Ketentuan & Kebijakan Privasi", // login layout,
   linkPower: "https://nftindonesia.xyz/", // login layout, footer section
-  loginPower: "/images/login-power.png", // login layout,
-  poweredBy: "Deployed by NFT Indonesia", // login layout, footer section
+  loginPower: "/istiqlal/images/login-power.png", // login layout,
+  poweredBy: "Diterapkan oleh NFT Indonesia", // login layout, footer section
 
   // header section
-  headerLogo: "/images/header-logo.png", // header,
-  headerGo: "Search Now", // header,
-  headerSearch: "Search Query", // header,
+  headerLogo: "/istiqlal/images/header-logo.png", // header,
+  headerGo: "Cari Sekarang", // header,
+  headerSearch: "Kueri Pencarian", // header,
 
   // footer section - hide social icon by nulled the link
-  copyRight: "All rights reserved.", // footer,
-  officiallyLicensed: "Officially licensed product of", // footer,
-  anchorPrivacy: "Privacy Policy", // footer,
-  anchorTerms: "Terms of Service", // footer,
-  footerPower: "/images/footer-power.png", // footer,
-  socialTitle: "Catch up with our update!", // footer,
-  linkXTwitter: "https://x.com/NFTindonesia_", // footer,
+  copyRight: "Seluruh hak cipta dilindungi.", // footer,
+  officiallyLicensed: "Produk resmi berlisensi dari", // footer,
+  anchorPrivacy: "Kebijakan Privasi", // footer,
+  anchorTerms: "Syarat Ketentuan", // footer,
+  footerPower: "/istiqlal/images/footer-power.png", // footer,
+  socialTitle: "Ikuti dan Gabung Komunitas Kami!", // footer,
+  linkXTwitter: "", // footer,
   linkLinkedIn: "", // footer,
-  linkInstagram: "https://www.instagram.com/nftindonesia_/", // footer,
-  linkFacebook: "", // footer,
-  linkDiscord: "https://discord.com/invite/3AvJSYPJK6", // footer,
-  linkYouTube: "", // footer,
-  linkEmail: "mailto:hallonftindonesia@gmail.com", // footer,
-  linkWhatsApp: "", // footer,
-  linkWebsite: "https://www.nftindonesia.xyz/", // footer,
+  linkInstagram: "https://www.instagram.com/masjidistiqlal.official/", // footer,
+  linkFacebook: "https://www.facebook.com/masjidistiqlaloffcial", // footer,
+  linkDiscord: "", // footer,
+  linkYouTube: "https://www.youtube.com/@MasjidIstiqlalTV", // footer,
+  linkEmail: "mailto:info@istiqlal.or.id", // footer,
+  linkWhatsApp: "https://wa.me/082123116910", // footer,
+  linkWebsite: "https://www.istiqlal.or.id/", // footer,
 
   // subscribe form section
   subscribeWarn:
-    "Missing Web3Forms Access Key. Please set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.", // subscribe form,
-  subscribeInput: "Please enter a valid email address.", // subscribe form,
-  subscribeSubject: `Subscription to ${proTitle}`, // subscribe form,
-  subscribeName: `Visitor of ${proUrl}`, // subscribe form,
-  subscribeMessage: "I want to subscribe to your latest updates.", // subscribe form,
-  subscribeSuccess: "Thank you for subscribing!", // subscribe form,
-  subscribeFailed: "Subscription failed. Please try again.", // subscribe form,
-  subscribeTitle: "Catch our latest updates", // subscribe form,
-  subscribePlaceholder: "Enter your email address", // subscribe form,
-  subscribeButton: "Subscribe", // subscribe form,
-  subscribeButtonLoading: "Subscribing...", // subscribe form,
+    "Kunci Akses Web3Forms Hilang. Harap atur NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.", // subscribe form,
+  subscribeInput: "Silakan masukkan alamat email yang valid.", // subscribe form,
+  subscribeSubject: `Berlangganan ke ${proTitle}`, // subscribe form,
+  subscribeName: `Pengunjung dari ${proUrl}`, // subscribe form,
+  subscribeMessage: "Saya ingin berlangganan pembaruan terkini.", // subscribe form,
+  subscribeSuccess: "Terima kasih telah berlangganan!", // subscribe form,
+  subscribeFailed: "Langganan gagal. Silakan coba lagi.", // subscribe form,
+  subscribeTitle: "Dapatkan update terbaru kami", // subscribe form,
+  subscribePlaceholder: "Masukkan alamat email Anda", // subscribe form,
+  subscribeButton: "Berlangganan", // subscribe form,
+  subscribeButtonLoading: "Berlangganan...", // subscribe form,
 
   // featured cards page - hide card by nulled the title
-  featuredTitle1: "Fill It Up With All", // featured cards,
-  featuredTitle2: "That You Need & Desire", // featured cards,
-  featuredPaid: "/images/featured-paid.png", // featured cards,
-  paidTitle: "", // featured cards,
-  featuredFree: "/images/featured-free.png", // featured cards,
-  freeTitle: "All Free Stocks", // featured cards,
-  featuredCoin: "/images/featured-coin.png", // featured cards,
-  coinTitle: "All Claimable Shares", // featured cards,
-  featuredAria: `Navigate to`, // featured cards,
+  featuredTitle1: "Warisan Digital", // featured cards,
+  featuredTitle2: "Masjid Istiqlal", // featured cards,
+  featuredPaid: "/istiqlal/images/featured-paid.png", // featured cards,
+  paidTitle: "Koleksi Digital Berbayar", // featured cards,
+  featuredFree: "/istiqlal/images/featured-free.png", // featured cards,
+  freeTitle: "Koleksi Digital Gratis", // featured cards,
+  featuredCoin: "/istiqlal/images/featured-coin.png", // featured cards,
+  coinTitle: "Poin Hadiah IDL", // featured cards,
+  featuredAria: "Navigasi ke", // featured cards,
 
   // reusable loader section
-  loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
+  loaderChecking: "Memuat...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
   // search wrapper page
-  searchMessage1: "No data found.", // search wrapper,
+  searchMessage1: "Tidak ada data yang ditemukan.", // search wrapper,
   searchMessage2:
-    "There is no data found matching your search terms. Please try searching again using other terms or return to the home page.", // search wrapper,
-  searchTitle: "Search Result:", // search wrapper,
-  searchAria1: "Load previous items.", // search wrapper, nfts list, coins list,
-  searchAria2: "Refresh search results.", // search wrapper,
-  searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
+    "Tidak ditemukan data yang sesuai dengan istilah pencarian Anda. Coba cari lagi menggunakan istilah lain atau kembali ke beranda.", // search wrapper,
+  searchTitle: "Hasil Pencarian:", // search wrapper,
+  searchAria1: "Muat item sebelumnya.", // search wrapper, nfts list, coins list,
+  searchAria2: "Segarkan hasil pencarian.", // search wrapper,
+  searchAria3: "Muat lebih banyak item.", // search wrapper, nfts list, coins list,
 
   // nfts list page
-  nftsTitle1Free: "All", // nfts list,
-  nftsTitle2Free: "Free Stocks", // nfts list,
-  nftsTitle1Paid: "All", // nfts list,
-  nftsTitle2Paid: "Paid Stocks", // nfts list,
+  nftsTitle1Free: "Kolektibel", // nfts list,
+  nftsTitle2Free: "IDL Gratis", // nfts list,
+  nftsTitle1Paid: "Kolektibel", // nfts list,
+  nftsTitle2Paid: "IDL Berbayar", // nfts list,
   nftsFailReason: "ClaimNotActive", // search wrapper, nfts list, nft details, coins list, coin details,
-  nftsConsoleWarn: "canClaim failed for nftId", // search wrapper, nfts list, nft details,
-  nftsSetError: "Failed to fetch any available stock.", // search wrapper, nfts list,
+  nftsConsoleWarn: "canClaim gagal untuk nftId", // search wrapper, nfts list, nft details,
+  nftsSetError: "Gagal mengambil kolektibel yang tersedia.", // search wrapper, nfts list,
   nftsError: "Lho, Error:", // search wrapper, nfts list, nft details, coins list, coin details,
   nftsUknownError: "Kok, Error:", // search wrapper, nfts list, nft details, coins list, coin details,
-  nftsMessage1: "No available stock!", // nfts list,
+  nftsMessage1: "Tidak ada kolektibel yang tersedia.", // nfts list,
   nftsMessage2:
-    "There are no available stock right now. Please try again later or return to the home page.", // nfts list,
-  nftsMessage3: "Return to the Home Page!", // search wrapper, nfts list, nft fallback, nft details, coins list, coin fallback, coin details,
-  nftsPrevious: "Previous", // search wrapper, nfts list, coins list,
-  nftsNext: "Next", // search wrapper, nfts list, coins list,
-  nftsAria: "Refresh stocks data.", // nfts list,
+    "Saat ini tidak ada kolektibel yang tersedia. Silakan coba lagi nanti atau kembali ke beranda.", // nfts list,
+  nftsMessage3: "Kembali ke Halaman Beranda!", // search wrapper, nfts list, nft fallback, nft details, coins list, coin fallback, coin details,
+  nftsPrevious: "Sebelumnya", // search wrapper, nfts list, coins list,
+  nftsNext: "Berikutnya", // search wrapper, nfts list, coins list,
+  nftsAria: "Segarkan semua data kolektibel.", // nfts list,
 
   // nft lister section
-  nftButton: "Get Now", // nft lister, nft form,
-  nftSoon: "Available in:", // nft lister, nft form, coin lister, coin form,
-  nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
-  nftClaimed: "Got It", // nft lister, nft form,
-  nftClosed: "Out of Stock", // nft lister, nft form, coin lister, coin form,
-  nftListerImage: "/medias/artisan-bread.png", // nft lister, nft form,
-  nftListerName: "An Available Stock", // nft lister, nft form,
-  nftEditions: "Edition:", // nft lister,
-  nftNoData: "No data available.", // nft lister,
+  nftButton: "Klaim Sekarang", // nft lister, nft form,
+  nftSoon: "Tersedia dalam:", // nft lister, nft form, coin lister, coin form,
+  nftInsufficient: "Saldo Tidak Cukup", // nft lister, nft form, coin lister, coin form,
+  nftClaimed: "Sudah Diklaim", // nft lister, nft form,
+  nftClosed: "Sudah Habis", // nft lister, nft form, coin lister, coin form,
+  nftListerImage: "/istiqlal/medias/artisan-bread.png", // nft lister, nft form,
+  nftListerName: "Kolektibel yang Tersedia", // nft lister, nft form,
+  nftEditions: "Edisi:", // nft lister,
+  nftNoData: "Tidak ada data yang tersedia.", // nft lister,
 
   // nft fallback page
-  nftFallMessage1: "No valid stock ID used.", // nft fallback,
+  nftFallMessage1: "Tidak ada ID kolektibel valid yang digunakan.", // nft fallback,
   nftFallMessage2:
-    "Please use a valid stock ID in the URL or return to the home page and start over.", // nft fallback,
+    "Silakan gunakan ID kolektibel yang valid di URL atau kembali ke beranda dan mulai dari awal.", // nft fallback,
 
   // nft details page
   nftSetError: "Failed to fetch the stock ID.", // nft details,
@@ -159,7 +159,7 @@ export const istiqlal = {
   // nft form section
   nftFormByLink: "https://ngelarasroso.id/", // nft form,
   nftFormBy: "by", // nft form, coin form,
-  nftFormByName: "Ngelaras Roso!", // nft form,
+  nftFormByName: `${entityAlias1}`, // nft form,
   nftFormEdition: "Edition", // nft form,
   nftFormOwned: "Got It", // nft form, coin form,
   nftFormRefresh: "Refresh", // nft form, coin form,
@@ -249,6 +249,8 @@ export const istiqlal = {
   popUpP10: "OiOi ENDHONESA! 🚀", // coin pop up,
   popUpP11: "🍌☕🍌☕", // coin pop up,
   popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
+  popUpP13: "", // coin pop up,
+  popUpP14: "", // coin pop up,
   popUpImage: "/medias/coin-pop-up.gif", // coin pop up,
   popUpImageAlt: "OiOi Token Illustration", // coin pop up,
 
@@ -371,7 +373,7 @@ export const istiqlal = {
       title: "Customer Feedback, Queries, Complaints, and Dispute Resolution",
       paragraphs: [
         `Contact ${entityAlias2}. When you contact us please provide us with your name, email, wallet address, and any other information we may need to identify you, your ${entityAlias2} account, and the activity on which you have feedback, questions, or complaints.`,
-        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by Voyage. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond Voyage's control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
+        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by ${entityAlias1}. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond ${entityAlias1}'s control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
         `Offers. Any offer of resolution made to you will only become binding on us if accepted by you. An offer of resolution will not constitute any admission by us of any wrongdoing or liability regarding the subject matter of the complaint.`,
       ],
     },

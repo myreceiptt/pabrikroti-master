@@ -25,17 +25,7 @@ import NFTForm from "@/components/nfts/NFTForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
-const {
-  loaderChecking,
-  nftMessage1,
-  nftMessage2,
-  nftSetError,
-  nftsConsoleWarn,
-  nftsError,
-  nftsFailReason,
-  nftsMessage3,
-  nftsUknownError,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface NFTData {
   nftId: bigint;
@@ -79,7 +69,7 @@ export default function NFTDetails() {
 
     // Check nftId exist based on nextNFTId
     if (nextNFTId !== undefined && nftId >= nextNFTId) {
-      setError(nftMessage1);
+      setError(receipt.nftMessage1);
       setLoading(false);
       return;
     }
@@ -155,8 +145,8 @@ export default function NFTDetails() {
       } catch (innerErr) {
         // Continue if check failed
         isClaimable = false;
-        reason = nftsFailReason;
-        console.warn(`${nftsConsoleWarn} ${nftId}`, innerErr);
+        reason = receipt.nftsFailReason;
+        console.warn(`${receipt.nftsConsoleWarn} ${nftId}`, innerErr);
       }
 
       setNFT({
@@ -173,11 +163,11 @@ export default function NFTDetails() {
         adjustedBalance,
       });
     } catch (err: unknown) {
-      setError(nftSetError);
+      setError(receipt.nftSetError);
       if (err instanceof Error) {
-        console.error(nftsError, err.message);
+        console.error(receipt.nftsError, err.message);
       } else {
-        console.error(nftsUknownError, err);
+        console.error(receipt.nftsUknownError, err);
       }
     } finally {
       setLoading(false);
@@ -202,7 +192,7 @@ export default function NFTDetails() {
   if (loading) {
     return (
       <main className="grid gap-4 place-items-center">
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       </main>
     );
   }
@@ -213,8 +203,8 @@ export default function NFTDetails() {
       <main className="grid gap-4 place-items-center">
         <Message
           message1={error}
-          message2={nftMessage2}
-          message3={nftsMessage3}
+          message2={receipt.nftMessage2}
+          message3={receipt.nftsMessage3}
         />
       </main>
     );

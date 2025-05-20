@@ -26,31 +26,7 @@ import { getCountdownString } from "@/config/utils";
 import NFTDescription from "@/components/nfts/NFTDescription";
 import Loader from "@/components/sections/ReusableLoader";
 
-const {
-  colorBorder,
-  colorIcon,
-  colorPrimary,
-  colorSecondary,
-  nftButton,
-  nftClaimed,
-  nftClosed,
-  nftFormBy,
-  nftFormByLink,
-  nftFormByName,
-  nftFormEdition,
-  nftFormKirim,
-  nftFormMax,
-  nftFormOwned,
-  nftFormPerWallet,
-  nftFormPrice,
-  nftFormRefresh,
-  nftFormSukses,
-  nftFormTunggu,
-  nftInsufficient,
-  nftListerImage,
-  nftListerName,
-  nftSoon,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface NFTFormProps {
   dropContract: ThirdwebContract;
@@ -103,8 +79,8 @@ export default function NFTForm({
 
   // Destructuring NFT metadata
   const nftMetadata = nft?.metadata;
-  const nftImage = nftMetadata?.image || nftListerImage;
-  const nftName = nftMetadata?.name || nftListerName;
+  const nftImage = nftMetadata?.image || receipt.nftListerImage;
+  const nftName = nftMetadata?.name || receipt.nftListerName;
   const nftDescription = nft?.metadata.description ?? "";
 
   console.log(`OiOi: ${nftDescription}`);
@@ -136,26 +112,29 @@ export default function NFTForm({
   }, []);
 
   // Determine button status
-  let buttonLabel = nftButton;
+  let buttonLabel = receipt.nftButton;
   let buttonDisabled = false;
 
   if (currentTime < startTime) {
     // Belum waktunya
-    buttonLabel = `${nftSoon} ${getCountdownString(startTime, currentTime)}`;
+    buttonLabel = `${receipt.nftSoon} ${getCountdownString(
+      startTime,
+      currentTime
+    )}`;
     buttonDisabled = true;
   } else if (adjustedBalance < adjustedPrice) {
     // Tidak cukup saldo
-    buttonLabel = nftInsufficient;
+    buttonLabel = receipt.nftInsufficient;
     buttonDisabled = true;
   } else if (!isClaimable) {
     // Tidak bisa diklaim karena alasan lain
     const safeReason = (reason ?? "").toLowerCase();
     if (safeReason.includes("dropclaimexceedlimit")) {
-      buttonLabel = nftClaimed;
+      buttonLabel = receipt.nftClaimed;
     } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-      buttonLabel = nftClosed;
+      buttonLabel = receipt.nftClosed;
     } else {
-      buttonLabel = nftClosed; // fallback
+      buttonLabel = receipt.nftClosed; // fallback
     }
     buttonDisabled = true;
   }
@@ -190,7 +169,7 @@ export default function NFTForm({
         <div className="w-full flex flex-row gap-2 items-start justify-between">
           {/* Title */}
           <h1
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
             {nftName}
           </h1>
@@ -198,18 +177,20 @@ export default function NFTForm({
 
         <div className="flex flex-row gap-2">
           <h1
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="text-left text-sm font-medium">
-            {nftFormBy}
+            {receipt.nftFormBy}
           </h1>
-          <span style={{ color: colorIcon }} className="text-3xl leading-6">
+          <span
+            style={{ color: receipt.colorIcon }}
+            className="text-3xl leading-6">
             &#9673;
           </span>
           <h1
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="text-left text-sm font-medium">
-            <Link href={nftFormByLink} target="_blank">
-              {nftFormByName}
+            <Link href={receipt.nftFormByLink} target="_blank">
+              {receipt.nftFormByName}
             </Link>
           </h1>
         </div>
@@ -226,38 +207,38 @@ export default function NFTForm({
         {/* NFT Info */}
         <div className="w-full grid grid-cols-12">
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-4 text-left text-xs font-medium">
-            {nftFormPrice}
+            {receipt.nftFormPrice}
           </h2>
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-3 text-left text-xs font-medium">
-            {nftFormEdition}
+            {receipt.nftFormEdition}
           </h2>
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-3 text-left text-xs font-medium">
-            {nftFormOwned}
+            {receipt.nftFormOwned}
           </h2>
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-2 text-left text-xs font-medium">
-            {nftFormRefresh}
+            {receipt.nftFormRefresh}
           </h2>
 
           <h2
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="col-span-4 text-left text-base lg:text-md xl:text-xl font-semibold">
             {formattedPrice}
           </h2>
           <h2
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
             {supply.toString()}/{maxClaim.toString()}
           </h2>
           <h2
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
             {ownedNFTs ? ownedNFTs.toString() : "0"}
           </h2>
@@ -270,7 +251,10 @@ export default function NFTForm({
               await refetchOwnedNFTs(); // 🔄 jalankan ulang fetch owned NFT
               setIsRefreshing(false); // ✅ selesai loading
             }}
-            style={{ color: colorPrimary, background: colorSecondary }}
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
             className={`col-span-2 aspect-auto rounded-lg mt-1 disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
             } flex items-center justify-center`}>
@@ -291,12 +275,18 @@ export default function NFTForm({
           unstyled
           style={{
             color:
-              isProcessing || buttonDisabled ? colorSecondary : colorPrimary,
+              isProcessing || buttonDisabled
+                ? receipt.colorSecondary
+                : receipt.colorPrimary,
             backgroundColor:
-              isProcessing || buttonDisabled ? "transparent" : colorSecondary,
+              isProcessing || buttonDisabled
+                ? "transparent"
+                : receipt.colorSecondary,
             border: "2px solid",
             borderColor:
-              isProcessing || buttonDisabled ? colorBorder : colorSecondary,
+              isProcessing || buttonDisabled
+                ? receipt.colorBorder
+                : receipt.colorSecondary,
           }}
           className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
               ${isProcessing || buttonDisabled ? "" : "cursor-pointer"}
@@ -313,13 +303,13 @@ export default function NFTForm({
           onClick={() => {
             setIsRefreshing(true); // ⏳ mulai loading
             setIsProcessing(true);
-            setPesanTunggu(nftFormTunggu);
+            setPesanTunggu(receipt.nftFormTunggu);
             setPesanSukses(null);
             setPesanGagal(null);
           }}
           onTransactionSent={() => {
             setPesanTunggu(null);
-            setPesanKirim(nftFormKirim);
+            setPesanKirim(receipt.nftFormKirim);
           }}
           onError={(error) => {
             setRefreshToken(Date.now()); // 🔁 trigger NFTDetails refresh
@@ -334,15 +324,15 @@ export default function NFTForm({
             setIsRefreshing(false); // ✅ selesai loading
             setIsProcessing(false);
             setPesanKirim(null);
-            setPesanSukses(nftFormSukses);
+            setPesanSukses(receipt.nftFormSukses);
             setPesanGagal(null);
           }}>
           {buttonLabel}
         </ClaimButton>
         <h4
-          style={{ color: colorIcon }}
+          style={{ color: receipt.colorIcon }}
           className="text-left text-xs font-medium">
-          {`${nftFormMax} ${perWallet} ${nftFormPerWallet}`}
+          {`${receipt.nftFormMax} ${perWallet} ${receipt.nftFormPerWallet}`}
         </h4>
       </div>
     </div>

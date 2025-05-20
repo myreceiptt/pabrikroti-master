@@ -1,25 +1,29 @@
-<>
-          {/* Top Section - Content Box */}
-          <div className="w-full flex flex-col gap-2 items-center justify-center text-center px-0 sm:px-4">
-            <h2 className="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal text-hitam-judul-body">
-              Loading...
-            </h2>
-            <h3 className="text-center text-sm font-medium text-icon-wording">
-              Please wait a moment, we are still processing for your search
-              result.
-            </h3>
-          </div>
+// /src/config/receipts/index.ts
 
-          {/* Bottom Section - Background Image */}
-          <div className="bottom-0 left-0 w-full h-full">
-            <Image
-              src="/images/bukhari-fa-login-02-12.png"
-              alt="Background Image"
-              width={1430}
-              height={541}
-              objectFit="cover"
-              objectPosition="top"
-              priority
-            />
-          </div>
-        </>
+// Blockchain configurations
+import { istiqlal } from "@/config/receipts/istiqlal";
+import { memora } from "@/config/receipts/memora";
+import { myreceipt } from "@/config/receipts/myreceipt";
+import { pabrikroti } from "@/config/receipts/pabrikroti";
+
+// Use `typeof` from one of the receipt (structure must same)
+type ReceiptType = typeof myreceipt;
+
+// Subdomain-based config mapping
+const subdomainMap: Record<string, ReceiptType> = {
+  pabrikroti,
+  memora,
+  istiqlal,
+};
+
+function getSubdomain(): string | null {
+  if (typeof window === "undefined") return null; // SSR safety
+  const host = window.location.hostname;
+  const parts = host.split(".");
+  return parts.length >= 3 ? parts[0] : null;
+}
+
+export function getActiveReceipt() {
+  const subdomain = getSubdomain();
+  return subdomainMap[subdomain || ""] || myreceipt;
+}

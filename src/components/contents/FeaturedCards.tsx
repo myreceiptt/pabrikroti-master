@@ -10,45 +10,35 @@ import { getActiveReceipt } from "@/config/receipts";
 // Components libraries
 import Title from "@/components/sections/ReusableTitle";
 
-const {
-  coinTitle,
-  featuredAria,
-  featuredCoin,
-  featuredFree,
-  featuredPaid,
-  featuredTitle1,
-  featuredTitle2,
-  freeTitle,
-  paidTitle,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 export default function FeaturedCards() {
   return (
     <main className="grid gap-4 place-items-center">
-      <Title title1={featuredTitle1} title2={featuredTitle2} />
+      <Title title1={receipt.featuredTitle1} title2={receipt.featuredTitle2} />
       <div className="w-full grid grid-cols-1 sm:[grid-template-columns:repeat(auto-fit,minmax(0,1fr))] gap-4 sm:gap-8">
         {[
           {
             href: "/free",
-            src: featuredFree,
-            alt: freeTitle,
+            src: receipt.featuredFree,
+            alt: receipt.freeTitle,
           },
           {
             href: "/paid",
-            src: featuredPaid,
-            alt: paidTitle,
+            src: receipt.featuredPaid,
+            alt: receipt.paidTitle,
           },
           {
             href: "/coins",
-            src: featuredCoin,
-            alt: coinTitle,
+            src: receipt.featuredCoin,
+            alt: receipt.coinTitle,
           },
         ].map(({ href, src, alt }, index) =>
           alt ? (
             <Link href={href} key={index}>
               <button
                 type="button"
-                aria-label={`${featuredAria} ${alt}`}
+                aria-label={`${receipt.featuredAria} ${alt}`}
                 className="w-full hover:scale-95 transition-transform duration-300 ease-in-out relative group cursor-pointer">
                 {/* Main image */}
                 <Image

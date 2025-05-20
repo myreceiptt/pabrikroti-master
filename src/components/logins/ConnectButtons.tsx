@@ -7,18 +7,12 @@ import { ConnectButton } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import {
-  displayedTekeks,
-  tekeks,
-  theAccountFactory,
-  tokeks,
-} from "@/config/contracts";
+import { displayedTekeks, tekeks, tokeks } from "@/config/contracts";
 import { dompets } from "@/config/dompets";
 import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
 
-const { colorBoxIcon, colorIcon, proDescription, proLogo, proTitle, proUrl } =
-  getActiveReceipt();
+const { receipt, factoryAddress } = getActiveReceipt();
 
 export default function ConnectButtons() {
   return (
@@ -26,10 +20,10 @@ export default function ConnectButtons() {
       <ConnectButton
         client={client}
         appMetadata={{
-          name: proTitle,
-          url: proUrl,
-          description: proDescription,
-          logoUrl: proLogo,
+          name: receipt.proTitle,
+          url: receipt.proUrl,
+          description: receipt.proDescription,
+          logoUrl: receipt.proLogo,
         }}
         connectButton={{
           className: " ",
@@ -42,8 +36,8 @@ export default function ConnectButtons() {
             justifyContent: "center",
             fontSize: "1.25rem",
             borderRadius: "0.5rem",
-            backgroundColor: colorBoxIcon,
-            color: colorIcon,
+            backgroundColor: receipt.colorBoxIcon,
+            color: receipt.colorIcon,
           },
         }}
         connectModal={{
@@ -52,7 +46,7 @@ export default function ConnectButtons() {
         }}
         wallets={dompets}
         accountAbstraction={{
-          factoryAddress: theAccountFactory,
+          factoryAddress: factoryAddress,
           chain: chain,
           sponsorGas: true,
         }}
@@ -63,7 +57,10 @@ export default function ConnectButtons() {
           displayBalanceToken: displayedTekeks,
           render: () => (
             <button
-              style={{ color: colorIcon, backgroundColor: colorBoxIcon }}
+              style={{
+                color: receipt.colorIcon,
+                backgroundColor: receipt.colorBoxIcon,
+              }}
               className="w-10 h-10 flex items-center justify-center text-xl rounded-lg">
               <FaUserLarge />
             </button>
