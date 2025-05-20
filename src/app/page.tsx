@@ -11,11 +11,6 @@ import { getActiveReceipt } from "@/config/receipts";
 // Components libraries
 import Footer from "@/components/sections/FooterSection";
 import Header from "@/components/sections/HeaderSection";
-import TermsHeader from "@/components/terms/TermsHeader";
-import TermsDivider from "@/components/terms/TermsDivider";
-import TermsSection from "@/components/terms/TermsSection";
-
-const { receipt } = getActiveReceipt();
 
 export default function Home() {
   return (
