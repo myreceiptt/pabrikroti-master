@@ -5,9 +5,6 @@
 // External libraries
 import React from "react";
 
-// Blockchain configurations
-import { getActiveReceipt } from "@/config/receipts";
-
 // Components libraries
 import Footer from "@/components/sections/FooterSection";
 import Header from "@/components/sections/HeaderSection";
