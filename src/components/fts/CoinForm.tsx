@@ -13,37 +13,16 @@ import { ClaimButton, TokenIcon, TokenProvider } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { currencyMap } from "@/config/contracts";
-import {
-  coinButton,
-  coinClaimed,
-  coinFormKirim,
-  coinFormPerWallet,
-  coinFormSukses,
-  coinFormSupply,
-  coinListerImage,
-  coinListerName,
-  coinNoAccess,
-  coinOf,
-  colorBorder,
-  colorIcon,
-  colorPrimary,
-  colorSecondary,
-  nftClosed,
-  nftFormBy,
-  nftFormMax,
-  nftFormOwned,
-  nftFormRefresh,
-  nftFormPrice,
-  nftFormTunggu,
-  nftInsufficient,
-  nftSoon,
-} from "@/config/myreceipt";
+import { currencyMap } from "@/config/contractsOld";
+import { getActiveReceipt } from "@/config/receipts";
 import { getCountdownString } from "@/config/utils";
 
 // Components libraries
-// import CoinDescription from "@/components/fts/CoinDescription";
+import CoinDescription from "@/components/fts/CoinDescription";
+import CoinPopUp from "@/components/fts/CoinPopUp";
 import Loader from "@/components/sections/ReusableLoader";
+
+const { receipt } = getActiveReceipt();
 
 interface CoinFormProps {
   coinAddress: string;
@@ -66,7 +45,7 @@ interface CoinFormProps {
   refreshToken: number;
 }
 
-const CoinForm: React.FC<CoinFormProps> = ({
+export default function CoinForm({
   coinAddress,
   coinChain,
   coinName,
@@ -85,10 +64,11 @@ const CoinForm: React.FC<CoinFormProps> = ({
   hasAccess,
   setRefreshToken,
   refreshToken,
-}) => {
+}: CoinFormProps) {
   const startTime = new Date(Number(startTimestamp) * 1000);
 
   // Ensure state variables are properly declared
+  const [isOpen, setIsOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [hasError, setHasError] = useState(false);
@@ -108,31 +88,34 @@ const CoinForm: React.FC<CoinFormProps> = ({
   }, []);
 
   // Determine button status
-  let buttonLabel = coinButton;
+  let buttonLabel = receipt.coinButton;
   let buttonDisabled = false;
 
   // Belum punya akses
   if (hasAccess === null || hasAccess === false) {
-    buttonLabel = coinNoAccess;
+    buttonLabel = receipt.coinNoAccess;
     buttonDisabled = true;
   } else {
     if (currentTime < startTime) {
       // Belum waktunya
-      buttonLabel = `${nftSoon} ${getCountdownString(startTime, currentTime)}`;
+      buttonLabel = `${receipt.nftSoon} ${getCountdownString(
+        startTime,
+        currentTime
+      )}`;
       buttonDisabled = true;
     } else if (adjustedBalance < adjustedPrice) {
       // Tidak cukup saldo
-      buttonLabel = nftInsufficient;
+      buttonLabel = receipt.nftInsufficient;
       buttonDisabled = true;
     } else if (!isClaimable) {
       // Tidak bisa diklaim karena alasan lain
       const safeReason = (reason ?? "").toLowerCase();
       if (safeReason.includes("dropclaimexceedlimit")) {
-        buttonLabel = coinClaimed;
+        buttonLabel = receipt.coinClaimed;
       } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-        buttonLabel = nftClosed;
+        buttonLabel = receipt.nftClosed;
       } else {
-        buttonLabel = nftClosed;
+        buttonLabel = receipt.nftClosed;
       }
       buttonDisabled = true;
     }
@@ -183,28 +166,33 @@ const CoinForm: React.FC<CoinFormProps> = ({
           chain={coinChain}>
           {!hasError ? (
             <TokenIcon
+              onClick={() => setIsOpen(true)}
               alt={coinName}
-              className="rounded-2xl w-full"
+              className="rounded-2xl w-full cursor-pointer"
               onError={() => setHasError(true)}
             />
           ) : (
             <Image
-              src={coinListerImage}
-              alt={coinName ?? coinListerName}
+              onClick={() => setIsOpen(true)}
+              src={receipt.coinListerImage}
+              alt={coinName ?? receipt.coinListerName}
               width={755}
               height={545}
-              className="rounded-2xl w-full"
+              className="rounded-2xl w-full cursor-pointer"
             />
           )}
         </TokenProvider>
       </div>
+
+      {/* Pop-up Modal */}
+      <CoinPopUp isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
       {/* Right Column */}
       <div className="flex flex-col gap-2 lg:gap-4 items-start justify-center h-full">
         <div className="w-full flex flex-row gap-2 items-start justify-between">
           {/* Title */}
           <h1
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
             {coinName}
           </h1>
@@ -212,15 +200,17 @@ const CoinForm: React.FC<CoinFormProps> = ({
 
         <div className="flex flex-row gap-2">
           <h1
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="text-left text-sm font-medium">
-            {nftFormBy}
+            {receipt.nftFormBy}
           </h1>
-          <span style={{ color: colorIcon }} className="text-3xl leading-6">
+          <span
+            style={{ color: receipt.colorIcon }}
+            className="text-3xl leading-6">
             &#9673;
           </span>
           <h1
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="text-left text-sm font-medium">
             <Link href={coinLink} target="_blank">
               {coinBy}
@@ -229,10 +219,10 @@ const CoinForm: React.FC<CoinFormProps> = ({
         </div>
 
         {/* Description with Expand/Collapse */}
-        {/* <NFTDescription
-          description={nft?.metadata.description ?? ""}
-          tokenIdString={tokenIdString}
-        /> */}
+        <CoinDescription
+          description={receipt.coinDescription}
+          address={coinAddress}
+        />
 
         {/* Success or Error Messages */}
         {pesanTunggu && <Loader message={pesanTunggu} />}
@@ -240,44 +230,31 @@ const CoinForm: React.FC<CoinFormProps> = ({
         {pesanSukses && <Loader message={pesanSukses} />}
         {pesanGagal && <Loader message={pesanGagal} />}
 
-        {/* NFT Info */}
-        <div className="w-full grid grid-cols-12">
+        {/* FT Info */}
+        <div className="w-full grid grid-cols-8">
           <h2
-            style={{ color: colorIcon }}
-            className="col-span-4 text-left text-xs font-medium">
-            {nftFormPrice}
-          </h2>
-          <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-3 text-left text-xs font-medium">
-            {coinFormSupply}
+            {receipt.nftFormPrice}
           </h2>
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-3 text-left text-xs font-medium">
-            {nftFormOwned}
+            {receipt.nftFormOwned}
           </h2>
           <h2
-            style={{ color: colorIcon }}
+            style={{ color: receipt.colorIcon }}
             className="col-span-2 text-left text-xs font-medium">
-            {nftFormRefresh}
+            {receipt.nftFormRefresh}
           </h2>
 
           <h2
-            style={{ color: colorSecondary }}
-            className="col-span-4 text-left text-base lg:text-md xl:text-xl font-semibold">
+            style={{ color: receipt.colorSecondary }}
+            className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
             {formattedPrice}
           </h2>
           <h2
-            style={{ color: colorSecondary }}
-            className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
-            <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
-              {formatNumberCompact(adjustedSupply)}/
-              {formatNumberCompact(adjustedMaxClaim)}
-            </span>
-          </h2>
-          <h2
-            style={{ color: colorSecondary }}
+            style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
             {adjustedCoinOwned}
           </h2>
@@ -289,8 +266,11 @@ const CoinForm: React.FC<CoinFormProps> = ({
               await new Promise((resolve) => setTimeout(resolve, 747)); // ⏳ beri waktu animasi jalan
               setIsRefreshing(false); // ✅ selesai loading
             }}
-            style={{ color: colorPrimary, background: colorSecondary }}
-            className={`col-span-2 aspect-auto rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
+            className={`col-span-2 aspect-auto rounded-lg mt-1 disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
             } flex items-center justify-center`}>
             <motion.div
@@ -305,17 +285,41 @@ const CoinForm: React.FC<CoinFormProps> = ({
           </button>
         </div>
 
+        <div className="w-full grid grid-cols-8">
+          <h2
+            style={{ color: receipt.colorIcon }}
+            className="col-span-8 text-left text-xs font-medium">
+            {receipt.coinFormSupply}
+          </h2>
+
+          <h2
+            style={{ color: receipt.colorSecondary }}
+            className="col-span-8 text-left text-base lg:text-md xl:text-xl font-semibold">
+            <span
+              title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxClaim}`}>
+              {formatNumberCompact(adjustedSupply)}/
+              {formatNumberCompact(adjustedMaxClaim)}
+            </span>
+          </h2>
+        </div>
+
         {/* Claim Button */}
         <ClaimButton
           unstyled
           style={{
             color:
-              isProcessing || buttonDisabled ? colorSecondary : colorPrimary,
+              isProcessing || buttonDisabled
+                ? receipt.colorSecondary
+                : receipt.colorPrimary,
             backgroundColor:
-              isProcessing || buttonDisabled ? "transparent" : colorSecondary,
+              isProcessing || buttonDisabled
+                ? "transparent"
+                : receipt.colorSecondary,
             border: "2px solid",
             borderColor:
-              isProcessing || buttonDisabled ? colorBorder : colorSecondary,
+              isProcessing || buttonDisabled
+                ? receipt.colorBorder
+                : receipt.colorSecondary,
           }}
           className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
               ${isProcessing || buttonDisabled ? "" : "cursor-pointer"}
@@ -331,13 +335,13 @@ const CoinForm: React.FC<CoinFormProps> = ({
           onClick={() => {
             setIsRefreshing(true); // ⏳ mulai loading
             setIsProcessing(true);
-            setPesanTunggu(nftFormTunggu);
+            setPesanTunggu(receipt.nftFormTunggu);
             setPesanSukses(null);
             setPesanGagal(null);
           }}
           onTransactionSent={() => {
             setPesanTunggu(null);
-            setPesanKirim(coinFormKirim);
+            setPesanKirim(receipt.coinFormKirim);
           }}
           onError={(error) => {
             setRefreshToken(Date.now()); // 🔁 trigger CoinDetails refresh
@@ -352,19 +356,17 @@ const CoinForm: React.FC<CoinFormProps> = ({
             setIsRefreshing(false); // ✅ selesai loading
             setIsProcessing(false);
             setPesanKirim(null);
-            setPesanSukses(coinFormSukses);
+            setPesanSukses(receipt.coinFormSukses);
             setPesanGagal(null);
           }}>
           {buttonLabel}
         </ClaimButton>
         <h4
-          style={{ color: colorIcon }}
+          style={{ color: receipt.colorIcon }}
           className="text-left text-xs font-medium">
-          {`${nftFormMax} ${adjustedPerWallet} ${coinFormPerWallet}`}
+          {`${receipt.nftFormMax} ${adjustedPerWallet} ${receipt.coinFormPerWallet}`}
         </h4>
       </div>
     </div>
   );
-};
-
-export default CoinForm;
+}

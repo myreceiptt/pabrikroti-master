@@ -1,5 +1,14 @@
 // /src/config/utils.ts
 
+// convert hex to rgba
+export function hexToRgba(hex: string, alpha: number): string {
+  const r = parseInt(hex.slice(1, 3), 16);
+  const g = parseInt(hex.slice(3, 5), 16);
+  const b = parseInt(hex.slice(5, 7), 16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
+// countdown
 export function getCountdownString(
   startTime: Date,
   currentTime: Date = new Date()
@@ -17,6 +26,20 @@ export function getCountdownString(
   const seconds = totalSeconds % 60;
 
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+// fetch eth price
+export async function FetchEthereumPrice(): Promise<number | null> {
+  try {
+    const response = await fetch(
+      "https://api.coingecko.com/api/v3/simple/price?x_cg_demo_api_key=CG-gW1zJEU5tLrciQunUxFefDqb&ids=ethereum&vs_currencies=usd"
+    );
+    const data = await response.json();
+    return data.ethereum.usd;
+  } catch (error) {
+    console.error("Error fetching Ethereum price:", error);
+    return null;
+  }
 }
 
 export function isBeforeStartTime(

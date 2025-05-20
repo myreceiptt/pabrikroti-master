@@ -12,29 +12,15 @@ import { TokenProvider, TokenIcon } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import {
-  coinButton,
-  coinClaimed,
-  coinNoAccess,
-  coinSupply,
-  colorBorder,
-  colorIcon,
-  colorPrimary,
-  colorSecondary,
-  nftClosed,
-  nftInsufficient,
-  nftSoon,
-  loaderChecking,
-  coinOf,
-  coinListerImage,
-  coinListerName,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
 import { getCountdownString } from "@/config/utils";
+
+const { receipt } = getActiveReceipt();
 
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
 
-type CoinListerProps = {
+interface CoinListerProps {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
@@ -47,9 +33,9 @@ type CoinListerProps = {
   adjustedBalance: number;
   hasAccess: boolean | null;
   refreshToken: number;
-};
+}
 
-const CoinLister: React.FC<CoinListerProps> = ({
+export default function CoinLister({
   coinAddress,
   coinChain,
   coinName,
@@ -62,7 +48,7 @@ const CoinLister: React.FC<CoinListerProps> = ({
   adjustedBalance,
   hasAccess,
   refreshToken,
-}) => {
+}: CoinListerProps) {
   const router = useRouter();
   const startTime = new Date(Number(startTimestamp) * 1000);
 
@@ -80,30 +66,33 @@ const CoinLister: React.FC<CoinListerProps> = ({
   }, []);
 
   // Determine button status
-  let buttonLabel = coinButton;
+  let buttonLabel = receipt.coinButton;
   let buttonDisabled = false;
 
   if (hasAccess === null || hasAccess === false) {
-    buttonLabel = coinNoAccess;
+    buttonLabel = receipt.coinNoAccess;
     buttonDisabled = true;
   } else {
     if (currentTime < startTime) {
       // Belum waktunya
-      buttonLabel = `${nftSoon} ${getCountdownString(startTime, currentTime)}`;
+      buttonLabel = `${receipt.nftSoon} ${getCountdownString(
+        startTime,
+        currentTime
+      )}`;
       buttonDisabled = true;
     } else if (adjustedBalance < adjustedPrice) {
       // Tidak cukup saldo
-      buttonLabel = nftInsufficient;
+      buttonLabel = receipt.nftInsufficient;
       buttonDisabled = true;
     } else if (!isClaimable) {
       // Tidak bisa diklaim karena alasan lain
       const safeReason = (reason ?? "").toLowerCase();
       if (safeReason.includes("dropclaimexceedlimit")) {
-        buttonLabel = coinClaimed;
+        buttonLabel = receipt.coinClaimed;
       } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-        buttonLabel = nftClosed;
+        buttonLabel = receipt.nftClosed;
       } else {
-        buttonLabel = nftClosed; // fallback
+        buttonLabel = receipt.nftClosed; // fallback
       }
       buttonDisabled = true;
     }
@@ -127,10 +116,10 @@ const CoinLister: React.FC<CoinListerProps> = ({
 
   return (
     <div
-      style={{ borderColor: colorBorder }}
+      style={{ borderColor: receipt.colorBorder }}
       className="w-full grid grid-cols-1 gap-4 p-4 border rounded-3xl">
       {hasAccess === null ? (
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       ) : (
         <>
           <Link href={`/address/${coinAddress}`}>
@@ -142,31 +131,32 @@ const CoinLister: React.FC<CoinListerProps> = ({
               {!hasError ? (
                 <TokenIcon
                   alt={coinName}
-                  className="rounded-2xl w-full"
+                  className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
                   onError={() => setHasError(true)}
                 />
               ) : (
                 <Image
-                  src={coinListerImage}
-                  alt={coinName ?? coinListerName}
+                  src={receipt.coinListerImage}
+                  alt={coinName ?? receipt.coinListerName}
                   width={755}
                   height={545}
-                  className="rounded-2xl w-full"
+                  className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
                 />
               )}
             </TokenProvider>
           </Link>
           <div className="grid grid-cols-1 gap-2">
             <h2
-              style={{ color: colorSecondary }}
+              style={{ color: receipt.colorSecondary }}
               className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold">
               {coinName}
             </h2>
             <div
-              style={{ color: colorIcon }}
+              style={{ color: receipt.colorIcon }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
-              <span>{coinSupply}</span>
-              <span title={`${adjustedSupply} ${coinOf} ${adjustedMaxClaim}`}>
+              <span>{receipt.coinListerSupply}</span>
+              <span
+                title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxClaim}`}>
                 {formatNumberCompact(adjustedSupply)}/
                 {formatNumberCompact(adjustedMaxClaim)}
               </span>
@@ -182,10 +172,16 @@ const CoinLister: React.FC<CoinListerProps> = ({
               }
             }}
             style={{
-              color: buttonDisabled ? colorSecondary : colorPrimary,
-              backgroundColor: buttonDisabled ? "transparent" : colorSecondary,
+              color: buttonDisabled
+                ? receipt.colorSecondary
+                : receipt.colorPrimary,
+              backgroundColor: buttonDisabled
+                ? "transparent"
+                : receipt.colorSecondary,
               border: "2px solid",
-              borderColor: buttonDisabled ? colorBorder : colorSecondary,
+              borderColor: buttonDisabled
+                ? receipt.colorBorder
+                : receipt.colorSecondary,
             }}
             className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
               !buttonDisabled ? "cursor-pointer" : ""
@@ -196,6 +192,4 @@ const CoinLister: React.FC<CoinListerProps> = ({
       )}
     </div>
   );
-};
-
-export default CoinLister;
+}

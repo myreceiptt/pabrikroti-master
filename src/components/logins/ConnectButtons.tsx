@@ -7,33 +7,23 @@ import { ConnectButton } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import {
-  displayedTekeks,
-  tekeks,
-  theAccountFactory,
-  tokeks,
-} from "@/config/contracts";
+import { displayedTokeks, tokeks } from "@/config/contractsOld";
 import { dompets } from "@/config/dompets";
-import {
-  proUrl,
-  colorBoxIcon,
-  colorIcon,
-  proDescription,
-  proLogo,
-  proTitle,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
 
-const ConnectButtons: React.FC = () => {
+const { receipt, factoryAddress, supportedNFTs } = getActiveReceipt();
+
+export default function ConnectButtons() {
   return (
     <div id="connected">
       <ConnectButton
         client={client}
         appMetadata={{
-          name: proTitle,
-          url: proUrl,
-          description: proDescription,
-          logoUrl: proLogo,
+          name: receipt.proTitle,
+          url: receipt.proUrl,
+          description: receipt.proDescription,
+          logoUrl: receipt.proLogo,
         }}
         connectButton={{
           className: " ",
@@ -46,8 +36,8 @@ const ConnectButtons: React.FC = () => {
             justifyContent: "center",
             fontSize: "1.25rem",
             borderRadius: "0.5rem",
-            backgroundColor: colorBoxIcon,
-            color: colorIcon,
+            backgroundColor: receipt.colorBoxIcon,
+            color: receipt.colorIcon,
           },
         }}
         connectModal={{
@@ -56,18 +46,21 @@ const ConnectButtons: React.FC = () => {
         }}
         wallets={dompets}
         accountAbstraction={{
-          factoryAddress: theAccountFactory,
+          factoryAddress: factoryAddress,
           chain: chain,
           sponsorGas: true,
         }}
         chains={chains}
         supportedTokens={tokeks}
-        supportedNFTs={tekeks}
+        supportedNFTs={supportedNFTs}
         detailsButton={{
-          displayBalanceToken: displayedTekeks,
+          displayBalanceToken: displayedTokeks,
           render: () => (
             <button
-              style={{ color: colorIcon, backgroundColor: colorBoxIcon }}
+              style={{
+                color: receipt.colorIcon,
+                backgroundColor: receipt.colorBoxIcon,
+              }}
               className="w-10 h-10 flex items-center justify-center text-xl rounded-lg">
               <FaUserLarge />
             </button>
@@ -80,6 +73,4 @@ const ConnectButtons: React.FC = () => {
       />
     </div>
   );
-};
-
-export default ConnectButtons;
+}

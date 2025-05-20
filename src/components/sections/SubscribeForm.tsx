@@ -4,34 +4,32 @@
 import { useState } from "react";
 
 // Blockchain configurations
-import {
-  colorBorder,
-  colorPrimary,
-  colorSecondary,
-  subscribeInput,
-  subscribeFailed,
-  subscribeMessage,
-  subscribeName,
-  subscribePlaceholder,
-  subscribeSubject,
-  subscribeSuccess,
-  subscribeTitle,
-  subscribeButtonLoading,
-  subscribeButton,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { receipt } = getActiveReceipt();
 
 export default function Subscribe() {
   const [email, setEmail] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isInvalid, setIsInvalid] = useState(false);
+
+  const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
+
+  if (!accessKey) {
+    console.warn(receipt.subscribeWarn);
+  }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatusMessage(""); // Clear previous messages
+    setStatusMessage("");
+    setIsInvalid(false);
 
     // Basic email validation
-    if (!email || !/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email)) {
-      setStatusMessage(subscribeInput);
+    const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    if (!email || !emailRegex.test(email)) {
+      setStatusMessage(receipt.subscribeInput);
+      setIsInvalid(true);
       return;
     }
 
@@ -45,20 +43,20 @@ export default function Subscribe() {
           Accept: "application/json",
         },
         body: JSON.stringify({
-          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY,
-          subject: subscribeSubject,
-          name: subscribeName,
+          access_key: accessKey,
+          subject: receipt.subscribeSubject,
+          name: receipt.subscribeName,
           email,
-          message: subscribeMessage,
+          message: receipt.subscribeMessage,
         }),
       });
 
       const result = await response.json();
       if (result.success) {
-        setStatusMessage(subscribeSuccess);
+        setStatusMessage(receipt.subscribeSuccess);
         setEmail(""); // Clear input field
       } else {
-        setStatusMessage(subscribeFailed);
+        setStatusMessage(receipt.subscribeFailed);
       }
     } finally {
       setLoading(false);
@@ -68,9 +66,9 @@ export default function Subscribe() {
   return (
     <>
       <h3
-        style={{ color: colorPrimary }}
+        style={{ color: receipt.colorPrimary }}
         className="text-center sm:text-left text-xs sm:text-sm md:text-base font-semibold">
-        {subscribeTitle}
+        {receipt.subscribeTitle}
       </h3>
 
       <form onSubmit={handleSubmit} className="w-full">
@@ -78,19 +76,28 @@ export default function Subscribe() {
           <input
             type="email"
             name="email"
-            placeholder={subscribePlaceholder}
+            placeholder={receipt.subscribePlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            style={{ borderColor: colorBorder, color: colorPrimary }}
-            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border rounded-l-lg bg-transparent focus:outline-hidden"
+            style={{
+              borderColor: isInvalid
+                ? receipt.colorPrimary
+                : receipt.colorBorder,
+              color: receipt.colorPrimary,
+            }}
+            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border rounded-l-lg bg-transparent focus:outline-none"
             disabled={loading}
+            aria-invalid={isInvalid}
           />
           <button
             type="submit"
-            style={{ backgroundColor: colorPrimary, color: colorSecondary }}
+            style={{
+              backgroundColor: receipt.colorPrimary,
+              color: receipt.colorSecondary,
+            }}
             className="text-xs md:text-sm px-6 py-2 font-semibold rounded-r-lg cursor-pointer"
             disabled={loading}>
-            {loading ? subscribeButtonLoading : subscribeButton}
+            {loading ? receipt.subscribeButtonLoading : receipt.subscribeButton}
           </button>
         </div>
       </form>
@@ -98,7 +105,8 @@ export default function Subscribe() {
       {/* Success/Error Message */}
       {statusMessage && (
         <h4
-          style={{ color: colorPrimary }}
+          aria-live="polite"
+          style={{ color: receipt.colorPrimary }}
           className="text-center sm:text-left text-sm font-medium mt-2">
           {statusMessage}
         </h4>

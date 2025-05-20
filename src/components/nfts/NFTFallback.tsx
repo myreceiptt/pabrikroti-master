@@ -6,25 +6,21 @@
 import React from "react";
 
 // Blockchain configurations
-import {
-  nftFallMessage1,
-  nftFallMessage2,
-  nftFallMessage3,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import Message from "@/components/sections/ReusableMessage";
 
-const NFTFallback: React.FC = () => {
+const { receipt } = getActiveReceipt();
+
+export default function NFTFallback() {
   return (
     <main className="grid gap-4 place-items-center">
       <Message
-        message1={nftFallMessage1}
-        message2={nftFallMessage2}
-        message3={nftFallMessage3}
+        message1={receipt.nftFallMessage1}
+        message2={receipt.nftFallMessage2}
+        message3={receipt.nftsMessage3}
       />
     </main>
   );
-};
-
-export default NFTFallback;
+}

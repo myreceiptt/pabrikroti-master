@@ -5,24 +5,19 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 // Blockchain configurations
-import {
-  colorIcon,
-  colorSecondary,
-  nftEndhonesa,
-  nftReadLess,
-  nftMeMoRa,
-  nftReadMore,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { receipt } = getActiveReceipt();
 
 interface CoinDescriptionProps {
   description: string;
-  nftIdString: string;
+  address: string;
 }
 
-const CoinDescription: React.FC<CoinDescriptionProps> = ({
+export default function CoinDescription({
   description,
-  nftIdString,
-}) => {
+  address,
+}: CoinDescriptionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const paragraphs = description
@@ -41,7 +36,7 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
     <>
       <div
         style={{
-          color: colorIcon,
+          color: receipt.colorIcon,
         }}
         className="w-full flex flex-col items-start gap-2">
         {isExpanded
@@ -66,25 +61,25 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
             <>
               <Link
                 href="#"
-                title={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${nftIdString}`}
+                title={`https://memora.voyage.co.id/[chain-name]/${address}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: colorSecondary,
+                  color: receipt.colorSecondary,
                 }}
                 className="text-xs font-medium hover:underline cursor-pointer">
-                {nftMeMoRa}
+                {receipt.nftMeMoRa}
               </Link>
               <Link
                 href="#"
-                title={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${nftIdString}`}
+                title={`https://store.endhonesa.com/digital/[chain-name]/${address}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{
-                  color: colorSecondary,
+                  color: receipt.colorSecondary,
                 }}
                 className="text-xs font-medium hover:underline cursor-pointer">
-                {nftEndhonesa}
+                {receipt.nftEndhonesa}
               </Link>
             </>
           )}
@@ -92,16 +87,14 @@ const CoinDescription: React.FC<CoinDescriptionProps> = ({
           {/* Read More / Read Less */}
           <p
             style={{
-              color: colorSecondary,
+              color: receipt.colorSecondary,
             }}
             className="text-xs font-medium hover:underline cursor-pointer"
             onClick={() => setIsExpanded(!isExpanded)}>
-            {isExpanded ? nftReadLess : nftReadMore}
+            {isExpanded ? receipt.nftReadLess : receipt.nftReadMore}
           </p>
         </div>
       )}
     </>
   );
-};
-
-export default CoinDescription;
+}

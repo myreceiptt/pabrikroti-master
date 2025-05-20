@@ -17,25 +17,16 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import { erc1155Launched } from "@/config/contracts";
-import {
-  nftMessage1,
-  nftMessage2,
-  nftSetError,
-  nftsConsoleWarn,
-  nftsError,
-  nftsFailReason,
-  nftsMessage3,
-  nftsUknownError,
-  loaderChecking,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import NFTForm from "@/components/nfts/NFTForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
-type NFTData = {
+const { receipt, erc1155Launched } = getActiveReceipt();
+
+interface NFTData {
   nftId: bigint;
   nftIdString: string;
   adjustedPrice: number;
@@ -47,14 +38,14 @@ type NFTData = {
   maxClaim: bigint;
   perWallet: bigint;
   adjustedBalance: number;
-};
+}
 
 function getNFTIdFromParams(params: ReturnType<typeof useParams>): bigint {
   const val = params.idNFT;
   return BigInt(Array.isArray(val) ? val[0] : val ?? "0");
 }
 
-const NFTDetails: React.FC = () => {
+export default function NFTDetails() {
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
@@ -77,7 +68,7 @@ const NFTDetails: React.FC = () => {
 
     // Check nftId exist based on nextNFTId
     if (nextNFTId !== undefined && nftId >= nextNFTId) {
-      setError(nftMessage1);
+      setError(receipt.nftMessage1);
       setLoading(false);
       return;
     }
@@ -153,8 +144,8 @@ const NFTDetails: React.FC = () => {
       } catch (innerErr) {
         // Continue if check failed
         isClaimable = false;
-        reason = nftsFailReason;
-        console.warn(`${nftsConsoleWarn} ${nftId}`, innerErr);
+        reason = receipt.nftsFailReason;
+        console.warn(`${receipt.nftsConsoleWarn} ${nftId}`, innerErr);
       }
 
       setNFT({
@@ -171,11 +162,11 @@ const NFTDetails: React.FC = () => {
         adjustedBalance,
       });
     } catch (err: unknown) {
-      setError(nftSetError);
+      setError(receipt.nftSetError);
       if (err instanceof Error) {
-        console.error(nftsError, err.message);
+        console.error(receipt.nftsError, err.message);
       } else {
-        console.error(nftsUknownError, err);
+        console.error(receipt.nftsUknownError, err);
       }
     } finally {
       setLoading(false);
@@ -200,7 +191,7 @@ const NFTDetails: React.FC = () => {
   if (loading) {
     return (
       <main className="grid gap-4 place-items-center">
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       </main>
     );
   }
@@ -211,8 +202,8 @@ const NFTDetails: React.FC = () => {
       <main className="grid gap-4 place-items-center">
         <Message
           message1={error}
-          message2={nftMessage2}
-          message3={nftsMessage3}
+          message2={receipt.nftMessage2}
+          message3={receipt.nftsMessage3}
         />
       </main>
     );
@@ -229,6 +220,4 @@ const NFTDetails: React.FC = () => {
       )}
     </main>
   );
-};
-
-export default NFTDetails;
+}

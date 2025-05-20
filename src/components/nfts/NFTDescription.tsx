@@ -5,24 +5,19 @@ import Link from "next/link";
 import React, { useState } from "react";
 
 // Blockchain configurations
-import {
-  colorIcon,
-  colorSecondary,
-  nftEndhonesa,
-  nftReadLess,
-  nftMeMoRa,
-  nftReadMore,
-} from "@/config/myreceipt";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { receipt } = getActiveReceipt();
 
 interface NFTDescriptionProps {
   description: string;
-  nftIdString: string;
+  id: string;
 }
 
-const NFTDescription: React.FC<NFTDescriptionProps> = ({
+export default function NFTDescription({
   description,
-  nftIdString,
-}) => {
+  id,
+}: NFTDescriptionProps) {
   const [isExpanded, setIsExpanded] = useState(false);
 
   const paragraphs = description
@@ -41,7 +36,7 @@ const NFTDescription: React.FC<NFTDescriptionProps> = ({
     <>
       <div
         style={{
-          color: colorIcon,
+          color: receipt.colorIcon,
         }}
         className="w-full flex flex-col items-start gap-2">
         {isExpanded
@@ -64,44 +59,47 @@ const NFTDescription: React.FC<NFTDescriptionProps> = ({
         <div className="w-full flex flex-col items-end gap-2 mb-4">
           {isExpanded && (
             <>
-              <Link
-                href="#"
-                title={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${nftIdString}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: colorSecondary,
-                }}
-                className="text-xs font-medium hover:underline cursor-pointer">
-                {nftMeMoRa}
-              </Link>
-              <Link
-                href="#"
-                title={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${nftIdString}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                style={{
-                  color: colorSecondary,
-                }}
-                className="text-xs font-medium hover:underline cursor-pointer">
-                {nftEndhonesa}
-              </Link>
+              {receipt.nftMeMoRaTitle && (
+                <Link
+                  href={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${id}`}
+                  title={receipt.nftMeMoRaTitle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: receipt.colorSecondary,
+                  }}
+                  className="text-xs font-medium hover:underline cursor-pointer">
+                  {receipt.nftMeMoRa}
+                </Link>
+              )}
+
+              {receipt.nftEndhonesaTitle && (
+                <Link
+                  href={`https://store.endhonesa.com/digital/[chain-name]/[contract-address]/${id}`}
+                  title={receipt.nftEndhonesaTitle}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: receipt.colorSecondary,
+                  }}
+                  className="text-xs font-medium hover:underline cursor-pointer">
+                  {receipt.nftEndhonesa}
+                </Link>
+              )}
             </>
           )}
 
           {/* Read More / Read Less */}
           <p
             style={{
-              color: colorSecondary,
+              color: receipt.colorSecondary,
             }}
             className="text-xs font-medium hover:underline cursor-pointer"
             onClick={() => setIsExpanded(!isExpanded)}>
-            {isExpanded ? nftReadLess : nftReadMore}
+            {isExpanded ? receipt.nftReadLess : receipt.nftReadMore}
           </p>
         </div>
       )}
     </>
   );
-};
-
-export default NFTDescription;
+}

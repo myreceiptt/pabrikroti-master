@@ -11,31 +11,15 @@ import {
   canClaim,
   decimals,
   getActiveClaimCondition,
-  totalSupply,
+  // totalSupply,
 } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import CheckErc1155 from "@/config/checker";
-import { erc20ContractsLaunched } from "@/config/contracts";
-import {
-  loaderChecking,
-  nftsMessage3,
-  colorPrimary,
-  colorSecondary,
-  nftsPrevious,
-  nftsNext,
-  coinsConsoleWarn,
-  coinsSetError,
-  coinsMessage1,
-  coinsMessage2,
-  coinsTitle1,
-  coinsTitle2,
-  nftsFailReason,
-  nftsError,
-  nftsUknownError,
-} from "@/config/myreceipt";
+import { CheckErc1155 } from "@/config/checker";
+import { erc20ContractsLaunched } from "@/config/contractsOld";
+import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import CoinLister from "@/components/fts/CoinLister";
@@ -43,7 +27,9 @@ import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
-type CoinData = {
+const { receipt } = getActiveReceipt();
+
+interface CoinData {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
@@ -54,12 +40,12 @@ type CoinData = {
   adjustedSupply: number;
   adjustedMaxClaim: number;
   adjustedBalance: number;
-};
+}
 
 const INITIAL_ITEMS = 6;
 const ITEMS_PER_LOAD = 3;
 
-const CoinsList: React.FC = () => {
+export default function CoinsList() {
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -89,12 +75,12 @@ const CoinsList: React.FC = () => {
           const coinDecimals = await decimals({ contract: erc20Contract });
 
           // Fetch coin supply
-          const coinSupply = await totalSupply({
-            contract: erc20Contract,
-          });
+          // const coinSupply = await totalSupply({
+          // contract: erc20Contract,
+          // });
 
           // Adjust coin supply
-          const adjustedSupply = Number(coinSupply) / 10 ** coinDecimals;
+          // const adjustedSupply = Number(coinSupply) / 10 ** coinDecimals;
 
           // Fetch claim condition
           const claimCondition = await getActiveClaimCondition({
@@ -103,6 +89,10 @@ const CoinsList: React.FC = () => {
 
           if (!claimCondition || claimCondition.pricePerToken === undefined)
             return null;
+
+          // Fetch coin supply based on claim condition
+          const adjustedSupply =
+            Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
 
           // Fetch and adjust max. claim
           const adjustedMaxClaim =
@@ -168,9 +158,9 @@ const CoinsList: React.FC = () => {
           } catch (innerErr) {
             // Continue if check failed
             isClaimable = false;
-            reason = nftsFailReason;
+            reason = receipt.nftsFailReason;
             console.warn(
-              `${coinsConsoleWarn} ${erc20ContractLaunched.address}`,
+              `${receipt.coinsConsoleWarn} ${erc20ContractLaunched.address}`,
               innerErr
             );
           }
@@ -201,11 +191,11 @@ const CoinsList: React.FC = () => {
       setCoinListToShow(coins);
       setError(null);
     } catch (err: unknown) {
-      setError(coinsSetError);
+      setError(receipt.coinsSetError);
       if (err instanceof Error) {
-        console.error(nftsError, err.message);
+        console.error(receipt.nftsError, err.message);
       } else {
-        console.error(nftsUknownError, err);
+        console.error(receipt.nftsUknownError, err);
       }
     } finally {
       setIsLoading(false);
@@ -235,7 +225,7 @@ const CoinsList: React.FC = () => {
   if (isLoading) {
     return (
       <main className="grid gap-4 place-items-center">
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       </main>
     );
   }
@@ -245,9 +235,9 @@ const CoinsList: React.FC = () => {
     return (
       <main className="grid gap-4 place-items-center">
         <Message
-          message1={error ?? coinsMessage1}
-          message2={coinsMessage2}
-          message3={nftsMessage3}
+          message1={error ?? receipt.coinsMessage1}
+          message2={receipt.coinsMessage2}
+          message3={receipt.nftsMessage3}
         />
       </main>
     );
@@ -263,7 +253,7 @@ const CoinsList: React.FC = () => {
         />
       )}
 
-      <Title title1={coinsTitle1} title2={coinsTitle2} />
+      <Title title1={receipt.coinsTitle1} title2={receipt.coinsTitle2} />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" ref={listRef}>
         {coinListToShow.slice(0, visibleCount).map((coin, index) => (
@@ -284,16 +274,21 @@ const CoinsList: React.FC = () => {
       <div className="flex items-center justify-center gap-4 mt-4">
         {coinListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={receipt.searchAria1}
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
-            style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
-            {nftsPrevious}
+            {receipt.nftsPrevious}
           </button>
         )}
         <button
+          aria-label={receipt.coinsAria}
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
@@ -301,8 +296,11 @@ const CoinsList: React.FC = () => {
             setRefreshToken(Date.now()); // 🔁 trigger CoinLister refresh
             setIsRefreshing(false); // ✅ selesai loading
           }}
-          style={{ color: colorPrimary, background: colorSecondary }}
-          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+          style={{
+            color: receipt.colorPrimary,
+            background: receipt.colorSecondary,
+          }}
+          className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
           }`}>
           <motion.div
@@ -317,18 +315,20 @@ const CoinsList: React.FC = () => {
         </button>
         {coinListToShow.length > INITIAL_ITEMS && (
           <button
+            aria-label={receipt.searchAria3}
             onClick={handleLoadMore}
             disabled={visibleCount >= coinListToShow.length}
-            style={{ color: colorPrimary, background: colorSecondary }}
-            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-105 active:scale-95 ${
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
+            className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= coinListToShow.length ? "" : "cursor-pointer"
             }`}>
-            {nftsNext}
+            {receipt.nftsNext}
           </button>
         )}
       </div>
     </main>
   );
-};
-
-export default CoinsList;
+}

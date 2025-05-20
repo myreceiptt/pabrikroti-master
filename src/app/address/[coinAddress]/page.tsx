@@ -9,8 +9,6 @@ import React from "react";
 import CoinDetails from "@/components/fts/CoinDetails";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
-const PageFT: React.FC = () => (
-  <DynamicLoginPage ContentComponent={() => <CoinDetails />} />
-);
-
-export default PageFT;
+export default function PageFT() {
+  return <DynamicLoginPage ContentComponent={CoinDetails} />;
+}

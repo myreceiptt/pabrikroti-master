@@ -8,34 +8,26 @@ import React, { useCallback, useEffect, useState } from "react";
 import { Chain, getContract } from "thirdweb";
 import {
   canClaim,
+  decimals,
   getActiveClaimCondition,
-  totalSupply,
 } from "thirdweb/extensions/erc20";
-import { decimals } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
-import CheckErc1155 from "@/config/checker";
-import { erc20ContractsLaunched } from "@/config/contracts";
-import {
-  nftsMessage3,
-  loaderChecking,
-  coinMessage1,
-  nftsFailReason,
-  coinsConsoleWarn,
-  coinSetError,
-  nftsError,
-  nftsUknownError,
-  coinMessage2,
-} from "@/config/myreceipt";
+import { CheckErc1155 } from "@/config/checker";
+import { erc20ContractsLaunched } from "@/config/contractsOld";
+import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
+import CoinAccess from "@/components/fts/CoinAccess";
 import CoinForm from "@/components/fts/CoinForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
-type CoinData = {
+const { receipt } = getActiveReceipt();
+
+interface CoinData {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
@@ -51,7 +43,7 @@ type CoinData = {
   adjustedSupply: number;
   adjustedMaxClaim: number;
   adjustedPerWallet: number;
-};
+}
 
 function getCoinAddressFromParams(
   params: ReturnType<typeof useParams>
@@ -62,30 +54,27 @@ function getCoinAddressFromParams(
     : val ?? "0x0000000000000000000000000000000000000000";
 }
 
-const CoinDetails: React.FC = () => {
+export default function CoinDetails() {
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
   const coinAddress = getCoinAddressFromParams(params);
 
-  // Ensure state variables are properly declared
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [refreshToken, setRefreshToken] = useState(Date.now());
   const [coin, setCoin] = useState<CoinData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Fetch any data
   const fetchCoinDetails = useCallback(async () => {
     if (!coinAddress || !activeAccount?.address) return;
 
-    // Check coinAddress exist based on erc20ContractsLaunched
     const erc20ContractLaunched = erc20ContractsLaunched.find(
       (c) => c.address.toLowerCase() === coinAddress.toLowerCase()
     );
 
     if (!erc20ContractLaunched) {
-      setError(coinMessage1);
+      setError(receipt.coinMessage1);
       setLoading(false);
       return;
     }
@@ -97,18 +86,8 @@ const CoinDetails: React.FC = () => {
         chain: erc20ContractLaunched.chain,
       });
 
-      // Fetch coin decimals
       const coinDecimals = await decimals({ contract: erc20Contract });
 
-      // Fetch coin supply
-      const coinSupply = await totalSupply({
-        contract: erc20Contract,
-      });
-
-      // Adjust coin supply
-      const adjustedSupply = Number(coinSupply) / 10 ** coinDecimals;
-
-      // Fetch user's owned coins
       const coinOwned = await getWalletBalance({
         address: activeAccount.address,
         chain: erc20ContractLaunched.chain,
@@ -119,26 +98,23 @@ const CoinDetails: React.FC = () => {
       const coinOwnedRaw = coinOwned.value ?? 0n;
       const adjustedCoinOwned = Number(coinOwnedRaw) / 10 ** coinDecimals;
 
-      // Fetch claim condition
       const claimCondition = await getActiveClaimCondition({
         contract: erc20Contract,
       });
 
       if (!claimCondition || claimCondition.pricePerToken === undefined) {
-        setError(coinSetError);
+        setError(receipt.coinSetError);
         setLoading(false);
         return;
       }
 
-      // Fetch and adjust max. claim
+      const adjustedSupply =
+        Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
       const adjustedMaxClaim =
         Number(claimCondition.maxClaimableSupply) / 10 ** coinDecimals;
-
-      // Fetch and adjust limit per wallet
       const adjustedPerWallet =
         Number(claimCondition.quantityLimitPerWallet) / 10 ** coinDecimals;
 
-      // Fetch currency and decimals
       let currencyDecimals = 18;
       let balanceRaw = 0n;
       const nativeETH = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
@@ -152,7 +128,6 @@ const CoinDetails: React.FC = () => {
 
         currencyDecimals = await decimals({ contract: currencyContract });
 
-        // Fetch wallet balance
         const balanceResult = await getWalletBalance({
           address: activeAccount.address,
           chain: erc20ContractLaunched.chain,
@@ -162,7 +137,6 @@ const CoinDetails: React.FC = () => {
 
         balanceRaw = balanceResult.value ?? 0n;
       } else {
-        // Native token balance
         const balanceResult = await getWalletBalance({
           address: activeAccount.address,
           chain: erc20ContractLaunched.chain,
@@ -173,12 +147,10 @@ const CoinDetails: React.FC = () => {
         balanceRaw = balanceResult.value ?? 0n;
       }
 
-      // Adjust price and balance
       const adjustedPrice =
         Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
       const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
 
-      // Fetch can claim status
       let isClaimable = false;
       let reason: string | null = null;
 
@@ -192,11 +164,10 @@ const CoinDetails: React.FC = () => {
         isClaimable = claimStatus.result;
         reason = claimStatus.reason ?? null;
       } catch (innerErr) {
-        // Continue if check failed
         isClaimable = false;
-        reason = nftsFailReason;
+        reason = receipt.nftsFailReason;
         console.warn(
-          `${coinsConsoleWarn} ${erc20ContractLaunched.address}`,
+          `${receipt.coinsConsoleWarn} ${erc20ContractLaunched.address}`,
           innerErr
         );
       }
@@ -221,48 +192,40 @@ const CoinDetails: React.FC = () => {
 
       setError(null);
     } catch (err: unknown) {
-      setError(coinSetError);
+      setError(receipt.coinSetError);
       if (err instanceof Error) {
-        console.error(nftsError, err.message);
+        console.error(receipt.nftsError, err.message);
       } else {
-        console.error(nftsUknownError, err);
+        console.error(receipt.nftsUknownError, err);
       }
     } finally {
       setLoading(false);
     }
   }, [coinAddress, activeAccount?.address]);
 
-  // Refetch coin details
   useEffect(() => {
-    if (coinAddress !== "") {
-      fetchCoinDetails();
-    }
+    if (coinAddress !== "") fetchCoinDetails();
   }, [refreshToken, fetchCoinDetails, coinAddress]);
 
-  // Ensure coinAddress exists, otherwise redirect
   useEffect(() => {
-    if (params.coinAddress == null) {
-      router.push("/");
-    }
+    if (params.coinAddress == null) router.push("/");
   }, [params.coinAddress, router]);
 
-  // Placeholder loader
   if (loading || coinAddress === "") {
     return (
       <main className="grid gap-4 place-items-center">
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       </main>
     );
   }
 
-  // Fallback message coinAddress not found
   if (error) {
     return (
       <main className="grid gap-4 place-items-center">
         <Message
           message1={error}
-          message2={coinMessage2}
-          message3={nftsMessage3}
+          message2={receipt.coinMessage2}
+          message3={receipt.nftsMessage3}
         />
       </main>
     );
@@ -277,7 +240,14 @@ const CoinDetails: React.FC = () => {
           onAccessChange={setHasAccess}
         />
       )}
-      {coin && (
+      {hasAccess === null && <Loader message={receipt.loaderChecking} />}
+      {hasAccess === false && (
+        <CoinAccess
+          onRedirect={() => router.push("/")}
+          message={receipt.coinAccessTitle}
+        />
+      )}
+      {hasAccess === true && coin && (
         <CoinForm
           hasAccess={hasAccess}
           setRefreshToken={setRefreshToken}
@@ -287,6 +257,4 @@ const CoinDetails: React.FC = () => {
       )}
     </main>
   );
-};
-
-export default CoinDetails;
+}
