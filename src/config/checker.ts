@@ -8,7 +8,9 @@ import { balanceOfBatch, nextTokenIdToMint } from "thirdweb/extensions/erc1155";
 import { useReadContract } from "thirdweb/react";
 
 // Blockchain configurations
-import { erc1155Launched } from "@/config/contracts";
+import { getActiveReceipt } from "@/config/receipts";
+
+const { erc1155Launched } = getActiveReceipt();
 
 interface CheckErc1155Props {
   activeAddress: string;

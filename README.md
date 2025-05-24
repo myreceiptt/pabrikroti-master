@@ -1,4 +1,7 @@
-PABRIK ROTI v.2.2.22: Staging NFT Indonesia by Istiqlal Digital Legacy!
+PABRIK ROTI v.2.2.22: Staging MeMoRa by Voyage.Co.Id
+
+Link #1: https://memora.voyage.co.id/  
+Link #2: https://memora.endhonesa.com/
 
 ## 📜 License
 
@@ -65,4 +68,4 @@ yarn start
 
 ## Join Prof. NOTA Discord!
 
-For any questions or suggestions, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).
+For questions or suggestions, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).

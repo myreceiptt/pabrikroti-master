@@ -23,30 +23,11 @@ import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
 // Blockchain configurations
-import { erc1155Launched } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
 import { decimals } from "thirdweb/extensions/erc20";
 import { getWalletBalance } from "thirdweb/wallets";
 
-const {
-  colorPrimary,
-  colorSecondary,
-  loaderChecking,
-  nftsConsoleWarn,
-  nftsError,
-  nftsFailReason,
-  nftsMessage3,
-  nftsNext,
-  nftsPrevious,
-  nftsSetError,
-  nftsUknownError,
-  searchAria1,
-  searchAria2,
-  searchAria3,
-  searchMessage1,
-  searchMessage2,
-  searchTitle,
-} = getActiveReceipt();
+const { receipt, erc1155Launched } = getActiveReceipt();
 
 // Interface definition for NFTs
 interface NFTData {
@@ -182,8 +163,8 @@ export default function SearchWrapper() {
           } catch (innerErr) {
             // Continue if check failed
             isClaimable = false;
-            reason = nftsFailReason;
-            console.warn(`${nftsConsoleWarn} ${nftId}`, innerErr);
+            reason = receipt.nftsFailReason;
+            console.warn(`${receipt.nftsConsoleWarn} ${nftId}`, innerErr);
           }
 
           return {
@@ -209,11 +190,11 @@ export default function SearchWrapper() {
       setSearchResults(fulfilled);
       setError(null);
     } catch (err: unknown) {
-      setError(nftsSetError);
+      setError(receipt.nftsSetError);
       if (err instanceof Error) {
-        console.error(nftsError, err.message);
+        console.error(receipt.nftsError, err.message);
       } else {
-        console.error(nftsUknownError, err);
+        console.error(receipt.nftsUknownError, err);
       }
     } finally {
       setLoading(false);
@@ -243,7 +224,7 @@ export default function SearchWrapper() {
   if (loading || nextNFTId === undefined) {
     return (
       <main className="grid gap-4 place-items-center">
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       </main>
     );
   }
@@ -253,9 +234,9 @@ export default function SearchWrapper() {
     return (
       <main className="grid gap-4 place-items-center">
         <Message
-          message1={error ?? searchMessage1}
-          message2={searchMessage2}
-          message3={nftsMessage3}
+          message1={error ?? receipt.searchMessage1}
+          message2={receipt.searchMessage2}
+          message3={receipt.nftsMessage3}
         />
       </main>
     );
@@ -263,7 +244,7 @@ export default function SearchWrapper() {
 
   return (
     <main className="grid gap-4 place-items-center">
-      <Title title1={searchTitle} title2={query} />
+      <Title title1={receipt.searchTitle} title2={query} />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" ref={listRef}>
         {searchResults.slice(0, visibleCount).map((nft, index) => (
@@ -284,18 +265,21 @@ export default function SearchWrapper() {
       <div className="flex items-center justify-center gap-4 mt-4">
         {searchResults.length > INITIAL_ITEMS && (
           <button
-            aria-label={searchAria1}
+            aria-label={receipt.searchAria1}
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
-            style={{ color: colorPrimary, background: colorSecondary }}
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
             }`}>
-            {nftsPrevious}
+            {receipt.nftsPrevious}
           </button>
         )}
         <button
-          aria-label={searchAria2}
+          aria-label={receipt.searchAria2}
           disabled={isRefreshing}
           onClick={async () => {
             setIsRefreshing(true); // ⏳ mulai loading
@@ -303,7 +287,10 @@ export default function SearchWrapper() {
             setRefreshToken(Date.now()); // 🔁 trigger NFTLister refresh
             setIsRefreshing(false); // ✅ selesai loading
           }}
-          style={{ color: colorPrimary, background: colorSecondary }}
+          style={{
+            color: receipt.colorPrimary,
+            background: receipt.colorSecondary,
+          }}
           className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
           }`}>
@@ -319,14 +306,17 @@ export default function SearchWrapper() {
         </button>
         {searchResults.length > INITIAL_ITEMS && (
           <button
-            aria-label={searchAria3}
+            aria-label={receipt.searchAria3}
             onClick={handleLoadMore}
             disabled={visibleCount >= searchResults.length}
-            style={{ color: colorPrimary, background: colorSecondary }}
+            style={{
+              color: receipt.colorPrimary,
+              background: receipt.colorSecondary,
+            }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= searchResults.length ? "" : "cursor-pointer"
             }`}>
-            {nftsNext}
+            {receipt.nftsNext}
           </button>
         )}
       </div>

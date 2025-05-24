@@ -1,4 +1,4 @@
-// /src/app/page.tsx
+// /src/app/featured/page.tsx
 
 "use client";
 

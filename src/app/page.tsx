@@ -9,6 +9,6 @@ import React from "react";
 import FeaturedCards from "@/components/contents/FeaturedCards";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
-export default function Home() {
+export default function PageHome() {
   return <DynamicLoginPage ContentComponent={FeaturedCards} />;
 }

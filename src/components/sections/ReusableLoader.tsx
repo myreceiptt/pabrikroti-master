@@ -6,7 +6,7 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { colorAccent } = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface LoaderProps {
   message: string;
@@ -14,7 +14,9 @@ interface LoaderProps {
 
 export default function Loader({ message }: LoaderProps) {
   return (
-    <p style={{ color: colorAccent }} className="text-left text-sm font-medium">
+    <p
+      style={{ color: receipt.colorAccent }}
+      className="text-left text-sm font-medium">
       {message}
     </p>
   );

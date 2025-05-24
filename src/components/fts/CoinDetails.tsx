@@ -16,7 +16,6 @@ import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
 import { CheckErc1155 } from "@/config/checker";
-import { erc20ContractsLaunched } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
@@ -25,18 +24,7 @@ import CoinForm from "@/components/fts/CoinForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
-const {
-  coinAccessTitle,
-  coinMessage1,
-  coinMessage2,
-  coinSetError,
-  coinsConsoleWarn,
-  loaderChecking,
-  nftsError,
-  nftsFailReason,
-  nftsMessage3,
-  nftsUknownError,
-} = getActiveReceipt();
+const { receipt, erc20sLaunched } = getActiveReceipt();
 
 interface CoinData {
   coinAddress: string;
@@ -80,12 +68,12 @@ export default function CoinDetails() {
   const fetchCoinDetails = useCallback(async () => {
     if (!coinAddress || !activeAccount?.address) return;
 
-    const erc20ContractLaunched = erc20ContractsLaunched.find(
+    const erc20ContractLaunched = erc20sLaunched.find(
       (c) => c.address.toLowerCase() === coinAddress.toLowerCase()
     );
 
     if (!erc20ContractLaunched) {
-      setError(coinMessage1);
+      setError(receipt.coinMessage1);
       setLoading(false);
       return;
     }
@@ -114,7 +102,7 @@ export default function CoinDetails() {
       });
 
       if (!claimCondition || claimCondition.pricePerToken === undefined) {
-        setError(coinSetError);
+        setError(receipt.coinSetError);
         setLoading(false);
         return;
       }
@@ -176,9 +164,9 @@ export default function CoinDetails() {
         reason = claimStatus.reason ?? null;
       } catch (innerErr) {
         isClaimable = false;
-        reason = nftsFailReason;
+        reason = receipt.nftsFailReason;
         console.warn(
-          `${coinsConsoleWarn} ${erc20ContractLaunched.address}`,
+          `${receipt.coinsConsoleWarn} ${erc20ContractLaunched.address}`,
           innerErr
         );
       }
@@ -203,11 +191,11 @@ export default function CoinDetails() {
 
       setError(null);
     } catch (err: unknown) {
-      setError(coinSetError);
+      setError(receipt.coinSetError);
       if (err instanceof Error) {
-        console.error(nftsError, err.message);
+        console.error(receipt.nftsError, err.message);
       } else {
-        console.error(nftsUknownError, err);
+        console.error(receipt.nftsUknownError, err);
       }
     } finally {
       setLoading(false);
@@ -225,7 +213,7 @@ export default function CoinDetails() {
   if (loading || coinAddress === "") {
     return (
       <main className="grid gap-4 place-items-center">
-        <Loader message={loaderChecking} />
+        <Loader message={receipt.loaderChecking} />
       </main>
     );
   }
@@ -235,8 +223,8 @@ export default function CoinDetails() {
       <main className="grid gap-4 place-items-center">
         <Message
           message1={error}
-          message2={coinMessage2}
-          message3={nftsMessage3}
+          message2={receipt.coinMessage2}
+          message3={receipt.nftsMessage3}
         />
       </main>
     );
@@ -251,11 +239,11 @@ export default function CoinDetails() {
           onAccessChange={setHasAccess}
         />
       )}
-      {hasAccess === null && <Loader message={loaderChecking} />}
+      {hasAccess === null && <Loader message={receipt.loaderChecking} />}
       {hasAccess === false && (
         <CoinAccess
           onRedirect={() => router.push("/")}
-          message={coinAccessTitle}
+          message={receipt.coinAccessTitle}
         />
       )}
       {hasAccess === true && coin && (

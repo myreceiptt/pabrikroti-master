@@ -4,8 +4,8 @@
 const proTitle = "Ngelaras Roso";
 const proUrl = "https://ngelarasroso.id";
 const entityName = "Ngelaras Roso X NFT Indonesia";
-const entityAlias1 = "Ngelaras Roso";
-const entityAlias2 = "NFT Indonesia";
+const entityAlias1 = "NFT Indonesia";
+const entityAlias2 = "Ngelaras Roso";
 const entityAddress =
   "Jl. Al Inayah No.86, Rawakalong, Kec. Gn. Sindur, Kabupaten Bogor, Jawa Barat 16340, INDONESIA";
 const entityEmail = "hallonftindonesia@gmail.com";
@@ -15,13 +15,69 @@ const termsYear = "2025";
 const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const myreceipt = {
-  // colors hex libraries
-  colorPrimary: "#F9F9F9", // Terang
-  colorSecondary: "#262525", // Gelap XXX
-  colorAccent: "#171717", // Gelap
-  colorBoxIcon: "#F0F0F0", // Terang Dikit
-  colorIcon: "#707070", // Abu2 Gelap
-  colorBorder: "#DFDFDF", // Abu2 Terang
+  // colors hex libraries - mystic coral
+  // colorPrimary: "#FFF8F7", // Putih Pink Coral Laut
+  // colorSecondary: "#523B3A", // Coklat Batu Karang Gelap
+  // colorAccent: "#291D1D", // Hitam Coral Tua
+  // colorBoxIcon: "#F5EAE9", // Coral Putih
+  // colorIcon: "#8A6665", // Abu Coral Tua
+  // colorBorder: "#E0CFCF", // Abu Coral Terang
+
+  // colors hex libraries - turquoise fog
+  // colorPrimary: "#E9FBF8", // Putih Aqua
+  // colorSecondary: "#106D6E", // Turquoise Gelap
+  // colorAccent: "#064344", // Gelap Turquoise Hitam
+  // colorBoxIcon: "#D0F1EE", // Aqua Muda
+  // colorIcon: "#478687", // Abu Turquoise
+  // colorBorder: "#B3E3E0", // Abu Aqua Terang
+
+  // colors hex libraries - apple garden
+  // colorPrimary: "#F6FAF1", // Putih Hijau Pucat
+  // colorSecondary: "#6DA34D", // Apel Hijau Cerah
+  // colorAccent: "#0C2713", // Hijau Hitam Daun
+  // colorBoxIcon: "#E5F1DE", // Hijau Soft
+  // colorIcon: "#4B7B35", // Hijau Tua
+  // colorBorder: "#CBE0C3", // Hijau Abu Terang
+
+  // colors hex libraries - green dark
+  colorPrimary: "#F6F9F7", // Putih kehijauan
+  colorSecondary: "#1E2B21", // Hijau Gelap
+  colorAccent: "#0D1711", // Lebih Gelap lagi
+  colorBoxIcon: "#E9F0EC", // Putih kehijauan lembut
+  colorIcon: "#59675E", // Abu Hijau Tua
+  colorBorder: "#D4DDD8", // Abu Hijau Terang
+
+  // colors hex libraries - emerald noir
+  // colorPrimary: "#F1F9F6", // Putih Mint
+  // colorSecondary: "#0A2F24", // Hijau Tua Emerald
+  // colorAccent: "#031710", // Gelap Hijau Pekat
+  // colorBoxIcon: "#E0F3EC", // Mint Soft
+  // colorIcon: "#2F5A4B", // Hijau Abu
+  // colorBorder: "#C2E4D9", // Mint Abu Terang
+
+  // colors hex libraries - wine elegance
+  // colorPrimary: "#FAF1F4", // Putih merah muda sangat pucat
+  // colorSecondary: "#3C0D1E", // Wine Tua
+  // colorAccent: "#1A050D", // Hitam Wine
+  // colorBoxIcon: "#F5E0E9", // Pink Soft
+  // colorIcon: "#6E2B43", // Merah Anggur Abu Tua
+  // colorBorder: "#E4C2CF", // Abu Pink Terang
+
+  // colors hex libraries - indigo rose
+  // colorPrimary: "#F5F3FA", // Putih keunguan
+  // colorSecondary: "#1E153C", // Indigo Tua
+  // colorAccent: "#0E0A1E", // Hitam Indigo
+  // colorBoxIcon: "#EAE6F5", // Lavender Putih
+  // colorIcon: "#514B6E", // Abu Indigo
+  // colorBorder: "#D6CFE4", // Lavender Abu Terang
+
+  // colors hex libraries - sunset fog
+  // colorPrimary: "#FFF8F3", // Putih Oranye Pucat
+  // colorSecondary: "#3B1F0F", // Coklat Sunset Tua
+  // colorAccent: "#1A0E06", // Gelap Coklat Hitam
+  // colorBoxIcon: "#FCEAE0", // Oranye Putih Soft
+  // colorIcon: "#7A4A33", // Abu Coklat
+  // colorBorder: "#E7C9B9", // Abu Oranye Terang
 
   // layout...
   proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
@@ -85,7 +141,7 @@ export const myreceipt = {
   subscribeInput: "Please enter a valid email address.", // subscribe form,
   subscribeSubject: `Subscription to ${proTitle}`, // subscribe form,
   subscribeName: `Visitor of ${proUrl}`, // subscribe form,
-  subscribeMessage: "I want to subscribe to your latest updates.", // subscribe form,
+  subscribeMessage: "I want to subscribe to the latest updates.", // subscribe form,
   subscribeSuccess: "Thank you for subscribing!", // subscribe form,
   subscribeFailed: "Subscription failed. Please try again.", // subscribe form,
   subscribeTitle: "Catch our latest updates", // subscribe form,
@@ -102,15 +158,15 @@ export const myreceipt = {
   freeTitle: "All Free Stocks", // featured cards,
   featuredCoin: "/images/featured-coin.png", // featured cards,
   coinTitle: "All Claimable Shares", // featured cards,
-  featuredAria: `Navigate to`, // featured cards,
+  featuredAria: "Navigate to", // featured cards,
 
   // reusable loader section
   loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
   // search wrapper page
-  searchMessage1: "No data found.", // search wrapper,
+  searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
-    "There is no data found matching your search terms. Please try searching again using other terms or return to the home page.", // search wrapper,
+    "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,
   searchTitle: "Search Result:", // search wrapper,
   searchAria1: "Load previous items.", // search wrapper, nfts list, coins list,
   searchAria2: "Refresh search results.", // search wrapper,
@@ -128,14 +184,14 @@ export const myreceipt = {
   nftsUknownError: "Kok, Error:", // search wrapper, nfts list, nft details, coins list, coin details,
   nftsMessage1: "No available stock!", // nfts list,
   nftsMessage2:
-    "There are no available stock right now. Please try again later or return to the home page.", // nfts list,
+    "There are no available stocks right now. Please try again later or return to the home page.", // nfts list,
   nftsMessage3: "Return to the Home Page!", // search wrapper, nfts list, nft fallback, nft details, coins list, coin fallback, coin details,
   nftsPrevious: "Previous", // search wrapper, nfts list, coins list,
   nftsNext: "Next", // search wrapper, nfts list, coins list,
-  nftsAria: "Refresh stocks data.", // nfts list,
+  nftsAria: "Refresh all stocks data.", // nfts list,
 
   // nft lister section
-  nftButton: "Get Now", // nft lister, nft form,
+  nftButton: "Get It Now", // nft lister, nft form,
   nftSoon: "Available in:", // nft lister, nft form, coin lister, coin form,
   nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
   nftClaimed: "Got It", // nft lister, nft form,
@@ -146,7 +202,7 @@ export const myreceipt = {
   nftNoData: "No data available.", // nft lister,
 
   // nft fallback page
-  nftFallMessage1: "No valid stock ID used.", // nft fallback,
+  nftFallMessage1: "No valid stock ID was used.", // nft fallback,
   nftFallMessage2:
     "Please use a valid stock ID in the URL or return to the home page and start over.", // nft fallback,
 
@@ -159,9 +215,9 @@ export const myreceipt = {
   // nft form section
   nftFormByLink: "https://ngelarasroso.id/", // nft form,
   nftFormBy: "by", // nft form, coin form,
-  nftFormByName: "Ngelaras Roso!", // nft form,
+  nftFormByName: `${entityAlias1}`, // nft form,
   nftFormEdition: "Edition", // nft form,
-  nftFormOwned: "Got It", // nft form, coin form,
+  nftFormOwned: "Got It", // nft form,
   nftFormRefresh: "Refresh", // nft form, coin form,
   nftFormTunggu: "Processing. Be patient and wait.", // nft form, coin form,
   nftFormKirim: "Claiming your stock.", // nft form,
@@ -217,6 +273,8 @@ export const myreceipt = {
 
   // coin form section
   coinFormSupply: "Supply", // coin form,
+  coinFormOwned: "Claimed", // coin form,
+  coinFormOnChain: "On", // coin form,
   coinFormKirim: "Claiming your share.", // coin form,
   coinFormSukses: "Share successfully claimed.", // coin form,
   coinFormPerWallet: "supply per holder.", // coin form,
@@ -249,6 +307,8 @@ export const myreceipt = {
   popUpP10: "OiOi ENDHONESA! 🚀", // coin pop up,
   popUpP11: "🍌☕🍌☕", // coin pop up,
   popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
+  popUpP13: "", // coin pop up,
+  popUpP14: "", // coin pop up,
   popUpImage: "/medias/coin-pop-up.gif", // coin pop up,
   popUpImageAlt: "OiOi Token Illustration", // coin pop up,
 
@@ -371,7 +431,7 @@ export const myreceipt = {
       title: "Customer Feedback, Queries, Complaints, and Dispute Resolution",
       paragraphs: [
         `Contact ${entityAlias2}. When you contact us please provide us with your name, email, wallet address, and any other information we may need to identify you, your ${entityAlias2} account, and the activity on which you have feedback, questions, or complaints.`,
-        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by Voyage. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond Voyage's control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
+        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by ${entityAlias1}. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond ${entityAlias1}'s control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
         `Offers. Any offer of resolution made to you will only become binding on us if accepted by you. An offer of resolution will not constitute any admission by us of any wrongdoing or liability regarding the subject matter of the complaint.`,
       ],
     },
