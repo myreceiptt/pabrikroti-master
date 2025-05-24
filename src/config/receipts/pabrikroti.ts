@@ -1,19 +1,11 @@
 // /src/config/receipts/pabrikroti.ts
 
-// convert hex to rgba
-export function hexToRgba(hex: string, alpha: number): string {
-  const r = parseInt(hex.slice(1, 3), 16);
-  const g = parseInt(hex.slice(3, 5), 16);
-  const b = parseInt(hex.slice(5, 7), 16);
-  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
-}
-
 // All receipts should be exported from this file.
 const proTitle = "Breads Factory";
 const proUrl = "https://pabrikroti.endhonesa.com";
 const entityName = "Breads Factory by Prof. NOTA Inc.";
-const entityAlias1 = "Breads Factory";
-const entityAlias2 = "Prof. NOTA Inc.";
+const entityAlias1 = "Prof. NOTA Inc.";
+const entityAlias2 = "Breads Factory";
 const entityAddress =
   "Jl. Nginden Kota 2 No. 27, Baratajaya, Kec. Gubeng, Kota Surabaya, Jawa Timur 60284, INDONESIA";
 const entityEmail = "nota@endhonesa.com";
@@ -23,13 +15,13 @@ const termsYear = "2024";
 const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const pabrikroti = {
-  // colors hex libraries
-  colorPrimary: "#F9F9F9", // Terang
-  colorSecondary: "#262525", // Gelap XXX
-  colorAccent: "#171717", // Gelap
-  colorBoxIcon: "#F0F0F0", // Terang Dikit
-  colorIcon: "#707070", // Abu2 Gelap
-  colorBorder: "#DFDFDF", // Abu2 Terang
+  // colors hex libraries - graffiti mist
+  colorPrimary: "#F2F2F2", // Abu terang polesan dinding tua
+  colorSecondary: "#1B1B1B", // Hitam industrial
+  colorAccent: "#2E2E2E", // Abu arang (dari background Image 1)
+  colorBoxIcon: "#E8E8E8", // Abu terang berkabut
+  colorIcon: "#5A5A5A", // Abu medium kasar
+  colorBorder: "#D3D3D3", // Abu terang pastel
 
   // layout...
   proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
@@ -38,6 +30,7 @@ export const pabrikroti = {
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "Prof. NOTA Inc.", // layout,
   proLocale: "en-US", // layout,
+  proFavicon: "/roti/favicon.ico", // layout,
   proImage: "https://pabrikroti.endhonesa.com/roti/preview-image.png", // layout,
   proLang: "en", // layout,
 
@@ -72,7 +65,7 @@ export const pabrikroti = {
 
   // footer section - hide social icon by nulled the link
   copyRight: "Every stomach must be hungry.", // footer,
-  officiallyLicensed: "Officially hungry and satiated by", // footer,
+  officiallyLicensed: "Officially hungry and satisfied by", // footer,
   anchorPrivacy: "Privacy Policy", // footer,
   anchorTerms: "Terms of Service", // footer,
   footerPower: "/roti/images/footer-power.png", // footer,
@@ -109,20 +102,20 @@ export const pabrikroti = {
   featuredFree: "/roti/images/featured-free.png", // featured cards,
   freeTitle: "All Free Artisan Breads", // featured cards,
   featuredCoin: "/roti/images/featured-coin.png", // featured cards,
-  coinTitle: "All Packaged Breads", // featured cards,
-  featuredAria: `Navigate to`, // featured cards,
+  coinTitle: "All Batch Breads", // featured cards,
+  featuredAria: "Navigate to", // featured cards,
 
   // reusable loader section
   loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
   // search wrapper page
-  searchMessage1: "No data found.", // search wrapper,
+  searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
-    "There is no data found matching your search terms. Please try searching again using other terms or return to the home page.", // search wrapper,
+    "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,
   searchTitle: "Search Result:", // search wrapper,
-  searchAria1: "Load previous items.", // search wrapper, nfts list, coins list,
+  searchAria1: "Load previous breads.", // search wrapper, nfts list, coins list,
   searchAria2: "Refresh search results.", // search wrapper,
-  searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
+  searchAria3: "Load more breads.", // search wrapper, nfts list, coins list,
 
   // nfts list page
   nftsTitle1Free: "All Free", // nfts list,
@@ -140,7 +133,7 @@ export const pabrikroti = {
   nftsMessage3: "Return to the Home Page!", // search wrapper, nfts list, nft fallback, nft details, coins list, coin fallback, coin details,
   nftsPrevious: "Previous", // search wrapper, nfts list, coins list,
   nftsNext: "Next", // search wrapper, nfts list, coins list,
-  nftsAria: "Refresh breads data.", // nfts list,
+  nftsAria: "Refresh all breads data.", // nfts list,
 
   // nft lister section
   nftButton: "Swallow Now", // nft lister, nft form,
@@ -154,7 +147,7 @@ export const pabrikroti = {
   nftNoData: "No bread available.", // nft lister,
 
   // nft fallback page
-  nftFallMessage1: "No valid artisan bread ID used.", // nft fallback,
+  nftFallMessage1: "No valid artisan bread ID was used.", // nft fallback,
   nftFallMessage2:
     "Please use a valid artisan bread ID in the URL or return to the home page and start over.", // nft fallback,
 
@@ -167,9 +160,9 @@ export const pabrikroti = {
   // nft form section
   nftFormByLink: "https://nota.endhonesa.com/", // nft form,
   nftFormBy: "by", // nft form, coin form,
-  nftFormByName: "Prof. NOTA Inc.", // nft form,
+  nftFormByName: `${entityAlias1}`, // nft form,
   nftFormEdition: "Slices of Loaf", // nft form,
-  nftFormOwned: "Swallowed", // nft form, coin form,
+  nftFormOwned: "Swallowed", // nft form,
   nftFormRefresh: "Refresh", // nft form, coin form,
   nftFormTunggu: "Baking. Be patient and wait.", // nft form, coin form,
   nftFormKirim: "Serving your artisan bread.", // nft form,
@@ -188,12 +181,12 @@ export const pabrikroti = {
 
   // coins list page
   coinsConsoleWarn: "canClaim failed for coinAddress:", // coins list, coin details,
-  coinsSetError: "Failed to fetch any packaged breads.", // coins list,
-  coinsMessage1: "No packaged breads", // coins list,
+  coinsSetError: "Failed to fetch any batch breads.", // coins list,
+  coinsMessage1: "No batch breads", // coins list,
   coinsMessage2:
-    "There are no packaged breads available right now. Please try again later or return to the home page.", // coins list,
-  coinsTitle1: "All", // coins list,
-  coinsTitle2: "Packaged Breads", // coins list,
+    "There are no batch breads available right now. Please try again later or return to the home page.", // coins list,
+  coinsTitle1: "All Swallowable", // coins list,
+  coinsTitle2: "Batch Breads", // coins list,
   coinsAria: "Refresh breads data.", // coins list,
 
   // coin lister section
@@ -201,20 +194,20 @@ export const pabrikroti = {
   coinNoAccess: "No Access", // coin lister, coin form,
   coinClaimed: "Swallowed", // coin lister, coin form,
   coinListerImage: "/roti/medias/batch-bread.png", // coin lister, coin form,
-  coinListerName: "A Packaged Bread", // coin lister, coin form,
+  coinListerName: "A Batch Bread", // coin lister, coin form,
   coinListerSupply: "Crumb of Batch:", // coin lister, coin details,
   coinListerOf: "of", // coin lister, coin form,
 
   // coin fallback page
-  coinFallMessage1: "Invalid address of the packaged breads.", // coin fallback,
+  coinFallMessage1: "Invalid address of the batch breads.", // coin fallback,
   coinFallMessage2:
-    "Please use a valid address of the packaged breads in the URL or return to the home page and start over.", // coin fallback,
+    "Please use a valid address of the batch breads in the URL or return to the home page and start over.", // coin fallback,
 
   // coin details page
-  coinSetError: "Failed to fetch the address of the packaged breads.", // coin details,
-  coinMessage1: "The address of the packaged breads not found.", // coin details,
+  coinSetError: "Failed to fetch the address of the batch breads.", // coin details,
+  coinMessage1: "The address of the batch breads not found.", // coin details,
   coinMessage2:
-    "The specified address of the packaged breads was not found. Please try again later or return to the home page.", // coin details,
+    "The specified address of the batch breads was not found. Please try again later or return to the home page.", // coin details,
   coinAccessTitle: "You don't have access!", // coin details,
 
   // coin access section
@@ -225,12 +218,14 @@ export const pabrikroti = {
 
   // coin form section
   coinFormSupply: "Crumb of Batch", // coin form,
-  coinFormKirim: "Serving your packaged bread.", // coin form,
-  coinFormSukses: "Packaged bread successfully served.", // coin form,
+  coinFormOwned: "Swallowed", // coin form,
+  coinFormOnChain: "On", // coin form,
+  coinFormKirim: "Serving your batch bread.", // coin form,
+  coinFormSukses: "Batch bread successfully served.", // coin form,
   coinFormPerWallet: "crumb of batch per bread eater.", // coin form,
 
   // coin description section
-  coinDescription: "Ethereum L2 $OiOi fungible tokens.", // coin description,
+  coinDescription: `Out of this, OiOi emerged—not just as a cheer but as a token, a trace of presence, a unit of remembered impact. An ERC-20 that didn't just measure transactions, but transformation.`, // coin description,
 
   // coin pop up section
   popUpTitle: "OiOi Token", // coin pop up,
@@ -257,7 +252,9 @@ export const pabrikroti = {
   popUpP10: "OiOi ENDHONESA! 🚀", // coin pop up,
   popUpP11: "🍌☕🍌☕", // coin pop up,
   popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
-  popUpImage: "/medias/coin-pop-up.gif", // coin pop up,
+  popUpP13: "", // coin pop up,
+  popUpP14: "", // coin pop up,
+  popUpImage: "/roti/medias/coin-pop-up.gif", // coin pop up,
   popUpImageAlt: "OiOi Token Illustration", // coin pop up,
 
   // terms page
@@ -379,7 +376,7 @@ export const pabrikroti = {
       title: "Customer Feedback, Queries, Complaints, and Dispute Resolution",
       paragraphs: [
         `Contact ${entityAlias2}. When you contact us please provide us with your name, email, wallet address, and any other information we may need to identify you, your ${entityAlias2} account, and the activity on which you have feedback, questions, or complaints.`,
-        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by Voyage. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond Voyage's control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
+        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by ${entityAlias1}. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond ${entityAlias1}'s control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
         `Offers. Any offer of resolution made to you will only become binding on us if accepted by you. An offer of resolution will not constitute any admission by us of any wrongdoing or liability regarding the subject matter of the complaint.`,
       ],
     },

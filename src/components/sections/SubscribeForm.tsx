@@ -6,22 +6,7 @@ import { useState } from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const {
-  colorBorder,
-  colorPrimary,
-  colorSecondary,
-  subscribeButton,
-  subscribeButtonLoading,
-  subscribeFailed,
-  subscribeInput,
-  subscribeMessage,
-  subscribeName,
-  subscribePlaceholder,
-  subscribeSubject,
-  subscribeSuccess,
-  subscribeTitle,
-  subscribeWarn,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 export default function Subscribe() {
   const [email, setEmail] = useState("");
@@ -32,7 +17,7 @@ export default function Subscribe() {
   const accessKey = process.env.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY;
 
   if (!accessKey) {
-    console.warn(subscribeWarn);
+    console.warn(receipt.subscribeWarn);
   }
 
   async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
@@ -43,7 +28,7 @@ export default function Subscribe() {
     // Basic email validation
     const emailRegex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
     if (!email || !emailRegex.test(email)) {
-      setStatusMessage(subscribeInput);
+      setStatusMessage(receipt.subscribeInput);
       setIsInvalid(true);
       return;
     }
@@ -59,19 +44,19 @@ export default function Subscribe() {
         },
         body: JSON.stringify({
           access_key: accessKey,
-          subject: subscribeSubject,
-          name: subscribeName,
+          subject: receipt.subscribeSubject,
+          name: receipt.subscribeName,
           email,
-          message: subscribeMessage,
+          message: receipt.subscribeMessage,
         }),
       });
 
       const result = await response.json();
       if (result.success) {
-        setStatusMessage(subscribeSuccess);
+        setStatusMessage(receipt.subscribeSuccess);
         setEmail(""); // Clear input field
       } else {
-        setStatusMessage(subscribeFailed);
+        setStatusMessage(receipt.subscribeFailed);
       }
     } finally {
       setLoading(false);
@@ -81,9 +66,9 @@ export default function Subscribe() {
   return (
     <>
       <h3
-        style={{ color: colorPrimary }}
+        style={{ color: receipt.colorPrimary }}
         className="text-center sm:text-left text-xs sm:text-sm md:text-base font-semibold">
-        {subscribeTitle}
+        {receipt.subscribeTitle}
       </h3>
 
       <form onSubmit={handleSubmit} className="w-full">
@@ -91,12 +76,14 @@ export default function Subscribe() {
           <input
             type="email"
             name="email"
-            placeholder={subscribePlaceholder}
+            placeholder={receipt.subscribePlaceholder}
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={{
-              borderColor: isInvalid ? colorPrimary : colorBorder,
-              color: colorPrimary,
+              borderColor: isInvalid
+                ? receipt.colorPrimary
+                : receipt.colorBorder,
+              color: receipt.colorPrimary,
             }}
             className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border rounded-l-lg bg-transparent focus:outline-none"
             disabled={loading}
@@ -104,10 +91,13 @@ export default function Subscribe() {
           />
           <button
             type="submit"
-            style={{ backgroundColor: colorPrimary, color: colorSecondary }}
+            style={{
+              backgroundColor: receipt.colorPrimary,
+              color: receipt.colorSecondary,
+            }}
             className="text-xs md:text-sm px-6 py-2 font-semibold rounded-r-lg cursor-pointer"
             disabled={loading}>
-            {loading ? subscribeButtonLoading : subscribeButton}
+            {loading ? receipt.subscribeButtonLoading : receipt.subscribeButton}
           </button>
         </div>
       </form>
@@ -116,7 +106,7 @@ export default function Subscribe() {
       {statusMessage && (
         <h4
           aria-live="polite"
-          style={{ color: colorPrimary }}
+          style={{ color: receipt.colorPrimary }}
           className="text-center sm:text-left text-sm font-medium mt-2">
           {statusMessage}
         </h4>

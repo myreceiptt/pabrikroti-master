@@ -1,4 +1,9 @@
-PABRIK ROTI v.2.2.22: Staging NFT Indonesia by Istiqlal Digital Legacy!
+PABRIK ROTI v.2.2.22: Staging Istiqlal Digital Legacy by NFT Indonesia
+
+Link #1: https://nft.istiqlal.or.id/  
+Link #2: https://leminerale.istiqlal.or.id/
+Link #3: https://login.istiqlal.or.id/
+Link #4: https://istiqlal.endhonesa.com/
 
 ## 📜 License
 
@@ -65,4 +70,4 @@ yarn start
 
 ## Join Prof. NOTA Discord!
 
-For any questions or suggestions, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).
+For questions or suggestions, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).

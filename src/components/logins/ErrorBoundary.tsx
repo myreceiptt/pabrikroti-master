@@ -6,14 +6,7 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const {
-  colorAccent,
-  colorPrimary,
-  colorSecondary,
-  proButton,
-  proError,
-  proErrorCought,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface ErrorBoundaryProps {
   children: React.ReactNode;
@@ -37,7 +30,7 @@ export class ErrorBoundary extends React.Component<
   }
 
   componentDidCatch(error: Error, errorInfo: React.ErrorInfo) {
-    console.error(proErrorCought, error, errorInfo);
+    console.error(receipt.proErrorCought, error, errorInfo);
   }
 
   handleReload = () => {
@@ -50,20 +43,20 @@ export class ErrorBoundary extends React.Component<
         <div className="flex flex-col justify-center items-center h-screen gap-4">
           <h2
             role="alert"
-            style={{ color: colorAccent }}
+            style={{ color: receipt.colorAccent }}
             className="text-center text-sm font-medium">
-            {proError}
+            {receipt.proError}
           </h2>
           <button
             onClick={this.handleReload}
             style={{
-              color: colorPrimary,
-              backgroundColor: colorSecondary,
+              color: receipt.colorPrimary,
+              backgroundColor: receipt.colorSecondary,
               border: "2px solid",
-              borderColor: colorSecondary,
+              borderColor: receipt.colorSecondary,
             }}
             className="w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all cursor-pointer">
-            {proButton}
+            {receipt.proButton}
           </button>
         </div>
       );

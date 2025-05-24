@@ -17,40 +17,36 @@ const inter = Inter({ subsets: ["latin"] });
 
 export async function generateMetadata(): Promise<Metadata> {
   const host = (await headers()).get("host") || "";
-  const {
-    proDescription,
-    proImage,
-    proLocale,
-    proPublisher,
-    proTitle,
-    proUrl,
-  } = getActiveReceipt(host);
+  const { receipt } = getActiveReceipt(host);
 
   return {
-    title: proTitle, // Title
-    description: proDescription, // Description
-    metadataBase: new URL(proUrl), // Base URL
+    title: receipt.proTitle, // Title
+    description: receipt.proDescription, // Description
+    metadataBase: new URL(receipt.proUrl), // Base URL
+    icons: {
+      icon: receipt.proFavicon,
+    },
     authors: [
       { name: "MyReceipt", url: "https://myreceipt.endhonesa.com" },
       { name: "Prof. NOTA", url: "https://nota.endhonesa.com" },
     ],
     creator: "MyReceipt and Prof. NOTA Inc.",
-    publisher: proPublisher,
+    publisher: receipt.proPublisher,
     alternates: {
       canonical: "/",
     },
     openGraph: {
-      title: proTitle, // Title
-      description: proDescription, // Description
-      url: proUrl, // Base URL
-      siteName: proTitle, // Title
-      locale: proLocale,
+      title: receipt.proTitle, // Title
+      description: receipt.proDescription, // Description
+      url: receipt.proUrl, // Base URL
+      siteName: receipt.proTitle, // Title
+      locale: receipt.proLocale,
       images: [
         {
-          url: proImage, // Preview Image URL
+          url: receipt.proImage, // Preview Image URL
           width: 1920,
           height: 1080,
-          alt: proTitle, // Title
+          alt: receipt.proTitle, // Title
         },
       ],
       type: "website",
@@ -60,10 +56,10 @@ export async function generateMetadata(): Promise<Metadata> {
       siteId: "@MyReceiptTT",
       creator: "@MyReceiptTT",
       creatorId: "@MyReceiptTT",
-      title: proTitle, // Title
-      description: proDescription, // Description
+      title: receipt.proTitle, // Title
+      description: receipt.proDescription, // Description
       images: [
-        proImage, // Preview Image URL
+        receipt.proImage, // Preview Image URL
       ],
     },
   };
@@ -73,10 +69,12 @@ interface RootLayoutProps {
   children: React.ReactNode;
 }
 
-export default function RootLayout({ children }: RootLayoutProps) {
-  const { proLang } = getActiveReceipt();
+export default async function RootLayout({ children }: RootLayoutProps) {
+  const host = (await headers()).get("host") || "";
+  const { receipt } = getActiveReceipt(host);
+
   return (
-    <html lang={proLang}>
+    <html lang={receipt.proLang}>
       <body className={inter.className}>
         <ThirdwebProvider>{children}</ThirdwebProvider>
         <Analytics />

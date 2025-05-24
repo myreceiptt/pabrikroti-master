@@ -55,19 +55,32 @@ export const zoraMainnet = zora; // Zora Mainnet
 // export const zoraMainnet = defineChain(7777777); // Zora Mainnet
 
 // All chain and chains combinations - Tentukan Dulu Rantainya.
-export const rotiChain = baseSepolia; // Default Chain
-export const rotiChains = [
-  baseMainnet,
-  baseSepolia,
-  monadTestnet,
-  shapeNetwork,
+export const chain = baseMainnet; // Default Chain
+export const chains = [
+  baseMainnet, // Native Ether - ETH
+  baseSepolia, // Native Ether - ETH
+  monadTestnet, // Native Monad - MON
+  opMainnet, // Native Ether - ETH
+  shapeNetwork, // Native Ether - ETH
 ]; // Supported Chains
 
-export const memoraChain = baseMainnet; // Default Chain
-export const memoraChains = [baseMainnet, baseSepolia]; // Supported Chains
-
-export const istiqlalChain = baseMainnet; // Default Chain
-export const istiqlalChains = [baseMainnet]; // Supported Chains
-
-export const chain = baseSepolia; // Default Chain
-export const chains = [baseSepolia]; // Supported Chains
+// Daftar nama jaringan blockchain (chain) yang didukung
+export const chainNames: Record<number, string> = {
+  [avalancheC.id]: "Avalanche C-Chain",
+  [baseMainnet.id]: "Base Mainnet",
+  [baseSepolia.id]: "Base Sepolia Testnet",
+  [bobBitcoin.id]: "BOB (Built On Bitcoin)",
+  [ethereumEvm.id]: "Ethereum Mainnet",
+  [humanityTest.id]: "Humanity Testnet",
+  [inkChain.id]: "Ink On Chain",
+  [mintChain.id]: "Mint Blockchain",
+  [modeNetwork.id]: "Mode Network",
+  [monadTestnet.id]: "Monad Testnet",
+  [opMainnet.id]: "OP Mainnet",
+  [shapeNetwork.id]: "Shape Network",
+  [soneiumMainnet.id]: "Soneium Mainnet",
+  [superseedChain.id]: "Superseed Blockchain",
+  [unichainBlock.id]: "Unichain Blockchain",
+  [worldChain.id]: "World Chain",
+  [zoraMainnet.id]: "Zora Mainnet",
+};

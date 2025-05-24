@@ -25,35 +25,12 @@ import { hexToRgba } from "@/config/utils";
 // Components libraries
 import Subscribe from "@/components/sections/SubscribeForm";
 
-const {
-  anchorPrivacy,
-  anchorTerms,
-  colorAccent,
-  colorBorder,
-  colorPrimary,
-  colorSecondary,
-  copyRight,
-  entityAlias1,
-  footerPower,
-  linkDiscord,
-  linkEmail,
-  linkFacebook,
-  linkInstagram,
-  linkLinkedIn,
-  linkPower,
-  linkWebsite,
-  linkWhatsApp,
-  linkXTwitter,
-  linkYouTube,
-  officiallyLicensed,
-  poweredBy,
-  socialTitle,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 export default function Footer() {
   return (
     <footer
-      style={{ backgroundColor: colorAccent }}
+      style={{ backgroundColor: receipt.colorAccent }}
       className="w-full py-4 px-4 md:px-20">
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
         <div className="w-full flex flex-col">
@@ -63,122 +40,122 @@ export default function Footer() {
         <div className="w-full flex flex-col">
           {/* Social Media Links */}
           <h3
-            style={{ color: colorPrimary }}
+            style={{ color: receipt.colorPrimary }}
             className="sm:text-end text-center text-xs sm:text-sm md:text-base font-semibold">
-            {socialTitle}
+            {receipt.socialTitle}
           </h3>
           <div className="flex gap-2 mt-2 sm:justify-end justify-center">
-            {linkXTwitter && (
+            {receipt.linkXTwitter && (
               <Link
-                href={linkXTwitter}
+                href={receipt.linkXTwitter}
                 target="_blank"
                 style={{
-                  color: colorPrimary,
-                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                  color: receipt.colorPrimary,
+                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaTwitter />
               </Link>
             )}
 
-            {linkLinkedIn && (
+            {receipt.linkLinkedIn && (
               <Link
-                href={linkLinkedIn}
+                href={receipt.linkLinkedIn}
                 target="_blank"
                 style={{
-                  color: colorPrimary,
-                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                  color: receipt.colorPrimary,
+                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaLinkedin />
               </Link>
             )}
 
-            {linkInstagram && (
+            {receipt.linkInstagram && (
               <Link
-                href={linkInstagram}
+                href={receipt.linkInstagram}
                 target="_blank"
                 style={{
-                  color: colorPrimary,
-                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                  color: receipt.colorPrimary,
+                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaInstagram />
               </Link>
             )}
 
-            {linkFacebook && (
+            {receipt.linkFacebook && (
               <Link
-                href={linkFacebook}
+                href={receipt.linkFacebook}
                 target="_blank"
                 style={{
-                  color: colorPrimary,
-                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                  color: receipt.colorPrimary,
+                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaFacebook />
               </Link>
             )}
 
-            {linkDiscord && (
+            {receipt.linkDiscord && (
               <Link
-                href={linkDiscord}
+                href={receipt.linkDiscord}
                 target="_blank"
                 style={{
-                  color: colorPrimary,
-                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                  color: receipt.colorPrimary,
+                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaDiscord />
               </Link>
             )}
 
-            {linkYouTube && (
+            {receipt.linkYouTube && (
               <Link
-                href={linkYouTube}
+                href={receipt.linkYouTube}
                 target="_blank"
                 style={{
-                  color: colorPrimary,
-                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                  color: receipt.colorPrimary,
+                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaYoutube />
               </Link>
             )}
 
-            {linkEmail && (
+            {receipt.linkEmail && (
               <Link
-                href={linkEmail}
+                href={receipt.linkEmail}
                 target="_blank"
                 style={{
-                  color: colorPrimary,
-                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                  color: receipt.colorPrimary,
+                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaEnvelope />
               </Link>
             )}
 
-            {linkWhatsApp && (
+            {receipt.linkWhatsApp && (
               <Link
-                href={linkWhatsApp}
+                href={receipt.linkWhatsApp}
                 target="_blank"
                 style={{
-                  color: colorPrimary,
-                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                  color: receipt.colorPrimary,
+                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaWhatsapp />
               </Link>
             )}
 
-            {linkWebsite && (
+            {receipt.linkWebsite && (
               <Link
-                href={linkWebsite}
+                href={receipt.linkWebsite}
                 target="_blank"
                 style={{
-                  color: colorPrimary,
-                  backgroundColor: hexToRgba(colorSecondary, 1.0),
+                  color: receipt.colorPrimary,
+                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaGlobe />
@@ -191,36 +168,42 @@ export default function Footer() {
       {/* Bottom Section */}
       <div
         style={{
-          borderColor: colorBorder,
+          borderColor: receipt.colorBorder,
         }}
         className="w-full border-t mt-4 pt-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
         {/* Copyrights */}
         <div
           style={{
-            color: colorPrimary,
+            color: receipt.colorPrimary,
           }}
           className="w-full text-xs text-center sm:text-left">
           <p>
-            &copy; {new Date().getFullYear()} {entityAlias1}. {copyRight}
+            &copy; {new Date().getFullYear()} {receipt.entityAlias1}.{" "}
+            {receipt.copyRight}
           </p>
-          <p>{`${officiallyLicensed} ${entityAlias1}.`}</p>
+          <p>{`${receipt.officiallyLicensed} ${receipt.entityAlias1}.`}</p>
           <div className="flex justify-center sm:justify-start gap-4 mt-2">
             <Link
               href="/terms"
               target="_blank"
               style={{
-                color: colorPrimary,
+                color: receipt.colorPrimary,
               }}
               className="text-xs text-center sm:text-left">
-              {anchorTerms} & {anchorPrivacy}
+              {receipt.anchorTerms} & {receipt.anchorPrivacy}
             </Link>
           </div>
         </div>
 
         {/* Logo & Powered By */}
         <div className="w-full flex justify-center sm:justify-end cursor-pointer">
-          <Link href={linkPower} target="_blank">
-            <Image src={footerPower} alt={poweredBy} width={563} height={75} />
+          <Link href={receipt.linkPower} target="_blank">
+            <Image
+              src={receipt.footerPower}
+              alt={receipt.poweredBy}
+              width={563}
+              height={75}
+            />
           </Link>
         </div>
       </div>

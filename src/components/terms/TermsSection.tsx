@@ -8,7 +8,7 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { colorSecondary, colorIcon } = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface TermsSectionProps {
   title: string;
@@ -29,7 +29,7 @@ export default function TermsSection({
     <section className="space-y-4">
       {/* Section Title */}
       <h3
-        style={{ color: colorSecondary }}
+        style={{ color: receipt.colorSecondary }}
         className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold uppercase">
         {title}
       </h3>
@@ -38,7 +38,7 @@ export default function TermsSection({
       {paragraphs?.map((text, i) => (
         <p
           key={`p-${i}`}
-          style={{ color: colorIcon }}
+          style={{ color: receipt.colorIcon }}
           className="text-sm font-medium leading-relaxed">
           {text}
         </p>
@@ -50,7 +50,7 @@ export default function TermsSection({
           {unorderedList.map((item, i) => (
             <li
               key={`ul-${i}`}
-              style={{ color: colorIcon }}
+              style={{ color: receipt.colorIcon }}
               className="text-sm font-medium leading-relaxed">
               {item}
             </li>
@@ -64,7 +64,7 @@ export default function TermsSection({
           {orderedList.map((item, i) => (
             <li
               key={`ol-${i}`}
-              style={{ color: colorIcon }}
+              style={{ color: receipt.colorIcon }}
               className="text-sm font-medium leading-relaxed">
               {item}
             </li>
@@ -76,7 +76,7 @@ export default function TermsSection({
       {paragraphsAfterList?.map((text, i) => (
         <p
           key={`after-${i}`}
-          style={{ color: colorIcon }}
+          style={{ color: receipt.colorIcon }}
           className="text-sm font-medium leading-relaxed">
           {text}
         </p>

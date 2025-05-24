@@ -9,33 +9,7 @@ import { FaXmark } from "react-icons/fa6";
 import { getActiveReceipt } from "@/config/receipts";
 import { hexToRgba } from "@/config/utils";
 
-const {
-  colorBoxIcon,
-  colorIcon,
-  colorPrimary,
-  colorSecondary,
-  popUpImage,
-  popUpImageAlt,
-  popUpP1,
-  popUpP2,
-  popUpP3,
-  popUpP4,
-  popUpP5,
-  popUpP6,
-  popUpP7,
-  popUpP8,
-  popUpP9,
-  popUpP10,
-  popUpP11,
-  popUpP12,
-  popUpTitle,
-  popUpUlLi1,
-  popUpUlLi2,
-  popUpUlLi3,
-  popUpUlLi4,
-  popUpUlLi5,
-  popUpUlLi6,
-} = getActiveReceipt();
+const { receipt } = getActiveReceipt();
 
 interface CoinPopUpProps {
   isOpen: boolean;
@@ -48,20 +22,20 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
   return (
     <div
       style={{
-        backgroundColor: hexToRgba(colorSecondary, 0.5),
+        backgroundColor: hexToRgba(receipt.colorSecondary, 0.5),
       }}
       className="fixed inset-0 flex items-center justify-center backdrop-blur-xs z-50">
       {/* Pop-up Box */}
       <div
         style={{
-          backgroundColor: colorPrimary,
+          backgroundColor: receipt.colorPrimary,
         }}
         className="rounded-2xl shadow-lg relative w-[89vw] h-[89vh] sm:w-[74vw] sm:h-[74vh] lg:w-[47vw] lg:h-[47vh] flex flex-col">
         {/* Close Button */}
         <button
           style={{
-            color: colorIcon,
-            backgroundColor: colorBoxIcon,
+            color: receipt.colorIcon,
+            backgroundColor: receipt.colorBoxIcon,
           }}
           className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer"
           onClick={onClose}>
@@ -72,123 +46,123 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
         <div className="p-6 overflow-y-auto flex-1">
           <h2
             style={{
-              color: colorSecondary,
+              color: receipt.colorSecondary,
             }}
             className="text-xl font-semibold text-left mb-2">
-            {popUpTitle}
+            {receipt.popUpTitle}
           </h2>
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP1}
+            {receipt.popUpP1}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP2}
+            {receipt.popUpP2}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP3}
+            {receipt.popUpP3}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP4}
+            {receipt.popUpP4}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP5}
+            {receipt.popUpP5}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP6}
+            {receipt.popUpP6}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP7}
+            {receipt.popUpP7}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP8}
+            {receipt.popUpP8}
           </p>
           <br />
           <ul
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            <li>{popUpUlLi1}</li>
-            <li>{popUpUlLi2}</li>
-            <li>{popUpUlLi3}</li>
-            <li>{popUpUlLi4}</li>
-            <li>{popUpUlLi5}</li>
-            <li>{popUpUlLi6}</li>
+            <li>{receipt.popUpUlLi1}</li>
+            <li>{receipt.popUpUlLi2}</li>
+            <li>{receipt.popUpUlLi3}</li>
+            <li>{receipt.popUpUlLi4}</li>
+            <li>{receipt.popUpUlLi5}</li>
+            <li>{receipt.popUpUlLi6}</li>
           </ul>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP9}
+            {receipt.popUpP9}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP10}
+            {receipt.popUpP10}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP11}
+            {receipt.popUpP11}
           </p>
           <br />
           <p
             style={{
-              color: colorIcon,
+              color: receipt.colorIcon,
             }}
             className="text-sm font-medium">
-            {popUpP12}
+            {receipt.popUpP12}
           </p>
           <br />
           <Image
-            src={popUpImage}
-            alt={popUpImageAlt}
+            src={receipt.popUpImage}
+            alt={receipt.popUpImageAlt}
             width={747}
             height={747}
             className="rounded-3xl w-full"

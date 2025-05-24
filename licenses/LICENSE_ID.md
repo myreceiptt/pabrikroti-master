@@ -10,6 +10,7 @@ Perangkat lunak ini beserta seluruh file, struktur, dokumentasi, dan konvensi pe
 ## 🟣 IZIN TERBATAS
 
 Izin penggunaan diberikan hanya untuk:
+
 - **Tujuan pendidikan**
 - **Terbatas untuk perempuan dan anak-anak**
 - **Dengan pendampingan resmi dari Prof. NOTA atau Prof. NOTA Inc.**
@@ -21,7 +22,8 @@ Perangkat lunak ini **tidak boleh dimodifikasi, didistribusikan ulang, disalin s
 ## 🚫 PELARANGAN PENGGUNAAN
 
 Setiap bentuk penggunaan lain **DILARANG KERAS**, termasuk namun tidak terbatas pada:
-- Rekayasa balik (*reverse engineering*), pengubahan kode, rebranding,
+
+- Rekayasa balik (_reverse engineering_), pengubahan kode, rebranding,
 - Penggunaan komersial, penjualan kembali, atau penggabungan ke sistem lain,
 - Penggunaan di platform publik atau privat yang tidak didampingi resmi.
 

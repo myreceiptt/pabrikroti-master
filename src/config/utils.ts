@@ -1,5 +1,16 @@
 // /src/config/utils.ts
 
+// Blockchain configurations
+import type { SupportedFTs, TokenMatamuPicek } from "@/config/contracts";
+import {
+  baseMainnet,
+  baseSepolia,
+  chain,
+  monadTestnet,
+  opMainnet,
+  shapeNetwork,
+} from "@/config/rantais";
+
 // convert hex to rgba
 export function hexToRgba(hex: string, alpha: number): string {
   const r = parseInt(hex.slice(1, 3), 16);
@@ -26,6 +37,54 @@ export function getCountdownString(
   const seconds = totalSeconds % 60;
 
   return `${days}d ${hours}h ${minutes}m ${seconds}s`;
+}
+
+// build the currency map from SupportedFTs
+export function buildCurrencyMapFromSupportedFTs(
+  supportedFTs: SupportedFTs
+): Record<string, { name: string; symbol: string; icon: string }> {
+  const map: Record<string, { name: string; symbol: string; icon: string }> =
+    {};
+
+  Object.values(supportedFTs).forEach((tokens: TokenMatamuPicek[]) => {
+    tokens.forEach((token) => {
+      const { address, name, symbol, icon } = token;
+      map[address.toLowerCase()] = { name, symbol, icon };
+    });
+  });
+
+  // Tambahkan native token Ether - ETH
+  if (
+    [baseMainnet.id, baseSepolia.id, opMainnet.id, shapeNetwork.id].includes(
+      chain.id
+    )
+  ) {
+    map["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] = {
+      name: "Ether",
+      symbol: "ETH",
+      icon: "/erc20-icons/eth.png",
+    };
+  }
+
+  // Tambahkan native token Monad - MON untuk Monad Testnet
+  if (chain.id === monadTestnet.id) {
+    map["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] = {
+      name: "Monad",
+      symbol: "MON",
+      icon: "/erc20-icons/mon.png",
+    };
+  }
+
+  // Default fallback jika chain.id tidak dikenali
+  if (!chain.id) {
+    map["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] = {
+      name: "Unknown FT",
+      symbol: "TOKEN",
+      icon: "/erc20-icons/nota.png",
+    };
+  }
+
+  return map;
 }
 
 // fetch eth price
