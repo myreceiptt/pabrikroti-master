@@ -86,6 +86,7 @@ export const myreceipt = {
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "NFT Indonesia", // layout,
   proLocale: "en-US", // layout,
+  proFavicon: "/favicon.ico", // layout,
   proImage: "https://ngelarasroso.id/preview-image.png", // layout,
   proLang: "en", // layout,
 

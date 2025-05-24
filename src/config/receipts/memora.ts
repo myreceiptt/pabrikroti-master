@@ -29,6 +29,7 @@ export const memora = {
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "Voyage.Co.Id", // layout,
   proLocale: "en-US", // layout,
+  proFavicon: "/memora/favicon.ico", // layout,
   proImage: "https://memora.voyage.co.id/memora/preview-image.png", // layout,
   proLang: "en", // layout,
 

@@ -30,6 +30,7 @@ export const leminerale = {
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "IGF-BPMI", // layout,
   proLocale: "id-ID", // layout,
+  proFavicon: "/leminerale/favicon.ico", // layout,
   proImage: "https://leminerale.istiqlal.or.id/leminerale/preview-image.png", // layout,
   proLang: "id", // layout,
 
