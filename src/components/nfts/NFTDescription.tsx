@@ -61,7 +61,7 @@ export default function NFTDescription({
             <>
               {receipt.nftMeMoRaTitle && (
                 <Link
-                  href={`https://memora.voyage.co.id/[chain-name]/[contract-address]/${id}`}
+                  href={`https://memora.endhonesa.com/[chain-name]/[contract-address]/${id}`}
                   title={receipt.nftMeMoRaTitle}
                   target="_blank"
                   rel="noopener noreferrer"

@@ -6,28 +6,9 @@
 import React from "react";
 
 // Components libraries
-import Footer from "@/components/sections/FooterSection";
-import Header from "@/components/sections/HeaderSection";
+import FeaturedCards from "@/components/contents/FeaturedCards";
+import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
-export default function Home() {
-  return (
-    <>
-      {/* Headersss */}
-      <Header />
-
-      {/* Content Section */}
-      <div className="flex flex-col items-center gap-8 px-4 md:px-20 py-8">
-        <main className="w-full max-w-3xl space-y-8">
-          {/* Title */}
-
-          {/* Policy Overview */}
-
-          {/* Divider */}
-        </main>
-      </div>
-
-      {/* Footersss */}
-      <Footer />
-    </>
-  );
+export default function PageHome() {
+  return <DynamicLoginPage ContentComponent={FeaturedCards} />;
 }

@@ -30,6 +30,7 @@ export const pabrikroti = {
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "Prof. NOTA Inc.", // layout,
   proLocale: "en-US", // layout,
+  proFavicon: "/roti/favicon.ico", // layout,
   proImage: "https://pabrikroti.endhonesa.com/roti/preview-image.png", // layout,
   proLang: "en", // layout,
 
@@ -64,7 +65,7 @@ export const pabrikroti = {
 
   // footer section - hide social icon by nulled the link
   copyRight: "Every stomach must be hungry.", // footer,
-  officiallyLicensed: "Officially hungry and satiated by", // footer,
+  officiallyLicensed: "Officially hungry and satisfied by", // footer,
   anchorPrivacy: "Privacy Policy", // footer,
   anchorTerms: "Terms of Service", // footer,
   footerPower: "/roti/images/footer-power.png", // footer,
@@ -101,7 +102,7 @@ export const pabrikroti = {
   featuredFree: "/roti/images/featured-free.png", // featured cards,
   freeTitle: "All Free Artisan Breads", // featured cards,
   featuredCoin: "/roti/images/featured-coin.png", // featured cards,
-  coinTitle: "All Packaged Breads", // featured cards,
+  coinTitle: "All Batch Breads", // featured cards,
   featuredAria: "Navigate to", // featured cards,
 
   // reusable loader section
@@ -161,7 +162,7 @@ export const pabrikroti = {
   nftFormBy: "by", // nft form, coin form,
   nftFormByName: `${entityAlias1}`, // nft form,
   nftFormEdition: "Slices of Loaf", // nft form,
-  nftFormOwned: "Swallowed", // nft form, coin form,
+  nftFormOwned: "Swallowed", // nft form,
   nftFormRefresh: "Refresh", // nft form, coin form,
   nftFormTunggu: "Baking. Be patient and wait.", // nft form, coin form,
   nftFormKirim: "Serving your artisan bread.", // nft form,
@@ -180,12 +181,12 @@ export const pabrikroti = {
 
   // coins list page
   coinsConsoleWarn: "canClaim failed for coinAddress:", // coins list, coin details,
-  coinsSetError: "Failed to fetch any packaged breads.", // coins list,
-  coinsMessage1: "No packaged breads", // coins list,
+  coinsSetError: "Failed to fetch any batch breads.", // coins list,
+  coinsMessage1: "No batch breads", // coins list,
   coinsMessage2:
-    "There are no packaged breads available right now. Please try again later or return to the home page.", // coins list,
-  coinsTitle1: "All", // coins list,
-  coinsTitle2: "Packaged Breads", // coins list,
+    "There are no batch breads available right now. Please try again later or return to the home page.", // coins list,
+  coinsTitle1: "All Swallowable", // coins list,
+  coinsTitle2: "Batch Breads", // coins list,
   coinsAria: "Refresh breads data.", // coins list,
 
   // coin lister section
@@ -193,20 +194,20 @@ export const pabrikroti = {
   coinNoAccess: "No Access", // coin lister, coin form,
   coinClaimed: "Swallowed", // coin lister, coin form,
   coinListerImage: "/roti/medias/batch-bread.png", // coin lister, coin form,
-  coinListerName: "A Packaged Bread", // coin lister, coin form,
+  coinListerName: "A Batch Bread", // coin lister, coin form,
   coinListerSupply: "Crumb of Batch:", // coin lister, coin details,
   coinListerOf: "of", // coin lister, coin form,
 
   // coin fallback page
-  coinFallMessage1: "Invalid address of the packaged breads.", // coin fallback,
+  coinFallMessage1: "Invalid address of the batch breads.", // coin fallback,
   coinFallMessage2:
-    "Please use a valid address of the packaged breads in the URL or return to the home page and start over.", // coin fallback,
+    "Please use a valid address of the batch breads in the URL or return to the home page and start over.", // coin fallback,
 
   // coin details page
-  coinSetError: "Failed to fetch the address of the packaged breads.", // coin details,
-  coinMessage1: "The address of the packaged breads not found.", // coin details,
+  coinSetError: "Failed to fetch the address of the batch breads.", // coin details,
+  coinMessage1: "The address of the batch breads not found.", // coin details,
   coinMessage2:
-    "The specified address of the packaged breads was not found. Please try again later or return to the home page.", // coin details,
+    "The specified address of the batch breads was not found. Please try again later or return to the home page.", // coin details,
   coinAccessTitle: "You don't have access!", // coin details,
 
   // coin access section
@@ -217,12 +218,14 @@ export const pabrikroti = {
 
   // coin form section
   coinFormSupply: "Crumb of Batch", // coin form,
-  coinFormKirim: "Serving your packaged bread.", // coin form,
-  coinFormSukses: "Packaged bread successfully served.", // coin form,
+  coinFormOwned: "Swallowed", // coin form,
+  coinFormOnChain: "On", // coin form,
+  coinFormKirim: "Serving your batch bread.", // coin form,
+  coinFormSukses: "Batch bread successfully served.", // coin form,
   coinFormPerWallet: "crumb of batch per bread eater.", // coin form,
 
   // coin description section
-  coinDescription: "Ethereum L2 $OiOi fungible tokens.", // coin description,
+  coinDescription: `Out of this, OiOi emerged—not just as a cheer but as a token, a trace of presence, a unit of remembered impact. An ERC-20 that didn't just measure transactions, but transformation.`, // coin description,
 
   // coin pop up section
   popUpTitle: "OiOi Token", // coin pop up,

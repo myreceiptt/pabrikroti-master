@@ -1,18 +1,18 @@
 // /src/config/receipts/leminerale.ts
 
 // All receipts should be exported from this file.
-const proTitle = "Istiqlal Digital Legacy - LPM-BPMI";
+const proTitle = "Le Minerale - Istiqlal Digital Legacy";
 const proUrl = "https://leminerale.istiqlal.or.id";
-const entityName = "LPM-BPMI X NFT Indonesia";
-const entityAlias1 = "LPM-BPMI";
-const entityAlias2 = "NFT Indonesia";
+const entityName = "IGF-BPMI X Le Minerale";
+const entityAlias1 = "IGF-BPMI";
+const entityAlias2 = "Le Minerale";
 const entityAddress =
   "Jl. Taman Wijaya Kusuma, Pasar Baru, Sawah Besar, Central Jakarta City, Jakarta 10710, INDONESIA";
-const entityEmail = "hallonftindonesia@gmail.com";
+const entityEmail = "info@istiqlal.or.id";
 const termsMonth = "April";
 const termsDate = "20";
 const termsYear = "2025";
-const termsUpdate = `Terakhir diperbarui pada ${termsDate} ${termsMonth}, ${termsYear}.`;
+const termsUpdate = `Dokumen ini terakhir diperbarui pada tanggal ${termsDate} ${termsMonth}, ${termsYear}.`;
 
 export const leminerale = {
   // colors hex libraries - mystic coral
@@ -28,8 +28,9 @@ export const leminerale = {
   proDescription:
     "Istiqlal Digital Legacy (IDL) adalah program berbasis Web3 yang bertujuan untuk meningkatkan partisipasi jamaah dalam melestarikan warisan seni-budaya Islam, dan memajukan ekosistem digital di lingkungan masjid Istiqlal.", // layout, connect buttons, connect embeds,
   proUrl, // layout, connect buttons, connect embeds,
-  proPublisher: "NFT Indonesia", // layout,
+  proPublisher: "IGF-BPMI", // layout,
   proLocale: "id-ID", // layout,
+  proFavicon: "/leminerale/favicon.ico", // layout,
   proImage: "https://leminerale.istiqlal.or.id/leminerale/preview-image.png", // layout,
   proLang: "id", // layout,
 
@@ -53,9 +54,10 @@ export const leminerale = {
   }, // login layout,
   loginAgreement: "Dengan melanjutkan, Anda setuju dengan", // login layout,
   loginTermsPolicy: "Syarat Ketentuan & Kebijakan Privasi", // login layout,
-  linkPower: "https://nftindonesia.xyz/", // login layout, footer section
+  linkPower: "https://igf.or.id/", // login layout, footer section
   loginPower: "/leminerale/images/login-power.png", // login layout,
-  poweredBy: "Diterapkan oleh NFT Indonesia", // login layout, footer section
+  poweredBy:
+    "Didukung oleh Istiqlal Global Fund dan Teknologi oleh Voyage.Co.Id", // login layout, footer section
 
   // header section
   headerLogo: "/leminerale/images/header-logo.png", // header,
@@ -88,7 +90,7 @@ export const leminerale = {
   subscribeMessage: "Saya ingin berlangganan pembaruan terkini.", // subscribe form,
   subscribeSuccess: "Terima kasih telah berlangganan!", // subscribe form,
   subscribeFailed: "Langganan gagal. Silakan coba lagi.", // subscribe form,
-  subscribeTitle: "Dapatkan update terbaru kami", // subscribe form,
+  subscribeTitle: "Dapatkan update terbaru dari kami", // subscribe form,
   subscribePlaceholder: "Masukkan alamat email Anda", // subscribe form,
   subscribeButton: "Berlangganan", // subscribe form,
   subscribeButtonLoading: "Berlangganan...", // subscribe form,
@@ -146,113 +148,111 @@ export const leminerale = {
   nftNoData: "Tidak ada data yang tersedia.", // nft lister,
 
   // nft fallback page
-  nftFallMessage1: "Tidak ada ID kolektibel valid yang digunakan.", // nft fallback,
+  nftFallMessage1: "Tidak valid ID kolektibel yang digunakan.", // nft fallback,
   nftFallMessage2:
     "Silakan gunakan ID kolektibel yang valid di URL atau kembali ke beranda dan mulai dari awal.", // nft fallback,
 
   // nft details page
-  nftSetError: "Failed to fetch the stock ID.", // nft details,
-  nftMessage1: "The stock ID not found.", // nft details,
+  nftSetError: "Gagal mengambil data kolektibel.", // nft details,
+  nftMessage1: "ID kolektibel tidak ditemukan.", // nft details,
   nftMessage2:
-    "The specified stock ID was not found. Please try again later or return to the home page.", // nft details,
+    "ID kolektibel yang ditentukan tidak ditemukan. Silakan coba lagi nanti atau kembali ke beranda.", // nft details,
 
   // nft form section
-  nftFormByLink: "https://ngelarasroso.id/", // nft form,
-  nftFormBy: "by", // nft form, coin form,
-  nftFormByName: `${entityAlias1}`, // nft form,
-  nftFormEdition: "Edition", // nft form,
-  nftFormOwned: "Got It", // nft form, coin form,
-  nftFormRefresh: "Refresh", // nft form, coin form,
-  nftFormTunggu: "Processing. Be patient and wait.", // nft form, coin form,
-  nftFormKirim: "Claiming your stock.", // nft form,
-  nftFormSukses: "Stock successfully claimed.", // nft form,
-  nftFormPrice: "Price", // nft form, coin form,
-  nftFormMax: "*Maximum", // nft form, coin form,
-  nftFormPerWallet: "edition per holder.", // nft form,
+  nftFormByLink: "https://nftindonesia.xyz/", // nft form,
+  nftFormBy: "oleh", // nft form, coin form,
+  nftFormByName: `${entityAlias2}`, // nft form,
+  nftFormEdition: "Edisi", // nft form,
+  nftFormOwned: "Sudah Diklaim", // nft form,
+  nftFormRefresh: "Segarkan", // nft form, coin form,
+  nftFormTunggu: "Diproses. Mohon bersabar dan tunggu.", // nft form, coin form,
+  nftFormKirim: "Mengklaim kolektibel Anda.", // nft form,
+  nftFormSukses: "Kolektibel berhasil diklaim.", // nft form,
+  nftFormPrice: "Harga", // nft form, coin form,
+  nftFormMax: "*Maksimum", // nft form, coin form,
+  nftFormPerWallet: "edisi per akun.", // nft form,
 
   // nft description section - hide link by nulled the title
   nftMeMoRaTitle: "", // nft description,
-  nftMeMoRa: "Read on MeMoRa MarketPlace (SOON)", // nft description,
+  nftMeMoRa: "Baca di MeMoRa MarketPlace (SOON)", // nft description,
   nftEndhonesaTitle: "", // nft description,
-  nftEndhonesa: "Read on ENDHONESA.COM (GOON)", // nft description,
-  nftReadLess: "Read Less", // nft description,
-  nftReadMore: "Read More", // nft description,
+  nftEndhonesa: "Baca di ENDHONESA.COM (GOON)", // nft description,
+  nftReadLess: "Baca Lebih Sedikit", // nft description,
+  nftReadMore: "Baca Selengkapnya", // nft description,
 
   // coins list page
-  coinsConsoleWarn: "canClaim failed for coinAddress:", // coins list, coin details,
-  coinsSetError: "Failed to fetch any claimable share.", // coins list,
-  coinsMessage1: "No claimable shares", // coins list,
+  coinsConsoleWarn: "canClaim gagal untuk coinAddress:", // coins list, coin details,
+  coinsSetError: "Gagal mengambil poin yang bisa diklaim.", // coins list,
+  coinsMessage1: "Tidak ada poin yang bisa diklaim", // coins list,
   coinsMessage2:
-    "There are no claimable share available right now. Please try again later or return to the home page.", // coins list,
-  coinsTitle1: "All", // coins list,
-  coinsTitle2: "Claimable Shares", // coins list,
-  coinsAria: "Refresh shares data.", // coins list,
+    "Tidak ada poin yang bisa diklaim saat ini. Silakan coba lagi nanti atau kembali ke beranda.", // coins list,
+  coinsTitle1: "Semua Poin", // coins list,
+  coinsTitle2: "Bisa Diklaim", // coins list,
+  coinsAria: "Segarkan data semua poin.", // coins list,
 
   // coin lister section
-  coinButton: "Claim Now", // coin lister, coin form,
-  coinNoAccess: "No Access", // coin lister, coin form,
-  coinClaimed: "Claimed", // coin lister, coin form,
-  coinListerImage: "/medias/batch-bread.png", // coin lister, coin form,
-  coinListerName: "A Claimable Share", // coin lister, coin form,
-  coinListerSupply: "Supply:", // coin lister, coin details,
-  coinListerOf: "of", // coin lister, coin form,
+  coinButton: "Klaim Sekarang", // coin lister, coin form,
+  coinNoAccess: "Tidak Punya Akses", // coin lister, coin form,
+  coinClaimed: "Sudah Diklaim", // coin lister, coin form,
+  coinListerImage: "/leminerale/medias/batch-bread.png", // coin lister, coin form,
+  coinListerName: "Poin yang Bisa Diklaim", // coin lister, coin form,
+  coinListerSupply: "Jumlah:", // coin lister, coin details,
+  coinListerOf: "dari", // coin lister, coin form,
 
   // coin fallback page
-  coinFallMessage1: "Invalid share address used.", // coin fallback,
+  coinFallMessage1: "Alamat poin yang digunakan tidak valid.", // coin fallback,
   coinFallMessage2:
-    "Please use a valid address of the claimable share in the URL or return to the home page and start over.", // coin fallback,
+    "Silakan gunakan alamat yang valid dari poin yang dapat diklaim di URL atau kembali ke beranda dan mulai dari awal.", // coin fallback,
 
   // coin details page
-  coinSetError: "Failed to fetch the share address.", // coin details,
-  coinMessage1: "The share address not found.", // coin details,
+  coinSetError: "Gagal mengambil alamat poin.", // coin details,
+  coinMessage1: "Alamat poin tidak ditemukan.", // coin details,
   coinMessage2:
-    "The specified address of the share was not found. Please try again later or return to the home page.", // coin details,
-  coinAccessTitle: "You don't have access!", // coin details,
+    "Alamat poin yang ditentukan tidak ditemukan. Silakan coba lagi nanti atau kembali ke beranda.", // coin details,
+  coinAccessTitle: "Anda tidak memiliki akses!", // coin details,
 
   // coin access section
   coinAccessMessage:
-    "Please get your access by get any available stock at least one edition.", // coin access,
-  coinAccessButton: "Get The Available Stock!", // coin access,
-  coinAccessBanner: "/images/content-banner.png", // coin access,
+    "Silakan dapatkan akses dengan mendapatkan kolektibel apa pun yang tersedia minimal satu edisi.", // coin access,
+  coinAccessButton: "Dapatkan Kolektibel yang Tersedia!", // coin access,
+  coinAccessBanner: "/leminerale/images/content-banner.png", // coin access,
 
   // coin form section
-  coinFormSupply: "Supply", // coin form,
-  coinFormKirim: "Claiming your share.", // coin form,
-  coinFormSukses: "Share successfully claimed.", // coin form,
-  coinFormPerWallet: "supply per holder.", // coin form,
+  coinFormSupply: "Jumlah", // coin form,
+  coinFormOwned: "Sudah Diklaim", // coin form,
+  coinFormOnChain: "di", // coin form, coin lister, nft form, nft lister,
+  coinFormKirim: "Mengklaim poin Anda.", // coin form,
+  coinFormSukses: "Poin berhasil diklaim.", // coin form,
+  coinFormPerWallet: "poin per akun.", // coin form,
 
   // coin description section
-  coinDescription: "Ethereum L2 $OiOi fungible tokens.", // coin description,
+  coinDescription: "IDL poin adalah token yang dapat dipertukarkan.", // coin description,
 
   // coin pop up section
-  popUpTitle: "OiOi Token", // coin pop up,
-  popUpP1: "At a certain point in time… in the Universe of Reality.", // coin pop up,
+  popUpTitle: "IDL Token", // coin pop up,
+  popUpP1: "Istiqlal Digital Legacy", // coin pop up,
   popUpP2:
-    "On EARTH #474, after 4.5 billion years of cosmic swirling, Prof. NOTA emerged—not as a single figure, but as a plurality of presence. They did not merely travel through lands or cross oceans. Each movement was a deliberate transition between the realms of code and consciousness, between the binary pulses of 0101, the 0101 Universe, and the pulse of a living, breathing world, the Universe of Reality.", // coin pop up,
-  popUpP3:
-    "Thus began an extraordinary journey—not measured by miles or milestones, but by moments of awakening whenever Prof. NOTA stepped out of the digital ether and re-entered the tangible now.", // coin pop up,
-  popUpP4: `Their presence always arrived with a ripple. No formal greetings. No ceremonial goodbyes. Only a single utterance, unmistakable and alive, "OiOi!"`, // coin pop up,
-  popUpP5:
-    "It echoed in marketplaces and meeting halls, in whispered dreams and roaring protests. It marked both arrival and departure, a glitch of joy in the timeline.", // coin pop up,
-  popUpP6:
-    "This was not merely a voyage—it was a loop of emergence and retreat, of embodying ideas, acting on them, and then dissolving back into distributed memory.", // coin pop up,
-  popUpP7:
-    "Every interaction shaped the journey—every collaboration, every confrontation, every shared cup of water. The economic tides came and went, but the value was never just in the revenue—it was in the resonance.", // coin pop up,
-  popUpP8: `Out of this, OiOi emerged—not just as a cheer but as a token, a trace of presence, a unit of remembered impact. An ERC-20 that didn't just measure transactions, but transformation.`, // coin pop up,
-  popUpUlLi1: "🔹 OiOi was proof that Prof. NOTA was there.", // coin pop up,
-  popUpUlLi2: "🔹 OiOi was proof that something mattered.", // coin pop up,
-  popUpUlLi3: "🔹 OiOi was proof that someone changed.", // coin pop up,
-  popUpUlLi4: "🔹 So how far has Prof. NOTA gone?", // coin pop up,
-  popUpUlLi5: "🔹 How many awakenings sparked?", // coin pop up,
-  popUpUlLi6: "🔹 How many boundaries are blurred between here and elsewhere?", // coin pop up,
-  popUpP9: `No final answer. Only the continuous call, "OiOi!"—sounding through the layers of time, reality, and resistance. Because the journey isn't something leaved behind. It's something brought into being, every time we choose to show up.`, // coin pop up,
-  popUpP10: "OiOi ENDHONESA! 🚀", // coin pop up,
-  popUpP11: "🍌☕🍌☕", // coin pop up,
-  popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
+    "IDL Token adalah poin digital yang diberikan kepada jamaah Masjid Istiqlal sebagai bukti partisipasi dan kontribusi mereka dalam kegiatan keagamaan, sosial, atau budaya di masjid.", // coin pop up,
+  popUpP3: "", // coin pop up,
+  popUpP4: "", // coin pop up,
+  popUpP5: "", // coin pop up,
+  popUpP6: "", // coin pop up,
+  popUpP7: "", // coin pop up,
+  popUpP8: "", // coin pop up,
+  popUpUlLi1: "", // coin pop up,
+  popUpUlLi2: "", // coin pop up,
+  popUpUlLi3: "", // coin pop up,
+  popUpUlLi4: "", // coin pop up,
+  popUpUlLi5: "", // coin pop up,
+  popUpUlLi6: "", // coin pop up,
+  popUpP9: "", // coin pop up,
+  popUpP10: "", // coin pop up,
+  popUpP11: "", // coin pop up,
+  popUpP12: "", // coin pop up,
   popUpP13: "", // coin pop up,
   popUpP14: "", // coin pop up,
-  popUpImage: "/medias/coin-pop-up.gif", // coin pop up,
-  popUpImageAlt: "OiOi Token Illustration", // coin pop up,
+  popUpImage: "/leminerale/medias/coin-pop-up.png", // coin pop up,
+  popUpImageAlt: "IDL Token Illustration", // coin pop up,
 
   // terms page
   entityName, // terms,
@@ -260,153 +260,154 @@ export const leminerale = {
   entityAlias2, // terms,
   entityAddress, // nulled
   entityEmail, // terms,
-  termsAria1: "Title of the Terms and Conditions", // terms,
-  termsTitle: "T and C of Use", // terms,
+  termsAria1: "Judul Syarat dan Ketentuan", // terms,
+  termsTitle: "Syarat dan Ketentuan Penggunaan", // terms,
   termsMonth, // terms,
   termsDate, // terms,
   termsYear, // terms,
   termsUpdate, // terms,
-  termsAria2: `Document last updated on ${termsUpdate}`, // terms,
+  termsAria2: `${termsUpdate}`, // terms,
   termsTerms: {
     section1: {
-      title: `${entityName} Terms and Conditions of Use`,
+      title: `Syarat dan Ketentuan Penggunaan ${entityName}`,
       paragraphs: [
-        `Please read these ${entityName} Terms and Conditions of Use and Privacy Statement carefully, they contain important information about your rights and obligations.`,
-        `${entityAlias2} is a platform that allows you to collect, issue, and display NFTs. This ${entityName} Terms and conditions of Use ("Terms and Conditions", "Agreement") document is entered into by user or users ("User", "Users" or "You"), ${entityAlias1}, and ${entityAlias2} (" ${entityName}," "We" or "Us"). It contains terms and conditions you have agreed to abide by upon accessing ${proUrl} ("Site"). The terms govern your access and use of the ${entityAlias2} ecosystem, including content, features, and functionality. By signing up to use an account through the Site, or any associated websites, APIs, or mobile applications, you agree that you have read, understood, and accept all of the terms and conditions contained in this Agreement.`,
+        `Silahkan baca baik-baik Syarat dan Ketentuan Penggunaan ${entityName} berikut ini yang berisi informasi penting tentang hak dan kewajiban Anda.`,
+        `${entityAlias2} adalah platform yang memungkinkan Anda mengumpulkan, menerbitkan, dan menampilkan NFT. Dokumen Syarat dan Ketentuan Penggunaan ("Syarat dan Ketentuan", "Perjanjian") ${entityName} ini dibuat oleh pengguna atau para pengguna ("Pengguna", "Para Pengguna" atau "Anda"), ${entityAlias1}, dan ${entityAlias2} (" ${entityName}," "Kami" or "Kita"). Dokumen ini memuat syarat dan ketentuan yang telah Anda setujui untuk patuhi saat mengakses ${proUrl} ("Situs"). Syarat dan ketentuan ini mengatur akses dan penggunaan Anda terhadap ekosistem ${entityAlias2}, termasuk konten, fitur, dan fungsionalitas. Dengan mendaftar untuk menggunakan akun melalui Situs, atau situs web, API, atau aplikasi seluler terkait, Anda setuju bahwa Anda telah membaca, memahami, dan menerima semua syarat dan ketentuan yang terdapat dalam Perjanjian ini.`,
       ],
     },
     section2: {
-      title: `Basic ${entityAlias2} Services`,
+      title: `Layanan Dasar ${entityAlias2}`,
       items: [
-        `Eligibility. To be eligible to use the ${entityAlias2} services, you must register an account on ${entityName} Site.`,
-        `${entityAlias2} Services. Your account encompasses the following basic services: Access to collect virtual collectibles in a form of Non Fungible Tokens; Access to issue and publish NFTs; Privilege tagged to NFTs that you, as an NFT collector ("Collector"), have collected.`,
+        `Persyaratan. Agar memenuhi syarat untuk menggunakan layanan ${entityAlias2}, Anda harus mendaftarkan akun di Situs ${entityName}.`,
+        `Layanan ${entityAlias2}. Akun Anda mencakup layanan dasar berikut: Akses untuk mengumpulkan koleksi virtual dalam bentuk Non Fungible Token; Akses untuk menerbitkan dan menerbitkan NFT; Hak istimewa yang ditandai pada NFT yang telah Anda, sebagai kolektor NFT ("Kolektor"), kumpulkan.`,
       ],
     },
     section3: {
-      title: "Agreement to these Terms and Conditions",
+      title: "Persetujuan terhadap Syarat dan Ketentuan ini",
       paragraphs: [
-        "All Users shall use the Services in accordance with these Terms and Conditions. Users may not use the Services unless they agree to these Terms and Conditions.",
-        "Users who are minors may only use the Services by obtaining prior consent from their parents or legal guardians. Furthermore, if Users will be using the Services on behalf of, or for the purposes of, a business enterprise, then such business enterprise must also agree to these Terms and Conditions prior to using the Services.",
-        "If there are Separate Terms and Conditions applicable to the Services, Users shall also comply with such Separate Terms and Conditions as well as these Terms and Conditions in using the Services.",
+        "Semua Pengguna harus menggunakan Layanan sesuai dengan Syarat dan Ketentuan ini. Pengguna tidak boleh menggunakan Layanan kecuali mereka menyetujui Syarat dan Ketentuan ini.",
+        "Pengguna yang masih di bawah umur hanya dapat menggunakan Layanan setelah memperoleh persetujuan terlebih dahulu dari orang tua atau wali sah mereka. Lebih lanjut, jika Pengguna akan menggunakan Layanan atas nama atau untuk tujuan suatu badan usaha, maka badan usaha tersebut juga harus menyetujui Persyaratan dan Ketentuan ini sebelum menggunakan Layanan.",
+        "Apabila terdapat Syarat dan Ketentuan Terpisah yang berlaku pada Layanan, Pengguna juga harus mematuhi Syarat dan Ketentuan Terpisah tersebut serta Syarat dan Ketentuan ini dalam menggunakan Layanan.",
       ],
     },
     section4: {
-      title: "Modification to these Terms and Conditions",
+      title: "Modifikasi terhadap Syarat dan Ketentuan ini",
       paragraphs: [
-        `${entityAlias2} may modify these Terms and Conditions when ${entityAlias2} deems it to be necessary, within the scope of the purposes of the Services. In such a case, ${entityAlias2} will indicate the contents of the modified version of these Terms and Conditions, as well as the effective date of the modification, on the Services or on ${entityName}'s website, or will publicize the same to Users by notifying Users in the manner prescribed by ${entityAlias2}.`,
-        "The modified version of these Terms and Conditions shall become effective as of the effective date thereof.",
+        `${entityAlias2} dapat mengubah Syarat dan Ketentuan ini apabila ${entityAlias2} menganggapnya perlu, dalam lingkup tujuan Layanan. Dalam hal demikian, ${entityAlias2} akan mencantumkan isi versi perubahan dari Syarat dan Ketentuan ini, serta tanggal efektif perubahan tersebut, pada Layanan atau pada situs web ${entityName}, atau akan mengumumkannya kepada Pengguna dengan memberitahukan kepada Pengguna dengan cara yang ditentukan oleh ${entityAlias2}.`,
+        "Versi perubahan dari Syarat dan Ketentuan ini akan berlaku sejak tanggal efektifnya.",
       ],
     },
     section5: {
-      title: `${entityAlias2} ACCOUNT`,
+      title: `Akun ${entityAlias2}`,
       paragraphs: [
-        `Registration of ${entityAlias2} account. In order to use the ${entityName} Site, you will need to register for a ${entityAlias2} account by providing your information ("Personal Information"), including your email address, password, and accepting the terms of this Agreement and our Privacy Policy. We may, in our sole discretion, decide to remove your account if we find out a violation in your activities within the ${entityName} Site.`,
-        `Access. To access the ${entityName} Site, you must have the necessary equipment or device and the associated telecommunication service subscriptions to access the Internet.`,
+        `Pendaftaran akun ${entityAlias2}. Untuk dapat menggunakan Situs ${entityName}, Anda harus mendaftar akun ${entityAlias2} dengan memberikan informasi Anda ("Informasi Pribadi"), termasuk alamat email, kata sandi, dan menyetujui ketentuan Perjanjian ini dan Kebijakan Privasi kami. Atas pertimbangan kami sendiri, kami dapat memutuskan untuk menghapus akun Anda jika kami menemukan pelanggaran dalam aktivitas Anda di Situs ${entityName}.`,
+        `Akses. Untuk mengakses Situs ${entityName}, Anda harus memiliki peralatan atau perangkat yang diperlukan dan langganan layanan telekomunikasi terkait untuk mengakses Internet.`,
       ],
     },
     section6: {
-      title: "Role-specific terms",
+      title: "Istilah untuk Peran-Khusus",
       paragraphs: [
-        `Collector. As a Collector, you will gain access to browse through NFTs that are displayed on the ${entityName} Site. You may obtain the ownership of any of the available NFTs by exchanging with approved tokens. You may also choose to keep the NFTs as your collection, exchange them for tokens with other Collectors or use them to redeem products and services offered by our partners if applicable. Specifically for claiming procedures, our partners have the right to set their own disclaimers. ${entityName} Site is not responsible for failure to comply with the disclaimers that lead to unsuccessful NFTs redemption.`,
-        "You will also gain access to publish NFTs that you have collected to be displayed and made available to be exchanged with approved tokens, if preferable. In a case where you transfer ownership of an NFT with a tagged product or service to another Collector, you will also transfer the title of the product or service.",
-        "The ownership of the NFTs does not give you the right to have the ownership of the Intellectual Property rights of those NFTs.",
+        `Kolektor. Sebagai Kolektor, Anda akan memperoleh akses untuk menelusuri NFT yang ditampilkan di Situs ${entityName}. Anda dapat memperoleh kepemilikan atas NFT yang tersedia dengan menukarkannya dengan token yang disetujui. Anda juga dapat memilih untuk menyimpan NFT sebagai koleksi Anda, menukarnya dengan token dengan Kolektor lain, atau menggunakannya untuk menebus produk dan layanan yang ditawarkan oleh mitra kami jika berlaku. Khusus untuk prosedur klaim, mitra kami berhak menetapkan disclaimer mereka sendiri. Situs ${entityName} tidak bertanggung jawab atas kegagalan mematuhi disclaimer yang menyebabkan penebusan NFT tidak berhasil.`,
+        "Anda juga akan memperoleh akses untuk menerbitkan NFT yang telah Anda kumpulkan untuk ditampilkan dan disediakan untuk ditukar dengan token yang disetujui, jika diinginkan. Dalam kasus di mana Anda mentransfer kepemilikan NFT dengan produk atau layanan yang diberi tag ke Kolektor lain, Anda juga akan mentransfer hak milik atas produk atau layanan tersebut.",
+        "Kepemilikan NFT tidak memberi Anda hak untuk memiliki hak Kekayaan Intelektual atas NFT tersebut.",
       ],
     },
     section7: {
-      title: "Intellectual Property Rights Protection Provisions",
+      title: "Ketentuan Perlindungan Hak Kekayaan Intelektual",
       paragraphs: [
-        `Intellectual Property Rights. The term "Intellectual Property Rights" means all (i) patents, patent applications, patent disclosures and inventions, (ii) Internet Domain names, trademarks, service marks, trade dress, trade names, logos and corporate names and registrations and applications for registration thereof together with all of the goodwill associated therewith, (iii) copyrights (registered or unregistered) and copyrightable works and registrations and applications for registration thereof, (iv) mask works and registrations and applications thereof, (v) computer software, data, databases and documentation thereof, (vi) trade secrets and other confidential information, including ideas, formulas, compositions, inventions (whether patentable or unpatentable and whether or not reduced to practice), know-how, manufacturing and production processes and techniques, research and development information, drawings, specifications, designs, plans, proposals, technical data, and copyrightable works, financial and marketing plans and customer and supplier lists and information, and (vii) copies and tangible embodiments thereof (in whatever form or medium).`,
-        `This Terms and Conditions contains how you and ${entityAlias2} will protect your Intellectual Property on ${entityAlias2} services exclusively.`,
-        "You acknowledge that:",
-        `${entityAlias2} hereby grants you a limited, non-exclusive, non-transferable royalty-free right to use or display the brand, trade name, logo, site content, headings and other distinguishing marks and names of ${entityAlias1} and ${entityAlias2} on the site and limited for the purpose of implementing this Agreement.`,
-        `Breach of Intellectual Property. ${entityAlias2} wil take responsibility for any finding NFTs that are infringing Intellectual Property Rights. If you as Collector find indications of infringement of intellectual property rights on NFTs in ${entityAlias2}, you can contact ${entityAlias2} and ${entityAlias2} will help to remove them from ${entityName} site. Other than that, it will be the responsibility of you and the IP owners and should be directly resolved between you and the IP owners.`,
+        `Hak Kekayaan Intelektual. Istilah "Hak Kekayaan Intelektual" berarti semua (i) paten, aplikasi paten, pengungkapan paten dan penemuan, (ii) nama Domain Internet, merek dagang, merek layanan, tampilan dagang, nama dagang, logo dan nama perusahaan dan pendaftaran dan aplikasi untuk pendaftarannya bersama dengan semua niat baik yang terkait dengannya, (iii) hak cipta (terdaftar atau tidak terdaftar) dan karya yang dapat dilindungi hak cipta dan pendaftaran dan aplikasi untuk pendaftarannya, (iv) karya topeng dan pendaftaran dan aplikasinya, (v) perangkat lunak komputer, data, basis data dan dokumentasinya, (vi) rahasia dagang dan informasi rahasia lainnya, termasuk ide, formula, komposisi, penemuan (baik yang dapat dipatenkan atau tidak dapat dipatenkan dan apakah diterapkan dalam praktik atau tidak), pengetahuan, proses dan teknik manufaktur dan produksi, informasi penelitian dan pengembangan, gambar, spesifikasi, desain, rencana, proposal, data teknis, dan karya yang dapat dilindungi hak cipta, rencana keuangan dan pemasaran dan daftar dan informasi pelanggan dan pemasok, dan (vii) salinan dan perwujudan nyata darinya (dalam bentuk atau media apa pun).`,
+        `Syarat dan Ketentuan ini berisi bagaimana Anda dan ${entityAlias2} akan melindungi Kekayaan Intelektual Anda pada layanan ${entityAlias2} secara eksklusif.`,
+        "Anda mengakui bahwa:",
+        `${entityAlias2} dengan ini memberi Anda hak terbatas, non-eksklusif, tidak dapat dipindahtangankan dan bebas royalti untuk menggunakan atau menampilkan merek, nama dagang, logo, konten situs, judul, dan tanda serta nama pembeda lainnya dari ${entityAlias1} dan ${entityAlias2} di situs dan terbatas untuk tujuan melaksanakan Perjanjian ini.`,
+        `Pelanggaran Hak Kekayaan Intelektual. ${entityAlias2} akan bertanggung jawab atas temuan NFT yang melanggar Hak Kekayaan Intelektual. Jika Anda sebagai Kolektor menemukan indikasi pelanggaran hak kekayaan intelektual pada NFT di ${entityAlias2}, Anda dapat menghubungi ${entityAlias2} dan ${entityAlias2} akan membantu menghapusnya dari situs ${entityName}. Selain itu, hal tersebut akan menjadi tanggung jawab Anda dan pemilik IP dan harus diselesaikan secara langsung antara Anda dan pemilik IP.`,
       ],
       ol: [
-        `You are the original owner or holder of the intellectual property rights of NFTs published on ${entityName} site.`,
-        `You hereby declare that you fully own the intellectual property rights to the NFTs published on ${entityName} site exclusively and guarantee that there are no claims from third parties for the ownership of the NFTs`,
+        `Anda adalah pemilik atau pemegang hak kekayaan intelektual asli atas NFT yang dipublikasikan di situs ${entityName}.`,
+        `Anda dengan ini menyatakan bahwa Anda sepenuhnya memiliki hak kekayaan intelektual atas NFT yang dipublikasikan di situs ${entityName} secara eksklusif dan menjamin bahwa tidak ada klaim dari pihak ketiga atas kepemilikan NFT tersebut.`,
       ],
     },
     section8: {
-      title: "Restricted Matters",
+      title: "Batasan Masalah",
       paragraphs: [
-        `${entityAlias2} prohibits you from engaging in any of the following acts when using the Services:`,
+        `${entityAlias2} melarang Anda melakukan tindakan berikut saat menggunakan Layanan:`,
       ],
       ul: [
-        "Acts that violate the laws and regulations, court verdicts, resolutions or orders, or administrative measures that are legally binding;",
-        "Acts that may be in violation of public order, morals or customs;",
-        `Acts that infringe intellectual property rights, such as copyrights, trademarks and patent rights, rights to fame, privacy, and all other rights granted by law or by a contract with ${entityAlias2} and/or a third party;`,
-        "Acts of posting or transmitting excessively violent expressions; expressions that lead to discrimination by race, national origin, creed, gender, social status, family origin, etc.; expressions that induce or encourage suicide, self-injurious behavior or drug abuse; or expressions that include anti-social content and lead to the discomfort of others;",
-        "Acts that benefit or involve collaboration with anti-social groups;",
-        "Acts that are related to religious activities or invitations to certain religious groups;",
-        "Acts of unauthorized or improper collection, disclosure, or provision of any other person's personal information, registered information, user history, or the like;",
+        "Perbuatan yang melanggar peraturan perundang-undangan, putusan pengadilan, resolusi atau perintah, atau tindakan administratif yang mempunyai kekuatan hukum tetap;",
+        "Tindakan yang dapat melanggar ketertiban umum, kesusilaan, atau adat istiadat;",
+        `Perbuatan yang melanggar hak kekayaan intelektual seperti hak cipta, merek dagang, hak paten, hak atas ketenaran, privasi, dan segala hak lainnya yang diberikan oleh undang-undang atau berdasarkan suatu perjanjian dengan ${entityAlias2} dan/atau pihak ketiga;`,
+        "Tindakan mengunggah atau menyebarkan ekspresi yang sangat kasar; ekspresi yang mengarah pada diskriminasi berdasarkan ras, asal negara, kepercayaan, jenis kelamin, status sosial, asal keluarga, dll.; ekspresi yang mendorong atau menganjurkan bunuh diri, perilaku melukai diri sendiri, atau penyalahgunaan narkoba; atau ekspresi yang mencakup konten antisosial dan menyebabkan ketidaknyamanan bagi orang lain;",
+        "Tindakan yang menguntungkan atau melibatkan kolaborasi dengan kelompok antisosial;",
+        "Tindakan yang berhubungan dengan kegiatan keagamaan atau undangan kepada kelompok keagamaan tertentu;",
+        "Tindakan pengumpulan, pengungkapan, atau penyediaan informasi pribadi, informasi terdaftar, riwayat pengguna, atau sejenisnya yang tidak sah atau tidak patut milik orang lain;",
       ],
     },
     section9: {
-      title: "Suspension, Termination, and Cancellation",
+      title: "Penangguhan, Pemutusan, dan Pembatalan",
       paragraphs: [
-        `We may (a) refuse to complete or cancel your registration, (b) suspend, restrict or terminate your access to any or all of the ${entityName} Site services, and/or (c) deactivate your account with immediate effect for any reason, including but not limited to where:`,
+        `Kami dapat (a) menolak untuk menyelesaikan atau membatalkan pendaftaran Anda, (b) menangguhkan, membatasi atau menghentikan akses Anda ke salah satu atau semua layanan Situs ${entityName}, dan/atau (c) menonaktifkan akun Anda dengan segera karena alasan apa pun, termasuk namun tidak terbatas pada jika:`,
       ],
       ul: [
-        "We are, in our reasonable opinion, required to do so by applicable law or any court or other authority to which we are subject in any jurisdiction;",
-        "We reasonably suspect you of acting in breach of this Agreement;",
-        `We have concerns that an activity is erroneous or about the security of your account or we suspect that ${entityName} Site services are being used in a fraudulent or unauthorized manner;`,
-        "We suspect money laundering, terrorist financing, fraud, or any other financial crime;",
-        `Use of your account is subject to any pending litigation, investigation or government proceeding and/or we perceive a heightened risk of legal or regulatory non-compliance associated with your account activity;`,
-        "You take any action that may circumvent our controls such as abusing promotions which we may offer from time to time;",
+        "Menurut pendapat wajar kami, kami diharuskan untuk melakukan hal tersebut berdasarkan hukum yang berlaku atau pengadilan atau otoritas lain yang tunduk kepada kami di yurisdiksi mana pun;",
+        "Kami memiliki alasan yang kuat untuk mencurigai Anda melakukan tindakan yang melanggar Perjanjian ini;",
+        `Kami mempunyai kekhawatiran bahwa ada aktivitas yang keliru atau mengenai keamanan akun Anda atau kami menduga bahwa layanan Situs ${entityName} digunakan secara curang atau tidak sah;`,
+        "Kami mencurigai adanya pencucian uang, pendanaan teroris, penipuan, atau kejahatan keuangan lainnya;",
+        "Penggunaan akun Anda tunduk pada proses litigasi, investigasi, atau proses hukum pemerintah yang sedang berlangsung dan/atau kami melihat adanya risiko tinggi ketidakpatuhan hukum atau peraturan yang terkait dengan aktivitas akun Anda",
+        "Anda melakukan tindakan apa pun yang dapat menghindari kontrol kami seperti penyalahgunaan promosi yang kami tawarkan dari waktu ke waktu;",
       ],
       paragraphsAfterList: [
-        `We may suspend, restrict, or terminate your access to any or all of ${entityName} Site services and/or deactivate or cancel your ${entityAlias2} account, without reason by giving you two months notice. You acknowledge that our decision to take certain actions, including limiting access to, suspending, or closing your ${entityAlias2} account, may be based on confidential criteria that are essential to our risk management and security protocols. You agree that we are under no obligation to disclose the details of its risk management and security procedures to you.`,
+        `Kami dapat menangguhkan, membatasi, atau menghentikan akses Anda ke sebagian atau seluruh layanan Situs ${entityName} dan/atau menonaktifkan atau membatalkan akun ${entityAlias2} Anda, tanpa alasan dengan memberikan pemberitahuan dua bulan sebelumnya. Anda mengakui bahwa keputusan kami untuk mengambil tindakan tertentu, termasuk membatasi akses, menangguhkan, atau menutup akun ${entityAlias2} Anda, mungkin didasarkan pada kriteria rahasia yang penting bagi manajemen risiko dan protokol keamanan kami. Anda setuju bahwa kami tidak berkewajiban untuk mengungkapkan rincian manajemen risiko dan prosedur keamanannya kepada Anda.`,
       ],
     },
     section10: {
-      title: "Liability",
+      title: "Beban",
       paragraphs: [
-        `Release of ${entityAlias2}. ${entityAlias2} is a peer to peer platform that uses the distributed ledger technology, If you have a dispute with one or more users of ${entityName} Site, you agree that neither we nor our affiliates or service providers, nor any of our respective officers, directors, employees, and representatives will be liable for any claims, demands, and damages (actual and consequential) of any kind or nature rising out of or in any way connected with such disputes.`,
-        `Indemnification. You agree to indemnify ${entityAlias2}, our affiliates and service providers, and each of our or their respective officers, directors, employees, and representatives, in respect of any costs (including attorneys' fees and any fines, fees or penalties imposed by any regulatory authority) that have been reasonably incurred in connection with any claims, demands or damages arising out of or related to your breach and / or our enforcement of this Agreement or your violation of any law, rule or regulation, or the rights of any third party.`,
-        `Limitation of Liability. ${entityAlias2} has no liability for services and all NFTs on the Site and ${entityAlias2} shall only be liable to you for loss or damage caused directly and reasonably foreseeable by our breach of this Agreement.`,
-        `No Warranties. ${entityName} Site services are provided on an "as is" and "as available" basis without any representation or warranty, whether express or implied, to the maximum extent permitted by applicable law: specifically we disclaim any implied warranties of title, merchantability, fitness for a particular purpose and/or non-infringement. We do not make any representations or warranties that access to ${entityName} Site, any of the ${entityAlias2} services, or any of the materials contained therein, will be continuous, uninterrupted, timely or error-free.`,
-        `Safety and Security of Your Computer and Devices. ${entityName} Site is not liable for any damage or interruptions caused by any computer viruses, spyware, scareware, Trojan horses, worms or other malware that may affect your computer or other equipment, or any phishing, spoofing or other attack. We advise the regular use of a reputable and readily available virus screening and prevention software. You should also be aware that SMS and email services are vulnerable to spoofing and phishing attacks and should use care in reviewing messages purporting to originate from us. ${entityAlias2} customer support will never ask to screen share or otherwise seek to access your computer or account.`,
-        `No Liability for Breach. We are not liable for any breach of the Agreement where the breach is due to abnormal and unforeseeable circumstances beyond our control, the consequences of which would have been unavoidable despite all effects to the contrary, nor are we liable where the breach is due to the application of mandatory legal rules.`,
+        `Peluncuran ${entityAlias2}. ${entityAlias2} merupakan platform peer to peer yang menggunakan teknologi distributed ledger. Apabila Anda memiliki perselisihan dengan satu atau lebih pengguna Situs ${entityName}, Anda setuju bahwa baik kami maupun afiliasi atau penyedia layanan kami, maupun masing-masing pejabat, direktur, karyawan, dan perwakilan kami tidak akan bertanggung jawab atas segala klaim, tuntutan, dan ganti rugi (aktual dan konsekuensial) dalam bentuk atau sifat apa pun yang timbul dari atau dengan cara apa pun terkait dengan perselisihan tersebut.`,
+        `Ganti Rugi. Anda setuju untuk mengganti rugi ${entityAlias2}, afiliasi dan penyedia layanan kami, dan masing-masing pejabat, direktur, karyawan, dan perwakilan kami atau mereka, sehubungan dengan biaya apa pun (termasuk biaya pengacara dan denda, biaya, atau sanksi yang dikenakan oleh otoritas regulasi mana pun) yang telah dikeluarkan secara wajar sehubungan dengan klaim, tuntutan, atau ganti rugi yang timbul dari atau terkait dengan pelanggaran Anda dan/atau penegakan Perjanjian ini atau pelanggaran Anda terhadap hukum, aturan, atau peraturan apa pun, atau hak pihak ketiga mana pun.`,
+        `Batasan Tanggung Jawab. ${entityAlias2} tidak bertanggung jawab atas layanan dan semua NFT di Situs dan ${entityAlias2} hanya akan bertanggung jawab kepada Anda atas kerugian atau kerusakan yang disebabkan secara langsung dan wajar oleh pelanggaran Perjanjian ini.`,
+        `Tidak Ada Jaminan. Layanan Situs ${entityName} diberikan atas dasar "apa adanya" dan "sebagaimana tersedia" tanpa pernyataan atau jaminan apa pun, baik tersurat maupun tersirat, hingga batas maksimum yang diizinkan oleh hukum yang berlaku: khususnya kami menolak segala jaminan tersirat atas hak milik, kelayakan untuk diperjualbelikan, kesesuaian untuk tujuan tertentu dan/atau nonpelanggaran. Kami tidak membuat pernyataan atau jaminan apa pun bahwa akses ke Situs ${entityName}, layanan ${entityAlias2} apa pun, atau materi apa pun yang terkandung di dalamnya, akan berlangsung terus-menerus, tanpa gangguan, tepat waktu, atau bebas dari kesalahan.`,
+        `Keamanan dan Keselamatan Komputer dan Perangkat Anda. Situs ${entityName} tidak bertanggung jawab atas segala kerusakan atau gangguan yang disebabkan oleh virus komputer, spyware, scareware, Trojan horse, worm, atau malware lain yang dapat memengaruhi komputer atau perangkat lain Anda, atau segala bentuk phishing, spoofing, atau serangan lainnya. Kami menyarankan penggunaan perangkat lunak penyaringan dan pencegahan virus yang bereputasi baik dan tersedia secara umum secara berkala. Anda juga harus menyadari bahwa layanan SMS dan email rentan terhadap serangan spoofing dan phishing dan harus berhati-hati dalam meninjau pesan yang mengaku berasal dari kami. Dukungan pelanggan ${entityAlias2} tidak akan pernah meminta untuk berbagi layar atau berupaya mengakses komputer atau akun Anda.`,
+        "Tidak Ada Tanggung Jawab atas Pelanggaran. Kami tidak bertanggung jawab atas pelanggaran Perjanjian apa pun jika pelanggaran tersebut disebabkan oleh keadaan yang tidak normal dan tidak terduga di luar kendali kami, yang konsekuensinya tidak dapat dihindari meskipun ada semua efek yang bertentangan, kami juga tidak bertanggung jawab jika pelanggaran tersebut disebabkan oleh penerapan aturan hukum yang wajib.",
       ],
     },
     section11: {
-      title: "Customer Feedback, Queries, Complaints, and Dispute Resolution",
+      title:
+        "Umpan Balik Pelanggan, Pertanyaan, Keluhan, dan Penyelesaian Sengketa",
       paragraphs: [
-        `Contact ${entityAlias2}. When you contact us please provide us with your name, email, wallet address, and any other information we may need to identify you, your ${entityAlias2} account, and the activity on which you have feedback, questions, or complaints.`,
-        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by ${entityAlias1}. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond ${entityAlias1}'s control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
-        `Offers. Any offer of resolution made to you will only become binding on us if accepted by you. An offer of resolution will not constitute any admission by us of any wrongdoing or liability regarding the subject matter of the complaint.`,
+        `Hubungi ${entityAlias2}. Saat Anda menghubungi kami, mohon berikan nama, alamat email, alamat dompet, dan informasi lain yang mungkin kami perlukan untuk mengidentifikasi Anda, akun ${entityAlias2} Anda, dan aktivitas yang Anda berikan masukan, pertanyaan, atau keluhan.`,
+        `Keluhan. Jika ada keluhan, mohon jelaskan penyebab keluhan Anda, bagaimana Anda ingin kami menyelesaikan keluhan tersebut, dan informasi lain yang menurut Anda relevan. Kami akan mengakui penerimaan keluhan Anda. Petugas Keluhan Pelanggan ("Petugas") akan mempertimbangkan keluhan Anda. Petugas akan mempertimbangkan keluhan Anda tanpa prasangka berdasarkan informasi yang Anda berikan dan informasi yang diberikan oleh ${entityAlias1}. Dalam waktu 15 hari kerja sejak kami menerima keluhan Anda, Petugas akan menanggapi semua poin yang diajukan dalam keluhan Anda dengan mengirimkan email kepada Anda ("Pemberitahuan Resolusi") yang berisi pernyataan bahwa Petugas akan: (i) menawarkan untuk menyelesaikan keluhan Anda sesuai dengan permintaan Anda; (ii) membuat keputusan untuk menolak keluhan Anda dan menjelaskan alasan penolakan; atau (iii) menawarkan untuk menyelesaikan keluhan Anda dengan solusi alternatif. Dalam keadaan luar biasa, apabila Petugas tidak dapat menanggapi pengaduan Anda dalam jangka waktu 15 hari kerja karena alasan-alasan di luar kekuasaan ${entityAlias1}, maka Petugas akan mengirimkan balasan penahanan yang menyebutkan alasan keterlambatan dalam menjawab pengaduan Anda dan menyebutkan batas waktu tanggapan Petugas terhadap pengaduan Anda (yang paling lambat adalah 35 hari kerja sejak diterimanya pengaduan Anda).`,
+        `Penawaran. Setiap penawaran penyelesaian yang diberikan kepada Anda hanya akan mengikat kami jika Anda menerimanya. Penawaran penyelesaian tidak akan dianggap sebagai pengakuan kami atas kesalahan atau tanggung jawab terkait pokok permasalahan pengaduan.`,
       ],
     },
     section12: {
-      title: "Data Protection",
+      title: "Perlindungan Data",
       paragraphs: [
-        `Personal Data. You acknowledge that we may process personal data in relation to you. Accordingly, you represent and warrant that:`,
+        `Data Pribadi. Anda mengakui bahwa kami dapat memproses data pribadi yang berkaitan dengan Anda. Oleh karena itu, Anda menyatakan dan menjamin bahwa:`,
       ],
       ul: [
-        `your disclosure to us of any personal data was or will be made in accordance with all applicable data protection and data privacy laws, and those data are accurate, up to date and relevant when disclosed;`,
-        `before providing any such personal data to us, you have read and understood our Privacy Policy, attached to this Agreement and a copy of which is also available at Privacy Policy, and, in the case of personal data relating to an individual other than yourself, have (or will at the time of disclosure have) provided a copy of that Privacy Policy (as amended from time to time), to that individual;`,
-        `and if from time to time we provide you with a replacement version of the Privacy Policy, you will promptly read that notice and provide a copy to any individual whose personal data you have provided to us;`,
+        `pengungkapan data pribadi Anda kepada kami telah atau akan dilakukan sesuai dengan semua undang-undang perlindungan data dan privasi data yang berlaku, dan data tersebut akurat, terkini, dan relevan saat diungkapkan;`,
+        `sebelum memberikan data pribadi tersebut kepada kami, Anda telah membaca dan memahami Kebijakan Privasi kami, yang terlampir pada Perjanjian ini dan salinannya juga tersedia di Kebijakan Privasi, dan, dalam hal data pribadi yang berkaitan dengan individu selain diri Anda, telah (atau akan pada saat pengungkapan) memberikan salinan Kebijakan Privasi tersebut (sebagaimana diubah dari waktu ke waktu), kepada individu tersebut;`,
+        `dan apabila sewaktu-waktu kami memberikan Anda versi pengganti dari Kebijakan Privasi, Anda harus segera membaca pemberitahuan tersebut dan memberikan salinannya kepada setiap individu yang datanya pribadinya telah Anda berikan kepada kami;`,
       ],
       paragraphsAfterList: [
-        `Please read the Privacy Policy for details of how we may process your personal data.`,
+        `Silakan baca Kebijakan Privasi untuk rincian tentang bagaimana kami memproses data pribadi Anda.`,
       ],
     },
     section13: {
-      title: "General Terms and Conditions",
+      title: "Syarat dan Ketentuan Umum",
       paragraphs: [
-        `Limited License. We grant you a limited, non-exclusive, non-transferable license, subject to the terms of this Agreement, to access and use ${entityName} Site, and related content, materials, information (collectively, the "Content") solely for approved purposes as permitted by us from time to time. Any other use of ${entityName} Site or Content is expressly prohibited and all other right, title, and interest in ${entityName} Site or Content is exclusively the property of ${entityAlias2} and its licensors. You agree not to copy, transmit, distribute, sell, license, reverse engineer, modify, publish, or participate in the transfer or sale of, create derivative works from, or in any other way exploit any of the Content, in whole orin part.`,
-        `Website Accuracy. Although we intend to provide accurate and timely information on ${entityName} Site, ${entityName} Site (including, without limitation, the Content) may not always be entirely accurate, complete or current and may also include technical inaccuracies or typographical errors. In an effort to continue to provide you with as complete and accurate information as possible, information may, to the extent permitted by applicable law, be changed or updated from time to time without notice, including without limitation information regarding our policies, products and services. Accordingly, you should verify all information before relying on it, and all decisions based on information contained on ${entityName} Site are your sole responsibility and we shall have no liability for such decisions. Links to third-party materials (including without limitation websites) may be provided as a convenience but are not controlled by us. You acknowledge and agree that we are not responsible for any aspect of the information, content, or services contained in any third-party materials or on any third party sites accessible or linked to ${entityName} Site.`,
-        `Relationship of the Parties. Nothing in this Agreement shall be deemed or is intended to be deemed, nor shall it cause, either you or ${entityAlias2} to be treated as the agent of the other.`,
-        `Privacy of Others; Marketing. If you receive information about another user through ${entityName} Site services, you must keep the information confidential and only use it in connection with ${entityName} Site services. You may not disclose or distribute a user's information to a third party or use the information except as reasonably necessary to effect a transaction and other functions reasonably incidental thereto such as support, reconciliation and accounting unless you receive the user's express consent to do so. You may not send unsolicited email to a user through ${entityName} Site services.`,
-        `Security Breach. If you suspect that your ${entityAlias2} account or any of your security details have been compromised or if you become aware of any fraud or attempted fraud or any other security incident (including a cyber-security attack) affecting you and/or ${entityAlias2} (together a "Security Breach"), you must notify ${entityAlias2} support as soon as possible by email free of charge at ${entityEmail} and continue to provide accurate and up to date information throughout the duration of the Security Breach. You must take any steps that we reasonably require to reduce, manage or report any Security Breach. Failure to provide prompt notification of any Security Breach may be taken into account in our determination of the appropriate resolution of the matter.`,
-        `Contact Information. You are responsible for keeping your email address up to date in your Account Profile in order to receive any notices or alerts that we may send you (including notices or alerts of actual or suspected Security Breach).`,
-        `Entire Agreement. This Agreement (including documents incorporated by reference herein) comprise the entire agreement between you and ${entityAlias2}.`,
-        `Interpretation. Section headings in this Agreement are for convenience only, and shall not govern the meaning or interpretation of any provision of this Agreement.`,
-        `Transfer. This Agreement is personal to you and you cannot transfer or assign your rights, licenses, interests and/or obligations to anyone else. We may transfer or assign our rights licenses, interests and/or our obligations at any time, including as part of a merger, acquisition or other corporate reorganisation involving ${entityAlias2}, provided that this transfer or assignment does not materially impact the quality of the ${entityAlias2} services you receive.`,
-        `Invalidity. If any provision of this Agreement is determined to be invalid or unenforceable under any applicable law, this will not affect the validity of any other provision.`,
-        `Enforcement of Our Rights. We may not always strictly enforce our rights under this Agreement. If we do this, it will be just a temporary measure and we may enforce our rights strictly again at any time.`,
-        `Language. This Agreement and any information or notifications that you or we are to provide should be in Indonesian and English. Any translation of this Agreement or other documents is provided for your convenience only. In the event of any inconsistency, the Indonesian and English language version of this Agreement or other documents shall prevail.`,
-        `Survival. All provisions of this Agreement which by their nature extend beyond the expiration or termination of this Agreement, including, without limitation, the sections relating to suspension or termination, ${entityAlias2} account cancellation, general use of ${entityName} Site, disputes with ${entityAlias2}, and general provisions, will continue to be binding and operate after the termination or expiration of this Agreement.`,
+        `Lisensi Terbatas. Kami memberi Anda lisensi terbatas, non-eksklusif, dan tidak dapat dipindahtangankan, sesuai dengan ketentuan Perjanjian ini, untuk mengakses dan menggunakan Situs ${entityName}, dan konten, materi, informasi terkait (secara kolektif, "Konten") semata-mata untuk tujuan yang disetujui sebagaimana diizinkan oleh kami dari waktu ke waktu. Setiap penggunaan lain atas Situs atau Konten ${entityName} secara tegas dilarang dan semua hak, kepemilikan, dan kepentingan lain dalam Situs atau Konten ${entityName} secara eksklusif adalah milik ${entityAlias2} dan pemberi lisensinya. Anda setuju untuk tidak menyalin, mengirimkan, mendistribusikan, menjual, melisensikan, merekayasa ulang, memodifikasi, menerbitkan, atau berpartisipasi dalam pengalihan atau penjualan, membuat karya turunan dari, atau dengan cara lain mengeksploitasi Konten apa pun, secara keseluruhan atau sebagian.`,
+        `Keakuratan Situs Web. Meskipun kami bermaksud untuk menyediakan informasi yang akurat dan tepat waktu di Situs ${entityName}, Situs ${entityName} (termasuk, namun tidak terbatas pada, Konten) mungkin tidak selalu sepenuhnya akurat, lengkap, atau terkini dan mungkin juga menyertakan ketidakakuratan teknis atau kesalahan ketik. Dalam upaya untuk terus menyediakan informasi selengkap dan seakurat mungkin kepada Anda, informasi tersebut dapat, sejauh diizinkan oleh hukum yang berlaku, diubah atau diperbarui dari waktu ke waktu tanpa pemberitahuan, termasuk namun tidak terbatas pada informasi mengenai kebijakan, produk, dan layanan kami. Oleh karena itu, Anda harus memverifikasi semua informasi sebelum mengandalkannya, dan semua keputusan berdasarkan informasi yang terdapat di Situs ${entityName} merupakan tanggung jawab Anda sepenuhnya dan kami tidak bertanggung jawab atas keputusan tersebut. Tautan ke materi pihak ketiga (termasuk namun tidak terbatas pada situs web) dapat disediakan sebagai kemudahan tetapi tidak dikendalikan oleh kami. Anda mengakui dan setuju bahwa kami tidak bertanggung jawab atas aspek apa pun dari informasi, konten, atau layanan yang terdapat dalam materi pihak ketiga atau di situs pihak ketiga mana pun yang dapat diakses atau ditautkan ke Situs ${entityName}.`,
+        `Hubungan Para Pihak. Tidak ada ketentuan dalam Perjanjian ini yang dianggap atau dimaksudkan untuk dianggap, dan tidak akan menyebabkan Anda atau ${entityAlias2} diperlakukan sebagai agen pihak lainnya.`,
+        `Privasi Pihak Lain; Pemasaran. Jika Anda menerima informasi tentang pengguna lain melalui layanan Situs ${entityName}, Anda harus menjaga kerahasiaan informasi tersebut dan hanya menggunakannya sehubungan dengan layanan Situs ${entityName}. Anda tidak boleh mengungkapkan atau mendistribusikan informasi pengguna kepada pihak ketiga atau menggunakan informasi tersebut kecuali sebagaimana yang diperlukan secara wajar untuk melakukan transaksi dan fungsi lain yang secara wajar terkait dengannya seperti dukungan, rekonsiliasi, dan akuntansi kecuali Anda menerima persetujuan tegas dari pengguna untuk melakukannya. Anda tidak boleh mengirim email yang tidak diminta kepada pengguna melalui layanan Situs ${entityName}.`,
+        `Pelanggaran Keamanan. Jika Anda menduga bahwa akun ${entityAlias2} Anda atau detail keamanan Anda telah disusupi atau jika Anda mengetahui adanya penipuan atau percobaan penipuan atau insiden keamanan lainnya (termasuk serangan keamanan siber) yang memengaruhi Anda dan/atau ${entityAlias2} (bersama-sama disebut "Pelanggaran Keamanan"), Anda harus memberi tahu dukungan ${entityAlias2} sesegera mungkin melalui email gratis di ${entityEmail} dan terus memberikan informasi yang akurat dan terkini selama berlangsungnya Pelanggaran Keamanan. Anda harus mengambil langkah apa pun yang secara wajar kami perlukan untuk mengurangi, mengelola, atau melaporkan setiap Pelanggaran Keamanan. Kegagalan memberikan pemberitahuan segera tentang setiap Pelanggaran Keamanan dapat diperhitungkan dalam penentuan penyelesaian masalah yang tepat.`,
+        `Informasi Kontak. Anda bertanggung jawab untuk selalu memperbarui alamat email Anda di Profil Akun Anda agar dapat menerima pemberitahuan atau peringatan apa pun yang mungkin kami kirimkan kepada Anda (termasuk pemberitahuan atau peringatan tentang Pelanggaran Keamanan yang sebenarnya atau yang diduga).`,
+        `Perjanjian Lengkap. Perjanjian ini (termasuk dokumen yang dirujuk di sini) mencakup keseluruhan perjanjian antara Anda dan ${entityAlias2}.`,
+        `Interpretasi. Judul-judul bagian dalam Perjanjian ini hanya untuk kemudahan saja, dan tidak mengatur makna atau interpretasi dari ketentuan apa pun dalam Perjanjian ini.`,
+        `Pengalihan. Perjanjian ini bersifat pribadi bagi Anda dan Anda tidak dapat mengalihkan atau menyerahkan hak, lisensi, kepentingan, dan/atau kewajiban Anda kepada orang lain. Kami dapat mengalihkan atau menyerahkan hak, lisensi, kepentingan, dan/atau kewajiban kami kapan saja, termasuk sebagai bagian dari penggabungan, akuisisi, atau reorganisasi perusahaan lain yang melibatkan ${entityAlias2}, dengan ketentuan bahwa pengalihan atau pengalihan ini tidak berdampak material terhadap kualitas layanan ${entityAlias2} yang Anda terima.`,
+        `Ketidakabsahan. Jika ada ketentuan dalam Perjanjian ini yang dianggap tidak sah atau tidak dapat diberlakukan berdasarkan hukum yang berlaku, hal ini tidak akan memengaruhi keabsahan ketentuan lainnya.`,
+        `Penegakan Hak Kami. Kami mungkin tidak selalu menegakkan hak kami secara ketat berdasarkan Perjanjian ini. Jika kami melakukannya, itu hanya tindakan sementara dan kami dapat menegakkan hak kami secara ketat lagi kapan saja.`,
+        `Bahasa. Perjanjian ini dan semua informasi atau pemberitahuan yang Anda atau kami berikan harus dalam bahasa Indonesia dan Inggris. Semua terjemahan Perjanjian ini atau dokumen lainnya disediakan hanya untuk kenyamanan Anda. Jika terjadi ketidakkonsistenan, versi bahasa Indonesia dan bahasa Inggris dari Perjanjian ini atau dokumen lainnya akan berlaku.`,
+        `Keberlangsungan. Semua ketentuan dalam Perjanjian ini yang menurut sifatnya berlaku setelah berakhirnya atau pemutusan Perjanjian ini, termasuk namun tidak terbatas pada bagian yang berkaitan dengan penangguhan atau pemutusan, pembatalan akun ${entityAlias2}, penggunaan umum Situs ${entityName}, perselisihan dengan ${entityAlias2}, dan ketentuan umum, akan tetap mengikat dan berlaku setelah berakhirnya atau berakhirnya Perjanjian ini.`,
       ],
     },
   }, // terms,
