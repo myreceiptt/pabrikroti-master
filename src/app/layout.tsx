@@ -23,6 +23,9 @@ export async function generateMetadata(): Promise<Metadata> {
     title: receipt.proTitle, // Title
     description: receipt.proDescription, // Description
     metadataBase: new URL(receipt.proUrl), // Base URL
+    icons: {
+      icon: receipt.proFavicon,
+    },
     authors: [
       { name: "MyReceipt", url: "https://myreceipt.endhonesa.com" },
       { name: "Prof. NOTA", url: "https://nota.endhonesa.com" },

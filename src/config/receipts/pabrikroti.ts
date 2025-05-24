@@ -30,6 +30,7 @@ export const pabrikroti = {
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "Prof. NOTA Inc.", // layout,
   proLocale: "en-US", // layout,
+  proFavicon: "/roti/favicon.ico", // layout,
   proImage: "https://pabrikroti.endhonesa.com/roti/preview-image.png", // layout,
   proLang: "en", // layout,
 

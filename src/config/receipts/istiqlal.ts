@@ -30,6 +30,7 @@ export const istiqlal = {
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "NFT Indonesia", // layout,
   proLocale: "id-ID", // layout,
+  proFavicon: "/istiqlal/favicon.ico", // layout,
   proImage: "https://nft.istiqlal.or.id/istiqlal/preview-image.png", // layout,
   proLang: "id", // layout,
 
