@@ -12,13 +12,14 @@ import { TokenProvider, TokenIcon } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
+import { chainNames } from "@/config/rantais";
 import { getActiveReceipt } from "@/config/receipts";
 import { getCountdownString } from "@/config/utils";
 
-const { receipt } = getActiveReceipt();
-
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
+
+const { receipt } = getActiveReceipt();
 
 interface CoinListerProps {
   coinAddress: string;
@@ -51,6 +52,7 @@ export default function CoinLister({
 }: CoinListerProps) {
   const router = useRouter();
   const startTime = new Date(Number(startTimestamp) * 1000);
+  const chainName = chainNames[coinChain.id] ?? "Unknown Chain";
 
   // Ensure state variables are properly declared
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -161,6 +163,13 @@ export default function CoinLister({
                 {formatNumberCompact(adjustedMaxClaim)}
               </span>
             </div>
+            <h2
+              style={{ color: receipt.colorIcon }}
+              className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
+              <span>
+                {receipt.coinFormOnChain} {chainName}
+              </span>
+            </h2>
           </div>
 
           <button

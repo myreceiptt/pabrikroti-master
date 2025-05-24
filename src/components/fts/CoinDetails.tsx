@@ -16,7 +16,6 @@ import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
 import { CheckErc1155 } from "@/config/checker";
-import { erc20ContractsLaunched } from "@/config/contractsOld";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
@@ -25,7 +24,7 @@ import CoinForm from "@/components/fts/CoinForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
-const { receipt } = getActiveReceipt();
+const { receipt, erc20sLaunched } = getActiveReceipt();
 
 interface CoinData {
   coinAddress: string;
@@ -69,7 +68,7 @@ export default function CoinDetails() {
   const fetchCoinDetails = useCallback(async () => {
     if (!coinAddress || !activeAccount?.address) return;
 
-    const erc20ContractLaunched = erc20ContractsLaunched.find(
+    const erc20ContractLaunched = erc20sLaunched.find(
       (c) => c.address.toLowerCase() === coinAddress.toLowerCase()
     );
 

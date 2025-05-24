@@ -61,7 +61,7 @@ export default function CoinDescription({
             <>
               <Link
                 href="#"
-                title={`https://memora.voyage.co.id/[chain-name]/${address}`}
+                title={`https://memora.endhonesa.com/[chain-name]/${address}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 style={{

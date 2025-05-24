@@ -7,12 +7,17 @@ import { ConnectButton } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { displayedTokeks, tokeks } from "@/config/contractsOld";
 import { dompets } from "@/config/dompets";
 import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
 
-const { receipt, factoryAddress, supportedNFTs } = getActiveReceipt();
+const {
+  receipt,
+  factoryAddress,
+  supportedNFTs,
+  supportedFTs,
+  displayedTokeks,
+} = getActiveReceipt();
 
 export default function ConnectButtons() {
   return (
@@ -51,7 +56,7 @@ export default function ConnectButtons() {
           sponsorGas: true,
         }}
         chains={chains}
-        supportedTokens={tokeks}
+        supportedTokens={supportedFTs}
         supportedNFTs={supportedNFTs}
         detailsButton={{
           displayBalanceToken: displayedTokeks,
@@ -61,7 +66,7 @@ export default function ConnectButtons() {
                 color: receipt.colorIcon,
                 backgroundColor: receipt.colorBoxIcon,
               }}
-              className="w-10 h-10 flex items-center justify-center text-xl rounded-lg">
+              className="w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer">
               <FaUserLarge />
             </button>
           ),

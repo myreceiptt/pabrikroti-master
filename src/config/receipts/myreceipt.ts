@@ -217,7 +217,7 @@ export const myreceipt = {
   nftFormBy: "by", // nft form, coin form,
   nftFormByName: `${entityAlias1}`, // nft form,
   nftFormEdition: "Edition", // nft form,
-  nftFormOwned: "Got It", // nft form, coin form,
+  nftFormOwned: "Got It", // nft form,
   nftFormRefresh: "Refresh", // nft form, coin form,
   nftFormTunggu: "Processing. Be patient and wait.", // nft form, coin form,
   nftFormKirim: "Claiming your stock.", // nft form,
@@ -273,6 +273,8 @@ export const myreceipt = {
 
   // coin form section
   coinFormSupply: "Supply", // coin form,
+  coinFormOwned: "Claimed", // coin form,
+  coinFormOnChain: "On", // coin form,
   coinFormKirim: "Claiming your share.", // coin form,
   coinFormSukses: "Share successfully claimed.", // coin form,
   coinFormPerWallet: "supply per holder.", // coin form,

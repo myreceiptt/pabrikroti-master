@@ -5,7 +5,13 @@ import { getContract } from "thirdweb";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { baseMainnet, baseSepolia, monadTestnet } from "@/config/rantais";
+import {
+  baseMainnet,
+  baseSepolia,
+  monadTestnet,
+  opMainnet,
+  shapeNetwork,
+} from "@/config/rantais";
 
 // FT contracts Avalanche C-Chain
 // ...
@@ -83,10 +89,18 @@ export const erc20OiOiMonadTestnet = getContract({
 });
 
 // FT contracts OP Mainnet
-// ...
+export const erc20OiOiOpMainnet = getContract({
+  address: "0x4309d86dceEAd544645D7245d8deE231B98A0d80", // OiOi Token - Default
+  chain: opMainnet,
+  client,
+});
 
 // FT contracts on Shape Network
-// ...
+export const erc20OiOiShapeNetwork = getContract({
+  address: "0x6d6e5b8a5dBeCc6758553FC636Bd0aE65282549f", // OiOi Token - Default
+  chain: shapeNetwork,
+  client,
+});
 
 // FT contracts on Soneium Mainnet
 // ...
@@ -102,3 +116,26 @@ export const erc20OiOiMonadTestnet = getContract({
 
 // FT contracts Zora Mainnet
 // ...
+
+// All supported FTs
+export const usdCoinName = "USD Coin"; // USD Coin
+export const usdCoinSymbol = "USDC"; // USD Coin
+export const usdCoinIcon = "/erc20-icons/usdc.png"; // USD Coin
+
+export const oioiTokenName = "OiOi Token"; // OiOi Token
+export const oioiTokenSymbol = "OiOi"; // OiOi Token
+export const oioiTokenIcon = "/erc20-icons/oioi.png"; // OiOi Token
+export const oioiTokenBy = "Prof. NOTA Inc."; // OiOi Token
+export const oioiTokenLink = "https://nota.endhonesa.com/"; // OiOi Token
+
+export const bonDoshName = "BON Dosh"; // BON Voyage
+export const bonDoshSymbol = "BON"; // BON Voyage
+export const bonDoshIcon = "/erc20-icons/bon.png"; // BON Voyage
+export const bonDoshBy = "Voyage.Co.Id"; // BON Voyage
+export const bonDoshLink = "https://voyage.endhonesa.com/"; // OiOi Token
+
+export const idlTokenName = "IDL Token"; // IDL Token
+export const idlTokenSymbol = "IDL"; // IDL Token
+export const idlTokenIcon = "/erc20-icons/idl.png"; // IDL Token
+export const idlTokenBy = "Lembaga Pengembangan Media Istiqlal - BPMI"; // IDL Token
+export const idlTokenLink = "https://www.istiqlal.or.id/"; // IDL Token

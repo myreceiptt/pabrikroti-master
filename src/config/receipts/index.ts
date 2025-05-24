@@ -2,15 +2,28 @@
 
 // Blockchain configurations
 import {
+  displayedTokeks,
+  displayedTokeksIstiqlal,
+  displayedTokeksMeMoRa,
+  displayedTokeksPabrikRoti,
   erc1155IstiqlalDL,
   erc1155MeMoRa1,
   erc1155TryError,
+  erc20sLaunched,
   factoryNOTA,
+  istiqlalErc20sLaunched,
+  memoraErc20sLaunched,
+  pabrikrotiErc20sLaunched,
+  SupportedFTs,
   SupportedNFTs,
   tekeks,
   tekeksIstiqlal,
   tekeksMeMoRa,
   tekeksPabrikRoti,
+  tokeks,
+  tokeksIstiqlal,
+  tokeksMeMoRa,
+  tokeksPabrikRoti,
 } from "@/config/contracts";
 import { istiqlal } from "@/config/receipts/istiqlal";
 import { leminerale } from "@/config/receipts/leminerale";
@@ -29,6 +42,9 @@ const hostMap: Record<
     factoryAddress: string;
     erc1155Launched: typeof erc1155TryError;
     supportedNFTs: SupportedNFTs;
+    erc20sLaunched: typeof erc20sLaunched;
+    supportedFTs: SupportedFTs;
+    displayedTokeks: typeof displayedTokeks;
   }
 > = {
   "istiqlal.endhonesa.com": {
@@ -36,60 +52,90 @@ const hostMap: Record<
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155IstiqlalDL,
     supportedNFTs: tekeksIstiqlal,
+    erc20sLaunched: istiqlalErc20sLaunched,
+    supportedFTs: tokeksIstiqlal,
+    displayedTokeks: displayedTokeksIstiqlal,
   },
   "nft.istiqlal.or.id": {
     receipt: istiqlal,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155IstiqlalDL,
     supportedNFTs: tekeksIstiqlal,
+    erc20sLaunched: istiqlalErc20sLaunched,
+    supportedFTs: tokeksIstiqlal,
+    displayedTokeks: displayedTokeksIstiqlal,
   },
   "login.istiqlal.or.id": {
     receipt: istiqlal,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155IstiqlalDL,
     supportedNFTs: tekeksIstiqlal,
+    erc20sLaunched: istiqlalErc20sLaunched,
+    supportedFTs: tokeksIstiqlal,
+    displayedTokeks: displayedTokeksIstiqlal,
   },
   "leminerale.istiqlal.or.id": {
     receipt: leminerale,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155IstiqlalDL,
     supportedNFTs: tekeksIstiqlal,
+    erc20sLaunched: istiqlalErc20sLaunched,
+    supportedFTs: tokeksIstiqlal,
+    displayedTokeks: displayedTokeksIstiqlal,
   },
   "memora.endhonesa.com": {
     receipt: memora,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155MeMoRa1,
     supportedNFTs: tekeksMeMoRa,
+    erc20sLaunched: memoraErc20sLaunched,
+    supportedFTs: tokeksMeMoRa,
+    displayedTokeks: displayedTokeksMeMoRa,
   },
   "memora.voyage.co.id": {
     receipt: memora,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155MeMoRa1,
     supportedNFTs: tekeksMeMoRa,
+    erc20sLaunched: memoraErc20sLaunched,
+    supportedFTs: tokeksMeMoRa,
+    displayedTokeks: displayedTokeksMeMoRa,
   },
   "pabrikroti.endhonesa.com": {
     receipt: pabrikroti,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeksPabrikRoti,
+    erc20sLaunched: pabrikrotiErc20sLaunched,
+    supportedFTs: tokeksPabrikRoti,
+    displayedTokeks: displayedTokeksPabrikRoti,
   },
   "preroti.endhonesa.com": {
     receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
   },
   "localhost": {
     receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
   },
   "127.0.0.1": {
     receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
   },
 };
 
@@ -99,6 +145,9 @@ export function getActiveReceipt(host?: string): {
   factoryAddress: string;
   erc1155Launched: typeof erc1155TryError;
   supportedNFTs: SupportedNFTs;
+  erc20sLaunched: typeof erc20sLaunched;
+  supportedFTs: SupportedFTs;
+  displayedTokeks: typeof displayedTokeks;
 } {
   let resolvedHost = "";
 
@@ -121,5 +170,8 @@ export function getActiveReceipt(host?: string): {
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
   };
 }

@@ -18,7 +18,8 @@ import {
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { currencyMap } from "@/config/contractsOld";
+import { chainNames } from "@/config/rantais";
+import { useCurrencyMap } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
 import { getCountdownString } from "@/config/utils";
 
@@ -61,6 +62,8 @@ export default function NFTForm({
 }: NFTFormProps) {
   const activeAccount = useActiveAccount();
   const startTime = new Date(Number(startTimestamp) * 1000);
+  const chainName = chainNames[dropContract.chain.id] ?? "Unknown Chain";
+  const currencyMap = useCurrencyMap();
 
   // Ensure state variables are properly declared
   const [isRefreshing, setIsRefreshing] = useState(false);
@@ -205,16 +208,11 @@ export default function NFTForm({
         {pesanGagal && <Loader message={pesanGagal} />}
 
         {/* NFT Info */}
-        <div className="w-full grid grid-cols-12">
-          <h2
-            style={{ color: receipt.colorIcon }}
-            className="col-span-4 text-left text-xs font-medium">
-            {receipt.nftFormPrice}
-          </h2>
+        <div className="w-full grid grid-cols-8">
           <h2
             style={{ color: receipt.colorIcon }}
             className="col-span-3 text-left text-xs font-medium">
-            {receipt.nftFormEdition}
+            {receipt.nftFormPrice}
           </h2>
           <h2
             style={{ color: receipt.colorIcon }}
@@ -229,13 +227,8 @@ export default function NFTForm({
 
           <h2
             style={{ color: receipt.colorSecondary }}
-            className="col-span-4 text-left text-base lg:text-md xl:text-xl font-semibold">
-            {formattedPrice}
-          </h2>
-          <h2
-            style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
-            {supply.toString()}/{maxClaim.toString()}
+            {formattedPrice}
           </h2>
           <h2
             style={{ color: receipt.colorSecondary }}
@@ -268,6 +261,30 @@ export default function NFTForm({
               <FaRotate className="text-base lg:text-md xl:text-xl font-semibold " />
             </motion.div>
           </button>
+        </div>
+
+        <div className="w-full grid grid-cols-8">
+          <h2
+            style={{ color: receipt.colorIcon }}
+            className="col-span-3 text-left text-xs font-medium">
+            {receipt.nftFormEdition}
+          </h2>
+          <h2
+            style={{ color: receipt.colorIcon }}
+            className="col-span-3 text-left text-xs font-medium">
+            {receipt.coinFormOnChain}
+          </h2>
+
+          <h2
+            style={{ color: receipt.colorSecondary }}
+            className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
+            {supply.toString()}/{maxClaim.toString()}
+          </h2>
+          <h2
+            style={{ color: receipt.colorSecondary }}
+            className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
+            {chainName}
+          </h2>
         </div>
 
         {/* Claim Button */}

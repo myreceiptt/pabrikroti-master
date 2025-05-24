@@ -2,7 +2,7 @@
 
 // All receipts should be exported from this file.
 const proTitle = "MEMORA VIRTUAL COLLECTIBLES";
-const proUrl = "https://memora.endhonesa.com/";
+const proUrl = "https://memora.voyage.co.id/";
 const entityName = "MeMoRa by Voyage.Co.Id";
 const entityAlias1 = "Voyage.Co.Id";
 const entityAlias2 = "MEMORA VIRTUAL COLLECTIBLES";
@@ -29,7 +29,7 @@ export const memora = {
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "Voyage.Co.Id", // layout,
   proLocale: "en-US", // layout,
-  proImage: "https://memora.endhonesa.com/memora/preview-image.png", // layout,
+  proImage: "https://memora.voyage.co.id/memora/preview-image.png", // layout,
   proLang: "en", // layout,
 
   // error boundary section
@@ -52,7 +52,7 @@ export const memora = {
   }, // login layout,
   loginAgreement: "By connecting, you agree to the", // login layout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // login layout,
-  linkPower: "https://voyage.endhonesa.com/", // login layout, footer section
+  linkPower: "https://voyage.co.id/", // login layout, footer section
   loginPower: "/memora/images/login-power.png", // login layout,
   poweredBy: "Powered by Voyage.Co.Id", // login layout, footer section
 
@@ -157,11 +157,11 @@ export const memora = {
     "The specified collectible ID was not found. Please try again later or return to the home page.", // nft details,
 
   // nft form section
-  nftFormByLink: "https://memora.endhonesa.com/", // nft form,
+  nftFormByLink: "https://memora.voyage.co.id/", // nft form,
   nftFormBy: "by", // nft form, coin form,
   nftFormByName: `${entityAlias1}`, // nft form,
   nftFormEdition: "Edition", // nft form,
-  nftFormOwned: "Collected", // nft form, coin form,
+  nftFormOwned: "Collected", // nft form,
   nftFormRefresh: "Refresh", // nft form, coin form,
   nftFormTunggu: "Processing. Be patient and wait.", // nft form, coin form,
   nftFormKirim: "Collecting your collectible.", // nft form,
@@ -217,13 +217,15 @@ export const memora = {
 
   // coin form section
   coinFormSupply: "Supply", // coin form,
+  coinFormOwned: "Claimed", // coin form,
+  coinFormOnChain: "On", // coin form,
   coinFormKirim: "Claiming your point.", // coin form,
   coinFormSukses: "Point successfully claimed.", // coin form,
   coinFormPerWallet: "supply per holder.", // coin form,
 
   // coin description section
   coinDescription:
-    "BON VOYAGE is version one of the BON VOYAGE Fungible Token.", // coin description,
+    "BON stands as a measure that immortalises experience, a token of equivalence (ERC-20) that encapsulates the influence of every participant in the VOYAGE.", // coin description,
 
   // coin pop up section
   popUpTitle: "$BON Dosh!!!!", // coin pop up,
@@ -245,7 +247,7 @@ export const memora = {
   popUpUlLi5: "", // coin pop up,
   popUpUlLi6: "", // coin pop up,
   popUpP9:
-    "BON stands as a measure that immortalises experience, a token of equivalence (ERC-20) that encapsulates the influence of every participant in the VOYAGE .", // coin pop up,
+    "BON stands as a measure that immortalises experience, a token of equivalence (ERC-20) that encapsulates the influence of every participant in the VOYAGE.", // coin pop up,
   popUpP10:
     "BON is not just a figure—it is proof of the steps taken, the values cultivated, and the impact left behind.", // coin pop up,
   popUpP11:

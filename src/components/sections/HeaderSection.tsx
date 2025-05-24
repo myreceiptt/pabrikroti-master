@@ -13,6 +13,7 @@ import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import ConnectButtons from "@/components/logins/ConnectButtons";
+import QRCodeButton from "@/components/sections/QRCodeButton";
 
 const { receipt } = getActiveReceipt();
 
@@ -53,8 +54,9 @@ export default function Header() {
           style={{ backgroundColor: receipt.colorBoxIcon }}
           className="w-full hidden sm:flex items-center justify-center px-4 py-2 rounded-lg">
           <FaSistrix
+            onClick={handleSearch}
             style={{ color: receipt.colorAccent }}
-            className="w-5 h-5"
+            className="w-5 h-5 cursor-pointer"
           />
           <input
             type="text"
@@ -120,6 +122,7 @@ export default function Header() {
               <FaClockRotateLeft />
             </Link>
           </button> */}
+          <QRCodeButton />
         </div>
       </div>
     </header>

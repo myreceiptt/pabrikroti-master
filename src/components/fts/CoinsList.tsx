@@ -18,7 +18,6 @@ import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
 import { CheckErc1155 } from "@/config/checker";
-import { erc20ContractsLaunched } from "@/config/contractsOld";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
@@ -27,7 +26,7 @@ import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
-const { receipt } = getActiveReceipt();
+const { receipt, erc20sLaunched } = getActiveReceipt();
 
 interface CoinData {
   coinAddress: string;
@@ -64,11 +63,11 @@ export default function CoinsList() {
 
     try {
       const results = await Promise.allSettled(
-        erc20ContractsLaunched.map(async (erc20ContractLaunched) => {
+        erc20sLaunched.map(async (erc20sLaunched) => {
           const erc20Contract = getContract({
-            client: erc20ContractLaunched.client,
-            address: erc20ContractLaunched.address,
-            chain: erc20ContractLaunched.chain,
+            client: erc20sLaunched.client,
+            address: erc20sLaunched.address,
+            chain: erc20sLaunched.chain,
           });
 
           // Fetch coin decimals
@@ -109,9 +108,9 @@ export default function CoinsList() {
 
           if (claimCondition.currency.toLowerCase() !== nativeETH) {
             const currencyContract = getContract({
-              client: erc20ContractLaunched.client,
+              client: erc20sLaunched.client,
               address: claimCondition.currency,
-              chain: erc20ContractLaunched.chain,
+              chain: erc20sLaunched.chain,
             });
 
             currencyDecimals = await decimals({ contract: currencyContract });
@@ -119,8 +118,8 @@ export default function CoinsList() {
             // Fetch currency balance
             const balanceResult = await getWalletBalance({
               address: activeAccount?.address || "",
-              chain: erc20ContractLaunched.chain,
-              client: erc20ContractLaunched.client,
+              chain: erc20sLaunched.chain,
+              client: erc20sLaunched.client,
               tokenAddress: claimCondition.currency,
             });
 
@@ -129,8 +128,8 @@ export default function CoinsList() {
             // Native currency balance
             const balanceResult = await getWalletBalance({
               address: activeAccount?.address || "",
-              chain: erc20ContractLaunched.chain,
-              client: erc20ContractLaunched.client,
+              chain: erc20sLaunched.chain,
+              client: erc20sLaunched.client,
             });
 
             currencyDecimals = balanceResult.decimals ?? 18;
@@ -160,15 +159,15 @@ export default function CoinsList() {
             isClaimable = false;
             reason = receipt.nftsFailReason;
             console.warn(
-              `${receipt.coinsConsoleWarn} ${erc20ContractLaunched.address}`,
+              `${receipt.coinsConsoleWarn} ${erc20sLaunched.address}`,
               innerErr
             );
           }
 
           return {
-            coinAddress: erc20ContractLaunched.address,
-            coinChain: erc20ContractLaunched.chain,
-            coinName: erc20ContractLaunched.name,
+            coinAddress: erc20sLaunched.address,
+            coinChain: erc20sLaunched.chain,
+            coinName: erc20sLaunched.name,
             adjustedPrice,
             startTimestamp: claimCondition.startTimestamp,
             isClaimable,
