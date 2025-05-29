@@ -7,7 +7,7 @@ Link #2: https://ngelaras.endhonesa.com/
 
 This project is licensed under a **Custom Limited License** by [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/).
 
-- 🏛️ [English (UK)](./LICENSE_UK.md)
+- 🏛️ [English (UK)](./licenses/LICENSE_UK.md)
 - 🇮🇩 [Bahasa Indonesia](./licenses/LICENSE_ID.md)
 - 🇺🇿 [Oʻzbekcha](./licenses/LICENSE_UZ.md)
 - 🇭🇰 [Cantonese – Hong Kong](./licenses/LICENSE_HK.md)
