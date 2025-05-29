@@ -7,14 +7,14 @@ Link #4: https://istiqlal.endhonesa.com/
 
 ## 📜 License
 
-This project is licensed under a **Custom Limited License** by [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/).
+This project is licensed under a [**Custom Limited License**](./LICENSE) by [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/).
 
-- 🏛️ [English (UK)](./licenses/LICENSE_UK.md)
+- 🏛️ [English (UK)](./licenses/LICENSE_en-GB.md)
 - 🇮🇩 [Bahasa Indonesia](./licenses/LICENSE_ID.md)
-- 🇺🇿 [Oʻzbekcha](./licenses/LICENSE_UZ.md)
-- 🇭🇰 [Cantonese – Hong Kong](./licenses/LICENSE_HK.md)
-- 🇲🇾 [Bahasa Malaysia](./licenses/LICENSE_MY.md)
-- 🇦🇪 [العربية – الإمارات](./licenses/LICENSE_AE.md)
+- 🇺🇿 [Oʻzbekcha](./licenses/LICENSE_uz-Latn.md)
+- 🇭🇰 [Cantonese – Hong Kong](./licenses/LICENSE_yue-Hant-HK.md)
+- 🇲🇾 [Bahasa Malaysia](./licenses/LICENSE_ms-MY.md)
+- 🇦🇪 [العربية – الإمارات](./licenses/LICENSE_ar-AE.md)
 
 > 📩 For permission or inquiries, contact: [nota@endhonesa.com](mailto:nota@endhonesa.com)
 
