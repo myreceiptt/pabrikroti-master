@@ -1,10 +1,11 @@
 // /src/components/sections/HeaderSection.tsx
 
 // External libraries
+import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { FaSistrix } from "react-icons/fa6";
 // import { FaClockRotateLeft, FaUser, FaWallet } from "react-icons/fa6";
 
@@ -13,6 +14,7 @@ import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import ConnectButtons from "@/components/logins/ConnectButtons";
+import DropdownMenu from "@/components/sections/DropDownMenu";
 import QRCodeButton from "@/components/sections/QRCodeButton";
 
 const { receipt } = getActiveReceipt();
@@ -20,7 +22,30 @@ const { receipt } = getActiveReceipt();
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
+  const mobileSearchRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+
+  // Close when clicked outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        mobileSearchRef.current &&
+        !mobileSearchRef.current.contains(event.target as Node)
+      ) {
+        setIsMobileSearchOpen(false);
+      }
+    };
+
+    if (isMobileSearchOpen) {
+      document.addEventListener("mousedown", handleClickOutside);
+    } else {
+      document.removeEventListener("mousedown", handleClickOutside);
+    }
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [isMobileSearchOpen]);
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -31,17 +56,20 @@ export default function Header() {
 
   return (
     <header
-      style={{ backgroundColor: receipt.colorPrimary }}
-      className="w-full flex items-center justify-between py-4 px-4 md:px-20">
+      style={{
+        backgroundColor: receipt.colorPrimary,
+        borderColor: receipt.colorTertiary,
+      }}
+      className="w-full flex items-center justify-between py-4 px-4 md:px-20 bg-transparent border-b">
       {/* Logo Section */}
-      <div className="w-1/2 flex justify-start">
+      <div className="w-full sm:w-1/2 flex justify-start">
         <Link href="/">
           <Image
             src={receipt.headerLogo}
             alt={receipt.proTitle}
-            width={2400}
+            width={1200}
             height={400}
-            sizes="(max-width: 425px) 125vw, (max-width: 768px) 100vw, 50vw"
+            sizes="(max-width: 425px) 150vw, (max-width: 768px) 100vw, 50vw"
             className="h-auto w-auto object-contain"
           />
         </Link>
@@ -51,59 +79,73 @@ export default function Header() {
         {/* Search Bar (Desktop View: Min Width 640px) */}
         <form
           onSubmit={handleSearch}
-          style={{ backgroundColor: receipt.colorBoxIcon }}
+          style={{ backgroundColor: receipt.colorTertiary }}
           className="w-full hidden sm:flex items-center justify-center px-4 py-2 rounded-lg">
           <FaSistrix
             onClick={handleSearch}
-            style={{ color: receipt.colorAccent }}
+            style={{ color: receipt.colorSekunder }}
             className="w-5 h-5 cursor-pointer"
           />
           <input
             type="text"
             aria-label={receipt.headerSearch}
+            placeholder={receipt.searchPlaceholder}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            style={{ color: receipt.colorAccent }}
+            style={{ color: receipt.colorSecondary }}
             className="ml-2 w-full bg-transparent outline-hidden text-xs md:text-sm"
           />
         </form>
 
         {/* Icons Section */}
-        <div className="flex space-x-4">
+        <div ref={mobileSearchRef} className="flex space-x-4">
           {/* Mobile Search Button (Below 640px) */}
           <button
+            onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
             style={{
-              backgroundColor: receipt.colorBoxIcon,
-              color: receipt.colorIcon,
+              backgroundColor: receipt.colorTertiary,
+              color: receipt.colorSekunder,
             }}
             className="sm:hidden w-10 h-10 flex items-center justify-center text-xl rounded-lg"
-            onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}>
+            aria-label="Mobile Search Button">
             <FaSistrix />
           </button>
 
           {/* Mobile Search Input (Visible When Button Clicked) */}
-          {isMobileSearchOpen && (
-            <form
-              onSubmit={handleSearch}
-              style={{ backgroundColor: receipt.colorPrimary }}
-              className="absolute top-16 left-0 w-full px-4 py-2 flex items-center shadow-md">
-              <FaSistrix
-                style={{ color: receipt.colorAccent }}
-                className="w-5 h-5"
-              />
-              <input
-                type="text"
-                aria-label={receipt.headerSearch}
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                style={{ color: receipt.colorAccent }}
-                className="ml-2 w-full bg-transparent outline-hidden text-sm"
-              />
-              <button type="submit" className="text-sm font-semibold px-4">
-                {receipt.headerGo}
-              </button>
-            </form>
-          )}
+          <AnimatePresence>
+            {isMobileSearchOpen && (
+              <motion.form
+                key="mobile-search"
+                initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                transition={{ duration: 0.47, ease: "easeOut" }}
+                onSubmit={handleSearch}
+                style={{ backgroundColor: receipt.colorTertiary }}
+                className="absolute top-16 left-0 w-full px-4 py-2 flex items-center shadow-md z-10">
+                <FaSistrix
+                  onClick={handleSearch}
+                  style={{ color: receipt.colorSekunder }}
+                  className="w-5 h-5 cursor-pointer"
+                />
+                <input
+                  type="text"
+                  aria-label={receipt.headerSearch}
+                  placeholder={receipt.searchPlaceholder}
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  style={{ color: receipt.colorSecondary }}
+                  className="ml-2 w-full bg-transparent outline-none text-sm"
+                />
+                <button
+                  type="submit"
+                  style={{ color: receipt.colorSecondary }}
+                  className="text-sm font-semibold px-4 cursor-pointer">
+                  {receipt.headerGo}
+                </button>
+              </motion.form>
+            )}
+          </AnimatePresence>
 
           {/* Other Buttons */}
           <ConnectButtons />
@@ -123,6 +165,7 @@ export default function Header() {
             </Link>
           </button> */}
           <QRCodeButton />
+          <DropdownMenu />
         </div>
       </div>
     </header>

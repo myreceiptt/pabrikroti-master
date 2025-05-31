@@ -43,17 +43,17 @@ export class ErrorBoundary extends React.Component<
         <div className="flex flex-col justify-center items-center h-screen gap-4">
           <h2
             role="alert"
-            style={{ color: receipt.colorAccent }}
+            style={{ color: receipt.colorSecondary }}
             className="text-center text-sm font-medium">
             {receipt.proError}
           </h2>
           <button
             onClick={this.handleReload}
             style={{
-              color: receipt.colorPrimary,
-              backgroundColor: receipt.colorSecondary,
+              color: receipt.colorSecondary,
+              backgroundColor: receipt.colorTertiary,
               border: "2px solid",
-              borderColor: receipt.colorSecondary,
+              borderColor: "transparent",
             }}
             className="w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all cursor-pointer">
             {receipt.proButton}

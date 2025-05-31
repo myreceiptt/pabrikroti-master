@@ -53,7 +53,7 @@ export default function QRCodeButton() {
 
       // Draw white rounded background behind logo
       const padding = 11;
-      ctx.fillStyle = "white";
+      ctx.fillStyle = receipt.colorTersier;
       ctx.beginPath();
       ctx.arc(size / 2, size / 2, logoSize / 2 + padding, 0, Math.PI * 2);
       ctx.fill();
@@ -76,8 +76,8 @@ export default function QRCodeButton() {
           <QRCodeCanvas
             value={currentUrl}
             size={1047}
-            bgColor="#ffffff"
-            fgColor="#000000"
+            bgColor={receipt.colorTersier}
+            fgColor={receipt.colorSecondary}
             level="H"
             ref={qrRef}
           />
@@ -88,8 +88,8 @@ export default function QRCodeButton() {
       <button
         onClick={downloadQRCode}
         style={{
-          backgroundColor: receipt.colorBoxIcon,
-          color: receipt.colorIcon,
+          backgroundColor: receipt.colorTertiary,
+          color: receipt.colorSekunder,
         }}
         className="w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer"
         aria-label="Download QR Code">

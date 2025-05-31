@@ -48,6 +48,22 @@ export const tokeksPabrikRoti: SupportedFTs = {
       icon: oioiTokenIcon,
     },
   ],
+  [opMainnet.id]: [
+    {
+      address: erc20OiOiOpMainnet.address,
+      name: oioiTokenName,
+      symbol: oioiTokenSymbol,
+      icon: oioiTokenIcon,
+    },
+  ],
+  [shapeNetwork.id]: [
+    {
+      address: erc20OiOiShapeNetwork.address,
+      name: oioiTokenName,
+      symbol: oioiTokenSymbol,
+      icon: oioiTokenIcon,
+    },
+  ],
 };
 
 // Displayed balance FTs

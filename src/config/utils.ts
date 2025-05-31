@@ -2,14 +2,6 @@
 
 // Blockchain configurations
 import type { SupportedFTs, TokenMatamuPicek } from "@/config/contracts";
-import {
-  baseMainnet,
-  baseSepolia,
-  chain,
-  monadTestnet,
-  opMainnet,
-  shapeNetwork,
-} from "@/config/rantais";
 
 // convert hex to rgba
 export function hexToRgba(hex: string, alpha: number): string {
@@ -52,37 +44,6 @@ export function buildCurrencyMapFromSupportedFTs(
       map[address.toLowerCase()] = { name, symbol, icon };
     });
   });
-
-  // Tambahkan native token Ether - ETH
-  if (
-    [baseMainnet.id, baseSepolia.id, opMainnet.id, shapeNetwork.id].includes(
-      chain.id
-    )
-  ) {
-    map["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] = {
-      name: "Ether",
-      symbol: "ETH",
-      icon: "/erc20-icons/eth.png",
-    };
-  }
-
-  // Tambahkan native token Monad - MON untuk Monad Testnet
-  if (chain.id === monadTestnet.id) {
-    map["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] = {
-      name: "Monad",
-      symbol: "MON",
-      icon: "/erc20-icons/mon.png",
-    };
-  }
-
-  // Default fallback jika chain.id tidak dikenali
-  if (!chain.id) {
-    map["0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee"] = {
-      name: "Unknown FT",
-      symbol: "TOKEN",
-      icon: "/erc20-icons/nota.png",
-    };
-  }
 
   return map;
 }

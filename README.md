@@ -1,22 +1,32 @@
-PABRIK ROTI v.2.2.22: Staging Istiqlal Digital Legacy by NFT Indonesia
+PABRIK ROTI v.2.3.33: Staging NFT FAR by Futuloka
 
-Link #1: https://nft.istiqlal.or.id/  
-Link #2: https://leminerale.istiqlal.or.id/
-Link #3: https://login.istiqlal.or.id/
-Link #4: https://istiqlal.endhonesa.com/
+Link #1: https://far.futuloka.io/  
+Link #2: https://far.futuloka.xyz/  
+Link #3: https://far.endhonesa.com/
 
-## 📜 License
+## 📜 Licenses
 
-This project is licensed under a **Custom Limited License** by [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/).
+This project is licensed under a [**Custom Limited License**](./LICENSE) by [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/).
 
-- 🏛️ [English (UK)](./LICENSE_UK.md)
-- 🇮🇩 [Bahasa Indonesia](./licenses/LICENSE_ID.md)
-- 🇺🇿 [Oʻzbekcha](./licenses/LICENSE_UZ.md)
-- 🇭🇰 [Cantonese – Hong Kong](./licenses/LICENSE_HK.md)
-- 🇲🇾 [Bahasa Malaysia](./licenses/LICENSE_MY.md)
-- 🇦🇪 [العربية – الإمارات](./licenses/LICENSE_AE.md)
+- 🏛️ [English (UK)](./licenses/LICENSE_en-GB.md)
+- 🇮🇩 [Bahasa Indonesia](./licenses/LICENSE_id.md)
+- 🇺🇿 [Oʻzbekcha](./licenses/LICENSE_uz-Latn.md)
+- 🇭🇰 [Cantonese – Hong Kong](./licenses/LICENSE_yue-Hant-HK.md)
+- 🇲🇾 [Bahasa Malaysia](./licenses/LICENSE_ms-MY.md)
+- 🇦🇪 [العربية – الإمارات](./licenses/LICENSE_ar-AE.md)
 
 > 📩 For permission or inquiries, contact: [nota@endhonesa.com](mailto:nota@endhonesa.com)
+
+## 📜 Manifestos
+
+If you already have obtained the license, please read and understand the manifesto from [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/) before starting to use it.
+
+- 🏛️ [English (UK)](./manifestos/manifesto_en-GB.md)
+- 🇮🇩 [Bahasa Indonesia](./manifestos/manifesto_id.md)
+- 🇺🇿 [Oʻzbekcha](./manifestos/manifesto_uz-Latn.md)
+- 🇭🇰 [Cantonese – Hong Kong](./manifestos/manifesto_yue-Hant-HK.md)
+- 🇲🇾 [Bahasa Malaysia](./manifestos/manifesto_ms-MY.md)
+- 🇦🇪 [العربية – الإمارات](./manifestos/manifesto_ar-AE.md)
 
 ## Usage
 

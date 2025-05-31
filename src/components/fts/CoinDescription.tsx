@@ -36,7 +36,7 @@ export default function CoinDescription({
     <>
       <div
         style={{
-          color: receipt.colorIcon,
+          color: receipt.colorSekunder,
         }}
         className="w-full flex flex-col items-start gap-2">
         {isExpanded

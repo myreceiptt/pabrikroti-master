@@ -40,7 +40,7 @@ interface NFTData {
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
-  maxClaim: bigint;
+  maxSupply: bigint;
   adjustedBalance: number;
 }
 
@@ -94,12 +94,21 @@ export default function NFTsList({ variant }: NFTsListProps) {
             conditionId: 0n,
           });
 
+          // Fetch claimed supply based on claim condition
+          const nftClaimed = claimCondition.supplyClaimed;
+
+          // Fetch max. claim supply based on claim condition
+          const nftMaxClaim = claimCondition.maxClaimableSupply;
+
+          // Fetch max. supply
+          const nftMaxSupply = nftMaxClaim + (nftSupply - nftClaimed);
+
           // Fetch currency and decimals
           let currencyDecimals = 18;
           let balanceRaw = 0n;
-          const nativeETH = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
-          if (claimCondition.currency.toLowerCase() !== nativeETH) {
+          if (claimCondition.currency.toLowerCase() !== nativeCurrency) {
             const currencyContract = getContract({
               client: erc1155Launched.client,
               address: claimCondition.currency,
@@ -163,7 +172,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
             isClaimable,
             reason,
             supply: nftSupply,
-            maxClaim: claimCondition.maxClaimableSupply,
+            maxSupply: nftMaxSupply,
             adjustedBalance,
           };
         })
@@ -265,8 +274,8 @@ export default function NFTsList({ variant }: NFTsListProps) {
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
             style={{
-              color: receipt.colorPrimary,
-              background: receipt.colorSecondary,
+              color: receipt.colorSecondary,
+              background: receipt.colorTertiary,
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
@@ -284,8 +293,8 @@ export default function NFTsList({ variant }: NFTsListProps) {
             setIsRefreshing(false); // ✅ selesai loading
           }}
           style={{
-            color: receipt.colorPrimary,
-            background: receipt.colorSecondary,
+            color: receipt.colorSecondary,
+            background: receipt.colorTertiary,
           }}
           className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
@@ -306,8 +315,8 @@ export default function NFTsList({ variant }: NFTsListProps) {
             onClick={handleLoadMore}
             disabled={visibleCount >= nftListToShow.length}
             style={{
-              color: receipt.colorPrimary,
-              background: receipt.colorSecondary,
+              color: receipt.colorSecondary,
+              background: receipt.colorTertiary,
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= nftListToShow.length ? "" : "cursor-pointer"

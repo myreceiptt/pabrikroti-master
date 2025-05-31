@@ -30,7 +30,7 @@ interface CoinListerProps {
   isClaimable: boolean;
   reason: string | null;
   adjustedSupply: number;
-  adjustedMaxClaim: number;
+  adjustedMaxSupply: number;
   adjustedBalance: number;
   hasAccess: boolean | null;
   refreshToken: number;
@@ -45,7 +45,7 @@ export default function CoinLister({
   isClaimable,
   reason,
   adjustedSupply,
-  adjustedMaxClaim,
+  adjustedMaxSupply,
   adjustedBalance,
   hasAccess,
   refreshToken,
@@ -118,7 +118,10 @@ export default function CoinLister({
 
   return (
     <div
-      style={{ borderColor: receipt.colorBorder }}
+      style={{
+        borderColor: receipt.colorTertiary,
+        background: receipt.colorPrimary,
+      }}
       className="w-full grid grid-cols-1 gap-4 p-4 border rounded-3xl">
       {hasAccess === null ? (
         <Loader message={receipt.loaderChecking} />
@@ -149,22 +152,22 @@ export default function CoinLister({
           </Link>
           <div className="grid grid-cols-1 gap-2">
             <h2
-              style={{ color: receipt.colorSecondary }}
+              style={{ color: receipt.colorSekunder }}
               className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold">
               {coinName}
             </h2>
             <div
-              style={{ color: receipt.colorIcon }}
+              style={{ color: receipt.colorSekunder }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
               <span>{receipt.coinListerSupply}</span>
               <span
-                title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxClaim}`}>
+                title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxSupply}`}>
                 {formatNumberCompact(adjustedSupply)}/
-                {formatNumberCompact(adjustedMaxClaim)}
+                {formatNumberCompact(adjustedMaxSupply)}
               </span>
             </div>
             <h2
-              style={{ color: receipt.colorIcon }}
+              style={{ color: receipt.colorSekunder }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
               <span>
                 {receipt.coinFormOnChain} {chainName}
@@ -182,15 +185,13 @@ export default function CoinLister({
             }}
             style={{
               color: buttonDisabled
-                ? receipt.colorSecondary
-                : receipt.colorPrimary,
+                ? receipt.colorSekunder
+                : receipt.colorSecondary,
               backgroundColor: buttonDisabled
                 ? "transparent"
-                : receipt.colorSecondary,
+                : receipt.colorTertiary,
               border: "2px solid",
-              borderColor: buttonDisabled
-                ? receipt.colorBorder
-                : receipt.colorSecondary,
+              borderColor: buttonDisabled ? receipt.colorTertiary : "transparent",
             }}
             className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
               !buttonDisabled ? "cursor-pointer" : ""

@@ -7,7 +7,7 @@ import { motion } from "framer-motion";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaRotate } from "react-icons/fa6";
-import { ThirdwebContract } from "thirdweb";
+import { Chain, ThirdwebContract } from "thirdweb";
 import { balanceOf, getNFT } from "thirdweb/extensions/erc1155";
 import {
   ClaimButton,
@@ -18,7 +18,14 @@ import {
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { chainNames } from "@/config/rantais";
+import {
+  baseMainnet,
+  baseSepolia,
+  chainNames,
+  monadTestnet,
+  opMainnet,
+  shapeNetwork,
+} from "@/config/rantais";
 import { useCurrencyMap } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
 import { getCountdownString } from "@/config/utils";
@@ -31,6 +38,7 @@ const { receipt } = getActiveReceipt();
 
 interface NFTFormProps {
   dropContract: ThirdwebContract;
+  nftChain: Chain;
   nftId: bigint;
   nftIdString: string;
   adjustedPrice: number;
@@ -39,7 +47,7 @@ interface NFTFormProps {
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
-  maxClaim: bigint;
+  maxSupply: bigint;
   perWallet: bigint;
   adjustedBalance: number;
   setRefreshToken: (val: number) => void;
@@ -47,6 +55,7 @@ interface NFTFormProps {
 
 export default function NFTForm({
   dropContract,
+  nftChain,
   nftId,
   nftIdString,
   adjustedPrice,
@@ -55,7 +64,7 @@ export default function NFTForm({
   isClaimable,
   reason,
   supply,
-  maxClaim,
+  maxSupply,
   perWallet,
   adjustedBalance,
   setRefreshToken,
@@ -85,8 +94,6 @@ export default function NFTForm({
   const nftImage = nftMetadata?.image || receipt.nftListerImage;
   const nftName = nftMetadata?.name || receipt.nftListerName;
   const nftDescription = nft?.metadata.description ?? "";
-
-  console.log(`OiOi: ${nftDescription}`);
 
   // Fetch user's owned NFTs
   const { data: ownedNFTs, refetch: refetchOwnedNFTs } = useReadContract(
@@ -143,17 +150,47 @@ export default function NFTForm({
   }
 
   // Determine the currency symbol
-  const tokenCurrency = currencyMap[currency.toLowerCase()] || {
-    symbol: "TOKEN",
-    name: "Unknown FT",
-    icon: "/erc20-icons/nota.png",
-  };
+  const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+  const isNative = currency.toLowerCase() === nativeCurrency;
+  let tokenCurrency;
+  if (isNative) {
+    if (
+      nftChain === baseMainnet ||
+      nftChain === baseSepolia ||
+      nftChain === opMainnet ||
+      nftChain === shapeNetwork
+    ) {
+      tokenCurrency = {
+        symbol: "ETH",
+        name: "Ether",
+        icon: "/erc20-icons/eth.png",
+      };
+    } else if (nftChain === monadTestnet) {
+      tokenCurrency = {
+        symbol: "MON",
+        name: "Monad",
+        icon: "/erc20-icons/mon.png",
+      };
+    } else {
+      tokenCurrency = {
+        symbol: "TOKEN",
+        name: "Unknown FT",
+        icon: "/erc20-icons/nota.png",
+      };
+    }
+  } else {
+    tokenCurrency = currencyMap[currency.toLowerCase()] || {
+      symbol: "TOKEN",
+      name: "Unknown FT",
+      icon: "/erc20-icons/nota.png",
+    };
+  }
 
   // Format the price
   const formattedPrice = `${adjustedPrice.toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 6,
-  })} ${tokenCurrency.symbol}`;
+  })} ${tokenCurrency.symbol.toUpperCase()}`;
 
   return (
     <div className="w-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">
@@ -180,17 +217,17 @@ export default function NFTForm({
 
         <div className="flex flex-row gap-2">
           <h1
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="text-left text-sm font-medium">
             {receipt.nftFormBy}
           </h1>
           <span
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="text-3xl leading-6">
             &#9673;
           </span>
           <h1
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="text-left text-sm font-medium">
             <Link href={receipt.nftFormByLink} target="_blank">
               {receipt.nftFormByName}
@@ -210,17 +247,17 @@ export default function NFTForm({
         {/* NFT Info */}
         <div className="w-full grid grid-cols-8">
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.nftFormPrice}
           </h2>
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.nftFormOwned}
           </h2>
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-2 text-left text-xs font-medium">
             {receipt.nftFormRefresh}
           </h2>
@@ -245,8 +282,8 @@ export default function NFTForm({
               setIsRefreshing(false); // ✅ selesai loading
             }}
             style={{
-              color: receipt.colorPrimary,
-              background: receipt.colorSecondary,
+              color: receipt.colorSecondary,
+              background: receipt.colorTertiary,
             }}
             className={`col-span-2 aspect-auto rounded-lg mt-1 disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
@@ -265,12 +302,12 @@ export default function NFTForm({
 
         <div className="w-full grid grid-cols-8">
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.nftFormEdition}
           </h2>
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.coinFormOnChain}
           </h2>
@@ -278,7 +315,7 @@ export default function NFTForm({
           <h2
             style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
-            {supply.toString()}/{maxClaim.toString()}
+            {supply.toString()}/{maxSupply.toString()}
           </h2>
           <h2
             style={{ color: receipt.colorSecondary }}
@@ -293,17 +330,17 @@ export default function NFTForm({
           style={{
             color:
               isProcessing || buttonDisabled
-                ? receipt.colorSecondary
-                : receipt.colorPrimary,
+                ? receipt.colorSekunder
+                : receipt.colorSecondary,
             backgroundColor:
               isProcessing || buttonDisabled
-                ? "transparent"
-                : receipt.colorSecondary,
+                ? receipt.colorPrimary
+                : receipt.colorTertiary,
             border: "2px solid",
             borderColor:
               isProcessing || buttonDisabled
-                ? receipt.colorBorder
-                : receipt.colorSecondary,
+                ? receipt.colorTertiary
+                : "transparent",
           }}
           className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
               ${isProcessing || buttonDisabled ? "" : "cursor-pointer"}
@@ -347,7 +384,7 @@ export default function NFTForm({
           {buttonLabel}
         </ClaimButton>
         <h4
-          style={{ color: receipt.colorIcon }}
+          style={{ color: receipt.colorSekunder }}
           className="text-left text-xs font-medium">
           {`${receipt.nftFormMax} ${perWallet} ${receipt.nftFormPerWallet}`}
         </h4>

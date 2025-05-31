@@ -6,10 +6,12 @@
 import { useParams, useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
 import { Chain, getContract } from "thirdweb";
+import { getContractMetadata } from "thirdweb/extensions/common";
 import {
   canClaim,
   decimals,
   getActiveClaimCondition,
+  totalSupply,
 } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
@@ -30,6 +32,8 @@ interface CoinData {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
+  coinSymbol: string;
+  coinDescription: string;
   coinBy: string;
   coinLink: string;
   adjustedPrice: number;
@@ -40,7 +44,7 @@ interface CoinData {
   adjustedBalance: number;
   adjustedCoinOwned: number;
   adjustedSupply: number;
-  adjustedMaxClaim: number;
+  adjustedMaxSupply: number;
   adjustedPerWallet: number;
 }
 
@@ -85,6 +89,10 @@ export default function CoinDetails() {
         chain: erc20ContractLaunched.chain,
       });
 
+      const coinMetaData = await getContractMetadata({
+        contract: erc20Contract,
+      });
+
       const coinDecimals = await decimals({ contract: erc20Contract });
 
       const coinOwned = await getWalletBalance({
@@ -97,6 +105,12 @@ export default function CoinDetails() {
       const coinOwnedRaw = coinOwned.value ?? 0n;
       const adjustedCoinOwned = Number(coinOwnedRaw) / 10 ** coinDecimals;
 
+      const coinTotalSupply = await totalSupply({
+        contract: erc20Contract,
+      });
+
+      const adjustedSupply = Number(coinTotalSupply) / 10 ** coinDecimals;
+
       const claimCondition = await getActiveClaimCondition({
         contract: erc20Contract,
       });
@@ -107,18 +121,23 @@ export default function CoinDetails() {
         return;
       }
 
-      const adjustedSupply =
+      const adjustedClaimed =
         Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
+
       const adjustedMaxClaim =
         Number(claimCondition.maxClaimableSupply) / 10 ** coinDecimals;
+
+      const adjustedMaxSupply =
+        adjustedMaxClaim + (adjustedSupply - adjustedClaimed);
+
       const adjustedPerWallet =
         Number(claimCondition.quantityLimitPerWallet) / 10 ** coinDecimals;
 
       let currencyDecimals = 18;
       let balanceRaw = 0n;
-      const nativeETH = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+      const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
-      if (claimCondition.currency.toLowerCase() !== nativeETH) {
+      if (claimCondition.currency.toLowerCase() !== nativeCurrency) {
         const currencyContract = getContract({
           client: erc20ContractLaunched.client,
           address: claimCondition.currency,
@@ -156,7 +175,7 @@ export default function CoinDetails() {
       try {
         const claimStatus = await canClaim({
           contract: erc20Contract,
-          quantity: adjustedPerWallet.toString(),
+          quantity: "1",
           claimer: activeAccount?.address || "",
         });
 
@@ -174,7 +193,9 @@ export default function CoinDetails() {
       setCoin({
         coinAddress: erc20ContractLaunched.address,
         coinChain: erc20ContractLaunched.chain,
-        coinName: erc20ContractLaunched.name,
+        coinName: coinMetaData.name,
+        coinSymbol: coinMetaData.symbol,
+        coinDescription: coinMetaData.description,
         coinBy: erc20ContractLaunched.by,
         coinLink: erc20ContractLaunched.link,
         adjustedPrice,
@@ -185,7 +206,7 @@ export default function CoinDetails() {
         adjustedBalance,
         adjustedCoinOwned,
         adjustedSupply,
-        adjustedMaxClaim,
+        adjustedMaxSupply,
         adjustedPerWallet,
       });
 

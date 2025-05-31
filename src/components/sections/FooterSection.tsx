@@ -30,7 +30,7 @@ const { receipt } = getActiveReceipt();
 export default function Footer() {
   return (
     <footer
-      style={{ backgroundColor: receipt.colorAccent }}
+      style={{ backgroundColor: receipt.colorTertiary }}
       className="w-full py-4 px-4 md:px-20">
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
         <div className="w-full flex flex-col">
@@ -40,7 +40,7 @@ export default function Footer() {
         <div className="w-full flex flex-col">
           {/* Social Media Links */}
           <h3
-            style={{ color: receipt.colorPrimary }}
+            style={{ color: receipt.colorSecondary }}
             className="sm:text-end text-center text-xs sm:text-sm md:text-base font-semibold">
             {receipt.socialTitle}
           </h3>
@@ -50,8 +50,8 @@ export default function Footer() {
                 href={receipt.linkXTwitter}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimary,
-                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
+                  color: receipt.colorPrimer,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaTwitter />
@@ -63,8 +63,8 @@ export default function Footer() {
                 href={receipt.linkLinkedIn}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimary,
-                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
+                  color: receipt.colorPrimer,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaLinkedin />
@@ -76,8 +76,8 @@ export default function Footer() {
                 href={receipt.linkInstagram}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimary,
-                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
+                  color: receipt.colorPrimer,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaInstagram />
@@ -89,8 +89,8 @@ export default function Footer() {
                 href={receipt.linkFacebook}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimary,
-                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
+                  color: receipt.colorPrimer,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaFacebook />
@@ -102,8 +102,8 @@ export default function Footer() {
                 href={receipt.linkDiscord}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimary,
-                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
+                  color: receipt.colorPrimer,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaDiscord />
@@ -115,8 +115,8 @@ export default function Footer() {
                 href={receipt.linkYouTube}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimary,
-                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
+                  color: receipt.colorPrimer,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaYoutube />
@@ -128,8 +128,8 @@ export default function Footer() {
                 href={receipt.linkEmail}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimary,
-                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
+                  color: receipt.colorPrimer,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaEnvelope />
@@ -141,8 +141,8 @@ export default function Footer() {
                 href={receipt.linkWhatsApp}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimary,
-                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
+                  color: receipt.colorPrimer,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaWhatsapp />
@@ -154,8 +154,8 @@ export default function Footer() {
                 href={receipt.linkWebsite}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimary,
-                  backgroundColor: hexToRgba(receipt.colorSecondary, 1.0),
+                  color: receipt.colorPrimer,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaGlobe />
@@ -168,13 +168,13 @@ export default function Footer() {
       {/* Bottom Section */}
       <div
         style={{
-          borderColor: receipt.colorBorder,
+          borderColor: hexToRgba(receipt.colorSekunder, 0.7),
         }}
         className="w-full border-t mt-4 pt-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
         {/* Copyrights */}
         <div
           style={{
-            color: receipt.colorPrimary,
+            color: receipt.colorSecondary,
           }}
           className="w-full text-xs text-center sm:text-left">
           <p>
@@ -187,7 +187,7 @@ export default function Footer() {
               href="/terms"
               target="_blank"
               style={{
-                color: receipt.colorPrimary,
+                color: receipt.colorSecondary,
               }}
               className="text-xs text-center sm:text-left">
               {receipt.anchorTerms} & {receipt.anchorPrivacy}

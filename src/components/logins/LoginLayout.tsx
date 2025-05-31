@@ -47,7 +47,7 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
             {receipt.loginCall}
           </h1>
           <h2
-            style={{ color: receipt.colorSecondary }}
+            style={{ color: receipt.colorSekunder }}
             className="flex flex-wrap text-left text-sm lg:text-base xl:text-lg font-normal tracking-tighter justify-start items-center">
             {receipt.loginReason.text}
             <Link
@@ -62,7 +62,7 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
         <div className="w-full h-auto flex flex-col gap-4 justify-start items-start">
           {children}
           <h4
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="text-left text-xs font-normal">
             {receipt.loginAgreement}{" "}
             <Link

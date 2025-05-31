@@ -13,7 +13,14 @@ import { ClaimButton, TokenIcon, TokenProvider } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
-import { chainNames } from "@/config/rantais";
+import {
+  baseMainnet,
+  baseSepolia,
+  chainNames,
+  monadTestnet,
+  opMainnet,
+  shapeNetwork,
+} from "@/config/rantais";
 import { useCurrencyMap } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
 import { getCountdownString } from "@/config/utils";
@@ -29,6 +36,8 @@ interface CoinFormProps {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
+  coinSymbol: string;
+  coinDescription: string;
   coinBy: string;
   coinLink: string;
   adjustedPrice: number;
@@ -39,7 +48,7 @@ interface CoinFormProps {
   adjustedBalance: number;
   adjustedCoinOwned: number;
   adjustedSupply: number;
-  adjustedMaxClaim: number;
+  adjustedMaxSupply: number;
   adjustedPerWallet: number;
   hasAccess: boolean | null;
   setRefreshToken: (val: number) => void;
@@ -50,6 +59,8 @@ export default function CoinForm({
   coinAddress,
   coinChain,
   coinName,
+  coinSymbol,
+  coinDescription,
   coinBy,
   coinLink,
   adjustedPrice,
@@ -60,7 +71,7 @@ export default function CoinForm({
   adjustedBalance,
   adjustedCoinOwned,
   adjustedSupply,
-  adjustedMaxClaim,
+  adjustedMaxSupply,
   adjustedPerWallet,
   hasAccess,
   setRefreshToken,
@@ -125,17 +136,47 @@ export default function CoinForm({
   }
 
   // Determine the currency symbol
-  const tokenCurrency = currencyMap[currency.toLowerCase()] || {
-    symbol: "TOKEN",
-    name: "Unknown FT",
-    icon: "/erc20-icons/nota.png",
-  };
+  const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+  const isNative = currency.toLowerCase() === nativeCurrency;
+  let tokenCurrency;
+  if (isNative) {
+    if (
+      coinChain === baseMainnet ||
+      coinChain === baseSepolia ||
+      coinChain === opMainnet ||
+      coinChain === shapeNetwork
+    ) {
+      tokenCurrency = {
+        symbol: "ETH",
+        name: "Ether",
+        icon: "/erc20-icons/eth.png",
+      };
+    } else if (coinChain === monadTestnet) {
+      tokenCurrency = {
+        symbol: "MON",
+        name: "Monad",
+        icon: "/erc20-icons/mon.png",
+      };
+    } else {
+      tokenCurrency = {
+        symbol: "TOKEN",
+        name: "Unknown FT",
+        icon: "/erc20-icons/nota.png",
+      };
+    }
+  } else {
+    tokenCurrency = currencyMap[currency.toLowerCase()] || {
+      symbol: "TOKEN",
+      name: "Unknown FT",
+      icon: "/erc20-icons/nota.png",
+    };
+  }
 
   // Format the price
   const formattedPrice = `${adjustedPrice.toLocaleString("en-US", {
     minimumFractionDigits: 2,
     maximumFractionDigits: 6,
-  })} ${tokenCurrency.symbol}`;
+  })} ${tokenCurrency.symbol.toUpperCase()}`;
 
   // Format the supply, max. claim, owned, and per wallet
   function formatNumberCompact(value: number): string {
@@ -203,17 +244,17 @@ export default function CoinForm({
 
         <div className="flex flex-row gap-2">
           <h1
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="text-left text-sm font-medium">
             {receipt.nftFormBy}
           </h1>
           <span
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="text-3xl leading-6">
             &#9673;
           </span>
           <h1
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="text-left text-sm font-medium">
             <Link href={coinLink} target="_blank">
               {coinBy}
@@ -222,10 +263,7 @@ export default function CoinForm({
         </div>
 
         {/* Description with Expand/Collapse */}
-        <CoinDescription
-          description={receipt.coinDescription}
-          address={coinAddress}
-        />
+        <CoinDescription description={coinDescription} address={coinAddress} />
 
         {/* Success or Error Messages */}
         {pesanTunggu && <Loader message={pesanTunggu} />}
@@ -236,17 +274,17 @@ export default function CoinForm({
         {/* FT Info */}
         <div className="w-full grid grid-cols-8">
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.nftFormPrice}
           </h2>
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.coinFormOwned}
           </h2>
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-2 text-left text-xs font-medium">
             {receipt.nftFormRefresh}
           </h2>
@@ -259,7 +297,7 @@ export default function CoinForm({
           <h2
             style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
-            {adjustedCoinOwned}
+            {adjustedCoinOwned} {coinSymbol.toUpperCase()}
           </h2>
           <button
             disabled={isRefreshing}
@@ -270,8 +308,8 @@ export default function CoinForm({
               setIsRefreshing(false); // ✅ selesai loading
             }}
             style={{
-              color: receipt.colorPrimary,
-              background: receipt.colorSecondary,
+              color: receipt.colorSecondary,
+              background: receipt.colorTertiary,
             }}
             className={`col-span-2 aspect-auto rounded-lg mt-1 disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
@@ -290,12 +328,12 @@ export default function CoinForm({
 
         <div className="w-full grid grid-cols-8">
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.coinFormSupply}
           </h2>
           <h2
-            style={{ color: receipt.colorIcon }}
+            style={{ color: receipt.colorSekunder }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.coinFormOnChain}
           </h2>
@@ -304,9 +342,9 @@ export default function CoinForm({
             style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
             <span
-              title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxClaim}`}>
+              title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxSupply}`}>
               {formatNumberCompact(adjustedSupply)}/
-              {formatNumberCompact(adjustedMaxClaim)}
+              {formatNumberCompact(adjustedMaxSupply)}
             </span>
           </h2>
           <h2
@@ -322,17 +360,17 @@ export default function CoinForm({
           style={{
             color:
               isProcessing || buttonDisabled
-                ? receipt.colorSecondary
-                : receipt.colorPrimary,
+                ? receipt.colorSekunder
+                : receipt.colorSecondary,
             backgroundColor:
               isProcessing || buttonDisabled
-                ? "transparent"
-                : receipt.colorSecondary,
+                ? receipt.colorPrimary
+                : receipt.colorTertiary,
             border: "2px solid",
             borderColor:
               isProcessing || buttonDisabled
-                ? receipt.colorBorder
-                : receipt.colorSecondary,
+                ? receipt.colorTertiary
+                : "transparent",
           }}
           className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
               ${isProcessing || buttonDisabled ? "" : "cursor-pointer"}
@@ -342,7 +380,7 @@ export default function CoinForm({
           client={client}
           claimParams={{
             type: "ERC20",
-            quantity: adjustedPerWallet.toString(),
+            quantity: "1",
           }}
           disabled={isProcessing || buttonDisabled}
           onClick={() => {
@@ -375,7 +413,7 @@ export default function CoinForm({
           {buttonLabel}
         </ClaimButton>
         <h4
-          style={{ color: receipt.colorIcon }}
+          style={{ color: receipt.colorSekunder }}
           className="text-left text-xs font-medium">
           {`${receipt.nftFormMax} ${adjustedPerWallet} ${receipt.coinFormPerWallet}`}
         </h4>

@@ -25,7 +25,7 @@ export default function CoinAccess({ message, onRedirect }: CoinAccessProps) {
           {message}
         </h2>
         <h3
-          style={{ color: receipt.colorIcon }}
+          style={{ color: receipt.colorSekunder }}
           className="text-center text-sm font-medium">
           {receipt.coinAccessMessage}
         </h3>
@@ -35,8 +35,8 @@ export default function CoinAccess({ message, onRedirect }: CoinAccessProps) {
         <button
           type="button"
           style={{
-            color: receipt.colorPrimary,
-            backgroundColor: receipt.colorSecondary,
+            color: receipt.colorSecondary,
+            backgroundColor: receipt.colorTertiary,
           }}
           className="rounded-lg py-4 px-12 text-base font-semibold cursor-pointer"
           onClick={onRedirect}>

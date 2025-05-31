@@ -1,75 +1,11 @@
 /* /src/app/global.css */
 
+/* Tailwind CSS Core Import */
 @import 'tailwindcss';
 
-@source './globals.css';
-
-@theme {
-  --color-back-ground: #f9f9f9;
-  /* Terang */
-  --color-border-tombol: #dfdfdf;
-  /* Abu2 Terang */
-  --color-icon-wording: #707070;
-  /* Abu2 Gelap */
-  --color-box-icon: #f0f0f0;
-  /* Terang Dikit */
-  --color-hitam-judul-body: #171717;
-  /* Gelap */
-  --color-back-box-icon: #262525;
-  /* Gelap XXX */
-  --color-background-box-border-line: #d3d2d2;
-  /* Terang Gelap */
-  --color-tulisan-search-price: #666666;
-  /* Abu2 */
-  --color-email-address: #7b7979;
-  /* Abu2 */
-  --color-menu-footer: #e5e4e4;
-  /* Terang Gelap */
-  --color-desc-footer: #acabab;
-  /* Terang Gelap */
-}
-
-/*
-  The default border color has changed to `currentColor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-@layer base {
-
-  *,
-  ::after,
-  ::before,
-  ::backdrop,
-  ::file-selector-button {
-    border-color: var(--color-gray-200, currentColor);
-  }
-}
-
-/* ✅ Manually Define Class to Ensure Tailwind Detects It */
-@utility text-icon-wording {
-  color: var(--color-icon-wording);
-}
-
-@layer utilities {
-  :root {
-    line-height: 1.5;
-    font-weight: 400;
-    font-synthesis: none;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-family: 'Inter', sans-serif;
-    font-optical-sizing: auto;
-    font-style: normal;
-    font-variation-settings: 'slnt' 0;
-  }
-}
-
+/* Layer: Base — Reset & Global Setup */
 @layer base {
   body {
-    @apply text-icon-wording bg-back-ground;
+    @apply bg-white text-black;
   }
 }
