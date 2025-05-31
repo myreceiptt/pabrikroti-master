@@ -1,8 +1,9 @@
 PABRIK ROTI v.2.3.33: Staging NFT FAR by Futuloka
 
 Link #1: https://far.futuloka.io/  
-Link #2: https://far.futuloka.xyz/  
-Link #3: https://far.endhonesa.com/
+Link #2: https://www.futuloka.xyz/  
+Link #3: https://far.futuloka.xyz/  
+Link #4: https://far.endhonesa.com/
 
 ## 📜 Licenses
 

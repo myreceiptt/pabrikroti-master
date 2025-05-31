@@ -38,7 +38,7 @@ interface NFTData {
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
-  maxClaim: bigint;
+  maxSupply: bigint;
   adjustedBalance: number;
 }
 
@@ -105,6 +105,15 @@ export default function SearchWrapper() {
             tokenId: nftId,
             conditionId: 0n,
           });
+
+          // Fetch claimed supply based on claim condition
+          const nftClaimed = claimCondition.supplyClaimed;
+
+          // Fetch max. claim supply based on claim condition
+          const nftMaxClaim = claimCondition.maxClaimableSupply;
+
+          // Fetch max. supply
+          const nftMaxSupply = nftMaxClaim + (nftSupply - nftClaimed);
 
           // Fetch currency and decimals
           let currencyDecimals = 18;
@@ -175,7 +184,7 @@ export default function SearchWrapper() {
             isClaimable,
             reason,
             supply: nftSupply,
-            maxClaim: claimCondition.maxClaimableSupply,
+            maxSupply: nftMaxSupply,
             adjustedBalance,
           };
         })
