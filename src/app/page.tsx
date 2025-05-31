@@ -23,6 +23,7 @@ export default function PageRouter() {
 
     if (
       host.includes("far.futuloka.io") ||
+      host.includes("www.futuloka.xyz") ||
       host.includes("far.futuloka.xyz") ||
       host.includes("far.endhonesa.com") ||
       host.includes("localhost") ||
