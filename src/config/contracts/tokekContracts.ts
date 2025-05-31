@@ -35,12 +35,6 @@ export const erc20BONBase = getContract({
   client,
 });
 
-export const erc20IstiqlalDL = getContract({
-  address: "0x848a5F7CE782d183606C729d1dd9b089b54437d9", // IDL Token - Default
-  chain: baseMainnet,
-  client,
-});
-
 // FT contracts Base Sepolia
 export const erc20USDCBaseSepolia = getContract({
   address: "0x5dEaC602762362FE5f135FA5904351916053cF70", // USD C0in - Default
@@ -133,9 +127,3 @@ export const bonDoshSymbol = "BON"; // BON Voyage
 export const bonDoshIcon = "/erc20-icons/bon.png"; // BON Voyage
 export const bonDoshBy = "Voyage.Co.Id"; // BON Voyage
 export const bonDoshLink = "https://voyage.endhonesa.com/"; // OiOi Token
-
-export const idlTokenName = "IDL Token"; // IDL Token
-export const idlTokenSymbol = "IDL"; // IDL Token
-export const idlTokenIcon = "/erc20-icons/idl.png"; // IDL Token
-export const idlTokenBy = "Lembaga Pengembangan Media Istiqlal - BPMI"; // IDL Token
-export const idlTokenLink = "https://www.istiqlal.or.id/"; // IDL Token

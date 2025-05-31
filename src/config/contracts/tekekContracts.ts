@@ -23,8 +23,8 @@ export const erc1155MeMoRa1 = getContract({
   client,
 });
 
-export const erc1155IstiqlalDL = getContract({
-  address: "0x937F5A27C0d6c979d5b9EBddebD1C666B70b88C1", // Istiqlal Digital Legacy - Default
+export const erc1155MbokSri2025 = getContract({
+  address: "0x6ddAcee48391d604a19e29aE545EE4A17B02ce7F", // Mbok Sri Festival 2025
   chain: baseMainnet,
   client,
 });

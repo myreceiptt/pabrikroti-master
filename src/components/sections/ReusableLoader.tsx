@@ -15,7 +15,7 @@ interface LoaderProps {
 export default function Loader({ message }: LoaderProps) {
   return (
     <p
-      style={{ color: receipt.colorAccent }}
+      style={{ color: receipt.colorSekunder }}
       className="text-left text-sm font-medium">
       {message}
     </p>

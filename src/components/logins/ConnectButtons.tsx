@@ -34,6 +34,7 @@ export default function ConnectButtons() {
           className: " ",
           label: <FaUserLarge />,
           style: {
+            minWidth: "2.5rem",
             width: "2.5rem",
             height: "2.5rem",
             display: "flex",
@@ -41,8 +42,8 @@ export default function ConnectButtons() {
             justifyContent: "center",
             fontSize: "1.25rem",
             borderRadius: "0.5rem",
-            backgroundColor: receipt.colorBoxIcon,
-            color: receipt.colorIcon,
+            backgroundColor: receipt.colorTertiary,
+            color: receipt.colorSekunder,
           },
         }}
         connectModal={{
@@ -63,8 +64,8 @@ export default function ConnectButtons() {
           render: () => (
             <button
               style={{
-                color: receipt.colorIcon,
-                backgroundColor: receipt.colorBoxIcon,
+                color: receipt.colorSekunder,
+                backgroundColor: receipt.colorTertiary,
               }}
               className="w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer">
               <FaUserLarge />

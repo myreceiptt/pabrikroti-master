@@ -5,7 +5,7 @@
 // External libraries
 import { useParams, useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
-import { getContract } from "thirdweb";
+import { Chain, getContract } from "thirdweb";
 import {
   canClaim,
   getClaimConditionById,
@@ -27,6 +27,7 @@ import Message from "@/components/sections/ReusableMessage";
 const { receipt, erc1155Launched } = getActiveReceipt();
 
 interface NFTData {
+  nftChain: Chain;
   nftId: bigint;
   nftIdString: string;
   adjustedPrice: number;
@@ -35,7 +36,7 @@ interface NFTData {
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
-  maxClaim: bigint;
+  maxSupply: bigint;
   perWallet: bigint;
   adjustedBalance: number;
 }
@@ -86,6 +87,15 @@ export default function NFTDetails() {
         tokenId: nftId,
         conditionId: 0n,
       });
+
+      // Fetch claimed supply based on claim condition
+      const nftClaimed = claimCondition.supplyClaimed;
+
+      // Fetch max. claim supply based on claim condition
+      const nftMaxClaim = claimCondition.maxClaimableSupply;
+
+      // Fetch max. supply
+      const nftMaxSupply = nftMaxClaim + (nftSupply - nftClaimed);
 
       // Fetch currency and decimals
       let currencyDecimals = 18;
@@ -149,6 +159,7 @@ export default function NFTDetails() {
       }
 
       setNFT({
+        nftChain: erc1155Launched.chain,
         nftId,
         nftIdString: nftId.toString(),
         adjustedPrice,
@@ -157,7 +168,7 @@ export default function NFTDetails() {
         isClaimable,
         reason,
         supply: nftSupply,
-        maxClaim: claimCondition.maxClaimableSupply,
+        maxSupply: nftMaxSupply,
         perWallet: claimCondition.quantityLimitPerWallet,
         adjustedBalance,
       });

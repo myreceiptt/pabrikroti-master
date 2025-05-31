@@ -18,10 +18,10 @@ export const pabrikroti = {
   // colors hex libraries - graffiti mist
   colorPrimary: "#F2F2F2", // Abu terang polesan dinding tua
   colorSecondary: "#1B1B1B", // Hitam industrial
-  colorAccent: "#2E2E2E", // Abu arang (dari background Image 1)
-  colorBoxIcon: "#E8E8E8", // Abu terang berkabut
-  colorIcon: "#5A5A5A", // Abu medium kasar
-  colorBorder: "#D3D3D3", // Abu terang pastel
+  colorTertiary: "#E8E8E8", // Abu terang berkabut
+  colorPrimer: "#2E2E2E", // Abu arang (dari background Image 1)
+  colorSekunder: "#5A5A5A", // Abu medium kasar
+  colorTersier: "#D3D3D3", // Abu terang pastel
 
   // layout...
   proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
@@ -60,8 +60,27 @@ export const pabrikroti = {
 
   // header section
   headerLogo: "/roti/images/header-logo.png", // header,
-  headerGo: "Search Now", // header,
+  headerLogoo: "/roti/images/header-logoo.png", // header,
+  headerGo: "Search", // header,
   headerSearch: "Search Query", // header,
+  searchPlaceholder: "Enter your search query", // header,
+
+  // drop down menu section
+  ddMenuHome: "Welcome, OiOi!", // drop down menu,
+  ddMenuWhat: "", // drop down menu,
+  ddMenuWhy: "", // drop down menu,
+  ddMenuHow: "", // drop down menu,
+  ddMenuWhen: "", // drop down menu,
+  ddMenuWhere: "", // drop down menu,
+  ddMenuWho: "", // drop down menu,
+  ddMenuFeatured: "Featured, OiOi!", // drop down menu,
+  ddMenuFree: "Free NFTs", // drop down menu,
+  ddMenuPaid: "Paid NFTs", // drop down menu,
+  ddMenuCoins: "All The FTs", // drop down menu,
+  ddMenuMore: "Read More, OiOi!", // drop down menu,
+  ddMenuDeploy: "", // drop down menu,
+  ddMenuContact: "", // drop down menu,
+  ddMenuTerms: "Terms of Use", // drop down menu,
 
   // footer section - hide social icon by nulled the link
   copyRight: "Every stomach must be hungry.", // footer,
@@ -71,11 +90,11 @@ export const pabrikroti = {
   footerPower: "/roti/images/footer-power.png", // footer,
   socialTitle: "Eat all our updates for free!", // footer,
   linkXTwitter: "https://x.com/MyReceiptTT", // footer,
-  linkLinkedIn: "https://www.linkedin.com/in/prof-nota-56554a351/", // footer,
+  linkLinkedIn: "", // footer,
   linkInstagram: "https://www.instagram.com/myreceipt/", // footer,
   linkFacebook: "https://www.facebook.com/myreceiptt", // footer,
   linkDiscord: "https://discord.gg/5KrsT6MbFm", // footer,
-  linkYouTube: "https://www.youtube.com/@MyReceipt/", // footer,
+  linkYouTube: "", // footer,
   linkEmail: "mailto:nota@endhonesa.com", // footer,
   linkWhatsApp: "https://wa.me/message/DPRNCTJA2Q52L1", // footer,
   linkWebsite: "https://nota.endhonesa.com/", // footer,
@@ -89,7 +108,7 @@ export const pabrikroti = {
   subscribeMessage: "I want to subscribe to the latest updates.", // subscribe form,
   subscribeSuccess: "Thank you for subscribing!", // subscribe form,
   subscribeFailed: "Subscription failed. Please try again.", // subscribe form,
-  subscribeTitle: "Eat our latest updates", // subscribe form,
+  subscribeTitle: "Subscribe to our latest updates", // subscribe form,
   subscribePlaceholder: "Enter your email address", // subscribe form,
   subscribeButton: "Subscribe", // subscribe form,
   subscribeButtonLoading: "Subscribing...", // subscribe form,
@@ -223,9 +242,6 @@ export const pabrikroti = {
   coinFormKirim: "Serving your batch bread.", // coin form,
   coinFormSukses: "Batch bread successfully served.", // coin form,
   coinFormPerWallet: "crumb of batch per bread eater.", // coin form,
-
-  // coin description section
-  coinDescription: `Out of this, OiOi emerged—not just as a cheer but as a token, a trace of presence, a unit of remembered impact. An ERC-20 that didn't just measure transactions, but transformation.`, // coin description,
 
   // coin pop up section
   popUpTitle: "OiOi Token", // coin pop up,
