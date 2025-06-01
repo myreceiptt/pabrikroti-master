@@ -38,7 +38,7 @@ export default function TermsSection({
       {paragraphs?.map((text, i) => (
         <p
           key={`p-${i}`}
-          style={{ color: receipt.colorIcon }}
+          style={{ color: receipt.colorSekunder }}
           className="text-sm font-medium leading-relaxed">
           {text}
         </p>
@@ -50,7 +50,7 @@ export default function TermsSection({
           {unorderedList.map((item, i) => (
             <li
               key={`ul-${i}`}
-              style={{ color: receipt.colorIcon }}
+              style={{ color: receipt.colorSekunder }}
               className="text-sm font-medium leading-relaxed">
               {item}
             </li>
@@ -64,7 +64,7 @@ export default function TermsSection({
           {orderedList.map((item, i) => (
             <li
               key={`ol-${i}`}
-              style={{ color: receipt.colorIcon }}
+              style={{ color: receipt.colorSekunder }}
               className="text-sm font-medium leading-relaxed">
               {item}
             </li>
@@ -76,7 +76,7 @@ export default function TermsSection({
       {paragraphsAfterList?.map((text, i) => (
         <p
           key={`after-${i}`}
-          style={{ color: receipt.colorIcon }}
+          style={{ color: receipt.colorSekunder }}
           className="text-sm font-medium leading-relaxed">
           {text}
         </p>

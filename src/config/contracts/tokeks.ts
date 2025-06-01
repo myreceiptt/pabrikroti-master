@@ -24,9 +24,41 @@ import {
 
 // Define the supportedTokens - tokeks (FTs)
 export const tokeks: SupportedFTs = {
+  [baseMainnet.id]: [
+    {
+      address: erc20OiOiBase.address,
+      name: oioiTokenName,
+      symbol: oioiTokenSymbol,
+      icon: oioiTokenIcon,
+    },
+  ],
   [baseSepolia.id]: [
     {
       address: erc20OiOiBaseSepolia.address,
+      name: oioiTokenName,
+      symbol: oioiTokenSymbol,
+      icon: oioiTokenIcon,
+    },
+  ],
+  [monadTestnet.id]: [
+    {
+      address: erc20OiOiMonadTestnet.address,
+      name: oioiTokenName,
+      symbol: oioiTokenSymbol,
+      icon: oioiTokenIcon,
+    },
+  ],
+  [opMainnet.id]: [
+    {
+      address: erc20OiOiOpMainnet.address,
+      name: oioiTokenName,
+      symbol: oioiTokenSymbol,
+      icon: oioiTokenIcon,
+    },
+  ],
+  [shapeNetwork.id]: [
+    {
+      address: erc20OiOiShapeNetwork.address,
       name: oioiTokenName,
       symbol: oioiTokenSymbol,
       icon: oioiTokenIcon,

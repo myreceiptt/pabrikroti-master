@@ -5,6 +5,7 @@ import { useState } from "react";
 
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
+import { hexToRgba } from "@/config/utils";
 
 const { receipt } = getActiveReceipt();
 
@@ -66,7 +67,7 @@ export default function Subscribe() {
   return (
     <>
       <h3
-        style={{ color: receipt.colorPrimary }}
+        style={{ color: receipt.colorSecondary }}
         className="text-center sm:text-left text-xs sm:text-sm md:text-base font-semibold">
         {receipt.subscribeTitle}
       </h3>
@@ -81,9 +82,9 @@ export default function Subscribe() {
             onChange={(e) => setEmail(e.target.value)}
             style={{
               borderColor: isInvalid
-                ? receipt.colorPrimary
-                : receipt.colorBorder,
-              color: receipt.colorPrimary,
+                ? receipt.colorPrimer
+                : hexToRgba(receipt.colorSekunder, 0.7),
+              color: receipt.colorSecondary,
             }}
             className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border rounded-l-lg bg-transparent focus:outline-none"
             disabled={loading}
@@ -92,8 +93,8 @@ export default function Subscribe() {
           <button
             type="submit"
             style={{
-              backgroundColor: receipt.colorPrimary,
-              color: receipt.colorSecondary,
+              backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+              color: receipt.colorPrimer,
             }}
             className="text-xs md:text-sm px-6 py-2 font-semibold rounded-r-lg cursor-pointer"
             disabled={loading}>
@@ -106,7 +107,7 @@ export default function Subscribe() {
       {statusMessage && (
         <h4
           aria-live="polite"
-          style={{ color: receipt.colorPrimary }}
+          style={{ color: receipt.colorSecondary }}
           className="text-center sm:text-left text-sm font-medium mt-2">
           {statusMessage}
         </h4>

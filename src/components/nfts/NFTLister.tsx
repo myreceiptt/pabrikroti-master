@@ -30,7 +30,7 @@ interface NFTListerProps {
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
-  maxClaim: bigint;
+  maxSupply: bigint;
   adjustedBalance: number;
   refreshToken: number;
 }
@@ -44,7 +44,7 @@ export default function NFTLister({
   isClaimable,
   reason,
   supply,
-  maxClaim,
+  maxSupply,
   adjustedBalance,
   refreshToken,
 }: NFTListerProps) {
@@ -114,7 +114,10 @@ export default function NFTLister({
 
   return (
     <div
-      style={{ borderColor: receipt.colorBorder }}
+      style={{
+        borderColor: receipt.colorTertiary,
+        background: receipt.colorPrimary,
+      }}
       className="w-full grid grid-cols-1 gap-4 p-4 border rounded-3xl">
       {isLoading ? (
         <Loader message={receipt.loaderChecking} />
@@ -130,18 +133,18 @@ export default function NFTLister({
           </Link>
           <div className="grid grid-cols-1 gap-2">
             <h2
-              style={{ color: receipt.colorSecondary }}
+              style={{ color: receipt.colorSekunder }}
               className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold">
               {nftName}
             </h2>
             <div
-              style={{ color: receipt.colorIcon }}
+              style={{ color: receipt.colorSekunder }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
               <span>{receipt.nftEditions}</span>
-              {supply.toString()}/{maxClaim.toString()}
+              {supply.toString()}/{maxSupply.toString()}
             </div>
             <h2
-              style={{ color: receipt.colorIcon }}
+              style={{ color: receipt.colorSekunder }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
               <span>
                 {receipt.coinFormOnChain} {chainName}
@@ -159,15 +162,15 @@ export default function NFTLister({
             }}
             style={{
               color: buttonDisabled
-                ? receipt.colorSecondary
-                : receipt.colorPrimary,
+                ? receipt.colorSekunder
+                : receipt.colorSecondary,
               backgroundColor: buttonDisabled
                 ? "transparent"
-                : receipt.colorSecondary,
+                : receipt.colorTertiary,
               border: "2px solid",
               borderColor: buttonDisabled
-                ? receipt.colorBorder
-                : receipt.colorSecondary,
+                ? receipt.colorTertiary
+                : "transparent",
             }}
             className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
               !buttonDisabled ? "cursor-pointer" : ""
@@ -177,7 +180,7 @@ export default function NFTLister({
         </>
       ) : (
         <h2
-          style={{ color: receipt.colorIcon }}
+          style={{ color: receipt.colorSekunder }}
           className="text-left text-sm font-medium">
           {receipt.nftNoData}
         </h2>

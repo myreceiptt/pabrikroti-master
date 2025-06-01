@@ -19,11 +19,11 @@ export default function TermsHeader() {
         aria-label={receipt.termsAria1}>
         {receipt.termsTitle}
       </h1>
-      <span style={{ color: receipt.colorIcon }} className="text-xs leading-10">
+      <span style={{ color: receipt.colorSekunder }} className="text-xs leading-10">
         &#9673; &#9673; &#9673; &#9673;
       </span>
       <h2
-        style={{ color: receipt.colorIcon }}
+        style={{ color: receipt.colorSekunder }}
         className="text-sm font-medium"
         aria-label={receipt.termsAria2}>
         {receipt.termsUpdate}

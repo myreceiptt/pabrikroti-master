@@ -1,90 +1,34 @@
 // /src/config/receipts/myreceipt.ts
 
 // All receipts should be exported from this file.
-const proTitle = "Ngelaras Roso";
-const proUrl = "https://ngelarasroso.id";
-const entityName = "Ngelaras Roso X NFT Indonesia";
-const entityAlias1 = "NFT Indonesia";
-const entityAlias2 = "Ngelaras Roso";
+const proTitle = "NFT FOR A REASON - NFT FAR";
+const proUrl = "https://far.futuloka.io";
+const entityName = "NFT FAR by Futuloka";
+const entityAlias1 = "NFT FAR";
+const entityAlias2 = "Futuloka";
 const entityAddress =
-  "Jl. Al Inayah No.86, Rawakalong, Kec. Gn. Sindur, Kabupaten Bogor, Jawa Barat 16340, INDONESIA";
-const entityEmail = "hallonftindonesia@gmail.com";
-const termsMonth = "Januari";
-const termsDate = "20";
+  "Jl. Teuku Cik Ditiro II No.3 8, RT.1/RW.2, Gondangdia, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10350, INDONESIA";
+const entityEmail = "kontak@futuloka.io";
+const termsMonth = "May";
+const termsDate = "30";
 const termsYear = "2025";
 const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const myreceipt = {
-  // colors hex libraries - mystic coral
-  // colorPrimary: "#FFF8F7", // Putih Pink Coral Laut
-  // colorSecondary: "#523B3A", // Coklat Batu Karang Gelap
-  // colorAccent: "#291D1D", // Hitam Coral Tua
-  // colorBoxIcon: "#F5EAE9", // Coral Putih
-  // colorIcon: "#8A6665", // Abu Coral Tua
-  // colorBorder: "#E0CFCF", // Abu Coral Terang
-
-  // colors hex libraries - turquoise fog
-  // colorPrimary: "#E9FBF8", // Putih Aqua
-  // colorSecondary: "#106D6E", // Turquoise Gelap
-  // colorAccent: "#064344", // Gelap Turquoise Hitam
-  // colorBoxIcon: "#D0F1EE", // Aqua Muda
-  // colorIcon: "#478687", // Abu Turquoise
-  // colorBorder: "#B3E3E0", // Abu Aqua Terang
-
-  // colors hex libraries - apple garden
-  // colorPrimary: "#F6FAF1", // Putih Hijau Pucat
-  // colorSecondary: "#6DA34D", // Apel Hijau Cerah
-  // colorAccent: "#0C2713", // Hijau Hitam Daun
-  // colorBoxIcon: "#E5F1DE", // Hijau Soft
-  // colorIcon: "#4B7B35", // Hijau Tua
-  // colorBorder: "#CBE0C3", // Hijau Abu Terang
-
-  // colors hex libraries - green dark
-  colorPrimary: "#F6F9F7", // Putih kehijauan
-  colorSecondary: "#1E2B21", // Hijau Gelap
-  colorAccent: "#0D1711", // Lebih Gelap lagi
-  colorBoxIcon: "#E9F0EC", // Putih kehijauan lembut
-  colorIcon: "#59675E", // Abu Hijau Tua
-  colorBorder: "#D4DDD8", // Abu Hijau Terang
-
-  // colors hex libraries - emerald noir
-  // colorPrimary: "#F1F9F6", // Putih Mint
-  // colorSecondary: "#0A2F24", // Hijau Tua Emerald
-  // colorAccent: "#031710", // Gelap Hijau Pekat
-  // colorBoxIcon: "#E0F3EC", // Mint Soft
-  // colorIcon: "#2F5A4B", // Hijau Abu
-  // colorBorder: "#C2E4D9", // Mint Abu Terang
-
-  // colors hex libraries - wine elegance
-  // colorPrimary: "#FAF1F4", // Putih merah muda sangat pucat
-  // colorSecondary: "#3C0D1E", // Wine Tua
-  // colorAccent: "#1A050D", // Hitam Wine
-  // colorBoxIcon: "#F5E0E9", // Pink Soft
-  // colorIcon: "#6E2B43", // Merah Anggur Abu Tua
-  // colorBorder: "#E4C2CF", // Abu Pink Terang
-
-  // colors hex libraries - indigo rose
-  // colorPrimary: "#F5F3FA", // Putih keunguan
-  // colorSecondary: "#1E153C", // Indigo Tua
-  // colorAccent: "#0E0A1E", // Hitam Indigo
-  // colorBoxIcon: "#EAE6F5", // Lavender Putih
-  // colorIcon: "#514B6E", // Abu Indigo
-  // colorBorder: "#D6CFE4", // Lavender Abu Terang
-
-  // colors hex libraries - sunset fog
-  // colorPrimary: "#FFF8F3", // Putih Oranye Pucat
-  // colorSecondary: "#3B1F0F", // Coklat Sunset Tua
-  // colorAccent: "#1A0E06", // Gelap Coklat Hitam
-  // colorBoxIcon: "#FCEAE0", // Oranye Putih Soft
-  // colorIcon: "#7A4A33", // Abu Coklat
-  // colorBorder: "#E7C9B9", // Abu Oranye Terang
+  // colors hex libraries - nft for a reason
+  colorPrimary: "#FFFBEF", // Paling Terang
+  colorSecondary: "#4D1E10", // Paling Gelap
+  colorTertiary: "#FDD604", // Paling Identitas
+  colorPrimer: "#FFF0C9", // Terang
+  colorSekunder: "#7A4C00", // Gelap
+  colorTersier: "#E8DA32", // Identitas
 
   // layout...
   proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
   proDescription:
-    "You create this space so you can then fill it up with all that you need and desire. It's about letting go, surrending... and at the same time... welcoming in, receiving.", // layout, connect buttons, connect embeds,
+    "NFT FOR A REASON: A Web3 Initiative for Grassroots Culture & Creative Solidarity.", // layout, connect buttons, connect embeds,
   proUrl, // layout, connect buttons, connect embeds,
-  proPublisher: "NFT Indonesia", // layout,
+  proPublisher: "Futuloka", // layout,
   proLocale: "en-US", // layout,
   proFavicon: "/favicon.ico", // layout,
   proImage: "https://ngelarasroso.id/preview-image.png", // layout,
@@ -116,8 +60,27 @@ export const myreceipt = {
 
   // header section
   headerLogo: "/images/header-logo.png", // header,
-  headerGo: "Search Now", // header,
+  headerLogoo: "/images/header-logoo.png", // header,
+  headerGo: "Search", // header,
   headerSearch: "Search Query", // header,
+  searchPlaceholder: "Enter your search query", // header,
+
+  // drop down menu section
+  ddMenuHome: "Welcome, OiOi!", // drop down menu,
+  ddMenuWhat: "", // drop down menu,
+  ddMenuWhy: "", // drop down menu,
+  ddMenuHow: "", // drop down menu,
+  ddMenuWhen: "", // drop down menu,
+  ddMenuWhere: "", // drop down menu,
+  ddMenuWho: "", // drop down menu,
+  ddMenuFeatured: "Featured, OiOi!", // drop down menu,
+  ddMenuFree: "", // drop down menu,
+  ddMenuPaid: "Paid NFTs", // drop down menu,
+  ddMenuCoins: "The FTs", // drop down menu,
+  ddMenuMore: "Read More, OiOi!", // drop down menu,
+  ddMenuDeploy: "", // drop down menu,
+  ddMenuContact: "", // drop down menu,
+  ddMenuTerms: "Terms of Use", // drop down menu,
 
   // footer section - hide social icon by nulled the link
   copyRight: "All rights reserved.", // footer,
@@ -154,9 +117,9 @@ export const myreceipt = {
   featuredTitle1: "Fill It Up With All", // featured cards,
   featuredTitle2: "That You Need & Desire", // featured cards,
   featuredPaid: "/images/featured-paid.png", // featured cards,
-  paidTitle: "", // featured cards,
+  paidTitle: "All Paid Stocks", // featured cards,
   featuredFree: "/images/featured-free.png", // featured cards,
-  freeTitle: "All Free Stocks", // featured cards,
+  freeTitle: "", // featured cards,
   featuredCoin: "/images/featured-coin.png", // featured cards,
   coinTitle: "All Claimable Shares", // featured cards,
   featuredAria: "Navigate to", // featured cards,
@@ -280,9 +243,6 @@ export const myreceipt = {
   coinFormSukses: "Share successfully claimed.", // coin form,
   coinFormPerWallet: "supply per holder.", // coin form,
 
-  // coin description section
-  coinDescription: "Ethereum L2 $OiOi fungible tokens.", // coin description,
-
   // coin pop up section
   popUpTitle: "OiOi Token", // coin pop up,
   popUpP1: "At a certain point in time… in the Universe of Reality.", // coin pop up,
@@ -310,7 +270,7 @@ export const myreceipt = {
   popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
   popUpP13: "", // coin pop up,
   popUpP14: "", // coin pop up,
-  popUpImage: "/medias/coin-pop-up.gif", // coin pop up,
+  popUpImage: "/roti/medias/coin-pop-up.gif", // coin pop up,
   popUpImageAlt: "OiOi Token Illustration", // coin pop up,
 
   // terms page

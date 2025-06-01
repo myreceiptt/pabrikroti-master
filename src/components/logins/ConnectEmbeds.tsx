@@ -44,10 +44,10 @@ export default function ConnectEmbeds() {
         showThirdwebBranding={false}
         theme={lightTheme({
           colors: {
-            accentButtonBg: "#171717", // Button for Retry & Try Again
-            accentButtonText: "#707070", // Button for Retry & Try Again
-            accentText: "#171717", // Hyperlink text for Terms & Privacy
-            borderColor: "#DFDFDF", // All border color
+            accentButtonBg: receipt.colorSecondary, // Button for Retry & Try Again
+            accentButtonText: receipt.colorSekunder, // Button for Retry & Try Again
+            accentText: receipt.colorSecondary, // Hyperlink text for Terms & Privacy
+            borderColor: receipt.colorTertiary, // All border color
             // connectedButtonBg: string;
             // connectedButtonBgHover: string;
             // danger: string;
@@ -56,17 +56,17 @@ export default function ConnectEmbeds() {
             // modalOverlayBg: string;
             // primaryButtonBg: string;
             // primaryButtonText: string;
-            primaryText: "#707070", // Passkey & Connect a Wallet text
+            primaryText: receipt.colorSekunder, // Passkey & Connect a Wallet text
             // scrollbarBg: string;
             // secondaryButtonBg: string;
             // secondaryButtonHoverBg: string;
-            secondaryButtonText: "#707070", // Google & Apple text
+            secondaryButtonText: receipt.colorSekunder, // Google & Apple text
             // secondaryIconColor: string;
             // secondaryIconHoverBg: string;
             // secondaryIconHoverColor: string;
             // secondaryText: string;
-            selectedTextBg: "#707070",
-            selectedTextColor: "#F9F9F9",
+            selectedTextBg: receipt.colorSekunder,
+            selectedTextColor: receipt.colorPrimary,
             // separatorLine: string;
             // skeletonBg: string;
             // success: string;

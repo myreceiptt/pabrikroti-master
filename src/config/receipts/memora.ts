@@ -18,10 +18,10 @@ export const memora = {
   // colors hex libraries - origin
   colorPrimary: "#F9F9F9", // Terang
   colorSecondary: "#262525", // Gelap XXX
-  colorAccent: "#171717", // Gelap
-  colorBoxIcon: "#F0F0F0", // Terang Dikit
-  colorIcon: "#707070", // Abu2 Gelap
-  colorBorder: "#DFDFDF", // Abu2 Terang
+  colorTertiary: "#707070", // Abu2 Gelap
+  colorPrimer: "#F0F0F0", // Terang Dikit
+  colorSekunder: "#171717", // Gelap
+  colorTersier: "#DFDFDF", // Abu2 Terang
 
   // layout...
   proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
@@ -59,8 +59,27 @@ export const memora = {
 
   // header section
   headerLogo: "/memora/images/header-logo.png", // header,
-  headerGo: "Search Now", // header,
+  headerLogoo: "/memora/images/header-logoo.png", // header,
+  headerGo: "Search", // header,
   headerSearch: "Search Query", // header,
+  searchPlaceholder: "Enter your search query", // header,
+
+  // drop down menu section
+  ddMenuHome: "Home Page", // drop down menu,
+  ddMenuWhat: "", // drop down menu,
+  ddMenuWhy: "", // drop down menu,
+  ddMenuHow: "", // drop down menu,
+  ddMenuWhen: "", // drop down menu,
+  ddMenuWhere: "", // drop down menu,
+  ddMenuWho: "", // drop down menu,
+  ddMenuFeatured: "Featured", // drop down menu,
+  ddMenuFree: "Free MeMoRa", // drop down menu,
+  ddMenuPaid: "Paid MeMoRa", // drop down menu,
+  ddMenuCoins: "BON Voyage", // drop down menu,
+  ddMenuMore: "Read More, OiOi!", // drop down menu,
+  ddMenuDeploy: "", // drop down menu,
+  ddMenuContact: "", // drop down menu,
+  ddMenuTerms: "Terms of Use", // drop down menu,
 
   // footer section - hide social icon by nulled the link
   copyRight: "All rights reserved.", // footer,
@@ -223,10 +242,6 @@ export const memora = {
   coinFormKirim: "Claiming your point.", // coin form,
   coinFormSukses: "Point successfully claimed.", // coin form,
   coinFormPerWallet: "supply per holder.", // coin form,
-
-  // coin description section
-  coinDescription:
-    "BON stands as a measure that immortalises experience, a token of equivalence (ERC-20) that encapsulates the influence of every participant in the VOYAGE.", // coin description,
 
   // coin pop up section
   popUpTitle: "$BON Dosh!!!!", // coin pop up,

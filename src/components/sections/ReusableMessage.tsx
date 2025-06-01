@@ -31,7 +31,7 @@ export default function Message({
           {message1}
         </h2>
         <h3
-          style={{ color: receipt.colorIcon }}
+          style={{ color: receipt.colorSekunder }}
           className="text-center text-sm font-medium">
           {message2}
         </h3>
@@ -42,8 +42,8 @@ export default function Message({
           <button
             type="button"
             style={{
-              color: receipt.colorPrimary,
-              backgroundColor: receipt.colorSecondary,
+              color: receipt.colorSecondary,
+              backgroundColor: receipt.colorTertiary,
             }}
             className="rounded-lg py-4 px-12 text-base font-semibold cursor-pointer">
             {message3}

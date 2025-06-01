@@ -22,7 +22,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
   return (
     <div
       style={{
-        backgroundColor: hexToRgba(receipt.colorSecondary, 0.5),
+        backgroundColor: hexToRgba(receipt.colorTersier, 0.5),
       }}
       className="fixed inset-0 flex items-center justify-center backdrop-blur-xs z-50">
       {/* Pop-up Box */}
@@ -34,8 +34,8 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
         {/* Close Button */}
         <button
           style={{
-            color: receipt.colorIcon,
-            backgroundColor: receipt.colorBoxIcon,
+            color: receipt.colorSekunder,
+            backgroundColor: receipt.colorTertiary,
           }}
           className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer"
           onClick={onClose}>
@@ -53,7 +53,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           </h2>
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP1}
@@ -61,7 +61,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP2}
@@ -69,7 +69,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP3}
@@ -77,7 +77,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP4}
@@ -85,7 +85,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP5}
@@ -93,7 +93,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP6}
@@ -101,7 +101,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP7}
@@ -109,7 +109,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP8}
@@ -117,7 +117,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <ul
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             <li>{receipt.popUpUlLi1}</li>
@@ -130,7 +130,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP9}
@@ -138,7 +138,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP10}
@@ -146,7 +146,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP11}
@@ -154,7 +154,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorIcon,
+              color: receipt.colorSekunder,
             }}
             className="text-sm font-medium">
             {receipt.popUpP12}

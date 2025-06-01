@@ -11,7 +11,7 @@ import {
   canClaim,
   decimals,
   getActiveClaimCondition,
-  // totalSupply,
+  totalSupply,
 } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
 import { getWalletBalance } from "thirdweb/wallets";
@@ -37,7 +37,7 @@ interface CoinData {
   isClaimable: boolean;
   reason: string | null;
   adjustedSupply: number;
-  adjustedMaxClaim: number;
+  adjustedMaxSupply: number;
   adjustedBalance: number;
 }
 
@@ -73,13 +73,13 @@ export default function CoinsList() {
           // Fetch coin decimals
           const coinDecimals = await decimals({ contract: erc20Contract });
 
-          // Fetch coin supply
-          // const coinSupply = await totalSupply({
-          // contract: erc20Contract,
-          // });
+          // Fetch coin current supply
+          const coinTotalSupply = await totalSupply({
+            contract: erc20Contract,
+          });
 
-          // Adjust coin supply
-          // const adjustedSupply = Number(coinSupply) / 10 ** coinDecimals;
+          // Adjust coin current supply
+          const adjustedSupply = Number(coinTotalSupply) / 10 ** coinDecimals;
 
           // Fetch claim condition
           const claimCondition = await getActiveClaimCondition({
@@ -90,23 +90,23 @@ export default function CoinsList() {
             return null;
 
           // Fetch coin supply based on claim condition
-          const adjustedSupply =
+          const adjustedClaimed =
             Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
 
           // Fetch and adjust max. claim
           const adjustedMaxClaim =
             Number(claimCondition.maxClaimableSupply) / 10 ** coinDecimals;
 
-          // Fetch and adjust limit per wallet
-          const adjustedPerWallet =
-            Number(claimCondition.quantityLimitPerWallet) / 10 ** coinDecimals;
+          // Fetch and adjust max. supply
+          const adjustedMaxSupply =
+            adjustedMaxClaim + (adjustedSupply - adjustedClaimed);
 
           // Fetch currency and decimals
           let currencyDecimals = 18;
           let balanceRaw = 0n;
-          const nativeETH = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
-          if (claimCondition.currency.toLowerCase() !== nativeETH) {
+          if (claimCondition.currency.toLowerCase() !== nativeCurrency) {
             const currencyContract = getContract({
               client: erc20sLaunched.client,
               address: claimCondition.currency,
@@ -148,7 +148,7 @@ export default function CoinsList() {
           try {
             const claimStatus = await canClaim({
               contract: erc20Contract,
-              quantity: adjustedPerWallet.toString(),
+              quantity: "1",
               claimer: activeAccount?.address || "",
             });
 
@@ -173,7 +173,7 @@ export default function CoinsList() {
             isClaimable,
             reason,
             adjustedSupply,
-            adjustedMaxClaim,
+            adjustedMaxSupply,
             adjustedBalance,
           };
         })
@@ -277,8 +277,8 @@ export default function CoinsList() {
             onClick={handleUnload}
             disabled={visibleCount === INITIAL_ITEMS}
             style={{
-              color: receipt.colorPrimary,
-              background: receipt.colorSecondary,
+              color: receipt.colorSecondary,
+              background: receipt.colorTertiary,
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
@@ -296,8 +296,8 @@ export default function CoinsList() {
             setIsRefreshing(false); // ✅ selesai loading
           }}
           style={{
-            color: receipt.colorPrimary,
-            background: receipt.colorSecondary,
+            color: receipt.colorSecondary,
+            background: receipt.colorTertiary,
           }}
           className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
@@ -318,8 +318,8 @@ export default function CoinsList() {
             onClick={handleLoadMore}
             disabled={visibleCount >= coinListToShow.length}
             style={{
-              color: receipt.colorPrimary,
-              background: receipt.colorSecondary,
+              color: receipt.colorSecondary,
+              background: receipt.colorTertiary,
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= coinListToShow.length ? "" : "cursor-pointer"
