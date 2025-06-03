@@ -4,9 +4,9 @@
 import { getActiveReceipt } from "@/config/receipts";
 import Link from "next/link";
 
-const { receipt } = getActiveReceipt();
-
 export default function AboutThis() {
+  const { receipt } = getActiveReceipt();
+
   return (
     <section className="px-6 py-16">
       <div className="max-w-5xl mx-auto space-y-6">

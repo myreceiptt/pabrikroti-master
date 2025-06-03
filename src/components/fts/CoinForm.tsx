@@ -30,8 +30,6 @@ import CoinDescription from "@/components/fts/CoinDescription";
 import CoinPopUp from "@/components/fts/CoinPopUp";
 import Loader from "@/components/sections/ReusableLoader";
 
-const { receipt } = getActiveReceipt();
-
 interface CoinFormProps {
   coinAddress: string;
   coinChain: Chain;
@@ -77,6 +75,8 @@ export default function CoinForm({
   setRefreshToken,
   refreshToken,
 }: CoinFormProps) {
+  const { receipt } = getActiveReceipt();
+
   const startTime = new Date(Number(startTimestamp) * 1000);
   const chainName = chainNames[coinChain.id] ?? "Unknown Chain";
   const currencyMap = useCurrencyMap();

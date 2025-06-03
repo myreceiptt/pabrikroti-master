@@ -12,9 +12,9 @@ import { FaBars } from "react-icons/fa6";
 import { getActiveReceipt } from "@/config/receipts";
 import { hexToRgba } from "@/config/utils";
 
-const { receipt } = getActiveReceipt();
-
 export default function DropdownMenu() {
+  const { receipt } = getActiveReceipt();
+
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 

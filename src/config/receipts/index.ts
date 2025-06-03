@@ -68,15 +68,6 @@ const hostMap: Record<
     supportedFTs: tokeksPabrikRoti,
     displayedTokeks: displayedTokeksPabrikRoti,
   },
-  "preroti.endhonesa.com": {
-    receipt: myreceipt,
-    factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155MbokSri2025,
-    supportedNFTs: tekeks,
-    erc20sLaunched: erc20sLaunched,
-    supportedFTs: tokeks,
-    displayedTokeks: displayedTokeks,
-  },
   "far.futuloka.io": {
     receipt: myreceipt,
     factoryAddress: factoryNOTA,
@@ -105,6 +96,15 @@ const hostMap: Record<
     displayedTokeks: displayedTokeks,
   },
   "far.endhonesa.com": {
+    receipt: myreceipt,
+    factoryAddress: factoryNOTA,
+    erc1155Launched: erc1155MbokSri2025,
+    supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
+  },
+  "preroti.endhonesa.com": {
     receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155MbokSri2025,

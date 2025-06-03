@@ -15,9 +15,9 @@ import TermsHeader from "@/components/terms/TermsHeader";
 import TermsDivider from "@/components/terms/TermsDivider";
 import TermsSection from "@/components/terms/TermsSection";
 
-const { receipt } = getActiveReceipt();
-
 export default function PageTerms() {
+  const { receipt } = getActiveReceipt();
+
   return (
     <>
       {/* Headersss */}

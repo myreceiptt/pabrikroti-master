@@ -25,9 +25,9 @@ import { hexToRgba } from "@/config/utils";
 // Components libraries
 import Subscribe from "@/components/sections/SubscribeForm";
 
-const { receipt } = getActiveReceipt();
-
 export default function Footer() {
+  const { receipt } = getActiveReceipt();
+
   return (
     <footer
       style={{ backgroundColor: receipt.colorTertiary }}
