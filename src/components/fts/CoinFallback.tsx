@@ -11,9 +11,9 @@ import { getActiveReceipt } from "@/config/receipts";
 // Components libraries
 import Message from "@/components/sections/ReusableMessage";
 
-const { receipt } = getActiveReceipt();
-
 export default function CoinFallback() {
+  const { receipt } = getActiveReceipt();
+
   return (
     <main className="grid gap-4 place-items-center">
       <Message

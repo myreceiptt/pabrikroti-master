@@ -8,8 +8,6 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { receipt } = getActiveReceipt();
-
 interface TermsSectionProps {
   title: string;
   paragraphs?: string[];
@@ -25,6 +23,8 @@ export default function TermsSection({
   orderedList,
   paragraphsAfterList,
 }: TermsSectionProps) {
+  const { receipt } = getActiveReceipt();
+
   return (
     <section className="space-y-4">
       {/* Section Title */}

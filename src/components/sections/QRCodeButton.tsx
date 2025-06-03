@@ -10,9 +10,9 @@ import { FaQrcode } from "react-icons/fa6";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { receipt } = getActiveReceipt();
-
 export default function QRCodeButton() {
+  const { receipt } = getActiveReceipt();
+
   const [currentUrl, setCurrentUrl] = useState<string | null>(null);
   const qrRef = useRef<HTMLCanvasElement>(null);
 

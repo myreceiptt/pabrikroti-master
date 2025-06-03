@@ -9,14 +9,14 @@ import { FaXmark } from "react-icons/fa6";
 import { getActiveReceipt } from "@/config/receipts";
 import { hexToRgba } from "@/config/utils";
 
-const { receipt } = getActiveReceipt();
-
 interface CoinPopUpProps {
   isOpen: boolean;
   onClose: () => void;
 }
 
 export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
+  const { receipt } = getActiveReceipt();
+
   if (!isOpen) return null;
 
   return (

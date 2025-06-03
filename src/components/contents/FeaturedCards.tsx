@@ -10,9 +10,9 @@ import { getActiveReceipt } from "@/config/receipts";
 // Components libraries
 import Title from "@/components/sections/ReusableTitle";
 
-const { receipt } = getActiveReceipt();
-
 export default function FeaturedCards() {
+  const { receipt } = getActiveReceipt();
+
   return (
     <main className="grid gap-4 place-items-center">
       <Title title1={receipt.featuredTitle1} title2={receipt.featuredTitle2} />

@@ -7,9 +7,9 @@ import { useState } from "react";
 import { getActiveReceipt } from "@/config/receipts";
 import { hexToRgba } from "@/config/utils";
 
-const { receipt } = getActiveReceipt();
-
 export default function Subscribe() {
+  const { receipt } = getActiveReceipt();
+
   const [email, setEmail] = useState("");
   const [statusMessage, setStatusMessage] = useState("");
   const [loading, setLoading] = useState(false);
