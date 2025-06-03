@@ -227,6 +227,7 @@ export const pabrikroti = {
   coinMessage1: "The address of the batch breads not found.", // coin details,
   coinMessage2:
     "The specified address of the batch breads was not found. Please try again later or return to the home page.", // coin details,
+  coinAccessRedirect: "/featured", // coin details
   coinAccessTitle: "You don't have access!", // coin details,
 
   // coin access section

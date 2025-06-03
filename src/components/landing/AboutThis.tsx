@@ -2,6 +2,7 @@
 
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
+import Link from "next/link";
 
 const { receipt } = getActiveReceipt();
 
@@ -10,6 +11,7 @@ export default function AboutThis() {
     <section className="px-6 py-16">
       <div className="max-w-5xl mx-auto space-y-6">
         <h2
+          id="what"
           style={{
             color: receipt.colorSecondary,
           }}
@@ -62,10 +64,22 @@ export default function AboutThis() {
             color: receipt.colorSekunder,
           }}>
           Each project is accompanied by a{" "}
-          <span className="font-extrabold">whitepaper</span> and{" "}
-          <span className="font-extrabold">roadmap</span> that clearly outline
-          the context, fund distribution strategy, and long-term community
-          impact. The initiative is powered by a coalition of collaborators:
+          <Link
+            href="/medias/nft-far-journey-and-whitepaper.pdf"
+            target="_blank">
+            <span className="font-extrabold underline decoration-double hover:text-shadow-md">
+              whitepaper
+            </span>
+          </Link>{" "}
+          and{" "}
+          <Link href="/#who">
+            <span className="font-extrabold underline decoration-double hover:text-shadow-md">
+              roadmap
+            </span>
+          </Link>{" "}
+          that clearly outline the context, fund distribution strategy, and
+          long-term community impact. The initiative is powered by a coalition
+          of collaborators:
         </p>
         <ul
           style={{
@@ -73,20 +87,42 @@ export default function AboutThis() {
           }}
           className="list-disc pl-6">
           <li>
-            <span className="font-extrabold">Futuloka</span> - Platform and
-            Launchpad
+            <Link href="https://futuloka.io/" target="_blank">
+              <span className="font-extrabold underline decoration-double hover:text-shadow-md">
+                Futuloka
+              </span>
+            </Link>{" "}
+            - Platform and Launchpad
           </li>
           <li>
-            <span className="font-extrabold">Spektakel</span> - Cultural Lead
+            <Link href="https://spektakel.id/" target="_blank">
+              <span className="font-extrabold underline decoration-double hover:text-shadow-md">
+                Spektakel
+              </span>
+            </Link>{" "}
+            - Cultural Lead
           </li>
           <li>
-            <span className="font-extrabold">NFTIndonesia</span> &amp;{" "}
-            <span className="font-extrabold">BANANOW</span> Land - Community
-            Partners
+            <Link href="https://nftindonesia.xyz/" target="_blank">
+              <span className="font-extrabold underline decoration-double hover:text-shadow-md">
+                NFTIndonesia
+              </span>
+            </Link>{" "}
+            &amp;{" "}
+            <Link href="https://land.endhonesa.com/" target="_blank">
+              <span className="font-extrabold underline decoration-double hover:text-shadow-md">
+                BANANOW Land
+              </span>
+            </Link>{" "}
+            - Community Partners
           </li>
           <li>
-            <span className="font-extrabold">Prof. NOTA Inc.</span> - Tech.
-            Partner
+            <Link href="https://nota.endhonesa.com/" target="_blank">
+              <span className="font-extrabold underline decoration-double hover:text-shadow-md">
+                Prof. NOTA Inc.
+              </span>
+            </Link>{" "}
+            - Tech. Partner
           </li>
         </ul>
         <h3

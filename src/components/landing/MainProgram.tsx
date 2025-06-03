@@ -8,6 +8,7 @@ const { receipt } = getActiveReceipt();
 export default function MainProgram() {
   return (
     <section
+    id="when"
       style={{
         backgroundColor: receipt.colorPrimer,
         borderColor: receipt.colorTertiary,
