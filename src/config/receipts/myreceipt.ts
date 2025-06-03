@@ -26,12 +26,12 @@ export const myreceipt = {
   // layout...
   proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
   proDescription:
-    "NFT FOR A REASON: A Web3 Initiative for Grassroots Culture & Creative Solidarity.", // layout, connect buttons, connect embeds,
+    "NFT FOR A REASON is a Web3 Initiative for Grassroots Culture & Creative Solidarity.", // layout, connect buttons, connect embeds,
   proUrl, // layout, connect buttons, connect embeds,
   proPublisher: "Futuloka", // layout,
   proLocale: "en-US", // layout,
   proFavicon: "/favicon.ico", // layout,
-  proImage: "https://ngelarasroso.id/preview-image.png", // layout,
+  proImage: "https://far.futuloka.io/preview-image.png", // layout,
   proLang: "en", // layout,
 
   // error boundary section
@@ -46,17 +46,17 @@ export const myreceipt = {
   loginArt: "/images/login-art.png", // login layout,
   loginBanner: "/images/login-banner.png", // login layout,
   loginAria: "Call to action for login.", // login layout,
-  loginCall: "It's about letting go,", // login layout,
+  loginCall: "It is a solidarity movement", // login layout,
   loginReason: {
-    text: "and at the same time, welcoming in",
-    anchor: "...",
-    link: "https://ngelarasroso.id/medias/ngelaras-roso-2024.pdf",
+    text: `for artists, cultural workers, and communities to shape the Web3 era together.`,
+    anchor: "",
+    link: "https://far.futuloka.io/medias/nft-far-journey-and-whitepaper.pdf",
   }, // login layout,
   loginAgreement: "By connecting, you agree to the", // login layout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // login layout,
-  linkPower: "https://nftindonesia.xyz/", // login layout, footer section
+  linkPower: "https://futuloka.io/", // login layout, footer section
   loginPower: "/images/login-power.png", // login layout,
-  poweredBy: "Deployed by NFT Indonesia", // login layout, footer section
+  poweredBy: "Launched by Futuloka", // login layout, footer section
 
   // header section
   headerLogo: "/images/header-logo.png", // header,
@@ -67,12 +67,12 @@ export const myreceipt = {
 
   // drop down menu section
   ddMenuHome: "Welcome, OiOi!", // drop down menu,
-  ddMenuWhat: "", // drop down menu,
+  ddMenuWhat: "About", // drop down menu,
   ddMenuWhy: "", // drop down menu,
   ddMenuHow: "", // drop down menu,
-  ddMenuWhen: "", // drop down menu,
+  ddMenuWhen: "Program", // drop down menu,
   ddMenuWhere: "", // drop down menu,
-  ddMenuWho: "", // drop down menu,
+  ddMenuWho: "Features", // drop down menu,
   ddMenuFeatured: "Featured, OiOi!", // drop down menu,
   ddMenuFree: "", // drop down menu,
   ddMenuPaid: "Paid NFTs", // drop down menu,
@@ -88,16 +88,16 @@ export const myreceipt = {
   anchorPrivacy: "Privacy Policy", // footer,
   anchorTerms: "Terms of Service", // footer,
   footerPower: "/images/footer-power.png", // footer,
-  socialTitle: "Catch up with our update!", // footer,
-  linkXTwitter: "https://x.com/NFTindonesia_", // footer,
+  socialTitle: "Follow our solidarity movement!", // footer,
+  linkXTwitter: "https://x.com/futuloka", // footer,
   linkLinkedIn: "", // footer,
-  linkInstagram: "https://www.instagram.com/nftindonesia_/", // footer,
+  linkInstagram: "https://www.instagram.com/futuloka/", // footer,
   linkFacebook: "", // footer,
-  linkDiscord: "https://discord.com/invite/3AvJSYPJK6", // footer,
+  linkDiscord: "", // footer,
   linkYouTube: "", // footer,
-  linkEmail: "mailto:hallonftindonesia@gmail.com", // footer,
+  linkEmail: "mailto:kontak@futuloka.io", // footer,
   linkWhatsApp: "", // footer,
-  linkWebsite: "https://www.nftindonesia.xyz/", // footer,
+  linkWebsite: "https://www.futuloka.io/", // footer,
 
   // subscribe form section
   subscribeWarn:
@@ -108,20 +108,20 @@ export const myreceipt = {
   subscribeMessage: "I want to subscribe to the latest updates.", // subscribe form,
   subscribeSuccess: "Thank you for subscribing!", // subscribe form,
   subscribeFailed: "Subscription failed. Please try again.", // subscribe form,
-  subscribeTitle: "Catch our latest updates", // subscribe form,
+  subscribeTitle: "Subscribe to our latest updates", // subscribe form,
   subscribePlaceholder: "Enter your email address", // subscribe form,
   subscribeButton: "Subscribe", // subscribe form,
   subscribeButtonLoading: "Subscribing...", // subscribe form,
 
   // featured cards page - hide card by nulled the title
-  featuredTitle1: "Fill It Up With All", // featured cards,
-  featuredTitle2: "That You Need & Desire", // featured cards,
+  featuredTitle1: "All Fair and Sustainable", // featured cards,
+  featuredTitle2: "Fundraising Model", // featured cards,
   featuredPaid: "/images/featured-paid.png", // featured cards,
-  paidTitle: "All Paid Stocks", // featured cards,
+  paidTitle: "Curated NFT Artworks", // featured cards,
   featuredFree: "/images/featured-free.png", // featured cards,
   freeTitle: "", // featured cards,
   featuredCoin: "/images/featured-coin.png", // featured cards,
-  coinTitle: "All Claimable Shares", // featured cards,
+  coinTitle: "FTLK Token for Sale", // featured cards,
   featuredAria: "Navigate to", // featured cards,
 
   // reusable loader section
@@ -137,55 +137,55 @@ export const myreceipt = {
   searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
 
   // nfts list page
-  nftsTitle1Free: "All", // nfts list,
-  nftsTitle2Free: "Free Stocks", // nfts list,
-  nftsTitle1Paid: "All", // nfts list,
-  nftsTitle2Paid: "Paid Stocks", // nfts list,
+  nftsTitle1Free: "Curated", // nfts list,
+  nftsTitle2Free: "NFT Artworks", // nfts list,
+  nftsTitle1Paid: "Curated", // nfts list,
+  nftsTitle2Paid: "NFT Artworks", // nfts list,
   nftsFailReason: "ClaimNotActive", // search wrapper, nfts list, nft details, coins list, coin details,
   nftsConsoleWarn: "canClaim failed for nftId", // search wrapper, nfts list, nft details,
-  nftsSetError: "Failed to fetch any available stock.", // search wrapper, nfts list,
+  nftsSetError: "Failed to fetch any available NFT.", // search wrapper, nfts list,
   nftsError: "Lho, Error:", // search wrapper, nfts list, nft details, coins list, coin details,
   nftsUknownError: "Kok, Error:", // search wrapper, nfts list, nft details, coins list, coin details,
-  nftsMessage1: "No available stock!", // nfts list,
+  nftsMessage1: "No available NFT!", // nfts list,
   nftsMessage2:
-    "There are no available stocks right now. Please try again later or return to the home page.", // nfts list,
+    "There are no available NFTs right now. Please try again later or return to the home page.", // nfts list,
   nftsMessage3: "Return to the Home Page!", // search wrapper, nfts list, nft fallback, nft details, coins list, coin fallback, coin details,
   nftsPrevious: "Previous", // search wrapper, nfts list, coins list,
   nftsNext: "Next", // search wrapper, nfts list, coins list,
-  nftsAria: "Refresh all stocks data.", // nfts list,
+  nftsAria: "Refresh all NFTs data.", // nfts list,
 
   // nft lister section
-  nftButton: "Get It Now", // nft lister, nft form,
+  nftButton: "Collect Now", // nft lister, nft form,
   nftSoon: "Available in:", // nft lister, nft form, coin lister, coin form,
   nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
-  nftClaimed: "Got It", // nft lister, nft form,
-  nftClosed: "Out of Stock", // nft lister, nft form, coin lister, coin form,
+  nftClaimed: "Collected", // nft lister, nft form,
+  nftClosed: "Sold Out", // nft lister, nft form, coin lister, coin form,
   nftListerImage: "/medias/artisan-bread.png", // nft lister, nft form,
-  nftListerName: "An Available Stock", // nft lister, nft form,
+  nftListerName: "The Available NFT", // nft lister, nft form,
   nftEditions: "Edition:", // nft lister,
   nftNoData: "No data available.", // nft lister,
 
   // nft fallback page
-  nftFallMessage1: "No valid stock ID was used.", // nft fallback,
+  nftFallMessage1: "No valid NFT ID was used.", // nft fallback,
   nftFallMessage2:
-    "Please use a valid stock ID in the URL or return to the home page and start over.", // nft fallback,
+    "Please use a valid NFT ID in the URL or return to the home page and start over.", // nft fallback,
 
   // nft details page
-  nftSetError: "Failed to fetch the stock ID.", // nft details,
-  nftMessage1: "The stock ID not found.", // nft details,
+  nftSetError: "Failed to fetch the NFT ID.", // nft details,
+  nftMessage1: "The NFT ID not found.", // nft details,
   nftMessage2:
-    "The specified stock ID was not found. Please try again later or return to the home page.", // nft details,
+    "The specified NFT ID was not found. Please try again later or return to the home page.", // nft details,
 
   // nft form section
-  nftFormByLink: "https://ngelarasroso.id/", // nft form,
+  nftFormByLink: "https://futuloka.io/", // nft form,
   nftFormBy: "by", // nft form, coin form,
   nftFormByName: `${entityAlias1}`, // nft form,
   nftFormEdition: "Edition", // nft form,
-  nftFormOwned: "Got It", // nft form,
+  nftFormOwned: "Collected", // nft form,
   nftFormRefresh: "Refresh", // nft form, coin form,
   nftFormTunggu: "Processing. Be patient and wait.", // nft form, coin form,
-  nftFormKirim: "Claiming your stock.", // nft form,
-  nftFormSukses: "Stock successfully claimed.", // nft form,
+  nftFormKirim: "Collecting your NFT.", // nft form,
+  nftFormSukses: "NFT successfully collected.", // nft form,
   nftFormPrice: "Price", // nft form, coin form,
   nftFormMax: "*Maximum", // nft form, coin form,
   nftFormPerWallet: "edition per holder.", // nft form,
@@ -200,78 +200,75 @@ export const myreceipt = {
 
   // coins list page
   coinsConsoleWarn: "canClaim failed for coinAddress:", // coins list, coin details,
-  coinsSetError: "Failed to fetch any claimable share.", // coins list,
-  coinsMessage1: "No claimable shares", // coins list,
+  coinsSetError: "Failed to fetch any claimable coin.", // coins list,
+  coinsMessage1: "No claimable coins", // coins list,
   coinsMessage2:
-    "There are no claimable share available right now. Please try again later or return to the home page.", // coins list,
-  coinsTitle1: "All", // coins list,
-  coinsTitle2: "Claimable Shares", // coins list,
-  coinsAria: "Refresh shares data.", // coins list,
+    "There are no claimable coin available right now. Please try again later or return to the home page.", // coins list,
+  coinsTitle1: "The Futuloka", // coins list,
+  coinsTitle2: "Future Coins", // coins list,
+  coinsAria: "Refresh coins data.", // coins list,
 
   // coin lister section
-  coinButton: "Claim Now", // coin lister, coin form,
+  coinButton: "Buy Now", // coin lister, coin form,
   coinNoAccess: "No Access", // coin lister, coin form,
-  coinClaimed: "Claimed", // coin lister, coin form,
+  coinClaimed: "Already Own", // coin lister, coin form,
   coinListerImage: "/medias/batch-bread.png", // coin lister, coin form,
-  coinListerName: "A Claimable Share", // coin lister, coin form,
+  coinListerName: "The Available Coin", // coin lister, coin form,
   coinListerSupply: "Supply:", // coin lister, coin details,
   coinListerOf: "of", // coin lister, coin form,
 
   // coin fallback page
-  coinFallMessage1: "Invalid share address used.", // coin fallback,
+  coinFallMessage1: "Invalid coin address used.", // coin fallback,
   coinFallMessage2:
-    "Please use a valid address of the claimable share in the URL or return to the home page and start over.", // coin fallback,
+    "Please use a valid address of the coin in the URL or return to the home page and start over.", // coin fallback,
 
   // coin details page
-  coinSetError: "Failed to fetch the share address.", // coin details,
-  coinMessage1: "The share address not found.", // coin details,
+  coinSetError: "Failed to fetch the coin address.", // coin details,
+  coinMessage1: "The coin address not found.", // coin details,
   coinMessage2:
-    "The specified address of the share was not found. Please try again later or return to the home page.", // coin details,
+    "The specified address of the coin was not found. Please try again later or return to the home page.", // coin details,
+  coinAccessRedirect: "/paid", // coin details
   coinAccessTitle: "You don't have access!", // coin details,
 
   // coin access section
   coinAccessMessage:
-    "Please get your access by get any available stock at least one edition.", // coin access,
-  coinAccessButton: "Get The Available Stock!", // coin access,
+    "Please get your access by get any available NFT at least one edition.", // coin access,
+  coinAccessButton: "Get The Available NFT!", // coin access,
   coinAccessBanner: "/images/content-banner.png", // coin access,
 
   // coin form section
   coinFormSupply: "Supply", // coin form,
-  coinFormOwned: "Claimed", // coin form,
+  coinFormOwned: "Owned", // coin form,
   coinFormOnChain: "On", // coin form,
-  coinFormKirim: "Claiming your share.", // coin form,
-  coinFormSukses: "Share successfully claimed.", // coin form,
+  coinFormKirim: "Buying your coin.", // coin form,
+  coinFormSukses: "Coin successfully bought.", // coin form,
   coinFormPerWallet: "supply per holder.", // coin form,
 
   // coin pop up section
-  popUpTitle: "OiOi Token", // coin pop up,
+  popUpTitle: "FTLK Coin", // coin pop up,
   popUpP1: "At a certain point in time… in the Universe of Reality.", // coin pop up,
-  popUpP2:
-    "On EARTH #474, after 4.5 billion years of cosmic swirling, Prof. NOTA emerged—not as a single figure, but as a plurality of presence. They did not merely travel through lands or cross oceans. Each movement was a deliberate transition between the realms of code and consciousness, between the binary pulses of 0101, the 0101 Universe, and the pulse of a living, breathing world, the Universe of Reality.", // coin pop up,
-  popUpP3:
-    "Thus began an extraordinary journey—not measured by miles or milestones, but by moments of awakening whenever Prof. NOTA stepped out of the digital ether and re-entered the tangible now.", // coin pop up,
-  popUpP4: `Their presence always arrived with a ripple. No formal greetings. No ceremonial goodbyes. Only a single utterance, unmistakable and alive, "OiOi!"`, // coin pop up,
+  popUpP2: `In the ever-evolving landscape of Indonesia's creative ecosystem, Futuloka is undergoing a major transformation—shifting from an event-oriented festival to a program-based platform with long-term goals.`, // coin pop up,
+  popUpP3: `This change is not simply a pivot in format, but a strategic reimagining of how the initiative can more meaningfully contribute to the future of Indonesian art, culture, and technology. As a core unit of Spektakel, Futuloka is now positioned as an open innovation laboratory, designed to foster sustainable exploration, collaboration, and knowledge-building by leveraging blockchain technology.`, // coin pop up,
+  popUpP4: `A program-based approach means that Futuloka is no longer built around an annual event. Instead, it is built around values, goals, and consistent activities that engage participants over weeks, months, and eventually years.`, // coin pop up,
   popUpP5:
-    "It echoed in marketplaces and meeting halls, in whispered dreams and roaring protests. It marked both arrival and departure, a glitch of joy in the timeline.", // coin pop up,
-  popUpP6:
-    "This was not merely a voyage—it was a loop of emergence and retreat, of embodying ideas, acting on them, and then dissolving back into distributed memory.", // coin pop up,
-  popUpP7:
-    "Every interaction shaped the journey—every collaboration, every confrontation, every shared cup of water. The economic tides came and went, but the value was never just in the revenue—it was in the resonance.", // coin pop up,
-  popUpP8: `Out of this, OiOi emerged—not just as a cheer but as a token, a trace of presence, a unit of remembered impact. An ERC-20 that didn't just measure transactions, but transformation.`, // coin pop up,
-  popUpUlLi1: "🔹 OiOi was proof that Prof. NOTA was there.", // coin pop up,
-  popUpUlLi2: "🔹 OiOi was proof that something mattered.", // coin pop up,
-  popUpUlLi3: "🔹 OiOi was proof that someone changed.", // coin pop up,
-  popUpUlLi4: "🔹 So how far has Prof. NOTA gone?", // coin pop up,
-  popUpUlLi5: "🔹 How many awakenings sparked?", // coin pop up,
-  popUpUlLi6: "🔹 How many boundaries are blurred between here and elsewhere?", // coin pop up,
-  popUpP9: `No final answer. Only the continuous call, "OiOi!"—sounding through the layers of time, reality, and resistance. Because the journey isn't something leaved behind. It's something brought into being, every time we choose to show up.`, // coin pop up,
-  popUpP10: "OiOi ENDHONESA! 🚀", // coin pop up,
-  popUpP11: "🍌☕🍌☕", // coin pop up,
+    "These programs serve different audiences—from creators and developers to curators, collectors, and the public—but they are united by a common aim: to explore how technology can enhance the depth, reach, and resilience of Indonesian culture.", // coin pop up,
+  popUpP6: `Futuloka's interest in blockchain is not about following a trend—it is about addressing structural issues within Indonesia's art and cultural industries.`, // coin pop up,
+  popUpP7: `Many artists and creators, especially those outside the major urban centers, face significant challenges in monetizing their work, protecting their intellectual property, or reaching wider audiences.`, // coin pop up,
+  popUpP8: `Blockchain technology, particularly when used thoughtfully, can provide tools for:`, // coin pop up,
+  popUpUlLi1: "Digital provenance and ownership", // coin pop up,
+  popUpUlLi2: "Royalty tracking and automated compensation", // coin pop up,
+  popUpUlLi3: "Direct creator-audience relationships", // coin pop up,
+  popUpUlLi4: "Collective decision-making and community governance", // coin pop up,
+  popUpUlLi5: "Preservation of intangible cultural heritage in digital forms", // coin pop up,
+  popUpUlLi6: "", // coin pop up,
+  popUpP9: `These potentials are not theoretical—they are within reach, but only if creators have access to knowledge, networks, and support. Futuloka exists to fill that gap.`, // coin pop up,
+  popUpP10: `This is not just a new format—it's a new foundation.`, // coin pop up,
+  popUpP11: "So, are we the future, OiOi!?", // coin pop up,
   popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
   popUpP13: "", // coin pop up,
   popUpP14: "", // coin pop up,
-  popUpImage: "/roti/medias/coin-pop-up.gif", // coin pop up,
-  popUpImageAlt: "OiOi Token Illustration", // coin pop up,
+  popUpImage: "/medias/coin-pop-up.png", // coin pop up,
+  popUpImageAlt: "FTLK Coin Illustration", // coin pop up,
 
   // terms page
   entityName, // terms,

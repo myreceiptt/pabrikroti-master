@@ -35,6 +35,12 @@ export const erc20BONBase = getContract({
   client,
 });
 
+export const erc20FTLKBase = getContract({
+  address: "0x73c5a4aE49A98752ae28e4BA97A6D14809a5725E", // FTLK Coin
+  chain: baseMainnet,
+  client,
+});
+
 // FT contracts Base Sepolia
 export const erc20USDCBaseSepolia = getContract({
   address: "0x5dEaC602762362FE5f135FA5904351916053cF70", // USD C0in - Default
@@ -89,6 +95,12 @@ export const erc20OiOiOpMainnet = getContract({
   client,
 });
 
+export const erc20FTLKOpMainnet = getContract({
+  address: "0x73c5a4aE49A98752ae28e4BA97A6D14809a5725E", // FTLK Coin
+  chain: opMainnet,
+  client,
+});
+
 // FT contracts on Shape Network
 export const erc20OiOiShapeNetwork = getContract({
   address: "0x6d6e5b8a5dBeCc6758553FC636Bd0aE65282549f", // OiOi Token - Default
@@ -126,4 +138,10 @@ export const bonDoshName = "BON Dosh"; // BON Voyage
 export const bonDoshSymbol = "BON"; // BON Voyage
 export const bonDoshIcon = "/erc20-icons/bon.png"; // BON Voyage
 export const bonDoshBy = "Voyage.Co.Id"; // BON Voyage
-export const bonDoshLink = "https://voyage.endhonesa.com/"; // OiOi Token
+export const bonDoshLink = "https://voyage.co.id/"; // BON Voyage
+
+export const ftlkName = "FTLK Coin"; // FTLK Coin
+export const ftlkSymbol = "FTLK"; // FTLK Coin
+export const ftlkIcon = "/erc20-icons/ftlk.png"; // FTLK Coin
+export const ftlkBy = "Futuloka"; // FTLK Coin
+export const ftlkLink = "https://futuloka.io/"; // FTLK Coin

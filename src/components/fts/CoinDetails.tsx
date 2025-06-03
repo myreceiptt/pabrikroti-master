@@ -263,7 +263,7 @@ export default function CoinDetails() {
       {hasAccess === null && <Loader message={receipt.loaderChecking} />}
       {hasAccess === false && (
         <CoinAccess
-          onRedirect={() => router.push("/")}
+          onRedirect={() => router.push(receipt.coinAccessRedirect)}
           message={receipt.coinAccessTitle}
         />
       )}
