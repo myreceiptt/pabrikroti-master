@@ -34,7 +34,7 @@ export const tokeks: SupportedFTs = {
       address: erc20FTLKBase.address,
       name: ftlkName,
       symbol: ftlkSymbol,
-      icon: ftlkSymbol,
+      icon: ftlkIcon,
     },
     {
       address: erc20OiOiBase.address,
@@ -64,7 +64,7 @@ export const tokeks: SupportedFTs = {
       address: erc20FTLKOpMainnet.address,
       name: ftlkName,
       symbol: ftlkSymbol,
-      icon: ftlkSymbol,
+      icon: ftlkIcon,
     },
     {
       address: erc20OiOiOpMainnet.address,
