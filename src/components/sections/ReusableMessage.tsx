@@ -8,8 +8,6 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { receipt } = getActiveReceipt();
-
 interface MessageProps {
   message1: string;
   message2: string;
@@ -21,6 +19,8 @@ export default function Message({
   message2,
   message3,
 }: MessageProps) {
+  const { receipt } = getActiveReceipt();
+
   return (
     <>
       {/* Top Section - Content Box */}

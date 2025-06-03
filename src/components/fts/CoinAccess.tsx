@@ -7,14 +7,14 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { receipt } = getActiveReceipt();
-
 interface CoinAccessProps {
   message: string;
   onRedirect: () => void;
 }
 
 export default function CoinAccess({ message, onRedirect }: CoinAccessProps) {
+  const { receipt } = getActiveReceipt();
+
   return (
     <>
       {/* Top Section - Content Box */}

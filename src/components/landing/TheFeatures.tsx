@@ -3,14 +3,14 @@
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { receipt } = getActiveReceipt();
-
 export default function TheFeatures() {
+  const { receipt } = getActiveReceipt();
+
   return (
     <section className="px-6 py-16">
       <div className="max-w-5xl mx-auto space-y-6">
         <h2
-        id="who"
+          id="who"
           style={{
             color: receipt.colorSecondary,
           }}

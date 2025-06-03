@@ -34,8 +34,6 @@ import { getCountdownString } from "@/config/utils";
 import NFTDescription from "@/components/nfts/NFTDescription";
 import Loader from "@/components/sections/ReusableLoader";
 
-const { receipt } = getActiveReceipt();
-
 interface NFTFormProps {
   dropContract: ThirdwebContract;
   nftChain: Chain;
@@ -69,6 +67,8 @@ export default function NFTForm({
   adjustedBalance,
   setRefreshToken,
 }: NFTFormProps) {
+  const { receipt } = getActiveReceipt();
+
   const activeAccount = useActiveAccount();
   const startTime = new Date(Number(startTimestamp) * 1000);
   const chainName = chainNames[dropContract.chain.id] ?? "Unknown Chain";

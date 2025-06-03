@@ -8,9 +8,9 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { receipt } = getActiveReceipt();
-
 export default function TermsHeader() {
+  const { receipt } = getActiveReceipt();
+
   return (
     <div className="text-center">
       <h1
@@ -19,7 +19,9 @@ export default function TermsHeader() {
         aria-label={receipt.termsAria1}>
         {receipt.termsTitle}
       </h1>
-      <span style={{ color: receipt.colorSekunder }} className="text-xs leading-10">
+      <span
+        style={{ color: receipt.colorSekunder }}
+        className="text-xs leading-10">
         &#9673; &#9673; &#9673; &#9673;
       </span>
       <h2

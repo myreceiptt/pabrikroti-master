@@ -3,9 +3,9 @@
 import { getActiveReceipt } from "@/config/receipts";
 import Image from "next/image";
 
-const { receipt } = getActiveReceipt();
-
 export default function HeroSection() {
+  const { receipt } = getActiveReceipt();
+
   return (
     <section
       style={{

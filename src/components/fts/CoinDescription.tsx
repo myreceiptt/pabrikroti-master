@@ -7,8 +7,6 @@ import React, { useState } from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { receipt } = getActiveReceipt();
-
 interface CoinDescriptionProps {
   description: string;
   address: string;
@@ -18,6 +16,8 @@ export default function CoinDescription({
   description,
   address,
 }: CoinDescriptionProps) {
+  const { receipt } = getActiveReceipt();
+  
   const [isExpanded, setIsExpanded] = useState(false);
 
   const paragraphs = description

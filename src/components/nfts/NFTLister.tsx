@@ -19,8 +19,6 @@ import { getCountdownString } from "@/config/utils";
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
 
-const { receipt } = getActiveReceipt();
-
 interface NFTListerProps {
   dropContract: ThirdwebContract;
   nftId: bigint;
@@ -48,6 +46,8 @@ export default function NFTLister({
   adjustedBalance,
   refreshToken,
 }: NFTListerProps) {
+  const { receipt } = getActiveReceipt();
+
   const router = useRouter();
   const startTime = new Date(Number(startTimestamp) * 1000);
   const chainName = chainNames[dropContract.chain.id] ?? "Unknown Chain";

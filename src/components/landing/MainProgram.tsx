@@ -3,12 +3,12 @@
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { receipt } = getActiveReceipt();
-
 export default function MainProgram() {
+  const { receipt } = getActiveReceipt();
+
   return (
     <section
-    id="when"
+      id="when"
       style={{
         backgroundColor: receipt.colorPrimer,
         borderColor: receipt.colorTertiary,

@@ -8,13 +8,13 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { receipt } = getActiveReceipt();
-
 interface LoginLayoutProps {
   children: React.ReactNode;
 }
 
 export default function LoginLayout({ children }: LoginLayoutProps) {
+  const { receipt } = getActiveReceipt();
+
   return (
     <div className="w-full h-screen grid grid-cols-1 md:grid-cols-2">
       <div className="w-full relative hidden md:block overflow-hidden">

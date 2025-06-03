@@ -17,9 +17,9 @@ import ConnectButtons from "@/components/logins/ConnectButtons";
 import DropdownMenu from "@/components/sections/DropDownMenu";
 import QRCodeButton from "@/components/sections/QRCodeButton";
 
-const { receipt } = getActiveReceipt();
-
 export default function Header() {
+  const { receipt } = getActiveReceipt();
+
   const [searchQuery, setSearchQuery] = useState("");
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const mobileSearchRef = useRef<HTMLDivElement>(null);

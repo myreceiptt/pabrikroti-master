@@ -19,8 +19,6 @@ import { getCountdownString } from "@/config/utils";
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
 
-const { receipt } = getActiveReceipt();
-
 interface CoinListerProps {
   coinAddress: string;
   coinChain: Chain;
@@ -50,6 +48,8 @@ export default function CoinLister({
   hasAccess,
   refreshToken,
 }: CoinListerProps) {
+  const { receipt } = getActiveReceipt();
+
   const router = useRouter();
   const startTime = new Date(Number(startTimestamp) * 1000);
   const chainName = chainNames[coinChain.id] ?? "Unknown Chain";
@@ -191,7 +191,9 @@ export default function CoinLister({
                 ? "transparent"
                 : receipt.colorTertiary,
               border: "2px solid",
-              borderColor: buttonDisabled ? receipt.colorTertiary : "transparent",
+              borderColor: buttonDisabled
+                ? receipt.colorTertiary
+                : "transparent",
             }}
             className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
               !buttonDisabled ? "cursor-pointer" : ""
