@@ -177,7 +177,7 @@ export const myreceipt = {
     "The specified NFT ID was not found. Please try again later or return to the home page.", // nft details,
 
   // nft form section
-  nftFormByLink: "https://futuloka.io/", // nft form,
+  nftFormByLink: "https://far.futuloka.io/", // nft form,
   nftFormBy: "by", // nft form, coin form,
   nftFormByName: `${entityAlias1}`, // nft form,
   nftFormEdition: "Edition", // nft form,
