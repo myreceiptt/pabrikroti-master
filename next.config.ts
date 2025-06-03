@@ -1,6 +1,15 @@
 import type { NextConfig } from "next";
 const isTurbopack = process.env.NEXT_RUNTIME === "edge"; // Atau pakai flag custom
 const nextConfig: NextConfig = {
+  // ✅ Tambahkan matcher di sini jika pakai middleware.ts
+  matcher: [
+    "/merchandise",
+    "/perpustakaan",
+    "/bukabersama",
+    "/kolektibel",
+    "/kolektibel/8",
+  ],
+
   // ✅ Turbopack is now stable — official config
   turbopack: {
     // Tambahkan custom rules di sini kalau diperlukan nanti
