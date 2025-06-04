@@ -1,9 +1,7 @@
-PABRIK ROTI v.2.3.33: Staging NFT FAR by Futuloka
+PABRIK ROTI v.2.4.44: Staging MeMoRa by F'ckd Up Voyage
 
-Link #1: https://far.futuloka.io/  
-Link #2: https://www.futuloka.xyz/  
-Link #3: https://far.futuloka.xyz/  
-Link #4: https://far.endhonesa.com/
+Link #1: https://memora.voyage.co.id/  
+Link #2: https://memora.endhonesa.com/
 
 ## 📜 Licenses
 

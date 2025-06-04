@@ -10,8 +10,6 @@ import { useReadContract } from "thirdweb/react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
-const { erc1155Launched } = getActiveReceipt();
-
 interface CheckErc1155Props {
   activeAddress: string;
   onAccessChange: (hasAccess: boolean | null) => void;
@@ -21,6 +19,8 @@ export const CheckErc1155 = ({
   activeAddress,
   onAccessChange,
 }: CheckErc1155Props) => {
+  const { erc1155Launched } = getActiveReceipt();
+
   const { data: nextNFTId } = useReadContract(nextTokenIdToMint, {
     contract: erc1155Launched,
   });

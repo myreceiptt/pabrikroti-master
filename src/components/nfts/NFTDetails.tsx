@@ -24,8 +24,6 @@ import NFTForm from "@/components/nfts/NFTForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
-const { receipt, erc1155Launched } = getActiveReceipt();
-
 interface NFTData {
   nftChain: Chain;
   nftId: bigint;
@@ -47,6 +45,8 @@ function getNFTIdFromParams(params: ReturnType<typeof useParams>): bigint {
 }
 
 export default function NFTDetails() {
+  const { receipt, erc1155Launched } = getActiveReceipt();
+
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
@@ -182,7 +182,18 @@ export default function NFTDetails() {
     } finally {
       setLoading(false);
     }
-  }, [nextNFTId, nftId, activeAccount?.address]);
+  }, [
+    nextNFTId,
+    nftId,
+    activeAccount?.address,
+    erc1155Launched,
+    receipt.nftMessage1,
+    receipt.nftSetError,
+    receipt.nftsConsoleWarn,
+    receipt.nftsError,
+    receipt.nftsFailReason,
+    receipt.nftsUknownError,
+  ]);
 
   // Refetch NFT details
   useEffect(() => {

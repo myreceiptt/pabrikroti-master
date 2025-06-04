@@ -26,8 +26,6 @@ import CoinForm from "@/components/fts/CoinForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 
-const { receipt, erc20sLaunched } = getActiveReceipt();
-
 interface CoinData {
   coinAddress: string;
   coinChain: Chain;
@@ -58,6 +56,8 @@ function getCoinAddressFromParams(
 }
 
 export default function CoinDetails() {
+  const { receipt, erc20sLaunched } = getActiveReceipt();
+
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
@@ -221,7 +221,17 @@ export default function CoinDetails() {
     } finally {
       setLoading(false);
     }
-  }, [coinAddress, activeAccount?.address]);
+  }, [
+    coinAddress,
+    activeAccount?.address,
+    erc20sLaunched,
+    receipt.coinMessage1,
+    receipt.coinSetError,
+    receipt.coinsConsoleWarn,
+    receipt.nftsError,
+    receipt.nftsFailReason,
+    receipt.nftsUknownError,
+  ]);
 
   useEffect(() => {
     if (coinAddress !== "") fetchCoinDetails();

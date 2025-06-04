@@ -18,6 +18,7 @@ import { useActiveAccount, useReadContract } from "thirdweb/react";
 
 // Components libraries
 import NFTLister from "@/components/nfts/NFTLister";
+import DropDownSorter from "@/components/sections/DropDownSorter";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
@@ -26,8 +27,6 @@ import Title from "@/components/sections/ReusableTitle";
 import { getActiveReceipt } from "@/config/receipts";
 import { decimals } from "thirdweb/extensions/erc20";
 import { getWalletBalance } from "thirdweb/wallets";
-
-const { receipt, erc1155Launched } = getActiveReceipt();
 
 // Interface definition for NFTs
 interface NFTData {
@@ -46,6 +45,8 @@ const INITIAL_ITEMS = 6;
 const ITEMS_PER_LOAD = 3;
 
 export default function SearchWrapper() {
+  const { receipt, erc1155Launched } = getActiveReceipt();
+
   const searchParams = useSearchParams();
   const query = searchParams.get("query")?.toLowerCase() || "";
 
@@ -59,6 +60,9 @@ export default function SearchWrapper() {
   const [searchResults, setSearchResults] = useState<NFTData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [sortOption, setSortOption] = useState<
+    "default" | "availability" | "start" | "price" | "claimable"
+  >("default");
 
   // Fetch next token ID to mint
   const { data: nextNFTId } = useReadContract(nextTokenIdToMint, {
@@ -208,7 +212,17 @@ export default function SearchWrapper() {
     } finally {
       setLoading(false);
     }
-  }, [query, nextNFTId, activeAccount?.address]);
+  }, [
+    query,
+    nextNFTId,
+    activeAccount?.address,
+    erc1155Launched,
+    receipt.nftsConsoleWarn,
+    receipt.nftsError,
+    receipt.nftsFailReason,
+    receipt.nftsSetError,
+    receipt.nftsUknownError,
+  ]);
 
   // Refetch NFT details
   useEffect(() => {
@@ -228,6 +242,22 @@ export default function SearchWrapper() {
   // Unload some NFTs
   const handleUnload = () =>
     setVisibleCount((prev) => Math.max(prev - ITEMS_PER_LOAD, INITIAL_ITEMS));
+
+  // Set the sorting logic
+  const sortedNFTs = [...searchResults].sort((a, b) => {
+    switch (sortOption) {
+      case "availability":
+        return Number(b.maxSupply - b.supply) - Number(a.maxSupply - a.supply);
+      case "start":
+        return Number(a.startTimestamp) - Number(b.startTimestamp);
+      case "price":
+        return a.adjustedPrice - b.adjustedPrice;
+      case "claimable":
+        return (b.isClaimable ? 1 : 0) - (a.isClaimable ? 1 : 0);
+      default:
+        return Number(a.nftId) - Number(b.nftId);
+    }
+  });
 
   // Placeholder loader
   if (loading || nextNFTId === undefined) {
@@ -255,8 +285,10 @@ export default function SearchWrapper() {
     <main className="grid gap-4 place-items-center">
       <Title title1={receipt.searchTitle} title2={query} />
 
+      <DropDownSorter sortOption={sortOption} setSortOption={setSortOption} />
+
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" ref={listRef}>
-        {searchResults.slice(0, visibleCount).map((nft, index) => (
+        {sortedNFTs.slice(0, visibleCount).map((nft, index) => (
           <motion.div
             key={nft.nftIdString}
             initial={{ opacity: 0, y: 10 }}

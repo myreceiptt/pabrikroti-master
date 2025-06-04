@@ -22,11 +22,10 @@ import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import CoinLister from "@/components/fts/CoinLister";
+import DropDownSorter from "@/components/sections/DropDownSorter";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
-
-const { receipt, erc20sLaunched } = getActiveReceipt();
 
 interface CoinData {
   coinAddress: string;
@@ -45,6 +44,8 @@ const INITIAL_ITEMS = 6;
 const ITEMS_PER_LOAD = 3;
 
 export default function CoinsList() {
+  const { receipt, erc20sLaunched } = getActiveReceipt();
+
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -56,6 +57,9 @@ export default function CoinsList() {
   const [coinListToShow, setCoinListToShow] = useState<CoinData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [sortOption, setSortOption] = useState<
+    "default" | "availability" | "start" | "price" | "claimable"
+  >("default");
 
   // Fetch any data
   const fetchCoinsList = useCallback(async () => {
@@ -199,7 +203,15 @@ export default function CoinsList() {
     } finally {
       setIsLoading(false);
     }
-  }, [activeAccount?.address]);
+  }, [
+    activeAccount?.address,
+    erc20sLaunched,
+    receipt.coinsConsoleWarn,
+    receipt.coinsSetError,
+    receipt.nftsError,
+    receipt.nftsFailReason,
+    receipt.nftsUknownError,
+  ]);
 
   // Refetch coin details
   useEffect(() => {
@@ -219,6 +231,25 @@ export default function CoinsList() {
   // Unload some FTs
   const handleUnload = () =>
     setVisibleCount((prev) => Math.max(prev - ITEMS_PER_LOAD, INITIAL_ITEMS));
+
+  // Set the sorting logic
+  const sortedFTs = [...coinListToShow].sort((a, b) => {
+    switch (sortOption) {
+      case "availability":
+        return (
+          Number(b.adjustedMaxSupply - b.adjustedSupply) -
+          Number(a.adjustedMaxSupply - a.adjustedSupply)
+        );
+      case "start":
+        return Number(a.startTimestamp) - Number(b.startTimestamp);
+      case "price":
+        return a.adjustedPrice - b.adjustedPrice;
+      case "claimable":
+        return (b.isClaimable ? 1 : 0) - (a.isClaimable ? 1 : 0);
+      default:
+        return Number(a.coinChain) - Number(b.coinChain);
+    }
+  });
 
   // Placeholder loader
   if (isLoading) {
@@ -254,8 +285,10 @@ export default function CoinsList() {
 
       <Title title1={receipt.coinsTitle1} title2={receipt.coinsTitle2} />
 
+      <DropDownSorter sortOption={sortOption} setSortOption={setSortOption} />
+
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" ref={listRef}>
-        {coinListToShow.slice(0, visibleCount).map((coin, index) => (
+        {sortedFTs.slice(0, visibleCount).map((coin, index) => (
           <motion.div
             key={`${coin.coinAddress}_${coin.coinChain.id}`}
             initial={{ opacity: 0, y: 10 }}

@@ -82,6 +82,14 @@ export const myreceipt = {
   ddMenuContact: "", // drop down menu,
   ddMenuTerms: "Terms of Use", // drop down menu,
 
+  // drop down sorter section
+  ddSorterSorting: "Sorting", // drop down sorter,
+  ddSorterDefault: "Default Sorting", // drop down sorter,
+  ddSorterSupply: "Remaining Supply", // drop down sorter,
+  ddSorterTime: "Starting Available", // drop down sorter,
+  ddSorterPrice: "Price per Edition", // drop down sorter,
+  ddSorterClaim: "Claimable Status", // drop down sorter,
+
   // footer section - hide social icon by nulled the link
   copyRight: "All rights reserved.", // footer,
   officiallyLicensed: "Officially licensed product of", // footer,

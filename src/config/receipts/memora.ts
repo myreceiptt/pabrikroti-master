@@ -81,6 +81,14 @@ export const memora = {
   ddMenuContact: "", // drop down menu,
   ddMenuTerms: "Terms of Use", // drop down menu,
 
+  // drop down sorter section
+  ddSorterSorting: "Sorting", // drop down sorter,
+  ddSorterDefault: "Default Sorting", // drop down sorter,
+  ddSorterSupply: "Remaining Supply", // drop down sorter,
+  ddSorterTime: "Starting Available", // drop down sorter,
+  ddSorterPrice: "Price per Edition", // drop down sorter,
+  ddSorterClaim: "Claimable Status", // drop down sorter,
+
   // footer section - hide social icon by nulled the link
   copyRight: "All rights reserved.", // footer,
   officiallyLicensed: "Officially licensed product of", // footer,
@@ -227,7 +235,7 @@ export const memora = {
   coinMessage1: "The point address not found.", // coin details,
   coinMessage2:
     "The specified address of the point was not found. Please try again later or return to the home page.", // coin details,
-    coinAccessRedirect: "/featured", // coin details
+  coinAccessRedirect: "/featured", // coin details
   coinAccessTitle: "You don't have access!", // coin details,
 
   // coin access section
