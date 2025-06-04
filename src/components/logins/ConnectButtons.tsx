@@ -11,15 +11,15 @@ import { dompets } from "@/config/dompets";
 import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
 
-const {
-  receipt,
-  factoryAddress,
-  supportedNFTs,
-  supportedFTs,
-  displayedTokeks,
-} = getActiveReceipt();
-
 export default function ConnectButtons() {
+  const {
+    receipt,
+    factoryAddress,
+    supportedNFTs,
+    supportedFTs,
+    displayedTokeks,
+  } = getActiveReceipt();
+
   return (
     <div id="connected">
       <ConnectButton

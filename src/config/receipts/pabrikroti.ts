@@ -82,6 +82,14 @@ export const pabrikroti = {
   ddMenuContact: "", // drop down menu,
   ddMenuTerms: "Terms of Use", // drop down menu,
 
+  // drop down sorter section
+  ddSorterSorting: "Stack of Breads", // drop down sorter,
+  ddSorterDefault: "Default Stacking", // drop down sorter,
+  ddSorterSupply: "Remaining Slices", // drop down sorter,
+  ddSorterTime: "Start To Be Plated", // drop down sorter,
+  ddSorterPrice: "Price per Slices", // drop down sorter,
+  ddSorterClaim: "Can Be Swallowed", // drop down sorter,
+
   // footer section - hide social icon by nulled the link
   copyRight: "Every stomach must be hungry.", // footer,
   officiallyLicensed: "Officially hungry and satisfied by", // footer,
