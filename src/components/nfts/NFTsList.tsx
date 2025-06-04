@@ -22,11 +22,10 @@ import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import NFTLister from "@/components/nfts/NFTLister";
+import DropDownSorter from "@/components/sections/DropDownSorter";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
-
-const { receipt, erc1155Launched } = getActiveReceipt();
 
 interface NFTsListProps {
   variant: "free" | "paid";
@@ -48,6 +47,8 @@ const INITIAL_ITEMS = 6;
 const ITEMS_PER_LOAD = 3;
 
 export default function NFTsList({ variant }: NFTsListProps) {
+  const { receipt, erc1155Launched } = getActiveReceipt();
+
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -59,6 +60,9 @@ export default function NFTsList({ variant }: NFTsListProps) {
   const [paidNFTs, setPaidNFTs] = useState<NFTData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [sortOption, setSortOption] = useState<
+    "default" | "availability" | "start" | "price" | "claimable"
+  >("default");
 
   const title1 =
     variant === "free" ? receipt.nftsTitle1Free : receipt.nftsTitle1Paid;
@@ -201,7 +205,16 @@ export default function NFTsList({ variant }: NFTsListProps) {
     } finally {
       setLoading(false);
     }
-  }, [nextNFTId, activeAccount?.address]);
+  }, [
+    nextNFTId,
+    activeAccount?.address,
+    erc1155Launched,
+    receipt.nftsConsoleWarn,
+    receipt.nftsError,
+    receipt.nftsFailReason,
+    receipt.nftsSetError,
+    receipt.nftsUknownError,
+  ]);
 
   // Refetch NFT details
   useEffect(() => {
@@ -215,6 +228,11 @@ export default function NFTsList({ variant }: NFTsListProps) {
     }
   }, [visibleCount]);
 
+  // Reset pagination for sortOption changes
+  useEffect(() => {
+    setVisibleCount(INITIAL_ITEMS);
+  }, [sortOption]);
+
   // Load more NFTs
   const handleLoadMore = () => setVisibleCount((prev) => prev + ITEMS_PER_LOAD);
 
@@ -224,6 +242,22 @@ export default function NFTsList({ variant }: NFTsListProps) {
 
   // Set token IDs to show
   const nftListToShow = variant === "free" ? freeNFTs : paidNFTs;
+
+  // Set the sorting logic
+  const sortedNFTs = [...nftListToShow].sort((a, b) => {
+    switch (sortOption) {
+      case "availability":
+        return Number(b.maxSupply - b.supply) - Number(a.maxSupply - a.supply);
+      case "start":
+        return Number(a.startTimestamp) - Number(b.startTimestamp);
+      case "price":
+        return a.adjustedPrice - b.adjustedPrice;
+      case "claimable":
+        return (b.isClaimable ? 1 : 0) - (a.isClaimable ? 1 : 0);
+      default:
+        return Number(a.nftId) - Number(b.nftId);
+    }
+  });
 
   // Placeholder loader
   if (loading || nextNFTId === undefined) {
@@ -251,8 +285,10 @@ export default function NFTsList({ variant }: NFTsListProps) {
     <main className="grid gap-4 place-items-center">
       <Title title1={title1} title2={title2} />
 
+      <DropDownSorter sortOption={sortOption} setSortOption={setSortOption} />
+
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4" ref={listRef}>
-        {nftListToShow.slice(0, visibleCount).map((nft, index) => (
+        {sortedNFTs.slice(0, visibleCount).map((nft, index) => (
           <motion.div
             key={nft.nftIdString}
             initial={{ opacity: 0, y: 10 }}

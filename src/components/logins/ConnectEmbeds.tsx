@@ -10,9 +10,9 @@ import { dompets } from "@/config/dompets";
 import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
 
-const { receipt, factoryAddress } = getActiveReceipt();
-
 export default function ConnectEmbeds() {
+  const { receipt, factoryAddress } = getActiveReceipt();
+
   const embedStyle: React.CSSProperties = {
     width: "100%",
     background: "transparent",
