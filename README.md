@@ -1,7 +1,11 @@
-# PABRIK ROTI v.2.4.44: Staging MeMoRa by F'ckd Up Voyage
+# PABRIK ROTI v.2.4.44
 
+Staging MeMoRa by F'ckd Up Voyage  
 Link #1: https://memora.voyage.co.id/  
 Link #2: https://memora.endhonesa.com/
+
+> "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by community, and baked through the heat of shared struggles."
+> — Prof. NOTA
 
 ---
 
