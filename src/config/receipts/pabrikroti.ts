@@ -193,7 +193,7 @@ export const pabrikroti = {
   nftFormRefresh: "Refresh", // nft form, coin form,
   nftFormTunggu: "Baking. Be patient and wait.", // nft form, coin form,
   nftFormKirim: "Serving your artisan bread.", // nft form,
-  nftFormSukses: "Artisan bread successfully served.", // nft form,
+  nftFormSukses: "Successfully served.", // nft form,
   nftFormPrice: "Price", // nft form, coin form,
   nftFormMax: "*Maximum", // nft form, coin form,
   nftFormPerWallet: "slices of loaf per bread eater.", // nft form,
