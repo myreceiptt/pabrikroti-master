@@ -111,6 +111,12 @@ yarn outdated
 yarn upgrade-interactive --latest
 ```
 
+#### Cleaning and re-install dependencies
+
+```bash
+yarn rm -rf node_modules yarn.lock && yarn install
+```
+
 #### Run development server
 
 ```bash
