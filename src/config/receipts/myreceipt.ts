@@ -193,7 +193,7 @@ export const myreceipt = {
   nftFormRefresh: "Refresh", // nft form, coin form,
   nftFormTunggu: "Processing. Be patient and wait.", // nft form, coin form,
   nftFormKirim: "Collecting your NFT.", // nft form,
-  nftFormSukses: "NFT successfully collected.", // nft form,
+  nftFormSukses: "Collected. Check your wallet now.", // nft form,
   nftFormPrice: "Price", // nft form, coin form,
   nftFormMax: "*Maximum", // nft form, coin form,
   nftFormPerWallet: "edition per holder.", // nft form,
