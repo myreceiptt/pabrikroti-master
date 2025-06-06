@@ -19,19 +19,27 @@ export default function PageRouter() {
   const [mode, setMode] = useState<"abc" | "aiueo" | null>(null);
 
   useEffect(() => {
-    const host = window.location.hostname;
+    try {
+      const url = new URL(window.location.href);
+      const hostname = url.hostname.toLowerCase().trim();
 
-    if (
-      host.includes("far.futuloka.io") ||
-      host.includes("www.futuloka.xyz") ||
-      host.includes("far.futuloka.xyz") ||
-      host.includes("far.endhonesa.com") ||
-      host.includes("localhost") ||
-      host.includes("127.0.0.1")
-    ) {
-      setMode("aiueo");
-    } else {
-      // Default fallback: treat all others as 'abc'
+      const validHosts = new Set([
+        "far.futuloka.io",
+        "www.futuloka.xyz",
+        "far.futuloka.xyz",
+        "far.endhonesa.com",
+        "localhost",
+        "127.0.0.1",
+      ]);
+      if (validHosts.has(hostname)) {
+        setMode("aiueo");
+      } else {
+        // Default fallback: treat all others as 'abc'
+        console.warn("Unrecognized hostname:", hostname);
+        setMode("abc");
+      }
+    } catch (error) {
+      console.error("URL parsing failed:", error);
       setMode("abc");
     }
   }, []);
