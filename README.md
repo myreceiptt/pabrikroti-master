@@ -1,11 +1,14 @@
 # PABRIK ROTI v.2.4.44
 
-Staging MeMoRa by F'ckd Up Voyage  
+> "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by community, and baked through the heat of shared struggles."  
+> — Prof. NOTA
+
+---
+
+## Staging MeMoRa by F'ckd Up Voyage
+
 Link #1: https://memora.voyage.co.id/  
 Link #2: https://memora.endhonesa.com/
-
-> "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by community, and baked through the heat of shared struggles."
-> — Prof. NOTA
 
 ---
 
@@ -16,7 +19,7 @@ This project is protected under a [**Custom Limited License**](./LICENSE) by [Pr
 License available in multiple languages:
 
 - 🏛️ [English (UK)](./licenses/LICENSE_en-GB.md)
-- 🇮🇩 [Bahasa Indonesia](./licenses/LICENSE_id.md)
+- 🇮🇩 [Bahasa Indonesia](./licenses/LICENSE_ID.md)
 - 🇺🇿 [Oʻzbekcha](./licenses/LICENSE_uz-Latn.md)
 - 🇭🇰 [Cantonese – Hong Kong](./licenses/LICENSE_yue-Hant-HK.md)
 - 🇲🇾 [Bahasa Malaysia](./licenses/LICENSE_ms-MY.md)
@@ -43,7 +46,7 @@ Manifestos are available in:
 
 ## 📜 General Information
 
-**PABRIK ROTI is Programmed Bread Factory for Web3 Distribution**  
+**PABRIK ROTI: Programmed Bread Factory for Web3 Distribution**  
 _Developed and maintained by [Prof. NOTA Inc.](https://nota.endhonesa.com)_
 
 ---
@@ -52,14 +55,14 @@ _Developed and maintained by [Prof. NOTA Inc.](https://nota.endhonesa.com)_
 
 **PABRIKROTI** is a white label, multi-tenant, Web3-enabled application designed to create, display, and distribute tokenized digital assets—referred to as **Programmed Bread**. It supports NFTs (ERC-721/ERC-1155) and fungible tokens (ERC-20), integrating dynamic tenant configurations, visual claim interfaces, and cultural licensing through a fully modular and customizable framework.
 
-PABRIKROTI operates as a **decentralized digital production space**, where each subdomain (e.g., `pabrikroti.endhonesa.com`) loads unique configurations for its respective brand, campaign, or cultural project, while still using the same underlying platform.
+PABRIKROTI operates as a **decentralized digital production space**, where each domain/subdomain (e.g., `pabrikroti.endhonesa.com`) loads unique configurations for its respective brand, campaign, or cultural project, while still using the same underlying platform.
 
 ---
 
 ### ✨ Key Features
 
 - **Dynamic Tenant-Based Theming**  
-  Auto-detects hostname/domain/subdomain and applies custom config from `/src/config/receipts/`.
+  Auto-detects hostname, which is domain/subdomain and applies custom config from `/src/config/receipts/`.
 
 - **NFT Explorer & Claim Interface**  
   Pages like `/free`, `/paid`, `/token/[idNFT]` list and handle claiming of tokenized assets with eligibility logic, fallback visuals, and blockchain status integration.
@@ -68,7 +71,7 @@ PABRIKROTI operates as a **decentralized digital production space**, where each 
   Pages like `/coins`, `/address/[coinAddress]` enable users to claim community or utility tokens with live metadata, eligibility checks, and claim buttons.
 
 - **Flexible Front Page (Multi-Mode)**  
-  Depending on the hostname/domain/subdomain, the home page renders:
+  Depending on the domain/subdomain, the home page renders:
 
   - **Mode `abc`**: Login gateway with featured tokens
   - **Mode `aiueo`**: Landing page for branding & storytelling
@@ -83,7 +86,7 @@ PABRIKROTI operates as a **decentralized digital production space**, where each 
   - Prof. NOTA Inc. Protocol
 
 - **Ethical Licensing & Multilingual Manifestos**  
-  Supports 6+ languages for license agreements and project manifestos. Access is granted only with permission from Prof. NOTA and Prof. NOTA Inc. or certified facilitators.
+  Supports 6+ languages for license agreements and project manifestos. Access is granted only with permission from [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/) or certified facilitators.
 
 ---
 
@@ -131,12 +134,19 @@ yarn build
 yarn start
 ```
 
+---
+
 ## 📜 Resources
 
 - [Prof. NOTA Inc.](https://nota.endhonesa.com/)
 - [Prof. NOTA Console](https://prompt.endhonesa.com/)
 - [Prof. NOTA Tutor](https://baca.endhonesa.com/)
+- [Prof. NOTA Artefacts](https://docs.endhonesa.com/)
+
+---
 
 ### Join Prof. NOTA Discord!
 
 For feedback, questions, or cultural-technical collaboration, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).
+
+---
