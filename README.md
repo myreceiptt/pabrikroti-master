@@ -1,6 +1,7 @@
 # PABRIK ROTI v.2.4.44
 
-> "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by community, and baked through the heat of shared struggles."  
+> "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by its community, and baked through the heat of shared struggles."
+>
 > — Prof. NOTA
 
 ---
