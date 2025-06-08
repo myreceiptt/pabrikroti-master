@@ -73,7 +73,7 @@ export default function DropdownMenu() {
               style={{
                 color: receipt.colorSecondary,
               }}
-              className="text-xs sm:text-sm md:text-base font-normal px-4 pb-4 space-y-1">
+              className="text-xs sm:text-sm md:text-base font-normal px-4 pb-4">
               <li>
                 <Link href="/#what">{receipt.ddMenuWhat}</Link>
               </li>
@@ -106,7 +106,7 @@ export default function DropdownMenu() {
               style={{
                 color: receipt.colorSecondary,
               }}
-              className="text-xs sm:text-sm md:text-base font-normal px-4 pb-4 space-y-1">
+              className="text-xs sm:text-sm md:text-base font-normal px-4 pb-4">
               <li>
                 <Link href="/free">{receipt.ddMenuFree}</Link>
               </li>
@@ -130,7 +130,7 @@ export default function DropdownMenu() {
               style={{
                 color: receipt.colorSecondary,
               }}
-              className="text-xs sm:text-sm md:text-base font-normal px-4 pb-4 space-y-1">
+              className="text-xs sm:text-sm md:text-base font-normal px-4 pb-4">
               <li>
                 <Link href="/deploy" target="_blank">
                   {receipt.ddMenuDeploy}

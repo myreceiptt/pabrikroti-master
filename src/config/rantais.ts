@@ -66,11 +66,11 @@ export const chains = [
 
 // Daftar nama jaringan blockchain (chain) yang didukung
 export const chainNames: Record<number, string> = {
-  [avalancheC.id]: "Avalanche C-Chain",
+  [avalancheC.id]: "Avalanche",
   [baseMainnet.id]: "Base Mainnet",
-  [baseSepolia.id]: "Base Sepolia Testnet",
-  [bobBitcoin.id]: "BOB (Built On Bitcoin)",
-  [ethereumEvm.id]: "Ethereum Mainnet",
+  [baseSepolia.id]: "Base Sepolia",
+  [bobBitcoin.id]: "BOB Chain",
+  [ethereumEvm.id]: "Ethereum",
   [humanityTest.id]: "Humanity Testnet",
   [inkChain.id]: "Ink On Chain",
   [mintChain.id]: "Mint Blockchain",
@@ -78,9 +78,9 @@ export const chainNames: Record<number, string> = {
   [monadTestnet.id]: "Monad Testnet",
   [opMainnet.id]: "OP Mainnet",
   [shapeNetwork.id]: "Shape Network",
-  [soneiumMainnet.id]: "Soneium Mainnet",
-  [superseedChain.id]: "Superseed Blockchain",
-  [unichainBlock.id]: "Unichain Blockchain",
+  [soneiumMainnet.id]: "Soneium",
+  [superseedChain.id]: "Superseed",
+  [unichainBlock.id]: "Unichain",
   [worldChain.id]: "World Chain",
   [zoraMainnet.id]: "Zora Mainnet",
 };
