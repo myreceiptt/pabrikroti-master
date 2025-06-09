@@ -191,6 +191,7 @@ export const myreceipt = {
   nftFormEdition: "Edition", // nft form,
   nftFormOwned: "Collected", // nft form,
   nftFormRefresh: "Refresh", // nft form, coin form,
+  nftFormAmount: "Amount", // nft form, coin form,
   nftFormTunggu: "Processing. Be patient and wait.", // nft form, coin form,
   nftFormKirim: "Collecting your NFT.", // nft form,
   nftFormSukses: "Collected. Check your wallet now.", // nft form,

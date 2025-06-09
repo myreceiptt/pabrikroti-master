@@ -48,6 +48,7 @@ interface NFTFormProps {
   maxSupply: bigint;
   perWallet: bigint;
   adjustedBalance: number;
+  claimRemaining: bigint;
   setRefreshToken: (val: number) => void;
 }
 
@@ -65,6 +66,7 @@ export default function NFTForm({
   maxSupply,
   perWallet,
   adjustedBalance,
+  claimRemaining,
   setRefreshToken,
 }: NFTFormProps) {
   const { receipt } = getActiveReceipt();
@@ -77,6 +79,7 @@ export default function NFTForm({
   // Ensure state variables are properly declared
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [claimQuantity, setClaimQuantity] = useState<number>(1);
   const [isProcessing, setIsProcessing] = useState(false);
   const [pesanTunggu, setPesanTunggu] = useState<string | null>(null);
   const [pesanKirim, setPesanKirim] = useState<string | null>(null);
@@ -285,7 +288,7 @@ export default function NFTForm({
               color: receipt.colorSecondary,
               background: receipt.colorTertiary,
             }}
-            className={`col-span-2 aspect-auto rounded-lg mt-1 disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
+            className={`col-span-2 aspect-auto rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
             } flex items-center justify-center`}>
             <motion.div
@@ -295,7 +298,7 @@ export default function NFTForm({
                 duration: 0.74,
                 ease: "linear",
               }}>
-              <FaRotate className="text-base lg:text-md xl:text-xl font-semibold " />
+              <FaRotate className="text-base lg:text-lg font-semibold" />
             </motion.div>
           </button>
         </div>
@@ -311,6 +314,11 @@ export default function NFTForm({
             className="col-span-3 text-left text-xs font-medium">
             {receipt.coinFormOnChain}
           </h2>
+          <h2
+            style={{ color: receipt.colorSekunder }}
+            className="col-span-2 text-left text-xs font-medium">
+            {receipt.nftFormAmount}
+          </h2>
 
           <h2
             style={{ color: receipt.colorSecondary }}
@@ -322,6 +330,30 @@ export default function NFTForm({
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
             {chainName}
           </h2>
+          <input
+            type="number"
+            min={1}
+            max={Math.floor(Number(claimRemaining))}
+            value={buttonDisabled ? 0 : claimQuantity}
+            readOnly={buttonDisabled}
+            onChange={(e) => {
+              const val = Math.floor(Number(e.target.value));
+              if (
+                !isNaN(val) &&
+                val >= 1 &&
+                val <= Math.floor(Number(claimRemaining))
+              ) {
+                setClaimQuantity(val);
+              }
+            }}
+            style={{
+              color: receipt.colorSecondary,
+              background: receipt.colorTertiary,
+              opacity: buttonDisabled ? 0.5 : 1,
+              cursor: buttonDisabled ? "not-allowed" : "text",
+            }}
+            className="col-span-2 aspect-auto rounded-lg text-center text-base lg:text-lg font-semibold outline-none"
+          />
         </div>
 
         {/* Claim Button */}
@@ -350,7 +382,7 @@ export default function NFTForm({
           client={client}
           claimParams={{
             type: "ERC1155",
-            quantity: 1n,
+            quantity: BigInt(claimQuantity),
             tokenId: nftId,
           }}
           disabled={isProcessing || buttonDisabled}

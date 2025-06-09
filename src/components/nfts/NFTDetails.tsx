@@ -3,9 +3,10 @@
 "use client";
 
 // External libraries
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
-import { Chain, getContract } from "thirdweb";
+import { Chain, getContract, readContract } from "thirdweb";
 import {
   canClaim,
   getClaimConditionById,
@@ -37,6 +38,7 @@ interface NFTData {
   maxSupply: bigint;
   perWallet: bigint;
   adjustedBalance: number;
+  claimRemaining: bigint;
 }
 
 function getNFTIdFromParams(params: ReturnType<typeof useParams>): bigint {
@@ -96,6 +98,18 @@ export default function NFTDetails() {
 
       // Fetch max. supply
       const nftMaxSupply = nftMaxClaim + (nftSupply - nftClaimed);
+
+      // Fetch supply claimed by wallet
+      const claimedRaw = await readContract({
+        contract: erc1155Launched,
+        method:
+          "function getSupplyClaimedByWallet(uint256 _tokenId, uint256 _conditionId, address _claimer) view returns (uint256 supplyClaimedByWallet)",
+        params: [nftId, 0n, activeAccount.address],
+      });
+
+      // Calculate claim remaining
+      const claimRemaining: bigint =
+        claimCondition.quantityLimitPerWallet - (claimedRaw ?? 0n);
 
       // Fetch currency and decimals
       let currencyDecimals = 18;
@@ -171,6 +185,7 @@ export default function NFTDetails() {
         maxSupply: nftMaxSupply,
         perWallet: claimCondition.quantityLimitPerWallet,
         adjustedBalance,
+        claimRemaining,
       });
     } catch (err: unknown) {
       setError(receipt.nftSetError);
@@ -214,6 +229,20 @@ export default function NFTDetails() {
     return (
       <main className="grid gap-4 place-items-center">
         <Loader message={receipt.loaderChecking} />
+
+        {/* Bottom Section - Background Image */}
+        <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
+          <Image
+            src={receipt.coinAccessBanner}
+            alt={receipt.proTitle}
+            width={4096}
+            height={1109}
+            className="rounded-3xl"
+            objectFit="cover"
+            objectPosition="top"
+            priority
+          />
+        </div>
       </main>
     );
   }
