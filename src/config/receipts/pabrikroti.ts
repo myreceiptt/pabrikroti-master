@@ -121,6 +121,46 @@ export const pabrikroti = {
   subscribeButton: "Subscribe", // subscribe form,
   subscribeButtonLoading: "Subscribing...", // subscribe form,
 
+  // landing page
+  heroSlides: [
+    {
+      title: "Build Social Bread",
+      subtitle: "Digitally baked. Publicly shared.",
+      description: "We tokenize culture and rewards.",
+      image: "/images/hero-1.png",
+      cta: { text: "Get Started", href: "/coins" },
+    },
+  ],
+  features: [
+    {
+      icon: "🍞",
+      title: "NFT Claiming",
+      description: "Claim digital assets as real bread.",
+      cta: { text: "Claim Now", href: "/free" },
+    },
+  ],
+  visualBlocks: [
+    {
+      variant: "left", // or "right"
+      image: "/images/illustration-bread.png",
+      title: "Decentralized Craft",
+      description: "We respect your local ownership and labor.",
+      cta: { text: "Learn More", href: "/about" },
+    },
+  ],
+  textMin: {
+    title: "Why Bread?",
+    paragraphs: [
+      "Bread is a metaphor for labor, love, and story.",
+      "We issue rewards as bread to be earned, not bought.",
+    ],
+    cta: { text: "Read the Manifesto", href: "/terms" },
+  },
+  videoEmbed: {
+    url: "https://www.youtube.com/embed/abcd1234",
+    cta: { text: "Join the Movement", href: "/join" },
+  },
+
   // featured cards page - hide card by nulled the title
   featuredTitle1: "All Breads", // featured cards,
   featuredTitle2: "That You Can Eat", // featured cards,
@@ -191,6 +231,7 @@ export const pabrikroti = {
   nftFormEdition: "Slices of Loaf", // nft form,
   nftFormOwned: "Swallowed", // nft form,
   nftFormRefresh: "Refresh", // nft form, coin form,
+  nftFormAmount: "Amount", // nft form, coin form,
   nftFormTunggu: "Baking. Be patient and wait.", // nft form, coin form,
   nftFormKirim: "Serving your artisan bread.", // nft form,
   nftFormSukses: "Successfully served.", // nft form,

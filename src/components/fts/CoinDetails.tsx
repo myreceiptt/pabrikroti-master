@@ -3,14 +3,16 @@
 "use client";
 
 // External libraries
+import Image from "next/image";
 import { useParams, useRouter } from "next/navigation";
 import React, { useCallback, useEffect, useState } from "react";
-import { Chain, getContract } from "thirdweb";
+import { Chain, getContract, readContract } from "thirdweb";
 import { getContractMetadata } from "thirdweb/extensions/common";
 import {
   canClaim,
   decimals,
   getActiveClaimCondition,
+  getActiveClaimConditionId,
   totalSupply,
 } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
@@ -32,6 +34,7 @@ interface CoinData {
   coinName: string;
   coinSymbol: string;
   coinDescription: string;
+  coinImage: string;
   coinBy: string;
   coinLink: string;
   adjustedPrice: number;
@@ -44,6 +47,7 @@ interface CoinData {
   adjustedSupply: number;
   adjustedMaxSupply: number;
   adjustedPerWallet: number;
+  claimRemaining: number;
 }
 
 function getCoinAddressFromParams(
@@ -133,6 +137,21 @@ export default function CoinDetails() {
       const adjustedPerWallet =
         Number(claimCondition.quantityLimitPerWallet) / 10 ** coinDecimals;
 
+      const claimConditionId = await getActiveClaimConditionId({
+        contract: erc20Contract,
+      });
+
+      const claimedRaw = await readContract({
+        contract: erc20Contract,
+        method:
+          "function getSupplyClaimedByWallet(uint256 _conditionId, address _claimer) view returns (uint256 supplyClaimedByWallet)",
+        params: [claimConditionId, activeAccount.address],
+      });
+
+      const claimRemaining =
+        Number(claimCondition.quantityLimitPerWallet - claimedRaw) /
+        10 ** coinDecimals;
+
       let currencyDecimals = 18;
       let balanceRaw = 0n;
       const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
@@ -196,6 +215,7 @@ export default function CoinDetails() {
         coinName: coinMetaData.name,
         coinSymbol: coinMetaData.symbol,
         coinDescription: coinMetaData.description,
+        coinImage: coinMetaData.image,
         coinBy: erc20ContractLaunched.by,
         coinLink: erc20ContractLaunched.link,
         adjustedPrice,
@@ -208,6 +228,7 @@ export default function CoinDetails() {
         adjustedSupply,
         adjustedMaxSupply,
         adjustedPerWallet,
+        claimRemaining,
       });
 
       setError(null);
@@ -245,6 +266,20 @@ export default function CoinDetails() {
     return (
       <main className="grid gap-4 place-items-center">
         <Loader message={receipt.loaderChecking} />
+
+        {/* Bottom Section - Background Image */}
+        <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
+          <Image
+            src={receipt.coinAccessBanner}
+            alt={receipt.proTitle}
+            width={4096}
+            height={1109}
+            className="rounded-3xl"
+            objectFit="cover"
+            objectPosition="top"
+            priority
+          />
+        </div>
       </main>
     );
   }
@@ -270,7 +305,25 @@ export default function CoinDetails() {
           onAccessChange={setHasAccess}
         />
       )}
-      {hasAccess === null && <Loader message={receipt.loaderChecking} />}
+      {hasAccess === null && (
+        <>
+          <Loader message={receipt.loaderChecking} />
+
+          {/* Bottom Section - Background Image */}
+          <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
+            <Image
+              src={receipt.coinAccessBanner}
+              alt={receipt.proTitle}
+              width={4096}
+              height={1109}
+              className="rounded-3xl"
+              objectFit="cover"
+              objectPosition="top"
+              priority
+            />
+          </div>
+        </>
+      )}
       {hasAccess === false && (
         <CoinAccess
           onRedirect={() => router.push(receipt.coinAccessRedirect)}
@@ -281,7 +334,6 @@ export default function CoinDetails() {
         <CoinForm
           hasAccess={hasAccess}
           setRefreshToken={setRefreshToken}
-          refreshToken={refreshToken}
           {...coin}
         />
       )}

@@ -4,12 +4,11 @@
 
 // External libraries
 import { motion } from "framer-motion";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { FaRotate } from "react-icons/fa6";
 import { Chain } from "thirdweb";
-import { ClaimButton, TokenIcon, TokenProvider } from "thirdweb/react";
+import { ClaimButton, MediaRenderer } from "thirdweb/react";
 
 // Blockchain configurations
 import { client } from "@/config/client";
@@ -36,6 +35,7 @@ interface CoinFormProps {
   coinName: string;
   coinSymbol: string;
   coinDescription: string;
+  coinImage: string;
   coinBy: string;
   coinLink: string;
   adjustedPrice: number;
@@ -48,9 +48,9 @@ interface CoinFormProps {
   adjustedSupply: number;
   adjustedMaxSupply: number;
   adjustedPerWallet: number;
+  claimRemaining: number;
   hasAccess: boolean | null;
   setRefreshToken: (val: number) => void;
-  refreshToken: number;
 }
 
 export default function CoinForm({
@@ -59,6 +59,7 @@ export default function CoinForm({
   coinName,
   coinSymbol,
   coinDescription,
+  coinImage,
   coinBy,
   coinLink,
   adjustedPrice,
@@ -71,9 +72,9 @@ export default function CoinForm({
   adjustedSupply,
   adjustedMaxSupply,
   adjustedPerWallet,
+  claimRemaining,
   hasAccess,
   setRefreshToken,
-  refreshToken,
 }: CoinFormProps) {
   const { receipt } = getActiveReceipt();
 
@@ -85,7 +86,7 @@ export default function CoinForm({
   const [isOpen, setIsOpen] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [currentTime, setCurrentTime] = useState(new Date());
-  const [hasError, setHasError] = useState(false);
+  const [claimQuantity, setClaimQuantity] = useState<number>(1);
   const [isProcessing, setIsProcessing] = useState(false);
   const [pesanTunggu, setPesanTunggu] = useState<string | null>(null);
   const [pesanKirim, setPesanKirim] = useState<string | null>(null);
@@ -194,38 +195,18 @@ export default function CoinForm({
     }
   }
 
-  // Reset hasError state
-  useEffect(() => {
-    setHasError(false);
-  }, [refreshToken]);
-
   return (
     <div className="w-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">
-      {/* MediaRenderer (Left Column) */}
-      <div className="rounded-3xl overflow-hidden w-full">
-        <TokenProvider
-          key={refreshToken}
-          address={coinAddress}
+      {/* TokenIcon (Left Column) */}
+      <div
+        onClick={() => setIsOpen(true)}
+        className="rounded-3xl overflow-hidden w-full">
+        <MediaRenderer
           client={client}
-          chain={coinChain}>
-          {!hasError ? (
-            <TokenIcon
-              onClick={() => setIsOpen(true)}
-              alt={coinName}
-              className="rounded-2xl w-full cursor-pointer"
-              onError={() => setHasError(true)}
-            />
-          ) : (
-            <Image
-              onClick={() => setIsOpen(true)}
-              src={receipt.coinListerImage}
-              alt={coinName ?? receipt.coinListerName}
-              width={755}
-              height={545}
-              className="rounded-2xl w-full cursor-pointer"
-            />
-          )}
-        </TokenProvider>
+          src={coinImage ?? receipt.coinListerImage}
+          alt={coinName ?? receipt.coinListerName}
+          className="rounded-2xl w-full cursor-pointer"
+        />
       </div>
 
       {/* Pop-up Modal */}
@@ -321,7 +302,7 @@ export default function CoinForm({
                 duration: 0.74,
                 ease: "linear",
               }}>
-              <FaRotate className="text-base lg:text-md xl:text-xl font-semibold " />
+              <FaRotate className="text-base lg:lg font-semibold " />
             </motion.div>
           </button>
         </div>
@@ -336,6 +317,11 @@ export default function CoinForm({
             style={{ color: receipt.colorSekunder }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.coinFormOnChain}
+          </h2>
+          <h2
+            style={{ color: receipt.colorSekunder }}
+            className="col-span-2 text-left text-xs font-medium">
+            {receipt.nftFormAmount}
           </h2>
 
           <h2
@@ -352,6 +338,30 @@ export default function CoinForm({
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
             {chainName}
           </h2>
+          <input
+            type="number"
+            min={1}
+            max={Math.floor(claimRemaining)}
+            value={buttonDisabled ? 0 : claimQuantity}
+            readOnly={buttonDisabled}
+            onChange={(e) => {
+              const val = Math.floor(Number(e.target.value));
+              if (
+                !isNaN(val) &&
+                val >= 1 &&
+                val <= Math.floor(claimRemaining)
+              ) {
+                setClaimQuantity(val);
+              }
+            }}
+            style={{
+              color: receipt.colorSecondary,
+              background: receipt.colorTertiary,
+              opacity: buttonDisabled ? 0.5 : 1,
+              cursor: buttonDisabled ? "not-allowed" : "text",
+            }}
+            className="col-span-2 aspect-auto rounded-lg text-center text-base lg:text-lg font-semibold outline-none"
+          />
         </div>
 
         {/* Claim Button */}
@@ -380,7 +390,7 @@ export default function CoinForm({
           client={client}
           claimParams={{
             type: "ERC20",
-            quantity: "1",
+            quantity: claimQuantity.toString(),
           }}
           disabled={isProcessing || buttonDisabled}
           onClick={() => {

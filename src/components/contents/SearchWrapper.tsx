@@ -4,6 +4,7 @@
 
 // External libraries
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FaRotate } from "react-icons/fa6";
@@ -264,6 +265,20 @@ export default function SearchWrapper() {
     return (
       <main className="grid gap-4 place-items-center">
         <Loader message={receipt.loaderChecking} />
+
+        {/* Bottom Section - Background Image */}
+        <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
+          <Image
+            src={receipt.coinAccessBanner}
+            alt={receipt.proTitle}
+            width={4096}
+            height={1109}
+            className="rounded-3xl"
+            objectFit="cover"
+            objectPosition="top"
+            priority
+          />
+        </div>
       </main>
     );
   }
