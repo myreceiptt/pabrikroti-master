@@ -124,10 +124,10 @@ export const pabrikroti = {
   // landing page
   heroSlides: [
     {
-      title: "Build Social Bread",
+      title: "Programmed Batch Bread",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
-      image: "/images/hero-1.png",
+      image: "/roti/slides/slide-image-1.png",
       cta: { text: "Get Started", href: "/coins" },
     },
   ],

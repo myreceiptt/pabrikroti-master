@@ -10,8 +10,7 @@ We follow a modular release structure tied to tenant-specific deployments. Only 
 | 2.2-3.x | Supported     |
 | 2.1.11  | Not supported |
 | 1.1-3.3 | Deprecated    |
-| 0.1.0   | Init          |
-| 0101    | OiOi          |
+| 0.1.0.1 | Init          |
 
 If you're using a customized fork or internal derivative based on PABRIKROTI, we recommend merging upstream patches manually or contacting our security team.
 

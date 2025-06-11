@@ -8,6 +8,7 @@ import Image from "next/image";
 import React, { useState, useEffect, useCallback, useRef } from "react";
 import { FaRotate } from "react-icons/fa6";
 import { Chain, getContract } from "thirdweb";
+import { getContractMetadata } from "thirdweb/extensions/common";
 import {
   canClaim,
   decimals,
@@ -15,6 +16,7 @@ import {
   totalSupply,
 } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
+import { download } from "thirdweb/storage";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
@@ -39,6 +41,13 @@ interface CoinData {
   adjustedSupply: number;
   adjustedMaxSupply: number;
   adjustedBalance: number;
+}
+
+interface SnapshotEntry {
+  address: string;
+  maxClaimable?: string;
+  price?: string;
+  currency?: string;
 }
 
 const INITIAL_ITEMS = 6;
@@ -75,6 +84,16 @@ export default function CoinsList() {
             chain: erc20sLaunched.chain,
           });
 
+          // Fetch coin metadata
+          const coinMetaData = await getContractMetadata({
+            contract: erc20Contract,
+          });
+
+          // Merkle root map from coin metadata
+          const merkleMap = coinMetaData?.merkle as
+            | Record<string, string>
+            | undefined;
+
           // Fetch coin decimals
           const coinDecimals = await decimals({ contract: erc20Contract });
 
@@ -107,9 +126,9 @@ export default function CoinsList() {
             adjustedMaxClaim + (adjustedSupply - adjustedClaimed);
 
           // Fetch currency and decimals
+          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
           let currencyDecimals = 18;
           let balanceRaw = 0n;
-          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
           if (claimCondition.currency.toLowerCase() !== nativeCurrency) {
             const currencyContract = getContract({
@@ -141,10 +160,53 @@ export default function CoinsList() {
             balanceRaw = balanceResult.value ?? 0n;
           }
 
-          // Adjust price and balance
-          const adjustedPrice =
-            Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
+          // Adjust balance
           const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
+
+          // Adjust price
+          let adjustedPrice =
+            Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
+
+          // Fetch override price
+          const currentMerkleRoot = claimCondition.merkleRoot?.toLowerCase();
+          const snapshotUri = merkleMap?.[currentMerkleRoot ?? ""];
+
+          if (snapshotUri && activeAccount?.address) {
+            try {
+              const merkleMetadataRes = await download({
+                client: erc20Contract.client,
+                uri: snapshotUri,
+              });
+
+              const merkleMetadata = await merkleMetadataRes.json();
+
+              const originalEntriesUri = merkleMetadata.originalEntriesUri;
+
+              if (originalEntriesUri) {
+                const entriesRes = await download({
+                  client: erc20Contract.client,
+                  uri: originalEntriesUri,
+                });
+
+                const entries: SnapshotEntry[] = await entriesRes.json();
+
+                const entry = entries.find(
+                  (e) =>
+                    e.address?.toLowerCase() ===
+                    activeAccount.address.toLowerCase()
+                );
+
+                if (entry?.price) {
+                  const parsedPrice = parseFloat(entry.price);
+                  if (!isNaN(parsedPrice)) {
+                    adjustedPrice = parsedPrice;
+                  }
+                }
+              }
+            } catch (e) {
+              console.warn("Failed to fetch allowlist price:", e);
+            }
+          }
 
           // Fetch can claim status
           let isClaimable = false;

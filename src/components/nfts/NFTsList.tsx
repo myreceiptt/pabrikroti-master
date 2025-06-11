@@ -8,6 +8,7 @@ import Image from "next/image";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FaRotate } from "react-icons/fa6";
 import { getContract } from "thirdweb";
+import { getContractMetadata } from "thirdweb/extensions/common";
 import {
   canClaim,
   getClaimConditionById,
@@ -16,6 +17,7 @@ import {
 } from "thirdweb/extensions/erc1155";
 import { decimals } from "thirdweb/extensions/erc20";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
+import { download } from "thirdweb/storage";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
@@ -42,6 +44,13 @@ interface NFTData {
   supply: bigint;
   maxSupply: bigint;
   adjustedBalance: number;
+}
+
+interface SnapshotEntry {
+  address: string;
+  maxClaimable?: string;
+  price?: string;
+  currency?: string;
 }
 
 const INITIAL_ITEMS = 6;
@@ -86,6 +95,16 @@ export default function NFTsList({ variant }: NFTsListProps) {
 
       const results = await Promise.allSettled(
         nftIds.map(async (nftId) => {
+          // Fetch NFT contract metadata
+          const contractMetaData = await getContractMetadata({
+            contract: erc1155Launched,
+          });
+
+          // Merkle root map from coin metadata
+          const merkleMap = contractMetaData?.merkle as
+            | Record<string, string>
+            | undefined;
+
           // Fetch total supply
           const nftSupply = await totalSupply({
             contract: erc1155Launched,
@@ -109,9 +128,9 @@ export default function NFTsList({ variant }: NFTsListProps) {
           const nftMaxSupply = nftMaxClaim + (nftSupply - nftClaimed);
 
           // Fetch currency and decimals
+          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
           let currencyDecimals = 18;
           let balanceRaw = 0n;
-          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
           if (claimCondition.currency.toLowerCase() !== nativeCurrency) {
             const currencyContract = getContract({
@@ -143,10 +162,53 @@ export default function NFTsList({ variant }: NFTsListProps) {
             balanceRaw = balanceResult.value ?? 0n;
           }
 
-          // Adjust price and balance
-          const adjustedPrice =
-            Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
+          // Adjust balance
           const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
+
+          // Adjust price
+          let adjustedPrice =
+            Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
+
+          // Fetch override price
+          const currentMerkleRoot = claimCondition.merkleRoot?.toLowerCase();
+          const snapshotUri = merkleMap?.[currentMerkleRoot ?? ""];
+
+          if (snapshotUri && activeAccount?.address) {
+            try {
+              const merkleMetadataRes = await download({
+                client: erc1155Launched.client,
+                uri: snapshotUri,
+              });
+
+              const merkleMetadata = await merkleMetadataRes.json();
+
+              const originalEntriesUri = merkleMetadata.originalEntriesUri;
+
+              if (originalEntriesUri) {
+                const entriesRes = await download({
+                  client: erc1155Launched.client,
+                  uri: originalEntriesUri,
+                });
+
+                const entries: SnapshotEntry[] = await entriesRes.json();
+
+                const entry = entries.find(
+                  (e) =>
+                    e.address?.toLowerCase() ===
+                    activeAccount.address.toLowerCase()
+                );
+
+                if (entry?.price) {
+                  const parsedPrice = parseFloat(entry.price);
+                  if (!isNaN(parsedPrice)) {
+                    adjustedPrice = parsedPrice;
+                  }
+                }
+              }
+            } catch (e) {
+              console.warn("Failed to fetch allowlist price:", e);
+            }
+          }
 
           // Fetch can claim status
           let isClaimable = false;
@@ -265,7 +327,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
     return (
       <main className="grid gap-4 place-items-center">
         <Loader message={receipt.loaderChecking} />
-        
+
         {/* Bottom Section - Background Image */}
         <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
           <Image

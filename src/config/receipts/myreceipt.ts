@@ -121,6 +121,46 @@ export const myreceipt = {
   subscribeButton: "Subscribe", // subscribe form,
   subscribeButtonLoading: "Subscribing...", // subscribe form,
 
+  // landing page
+  heroSlides: [
+    {
+      title: "Build Programmed Bread",
+      subtitle: "Digitally baked. Publicly shared.",
+      description: "We tokenize culture and rewards.",
+      image: "/images/hero-1.png",
+      cta: { text: "Get Started", href: "/coins" },
+    },
+  ],
+  features: [
+    {
+      icon: "🍞",
+      title: "NFT Claiming",
+      description: "Claim digital assets as real bread.",
+      cta: { text: "Claim Now", href: "/free" },
+    },
+  ],
+  visualBlocks: [
+    {
+      variant: "left", // or "right"
+      image: "/images/illustration-bread.png",
+      title: "Decentralized Craft",
+      description: "We respect your local ownership and labor.",
+      cta: { text: "Learn More", href: "/about" },
+    },
+  ],
+  textMin: {
+    title: "Why Bread?",
+    paragraphs: [
+      "Bread is a metaphor for labor, love, and story.",
+      "We issue rewards as bread to be earned, not bought.",
+    ],
+    cta: { text: "Read the Manifesto", href: "/terms" },
+  },
+  videoEmbed: {
+    url: "https://www.youtube.com/embed/abcd1234",
+    cta: { text: "Join the Movement", href: "/join" },
+  },
+
   // featured cards page - hide card by nulled the title
   featuredTitle1: "All Fair and Sustainable", // featured cards,
   featuredTitle2: "Fundraising Model", // featured cards,
