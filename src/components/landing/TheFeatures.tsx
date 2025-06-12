@@ -387,7 +387,7 @@ export default function TheFeatures() {
           borderColor: "transparent",
         }}
         className={`w-full rounded-lg mt-8 p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all cursor-pointer`}>
-        SUBMIT YOUR NFT
+        SUBMIT YOUR NFT HERE
       </button>
     </section>
   );
