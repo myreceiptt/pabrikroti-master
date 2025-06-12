@@ -9,6 +9,7 @@ import { useSearchParams } from "next/navigation";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FaRotate } from "react-icons/fa6";
 import { getContract } from "thirdweb";
+import { getContractMetadata } from "thirdweb/extensions/common";
 import {
   canClaim,
   getClaimConditionById,
@@ -16,6 +17,7 @@ import {
 } from "thirdweb/extensions/erc1155";
 import { getNFTs, nextTokenIdToMint } from "thirdweb/extensions/erc1155";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
+import { download } from "thirdweb/storage";
 
 // Components libraries
 import NFTLister from "@/components/nfts/NFTLister";
@@ -33,6 +35,7 @@ import { getWalletBalance } from "thirdweb/wallets";
 interface NFTData {
   nftId: bigint;
   nftIdString: string;
+  initialPrice: number;
   adjustedPrice: number;
   startTimestamp: bigint;
   isClaimable: boolean;
@@ -40,6 +43,13 @@ interface NFTData {
   supply: bigint;
   maxSupply: bigint;
   adjustedBalance: number;
+}
+
+interface SnapshotEntry {
+  address: string;
+  maxClaimable?: string;
+  price?: string;
+  currency?: string;
 }
 
 const INITIAL_ITEMS = 6;
@@ -98,6 +108,16 @@ export default function SearchWrapper() {
 
       const results = await Promise.allSettled(
         matchedIds.map(async (nftId) => {
+          // Fetch NFT contract metadata
+          const contractMetaData = await getContractMetadata({
+            contract: erc1155Launched,
+          });
+
+          // Merkle root map from coin metadata
+          const merkleMap = contractMetaData?.merkle as
+            | Record<string, string>
+            | undefined;
+
           // Fetch total supply
           const nftSupply = await totalSupply({
             contract: erc1155Launched,
@@ -121,9 +141,9 @@ export default function SearchWrapper() {
           const nftMaxSupply = nftMaxClaim + (nftSupply - nftClaimed);
 
           // Fetch currency and decimals
+          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
           let currencyDecimals = 18;
           let balanceRaw = 0n;
-          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
           if (claimCondition.currency.toLowerCase() !== nativeCurrency) {
             const currencyContract = getContract({
@@ -155,10 +175,55 @@ export default function SearchWrapper() {
             balanceRaw = balanceResult.value ?? 0n;
           }
 
-          // Adjust price and balance
-          const adjustedPrice =
-            Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
+          // Adjust balance
           const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
+
+          // Adjust price and balance
+          const initialPrice =
+            Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
+
+          let adjustedPrice = initialPrice;
+
+          // Fetch override price
+          const currentMerkleRoot = claimCondition.merkleRoot?.toLowerCase();
+          const snapshotUri = merkleMap?.[currentMerkleRoot ?? ""];
+
+          if (snapshotUri && activeAccount?.address) {
+            try {
+              const merkleMetadataRes = await download({
+                client: erc1155Launched.client,
+                uri: snapshotUri,
+              });
+
+              const merkleMetadata = await merkleMetadataRes.json();
+
+              const originalEntriesUri = merkleMetadata.originalEntriesUri;
+
+              if (originalEntriesUri) {
+                const entriesRes = await download({
+                  client: erc1155Launched.client,
+                  uri: originalEntriesUri,
+                });
+
+                const entries: SnapshotEntry[] = await entriesRes.json();
+
+                const entry = entries.find(
+                  (e) =>
+                    e.address?.toLowerCase() ===
+                    activeAccount.address.toLowerCase()
+                );
+
+                if (entry?.price) {
+                  const parsedPrice = parseFloat(entry.price);
+                  if (!isNaN(parsedPrice)) {
+                    adjustedPrice = parsedPrice;
+                  }
+                }
+              }
+            } catch (e) {
+              console.warn("Failed to fetch allowlist price:", e);
+            }
+          }
 
           // Fetch can claim status
           let isClaimable = false;

@@ -34,9 +34,11 @@ interface NFTsListProps {
   variant: "free" | "paid";
 }
 
+// Interface definition for NFTs
 interface NFTData {
   nftId: bigint;
   nftIdString: string;
+  initialPrice: number;
   adjustedPrice: number;
   startTimestamp: bigint;
   isClaimable: boolean;
@@ -166,8 +168,10 @@ export default function NFTsList({ variant }: NFTsListProps) {
           const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
 
           // Adjust price
-          let adjustedPrice =
+          const initialPrice =
             Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
+
+          let adjustedPrice = initialPrice;
 
           // Fetch override price
           const currentMerkleRoot = claimCondition.merkleRoot?.toLowerCase();
@@ -234,6 +238,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
           return {
             nftId,
             nftIdString: nftId.toString(),
+            initialPrice,
             adjustedPrice,
             startTimestamp: claimCondition.startTimestamp,
             isClaimable,
@@ -251,7 +256,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
       results.forEach((result) => {
         if (result.status === "fulfilled") {
           const nft = result.value;
-          if (nft.adjustedPrice === 0) free.push(nft);
+          if (nft.initialPrice === 0) free.push(nft);
           else paid.push(nft);
         }
       });
@@ -374,7 +379,15 @@ export default function NFTsList({ variant }: NFTsListProps) {
             <NFTLister
               dropContract={erc1155Launched}
               refreshToken={refreshToken}
-              {...nft}
+              nftId={nft.nftId}
+              nftIdString={nft.nftIdString}
+              adjustedPrice={nft.adjustedPrice}
+              startTimestamp={nft.startTimestamp}
+              isClaimable={nft.isClaimable}
+              reason={nft.reason}
+              supply={nft.supply}
+              maxSupply={nft.maxSupply}
+              adjustedBalance={nft.adjustedBalance}
             />
           </motion.div>
         ))}
