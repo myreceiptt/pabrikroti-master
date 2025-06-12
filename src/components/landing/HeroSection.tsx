@@ -11,12 +11,7 @@ export default function HeroSection() {
   const { receipt } = getActiveReceipt();
 
   return (
-    <section
-      style={{
-        backgroundColor: receipt.colorTertiary,
-        borderColor: receipt.colorTertiary,
-      }}
-      className="relative w-full flex flex-col items-center justify-center border rounded-xl overflow-hidden">
+    <section className="relative w-full flex flex-col items-center justify-center overflow-hidden">
       <div className="relative w-full max-w-7xl aspect-[4/1] overflow-hidden">
         <Link
           title="SUBMIT YOUR NFT For A Reason - A Web3 Initiative for Grassroots Culture & Creative Solidarity"
@@ -28,7 +23,7 @@ export default function HeroSection() {
             alt="NFT For A Reason - A Web3 Initiative for Grassroots Culture & Creative Solidarity"
             title="NFT For A Reason - A Web3 Initiative for Grassroots Culture & Creative Solidarity"
             fill
-            className="object-cover"
+            className="object-cover rounded-xl md:rounded-2xl"
             sizes="100vw"
             priority
           />
