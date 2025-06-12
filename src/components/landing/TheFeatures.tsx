@@ -7,7 +7,7 @@ export default function TheFeatures() {
   const { receipt } = getActiveReceipt();
 
   return (
-    <section className="px-6 py-16">
+    <section className="px-4 py-8 lg:px-6 lg:py-16 rounded-2xl">
       <div className="max-w-5xl mx-auto space-y-6">
         <h2
           id="who"
@@ -370,6 +370,25 @@ export default function TheFeatures() {
           </li>
         </ol>
       </div>
+      <button
+        title="SUBMIT YOUR NFT For A Reason"
+        aria-label="SUBMIT YOUR NFT For A Reason"
+        type="button"
+        onClick={() =>
+          window.open(
+            "https://docs.google.com/forms/d/e/1FAIpQLScEtnwdQ8dRbYmR61wOi5HajAslc123-eOlDv7S41neJmtTmg/viewform",
+            "_blank"
+          )
+        }
+        style={{
+          color: receipt.colorSecondary,
+          backgroundColor: receipt.colorTertiary,
+          border: "2px solid",
+          borderColor: "transparent",
+        }}
+        className={`w-full rounded-lg mt-8 p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all cursor-pointer`}>
+        SUBMIT YOUR NFT
+      </button>
     </section>
   );
 }

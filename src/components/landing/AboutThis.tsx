@@ -1,14 +1,16 @@
 // /src/components/landing/AboutThis.tsx
 
+// External libraries
+import Link from "next/link";
+
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
-import Link from "next/link";
 
 export default function AboutThis() {
   const { receipt } = getActiveReceipt();
 
   return (
-    <section className="px-6 py-16">
+    <section className="px-4 py-8 lg:px-6 lg:py-16 rounded-2xl">
       <div className="max-w-5xl mx-auto space-y-6">
         <h2
           id="what"

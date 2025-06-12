@@ -13,7 +13,7 @@ export default function MainProgram() {
         backgroundColor: receipt.colorPrimer,
         borderColor: receipt.colorTertiary,
       }}
-      className="px-6 py-16">
+      className="px-4 py-8 lg:px-6 lg:py-16 rounded-2xl">
       <div className="max-w-5xl mx-auto space-y-6">
         <h2
           style={{
