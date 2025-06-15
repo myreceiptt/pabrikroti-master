@@ -62,18 +62,3 @@ export async function FetchEthereumPrice(): Promise<number | null> {
   }
 }
 
-export function isBeforeStartTime(
-  startTime: Date,
-  now: Date = new Date()
-): boolean {
-  return now < startTime;
-}
-
-export function formatTokenAmount(raw: bigint, decimals: number): string {
-  return (raw / BigInt(10) ** BigInt(decimals)).toString();
-}
-
-export function calculatePrice(tokenIdNumber: number): string {
-  if (isNaN(tokenIdNumber)) return "0.00";
-  return tokenIdNumber >= 23 ? "x.xx" : "0.00";
-}

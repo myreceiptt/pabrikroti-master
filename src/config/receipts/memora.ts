@@ -127,7 +127,7 @@ export const memora = {
       title: "Build Programmed Bread",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
-      image: "/images/hero-1.png",
+      image: "/memora/landing/hero-1.png",
       cta: { text: "Get Started", href: "/coins" },
     },
   ],

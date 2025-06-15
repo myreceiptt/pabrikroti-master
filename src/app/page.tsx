@@ -11,7 +11,7 @@ import HeroSlider from "@/components/landing/HeroSlider";
 import FeatureGrid from "@/components/landing/FeatureGrid";
 import VisualLeftWithCTARight from "@/components/landing/VisualLeft";
 import VisualRightWithCTALeft from "@/components/landing/VisualRight";
-import TextMinWithCTA from "@/components/landing/TextMinim";
+import ParagraphText from "@/components/landing/ParagraphText";
 import VideoEmbedWithCTA from "@/components/landing/VideoEmbed";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 import Footer from "@/components/sections/FooterSection";
@@ -60,7 +60,7 @@ export default function PageRouter() {
           <FeatureGrid />
           <VisualLeftWithCTARight />
           <VisualRightWithCTALeft />
-          <TextMinWithCTA />
+          <ParagraphText />
           <VideoEmbedWithCTA />
         </main>
       </div>

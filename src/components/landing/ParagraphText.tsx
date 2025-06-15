@@ -1,4 +1,4 @@
-// /src/components/landing/TextMinim.tsx
+// /src/components/landing/ParagraphText.tsx
 
 "use client";
 
@@ -11,7 +11,7 @@ import { getActiveReceipt } from "@/config/receipts";
 // Components libraries
 import ReusableCTA from "@/components/landing/ReusableCTA";
 
-export default function TextMinWithCTA() {
+export default function ParagraphText() {
   const { receipt } = getActiveReceipt();
 
   const { title, paragraphs, cta } = receipt.textMin || {};

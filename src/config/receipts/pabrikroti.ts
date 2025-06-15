@@ -127,7 +127,7 @@ export const pabrikroti = {
       title: "Programmed Batch Bread",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
-      image: "/roti/slides/slide-image-1.png",
+      image: "/roti/landing/hero-1.png",
       cta: { text: "Get Started", href: "/coins" },
     },
   ],
