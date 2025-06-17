@@ -34,13 +34,13 @@ interface CoinData {
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
-  adjustedPrice: number;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
   adjustedSupply: number;
   adjustedMaxSupply: number;
   adjustedBalance: number;
+  adjustedPrice: number;
 }
 
 interface SnapshotEntry {
@@ -84,27 +84,6 @@ export default function CoinsList() {
             chain: erc20sLaunched.chain,
           });
 
-          // Fetch coin metadata
-          const coinMetaData = await getContractMetadata({
-            contract: erc20Contract,
-          });
-
-          // Merkle root map from coin metadata
-          const merkleMap = coinMetaData?.merkle as
-            | Record<string, string>
-            | undefined;
-
-          // Fetch coin decimals
-          const coinDecimals = await decimals({ contract: erc20Contract });
-
-          // Fetch coin current supply
-          const coinTotalSupply = await totalSupply({
-            contract: erc20Contract,
-          });
-
-          // Adjust coin current supply
-          const adjustedSupply = Number(coinTotalSupply) / 10 ** coinDecimals;
-
           // Fetch claim condition
           const claimCondition = await getActiveClaimCondition({
             contract: erc20Contract,
@@ -113,15 +92,49 @@ export default function CoinsList() {
           if (!claimCondition || claimCondition.pricePerToken === undefined)
             return null;
 
-          // Fetch coin supply based on claim condition
+          // Fetch can claim status
+          let isClaimable = false;
+          let reason: string | null = null;
+
+          try {
+            const claimStatus = await canClaim({
+              contract: erc20Contract,
+              quantity: "1",
+              claimer: activeAccount?.address || "",
+            });
+
+            isClaimable = claimStatus.result;
+            reason = claimStatus.reason ?? null;
+          } catch (innerErr) {
+            // Continue if check failed
+            isClaimable = false;
+            reason = receipt.nftsFailReason;
+            console.warn(
+              `${receipt.coinsConsoleWarn} ${erc20sLaunched.address}`,
+              innerErr
+            );
+          }
+
+          // Fetch coin current supply
+          const coinTotalSupply = await totalSupply({
+            contract: erc20Contract,
+          });
+
+          // Fetch coin decimals
+          const coinDecimals = await decimals({ contract: erc20Contract });
+
+          // Adjust coin current supply
+          const adjustedSupply = Number(coinTotalSupply) / 10 ** coinDecimals;
+
+          // Fetch and adjust coin supply based on claim condition
           const adjustedClaimed =
             Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
 
-          // Fetch and adjust max. claim
+          // Fetch and adjust max. claim based on claim condition
           const adjustedMaxClaim =
             Number(claimCondition.maxClaimableSupply) / 10 ** coinDecimals;
 
-          // Fetch and adjust max. supply
+          // Calculate and adjust max. supply
           const adjustedMaxSupply =
             adjustedMaxClaim + (adjustedSupply - adjustedClaimed);
 
@@ -167,6 +180,16 @@ export default function CoinsList() {
           let adjustedPrice =
             Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
 
+          // Fetch coin metadata
+          const coinMetaData = await getContractMetadata({
+            contract: erc20Contract,
+          });
+
+          // Merkle root map from coin metadata
+          const merkleMap = coinMetaData?.merkle as
+            | Record<string, string>
+            | undefined;
+
           // Fetch override price
           const currentMerkleRoot = claimCondition.merkleRoot?.toLowerCase();
           const snapshotUri = merkleMap?.[currentMerkleRoot ?? ""];
@@ -208,40 +231,17 @@ export default function CoinsList() {
             }
           }
 
-          // Fetch can claim status
-          let isClaimable = false;
-          let reason: string | null = null;
-
-          try {
-            const claimStatus = await canClaim({
-              contract: erc20Contract,
-              quantity: "1",
-              claimer: activeAccount?.address || "",
-            });
-
-            isClaimable = claimStatus.result;
-            reason = claimStatus.reason ?? null;
-          } catch (innerErr) {
-            // Continue if check failed
-            isClaimable = false;
-            reason = receipt.nftsFailReason;
-            console.warn(
-              `${receipt.coinsConsoleWarn} ${erc20sLaunched.address}`,
-              innerErr
-            );
-          }
-
           return {
             coinAddress: erc20sLaunched.address,
             coinChain: erc20sLaunched.chain,
             coinName: erc20sLaunched.name,
-            adjustedPrice,
             startTimestamp: claimCondition.startTimestamp,
             isClaimable,
             reason,
             adjustedSupply,
             adjustedMaxSupply,
             adjustedBalance,
+            adjustedPrice,
           };
         })
       );
@@ -373,8 +373,8 @@ export default function CoinsList() {
             transition={{ duration: 0.3, delay: index * 0.05 }}>
             <CoinLister
               hasAccess={hasAccess}
-              refreshToken={refreshToken}
               {...coin}
+              refreshToken={refreshToken}
             />
           </motion.div>
         ))}

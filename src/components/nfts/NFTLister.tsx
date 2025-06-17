@@ -37,23 +37,32 @@ export default function NFTLister({
   dropContract,
   nftId,
   nftIdString,
-  adjustedPrice,
   startTimestamp,
   isClaimable,
   reason,
   supply,
   maxSupply,
   adjustedBalance,
+  adjustedPrice,
   refreshToken,
 }: NFTListerProps) {
   const { receipt } = getActiveReceipt();
 
   const router = useRouter();
-  const startTime = new Date(Number(startTimestamp) * 1000);
   const chainName = chainNames[dropContract.chain.id] ?? "Unknown Chain";
+  const startTime = new Date(Number(startTimestamp) * 1000);
 
   // Ensure state variables are properly declared
   const [currentTime, setCurrentTime] = useState(new Date());
+
+  // Real-time clock
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Fetch NFT metadata
   const {
@@ -75,15 +84,6 @@ export default function NFTLister({
   const nftImage = nftMetadata?.image || receipt.nftListerImage;
   const nftName = nftMetadata?.name || receipt.nftListerName;
 
-  // Real-time clock
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   // Determine button status
   let buttonLabel = receipt.nftButton;
   let buttonDisabled = false;
@@ -95,21 +95,24 @@ export default function NFTLister({
       currentTime
     )}`;
     buttonDisabled = true;
-  } else if (adjustedBalance < adjustedPrice) {
-    // Tidak cukup saldo
-    buttonLabel = receipt.nftInsufficient;
-    buttonDisabled = true;
-  } else if (!isClaimable) {
-    // Tidak bisa diklaim karena alasan lain
-    const safeReason = (reason ?? "").toLowerCase();
-    if (safeReason.includes("dropclaimexceedlimit")) {
-      buttonLabel = receipt.nftClaimed;
-    } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-      buttonLabel = receipt.nftClosed;
-    } else {
-      buttonLabel = receipt.nftClosed; // fallback
+  } else {
+    if (!isClaimable) {
+      // Tidak bisa diklaim karena alasan teknis lainnya
+      const safeReason = (reason ?? "").toLowerCase();
+      if (safeReason.includes("dropclaimexceedlimit")) {
+        buttonLabel = receipt.nftClaimed;
+      } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+        buttonLabel = receipt.nftClosed;
+      } else {
+        buttonLabel = receipt.nftClosed; // fallback
+      }
+      buttonDisabled = true;
+    } else if (adjustedBalance < adjustedPrice) {
+      // Saldo tidak cukup
+      buttonLabel = receipt.nftInsufficient;
+      buttonDisabled = true;
     }
-    buttonDisabled = true;
+    // else: semua aman, button tetap aktif dengan label default
   }
 
   return (

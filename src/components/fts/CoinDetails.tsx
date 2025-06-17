@@ -176,11 +176,6 @@ export default function CoinDetails() {
         params: [claimConditionId, activeAccount.address],
       });
 
-      // Calculate claim remaining
-      const claimRemaining =
-        Number(claimCondition.quantityLimitPerWallet - claimedRaw) /
-        10 ** coinDecimals;
-
       // Fetch currency and decimals
       const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
       let currencyDecimals = 18;
@@ -269,6 +264,10 @@ export default function CoinDetails() {
           console.warn("Failed to fetch allowlist price:", e);
         }
       }
+
+      // Calculate claim remaining
+      const claimRemaining =
+        adjustedPerWallet - Number(claimedRaw) / 10 ** coinDecimals;
 
       // Fetch can claim status
       let isClaimable = false;

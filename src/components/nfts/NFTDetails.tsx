@@ -129,10 +129,6 @@ export default function NFTDetails() {
         params: [nftId, 0n, activeAccount.address],
       });
 
-      // Calculate claim remaining
-      const claimRemaining: bigint =
-        claimCondition.quantityLimitPerWallet - (claimedRaw ?? 0n);
-
       // Fetch currency and decimals
       const nativeETH = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
       let currencyDecimals = 18;
@@ -221,6 +217,9 @@ export default function NFTDetails() {
           console.warn("Failed to fetch allowlist price:", e);
         }
       }
+
+      // Calculate claim remaining
+      const claimRemaining: bigint = perWallet - (claimedRaw ?? 0n);
 
       // Fetch can claim status
       let isClaimable = false;

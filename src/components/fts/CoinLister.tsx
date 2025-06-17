@@ -20,39 +20,39 @@ import { getCountdownString } from "@/config/utils";
 import Loader from "@/components/sections/ReusableLoader";
 
 interface CoinListerProps {
+  hasAccess: boolean | null;
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
-  adjustedPrice: number;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
   adjustedSupply: number;
   adjustedMaxSupply: number;
   adjustedBalance: number;
-  hasAccess: boolean | null;
+  adjustedPrice: number;
   refreshToken: number;
 }
 
 export default function CoinLister({
+  hasAccess,
   coinAddress,
   coinChain,
   coinName,
-  adjustedPrice,
   startTimestamp,
   isClaimable,
   reason,
   adjustedSupply,
   adjustedMaxSupply,
   adjustedBalance,
-  hasAccess,
+  adjustedPrice,
   refreshToken,
 }: CoinListerProps) {
   const { receipt } = getActiveReceipt();
 
   const router = useRouter();
-  const startTime = new Date(Number(startTimestamp) * 1000);
   const chainName = chainNames[coinChain.id] ?? "Unknown Chain";
+  const startTime = new Date(Number(startTimestamp) * 1000);
 
   // Ensure state variables are properly declared
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -67,39 +67,6 @@ export default function CoinLister({
     return () => clearInterval(interval);
   }, []);
 
-  // Determine button status
-  let buttonLabel = receipt.coinButton;
-  let buttonDisabled = false;
-
-  if (hasAccess === null || hasAccess === false) {
-    buttonLabel = receipt.coinNoAccess;
-    buttonDisabled = true;
-  } else {
-    if (currentTime < startTime) {
-      // Belum waktunya
-      buttonLabel = `${receipt.nftSoon} ${getCountdownString(
-        startTime,
-        currentTime
-      )}`;
-      buttonDisabled = true;
-    } else if (adjustedBalance < adjustedPrice) {
-      // Tidak cukup saldo
-      buttonLabel = receipt.nftInsufficient;
-      buttonDisabled = true;
-    } else if (!isClaimable) {
-      // Tidak bisa diklaim karena alasan lain
-      const safeReason = (reason ?? "").toLowerCase();
-      if (safeReason.includes("dropclaimexceedlimit")) {
-        buttonLabel = receipt.coinClaimed;
-      } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-        buttonLabel = receipt.nftClosed;
-      } else {
-        buttonLabel = receipt.nftClosed; // fallback
-      }
-      buttonDisabled = true;
-    }
-  }
-
   // Format the supply, max. claim, owned, and per wallet
   function formatNumberCompact(value: number): string {
     const round = (val: number) =>
@@ -113,6 +80,43 @@ export default function CoinLister({
       return `${round(value / 1_000)}K`;
     } else {
       return value.toString();
+    }
+  }
+
+  // Determine button status
+  let buttonLabel = receipt.coinButton;
+  let buttonDisabled = false;
+
+  if (hasAccess === null || hasAccess === false) {
+    // Tidak punya akses
+    buttonLabel = receipt.coinNoAccess;
+    buttonDisabled = true;
+  } else {
+    if (currentTime < startTime) {
+      // Belum waktunya
+      buttonLabel = `${receipt.nftSoon} ${getCountdownString(
+        startTime,
+        currentTime
+      )}`;
+      buttonDisabled = true;
+    } else {
+      if (!isClaimable) {
+        // Tidak bisa diklaim karena alasan teknis lainnya
+        const safeReason = (reason ?? "").toLowerCase();
+        if (safeReason.includes("dropclaimexceedlimit")) {
+          buttonLabel = receipt.coinClaimed;
+        } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+          buttonLabel = receipt.nftClosed;
+        } else {
+          buttonLabel = receipt.nftClosed; // fallback
+        }
+        buttonDisabled = true;
+      } else if (adjustedBalance < adjustedPrice) {
+        // Saldo tidak cukup
+        buttonLabel = receipt.nftInsufficient;
+        buttonDisabled = true;
+      }
+      // else: semua aman, button tetap aktif dengan label default
     }
   }
 
