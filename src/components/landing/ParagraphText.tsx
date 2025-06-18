@@ -19,7 +19,7 @@ export default function ParagraphText() {
   if (!title || !cta) return null;
 
   return (
-    <section className="py-16 px-6 text-center max-w-3xl mx-auto">
+    <section className="py-16 px-6 text-center max-w-3xl mx-auto" id="how">
       <h2 className="text-2xl font-bold mb-4">{title}</h2>
       {(paragraphs || []).map((p, i) => (
         <p key={i} className="text-gray-600 mb-3">

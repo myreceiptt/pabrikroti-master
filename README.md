@@ -1,4 +1,4 @@
-# PABRIK ROTI v.2.4.44
+# PABRIK ROTI v.2.4.74
 
 > "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by its community, and baked through the heat of shared struggles."
 >

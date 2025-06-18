@@ -14,7 +14,7 @@ import { TokenProvider, TokenIcon } from "thirdweb/react";
 import { client } from "@/config/client";
 import { chainNames } from "@/config/rantais";
 import { getActiveReceipt } from "@/config/receipts";
-import { getCountdownString } from "@/config/utils";
+import { getCountdownString, MAX_UINT256 } from "@/config/utils";
 
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
@@ -28,9 +28,10 @@ interface CoinListerProps {
   isClaimable: boolean;
   reason: string | null;
   adjustedSupply: number;
+  maxClaim: bigint;
   adjustedMaxSupply: number;
-  adjustedBalance: number;
   adjustedPrice: number;
+  adjustedBalance: number;
   refreshToken: number;
 }
 
@@ -43,13 +44,13 @@ export default function CoinLister({
   isClaimable,
   reason,
   adjustedSupply,
+  maxClaim,
   adjustedMaxSupply,
-  adjustedBalance,
   adjustedPrice,
+  adjustedBalance,
   refreshToken,
 }: CoinListerProps) {
   const { receipt } = getActiveReceipt();
-
   const router = useRouter();
   const chainName = chainNames[coinChain.id] ?? "Unknown Chain";
   const startTime = new Date(Number(startTimestamp) * 1000);
@@ -167,7 +168,11 @@ export default function CoinLister({
               <span
                 title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxSupply}`}>
                 {formatNumberCompact(adjustedSupply)}/
-                {formatNumberCompact(adjustedMaxSupply)}
+                {maxClaim === MAX_UINT256 ? (
+                  <span className="">&#8734;</span>
+                ) : (
+                  formatNumberCompact(adjustedMaxSupply)
+                )}
               </span>
             </div>
             <h2

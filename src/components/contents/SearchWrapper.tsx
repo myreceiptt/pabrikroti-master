@@ -39,9 +39,10 @@ interface NFTData {
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
+  maxClaim: bigint;
   maxSupply: bigint;
-  adjustedBalance: number;
   adjustedPrice: number;
+  adjustedBalance: number;
 }
 
 interface SnapshotEntry {
@@ -56,10 +57,8 @@ const ITEMS_PER_LOAD = 3;
 
 export default function SearchWrapper() {
   const { receipt, erc1155Launched } = getActiveReceipt();
-
   const searchParams = useSearchParams();
   const query = searchParams.get("query")?.toLowerCase() || "";
-
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -84,8 +83,6 @@ export default function SearchWrapper() {
     if (nextNFTId == null || !activeAccount?.address) return;
 
     try {
-      setLoading(true);
-
       // Fetch all NFT metadata
       const nfts = await getNFTs({
         contract: erc1155Launched,
@@ -197,7 +194,7 @@ export default function SearchWrapper() {
             contract: erc1155Launched,
           });
 
-          // Merkle root map from coin metadata
+          // Merkle root map from nft contract metadata
           const merkleMap = contractMetaData?.merkle as
             | Record<string, string>
             | undefined;
@@ -239,7 +236,7 @@ export default function SearchWrapper() {
                 }
               }
             } catch (e) {
-              console.warn("Failed to fetch allowlist price:", e);
+              console.warn(receipt.fetchAllowList, e);
             }
           }
 
@@ -250,9 +247,10 @@ export default function SearchWrapper() {
             isClaimable,
             reason,
             supply: nftSupply,
+            maxClaim: nftMaxClaim,
             maxSupply: nftMaxSupply,
-            adjustedBalance,
             adjustedPrice,
+            adjustedBalance,
           };
         })
       );
@@ -280,6 +278,7 @@ export default function SearchWrapper() {
     nextNFTId,
     activeAccount?.address,
     erc1155Launched,
+    receipt.fetchAllowList,
     receipt.nftsConsoleWarn,
     receipt.nftsError,
     receipt.nftsFailReason,
@@ -298,6 +297,11 @@ export default function SearchWrapper() {
       listRef.current.scrollIntoView({ behavior: "smooth", block: "end" });
     }
   }, [visibleCount]);
+
+  // Reset pagination for sortOption changes
+  useEffect(() => {
+    setVisibleCount(INITIAL_ITEMS);
+  }, [sortOption]);
 
   // Load more NFTs
   const handleLoadMore = () => setVisibleCount((prev) => prev + ITEMS_PER_LOAD);
@@ -373,8 +377,8 @@ export default function SearchWrapper() {
             transition={{ duration: 0.3, delay: index * 0.05 }}>
             <NFTLister
               dropContract={erc1155Launched}
-              refreshToken={refreshToken}
               {...nft}
+              refreshToken={refreshToken}
             />
           </motion.div>
         ))}

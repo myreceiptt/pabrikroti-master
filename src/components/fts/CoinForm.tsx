@@ -22,7 +22,7 @@ import {
 } from "@/config/rantais";
 import { useCurrencyMap } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
-import { getCountdownString } from "@/config/utils";
+import { getCountdownString, MAX_UINT256 } from "@/config/utils";
 
 // Components libraries
 import CoinDescription from "@/components/fts/CoinDescription";
@@ -30,6 +30,7 @@ import CoinPopUp from "@/components/fts/CoinPopUp";
 import Loader from "@/components/sections/ReusableLoader";
 
 interface CoinFormProps {
+  hasAccess: boolean | null;
   coinAddress: string;
   coinChain: Chain;
   coinName: string;
@@ -38,22 +39,24 @@ interface CoinFormProps {
   coinImage: string;
   coinBy: string;
   coinLink: string;
-  adjustedPrice: number;
-  currency: string;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
-  adjustedBalance: number;
-  adjustedCoinOwned: number;
-  adjustedSupply: number;
-  adjustedMaxSupply: number;
+  perWallet: bigint;
   adjustedPerWallet: number;
+  adjustedCoinOwned: number;
   claimRemaining: number;
-  hasAccess: boolean | null;
+  adjustedSupply: number;
+  maxClaim: bigint;
+  adjustedMaxSupply: number;
+  currency: string;
+  adjustedPrice: number;
+  adjustedBalance: number;
   setRefreshToken: (val: number) => void;
 }
 
 export default function CoinForm({
+  hasAccess,
   coinAddress,
   coinChain,
   coinName,
@@ -62,22 +65,22 @@ export default function CoinForm({
   coinImage,
   coinBy,
   coinLink,
-  adjustedPrice,
-  currency,
   startTimestamp,
   isClaimable,
   reason,
-  adjustedBalance,
-  adjustedCoinOwned,
-  adjustedSupply,
-  adjustedMaxSupply,
+  perWallet,
   adjustedPerWallet,
+  adjustedCoinOwned,
   claimRemaining,
-  hasAccess,
+  adjustedSupply,
+  maxClaim,
+  adjustedMaxSupply,
+  currency,
+  adjustedPrice,
+  adjustedBalance,
   setRefreshToken,
 }: CoinFormProps) {
   const { receipt } = getActiveReceipt();
-
   const startTime = new Date(Number(startTimestamp) * 1000);
   const chainName = chainNames[coinChain.id] ?? "Unknown Chain";
   const currencyMap = useCurrencyMap();
@@ -101,40 +104,6 @@ export default function CoinForm({
 
     return () => clearInterval(interval);
   }, []);
-
-  // Determine button status
-  let buttonLabel = receipt.coinButton;
-  let buttonDisabled = false;
-
-  // Belum punya akses
-  if (hasAccess === null || hasAccess === false) {
-    buttonLabel = receipt.coinNoAccess;
-    buttonDisabled = true;
-  } else {
-    if (currentTime < startTime) {
-      // Belum waktunya
-      buttonLabel = `${receipt.nftSoon} ${getCountdownString(
-        startTime,
-        currentTime
-      )}`;
-      buttonDisabled = true;
-    } else if (adjustedBalance < adjustedPrice) {
-      // Tidak cukup saldo
-      buttonLabel = receipt.nftInsufficient;
-      buttonDisabled = true;
-    } else if (!isClaimable) {
-      // Tidak bisa diklaim karena alasan lain
-      const safeReason = (reason ?? "").toLowerCase();
-      if (safeReason.includes("dropclaimexceedlimit")) {
-        buttonLabel = receipt.coinClaimed;
-      } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-        buttonLabel = receipt.nftClosed;
-      } else {
-        buttonLabel = receipt.nftClosed;
-      }
-      buttonDisabled = true;
-    }
-  }
 
   // Determine the currency symbol
   const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
@@ -192,6 +161,43 @@ export default function CoinForm({
       return `${round(value / 1_000)}K`;
     } else {
       return value.toString();
+    }
+  }
+
+  // Determine button status
+  let buttonLabel = receipt.coinButton;
+  let buttonDisabled = false;
+
+  if (hasAccess === null || hasAccess === false) {
+    // Tidak punya akses
+    buttonLabel = receipt.coinNoAccess;
+    buttonDisabled = true;
+  } else {
+    if (currentTime < startTime) {
+      // Belum waktunya
+      buttonLabel = `${receipt.nftSoon} ${getCountdownString(
+        startTime,
+        currentTime
+      )}`;
+      buttonDisabled = true;
+    } else {
+      if (!isClaimable) {
+        // Tidak bisa diklaim karena alasan teknis lainnya
+        const safeReason = (reason ?? "").toLowerCase();
+        if (safeReason.includes("dropclaimexceedlimit")) {
+          buttonLabel = receipt.coinClaimed;
+        } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+          buttonLabel = receipt.nftClosed;
+        } else {
+          buttonLabel = receipt.nftClosed; // fallback
+        }
+        buttonDisabled = true;
+      } else if (adjustedBalance < adjustedPrice) {
+        // Saldo tidak cukup
+        buttonLabel = receipt.nftInsufficient;
+        buttonDisabled = true;
+      }
+      // else: semua aman, button tetap aktif dengan label default
     }
   }
 
@@ -330,7 +336,11 @@ export default function CoinForm({
             <span
               title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxSupply}`}>
               {formatNumberCompact(adjustedSupply)}/
-              {formatNumberCompact(adjustedMaxSupply)}
+              {maxClaim === MAX_UINT256 ? (
+                <span className="">&#8734;</span>
+              ) : (
+                formatNumberCompact(adjustedMaxSupply)
+              )}
             </span>
           </h2>
           <h2
@@ -425,7 +435,13 @@ export default function CoinForm({
         <h4
           style={{ color: receipt.colorSekunder }}
           className="text-left text-xs font-medium">
-          {`${receipt.nftFormMax} ${adjustedPerWallet} ${receipt.coinFormPerWallet}`}
+          {receipt.nftFormMax}{" "}
+          {perWallet === MAX_UINT256 ? (
+            <span className="">&#8734;</span>
+          ) : (
+            adjustedPerWallet.toString()
+          )}{" "}
+          {receipt.coinFormPerWallet}
         </h4>
       </div>
     </div>

@@ -23,66 +23,64 @@ export const pabrikroti = {
   colorSekunder: "#5A5A5A", // Abu medium kasar
   colorTersier: "#D3D3D3", // Abu terang pastel
 
-  // layout...
-  proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
-  proDescription:
-    "The Breads Factory is a factory that produces Programmed Bread (tokenization) with a Framework of Playing, Learning, and Working or PLW.", // layout, connect buttons, connect embeds,
-  proUrl, // layout, connect buttons, connect embeds,
+  // /src/app/layout.tsx
+  proTitle, // layout, SearchWrapper, CoinAccess, CoinDetails, CoinsList, ConnectButtons, ConnectEmbeds, LoginLayout, NFTDetails, NFTsList, HeaderSection, ReusableMessage,
+  proDescription: `The Breads Factory is a factory that produces Programmed Bread (tokenization) with a Framework of Playing, Learning, and Working or PLW.`, // layout, ConnectButtons, ConnectEmbeds,
+  proUrl, // layout, ConnectButtons, ConnectEmbeds,
   proPublisher: "Prof. NOTA Inc.", // layout,
   proLocale: "en-US", // layout,
   proFavicon: "/roti/favicon.ico", // layout,
   proImage: "https://pabrikroti.endhonesa.com/roti/preview-image.png", // layout,
   proLang: "en", // layout,
 
-  // error boundary section
-  proErrorCought: "Error caught in the middle of ErrorBoundary:", // error boundary,
-  proError: "Something went wrong. Please eat and try again later.", // error boundary,
-  proButton: "Try Again", // error boundary,
+  // /src/components/logins/ConnectButtons.tsx
+  proLogo: "/roti/logos/logo.png", // ConnectButtons, ConnectEmbeds, QRCodeButton,
 
-  // connect buttons section
-  proLogo: "/roti/logos/logo.png", // connect buttons, connect embeds,
+  // /src/components/logins/ErrorBoundary.tsx
+  proErrorCought: "Error caught in the middle of ErrorBoundary:", // ErrorBoundary,
+  proError: "Something went wrong. Please eat and try again later.", // ErrorBoundary,
+  proButton: "Try Again", // ErrorBoundary,
 
-  // login layout section
-  loginArt: "/roti/images/login-art.png", // login layout,
-  loginBanner: "/roti/images/login-banner.png", // login layout,
-  loginAria: "Call to action for login.", // login layout,
-  loginCall: "In The Breads Factory...", // login layout,
+  // /src/components/logins/LoginLayout.tsx
+  loginArt: "/roti/images/login-art.png", // LoginLayout,
+  loginBanner: "/roti/images/login-banner.png", // LoginLayout,
+  loginAria: "Call to action for login.", // LoginLayout,
+  loginCall: "In The Breads Factory...", // LoginLayout,
   loginReason: {
     text: "many kinds of Bread were Designed, Produced, Programmed, also Distributed",
     anchor: "...",
     link: "https://nota.endhonesa.com/profile/breads",
-  }, // login layout,
-  loginAgreement: "By connecting, you agree to eat these", // login layout,
-  loginTermsPolicy: "Terms of Service & Privacy Policy", // login layout,
-  linkPower: "https://nota.endhonesa.com/", // login layout, footer section
-  loginPower: "/roti/images/login-power.png", // login layout,
-  poweredBy: "Baked by Prof. NOTA Inc.", // login layout, footer section
+  }, // LoginLayout,
+  loginAgreement: "By connecting, you agree to eat these", // LoginLayout,
+  loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
+  linkPower: "https://nota.endhonesa.com/", // LoginLayout, FooterSection,
+  loginPower: "/roti/images/login-power.png", // LoginLayout,
+  poweredBy: "Baked by Prof. NOTA Inc.", // LoginLayout, FooterSection,
 
-  // header section
-  headerLogo: "/roti/images/header-logo.png", // header,
-  headerLogoo: "/roti/images/header-logoo.png", // header,
-  headerGo: "Search", // header,
-  headerSearch: "Search Query", // header,
-  searchPlaceholder: "Enter your search query", // header,
+  // /src/components/sections/DropDownMenu.tsx
+  ddMenuAriaLabel: "Drop Down Menu", // DropDownMenu,
+  ddMenuHome: "Bon Appetite!", // DropDownMenu,
+  ddMenuWhat: `Baker's Pick`, // DropDownMenu,
+  ddMenuWhy: "Signature Loaf", // DropDownMenu,
+  ddMenuHow: "Seasonal Special", // DropDownMenu,
+  ddMenuWhen: "Small Batch", // DropDownMenu,
+  ddMenuWhere: "Limited Batch", // DropDownMenu,
+  ddMenuWho: "Monthly Highlight", // DropDownMenu,
+  ddMenuFeatured: "Full of Flavor", // DropDownMenu,
+  ddMenuFree: "Free Artisan", // DropDownMenu,
+  ddMenuPaid: "Paid Artisan", // DropDownMenu,
+  ddMenuCoins: "Batch Breads", // DropDownMenu,
+  ddMenuMarket: "Boulangerie", // DropDownMenu,
+  ddMenuMore: "Baking More!", // DropDownMenu,
+  ddMenuDeploy: "Bake Breads", // DropDownMenu,
+  ddMenuPublishNFT: "Serves Artisan", // DropDownMenu,
+  ddMenuPublishFT: "Serves Batch", // DropDownMenu,
+  ddMenuDashBoard: "Bakehouse", // DropDownMenu,
+  ddMenuContactLink: "https://nota.endhonesa.com/contact", // DropDownMenu,
+  ddMenuContact: "Contact Us", // DropDownMenu,
+  ddMenuTerms: "Terms of Use", // DropDownMenu,
 
-  // drop down menu section
-  ddMenuHome: "Welcome, OiOi!", // drop down menu,
-  ddMenuWhat: "", // drop down menu,
-  ddMenuWhy: "", // drop down menu,
-  ddMenuHow: "", // drop down menu,
-  ddMenuWhen: "", // drop down menu,
-  ddMenuWhere: "", // drop down menu,
-  ddMenuWho: "", // drop down menu,
-  ddMenuFeatured: "Featured, OiOi!", // drop down menu,
-  ddMenuFree: "Free NFTs", // drop down menu,
-  ddMenuPaid: "Paid NFTs", // drop down menu,
-  ddMenuCoins: "All The FTs", // drop down menu,
-  ddMenuMore: "Read More, OiOi!", // drop down menu,
-  ddMenuDeploy: "", // drop down menu,
-  ddMenuContact: "", // drop down menu,
-  ddMenuTerms: "Terms of Use", // drop down menu,
-
-  // drop down sorter section
+  // /src/components/sections/DropDownSorter.tsx
   ddSorterSorting: "Stack of Breads", // drop down sorter,
   ddSorterDefault: "Default Stacking", // drop down sorter,
   ddSorterSupply: "Remaining Slices", // drop down sorter,
@@ -106,6 +104,12 @@ export const pabrikroti = {
   linkEmail: "mailto:nota@endhonesa.com", // footer,
   linkWhatsApp: "https://wa.me/message/DPRNCTJA2Q52L1", // footer,
   linkWebsite: "https://nota.endhonesa.com/", // footer,
+
+  // /src/components/sections/HeaderSection.tsx
+  headerLogo: "/roti/images/header-logo.png", // HeaderSection,
+  headerGo: "Search", // HeaderSection,
+  headerSearch: "Search Query", // HeaderSection,
+  searchPlaceholder: "Enter your search query", // HeaderSection,
 
   // subscribe form section
   subscribeWarn:
@@ -138,14 +142,17 @@ export const pabrikroti = {
       description: "Claim digital assets as real bread.",
       cta: { text: "Claim Now", href: "/free" },
     },
-  ],
-  visualBlocks: [
     {
-      variant: "left", // or "right"
-      image: "/images/illustration-bread.png",
-      title: "Decentralized Craft",
-      description: "We respect your local ownership and labor.",
-      cta: { text: "Learn More", href: "/about" },
+      icon: "🍞",
+      title: "NFT Claiming",
+      description: "Claim digital assets as real bread.",
+      cta: { text: "Claim Now", href: "/free" },
+    },
+    {
+      icon: "🍞",
+      title: "NFT Claiming",
+      description: "Claim digital assets as real bread.",
+      cta: { text: "Claim Now", href: "/free" },
     },
   ],
   textMin: {
@@ -156,10 +163,31 @@ export const pabrikroti = {
     ],
     cta: { text: "Read the Manifesto", href: "/terms" },
   },
+  visualBlocks: [
+    {
+      variant: "left", // or "right"
+      image: "/roti/landing/hero-1.png",
+      title: "Decentralized Craft",
+      description: "We respect your local ownership and labor.",
+      cta: { text: "Learn More", href: "/about" },
+    },
+    {
+      variant: "right", // or "left"
+      image: "/roti/landing/hero-1.png",
+      title: "Decentralized Craft",
+      description: "We respect your local ownership and labor.",
+      cta: { text: "Learn More", href: "/about" },
+    },
+  ],
   videoEmbed: {
     url: "https://www.youtube.com/embed/abcd1234",
     cta: { text: "Join the Movement", href: "/join" },
   },
+
+  // /src/components/contents/ComingSoon.tsx
+  csLoader: "Baking the best dough for you...", // ComingSoon,
+  csMessage1: "Feature in the Oven", // ComingSoon,
+  csMessage2: `We're still crafting this feature to perfection. It'll be served warm, functional, and full of flavor—soon!`, // ComingSoon,
 
   // featured cards page - hide card by nulled the title
   featuredTitle1: "All Breads", // featured cards,
@@ -176,6 +204,7 @@ export const pabrikroti = {
   loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
   // search wrapper page
+  fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
   searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
     "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,

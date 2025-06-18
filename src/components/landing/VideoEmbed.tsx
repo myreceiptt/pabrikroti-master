@@ -11,7 +11,7 @@ import { getActiveReceipt } from "@/config/receipts";
 // Components libraries
 import ReusableCTA from "@/components/landing/ReusableCTA";
 
-export default function VideoEmbedWithCTA() {
+export default function VideoEmbed() {
   const { receipt } = getActiveReceipt();
 
   const { url, cta } = receipt.videoEmbed || {};
@@ -19,7 +19,7 @@ export default function VideoEmbedWithCTA() {
   if (!url) return null;
 
   return (
-    <section className="py-16 flex flex-col items-center gap-8 px-6">
+    <section className="py-16 flex flex-col items-center gap-8 px-6" id="who">
       <div className="aspect-video w-full max-w-4xl">
         <iframe
           src={url}

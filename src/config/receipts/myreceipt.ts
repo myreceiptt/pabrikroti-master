@@ -23,66 +23,64 @@ export const myreceipt = {
   colorSekunder: "#7A4C00", // Gelap
   colorTersier: "#E8DA32", // Identitas
 
-  // layout...
-  proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
-  proDescription:
-    "NFT FOR A REASON is a Web3 Initiative for Grassroots Culture & Creative Solidarity.", // layout, connect buttons, connect embeds,
-  proUrl, // layout, connect buttons, connect embeds,
+  // /src/app/layout.tsx
+  proTitle, // layout, SearchWrapper, CoinAccess, CoinDetails, CoinsList, ConnectButtons, ConnectEmbeds, LoginLayout, NFTDetails, NFTsList, HeaderSection, ReusableMessage,
+  proDescription: `NFT FOR A REASON is a Web3 Initiative for Grassroots Culture & Creative Solidarity.`, // layout, ConnectButtons, ConnectEmbeds,
+  proUrl, // layout, ConnectButtons, ConnectEmbeds,
   proPublisher: "Futuloka", // layout,
   proLocale: "en-US", // layout,
   proFavicon: "/favicon.ico", // layout,
   proImage: "https://far.futuloka.io/preview-image.png", // layout,
   proLang: "en", // layout,
 
-  // error boundary section
-  proErrorCought: "Error caught in ErrorBoundary:", // error boundary,
-  proError: "Something went wrong. Please try again later.", // error boundary,
-  proButton: "Try Again", // error boundary,
+  // /src/components/logins/ConnectButtons.tsx
+  proLogo: "/logos/logo.png", // ConnectButtons, ConnectEmbeds, QRCodeButton,
 
-  // connect buttons section
-  proLogo: "/logos/logo.png", // connect buttons, connect embeds,
+  // /src/components/logins/ErrorBoundary.tsx
+  proErrorCought: "Error caught in ErrorBoundary:", // ErrorBoundary,
+  proError: "Something went wrong. Please try again later.", // ErrorBoundary,
+  proButton: "Try Again", // ErrorBoundary,
 
-  // login layout section
-  loginArt: "/images/login-art.png", // login layout,
-  loginBanner: "/images/login-banner.png", // login layout,
-  loginAria: "Call to action for login.", // login layout,
-  loginCall: "It is a solidarity movement", // login layout,
+  // /src/components/logins/LoginLayout.tsx
+  loginArt: "/images/login-art.png", // LoginLayout,
+  loginBanner: "/images/login-banner.png", // LoginLayout,
+  loginAria: "Call to action for login.", // LoginLayout,
+  loginCall: "It is a solidarity movement", // LoginLayout,
   loginReason: {
     text: `for artists, cultural workers, and communities to shape the Web3 era together.`,
     anchor: "",
     link: "https://far.futuloka.io/medias/nft-far-journey-and-whitepaper.pdf",
-  }, // login layout,
-  loginAgreement: "By connecting, you agree to the", // login layout,
-  loginTermsPolicy: "Terms of Service & Privacy Policy", // login layout,
-  linkPower: "https://futuloka.io/", // login layout, footer section
-  loginPower: "/images/login-power.png", // login layout,
-  poweredBy: "Launched by Futuloka", // login layout, footer section
+  }, // LoginLayout,
+  loginAgreement: "By connecting, you agree to the", // LoginLayout,
+  loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
+  linkPower: "https://futuloka.io/", // LoginLayout, FooterSection,
+  loginPower: "/images/login-power.png", // LoginLayout,
+  poweredBy: "Launched by Futuloka", // LoginLayout, FooterSection,
 
-  // header section
-  headerLogo: "/images/header-logo.png", // header,
-  headerLogoo: "/images/header-logoo.png", // header,
-  headerGo: "Search", // header,
-  headerSearch: "Search Query", // header,
-  searchPlaceholder: "Enter your search query", // header,
+  // /src/components/sections/DropDownMenu.tsx
+  ddMenuAriaLabel: "Drop Down Menu", // DropDownMenu,
+  ddMenuHome: "Welcome, OiOi!", // DropDownMenu,
+  ddMenuWhat: "About", // DropDownMenu,
+  ddMenuWhy: "", // DropDownMenu,
+  ddMenuHow: "", // DropDownMenu,
+  ddMenuWhen: "Program", // DropDownMenu,
+  ddMenuWhere: "", // DropDownMenu,
+  ddMenuWho: "Features", // DropDownMenu,
+  ddMenuFeatured: "Featured, OiOi!", // DropDownMenu,
+  ddMenuFree: "", // DropDownMenu,
+  ddMenuPaid: "Paid NFTs", // DropDownMenu,
+  ddMenuCoins: "The FTs", // DropDownMenu,
+  ddMenuMarket: "", // DropDownMenu,
+  ddMenuMore: "Read More, OiOi!", // DropDownMenu,
+  ddMenuDeploy: "", // DropDownMenu,
+  ddMenuPublishNFT: "", // DropDownMenu,
+  ddMenuPublishFT: "", // DropDownMenu,
+  ddMenuDashBoard: "", // DropDownMenu,
+  ddMenuContactLink: "", // DropDownMenu,
+  ddMenuContact: "", // DropDownMenu,
+  ddMenuTerms: "Terms of Use", // DropDownMenu,
 
-  // drop down menu section
-  ddMenuHome: "Welcome, OiOi!", // drop down menu,
-  ddMenuWhat: "About", // drop down menu,
-  ddMenuWhy: "", // drop down menu,
-  ddMenuHow: "", // drop down menu,
-  ddMenuWhen: "Program", // drop down menu,
-  ddMenuWhere: "", // drop down menu,
-  ddMenuWho: "Features", // drop down menu,
-  ddMenuFeatured: "Featured, OiOi!", // drop down menu,
-  ddMenuFree: "", // drop down menu,
-  ddMenuPaid: "Paid NFTs", // drop down menu,
-  ddMenuCoins: "The FTs", // drop down menu,
-  ddMenuMore: "Read More, OiOi!", // drop down menu,
-  ddMenuDeploy: "", // drop down menu,
-  ddMenuContact: "", // drop down menu,
-  ddMenuTerms: "Terms of Use", // drop down menu,
-
-  // drop down sorter section
+  // /src/components/sections/DropDownSorter.tsx
   ddSorterSorting: "Sorting", // drop down sorter,
   ddSorterDefault: "Default Sorting", // drop down sorter,
   ddSorterSupply: "Remaining Supply", // drop down sorter,
@@ -107,6 +105,12 @@ export const myreceipt = {
   linkWhatsApp: "", // footer,
   linkWebsite: "https://www.futuloka.io/", // footer,
 
+  // /src/components/sections/HeaderSection.tsx
+  headerLogo: "/images/header-logo.png", // HeaderSection,
+  headerGo: "Search", // HeaderSection,
+  headerSearch: "Search Query", // HeaderSection,
+  searchPlaceholder: "Enter your search query", // HeaderSection,
+
   // subscribe form section
   subscribeWarn:
     "Missing Web3Forms Access Key. Please set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.", // subscribe form,
@@ -124,10 +128,10 @@ export const myreceipt = {
   // landing page
   heroSlides: [
     {
-      title: "Build Programmed Bread",
+      title: "Programmed Batch Bread",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
-      image: "/landing/hero-1.png",
+      image: "/roti/landing/hero-1.png",
       cta: { text: "Get Started", href: "/coins" },
     },
   ],
@@ -138,14 +142,17 @@ export const myreceipt = {
       description: "Claim digital assets as real bread.",
       cta: { text: "Claim Now", href: "/free" },
     },
-  ],
-  visualBlocks: [
     {
-      variant: "left", // or "right"
-      image: "/images/illustration-bread.png",
-      title: "Decentralized Craft",
-      description: "We respect your local ownership and labor.",
-      cta: { text: "Learn More", href: "/about" },
+      icon: "🍞",
+      title: "NFT Claiming",
+      description: "Claim digital assets as real bread.",
+      cta: { text: "Claim Now", href: "/free" },
+    },
+    {
+      icon: "🍞",
+      title: "NFT Claiming",
+      description: "Claim digital assets as real bread.",
+      cta: { text: "Claim Now", href: "/free" },
     },
   ],
   textMin: {
@@ -156,10 +163,31 @@ export const myreceipt = {
     ],
     cta: { text: "Read the Manifesto", href: "/terms" },
   },
+  visualBlocks: [
+    {
+      variant: "left", // or "right"
+      image: "/roti/landing/hero-1.png",
+      title: "Decentralized Craft",
+      description: "We respect your local ownership and labor.",
+      cta: { text: "Learn More", href: "/about" },
+    },
+    {
+      variant: "right", // or "left"
+      image: "/roti/landing/hero-1.png",
+      title: "Decentralized Craft",
+      description: "We respect your local ownership and labor.",
+      cta: { text: "Learn More", href: "/about" },
+    },
+  ],
   videoEmbed: {
     url: "https://www.youtube.com/embed/abcd1234",
     cta: { text: "Join the Movement", href: "/join" },
   },
+
+  // /src/components/contents/ComingSoon.tsx
+  csLoader: "Hang tight...", // ComingSoon,
+  csMessage1: "Not Ready Yet", // ComingSoon,
+  csMessage2: `Currently under development with care. Stay tuned for something freshly built.`, // ComingSoon,
 
   // featured cards page - hide card by nulled the title
   featuredTitle1: "All Fair and Sustainable", // featured cards,
@@ -176,6 +204,7 @@ export const myreceipt = {
   loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
   // search wrapper page
+  fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
   searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
     "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,

@@ -24,7 +24,7 @@ import { memora } from "@/config/receipts/memora";
 import { myreceipt } from "@/config/receipts/myreceipt";
 import { pabrikroti } from "@/config/receipts/pabrikroti";
 
-// Use `typeof` from one of the receipt (structure must same)
+// Use typeof from one of the receipt (structure must same)
 type ReceiptType = typeof myreceipt;
 
 // Domain-based or Subdomain-based config mapping

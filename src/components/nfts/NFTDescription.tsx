@@ -17,20 +17,18 @@ export default function NFTDescription({
   id,
 }: NFTDescriptionProps) {
   const { receipt } = getActiveReceipt();
-
-  const [isExpanded, setIsExpanded] = useState(false);
-
   const paragraphs = description
     .split("\n")
     .filter((line) => line.trim() !== "");
-
   const words = description.split(" ");
   const limitedText = words.slice(0, 27).join(" ");
   const limitedParagraphs = limitedText
     .split("\n")
     .filter((line) => line.trim() !== "");
-
   const isLongDescription = words.length > 27;
+
+  // Ensure state variables are properly declared
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <>

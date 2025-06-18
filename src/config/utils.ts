@@ -48,6 +48,9 @@ export function buildCurrencyMapFromSupportedFTs(
   return map;
 }
 
+// Max. uint256 value in bigint
+export const MAX_UINT256 = 2n ** 256n - 1n;
+
 // fetch eth price
 export async function FetchEthereumPrice(): Promise<number | null> {
   try {
@@ -61,4 +64,3 @@ export async function FetchEthereumPrice(): Promise<number | null> {
     return null;
   }
 }
-

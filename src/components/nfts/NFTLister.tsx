@@ -14,7 +14,7 @@ import { MediaRenderer, useReadContract } from "thirdweb/react";
 import { client } from "@/config/client";
 import { chainNames } from "@/config/rantais";
 import { getActiveReceipt } from "@/config/receipts";
-import { getCountdownString } from "@/config/utils";
+import { getCountdownString, MAX_UINT256 } from "@/config/utils";
 
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
@@ -23,12 +23,13 @@ interface NFTListerProps {
   dropContract: ThirdwebContract;
   nftId: bigint;
   nftIdString: string;
-  adjustedPrice: number;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
+  maxClaim: bigint;
   maxSupply: bigint;
+  adjustedPrice: number;
   adjustedBalance: number;
   refreshToken: number;
 }
@@ -41,13 +42,13 @@ export default function NFTLister({
   isClaimable,
   reason,
   supply,
+  maxClaim,
   maxSupply,
-  adjustedBalance,
   adjustedPrice,
+  adjustedBalance,
   refreshToken,
 }: NFTListerProps) {
   const { receipt } = getActiveReceipt();
-
   const router = useRouter();
   const chainName = chainNames[dropContract.chain.id] ?? "Unknown Chain";
   const startTime = new Date(Number(startTimestamp) * 1000);
@@ -144,7 +145,12 @@ export default function NFTLister({
               style={{ color: receipt.colorSekunder }}
               className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
               <span>{receipt.nftEditions}</span>
-              {supply.toString()}/{maxSupply.toString()}
+              {supply.toString()}/
+              {maxClaim === MAX_UINT256 ? (
+                <span className="">&#8734;</span>
+              ) : (
+                maxSupply.toString()
+              )}
             </div>
             <h2
               style={{ color: receipt.colorSekunder }}

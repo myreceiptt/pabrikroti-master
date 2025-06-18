@@ -23,65 +23,64 @@ export const memora = {
   colorSekunder: "#171717", // Gelap
   colorTersier: "#DFDFDF", // Abu2 Terang
 
-  // layout...
-  proTitle, // layout, coin access, connect buttons, connect embeds, login layout, header section, reusable message,
-  proDescription: `MeMoRa means "to remember" or "to be mindful of". MeMoRa refers to something that serves as a reminder or is used for remembering. So, commemorate your memorabilia experiences today with a unique virtual collectible of MeMoRa.`, // layout, connect buttons, connect embeds,
-  proUrl, // layout, connect buttons, connect embeds,
+  // /src/app/layout.tsx
+  proTitle, // layout, SearchWrapper, CoinAccess, CoinDetails, CoinsList, ConnectButtons, ConnectEmbeds, LoginLayout, NFTDetails, NFTsList, HeaderSection, ReusableMessage,
+  proDescription: `MeMoRa means "to remember" or "to be mindful of". MeMoRa refers to something that serves as a reminder or is used for remembering. So, commemorate your memorabilia experiences today with a unique virtual collectible of MeMoRa.`, // layout, ConnectButtons, ConnectEmbeds,
+  proUrl, // layout, ConnectButtons, ConnectEmbeds,
   proPublisher: "Voyage.Co.Id", // layout,
   proLocale: "en-US", // layout,
   proFavicon: "/memora/favicon.ico", // layout,
   proImage: "https://memora.voyage.co.id/memora/preview-image.png", // layout,
   proLang: "en", // layout,
 
-  // error boundary section
-  proErrorCought: "Error caught in ErrorBoundary:", // error boundary,
-  proError: "Something went wrong. Please try again later.", // error boundary,
-  proButton: "Try Again", // error boundary,
+  // /src/components/logins/ConnectButtons.tsx
+  proLogo: "/memora/logos/logo.png", // ConnectButtons, ConnectEmbeds, QRCodeButton,
 
-  // connect buttons section
-  proLogo: "/memora/logos/logo.png", // connect buttons, connect embeds,
+  // /src/components/logins/ErrorBoundary.tsx
+  proErrorCought: "Error caught in ErrorBoundary:", // ErrorBoundary,
+  proError: "Something went wrong. Please try again later.", // ErrorBoundary,
+  proButton: "Try Again", // ErrorBoundary,
 
-  // login layout section
-  loginArt: "/memora/images/login-art.png", // login layout,
-  loginBanner: "/memora/images/login-banner.png", // login layout,
-  loginAria: "Call to action for login.", // login layout,
-  loginCall: "Get Ready!", // login layout,
+  // /src/components/logins/LoginLayout.tsx
+  loginArt: "/memora/images/login-art.png", // LoginLayout,
+  loginBanner: "/memora/images/login-banner.png", // LoginLayout,
+  loginAria: "Call to action for login.", // LoginLayout,
+  loginCall: "Get Ready!", // LoginLayout,
   loginReason: {
     text: "Register now to immerse yourself in MeMoRa Experience!",
     anchor: "",
     link: "",
-  }, // login layout,
-  loginAgreement: "By connecting, you agree to the", // login layout,
-  loginTermsPolicy: "Terms of Service & Privacy Policy", // login layout,
-  linkPower: "https://voyage.co.id/", // login layout, footer section
-  loginPower: "/memora/images/login-power.png", // login layout,
-  poweredBy: "Powered by Voyage.Co.Id", // login layout, footer section
+  }, // LoginLayout,
+  loginAgreement: "By connecting, you agree to the", // LoginLayout,
+  loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
+  linkPower: "https://voyage.co.id/", // LoginLayout, FooterSection,
+  loginPower: "/memora/images/login-power.png", // LoginLayout,
+  poweredBy: "Powered by Voyage.Co.Id", // LoginLayout, FooterSection,
 
-  // header section
-  headerLogo: "/memora/images/header-logo.png", // header,
-  headerLogoo: "/memora/images/header-logoo.png", // header,
-  headerGo: "Search", // header,
-  headerSearch: "Search Query", // header,
-  searchPlaceholder: "Enter your search query", // header,
+  // /src/components/sections/DropDownMenu.tsx
+  ddMenuAriaLabel: "Drop Down Menu", // DropDownMenu,
+  ddMenuHome: "Home Page", // DropDownMenu,
+  ddMenuWhat: "", // DropDownMenu,
+  ddMenuWhy: "", // DropDownMenu,
+  ddMenuHow: "", // DropDownMenu,
+  ddMenuWhen: "", // DropDownMenu,
+  ddMenuWhere: "", // DropDownMenu,
+  ddMenuWho: "", // DropDownMenu,
+  ddMenuFeatured: "Featured", // DropDownMenu,
+  ddMenuFree: "Free MeMoRa", // DropDownMenu,
+  ddMenuPaid: "Paid MeMoRa", // DropDownMenu,
+  ddMenuCoins: "BON Voyage", // DropDownMenu,
+  ddMenuMarket: "", // DropDownMenu,
+  ddMenuMore: "Read More, OiOi!", // DropDownMenu,
+  ddMenuDeploy: "", // DropDownMenu,
+  ddMenuPublishNFT: "", // DropDownMenu,
+  ddMenuPublishFT: "", // DropDownMenu,
+  ddMenuDashBoard: "", // DropDownMenu,
+  ddMenuContactLink: "", // DropDownMenu,
+  ddMenuContact: "", // DropDownMenu,
+  ddMenuTerms: "Terms of Use", // DropDownMenu,
 
-  // drop down menu section
-  ddMenuHome: "Home Page", // drop down menu,
-  ddMenuWhat: "", // drop down menu,
-  ddMenuWhy: "", // drop down menu,
-  ddMenuHow: "", // drop down menu,
-  ddMenuWhen: "", // drop down menu,
-  ddMenuWhere: "", // drop down menu,
-  ddMenuWho: "", // drop down menu,
-  ddMenuFeatured: "Featured", // drop down menu,
-  ddMenuFree: "Free MeMoRa", // drop down menu,
-  ddMenuPaid: "Paid MeMoRa", // drop down menu,
-  ddMenuCoins: "BON Voyage", // drop down menu,
-  ddMenuMore: "Read More, OiOi!", // drop down menu,
-  ddMenuDeploy: "", // drop down menu,
-  ddMenuContact: "", // drop down menu,
-  ddMenuTerms: "Terms of Use", // drop down menu,
-
-  // drop down sorter section
+  // /src/components/sections/DropDownSorter.tsx
   ddSorterSorting: "Sorting", // drop down sorter,
   ddSorterDefault: "Default Sorting", // drop down sorter,
   ddSorterSupply: "Remaining Supply", // drop down sorter,
@@ -107,6 +106,12 @@ export const memora = {
     "https://api.whatsapp.com/send?phone=6281808038000&text=Hello%2C%20Voyagers!%20Help%20us%20integrate%20decentralized%20technologies%20into%20our%20operations%20and%20business%20models%2C%20please!", // footer,
   linkWebsite: "", // footer,
 
+  // /src/components/sections/HeaderSection.tsx
+  headerLogo: "/memora/images/header-logo.png", // HeaderSection,
+  headerGo: "Search", // HeaderSection,
+  headerSearch: "Search Query", // HeaderSection,
+  searchPlaceholder: "Enter your search query", // HeaderSection,
+
   // subscribe form section
   subscribeWarn:
     "Missing Web3Forms Access Key. Please set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.", // subscribe form,
@@ -124,10 +129,10 @@ export const memora = {
   // landing page
   heroSlides: [
     {
-      title: "Build Programmed Bread",
+      title: "Programmed Batch Bread",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
-      image: "/memora/landing/hero-1.png",
+      image: "/roti/landing/hero-1.png",
       cta: { text: "Get Started", href: "/coins" },
     },
   ],
@@ -138,14 +143,17 @@ export const memora = {
       description: "Claim digital assets as real bread.",
       cta: { text: "Claim Now", href: "/free" },
     },
-  ],
-  visualBlocks: [
     {
-      variant: "left", // or "right"
-      image: "/images/illustration-bread.png",
-      title: "Decentralized Craft",
-      description: "We respect your local ownership and labor.",
-      cta: { text: "Learn More", href: "/about" },
+      icon: "🍞",
+      title: "NFT Claiming",
+      description: "Claim digital assets as real bread.",
+      cta: { text: "Claim Now", href: "/free" },
+    },
+    {
+      icon: "🍞",
+      title: "NFT Claiming",
+      description: "Claim digital assets as real bread.",
+      cta: { text: "Claim Now", href: "/free" },
     },
   ],
   textMin: {
@@ -156,10 +164,31 @@ export const memora = {
     ],
     cta: { text: "Read the Manifesto", href: "/terms" },
   },
+  visualBlocks: [
+    {
+      variant: "left", // or "right"
+      image: "/roti/landing/hero-1.png",
+      title: "Decentralized Craft",
+      description: "We respect your local ownership and labor.",
+      cta: { text: "Learn More", href: "/about" },
+    },
+    {
+      variant: "right", // or "left"
+      image: "/roti/landing/hero-1.png",
+      title: "Decentralized Craft",
+      description: "We respect your local ownership and labor.",
+      cta: { text: "Learn More", href: "/about" },
+    },
+  ],
   videoEmbed: {
     url: "https://www.youtube.com/embed/abcd1234",
     cta: { text: "Join the Movement", href: "/join" },
   },
+
+  // /src/components/contents/ComingSoon.tsx
+  csLoader: "Hang tight...", // ComingSoon,
+  csMessage1: "Not Ready Yet", // ComingSoon,
+  csMessage2: `Currently under development with care. Stay tuned for something freshly built.`, // ComingSoon,
 
   // featured cards page - hide card by nulled the title
   featuredTitle1: "MEMORA VIRTUAL", // featured cards,
@@ -176,6 +205,7 @@ export const memora = {
   loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
   // search wrapper page
+  fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
   searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
     "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,

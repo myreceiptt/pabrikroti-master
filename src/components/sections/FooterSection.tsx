@@ -181,7 +181,9 @@ export default function Footer() {
             &copy; {new Date().getFullYear()} {receipt.entityAlias1}.{" "}
             {receipt.copyRight}
           </p>
-          <p>{`${receipt.officiallyLicensed} ${receipt.entityAlias1}.`}</p>
+          <p>
+            {receipt.officiallyLicensed} {receipt.entityAlias1}.
+          </p>
           <div className="flex justify-center sm:justify-start gap-4 mt-2">
             <Link
               href="/terms"

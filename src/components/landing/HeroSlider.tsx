@@ -17,7 +17,7 @@ export default function HeroSlider() {
   const slides = receipt.heroSlides;
 
   return (
-    <section className="w-full">
+    <section className="w-full" id="what">
       <div className="flex flex-col items-center justify-center text-center gap-10">
         {slides.map((slide, i) => (
           <div key={i} className="w-full flex flex-col items-center gap-6">

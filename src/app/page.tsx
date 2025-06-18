@@ -7,12 +7,12 @@ import React, { useEffect, useState } from "react";
 
 // Components libraries
 import FeaturedCards from "@/components/contents/FeaturedCards";
-import HeroSlider from "@/components/landing/HeroSlider";
 import FeatureGrid from "@/components/landing/FeatureGrid";
-import VisualLeftWithCTARight from "@/components/landing/VisualLeft";
-import VisualRightWithCTALeft from "@/components/landing/VisualRight";
+import HeroSlider from "@/components/landing/HeroSlider";
 import ParagraphText from "@/components/landing/ParagraphText";
-import VideoEmbedWithCTA from "@/components/landing/VideoEmbed";
+import VideoEmbed from "@/components/landing/VideoEmbed";
+import VisualLeft from "@/components/landing/VisualLeft";
+import VisualRight from "@/components/landing/VisualRight";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 import Footer from "@/components/sections/FooterSection";
 import Header from "@/components/sections/HeaderSection";
@@ -58,10 +58,10 @@ export default function PageRouter() {
         <main className="grid gap-4 place-items-center">
           <HeroSlider />
           <FeatureGrid />
-          <VisualLeftWithCTARight />
-          <VisualRightWithCTALeft />
           <ParagraphText />
-          <VideoEmbedWithCTA />
+          <VisualLeft />
+          <VisualRight />
+          <VideoEmbed />
         </main>
       </div>
       <Footer />

@@ -12,14 +12,14 @@ import { getActiveReceipt } from "@/config/receipts";
 // Components libraries
 import ReusableCTA from "@/components/landing/ReusableCTA";
 
-export default function VisualRightWithCTALeft() {
+export default function VisualRight() {
   const { receipt } = getActiveReceipt();
 
   const block = receipt.visualBlocks?.find((v) => v.variant === "right");
   if (!block) return null;
 
   return (
-    <section className="w-full py-20 px-4 flex flex-col-reverse md:flex-row items-center gap-12">
+    <section className="w-full py-20 px-4 flex flex-col-reverse md:flex-row items-center gap-12" id="where">
       <div className="max-w-md">
         <h2 className="text-2xl font-bold mb-2">{block.title}</h2>
         <p className="text-gray-700 mb-4">{block.description}</p>

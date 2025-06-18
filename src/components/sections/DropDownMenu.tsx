@@ -14,7 +14,6 @@ import { hexToRgba } from "@/config/utils";
 
 export default function DropdownMenu() {
   const { receipt } = getActiveReceipt();
-
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef<HTMLDivElement>(null);
 
@@ -46,7 +45,7 @@ export default function DropdownMenu() {
           color: receipt.colorSekunder,
         }}
         className="w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer"
-        aria-label="Drop Down Menu">
+        aria-label={receipt.ddMenuAriaLabel}>
         <FaBars />
       </button>
 
@@ -63,90 +62,113 @@ export default function DropdownMenu() {
             }}
             className="absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-lg shadow-lg focus:outline-none text-sm">
             <div
-              style={{
-                color: receipt.colorSecondary,
-              }}
-              className="text-xs sm:text-sm md:text-base font-semibold px-4 pt-2">
-              <Link href="/">{receipt.ddMenuHome}</Link>
-            </div>
-            <ul
-              style={{
-                color: receipt.colorSecondary,
-              }}
-              className="text-xs sm:text-sm md:text-base font-normal px-4 pb-4">
-              <li>
-                <Link href="/#what">{receipt.ddMenuWhat}</Link>
-              </li>
-              <li>
-                <Link href="/#why">{receipt.ddMenuWhy}</Link>
-              </li>
-              <li>
-                <Link href="/#how">{receipt.ddMenuHow}</Link>
-              </li>
-              <li>
-                <Link href="/#when">{receipt.ddMenuWhen}</Link>
-              </li>
-              <li>
-                <Link href="/#where">{receipt.ddMenuWhere}</Link>
-              </li>
-              <li>
-                <Link href="/#who">{receipt.ddMenuWho}</Link>
-              </li>
-            </ul>
+              className="flex flex-col divide-y divide-dashed"
+              style={{ borderColor: hexToRgba(receipt.colorSekunder, 0.3) }}>
+              {/* Section 1: Home */}
+              <div className="py-2 px-4">
+                <Link
+                  href="/"
+                  className="block font-semibold text-sm sm:text-base md:text-base"
+                  style={{ color: receipt.colorSecondary }}>
+                  {receipt.ddMenuHome}
+                </Link>
+              </div>
 
-            <div
-              style={{
-                color: receipt.colorSecondary,
-                borderColor: hexToRgba(receipt.colorSekunder, 0.7),
-              }}
-              className="text-xs sm:text-sm md:text-base font-semibold px-4 pt-2 border-t">
-              <Link href="/featured">{receipt.ddMenuFeatured}</Link>
-            </div>
-            <ul
-              style={{
-                color: receipt.colorSecondary,
-              }}
-              className="text-xs sm:text-sm md:text-base font-normal px-4 pb-4">
-              <li>
-                <Link href="/free">{receipt.ddMenuFree}</Link>
-              </li>
-              <li>
-                <Link href="/paid">{receipt.ddMenuPaid}</Link>
-              </li>
-              <li>
-                <Link href="/coins">{receipt.ddMenuCoins}</Link>
-              </li>
-            </ul>
+              {/* Sub Section 1: Home Navigation */}
+              <ul
+                className="py-2 px-4 flex flex-col gap-1 text-xs sm:text-sm md:text-base"
+                style={{ color: receipt.colorSecondary }}>
+                <li>
+                  <Link href="/#what">{receipt.ddMenuWhat}</Link>
+                </li>
+                <li>
+                  <Link href="/#why">{receipt.ddMenuWhy}</Link>
+                </li>
+                <li>
+                  <Link href="/#how">{receipt.ddMenuHow}</Link>
+                </li>
+                <li>
+                  <Link href="/#when">{receipt.ddMenuWhen}</Link>
+                </li>
+                <li>
+                  <Link href="/#where">{receipt.ddMenuWhere}</Link>
+                </li>
+                <li>
+                  <Link href="/#who">{receipt.ddMenuWho}</Link>
+                </li>
+              </ul>
 
-            <div
-              style={{
-                color: receipt.colorSecondary,
-                borderColor: hexToRgba(receipt.colorSekunder, 0.7),
-              }}
-              className="text-xs sm:text-sm md:text-base font-semibold px-4 pt-2 border-t">
-              {receipt.ddMenuMore}
+              {/* Section 2: Featured Token */}
+              <div className="py-2 px-4">
+                <Link
+                  href="/featured"
+                  className="block font-semibold text-sm sm:text-base md:text-base"
+                  style={{ color: receipt.colorSecondary }}>
+                  {receipt.ddMenuFeatured}
+                </Link>
+              </div>
+
+              {/* Sub Section 2: Featured Navigation */}
+              <ul
+                className="py-2 px-4 flex flex-col gap-1 text-xs sm:text-sm md:text-base"
+                style={{ color: receipt.colorSecondary }}>
+                <li>
+                  <Link href="/free">{receipt.ddMenuFree}</Link>
+                </li>
+                <li>
+                  <Link href="/paid">{receipt.ddMenuPaid}</Link>
+                </li>
+                <li>
+                  <Link href="/coins">{receipt.ddMenuCoins}</Link>
+                </li>
+                <li>
+                  <Link href="/market">{receipt.ddMenuMarket}</Link>
+                </li>
+              </ul>
+
+              {/* Section 3: More Features */}
+              <div
+                className="py-2 px-4 font-semibold text-sm sm:text-base md:text-base"
+                style={{ color: receipt.colorSecondary }}>
+                {receipt.ddMenuMore}
+              </div>
+
+              {/* Sub Section 3: More Navigation */}
+              <ul
+                className="py-2 px-4 flex flex-col gap-1 text-xs sm:text-sm md:text-base"
+                style={{ color: receipt.colorSecondary }}>
+                <li>
+                  <Link href="/publish" target="_blank">
+                    {receipt.ddMenuDeploy}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/publish/nft" target="_blank">
+                    {receipt.ddMenuPublishNFT}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/publish/ft" target="_blank">
+                    {receipt.ddMenuPublishFT}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/dashboard" target="_blank">
+                    {receipt.ddMenuDashBoard}
+                  </Link>
+                </li>
+                <li>
+                  <Link href={receipt.ddMenuContactLink} target="_blank">
+                    {receipt.ddMenuContact}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/terms" target="_blank">
+                    {receipt.ddMenuTerms}
+                  </Link>
+                </li>
+              </ul>
             </div>
-            <ul
-              style={{
-                color: receipt.colorSecondary,
-              }}
-              className="text-xs sm:text-sm md:text-base font-normal px-4 pb-4">
-              <li>
-                <Link href="/deploy" target="_blank">
-                  {receipt.ddMenuDeploy}
-                </Link>
-              </li>
-              <li>
-                <Link href="/contact" target="_blank">
-                  {receipt.ddMenuContact}
-                </Link>
-              </li>
-              <li>
-                <Link href="/terms" target="_blank">
-                  {receipt.ddMenuTerms}
-                </Link>
-              </li>
-            </ul>
           </motion.div>
         )}
       </AnimatePresence>

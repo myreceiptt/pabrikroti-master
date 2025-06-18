@@ -17,7 +17,7 @@ export default function FeatureGrid() {
   const features = receipt.features;
 
   return (
-    <section className="w-full bg-gray-50 py-16">
+    <section className="w-full bg-gray-50 py-16" id="why">
       <div className="max-w-6xl mx-auto px-6 grid gap-8 grid-cols-1 md:grid-cols-3">
         {features.map((feat, i) => (
           <div

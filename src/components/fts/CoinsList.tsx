@@ -38,9 +38,10 @@ interface CoinData {
   isClaimable: boolean;
   reason: string | null;
   adjustedSupply: number;
+  maxClaim: bigint;
   adjustedMaxSupply: number;
-  adjustedBalance: number;
   adjustedPrice: number;
+  adjustedBalance: number;
 }
 
 interface SnapshotEntry {
@@ -55,7 +56,6 @@ const ITEMS_PER_LOAD = 3;
 
 export default function CoinsList() {
   const { receipt, erc20sLaunched } = getActiveReceipt();
-
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -130,9 +130,11 @@ export default function CoinsList() {
           const adjustedClaimed =
             Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
 
-          // Fetch and adjust max. claim based on claim condition
-          const adjustedMaxClaim =
-            Number(claimCondition.maxClaimableSupply) / 10 ** coinDecimals;
+          // Fetch max. claim based on claim condition
+          const maxClaim = claimCondition.maxClaimableSupply;
+
+          // Adjust max. claim based on claim condition
+          const adjustedMaxClaim = Number(maxClaim) / 10 ** coinDecimals;
 
           // Calculate and adjust max. supply
           const adjustedMaxSupply =
@@ -227,7 +229,7 @@ export default function CoinsList() {
                 }
               }
             } catch (e) {
-              console.warn("Failed to fetch allowlist price:", e);
+              console.warn(receipt.fetchAllowList, e);
             }
           }
 
@@ -239,9 +241,10 @@ export default function CoinsList() {
             isClaimable,
             reason,
             adjustedSupply,
+            maxClaim,
             adjustedMaxSupply,
-            adjustedBalance,
             adjustedPrice,
+            adjustedBalance,
           };
         })
       );
@@ -271,6 +274,7 @@ export default function CoinsList() {
     erc20sLaunched,
     receipt.coinsConsoleWarn,
     receipt.coinsSetError,
+    receipt.fetchAllowList,
     receipt.nftsError,
     receipt.nftsFailReason,
     receipt.nftsUknownError,

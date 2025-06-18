@@ -31,16 +31,17 @@ interface NFTData {
   nftChain: Chain;
   nftId: bigint;
   nftIdString: string;
-  adjustedPrice: number;
-  currency: string;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
-  supply: bigint;
-  maxSupply: bigint;
   perWallet: bigint;
-  adjustedBalance: number;
   claimRemaining: bigint;
+  supply: bigint;
+  maxClaim: bigint;
+  maxSupply: bigint;
+  currency: string;
+  adjustedPrice: number;
+  adjustedBalance: number;
 }
 
 interface SnapshotEntry {
@@ -57,7 +58,6 @@ function getNFTIdFromParams(params: ReturnType<typeof useParams>): bigint {
 
 export default function NFTDetails() {
   const { receipt, erc1155Launched } = getActiveReceipt();
-
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
@@ -86,22 +86,6 @@ export default function NFTDetails() {
     }
 
     try {
-      // Fetch NFT contract metadata
-      const contractMetaData = await getContractMetadata({
-        contract: erc1155Launched,
-      });
-
-      // Merkle root map from coin metadata
-      const merkleMap = contractMetaData?.merkle as
-        | Record<string, string>
-        | undefined;
-
-      // Fetch total supply
-      const nftSupply = await totalSupply({
-        contract: erc1155Launched,
-        id: nftId,
-      });
-
       // Fetch claim condition
       const claimCondition = await getClaimConditionById({
         contract: erc1155Launched,
@@ -109,25 +93,29 @@ export default function NFTDetails() {
         conditionId: 0n,
       });
 
-      // Fetch claimed supply based on claim condition
-      const nftClaimed = claimCondition.supplyClaimed;
+      // Fetch can claim status
+      let isClaimable = false;
+      let reason: string | null = null;
 
-      // Fetch max. claim supply based on claim condition
-      const nftMaxClaim = claimCondition.maxClaimableSupply;
+      try {
+        const claimStatus = await canClaim({
+          contract: erc1155Launched,
+          tokenId: nftId,
+          quantity: 1n,
+          claimer: activeAccount.address,
+        });
 
-      // Fetch max. supply
-      const nftMaxSupply = nftMaxClaim + (nftSupply - nftClaimed);
+        isClaimable = claimStatus.result;
+        reason = claimStatus.reason ?? null;
+      } catch (innerErr) {
+        // Continue if check failed
+        isClaimable = false;
+        reason = receipt.nftsFailReason;
+        console.warn(`${receipt.nftsConsoleWarn} ${nftId}`, innerErr);
+      }
 
       // Fetch limit per wallet
       let perWallet = claimCondition.quantityLimitPerWallet;
-
-      // Fetch supply claimed by wallet
-      const claimedRaw = await readContract({
-        contract: erc1155Launched,
-        method:
-          "function getSupplyClaimedByWallet(uint256 _tokenId, uint256 _conditionId, address _claimer) view returns (uint256 supplyClaimedByWallet)",
-        params: [nftId, 0n, activeAccount.address],
-      });
 
       // Fetch currency and decimals
       const nativeETH = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
@@ -164,14 +152,24 @@ export default function NFTDetails() {
         balanceRaw = balanceResult.value ?? 0n;
       }
 
-      // Adjust balance
+      // Adjust currency balance
       const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
 
-      // Adjust price
+      // Fetch and adjust price
       let adjustedPrice =
         Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
 
-      // Fetch override price
+      // Fetch NFT contract metadata
+      const contractMetaData = await getContractMetadata({
+        contract: erc1155Launched,
+      });
+
+      // Merkle root map from nft contract metadata
+      const merkleMap = contractMetaData?.merkle as
+        | Record<string, string>
+        | undefined;
+
+      // Fetch override price and per wallet
       const currentMerkleRoot = claimCondition.merkleRoot?.toLowerCase();
       const snapshotUri = merkleMap?.[currentMerkleRoot ?? ""];
 
@@ -199,63 +197,66 @@ export default function NFTDetails() {
                 e.address?.toLowerCase() === activeAccount.address.toLowerCase()
             );
 
-            if (entry?.price) {
-              const parsedPrice = parseFloat(entry.price);
-              if (!isNaN(parsedPrice)) {
-                adjustedPrice = parsedPrice;
-              }
-            }
-
             if (entry?.maxClaimable) {
               const parsedPerWallet = parseFloat(entry.maxClaimable);
               if (!isNaN(parsedPerWallet)) {
                 perWallet = BigInt(parsedPerWallet);
               }
             }
+
+            if (entry?.price) {
+              const parsedPrice = parseFloat(entry.price);
+              if (!isNaN(parsedPrice)) {
+                adjustedPrice = parsedPrice;
+              }
+            }
           }
         } catch (e) {
-          console.warn("Failed to fetch allowlist price:", e);
+          console.warn(receipt.fetchAllowList, e);
         }
       }
+
+      // Fetch supply claimed by wallet
+      const claimedRaw = await readContract({
+        contract: erc1155Launched,
+        method:
+          "function getSupplyClaimedByWallet(uint256 _tokenId, uint256 _conditionId, address _claimer) view returns (uint256 supplyClaimedByWallet)",
+        params: [nftId, 0n, activeAccount.address],
+      });
 
       // Calculate claim remaining
       const claimRemaining: bigint = perWallet - (claimedRaw ?? 0n);
 
-      // Fetch can claim status
-      let isClaimable = false;
-      let reason: string | null = null;
+      // Fetch total supply
+      const nftSupply = await totalSupply({
+        contract: erc1155Launched,
+        id: nftId,
+      });
 
-      try {
-        const claimStatus = await canClaim({
-          contract: erc1155Launched,
-          tokenId: nftId,
-          quantity: 1n,
-          claimer: activeAccount.address,
-        });
+      // Fetch claimed supply based on claim condition
+      const nftClaimed = claimCondition.supplyClaimed;
 
-        isClaimable = claimStatus.result;
-        reason = claimStatus.reason ?? null;
-      } catch (innerErr) {
-        // Continue if check failed
-        isClaimable = false;
-        reason = receipt.nftsFailReason;
-        console.warn(`${receipt.nftsConsoleWarn} ${nftId}`, innerErr);
-      }
+      // Fetch max. claim supply based on claim condition
+      const nftMaxClaim = claimCondition.maxClaimableSupply;
+
+      // Calculate max. supply
+      const nftMaxSupply = nftMaxClaim + (nftSupply - nftClaimed);
 
       setNFT({
         nftChain: erc1155Launched.chain,
         nftId,
         nftIdString: nftId.toString(),
-        adjustedPrice,
-        currency: claimCondition.currency,
         startTimestamp: claimCondition.startTimestamp,
         isClaimable,
         reason,
-        supply: nftSupply,
-        maxSupply: nftMaxSupply,
         perWallet,
-        adjustedBalance,
         claimRemaining,
+        supply: nftSupply,
+        maxClaim: nftMaxClaim,
+        maxSupply: nftMaxSupply,
+        currency: claimCondition.currency,
+        adjustedPrice,
+        adjustedBalance,
       });
     } catch (err: unknown) {
       setError(receipt.nftSetError);
@@ -272,6 +273,7 @@ export default function NFTDetails() {
     nftId,
     activeAccount?.address,
     erc1155Launched,
+    receipt.fetchAllowList,
     receipt.nftMessage1,
     receipt.nftSetError,
     receipt.nftsConsoleWarn,

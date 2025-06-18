@@ -19,7 +19,7 @@ export default function VisualLeft() {
   if (!block) return null;
 
   return (
-    <section className="w-full py-20 px-4 flex flex-col md:flex-row items-center gap-12">
+    <section className="w-full py-20 px-4 flex flex-col md:flex-row items-center gap-12" id="when">
       <Image
         src={block.image}
         alt={block.title}

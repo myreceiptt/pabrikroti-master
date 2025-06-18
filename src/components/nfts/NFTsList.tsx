@@ -42,10 +42,11 @@ interface NFTData {
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
+  maxClaim: bigint;
   maxSupply: bigint;
-  adjustedBalance: number;
   initialPrice: number;
   adjustedPrice: number;
+  adjustedBalance: number;
 }
 
 interface SnapshotEntry {
@@ -60,7 +61,6 @@ const ITEMS_PER_LOAD = 3;
 
 export default function NFTsList({ variant }: NFTsListProps) {
   const { receipt, erc1155Launched } = getActiveReceipt();
-
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
@@ -190,7 +190,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
             contract: erc1155Launched,
           });
 
-          // Merkle root map from coin metadata
+          // Merkle root map from nft contract metadata
           const merkleMap = contractMetaData?.merkle as
             | Record<string, string>
             | undefined;
@@ -232,7 +232,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
                 }
               }
             } catch (e) {
-              console.warn("Failed to fetch allowlist price:", e);
+              console.warn(receipt.fetchAllowList, e);
             }
           }
 
@@ -243,10 +243,11 @@ export default function NFTsList({ variant }: NFTsListProps) {
             isClaimable,
             reason,
             supply: nftSupply,
+            maxClaim: nftMaxClaim,
             maxSupply: nftMaxSupply,
-            adjustedBalance,
             initialPrice,
             adjustedPrice,
+            adjustedBalance,
           };
         })
       );
@@ -278,6 +279,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
     nextNFTId,
     activeAccount?.address,
     erc1155Launched,
+    receipt.fetchAllowList,
     receipt.nftsConsoleWarn,
     receipt.nftsError,
     receipt.nftsFailReason,
@@ -385,9 +387,10 @@ export default function NFTsList({ variant }: NFTsListProps) {
               isClaimable={nft.isClaimable}
               reason={nft.reason}
               supply={nft.supply}
+              maxClaim={nft.maxClaim}
               maxSupply={nft.maxSupply}
-              adjustedBalance={nft.adjustedBalance}
               adjustedPrice={nft.adjustedPrice}
+              adjustedBalance={nft.adjustedBalance}
               refreshToken={refreshToken}
             />
           </motion.div>

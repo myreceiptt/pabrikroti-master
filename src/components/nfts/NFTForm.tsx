@@ -28,7 +28,7 @@ import {
 } from "@/config/rantais";
 import { useCurrencyMap } from "@/config/contracts";
 import { getActiveReceipt } from "@/config/receipts";
-import { getCountdownString } from "@/config/utils";
+import { getCountdownString, MAX_UINT256 } from "@/config/utils";
 
 // Components libraries
 import NFTDescription from "@/components/nfts/NFTDescription";
@@ -39,16 +39,17 @@ interface NFTFormProps {
   nftChain: Chain;
   nftId: bigint;
   nftIdString: string;
-  adjustedPrice: number;
-  currency: string;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
-  supply: bigint;
-  maxSupply: bigint;
   perWallet: bigint;
-  adjustedBalance: number;
   claimRemaining: bigint;
+  supply: bigint;
+  maxClaim: bigint;
+  maxSupply: bigint;
+  currency: string;
+  adjustedPrice: number;
+  adjustedBalance: number;
   setRefreshToken: (val: number) => void;
 }
 
@@ -57,23 +58,23 @@ export default function NFTForm({
   nftChain,
   nftId,
   nftIdString,
-  adjustedPrice,
-  currency,
   startTimestamp,
   isClaimable,
   reason,
-  supply,
-  maxSupply,
   perWallet,
-  adjustedBalance,
   claimRemaining,
+  supply,
+  maxClaim,
+  maxSupply,
+  currency,
+  adjustedPrice,
+  adjustedBalance,
   setRefreshToken,
 }: NFTFormProps) {
   const { receipt } = getActiveReceipt();
-
   const activeAccount = useActiveAccount();
-  const startTime = new Date(Number(startTimestamp) * 1000);
   const chainName = chainNames[dropContract.chain.id] ?? "Unknown Chain";
+  const startTime = new Date(Number(startTimestamp) * 1000);
   const currencyMap = useCurrencyMap();
 
   // Ensure state variables are properly declared
@@ -86,17 +87,20 @@ export default function NFTForm({
   const [pesanSukses, setPesanSukses] = useState<string | null>(null);
   const [pesanGagal, setPesanGagal] = useState<string | null>(null);
 
+  // Real-time clock
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   // Fetch NFT metadata
   const { data: nft, refetch: refetchNFT } = useReadContract(getNFT, {
     contract: dropContract,
     tokenId: nftId,
   });
-
-  // Destructuring NFT metadata
-  const nftMetadata = nft?.metadata;
-  const nftImage = nftMetadata?.image || receipt.nftListerImage;
-  const nftName = nftMetadata?.name || receipt.nftListerName;
-  const nftDescription = nft?.metadata.description ?? "";
 
   // Fetch user's owned NFTs
   const { data: ownedNFTs, refetch: refetchOwnedNFTs } = useReadContract(
@@ -109,48 +113,17 @@ export default function NFTForm({
     }
   );
 
-  // Refetch NFT metadata
+  // Refetch NFT metadata and owned NFTs
   useEffect(() => {
     refetchNFT();
     refetchOwnedNFTs();
   }, [refetchNFT, refetchOwnedNFTs]);
 
-  // Real-time clock
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
-  // Determine button status
-  let buttonLabel = receipt.nftButton;
-  let buttonDisabled = false;
-
-  if (currentTime < startTime) {
-    // Belum waktunya
-    buttonLabel = `${receipt.nftSoon} ${getCountdownString(
-      startTime,
-      currentTime
-    )}`;
-    buttonDisabled = true;
-  } else if (adjustedBalance < adjustedPrice) {
-    // Tidak cukup saldo
-    buttonLabel = receipt.nftInsufficient;
-    buttonDisabled = true;
-  } else if (!isClaimable) {
-    // Tidak bisa diklaim karena alasan lain
-    const safeReason = (reason ?? "").toLowerCase();
-    if (safeReason.includes("dropclaimexceedlimit")) {
-      buttonLabel = receipt.nftClaimed;
-    } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-      buttonLabel = receipt.nftClosed;
-    } else {
-      buttonLabel = receipt.nftClosed; // fallback
-    }
-    buttonDisabled = true;
-  }
+  // Destructuring NFT metadata
+  const nftMetadata = nft?.metadata;
+  const nftImage = nftMetadata?.image || receipt.nftListerImage;
+  const nftName = nftMetadata?.name || receipt.nftListerName;
+  const nftDescription = nft?.metadata.description ?? "";
 
   // Determine the currency symbol
   const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
@@ -194,6 +167,37 @@ export default function NFTForm({
     minimumFractionDigits: 2,
     maximumFractionDigits: 6,
   })} ${tokenCurrency.symbol.toUpperCase()}`;
+
+  // Determine button status
+  let buttonLabel = receipt.nftButton;
+  let buttonDisabled = false;
+
+  if (currentTime < startTime) {
+    // Belum waktunya
+    buttonLabel = `${receipt.nftSoon} ${getCountdownString(
+      startTime,
+      currentTime
+    )}`;
+    buttonDisabled = true;
+  } else {
+    if (!isClaimable) {
+      // Tidak bisa diklaim karena alasan teknis lainnya
+      const safeReason = (reason ?? "").toLowerCase();
+      if (safeReason.includes("dropclaimexceedlimit")) {
+        buttonLabel = receipt.nftClaimed;
+      } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+        buttonLabel = receipt.nftClosed;
+      } else {
+        buttonLabel = receipt.nftClosed; // fallback
+      }
+      buttonDisabled = true;
+    } else if (adjustedBalance < adjustedPrice) {
+      // Saldo tidak cukup
+      buttonLabel = receipt.nftInsufficient;
+      buttonDisabled = true;
+    }
+    // else: semua aman, button tetap aktif dengan label default
+  }
 
   return (
     <div className="w-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">
@@ -323,7 +327,12 @@ export default function NFTForm({
           <h2
             style={{ color: receipt.colorSecondary }}
             className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
-            {supply.toString()}/{maxSupply.toString()}
+            {supply.toString()}/
+            {maxClaim === MAX_UINT256 ? (
+              <span className="">&#8734;</span>
+            ) : (
+              maxSupply.toString()
+            )}
           </h2>
           <h2
             style={{ color: receipt.colorSecondary }}
@@ -418,7 +427,13 @@ export default function NFTForm({
         <h4
           style={{ color: receipt.colorSekunder }}
           className="text-left text-xs font-medium">
-          {`${receipt.nftFormMax} ${perWallet} ${receipt.nftFormPerWallet}`}
+          {receipt.nftFormMax}{" "}
+          {perWallet === MAX_UINT256 ? (
+            <span className="">&#8734;</span>
+          ) : (
+            perWallet.toString()
+          )}{" "}
+          {receipt.nftFormPerWallet}
         </h4>
       </div>
     </div>
