@@ -124,12 +124,14 @@ export default function NFTLister({
       ) : nft ? (
         <>
           <Link href={`/token/${nftIdString}`}>
-            <MediaRenderer
-              client={client}
-              src={nftImage}
-              alt={nftName}
-              className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
-            />
+            <div className="w-full aspect-square overflow-hidden rounded-2xl hover:scale-95 transition-transform duration-300 ease-in-out">
+              <MediaRenderer
+                client={client}
+                src={nftImage}
+                alt={nftName}
+                className="w-full h-full object-cover"
+              />
+            </div>
           </Link>
           <div className="grid grid-cols-1 gap-2">
             <h2

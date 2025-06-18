@@ -4,12 +4,7 @@
 import Image from "next/image";
 import Link from "next/link";
 
-// Blockchain configurations
-import { getActiveReceipt } from "@/config/receipts";
-
 export default function HeroSection() {
-  const { receipt } = getActiveReceipt();
-
   return (
     <section className="relative w-full flex flex-col items-center justify-center overflow-hidden">
       <div className="relative w-full max-w-7xl aspect-[4/1] overflow-hidden">
