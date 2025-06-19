@@ -42,12 +42,12 @@ export default function Footer() {
           <h3
             style={{ color: receipt.colorSecondary }}
             className="sm:text-end text-center text-xs sm:text-sm md:text-base font-semibold">
-            {receipt.socialTitle}
+            {receipt.footSocial}
           </h3>
           <div className="flex gap-2 mt-2 sm:justify-end justify-center">
-            {receipt.linkXTwitter && (
+            {receipt.footXTwitter && (
               <Link
-                href={receipt.linkXTwitter}
+                href={receipt.footXTwitter}
                 target="_blank"
                 style={{
                   color: receipt.colorPrimer,
@@ -58,9 +58,9 @@ export default function Footer() {
               </Link>
             )}
 
-            {receipt.linkLinkedIn && (
+            {receipt.footLinkedIn && (
               <Link
-                href={receipt.linkLinkedIn}
+                href={receipt.footLinkedIn}
                 target="_blank"
                 style={{
                   color: receipt.colorPrimer,
@@ -71,9 +71,9 @@ export default function Footer() {
               </Link>
             )}
 
-            {receipt.linkInstagram && (
+            {receipt.footInstagram && (
               <Link
-                href={receipt.linkInstagram}
+                href={receipt.footInstagram}
                 target="_blank"
                 style={{
                   color: receipt.colorPrimer,
@@ -84,9 +84,9 @@ export default function Footer() {
               </Link>
             )}
 
-            {receipt.linkFacebook && (
+            {receipt.footFacebook && (
               <Link
-                href={receipt.linkFacebook}
+                href={receipt.footFacebook}
                 target="_blank"
                 style={{
                   color: receipt.colorPrimer,
@@ -97,9 +97,9 @@ export default function Footer() {
               </Link>
             )}
 
-            {receipt.linkDiscord && (
+            {receipt.footDiscord && (
               <Link
-                href={receipt.linkDiscord}
+                href={receipt.footDiscord}
                 target="_blank"
                 style={{
                   color: receipt.colorPrimer,
@@ -110,9 +110,9 @@ export default function Footer() {
               </Link>
             )}
 
-            {receipt.linkYouTube && (
+            {receipt.footYouTube && (
               <Link
-                href={receipt.linkYouTube}
+                href={receipt.footYouTube}
                 target="_blank"
                 style={{
                   color: receipt.colorPrimer,
@@ -123,9 +123,9 @@ export default function Footer() {
               </Link>
             )}
 
-            {receipt.linkEmail && (
+            {receipt.footEmail && (
               <Link
-                href={receipt.linkEmail}
+                href={receipt.footEmail}
                 target="_blank"
                 style={{
                   color: receipt.colorPrimer,
@@ -136,9 +136,9 @@ export default function Footer() {
               </Link>
             )}
 
-            {receipt.linkWhatsApp && (
+            {receipt.footWhatsApp && (
               <Link
-                href={receipt.linkWhatsApp}
+                href={receipt.footWhatsApp}
                 target="_blank"
                 style={{
                   color: receipt.colorPrimer,
@@ -149,9 +149,9 @@ export default function Footer() {
               </Link>
             )}
 
-            {receipt.linkWebsite && (
+            {receipt.footWebsite && (
               <Link
-                href={receipt.linkWebsite}
+                href={receipt.footWebsite}
                 target="_blank"
                 style={{
                   color: receipt.colorPrimer,
@@ -178,11 +178,11 @@ export default function Footer() {
           }}
           className="w-full text-xs text-center sm:text-left">
           <p>
-            &copy; {new Date().getFullYear()} {receipt.entityAlias1}.{" "}
-            {receipt.copyRight}
+            &copy; {new Date().getFullYear()} {receipt.proAlias1}.{" "}
+            {receipt.footCopyRight}
           </p>
           <p>
-            {receipt.officiallyLicensed} {receipt.entityAlias1}.
+            {receipt.footLicensed} {receipt.proAlias1}.
           </p>
           <div className="flex justify-center sm:justify-start gap-4 mt-2">
             <Link
@@ -192,17 +192,17 @@ export default function Footer() {
                 color: receipt.colorSecondary,
               }}
               className="text-xs text-center sm:text-left">
-              {receipt.anchorTerms} & {receipt.anchorPrivacy}
+              {receipt.footTerms} & {receipt.footPrivacy}
             </Link>
           </div>
         </div>
 
         {/* Logo & Powered By */}
         <div className="w-full flex justify-center sm:justify-end cursor-pointer">
-          <Link href={receipt.linkPower} target="_blank">
+          <Link href={receipt.loginLinkPower} target="_blank">
             <Image
-              src={receipt.footerPower}
-              alt={receipt.poweredBy}
+              src={receipt.footPower}
+              alt={receipt.loginPoweredBy}
               width={563}
               height={75}
             />

@@ -89,7 +89,7 @@ export default function Header() {
           <input
             type="text"
             aria-label={receipt.headerSearch}
-            placeholder={receipt.searchPlaceholder}
+            placeholder={receipt.headerSearchPH}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
             style={{ color: receipt.colorSecondary }}
@@ -131,7 +131,7 @@ export default function Header() {
                 <input
                   type="text"
                   aria-label={receipt.headerSearch}
-                  placeholder={receipt.searchPlaceholder}
+                  placeholder={receipt.headerSearchPH}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   style={{ color: receipt.colorSecondary }}

@@ -45,7 +45,7 @@ export default function DropdownMenu() {
           color: receipt.colorSekunder,
         }}
         className="w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer"
-        aria-label={receipt.ddMenuAriaLabel}>
+        aria-label={receipt.ddMenuAria}>
         <FaBars />
       </button>
 

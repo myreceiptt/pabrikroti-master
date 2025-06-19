@@ -75,10 +75,10 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
         </div>
 
         {/* Footerssss */}
-        <Link href={receipt.linkPower} target="_blank">
+        <Link href={receipt.loginLinkPower} target="_blank">
           <Image
-            src={receipt.loginPower}
-            alt={receipt.poweredBy}
+            src={receipt.loginLogoPower}
+            alt={receipt.loginPoweredBy}
             width={1080}
             height={107}
             className="z-0 object-contain w-full"

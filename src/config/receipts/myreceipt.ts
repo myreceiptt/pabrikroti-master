@@ -3,12 +3,12 @@
 // All receipts should be exported from this file.
 const proTitle = "NFT FOR A REASON - NFT FAR";
 const proUrl = "https://far.futuloka.io";
-const entityName = "NFT FAR by Futuloka";
-const entityAlias1 = "NFT FAR";
-const entityAlias2 = "Futuloka";
-const entityAddress =
+const proName = "NFT FAR by Futuloka";
+const proAlias1 = "NFT FAR";
+const proAlias2 = "Futuloka";
+const proAddress =
   "Jl. Teuku Cik Ditiro II No.3 8, RT.1/RW.2, Gondangdia, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10350, INDONESIA";
-const entityEmail = "kontak@futuloka.io";
+const proEmail = "kontak@futuloka.io";
 const termsMonth = "May";
 const termsDate = "30";
 const termsYear = "2025";
@@ -41,7 +41,7 @@ export const myreceipt = {
   proError: "Something went wrong. Please try again later.", // ErrorBoundary,
   proButton: "Try Again", // ErrorBoundary,
 
-  // /src/components/logins/LoginLayout.tsx
+  // /src/components/logins/LoginLayout.tsx - disable by nullifying the string
   loginArt: "/images/login-art.png", // LoginLayout,
   loginBanner: "/images/login-banner.png", // LoginLayout,
   loginAria: "Call to action for login.", // LoginLayout,
@@ -53,12 +53,12 @@ export const myreceipt = {
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
-  linkPower: "https://futuloka.io/", // LoginLayout, FooterSection,
-  loginPower: "/images/login-power.png", // LoginLayout,
-  poweredBy: "Launched by Futuloka", // LoginLayout, FooterSection,
+  loginLinkPower: "https://futuloka.io/", // LoginLayout, FooterSection,
+  loginLogoPower: "/images/login-power.png", // LoginLayout,
+  loginPoweredBy: "Launched by Futuloka", // LoginLayout, FooterSection,
 
-  // /src/components/sections/DropDownMenu.tsx
-  ddMenuAriaLabel: "Drop Down Menu", // DropDownMenu,
+  // /src/components/sections/DropDownMenu.tsx - disable by nullifying the string
+  ddMenuAria: "Drop Down Menu", // DropDownMenu,
   ddMenuHome: "Welcome, OiOi!", // DropDownMenu,
   ddMenuWhat: "About", // DropDownMenu,
   ddMenuWhy: "", // DropDownMenu,
@@ -81,60 +81,51 @@ export const myreceipt = {
   ddMenuTerms: "Terms of Use", // DropDownMenu,
 
   // /src/components/sections/DropDownSorter.tsx
-  ddSorterSorting: "Sorting", // drop down sorter,
-  ddSorterDefault: "Default Sorting", // drop down sorter,
-  ddSorterSupply: "Remaining Supply", // drop down sorter,
-  ddSorterTime: "Starting Available", // drop down sorter,
-  ddSorterPrice: "Price per Edition", // drop down sorter,
-  ddSorterClaim: "Claimable Status", // drop down sorter,
+  ddSorterSorting: "Sorting", // DropDownSorter,
+  ddSorterDefault: "Default Sorting", // DropDownSorter,
+  ddSorterSupply: "Remaining Supply", // DropDownSorter,
+  ddSorterTime: "Starting Available", // DropDownSorter,
+  ddSorterPrice: "Price per Edition", // DropDownSorter,
+  ddSorterClaim: "Claimable Status", // DropDownSorter,
 
-  // footer section - hide social icon by nulled the link
-  copyRight: "All rights reserved.", // footer,
-  officiallyLicensed: "Officially licensed product of", // footer,
-  anchorPrivacy: "Privacy Policy", // footer,
-  anchorTerms: "Terms of Service", // footer,
-  footerPower: "/images/footer-power.png", // footer,
-  socialTitle: "Follow our solidarity movement!", // footer,
-  linkXTwitter: "https://x.com/futuloka", // footer,
-  linkLinkedIn: "", // footer,
-  linkInstagram: "https://www.instagram.com/futuloka/", // footer,
-  linkFacebook: "", // footer,
-  linkDiscord: "", // footer,
-  linkYouTube: "", // footer,
-  linkEmail: "mailto:kontak@futuloka.io", // footer,
-  linkWhatsApp: "", // footer,
-  linkWebsite: "https://www.futuloka.io/", // footer,
+  // /src/components/sections/FooterSection.tsx - disable by nullifying the string
+  footCopyRight: "All rights reserved.", // FooterSection,
+  footLicensed: "Officially licensed product of", // FooterSection,
+  footPrivacy: "Privacy Policy", // FooterSection,
+  footTerms: "Terms of Service", // FooterSection,
+  footPower: "/images/footer-power.png", // FooterSection,
+  footSocial: "Follow our solidarity movement!", // FooterSection,
+  footXTwitter: "https://x.com/futuloka", // FooterSection,
+  footLinkedIn: "", // FooterSection,
+  footInstagram: "https://www.instagram.com/futuloka/", // FooterSection,
+  footFacebook: "", // FooterSection,
+  footDiscord: "", // FooterSection,
+  footYouTube: "", // FooterSection,
+  footEmail: "mailto:kontak@futuloka.io", // FooterSection,
+  footWhatsApp: "", // FooterSection,
+  footWebsite: "https://www.futuloka.io/", // FooterSection,
 
   // /src/components/sections/HeaderSection.tsx
   headerLogo: "/images/header-logo.png", // HeaderSection,
   headerGo: "Search", // HeaderSection,
   headerSearch: "Search Query", // HeaderSection,
-  searchPlaceholder: "Enter your search query", // HeaderSection,
+  headerSearchPH: "Enter your search query", // HeaderSection,
 
-  // subscribe form section
+  // /src/components/sections/SubscribeForm.tsx
   subscribeWarn:
-    "Missing Web3Forms Access Key. Please set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.", // subscribe form,
-  subscribeInput: "Please enter a valid email address.", // subscribe form,
-  subscribeSubject: `Subscription to ${proTitle}`, // subscribe form,
-  subscribeName: `Visitor of ${proUrl}`, // subscribe form,
-  subscribeMessage: "I want to subscribe to the latest updates.", // subscribe form,
-  subscribeSuccess: "Thank you for subscribing!", // subscribe form,
-  subscribeFailed: "Subscription failed. Please try again.", // subscribe form,
-  subscribeTitle: "Subscribe to our latest updates", // subscribe form,
-  subscribePlaceholder: "Enter your email address", // subscribe form,
-  subscribeButton: "Subscribe", // subscribe form,
-  subscribeButtonLoading: "Subscribing...", // subscribe form,
+    "Missing Web3Forms Access Key. Please set NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY.", // SubscribeForm,
+  subscribeInput: "Please enter a valid email address.", // SubscribeForm,
+  subscribeSubject: `Subscription to ${proTitle}`, // SubscribeForm,
+  subscribeName: `Visitor of ${proUrl}`, // SubscribeForm,
+  subscribeMessage: "I want to subscribe to the latest updates.", // SubscribeForm,
+  subscribeSuccess: "Thank you for subscribing!", // SubscribeForm,
+  subscribeFailed: "Subscription failed. Please try again.", // SubscribeForm,
+  subscribeTitle: "Subscribe to our latest updates", // SubscribeForm,
+  subscribePlaceholder: "Enter your email address", // SubscribeForm,
+  subscribeButton: "Subscribe", // SubscribeForm,
+  subscribeButtonLoading: "Subscribing...", // SubscribeForm,
 
-  // landing page
-  heroSlides: [
-    {
-      title: "Programmed Batch Bread",
-      subtitle: "Digitally baked. Publicly shared.",
-      description: "We tokenize culture and rewards.",
-      image: "/roti/landing/hero-1.png",
-      cta: { text: "Get Started", href: "/coins" },
-    },
-  ],
+  // /src/components/landing/FeatureGrid.tsx - disable by nullifying the string set
   features: [
     {
       icon: "🍞",
@@ -155,6 +146,26 @@ export const myreceipt = {
       cta: { text: "Claim Now", href: "/free" },
     },
   ],
+
+  // /src/components/landing/HeroSlider.tsx - disable by nullifying the string set
+  heroSlides: [
+    {
+      title: "Programmed Artisan Breads",
+      subtitle: "Digitally baked. Publicly shared.",
+      description: "We tokenize culture and rewards.",
+      image: "/roti/landing/slider-0.png",
+      cta: { text: "Get Started", href: "/coins" },
+    },
+    {
+      title: "Programmed Batch Breads",
+      subtitle: "Digitally baked. Publicly shared.",
+      description: "We tokenize culture and rewards.",
+      image: "/roti/landing/slider-1.png",
+      cta: { text: "Get Started", href: "/coins" },
+    },
+  ],
+
+  // /src/components/landing/ParagraphText.tsx
   textMin: {
     title: "Why Bread?",
     paragraphs: [
@@ -163,6 +174,15 @@ export const myreceipt = {
     ],
     cta: { text: "Read the Manifesto", href: "/terms" },
   },
+
+  // /src/components/landing/VideoEmbed.tsx
+  videoEmbed: {
+    url: "https://www.youtube.com/embed/abcd1234",
+    cta: { text: "Join the Movement", href: "/join" },
+  },
+
+  // /src/components/landing/VisualLeft.tsx - disable by nullifying the string set
+  // /src/components/landing/VisualRight.tsx - disable by nullifying the string set
   visualBlocks: [
     {
       variant: "left", // or "right"
@@ -179,10 +199,6 @@ export const myreceipt = {
       cta: { text: "Learn More", href: "/about" },
     },
   ],
-  videoEmbed: {
-    url: "https://www.youtube.com/embed/abcd1234",
-    cta: { text: "Join the Movement", href: "/join" },
-  },
 
   // /src/components/contents/ComingSoon.tsx
   csLoader: "Hang tight...", // ComingSoon,
@@ -256,7 +272,7 @@ export const myreceipt = {
   // nft form section
   nftFormByLink: "https://far.futuloka.io/", // nft form,
   nftFormBy: "by", // nft form, coin form,
-  nftFormByName: `${entityAlias1}`, // nft form,
+  nftFormByName: `${proAlias1}`, // nft form,
   nftFormEdition: "Edition", // nft form,
   nftFormOwned: "Collected", // nft form,
   nftFormRefresh: "Refresh", // nft form, coin form,
@@ -349,11 +365,11 @@ export const myreceipt = {
   popUpImageAlt: "FTLK Coin Illustration", // coin pop up,
 
   // terms page
-  entityName, // terms,
-  entityAlias1, // terms, footer section
-  entityAlias2, // terms,
-  entityAddress, // nulled
-  entityEmail, // terms,
+  proName, // terms,
+  proAlias1, // terms, footer section
+  proAlias2, // terms,
+  proAddress, // nulled
+  proEmail, // terms,
   termsAria1: "Title of the Terms and Conditions", // terms,
   termsTitle: "T and C of Use", // terms,
   termsMonth, // terms,
@@ -363,17 +379,17 @@ export const myreceipt = {
   termsAria2: `Document last updated on ${termsUpdate}`, // terms,
   termsTerms: {
     section1: {
-      title: `${entityName} Terms and Conditions of Use`,
+      title: `${proName} Terms and Conditions of Use`,
       paragraphs: [
-        `Please read these ${entityName} Terms and Conditions of Use and Privacy Statement carefully, they contain important information about your rights and obligations.`,
-        `${entityAlias2} is a platform that allows you to collect, issue, and display NFTs. This ${entityName} Terms and conditions of Use ("Terms and Conditions", "Agreement") document is entered into by user or users ("User", "Users" or "You"), ${entityAlias1}, and ${entityAlias2} (" ${entityName}," "We" or "Us"). It contains terms and conditions you have agreed to abide by upon accessing ${proUrl} ("Site"). The terms govern your access and use of the ${entityAlias2} ecosystem, including content, features, and functionality. By signing up to use an account through the Site, or any associated websites, APIs, or mobile applications, you agree that you have read, understood, and accept all of the terms and conditions contained in this Agreement.`,
+        `Please read these ${proName} Terms and Conditions of Use and Privacy Statement carefully, they contain important information about your rights and obligations.`,
+        `${proAlias2} is a platform that allows you to collect, issue, and display NFTs. This ${proName} Terms and conditions of Use ("Terms and Conditions", "Agreement") document is entered into by user or users ("User", "Users" or "You"), ${proAlias1}, and ${proAlias2} (" ${proName}," "We" or "Us"). It contains terms and conditions you have agreed to abide by upon accessing ${proUrl} ("Site"). The terms govern your access and use of the ${proAlias2} ecosystem, including content, features, and functionality. By signing up to use an account through the Site, or any associated websites, APIs, or mobile applications, you agree that you have read, understood, and accept all of the terms and conditions contained in this Agreement.`,
       ],
     },
     section2: {
-      title: `Basic ${entityAlias2} Services`,
+      title: `Basic ${proAlias2} Services`,
       items: [
-        `Eligibility. To be eligible to use the ${entityAlias2} services, you must register an account on ${entityName} Site.`,
-        `${entityAlias2} Services. Your account encompasses the following basic services: Access to collect virtual collectibles in a form of Non Fungible Tokens; Access to issue and publish NFTs; Privilege tagged to NFTs that you, as an NFT collector ("Collector"), have collected.`,
+        `Eligibility. To be eligible to use the ${proAlias2} services, you must register an account on ${proName} Site.`,
+        `${proAlias2} Services. Your account encompasses the following basic services: Access to collect virtual collectibles in a form of Non Fungible Tokens; Access to issue and publish NFTs; Privilege tagged to NFTs that you, as an NFT collector ("Collector"), have collected.`,
       ],
     },
     section3: {
@@ -387,21 +403,21 @@ export const myreceipt = {
     section4: {
       title: "Modification to these Terms and Conditions",
       paragraphs: [
-        `${entityAlias2} may modify these Terms and Conditions when ${entityAlias2} deems it to be necessary, within the scope of the purposes of the Services. In such a case, ${entityAlias2} will indicate the contents of the modified version of these Terms and Conditions, as well as the effective date of the modification, on the Services or on ${entityName}'s website, or will publicize the same to Users by notifying Users in the manner prescribed by ${entityAlias2}.`,
+        `${proAlias2} may modify these Terms and Conditions when ${proAlias2} deems it to be necessary, within the scope of the purposes of the Services. In such a case, ${proAlias2} will indicate the contents of the modified version of these Terms and Conditions, as well as the effective date of the modification, on the Services or on ${proName}'s website, or will publicize the same to Users by notifying Users in the manner prescribed by ${proAlias2}.`,
         "The modified version of these Terms and Conditions shall become effective as of the effective date thereof.",
       ],
     },
     section5: {
-      title: `${entityAlias2} ACCOUNT`,
+      title: `${proAlias2} ACCOUNT`,
       paragraphs: [
-        `Registration of ${entityAlias2} account. In order to use the ${entityName} Site, you will need to register for a ${entityAlias2} account by providing your information ("Personal Information"), including your email address, password, and accepting the terms of this Agreement and our Privacy Policy. We may, in our sole discretion, decide to remove your account if we find out a violation in your activities within the ${entityName} Site.`,
-        `Access. To access the ${entityName} Site, you must have the necessary equipment or device and the associated telecommunication service subscriptions to access the Internet.`,
+        `Registration of ${proAlias2} account. In order to use the ${proName} Site, you will need to register for a ${proAlias2} account by providing your information ("Personal Information"), including your email address, password, and accepting the terms of this Agreement and our Privacy Policy. We may, in our sole discretion, decide to remove your account if we find out a violation in your activities within the ${proName} Site.`,
+        `Access. To access the ${proName} Site, you must have the necessary equipment or device and the associated telecommunication service subscriptions to access the Internet.`,
       ],
     },
     section6: {
       title: "Role-specific terms",
       paragraphs: [
-        `Collector. As a Collector, you will gain access to browse through NFTs that are displayed on the ${entityName} Site. You may obtain the ownership of any of the available NFTs by exchanging with approved tokens. You may also choose to keep the NFTs as your collection, exchange them for tokens with other Collectors or use them to redeem products and services offered by our partners if applicable. Specifically for claiming procedures, our partners have the right to set their own disclaimers. ${entityName} Site is not responsible for failure to comply with the disclaimers that lead to unsuccessful NFTs redemption.`,
+        `Collector. As a Collector, you will gain access to browse through NFTs that are displayed on the ${proName} Site. You may obtain the ownership of any of the available NFTs by exchanging with approved tokens. You may also choose to keep the NFTs as your collection, exchange them for tokens with other Collectors or use them to redeem products and services offered by our partners if applicable. Specifically for claiming procedures, our partners have the right to set their own disclaimers. ${proName} Site is not responsible for failure to comply with the disclaimers that lead to unsuccessful NFTs redemption.`,
         "You will also gain access to publish NFTs that you have collected to be displayed and made available to be exchanged with approved tokens, if preferable. In a case where you transfer ownership of an NFT with a tagged product or service to another Collector, you will also transfer the title of the product or service.",
         "The ownership of the NFTs does not give you the right to have the ownership of the Intellectual Property rights of those NFTs.",
       ],
@@ -410,25 +426,25 @@ export const myreceipt = {
       title: "Intellectual Property Rights Protection Provisions",
       paragraphs: [
         `Intellectual Property Rights. The term "Intellectual Property Rights" means all (i) patents, patent applications, patent disclosures and inventions, (ii) Internet Domain names, trademarks, service marks, trade dress, trade names, logos and corporate names and registrations and applications for registration thereof together with all of the goodwill associated therewith, (iii) copyrights (registered or unregistered) and copyrightable works and registrations and applications for registration thereof, (iv) mask works and registrations and applications thereof, (v) computer software, data, databases and documentation thereof, (vi) trade secrets and other confidential information, including ideas, formulas, compositions, inventions (whether patentable or unpatentable and whether or not reduced to practice), know-how, manufacturing and production processes and techniques, research and development information, drawings, specifications, designs, plans, proposals, technical data, and copyrightable works, financial and marketing plans and customer and supplier lists and information, and (vii) copies and tangible embodiments thereof (in whatever form or medium).`,
-        `This Terms and Conditions contains how you and ${entityAlias2} will protect your Intellectual Property on ${entityAlias2} services exclusively.`,
+        `This Terms and Conditions contains how you and ${proAlias2} will protect your Intellectual Property on ${proAlias2} services exclusively.`,
         "You acknowledge that:",
-        `${entityAlias2} hereby grants you a limited, non-exclusive, non-transferable royalty-free right to use or display the brand, trade name, logo, site content, headings and other distinguishing marks and names of ${entityAlias1} and ${entityAlias2} on the site and limited for the purpose of implementing this Agreement.`,
-        `Breach of Intellectual Property. ${entityAlias2} wil take responsibility for any finding NFTs that are infringing Intellectual Property Rights. If you as Collector find indications of infringement of intellectual property rights on NFTs in ${entityAlias2}, you can contact ${entityAlias2} and ${entityAlias2} will help to remove them from ${entityName} site. Other than that, it will be the responsibility of you and the IP owners and should be directly resolved between you and the IP owners.`,
+        `${proAlias2} hereby grants you a limited, non-exclusive, non-transferable royalty-free right to use or display the brand, trade name, logo, site content, headings and other distinguishing marks and names of ${proAlias1} and ${proAlias2} on the site and limited for the purpose of implementing this Agreement.`,
+        `Breach of Intellectual Property. ${proAlias2} wil take responsibility for any finding NFTs that are infringing Intellectual Property Rights. If you as Collector find indications of infringement of intellectual property rights on NFTs in ${proAlias2}, you can contact ${proAlias2} and ${proAlias2} will help to remove them from ${proName} site. Other than that, it will be the responsibility of you and the IP owners and should be directly resolved between you and the IP owners.`,
       ],
       ol: [
-        `You are the original owner or holder of the intellectual property rights of NFTs published on ${entityName} site.`,
-        `You hereby declare that you fully own the intellectual property rights to the NFTs published on ${entityName} site exclusively and guarantee that there are no claims from third parties for the ownership of the NFTs`,
+        `You are the original owner or holder of the intellectual property rights of NFTs published on ${proName} site.`,
+        `You hereby declare that you fully own the intellectual property rights to the NFTs published on ${proName} site exclusively and guarantee that there are no claims from third parties for the ownership of the NFTs`,
       ],
     },
     section8: {
       title: "Restricted Matters",
       paragraphs: [
-        `${entityAlias2} prohibits you from engaging in any of the following acts when using the Services:`,
+        `${proAlias2} prohibits you from engaging in any of the following acts when using the Services:`,
       ],
       ul: [
         "Acts that violate the laws and regulations, court verdicts, resolutions or orders, or administrative measures that are legally binding;",
         "Acts that may be in violation of public order, morals or customs;",
-        `Acts that infringe intellectual property rights, such as copyrights, trademarks and patent rights, rights to fame, privacy, and all other rights granted by law or by a contract with ${entityAlias2} and/or a third party;`,
+        `Acts that infringe intellectual property rights, such as copyrights, trademarks and patent rights, rights to fame, privacy, and all other rights granted by law or by a contract with ${proAlias2} and/or a third party;`,
         "Acts of posting or transmitting excessively violent expressions; expressions that lead to discrimination by race, national origin, creed, gender, social status, family origin, etc.; expressions that induce or encourage suicide, self-injurious behavior or drug abuse; or expressions that include anti-social content and lead to the discomfort of others;",
         "Acts that benefit or involve collaboration with anti-social groups;",
         "Acts that are related to religious activities or invitations to certain religious groups;",
@@ -438,36 +454,36 @@ export const myreceipt = {
     section9: {
       title: "Suspension, Termination, and Cancellation",
       paragraphs: [
-        `We may (a) refuse to complete or cancel your registration, (b) suspend, restrict or terminate your access to any or all of the ${entityName} Site services, and/or (c) deactivate your account with immediate effect for any reason, including but not limited to where:`,
+        `We may (a) refuse to complete or cancel your registration, (b) suspend, restrict or terminate your access to any or all of the ${proName} Site services, and/or (c) deactivate your account with immediate effect for any reason, including but not limited to where:`,
       ],
       ul: [
         "We are, in our reasonable opinion, required to do so by applicable law or any court or other authority to which we are subject in any jurisdiction;",
         "We reasonably suspect you of acting in breach of this Agreement;",
-        `We have concerns that an activity is erroneous or about the security of your account or we suspect that ${entityName} Site services are being used in a fraudulent or unauthorized manner;`,
+        `We have concerns that an activity is erroneous or about the security of your account or we suspect that ${proName} Site services are being used in a fraudulent or unauthorized manner;`,
         "We suspect money laundering, terrorist financing, fraud, or any other financial crime;",
         `Use of your account is subject to any pending litigation, investigation or government proceeding and/or we perceive a heightened risk of legal or regulatory non-compliance associated with your account activity;`,
         "You take any action that may circumvent our controls such as abusing promotions which we may offer from time to time;",
       ],
       paragraphsAfterList: [
-        `We may suspend, restrict, or terminate your access to any or all of ${entityName} Site services and/or deactivate or cancel your ${entityAlias2} account, without reason by giving you two months notice. You acknowledge that our decision to take certain actions, including limiting access to, suspending, or closing your ${entityAlias2} account, may be based on confidential criteria that are essential to our risk management and security protocols. You agree that we are under no obligation to disclose the details of its risk management and security procedures to you.`,
+        `We may suspend, restrict, or terminate your access to any or all of ${proName} Site services and/or deactivate or cancel your ${proAlias2} account, without reason by giving you two months notice. You acknowledge that our decision to take certain actions, including limiting access to, suspending, or closing your ${proAlias2} account, may be based on confidential criteria that are essential to our risk management and security protocols. You agree that we are under no obligation to disclose the details of its risk management and security procedures to you.`,
       ],
     },
     section10: {
       title: "Liability",
       paragraphs: [
-        `Release of ${entityAlias2}. ${entityAlias2} is a peer to peer platform that uses the distributed ledger technology, If you have a dispute with one or more users of ${entityName} Site, you agree that neither we nor our affiliates or service providers, nor any of our respective officers, directors, employees, and representatives will be liable for any claims, demands, and damages (actual and consequential) of any kind or nature rising out of or in any way connected with such disputes.`,
-        `Indemnification. You agree to indemnify ${entityAlias2}, our affiliates and service providers, and each of our or their respective officers, directors, employees, and representatives, in respect of any costs (including attorneys' fees and any fines, fees or penalties imposed by any regulatory authority) that have been reasonably incurred in connection with any claims, demands or damages arising out of or related to your breach and / or our enforcement of this Agreement or your violation of any law, rule or regulation, or the rights of any third party.`,
-        `Limitation of Liability. ${entityAlias2} has no liability for services and all NFTs on the Site and ${entityAlias2} shall only be liable to you for loss or damage caused directly and reasonably foreseeable by our breach of this Agreement.`,
-        `No Warranties. ${entityName} Site services are provided on an "as is" and "as available" basis without any representation or warranty, whether express or implied, to the maximum extent permitted by applicable law: specifically we disclaim any implied warranties of title, merchantability, fitness for a particular purpose and/or non-infringement. We do not make any representations or warranties that access to ${entityName} Site, any of the ${entityAlias2} services, or any of the materials contained therein, will be continuous, uninterrupted, timely or error-free.`,
-        `Safety and Security of Your Computer and Devices. ${entityName} Site is not liable for any damage or interruptions caused by any computer viruses, spyware, scareware, Trojan horses, worms or other malware that may affect your computer or other equipment, or any phishing, spoofing or other attack. We advise the regular use of a reputable and readily available virus screening and prevention software. You should also be aware that SMS and email services are vulnerable to spoofing and phishing attacks and should use care in reviewing messages purporting to originate from us. ${entityAlias2} customer support will never ask to screen share or otherwise seek to access your computer or account.`,
+        `Release of ${proAlias2}. ${proAlias2} is a peer to peer platform that uses the distributed ledger technology, If you have a dispute with one or more users of ${proName} Site, you agree that neither we nor our affiliates or service providers, nor any of our respective officers, directors, employees, and representatives will be liable for any claims, demands, and damages (actual and consequential) of any kind or nature rising out of or in any way connected with such disputes.`,
+        `Indemnification. You agree to indemnify ${proAlias2}, our affiliates and service providers, and each of our or their respective officers, directors, employees, and representatives, in respect of any costs (including attorneys' fees and any fines, fees or penalties imposed by any regulatory authority) that have been reasonably incurred in connection with any claims, demands or damages arising out of or related to your breach and / or our enforcement of this Agreement or your violation of any law, rule or regulation, or the rights of any third party.`,
+        `Limitation of Liability. ${proAlias2} has no liability for services and all NFTs on the Site and ${proAlias2} shall only be liable to you for loss or damage caused directly and reasonably foreseeable by our breach of this Agreement.`,
+        `No Warranties. ${proName} Site services are provided on an "as is" and "as available" basis without any representation or warranty, whether express or implied, to the maximum extent permitted by applicable law: specifically we disclaim any implied warranties of title, merchantability, fitness for a particular purpose and/or non-infringement. We do not make any representations or warranties that access to ${proName} Site, any of the ${proAlias2} services, or any of the materials contained therein, will be continuous, uninterrupted, timely or error-free.`,
+        `Safety and Security of Your Computer and Devices. ${proName} Site is not liable for any damage or interruptions caused by any computer viruses, spyware, scareware, Trojan horses, worms or other malware that may affect your computer or other equipment, or any phishing, spoofing or other attack. We advise the regular use of a reputable and readily available virus screening and prevention software. You should also be aware that SMS and email services are vulnerable to spoofing and phishing attacks and should use care in reviewing messages purporting to originate from us. ${proAlias2} customer support will never ask to screen share or otherwise seek to access your computer or account.`,
         `No Liability for Breach. We are not liable for any breach of the Agreement where the breach is due to abnormal and unforeseeable circumstances beyond our control, the consequences of which would have been unavoidable despite all effects to the contrary, nor are we liable where the breach is due to the application of mandatory legal rules.`,
       ],
     },
     section11: {
       title: "Customer Feedback, Queries, Complaints, and Dispute Resolution",
       paragraphs: [
-        `Contact ${entityAlias2}. When you contact us please provide us with your name, email, wallet address, and any other information we may need to identify you, your ${entityAlias2} account, and the activity on which you have feedback, questions, or complaints.`,
-        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by ${entityAlias1}. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond ${entityAlias1}'s control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
+        `Contact ${proAlias2}. When you contact us please provide us with your name, email, wallet address, and any other information we may need to identify you, your ${proAlias2} account, and the activity on which you have feedback, questions, or complaints.`,
+        `Complaints. In the event of a complaint, please set out the cause of your complaint, how you would like us to resolve the complaint and any other information you believe to be relevant. We will acknowledge receipt of your complaint. A Customer Complaints officer ("Officer") will consider your complaint. The Officer will consider your complaint without prejudice based on the information you have provided and any information provided by ${proAlias1}. Within 15 business days of our receipt of your complaint the Officer will address all points raised in your complaint by sending you an e-mail ("Resolution Notice") in which the Officer will: (i) offer to resolve your complaint in the way your requested; (ii) make a determination rejecting your complaint and set out the reasons for the rejection; or (iii) offer to resolve your complaint with an alternative solution. In exceptional circumstances, if the Officer is unable to respond to your complaint within 15 business days for reasons beyond ${proAlias1}'s control, the Officer will send you a holding reply indicating the reasons for a delay in answering your complaint and specifying the deadline by which the Officer will respond to your complaint (which will be no later than 35 business days from our receipt of your complaints).`,
         `Offers. Any offer of resolution made to you will only become binding on us if accepted by you. An offer of resolution will not constitute any admission by us of any wrongdoing or liability regarding the subject matter of the complaint.`,
       ],
     },
@@ -488,19 +504,19 @@ export const myreceipt = {
     section13: {
       title: "General Terms and Conditions",
       paragraphs: [
-        `Limited License. We grant you a limited, non-exclusive, non-transferable license, subject to the terms of this Agreement, to access and use ${entityName} Site, and related content, materials, information (collectively, the "Content") solely for approved purposes as permitted by us from time to time. Any other use of ${entityName} Site or Content is expressly prohibited and all other right, title, and interest in ${entityName} Site or Content is exclusively the property of ${entityAlias2} and its licensors. You agree not to copy, transmit, distribute, sell, license, reverse engineer, modify, publish, or participate in the transfer or sale of, create derivative works from, or in any other way exploit any of the Content, in whole orin part.`,
-        `Website Accuracy. Although we intend to provide accurate and timely information on ${entityName} Site, ${entityName} Site (including, without limitation, the Content) may not always be entirely accurate, complete or current and may also include technical inaccuracies or typographical errors. In an effort to continue to provide you with as complete and accurate information as possible, information may, to the extent permitted by applicable law, be changed or updated from time to time without notice, including without limitation information regarding our policies, products and services. Accordingly, you should verify all information before relying on it, and all decisions based on information contained on ${entityName} Site are your sole responsibility and we shall have no liability for such decisions. Links to third-party materials (including without limitation websites) may be provided as a convenience but are not controlled by us. You acknowledge and agree that we are not responsible for any aspect of the information, content, or services contained in any third-party materials or on any third party sites accessible or linked to ${entityName} Site.`,
-        `Relationship of the Parties. Nothing in this Agreement shall be deemed or is intended to be deemed, nor shall it cause, either you or ${entityAlias2} to be treated as the agent of the other.`,
-        `Privacy of Others; Marketing. If you receive information about another user through ${entityName} Site services, you must keep the information confidential and only use it in connection with ${entityName} Site services. You may not disclose or distribute a user's information to a third party or use the information except as reasonably necessary to effect a transaction and other functions reasonably incidental thereto such as support, reconciliation and accounting unless you receive the user's express consent to do so. You may not send unsolicited email to a user through ${entityName} Site services.`,
-        `Security Breach. If you suspect that your ${entityAlias2} account or any of your security details have been compromised or if you become aware of any fraud or attempted fraud or any other security incident (including a cyber-security attack) affecting you and/or ${entityAlias2} (together a "Security Breach"), you must notify ${entityAlias2} support as soon as possible by email free of charge at ${entityEmail} and continue to provide accurate and up to date information throughout the duration of the Security Breach. You must take any steps that we reasonably require to reduce, manage or report any Security Breach. Failure to provide prompt notification of any Security Breach may be taken into account in our determination of the appropriate resolution of the matter.`,
+        `Limited License. We grant you a limited, non-exclusive, non-transferable license, subject to the terms of this Agreement, to access and use ${proName} Site, and related content, materials, information (collectively, the "Content") solely for approved purposes as permitted by us from time to time. Any other use of ${proName} Site or Content is expressly prohibited and all other right, title, and interest in ${proName} Site or Content is exclusively the property of ${proAlias2} and its licensors. You agree not to copy, transmit, distribute, sell, license, reverse engineer, modify, publish, or participate in the transfer or sale of, create derivative works from, or in any other way exploit any of the Content, in whole orin part.`,
+        `Website Accuracy. Although we intend to provide accurate and timely information on ${proName} Site, ${proName} Site (including, without limitation, the Content) may not always be entirely accurate, complete or current and may also include technical inaccuracies or typographical errors. In an effort to continue to provide you with as complete and accurate information as possible, information may, to the extent permitted by applicable law, be changed or updated from time to time without notice, including without limitation information regarding our policies, products and services. Accordingly, you should verify all information before relying on it, and all decisions based on information contained on ${proName} Site are your sole responsibility and we shall have no liability for such decisions. Links to third-party materials (including without limitation websites) may be provided as a convenience but are not controlled by us. You acknowledge and agree that we are not responsible for any aspect of the information, content, or services contained in any third-party materials or on any third party sites accessible or linked to ${proName} Site.`,
+        `Relationship of the Parties. Nothing in this Agreement shall be deemed or is intended to be deemed, nor shall it cause, either you or ${proAlias2} to be treated as the agent of the other.`,
+        `Privacy of Others; Marketing. If you receive information about another user through ${proName} Site services, you must keep the information confidential and only use it in connection with ${proName} Site services. You may not disclose or distribute a user's information to a third party or use the information except as reasonably necessary to effect a transaction and other functions reasonably incidental thereto such as support, reconciliation and accounting unless you receive the user's express consent to do so. You may not send unsolicited email to a user through ${proName} Site services.`,
+        `Security Breach. If you suspect that your ${proAlias2} account or any of your security details have been compromised or if you become aware of any fraud or attempted fraud or any other security incident (including a cyber-security attack) affecting you and/or ${proAlias2} (together a "Security Breach"), you must notify ${proAlias2} support as soon as possible by email free of charge at ${proEmail} and continue to provide accurate and up to date information throughout the duration of the Security Breach. You must take any steps that we reasonably require to reduce, manage or report any Security Breach. Failure to provide prompt notification of any Security Breach may be taken into account in our determination of the appropriate resolution of the matter.`,
         `Contact Information. You are responsible for keeping your email address up to date in your Account Profile in order to receive any notices or alerts that we may send you (including notices or alerts of actual or suspected Security Breach).`,
-        `Entire Agreement. This Agreement (including documents incorporated by reference herein) comprise the entire agreement between you and ${entityAlias2}.`,
+        `Entire Agreement. This Agreement (including documents incorporated by reference herein) comprise the entire agreement between you and ${proAlias2}.`,
         `Interpretation. Section headings in this Agreement are for convenience only, and shall not govern the meaning or interpretation of any provision of this Agreement.`,
-        `Transfer. This Agreement is personal to you and you cannot transfer or assign your rights, licenses, interests and/or obligations to anyone else. We may transfer or assign our rights licenses, interests and/or our obligations at any time, including as part of a merger, acquisition or other corporate reorganisation involving ${entityAlias2}, provided that this transfer or assignment does not materially impact the quality of the ${entityAlias2} services you receive.`,
+        `Transfer. This Agreement is personal to you and you cannot transfer or assign your rights, licenses, interests and/or obligations to anyone else. We may transfer or assign our rights licenses, interests and/or our obligations at any time, including as part of a merger, acquisition or other corporate reorganisation involving ${proAlias2}, provided that this transfer or assignment does not materially impact the quality of the ${proAlias2} services you receive.`,
         `Invalidity. If any provision of this Agreement is determined to be invalid or unenforceable under any applicable law, this will not affect the validity of any other provision.`,
         `Enforcement of Our Rights. We may not always strictly enforce our rights under this Agreement. If we do this, it will be just a temporary measure and we may enforce our rights strictly again at any time.`,
         `Language. This Agreement and any information or notifications that you or we are to provide should be in Indonesian and English. Any translation of this Agreement or other documents is provided for your convenience only. In the event of any inconsistency, the Indonesian and English language version of this Agreement or other documents shall prevail.`,
-        `Survival. All provisions of this Agreement which by their nature extend beyond the expiration or termination of this Agreement, including, without limitation, the sections relating to suspension or termination, ${entityAlias2} account cancellation, general use of ${entityName} Site, disputes with ${entityAlias2}, and general provisions, will continue to be binding and operate after the termination or expiration of this Agreement.`,
+        `Survival. All provisions of this Agreement which by their nature extend beyond the expiration or termination of this Agreement, including, without limitation, the sections relating to suspension or termination, ${proAlias2} account cancellation, general use of ${proName} Site, disputes with ${proAlias2}, and general provisions, will continue to be binding and operate after the termination or expiration of this Agreement.`,
       ],
     },
   }, // terms,
