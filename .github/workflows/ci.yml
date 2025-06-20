@@ -1,0 +1,40 @@
+# File: .github/workflows/ci.yml
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - preview
+      - memora
+      - far
+      - istiqlal
+      - labx
+  pull_request:
+    branches:
+      - main
+      - preview
+
+jobs:
+  build:
+    name: Build & Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Lint project
+        run: yarn lint
+
+      - name: Build project
+        run: yarn build

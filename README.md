@@ -1,4 +1,5 @@
-# PABRIK ROTI v.2.4.74
+# PABRIK ROTI ![version](https://img.shields.io/badge/version-2.4.74-blue) ![status](https://img.shields.io/badge/status-active-brightgreen) ![Build Status](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg)
+
 
 > "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by its community, and baked through the heat of shared struggles."
 >
@@ -10,6 +11,14 @@
 
 Link #1: https://memora.voyage.co.id/  
 Link #2: https://memora.endhonesa.com/
+
+---
+
+## Quick Start
+
+yarn && yarn dev
+
+If you find this useful, consider starring ⭐ the repository!
 
 ---
 
