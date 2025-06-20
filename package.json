@@ -32,12 +32,12 @@
   "dependencies": {
     "@vercel/analytics": "^1.5.0",
     "framer-motion": "^12.18.1",
-    "next": "15.3.3",
+    "next": "15.3.4",
     "qrcode.react": "^4.2.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
-    "thirdweb": "^5.103.0"
+    "thirdweb": "^5.103.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.3.1",
