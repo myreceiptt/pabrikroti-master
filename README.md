@@ -1,4 +1,5 @@
-# PABRIK ROTI ![version](https://img.shields.io/badge/version-2.4.74-blue) ![status](https://img.shields.io/badge/status-active-brightgreen) ![Build Status](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg)
+# PABRIK ROTI ![version](https://img.shields.io/badge/version-2.4.74-blue) ![status](https://img.shields.io/badge/status-active-brightgreen) ![Build Status](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg) ![Vercel](https://img.shields.io/vercel/deploy-status?app=pabrikroti-master&label=vercel)
+
 
 
 > "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by its community, and baked through the heat of shared struggles."
@@ -9,8 +10,8 @@
 
 ## Staging MeMoRa by F'ckd Up Voyage
 
-Link #1: https://memora.voyage.co.id/  
-Link #2: https://memora.endhonesa.com/
+Link #1: https://memora.voyage.co.id/ ![status](https://img.shields.io/badge/deploy-live-brightgreen)  
+Link #2: https://memora.endhonesa.com/ ![status](https://img.shields.io/badge/deploy-live-brightgreen)
 
 ---
 
