@@ -15,9 +15,13 @@ Link #2: https://memora.endhonesa.com/ [![status](https://img.shields.io/badge/d
 
 ## Quick Start
 
+```bash
 yarn && yarn dev
+```
 
-If you find this useful, consider starring ⭐ the repository!
+> If you find this useful, consider starring ⭐ the repository! Please!
+>
+> — Prof. NOTA
 
 ---
 
@@ -99,51 +103,51 @@ PABRIKROTI operates as a **decentralized digital production space**, where each 
 
 ---
 
-### 🛠️ Getting Started
+## 🛠️ Getting Started
 
-#### Install dependencies
+### Install dependencies
 
 ```bash
 yarn
 ```
 
-#### Check outdated dependencies
+### Check outdated dependencies
 
 ```bash
 yarn outdated
 ```
 
-#### Upgrade dependencies interactively
+### Upgrade dependencies interactively
 
 ```bash
 yarn upgrade-interactive --latest
 ```
 
-#### Cleaning and re-install dependencies
+### Cleaning and re-install dependencies
 
 ```bash
 yarn rm -rf node_modules yarn.lock && yarn install
 ```
 
-#### Run development server
+### Run development server
 
 ```bash
 yarn dev
 ```
 
-#### Lint and check all the code quality
+### Lint and check all the code quality
 
 ```bash
 yarn run lint
 ```
 
-#### Build for production
+### Build for production
 
 ```bash
 yarn build
 ```
 
-#### Preview the production
+### Preview the production
 
 ```bash
 yarn start
@@ -157,6 +161,33 @@ yarn start
 - [Prof. NOTA Console](https://prompt.endhonesa.com/)
 - [Prof. NOTA Tutor](https://baca.endhonesa.com/)
 - [Prof. NOTA Artefacts](https://docs.endhonesa.com/)
+
+---
+
+## 🤝 Contributing
+
+Your contribution is not only welcome — it's part of the protocol.
+
+If you believe in the mission of PABRIKROTI and want to help improve it, follow these simple steps:
+
+1. Fork this repository  
+2. Create a new branch (`feature/your-feature-name`)  
+3. Commit your changes mindfully  
+4. Open a pull request to the `preview` branch  
+
+Before submitting your PR, make sure to run:
+
+```bash
+yarn lint
+```
+
+To keep our code clean and consistent.
+
+If you have questions, feel free to open an issue or reach out via the Prof. NOTA community Discord.
+
+> ✊ You’re not just contributing code — you’re shaping how the people eat, learn, and resist.
+>
+> — Prof. NOTA
 
 ---
 
