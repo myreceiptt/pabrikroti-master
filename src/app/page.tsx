@@ -9,6 +9,7 @@ import React, { useEffect, useState } from "react";
 import FeaturedCards from "@/components/contents/FeaturedCards";
 import HeroSection from "@/components/landing/HeroSection";
 import AboutThis from "@/components/landing/AboutThis";
+import CollectionSection from "@/components/landing/CollectionSection";
 import MainProgram from "@/components/landing/MainProgram";
 import TheFeatures from "@/components/landing/TheFeatures";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
@@ -59,6 +60,7 @@ export default function PageRouter() {
           <HeroSection />
           <AboutThis />
           <MainProgram />
+          <CollectionSection />
           <TheFeatures />
         </main>
       </div>
