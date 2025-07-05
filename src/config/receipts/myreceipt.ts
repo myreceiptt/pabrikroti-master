@@ -1,36 +1,37 @@
 // /src/config/receipts/myreceipt.ts
 
 // All receipts should be exported from this file.
-const proTitle = "NFT FOR A REASON - NFT FAR";
-const proUrl = "https://far.futuloka.io";
-const proName = "NFT FAR by Futuloka";
-const proAlias1 = "NFT FAR";
-const proAlias2 = "Futuloka";
+const proTitle =
+  "Inamotion - Full Service with Motion Graphic and Creative Support";
+const proUrl = "https://www.inamotion.id";
+const proName = "Inamotion";
+const proAlias1 = "Inamotion";
+const proAlias2 = "Inamotion";
 const proAddress =
-  "Jl. Teuku Cik Ditiro II No.3 8, RT.1/RW.2, Gondangdia, Kec. Menteng, Kota Jakarta Pusat, Daerah Khusus Ibukota Jakarta 10350, INDONESIA";
-const proEmail = "kontak@futuloka.io";
-const termsMonth = "May";
+  "Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 10350, INDONESIA";
+const proEmail = "hello@inamotion.id";
+const termsMonth = "June";
 const termsDate = "30";
 const termsYear = "2025";
 const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const myreceipt = {
-  // colors hex libraries - nft for a reason
-  colorPrimary: "#FFFBEF", // Paling Terang
-  colorSecondary: "#4D1E10", // Paling Gelap
-  colorTertiary: "#FDD604", // Paling Identitas
-  colorPrimer: "#FFF0C9", // Terang
-  colorSekunder: "#7A4C00", // Gelap
-  colorTersier: "#E8DA32", // Identitas
+  // colors hex libraries - inamotion
+  colorPrimary: "#f2f2f2", // Warna latar utama. Kontras dengan colorSekunder. Untuk background utama halaman atau area besar.
+  colorPrimer: "#2e2e2e", // Warna teks utama. Kontras dengan colorPrimary. Untuk teks normal (judul, isi, deskripsi).
+  colorSecondary: "#e8e8e8", // Warna latar sekunder. Kontras dengan colorSekunder. Untuk isi konten, background komponen kecil (card, section, kontainer dalam).
+  colorSekunder: "#5a5a5a", // Warna identitas utama. Dominan, mencolok, brand feel. Selalu konsisten. Untuk tombol, link, badge utama, logo, brand highlight.
+  colorTertiary: "#d3d3d3", // Warna garis batas, outline, divider, batas antar elemen. Untuk memisahkan antar komponen secara halus, tidak mencolok.
+  colorTersier: "#1b1b1b", // Warna teks pasif, label kecil, hint, placeholder. Warna teks minor, untuk disabled button, subtitle, helper text, dll.
 
   // /src/app/layout.tsx
   proTitle, // layout, SearchWrapper, CoinAccess, CoinDetails, CoinsList, ConnectButtons, ConnectEmbeds, LoginLayout, NFTDetails, NFTsList, HeaderSection, ReusableMessage,
-  proDescription: `NFT FOR A REASON is a Web3 Initiative for Grassroots Culture & Creative Solidarity.`, // layout, ConnectButtons, ConnectEmbeds,
+  proDescription: `INAMOTION is a CREATIVE HOUSE which provide a full service of production house, post production with motion graphic interest, and creative support for agency.`, // layout, ConnectButtons, ConnectEmbeds,
   proUrl, // layout, ConnectButtons, ConnectEmbeds,
-  proPublisher: "Futuloka", // layout,
+  proPublisher: "Inamotion", // layout,
   proLocale: "en-US", // layout,
   proFavicon: "/favicon.ico", // layout,
-  proImage: "https://far.futuloka.io/preview-image.png", // layout,
+  proImage: "https://www.inamotion.id/preview-image.png", // layout,
   proLang: "en", // layout,
 
   // /src/components/logins/ConnectButtons.tsx
@@ -45,11 +46,12 @@ export const myreceipt = {
   loginArt: "/images/login-art.png", // LoginLayout,
   loginBanner: "/images/login-banner.png", // LoginLayout,
   loginAria: "Call to action for login.", // LoginLayout,
-  loginCall: "It is a solidarity movement", // LoginLayout,
+  loginCall: "Collect the artworks", // LoginLayout,
   loginReason: {
-    text: `for artists, cultural workers, and communities to shape the Web3 era together.`,
-    anchor: "",
-    link: "https://far.futuloka.io/medias/nft-far-journey-and-whitepaper.pdf",
+    text1: `for fun and as a validator, to claim interesting surprises in the future`,
+    anchor: `...`,
+    link: "https://www.inamotion.id/the-whitepaper.pdf",
+    text2: ``,
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
@@ -95,6 +97,7 @@ export const myreceipt = {
   footTerms: "Terms of Service", // FooterSection,
   footPower: "/images/footer-power.png", // FooterSection,
   footSocial: "Follow our solidarity movement!", // FooterSection,
+  footGitHub: "", // FooterSection,
   footXTwitter: "https://x.com/futuloka", // FooterSection,
   footLinkedIn: "", // FooterSection,
   footInstagram: "https://www.instagram.com/futuloka/", // FooterSection,
@@ -154,14 +157,14 @@ export const myreceipt = {
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
       image: "/roti/landing/slider-0.png",
-      cta: { text: "Get Started", href: "/coins" },
+      cta: { text: "Get Started", href: "/coins", target: "_blank" },
     },
     {
       title: "Programmed Batch Breads",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
       image: "/roti/landing/slider-1.png",
-      cta: { text: "Get Started", href: "/coins" },
+      cta: { text: "Get Started", href: "/coins", target: "_blank" },
     },
   ],
 

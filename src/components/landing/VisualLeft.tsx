@@ -19,13 +19,15 @@ export default function VisualLeft() {
   if (!block) return null;
 
   return (
-    <section className="w-full py-20 px-4 flex flex-col md:flex-row items-center gap-12" id="when">
+    <section
+      className="w-full py-20 px-4 flex flex-col md:flex-row items-center gap-12"
+      id="when">
       <Image
         src={block.image}
         alt={block.title}
         width={500}
         height={300}
-        className="rounded-xl object-cover"
+        className="rounded-2xl md:rounded-xl lg:rounded-2xl object-cover"
       />
       <div className="max-w-md">
         <h2 className="text-2xl font-bold mb-2">{block.title}</h2>

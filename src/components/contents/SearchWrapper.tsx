@@ -339,7 +339,7 @@ export default function SearchWrapper() {
             alt={receipt.proTitle}
             width={4096}
             height={1109}
-            className="rounded-3xl"
+            className="rounded-xl md:rounded-2xl lg:rounded-3xl"
             objectFit="cover"
             objectPosition="top"
             priority
@@ -392,7 +392,7 @@ export default function SearchWrapper() {
             disabled={visibleCount === INITIAL_ITEMS}
             style={{
               color: receipt.colorSecondary,
-              background: receipt.colorTertiary,
+              background: receipt.colorSekunder,
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
@@ -411,7 +411,7 @@ export default function SearchWrapper() {
           }}
           style={{
             color: receipt.colorSecondary,
-            background: receipt.colorTertiary,
+            background: receipt.colorSekunder,
           }}
           className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
@@ -433,7 +433,7 @@ export default function SearchWrapper() {
             disabled={visibleCount >= searchResults.length}
             style={{
               color: receipt.colorSecondary,
-              background: receipt.colorTertiary,
+              background: receipt.colorSekunder,
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= searchResults.length ? "" : "cursor-pointer"

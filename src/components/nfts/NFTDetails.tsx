@@ -309,7 +309,7 @@ export default function NFTDetails() {
             alt={receipt.proTitle}
             width={4096}
             height={1109}
-            className="rounded-3xl"
+            className="rounded-xl md:rounded-2xl lg:rounded-3xl"
             objectFit="cover"
             objectPosition="top"
             priority

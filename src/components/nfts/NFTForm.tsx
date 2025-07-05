@@ -202,12 +202,12 @@ export default function NFTForm({
   return (
     <div className="w-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">
       {/* MediaRenderer (Left Column) */}
-      <div className="rounded-3xl overflow-hidden w-full">
+      <div className="rounded-2xl md:rounded-xl lg:rounded-2xl overflow-hidden w-full">
         <MediaRenderer
           client={client}
           src={nftImage}
           alt={nftName}
-          className="rounded-3xl w-full"
+          className="w-full"
         />
       </div>
 
@@ -216,7 +216,7 @@ export default function NFTForm({
         <div className="w-full flex flex-row gap-2 items-start justify-between">
           {/* Title */}
           <h1
-            style={{ color: receipt.colorSecondary }}
+            style={{ color: receipt.colorPrimer }}
             className="text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
             {nftName}
           </h1>
@@ -224,12 +224,12 @@ export default function NFTForm({
 
         <div className="flex flex-row gap-2">
           <h1
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: receipt.colorTersier }}
             className="text-left text-sm font-medium">
             {receipt.nftFormBy}
           </h1>
           <span
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: receipt.colorTersier }}
             className="text-3xl leading-6">
             &#9673;
           </span>
@@ -254,29 +254,29 @@ export default function NFTForm({
         {/* NFT Info */}
         <div className="w-full grid grid-cols-8">
           <h2
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: receipt.colorTersier }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.nftFormPrice}
           </h2>
           <h2
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: receipt.colorTersier }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.nftFormOwned}
           </h2>
           <h2
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: receipt.colorTersier }}
             className="col-span-2 text-left text-xs font-medium">
             {receipt.nftFormRefresh}
           </h2>
 
           <h2
-            style={{ color: receipt.colorSecondary }}
-            className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
+            style={{ color: receipt.colorPrimer }}
+            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold">
             {formattedPrice}
           </h2>
           <h2
-            style={{ color: receipt.colorSecondary }}
-            className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
+            style={{ color: receipt.colorPrimer }}
+            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold">
             {ownedNFTs ? ownedNFTs.toString() : "0"}
           </h2>
           <button
@@ -290,9 +290,9 @@ export default function NFTForm({
             }}
             style={{
               color: receipt.colorSecondary,
-              background: receipt.colorTertiary,
+              background: receipt.colorSekunder,
             }}
-            className={`col-span-2 aspect-auto rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
+            className={`col-span-2 aspect-auto rounded-md text-center text-sm xl:text-lg font-semibold outline-none disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
             } flex items-center justify-center`}>
             <motion.div
@@ -302,31 +302,31 @@ export default function NFTForm({
                 duration: 0.74,
                 ease: "linear",
               }}>
-              <FaRotate className="text-base lg:text-lg font-semibold" />
+              <FaRotate />
             </motion.div>
           </button>
         </div>
 
         <div className="w-full grid grid-cols-8">
           <h2
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: receipt.colorTersier }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.nftFormEdition}
           </h2>
           <h2
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: receipt.colorTersier }}
             className="col-span-3 text-left text-xs font-medium">
             {receipt.coinFormOnChain}
           </h2>
           <h2
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: receipt.colorTersier }}
             className="col-span-2 text-left text-xs font-medium">
             {receipt.nftFormAmount}
           </h2>
 
           <h2
-            style={{ color: receipt.colorSecondary }}
-            className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
+            style={{ color: receipt.colorPrimer }}
+            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold">
             {supply.toString()}/
             {maxClaim === MAX_UINT256 ? (
               <span className="">&#8734;</span>
@@ -335,8 +335,8 @@ export default function NFTForm({
             )}
           </h2>
           <h2
-            style={{ color: receipt.colorSecondary }}
-            className="col-span-3 text-left text-base lg:text-md xl:text-xl font-semibold">
+            style={{ color: receipt.colorPrimer }}
+            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold">
             {chainName}
           </h2>
           <input
@@ -357,11 +357,11 @@ export default function NFTForm({
             }}
             style={{
               color: receipt.colorSecondary,
-              background: receipt.colorTertiary,
-              opacity: buttonDisabled ? 0.5 : 1,
-              cursor: buttonDisabled ? "not-allowed" : "text",
+              background: receipt.colorSekunder,
+              opacity: isProcessing || buttonDisabled ? 0.5 : 1,
+              cursor: isProcessing || buttonDisabled ? "not-allowed" : "text",
             }}
-            className="col-span-2 aspect-auto rounded-lg text-center text-base lg:text-lg font-semibold outline-none"
+            className="col-span-2 aspect-auto rounded-md text-center text-sm xl:text-lg font-semibold outline-none"
           />
         </div>
 
@@ -369,19 +369,14 @@ export default function NFTForm({
         <ClaimButton
           unstyled
           style={{
-            color:
-              isProcessing || buttonDisabled
-                ? receipt.colorSekunder
-                : receipt.colorSecondary,
-            backgroundColor:
-              isProcessing || buttonDisabled
-                ? receipt.colorPrimary
-                : receipt.colorTertiary,
+            color: receipt.colorSecondary,
             border: "2px solid",
             borderColor:
               isProcessing || buttonDisabled
                 ? receipt.colorTertiary
                 : "transparent",
+            backgroundColor: receipt.colorSekunder,
+            opacity: isProcessing || buttonDisabled ? 0.5 : 1,
           }}
           className={`w-full rounded-lg p-2 text-base font-semibold transition-colors duration-300 ease-in-out
               ${isProcessing || buttonDisabled ? "" : "cursor-pointer"}
@@ -425,7 +420,7 @@ export default function NFTForm({
           {buttonLabel}
         </ClaimButton>
         <h4
-          style={{ color: receipt.colorSekunder }}
+          style={{ color: receipt.colorTersier }}
           className="text-left text-xs font-medium">
           {receipt.nftFormMax}{" "}
           {perWallet === MAX_UINT256 ? (

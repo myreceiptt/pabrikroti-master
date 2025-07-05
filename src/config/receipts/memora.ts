@@ -16,12 +16,12 @@ const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const memora = {
   // colors hex libraries - origin
-  colorPrimary: "#F9F9F9", // Terang
-  colorSecondary: "#262525", // Gelap XXX
-  colorTertiary: "#707070", // Abu2 Gelap
-  colorPrimer: "#F0F0F0", // Terang Dikit
-  colorSekunder: "#171717", // Gelap
-  colorTersier: "#DFDFDF", // Abu2 Terang
+  colorPrimary: "#F9F9F9", // Warna latar utama.
+  colorPrimer: "#262525", // Warna teks utama.
+  colorSecondary: "#F0F0F0", // Warna latar sekunder.
+  colorSekunder: "#171717", // Warna identitas utama.
+  colorTertiary: "#DFDFDF", // Warna garis batas.
+  colorTersier: "#707070", // Warna teks pasif.
 
   // /src/app/layout.tsx
   proTitle, // layout, SearchWrapper, CoinAccess, CoinDetails, CoinsList, ConnectButtons, ConnectEmbeds, LoginLayout, NFTDetails, NFTsList, HeaderSection, ReusableMessage,
@@ -47,9 +47,10 @@ export const memora = {
   loginAria: "Call to action for login.", // LoginLayout,
   loginCall: "Get Ready!", // LoginLayout,
   loginReason: {
-    text: "Register now to immerse yourself in MeMoRa Experience!",
-    anchor: "",
+    text1: `Register now to immerse yourself in MeMoRa Experience!`,
+    anchor: ``,
     link: "",
+    text2: ``,
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
@@ -95,6 +96,7 @@ export const memora = {
   footTerms: "Terms of Service", // FooterSection,
   footPower: "/memora/images/footer-power.png", // FooterSection,
   footSocial: "Join Voyage's Community!", // FooterSection,
+  footGitHub: "", // FooterSection,
   footXTwitter: "", // FooterSection,
   footLinkedIn: "https://www.linkedin.com/company/voyage-web3/about/", // FooterSection,
   footInstagram: "https://www.instagram.com/voyage.web3/", // FooterSection,
@@ -155,14 +157,14 @@ export const memora = {
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
       image: "/roti/landing/slider-0.png",
-      cta: { text: "Get Started", href: "/coins" },
+      cta: { text: "Get Started", href: "/coins", target: "_blank" },
     },
     {
       title: "Programmed Batch Breads",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
       image: "/roti/landing/slider-1.png",
-      cta: { text: "Get Started", href: "/coins" },
+      cta: { text: "Get Started", href: "/coins", target: "_blank" },
     },
   ],
 

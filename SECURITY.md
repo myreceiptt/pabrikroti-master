@@ -4,13 +4,15 @@
 
 We follow a modular release structure tied to tenant-specific deployments. Only stable branches with production deployments are eligible for ongoing security updates.
 
-| Version | Status        |
-| ------- | ------------- |
-| 2.4.x   | Supported     |
-| 2.2-3.x | Supported     |
-| 2.1.11  | Not supported |
-| 1.1-3.3 | Deprecated    |
-| 0.1.0.1 | Init          |
+| Version | Status     |
+| ------- | ---------- |
+| 2.4.x   | Supported  |
+| 2.3.33  | Supported  |
+| 2.2.22  | Supported  |
+| 2.1.11  | Deprecated |
+| 1.3.3   | Deprecated |
+| 1.1.3   | Deprecated |
+| 0.1.0   | Init       |
 
 If you're using a customized fork or internal derivative based on PABRIKROTI, we recommend merging upstream patches manually or contacting our security team.
 

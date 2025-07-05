@@ -24,7 +24,7 @@ export default function VideoEmbed() {
         <iframe
           src={url}
           title="Embedded Video"
-          className="w-full h-full rounded-xl"
+          className="w-full h-full rounded-xl md:rounded-2xl lg:rounded-3xl"
           allowFullScreen
         />
       </div>

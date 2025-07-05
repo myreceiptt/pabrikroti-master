@@ -26,12 +26,12 @@ export default function Message({
       {/* Top Section - Content Box */}
       <div className="w-full flex flex-col gap-2 items-center justify-center text-center px-0 sm:px-4">
         <h2
-          style={{ color: receipt.colorSecondary }}
+          style={{ color: receipt.colorPrimer }}
           className="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal">
           {message1}
         </h2>
         <h3
-          style={{ color: receipt.colorSekunder }}
+          style={{ color: receipt.colorPrimer }}
           className="text-center text-sm font-medium">
           {message2}
         </h3>
@@ -43,7 +43,7 @@ export default function Message({
             type="button"
             style={{
               color: receipt.colorSecondary,
-              backgroundColor: receipt.colorTertiary,
+              backgroundColor: receipt.colorSekunder,
             }}
             className="rounded-lg py-4 px-12 text-base font-semibold cursor-pointer">
             {message3}
@@ -58,7 +58,7 @@ export default function Message({
           alt={receipt.proTitle}
           width={4096}
           height={1109}
-          className="rounded-3xl"
+          className="rounded-xl md:rounded-2xl lg:rounded-3xl"
           objectFit="cover"
           objectPosition="top"
           priority

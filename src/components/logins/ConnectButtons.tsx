@@ -10,6 +10,7 @@ import { client } from "@/config/client";
 import { dompets } from "@/config/dompets";
 import { getActiveReceipt } from "@/config/receipts";
 import { chain, chains } from "@/config/rantais";
+import { hexToRgba } from "@/config/utils";
 
 export default function ConnectButtons() {
   const {
@@ -31,7 +32,6 @@ export default function ConnectButtons() {
           logoUrl: receipt.proLogo,
         }}
         connectButton={{
-          className: " ",
           label: <FaUserLarge />,
           style: {
             minWidth: "2.5rem",
@@ -42,8 +42,10 @@ export default function ConnectButtons() {
             justifyContent: "center",
             fontSize: "1.25rem",
             borderRadius: "0.5rem",
-            backgroundColor: receipt.colorTertiary,
-            color: receipt.colorSekunder,
+            border: "1px solid",
+            color: receipt.colorSecondary,
+            borderColor: receipt.colorTertiary,
+            backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
           },
         }}
         connectModal={{
@@ -64,10 +66,11 @@ export default function ConnectButtons() {
           render: () => (
             <button
               style={{
-                color: receipt.colorSekunder,
-                backgroundColor: receipt.colorTertiary,
+                color: receipt.colorSecondary,
+                borderColor: receipt.colorTertiary,
+                backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
               }}
-              className="w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer">
+              className="w-10 h-10 flex items-center justify-center text-xl border rounded-lg cursor-pointer">
               <FaUserLarge />
             </button>
           ),

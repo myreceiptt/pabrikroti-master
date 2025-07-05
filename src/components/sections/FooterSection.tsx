@@ -10,6 +10,7 @@ import {
   FaDiscord,
   FaEnvelope,
   FaFacebook,
+  FaGithub,
   FaGlobe,
   FaInstagram,
   FaLinkedin,
@@ -30,8 +31,11 @@ export default function Footer() {
 
   return (
     <footer
-      style={{ backgroundColor: receipt.colorTertiary }}
-      className="w-full py-4 px-4 md:px-20">
+      style={{
+        borderColor: receipt.colorTertiary,
+        backgroundColor: receipt.colorSecondary,
+      }}
+      className="w-full py-4 px-4 md:px-20 border-t">
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
         <div className="w-full flex flex-col">
           {/* Newsletter Signup */}
@@ -40,17 +44,30 @@ export default function Footer() {
         <div className="w-full flex flex-col">
           {/* Social Media Links */}
           <h3
-            style={{ color: receipt.colorSecondary }}
+            style={{ color: receipt.colorSekunder }}
             className="sm:text-end text-center text-xs sm:text-sm md:text-base font-semibold">
             {receipt.footSocial}
           </h3>
           <div className="flex gap-2 mt-2 sm:justify-end justify-center">
+            {receipt.footGitHub && (
+              <Link
+                href={receipt.footGitHub}
+                target="_blank"
+                style={{
+                  color: receipt.colorSecondary,
+                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaGithub />
+              </Link>
+            )}
+
             {receipt.footXTwitter && (
               <Link
                 href={receipt.footXTwitter}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
+                  color: receipt.colorSecondary,
                   backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
@@ -63,7 +80,7 @@ export default function Footer() {
                 href={receipt.footLinkedIn}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
+                  color: receipt.colorSecondary,
                   backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
@@ -76,7 +93,7 @@ export default function Footer() {
                 href={receipt.footInstagram}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
+                  color: receipt.colorSecondary,
                   backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
@@ -89,7 +106,7 @@ export default function Footer() {
                 href={receipt.footFacebook}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
+                  color: receipt.colorSecondary,
                   backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
@@ -102,7 +119,7 @@ export default function Footer() {
                 href={receipt.footDiscord}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
+                  color: receipt.colorSecondary,
                   backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
@@ -115,7 +132,7 @@ export default function Footer() {
                 href={receipt.footYouTube}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
+                  color: receipt.colorSecondary,
                   backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
@@ -128,7 +145,7 @@ export default function Footer() {
                 href={receipt.footEmail}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
+                  color: receipt.colorSecondary,
                   backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
@@ -141,7 +158,7 @@ export default function Footer() {
                 href={receipt.footWhatsApp}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
+                  color: receipt.colorSecondary,
                   backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
@@ -154,7 +171,7 @@ export default function Footer() {
                 href={receipt.footWebsite}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
+                  color: receipt.colorSecondary,
                   backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
@@ -168,13 +185,13 @@ export default function Footer() {
       {/* Bottom Section */}
       <div
         style={{
-          borderColor: hexToRgba(receipt.colorSekunder, 0.7),
+          borderColor: receipt.colorTertiary,
         }}
         className="w-full border-t mt-4 pt-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
         {/* Copyrights */}
         <div
           style={{
-            color: receipt.colorSecondary,
+            color: receipt.colorSekunder,
           }}
           className="w-full text-xs text-center sm:text-left">
           <p>
@@ -189,9 +206,9 @@ export default function Footer() {
               href="/terms"
               target="_blank"
               style={{
-                color: receipt.colorSecondary,
+                color: receipt.colorSekunder,
               }}
-              className="text-xs text-center sm:text-left">
+              className="text-xs text-center sm:text-left hover:underline">
               {receipt.footTerms} & {receipt.footPrivacy}
             </Link>
           </div>

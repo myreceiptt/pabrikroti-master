@@ -17,12 +17,15 @@ export default function FeatureGrid() {
   const features = receipt.features;
 
   return (
-    <section className="w-full bg-gray-50 py-16" id="why">
-      <div className="max-w-6xl mx-auto px-6 grid gap-8 grid-cols-1 md:grid-cols-3">
+    <section
+      style={{ background: receipt.colorTersier }}
+      className="w-full py-16 rounded-xl md:rounded-2xl lg:rounded-3xl"
+      id="why">
+      <div className="max-w-6xl mx-auto px-6 grid gap-8 grid-cols-1 lg:grid-cols-3">
         {features.map((feat, i) => (
           <div
             key={i}
-            className="flex flex-col justify-between gap-4 bg-white rounded-xl shadow p-6">
+            className="flex flex-col justify-between gap-4 bg-white rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl shadow p-6">
             <div>
               <div className="text-4xl">{feat.icon}</div>
               <h3 className="text-xl font-bold mt-2">{feat.title}</h3>
@@ -32,7 +35,7 @@ export default function FeatureGrid() {
               <ReusableCTA
                 text={feat.cta.text}
                 href={feat.cta.href}
-                className="mt-4 self-start"
+                className="w-full mt-4 self-start"
               />
             )}
           </div>

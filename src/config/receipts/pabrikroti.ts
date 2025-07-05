@@ -15,13 +15,13 @@ const termsYear = "2024";
 const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const pabrikroti = {
-  // colors hex libraries - graffiti mist
-  colorPrimary: "#F2F2F2", // Abu terang polesan dinding tua
-  colorSecondary: "#1B1B1B", // Hitam industrial
-  colorTertiary: "#E8E8E8", // Abu terang berkabut
-  colorPrimer: "#2E2E2E", // Abu arang (dari background Image 1)
-  colorSekunder: "#5A5A5A", // Abu medium kasar
-  colorTersier: "#D3D3D3", // Abu terang pastel
+  // colors hex libraries - pabrikroti
+  colorPrimary: "#f2f2f2", // Warna latar utama. Kontras dengan colorSekunder. Untuk background utama halaman atau area besar.
+  colorPrimer: "#2e2e2e", // Warna teks utama. Kontras dengan colorPrimary. Untuk teks normal (judul, isi, deskripsi).
+  colorSecondary: "#e8e8e8", // Warna latar sekunder. Kontras dengan colorSekunder. Untuk isi konten, background komponen kecil (card, section, kontainer dalam).
+  colorSekunder: "#5a5a5a", // Warna identitas utama. Dominan, mencolok, brand feel. Selalu konsisten. Untuk tombol, link, badge utama, logo, brand highlight.
+  colorTertiary: "#d3d3d3", // Warna garis batas, outline, divider, batas antar elemen. Untuk memisahkan antar komponen secara halus, tidak mencolok.
+  colorTersier: "#1b1b1b", // Warna teks pasif, label kecil, hint, placeholder. Warna teks minor, untuk disabled button, subtitle, helper text, dll.
 
   // /src/app/layout.tsx
   proTitle, // layout, SearchWrapper, CoinAccess, CoinDetails, CoinsList, ConnectButtons, ConnectEmbeds, LoginLayout, NFTDetails, NFTsList, HeaderSection, ReusableMessage,
@@ -47,9 +47,10 @@ export const pabrikroti = {
   loginAria: "Call to action for login.", // LoginLayout,
   loginCall: "In The Breads Factory...", // LoginLayout,
   loginReason: {
-    text: "many kinds of Bread were Designed, Produced, Programmed, also Distributed",
-    anchor: "...",
+    text1: `many kinds of `,
+    anchor: `Bread `,
     link: "https://nota.endhonesa.com/profile/breads",
+    text2: ` were Designed, Produced, Programmed, also Distributed.`,
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to eat these", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
@@ -89,21 +90,22 @@ export const pabrikroti = {
   ddSorterClaim: "Can Be Swallowed", // DropDownSorter,
 
   // /src/components/sections/FooterSection.tsx - disable by nullifying the string
-  footCopyRight: "Every stomach must be hungry.", // FooterSection,
-  footLicensed: "Officially hungry and satisfied by", // FooterSection,
+  footCopyRight: "Every stomach will be hungry.", // FooterSection,
+  footLicensed: "Officially starved and satiated by", // FooterSection,
   footPrivacy: "Privacy Policy", // FooterSection,
   footTerms: "Terms of Service", // FooterSection,
   footPower: "/roti/images/footer-power.png", // FooterSection,
   footSocial: "Eat all our updates for free!", // FooterSection,
+  footGitHub: "https://github.com/myreceiptt/pabrikroti-master/releases", // FooterSection,
   footXTwitter: "https://x.com/MyReceiptTT", // FooterSection,
   footLinkedIn: "", // FooterSection,
   footInstagram: "https://www.instagram.com/myreceipt/", // FooterSection,
-  footFacebook: "https://www.facebook.com/myreceiptt", // FooterSection,
+  footFacebook: "", // FooterSection,
   footDiscord: "https://discord.gg/5KrsT6MbFm", // FooterSection,
   footYouTube: "", // FooterSection,
   footEmail: "mailto:nota@endhonesa.com", // FooterSection,
   footWhatsApp: "https://wa.me/message/DPRNCTJA2Q52L1", // FooterSection,
-  footWebsite: "https://nota.endhonesa.com/", // FooterSection,
+  footWebsite: "", // FooterSection,
 
   // /src/components/sections/HeaderSection.tsx
   headerLogo: "/roti/images/header-logo.png", // HeaderSection,
@@ -129,19 +131,19 @@ export const pabrikroti = {
   features: [
     {
       icon: "🍞",
-      title: "NFT Claiming",
+      title: "Free Artisan",
       description: "Claim digital assets as real bread.",
       cta: { text: "Claim Now", href: "/free" },
     },
     {
       icon: "🍞",
-      title: "NFT Claiming",
+      title: "Paid Artisan",
       description: "Claim digital assets as real bread.",
       cta: { text: "Claim Now", href: "/free" },
     },
     {
       icon: "🍞",
-      title: "NFT Claiming",
+      title: "Batch Breads",
       description: "Claim digital assets as real bread.",
       cta: { text: "Claim Now", href: "/free" },
     },
@@ -150,18 +152,26 @@ export const pabrikroti = {
   // /src/components/landing/HeroSlider.tsx - disable by nullifying the string set
   heroSlides: [
     {
-      title: "Programmed Artisan Breads",
+      title: "Pabrik Roti",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
       image: "/roti/landing/slider-0.png",
-      cta: { text: "Get Started", href: "/coins" },
+      cta: {
+        text: "Read More",
+        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/README.md#-general-information",
+        target: "_blank",
+      },
     },
     {
-      title: "Programmed Batch Breads",
-      subtitle: "Digitally baked. Publicly shared.",
-      description: "We tokenize culture and rewards.",
+      title: "Prof. NOTA Inc.",
+      subtitle: "We do not wait for the future.",
+      description: `We write it—line by line, block by block.`,
       image: "/roti/landing/slider-1.png",
-      cta: { text: "Get Started", href: "/coins" },
+      cta: {
+        text: "Read More",
+        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/README.md#-manifestos",
+        target: "_blank",
+      },
     },
   ],
 
@@ -308,7 +318,7 @@ export const pabrikroti = {
   coinClaimed: "Swallowed", // coin lister, coin form,
   coinListerImage: "/roti/medias/batch-bread.png", // coin lister, coin form,
   coinListerName: "A Batch Bread", // coin lister, coin form,
-  coinListerSupply: "Crumb of Batch:", // coin lister, coin details,
+  coinListerSupply: "Crumbs:", // coin lister, coin details,
   coinListerOf: "of", // coin lister, coin form,
 
   // coin fallback page

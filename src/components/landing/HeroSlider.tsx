@@ -13,6 +13,7 @@ import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import ReusableCTA from "@/components/landing/ReusableCTA";
+import { openPack } from "thirdweb/extensions/erc1155";
 
 export default function HeroSlider() {
   const { receipt } = getActiveReceipt();
@@ -30,7 +31,7 @@ export default function HeroSlider() {
     <section id="what" className="w-full">
       <div
         style={{ background: receipt.colorSecondary }}
-        className="relative w-full aspect-[64/27] overflow-hidden rounded-lg md:rounded-xl lg:rounded-2xl">
+        className="relative w-full aspect-[64/27] overflow-hidden rounded-xl md:rounded-2xl lg:rounded-3xl">
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -44,50 +45,62 @@ export default function HeroSlider() {
                 src={slides[currentSlide].image}
                 alt={slides[currentSlide].title}
                 fill
-                className="object-cover rounded-md"
+                className="object-cover rounded-xl md:rounded-2xl lg:rounded-3xl"
                 sizes="100vw"
                 priority
               />
             </Link>
           </motion.div>
         </AnimatePresence>
-      </div>
 
-      <div className="flex flex-col items-center justify-center text-center gap-6 px-4 md:px-8 lg:px-20 max-w-screen-lg ml-auto mt-6">
-        <AnimatePresence mode="wait">
-          <motion.div
-            key={`text-${currentSlide}`}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            transition={{ duration: 0.6 }}
-            className="w-full flex flex-col items-end text-right">
-            <h1 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold">
-              {slides[currentSlide].title}
-            </h1>
+        {/* Overlay content di kanan atas */}
+        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 lg:top-10 lg:right-10 max-w-[60%] text-right z-10">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={`text-${currentSlide}`}
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 1.11 }}
+              className="flex flex-col items-end gap-2">
+              <h1
+                style={{ color: receipt.colorPrimary }}
+                className="hidden sm:flex text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold drop-shadow-lg">
+                {slides[currentSlide].title}
+              </h1>
 
-            {slides[currentSlide].subtitle && (
-              <h2 className="text-sm sm:text-base md:text-lg lg:text-xl">
-                {slides[currentSlide].subtitle}
-              </h2>
-            )}
+              {slides[currentSlide].subtitle && (
+                <h2
+                  style={{ color: receipt.colorPrimary }}
+                  className="hidden sm:flex text-sm sm:text-base md:text-lg lg:text-xl drop-shadow-md">
+                  {slides[currentSlide].subtitle}
+                </h2>
+              )}
 
-            {slides[currentSlide].description && (
-              <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-xl ml-auto">
-                {slides[currentSlide].description}
-              </p>
-            )}
+              {slides[currentSlide].description && (
+                <p
+                  style={{
+                    color: receipt.colorPrimary,
+                    opacity: 0.8,
+                    textShadow: "0 1px 1px rgba(0, 0, 0, 0.25)", // similar to Tailwind's default drop-shadow
+                  }}
+                  className="hidden sm:flex text-xs sm:text-sm md:text-base max-w-md">
+                  {slides[currentSlide].description}
+                </p>
+              )}
 
-            {slides[currentSlide].cta && (
-              <div className="mt-4">
-                <ReusableCTA
-                  text={slides[currentSlide].cta.text}
-                  href={slides[currentSlide].cta.href}
-                />
-              </div>
-            )}
-          </motion.div>
-        </AnimatePresence>
+              {slides[currentSlide].cta && (
+                <div className="mt-2">
+                  <ReusableCTA
+                    text={slides[currentSlide].cta.text}
+                    href={slides[currentSlide].cta.href}
+                    target={slides[currentSlide].cta.target}
+                  />
+                </div>
+              )}
+            </motion.div>
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );

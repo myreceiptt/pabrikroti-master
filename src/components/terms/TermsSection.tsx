@@ -29,7 +29,7 @@ export default function TermsSection({
     <section className="space-y-4">
       {/* Section Title */}
       <h3
-        style={{ color: receipt.colorSecondary }}
+        style={{ color: receipt.colorPrimer }}
         className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold uppercase">
         {title}
       </h3>
@@ -38,7 +38,7 @@ export default function TermsSection({
       {paragraphs?.map((text, i) => (
         <p
           key={`p-${i}`}
-          style={{ color: receipt.colorSekunder }}
+          style={{ color: receipt.colorPrimer }}
           className="text-sm font-medium leading-relaxed">
           {text}
         </p>
@@ -50,7 +50,7 @@ export default function TermsSection({
           {unorderedList.map((item, i) => (
             <li
               key={`ul-${i}`}
-              style={{ color: receipt.colorSekunder }}
+              style={{ color: receipt.colorPrimer }}
               className="text-sm font-medium leading-relaxed">
               {item}
             </li>
@@ -64,7 +64,7 @@ export default function TermsSection({
           {orderedList.map((item, i) => (
             <li
               key={`ol-${i}`}
-              style={{ color: receipt.colorSekunder }}
+              style={{ color: receipt.colorPrimer }}
               className="text-sm font-medium leading-relaxed">
               {item}
             </li>
@@ -76,7 +76,7 @@ export default function TermsSection({
       {paragraphsAfterList?.map((text, i) => (
         <p
           key={`after-${i}`}
-          style={{ color: receipt.colorSekunder }}
+          style={{ color: receipt.colorPrimer }}
           className="text-sm font-medium leading-relaxed">
           {text}
         </p>

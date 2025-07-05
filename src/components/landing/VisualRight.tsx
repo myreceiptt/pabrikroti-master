@@ -19,7 +19,9 @@ export default function VisualRight() {
   if (!block) return null;
 
   return (
-    <section className="w-full py-20 px-4 flex flex-col-reverse md:flex-row items-center gap-12" id="where">
+    <section
+      className="w-full py-20 px-4 flex flex-col-reverse md:flex-row items-center gap-12"
+      id="where">
       <div className="max-w-md">
         <h2 className="text-2xl font-bold mb-2">{block.title}</h2>
         <p className="text-gray-700 mb-4">{block.description}</p>
@@ -30,7 +32,7 @@ export default function VisualRight() {
         alt={block.title}
         width={500}
         height={300}
-        className="rounded-xl object-cover"
+        className="rounded-2xl md:rounded-xl lg:rounded-2xl object-cover"
       />
     </section>
   );
