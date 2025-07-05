@@ -13,7 +13,6 @@ import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import ReusableCTA from "@/components/landing/ReusableCTA";
-import { openPack } from "thirdweb/extensions/erc1155";
 
 export default function HeroSlider() {
   const { receipt } = getActiveReceipt();
