@@ -1,4 +1,12 @@
-PABRIK ROTI v.2.2.22: Staging Istiqlal Digital Legacy by NFT Indonesia
+# PABRIK ROTI [![version](https://img.shields.io/badge/version-2.2.22-blue)](https://github.com/myreceiptt/pabrikroti-master/releases/tag/v.2.2.22-istiqlal)
+
+> "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by its community, and baked through the heat of shared struggles."
+>
+> — Prof. NOTA
+
+---
+
+## PABRIK ROTI v.2.2.22: Staging Istiqlal Digital Legacy by NFT Indonesia
 
 Link #1: https://nft.istiqlal.or.id/  
 Link #2: https://leminerale.istiqlal.or.id/  
