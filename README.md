@@ -1,4 +1,12 @@
-PABRIK ROTI v.2.3.33: Staging NFT FAR by Futuloka
+# PABRIK ROTI [![version](https://img.shields.io/badge/version-2.3.33-blue)](https://github.com/myreceiptt/pabrikroti-master/releases/tag/v.2.3.33-far)
+
+> "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by its community, and baked through the heat of shared struggles."
+>
+> — Prof. NOTA
+
+---
+
+## PABRIK ROTI v.2.3.33: Staging NFT FAR by Futuloka
 
 Link #1: https://far.futuloka.io/  
 Link #2: https://www.futuloka.xyz/  
