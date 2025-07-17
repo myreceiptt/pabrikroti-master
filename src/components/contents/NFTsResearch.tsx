@@ -63,7 +63,7 @@ export default function NFTsResearch() {
               <div className="grid grid-cols-1 gap-2">
                 <h2
                   style={{ color: receipt.colorPrimer }}
-                  className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1">
+                  className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-2">
                   {item.name}
                 </h2>
               </div>
