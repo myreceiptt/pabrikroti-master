@@ -23,8 +23,6 @@ import {
 import { memora } from "@/config/receipts/memora";
 import { myreceipt } from "@/config/receipts/myreceipt";
 import { pabrikroti } from "@/config/receipts/pabrikroti";
-import { tracon } from "@/config/receipts/tracon";
-import { zim } from "@/config/receipts/zim";
 
 // Use typeof from one of the receipt (structure must same)
 type ReceiptType = typeof myreceipt;
@@ -78,24 +76,6 @@ const hostMap: Record<
     supportedFTs: tokeks,
     displayedTokeks: displayedTokeks,
   },
-  "tracon.endhonesa.com": {
-    receipt: tracon,
-    factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeks,
-    erc20sLaunched: erc20sLaunched,
-    supportedFTs: tokeks,
-    displayedTokeks: displayedTokeks,
-  },
-  "zim.endhonesa.com": {
-    receipt: zim,
-    factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeks,
-    erc20sLaunched: erc20sLaunched,
-    supportedFTs: tokeks,
-    displayedTokeks: displayedTokeks,
-  },
   "pabrikroti.endhonesa.com": {
     receipt: pabrikroti,
     factoryAddress: factoryNOTA,
@@ -115,22 +95,22 @@ const hostMap: Record<
     displayedTokeks: displayedTokeksPabrikRoti,
   },
   localhost: {
-    receipt: zim,
+    receipt: pabrikroti,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeks,
-    erc20sLaunched: erc20sLaunched,
-    supportedFTs: tokeks,
-    displayedTokeks: displayedTokeks,
+    supportedNFTs: tekeksPabrikRoti,
+    erc20sLaunched: erc20sLaunchedPabrikRoti,
+    supportedFTs: tokeksPabrikRoti,
+    displayedTokeks: displayedTokeksPabrikRoti,
   },
   "127.0.0.1": {
-    receipt: zim,
+    receipt: pabrikroti,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeks,
-    erc20sLaunched: erc20sLaunched,
-    supportedFTs: tokeks,
-    displayedTokeks: displayedTokeks,
+    supportedNFTs: tekeksPabrikRoti,
+    erc20sLaunched: erc20sLaunchedPabrikRoti,
+    supportedFTs: tokeksPabrikRoti,
+    displayedTokeks: displayedTokeksPabrikRoti,
   },
 };
 

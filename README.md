@@ -1,4 +1,4 @@
-# PABRIK ROTI [![version](https://img.shields.io/badge/version-2.4.47-blue)](https://github.com/myreceiptt/pabrikroti-master/releases/tag/v.2.4.47-zim) [![status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/myreceiptt/pabrikroti-master/blob/preview/SECURITY.md#-supported-versions) [![Build Status](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) [![Deployed to Vercel](https://img.shields.io/badge/Vercel-deployed-success?logo=vercel)](https://preroti.endhonesa.com/)
+# PABRIK ROTI [![version](https://img.shields.io/badge/version-2.4.74-blue)](https://github.com/myreceiptt/pabrikroti-master/releases/tag/v.2.4.74-inamotion) [![status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/myreceiptt/pabrikroti-master/blob/preview/SECURITY.md#-supported-versions) [![Build Status](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) [![Deployed to Vercel](https://img.shields.io/badge/Vercel-deployed-success?logo=vercel)](https://preroti.endhonesa.com/)
 
 > "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by its community, and baked through the heat of shared struggles."
 >
@@ -6,10 +6,10 @@
 
 ---
 
-## Staging 2.4.47 by Zim Systems Limited
+## Staging 2.4.74 by Ina Motion
 
-Link #1: [researach.zim-tech.com](https://researach.zim-tech.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://researach.zim-tech.com/)  
-Link #2: [zim.endhonesa.com](https://zim.endhonesa.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://zim.endhonesa.com/)
+Link #1: [www.inamotion.id](https://www.inamotion.id/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://www.inamotion.id/)  
+Link #2: [motion.endhonesa.com](https://motion.endhonesa.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://motion.endhonesa.com/)
 
 ---
 
