@@ -1,60 +1,59 @@
 // /src/config/receipts/myreceipt.ts
 
 // All receipts should be exported from this file.
-const proTitle =
-  "Inamotion - Full Service with Motion Graphic and Creative Support";
-const proUrl = "https://www.inamotion.id";
-const proName = "Inamotion";
-const proAlias1 = "Inamotion";
-const proAlias2 = "Inamotion";
+const proTitle = "ZIM SYSTEMS LIMITED";
+const proUrl = "https://research.zim-tech.com";
+const proName = "ZIM SYSTEMS LIMITED";
+const proAlias1 = "ZIM SYSTEMS LIMITED";
+const proAlias2 = "ZIM SYSTEMS LIMITED";
 const proAddress =
-  "Kota Jakarta Selatan, Daerah Khusus Ibukota Jakarta 10350, INDONESIA";
-const proEmail = "hello@inamotion.id";
+  "RM908, 9/F, International Enterprise Centre III, No.18 Tai Chung Road,Tsuen Wan, Hong Kong";
+const proEmail = "zim@zim-tech.com";
 const termsMonth = "June";
 const termsDate = "30";
 const termsYear = "2025";
 const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const myreceipt = {
-  // colors hex libraries - inamotion
+  // colors hex libraries - zim
   colorSekunder: "#5a5a5a", // Warna identitas utama. Dominan, mencolok, brand feel. Selalu konsisten. Untuk tombol, link, badge utama, logo, brand highlight.
   colorSecondary: "#e8e8e8", // Warna latar sekunder. Kontras dengan colorSekunder. Untuk isi konten, background komponen kecil (card, section, kontainer dalam).
-  colorPrimer: "#2e2e2e", // Warna teks utama. Kontras dengan colorSecondary dan colorPrimary. Untuk teks normal (judul, isi, deskripsi).
+  colorPrimer: "#171717", // Warna teks utama. Kontras dengan colorSecondary dan colorPrimary. Untuk teks normal (judul, isi, deskripsi).
   colorPrimary: "#f2f2f2", // Warna latar utama. Kontras dengan colorSekunder. Untuk background utama halaman atau area besar.
 
-  colorFooterText: "#5a5a5a", // Warna teks footer. Kontras dengan colorFooterBG. Untuk teks footer, link footer, informasi hak cipta.
-  colorFooterBG: "#e8e8e8", // Warna latar footer. Kontras dengan colorFooterText. Untuk background footer, area bawah halaman.
+  colorFooterText: "#ffffff", // Warna teks footer. Kontras dengan colorFooterBG. Untuk teks footer, link footer, informasi hak cipta.
+  colorFooterBG: "#000000", // Warna latar footer. Kontras dengan colorFooterText. Untuk background footer, area bawah halaman.
 
-  colorFooterSubsText: "#5a5a5a", // Warna teks subscribe input di footer. Kontras dengan colorFooterSubsBG. Untuk teks input email di footer.
-  colorFooterSubsBorder: "#1b1b1b", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
-  colorFooterSubsInBorder: "#d3d3d3", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
-  colorFooterSubsBG: "#f2f2f2", // Warna latar subscribe input di footer. Untuk background input subscribe footer, area input email.
+  colorFooterSubsText: "#ffffff", // Warna teks subscribe input di footer. Kontras dengan colorFooterSubsBG. Untuk teks input email di footer.
+  colorFooterSubsBorder: "#ffffff", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
+  colorFooterSubsInBorder: "#008dce", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
+  colorFooterSubsBG: "#000000", // Warna latar subscribe input di footer. Untuk background input subscribe footer, area input email.
 
-  colorFooterButtonText: "#e8e8e8", // Warna teks button di footer. Kontras dengan colorFooterButtonBG. Untuk teks footer, link footer, informasi hak cipta.
-  colorFooterButtonBorder: "#1b1b1b", // Warna batas tombol di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
-  colorFooterButtonInBorder: "#d3d3d3", // Warna batas tombol di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
-  colorFooterButtonBG: "#5a5a5a", // Warna latar tombol di footer. Kontras dengan colorFooterBG. Untuk tombol aksi footer, seperti subscribe, contact, atau link penting.
-  colorFooterButtonBGAlpha: 0.7, // Transparansi latar tombol di footer. Untuk efek transparansi pada background tombol di footer.
+  colorFooterButtonText: "#008dce", // Warna teks button di footer. Kontras dengan colorFooterButtonBG. Untuk teks footer, link footer, informasi hak cipta.
+  colorFooterButtonBorder: "#ffffff", // Warna batas tombol di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
+  colorFooterButtonInBorder: "#008dce", // Warna batas tombol di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
+  colorFooterButtonBG: "#ffffff", // Warna latar tombol di footer. Kontras dengan colorFooterBG. Untuk tombol aksi footer, seperti subscribe, contact, atau link penting.
+  colorFooterButtonBGAlpha: 1, // Transparansi latar tombol di footer. Untuk efek transparansi pada background tombol di footer.
 
-  colorFooterIcon: "#e8e8e8", // Warna ikon footer. Kontras dengan colorFooterIconBG. Untuk ikon media sosial, ikon footer lainnya.
-  colorFooterIconBG: "#5a5a5a", // Warna latar ikon footer. Setengah kontras dengan colorFooterBG. Untuk background ikon media sosial, ikon footer lainnya.
-  colorFooterIconBGAlpha: 0.7, // Transparansi latar ikon footer. Untuk efek transparansi pada background ikon media sosial, ikon footer lainnya.
+  colorFooterIcon: "#ffffff", // Warna ikon footer. Kontras dengan colorFooterIconBG. Untuk ikon media sosial, ikon footer lainnya.
+  colorFooterIconBG: "#008dce", // Warna latar ikon footer. Setengah kontras dengan colorFooterBG. Untuk background ikon media sosial, ikon footer lainnya.
+  colorFooterIconBGAlpha: 1, // Transparansi latar ikon footer. Untuk efek transparansi pada background ikon media sosial, ikon footer lainnya.
 
   colorTersier: "#1b1b1b", // Warna teks pasif, label kecil, hint, placeholder. Setengah kontras dengan colorSecondary dan colorPrimary. Warna teks minor, untuk disabled button, subtitle, helper text, dll.
   colorTertiary: "#d3d3d3", // Warna garis batas, outline, divider, batas antar elemen. Setengah kontras dengan colorSecondary dan colorPrimary. Untuk memisahkan antar komponen secara halus, tidak mencolok.
 
   // /src/app/layout.tsx
   proTitle, // layout, SearchWrapper, CoinAccess, CoinDetails, CoinsList, ConnectButtons, ConnectEmbeds, LoginLayout, NFTDetails, NFTsList, HeaderSection, ReusableMessage,
-  proDescription: `INAMOTION is a CREATIVE HOUSE which provide a full service of production house, post production with motion graphic interest, and creative support for agency.`, // layout, ConnectButtons, ConnectEmbeds,
+  proDescription: `Zim Systems Limited was established in Hong Kong in 2003. We are mainly responsible for IT solutions and consulting, and provide comprehensive one-stop solutions to global customers.`, // layout, ConnectButtons, ConnectEmbeds,
   proUrl, // layout, ConnectButtons, ConnectEmbeds,
-  proPublisher: "Inamotion", // layout,
+  proPublisher: "ZIM SYSTEMS LIMITED", // layout,
   proLocale: "en-US", // layout,
-  proFavicon: "/favicon.ico", // layout,
-  proImage: "https://www.inamotion.id/preview-image.png", // layout,
+  proFavicon: "/zim/favicon.ico", // layout,
+  proImage: "https://research.zim-tech.com/preview-image.png", // layout,
   proLang: "en", // layout,
 
   // /src/components/logins/ConnectButtons.tsx
-  proLogo: "/logos/logo.png", // ConnectButtons, ConnectEmbeds, QRCodeButton,
+  proLogo: "/zim/logos/logo.png", // ConnectButtons, ConnectEmbeds, QRCodeButton,
 
   // /src/components/logins/ErrorBoundary.tsx
   proErrorCought: "Error caught in ErrorBoundary:", // ErrorBoundary,
@@ -62,37 +61,37 @@ export const myreceipt = {
   proButton: "Try Again", // ErrorBoundary,
 
   // /src/components/logins/LoginLayout.tsx - disable by nullifying the string
-  loginArt: "/images/login-art.png", // LoginLayout,
-  loginBanner: "/images/login-banner.png", // LoginLayout,
+  loginArt: "/zim/images/login-art.png", // LoginLayout,
+  loginBanner: "/zim/images/login-banner.png", // LoginLayout,
   loginAria: "Call to action for login.", // LoginLayout,
-  loginCall: "Collect the artworks", // LoginLayout,
+  loginCall: "Let's Step into the Future!", // LoginLayout,
   loginReason: {
-    text1: `for fun and as a validator, to claim interesting surprises in the future`,
-    anchor: `...`,
-    link: "https://www.inamotion.id/the-whitepaper.pdf",
-    text2: ``,
+    text1: `Ready to unlock it? Register now to unlock seamless,`,
+    anchor: ``,
+    link: "",
+    text2: `secure Web3 experiences — all in one place.`,
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
-  loginLinkPower: "https://futuloka.io/", // LoginLayout, FooterSection,
-  loginLogoPower: "/images/login-power.png", // LoginLayout,
-  loginPoweredBy: "Launched by Futuloka", // LoginLayout, FooterSection,
+  loginLinkPower: "https://zim-tech.com", // LoginLayout, FooterSection,
+  loginLogoPower: "/zim/images/login-power.png", // LoginLayout,
+  loginPoweredBy: "Launched by ZIM SYSTEMS LIMITED", // LoginLayout, FooterSection,
 
   // /src/components/sections/DropDownMenu.tsx - disable by nullifying the string
   ddMenuAria: "Drop Down Menu", // DropDownMenu,
-  ddMenuHome: "Welcome, OiOi!", // DropDownMenu,
-  ddMenuWhat: "About", // DropDownMenu,
+  ddMenuHome: "Welcome!", // DropDownMenu,
+  ddMenuWhat: "", // DropDownMenu,
   ddMenuWhy: "", // DropDownMenu,
   ddMenuHow: "", // DropDownMenu,
-  ddMenuWhen: "Program", // DropDownMenu,
+  ddMenuWhen: "", // DropDownMenu,
   ddMenuWhere: "", // DropDownMenu,
-  ddMenuWho: "Features", // DropDownMenu,
-  ddMenuFeatured: "Featured, OiOi!", // DropDownMenu,
-  ddMenuFree: "", // DropDownMenu,
-  ddMenuPaid: "Paid NFTs", // DropDownMenu,
-  ddMenuCoins: "The FTs", // DropDownMenu,
+  ddMenuWho: "", // DropDownMenu,
+  ddMenuFeatured: "The Portal", // DropDownMenu,
+  ddMenuFree: "Deep Dive", // DropDownMenu,
+  ddMenuPaid: "Explore DAO", // DropDownMenu,
+  ddMenuCoins: "Collectibles", // DropDownMenu,
   ddMenuMarket: "", // DropDownMenu,
-  ddMenuMore: "Read More, OiOi!", // DropDownMenu,
+  ddMenuMore: "Read More", // DropDownMenu,
   ddMenuDeploy: "", // DropDownMenu,
   ddMenuPublishNFT: "", // DropDownMenu,
   ddMenuPublishFT: "", // DropDownMenu,
@@ -114,21 +113,21 @@ export const myreceipt = {
   footLicensed: "Officially licensed product of", // FooterSection,
   footPrivacy: "Privacy Policy", // FooterSection,
   footTerms: "Terms of Service", // FooterSection,
-  footPower: "/images/footer-power.png", // FooterSection,
-  footSocial: "Follow our solidarity movement!", // FooterSection,
+  footPower: "/zim/images/footer-power.png", // FooterSection,
+  footSocial: "Join the community", // FooterSection,
   footGitHub: "", // FooterSection,
-  footXTwitter: "https://x.com/futuloka", // FooterSection,
+  footXTwitter: "", // FooterSection,
   footLinkedIn: "", // FooterSection,
-  footInstagram: "https://www.instagram.com/futuloka/", // FooterSection,
-  footFacebook: "", // FooterSection,
+  footInstagram: "", // FooterSection,
+  footFacebook: "https://www.facebook.com/profile.php?id=100077380028580", // FooterSection,
   footDiscord: "", // FooterSection,
   footYouTube: "", // FooterSection,
-  footEmail: "mailto:kontak@futuloka.io", // FooterSection,
-  footWhatsApp: "", // FooterSection,
-  footWebsite: "https://www.futuloka.io/", // FooterSection,
+  footEmail: "mailto:zim@zim-tech.com", // FooterSection,
+  footWhatsApp: "https://api.whatsapp.com/send?phone=85296772501", // FooterSection,
+  footWebsite: "https://www.zim-tech.com/", // FooterSection,
 
   // /src/components/sections/HeaderSection.tsx
-  headerLogo: "/images/header-logo.png", // HeaderSection,
+  headerLogo: "/zim/images/header-logo.png", // HeaderSection,
   headerGo: "Search", // HeaderSection,
   headerSearch: "Search Query", // HeaderSection,
   headerSearchPH: "Enter your search query", // HeaderSection,
@@ -142,7 +141,7 @@ export const myreceipt = {
   subscribeMessage: "I want to subscribe to the latest updates.", // SubscribeForm,
   subscribeSuccess: "Thank you for subscribing!", // SubscribeForm,
   subscribeFailed: "Subscription failed. Please try again.", // SubscribeForm,
-  subscribeTitle: "Subscribe to our latest updates", // SubscribeForm,
+  subscribeTitle: "Catch our latest updates", // SubscribeForm,
   subscribePlaceholder: "Enter your email address", // SubscribeForm,
   subscribeButton: "Subscribe", // SubscribeForm,
   subscribeButtonLoading: "Subscribing...", // SubscribeForm,
@@ -208,14 +207,14 @@ export const myreceipt = {
   visualBlocks: [
     {
       variant: "left", // or "right"
-      image: "/roti/landing/hero-1.png",
+      image: "/zim/landing/hero-1.png",
       title: "Decentralized Craft",
       description: "We respect your local ownership and labor.",
       cta: { text: "Learn More", href: "/about" },
     },
     {
       variant: "right", // or "left"
-      image: "/roti/landing/hero-1.png",
+      image: "/zim/landing/hero-1.png",
       title: "Decentralized Craft",
       description: "We respect your local ownership and labor.",
       cta: { text: "Learn More", href: "/about" },
@@ -228,17 +227,17 @@ export const myreceipt = {
   csMessage2: `Currently under development with care. Stay tuned for something freshly built.`, // ComingSoon,
 
   // featured cards page - hide card by nulled the title
-  featuredTitle1: "All Fair and Sustainable", // featured cards,
-  featuredTitle2: "Fundraising Model", // featured cards,
-  featuredPaid: "/images/featured-paid.png", // featured cards,
-  paidTitle: "Curated NFT Artworks", // featured cards,
+  featuredTitle1: "The Portal Awaits...", // featured cards,
+  featuredTitle2: "", // featured cards,
+  featuredPaid: "/zim/images/featured-paid.png", // featured cards,
+  paidTitle: "Explore DAO Research", // featured cards,
   paidLink: "/paid", // featured cards,
-  featuredFree: "/images/featured-free.png", // featured cards,
-  freeTitle: "", // featured cards,
+  featuredFree: "/zim/images/featured-free.png", // featured cards,
+  freeTitle: "Deep Dive: NFTs Research Hub", // featured cards,
   freeLink: "/free", // featured cards,
-  featuredCoin: "/images/featured-coin.png", // featured cards,
-  coinTitle: "FTLK Token for Sale", // featured cards,
-  coinLink: "/coins", // featured cards,
+  featuredCoin: "/zim/images/featured-coin.png", // featured cards,
+  coinTitle: "Virtual Collectibles", // featured cards,
+  coinLink: "/#", // featured cards,
   featuredAria: "Navigate to", // featured cards,
 
   // reusable loader section
@@ -278,7 +277,7 @@ export const myreceipt = {
   nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
   nftClaimed: "Collected", // nft lister, nft form,
   nftClosed: "Sold Out", // nft lister, nft form, coin lister, coin form,
-  nftListerImage: "/medias/artisan-bread.png", // nft lister, nft form,
+  nftListerImage: "/zim/medias/artisan-bread.png", // nft lister, nft form,
   nftListerName: "The Available NFT", // nft lister, nft form,
   nftEditions: "Edition:", // nft lister,
   nftNoData: "No data available.", // nft lister,
@@ -331,7 +330,7 @@ export const myreceipt = {
   coinButton: "Buy Now", // coin lister, coin form,
   coinNoAccess: "No Access", // coin lister, coin form,
   coinClaimed: "Already Own", // coin lister, coin form,
-  coinListerImage: "/medias/batch-bread.png", // coin lister, coin form,
+  coinListerImage: "/zim/medias/batch-bread.png", // coin lister, coin form,
   coinListerName: "The Available Coin", // coin lister, coin form,
   coinListerSupply: "Supply:", // coin lister, coin details,
   coinListerOf: "of", // coin lister, coin form,
@@ -353,7 +352,7 @@ export const myreceipt = {
   coinAccessMessage:
     "Please get your access by get any available NFT at least one edition.", // coin access,
   coinAccessButton: "Get The Available NFT!", // coin access,
-  coinAccessBanner: "/images/content-banner.png", // coin access,
+  coinAccessBanner: "/zim/images/content-banner.png", // coin access,
 
   // coin form section
   coinFormSupply: "Supply", // coin form,
@@ -386,7 +385,7 @@ export const myreceipt = {
   popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
   popUpP13: "", // coin pop up,
   popUpP14: "", // coin pop up,
-  popUpImage: "/medias/coin-pop-up.png", // coin pop up,
+  popUpImage: "/zim/medias/coin-pop-up.gif", // coin pop up,
   popUpImageAlt: "FTLK Coin Illustration", // coin pop up,
 
   // terms page

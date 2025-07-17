@@ -23,8 +23,6 @@ import {
 import { memora } from "@/config/receipts/memora";
 import { myreceipt } from "@/config/receipts/myreceipt";
 import { pabrikroti } from "@/config/receipts/pabrikroti";
-import { tracon } from "@/config/receipts/tracon";
-import { zim } from "@/config/receipts/zim";
 
 // Use typeof from one of the receipt (structure must same)
 type ReceiptType = typeof myreceipt;
@@ -60,35 +58,17 @@ const hostMap: Record<
     supportedFTs: tokeksMeMoRa,
     displayedTokeks: displayedTokeksMeMoRa,
   },
-  "motion.endhonesa.com": {
-    receipt: myreceipt,
-    factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeks,
-    erc20sLaunched: erc20sLaunched,
-    supportedFTs: tokeks,
-    displayedTokeks: displayedTokeks,
-  },
-  "www.inamotion.id": {
-    receipt: myreceipt,
-    factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeks,
-    erc20sLaunched: erc20sLaunched,
-    supportedFTs: tokeks,
-    displayedTokeks: displayedTokeks,
-  },
-  "tracon.endhonesa.com": {
-    receipt: tracon,
-    factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeks,
-    erc20sLaunched: erc20sLaunched,
-    supportedFTs: tokeks,
-    displayedTokeks: displayedTokeks,
-  },
   "zim.endhonesa.com": {
-    receipt: zim,
+    receipt: myreceipt,
+    factoryAddress: factoryNOTA,
+    erc1155Launched: erc1155TryError,
+    supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
+  },
+  "research.zim-tech.com": {
+    receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeks,
@@ -115,7 +95,7 @@ const hostMap: Record<
     displayedTokeks: displayedTokeksPabrikRoti,
   },
   localhost: {
-    receipt: zim,
+    receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeks,
@@ -124,7 +104,7 @@ const hostMap: Record<
     displayedTokeks: displayedTokeks,
   },
   "127.0.0.1": {
-    receipt: zim,
+    receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeks,

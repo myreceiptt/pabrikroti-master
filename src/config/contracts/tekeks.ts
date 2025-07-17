@@ -2,9 +2,9 @@
 
 // Blockchain configurations
 import { SupportedNFTs } from "@/config/contracts/index";
-import { erc1155MbokSri2025 } from "@/config/contracts/tekekContracts";
-import { baseMainnet } from "@/config/rantais";
+import { erc1155TryError } from "@/config/contracts/tekekContracts";
+import { baseSepolia } from "@/config/rantais";
 
 export const tekeks: SupportedNFTs = {
-  [baseMainnet.id]: [erc1155MbokSri2025.address],
+  [baseSepolia.id]: [erc1155TryError.address],
 };
