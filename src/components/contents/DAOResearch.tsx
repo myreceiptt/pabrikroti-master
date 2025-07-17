@@ -36,7 +36,7 @@ export default function DAOResearch() {
 
   return (
     <main className="grid gap-4 place-items-center">
-      <Title title1="Deep Dive:" title2="NFTs Research Hub" />
+      <Title title1="Explore DAO Research" title2="" />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
         {imageLinks.map((item, index) => (
