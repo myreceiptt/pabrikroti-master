@@ -15,13 +15,32 @@ const termsYear = "2025";
 const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const memora = {
-  // colors hex libraries - origin
-  colorPrimary: "#F9F9F9", // Warna latar utama.
-  colorPrimer: "#262525", // Warna teks utama.
-  colorSecondary: "#F0F0F0", // Warna latar sekunder.
-  colorSekunder: "#171717", // Warna identitas utama.
-  colorTertiary: "#DFDFDF", // Warna garis batas.
-  colorTersier: "#707070", // Warna teks pasif.
+  // colors hex libraries - memora
+  colorSekunder: "#171717", // Warna identitas utama. Dominan, mencolok, brand feel. Selalu konsisten. Untuk tombol, link, badge utama, logo, brand highlight.
+  colorSecondary: "#F0F0F0", // Warna latar sekunder. Kontras dengan colorSekunder. Untuk isi konten, background komponen kecil (card, section, kontainer dalam).
+  colorPrimer: "#262525", // Warna teks utama. Kontras dengan colorSecondary dan colorPrimary. Untuk teks normal (judul, isi, deskripsi).
+  colorPrimary: "#F9F9F9", // Warna latar utama. Kontras dengan colorSekunder. Untuk background utama halaman atau area besar.
+
+  colorFooterText: "#171717", // Warna teks footer. Kontras dengan colorFooterBG. Untuk teks footer, link footer, informasi hak cipta.
+  colorFooterBG: "#F0F0F0", // Warna latar footer. Kontras dengan colorFooterText. Untuk background footer, area bawah halaman.
+
+  colorFooterSubsText: "#171717", // Warna teks subscribe input di footer. Kontras dengan colorFooterSubsBG. Untuk teks input email di footer.
+  colorFooterSubsBorder: "#707070", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
+  colorFooterSubsInBorder: "#DFDFDF", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
+  colorFooterSubsBG: "#F9F9F9", // Warna latar subscribe input di footer. Untuk background input subscribe footer, area input email.
+
+  colorFooterButtonText: "#F0F0F0", // Warna teks button di footer. Kontras dengan colorFooterButtonBG. Untuk teks footer, link footer, informasi hak cipta.
+  colorFooterButtonBorder: "#707070", // Warna batas tombol di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
+  colorFooterButtonInBorder: "#DFDFDF", // Warna batas tombol di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
+  colorFooterButtonBG: "#171717", // Warna latar tombol di footer. Kontras dengan colorFooterBG. Untuk tombol aksi footer, seperti subscribe, contact, atau link penting.
+  colorFooterButtonBGAlpha: 0.7, // Transparansi latar tombol di footer. Untuk efek transparansi pada background tombol di footer.
+
+  colorFooterIcon: "#F0F0F0", // Warna ikon footer. Kontras dengan colorFooterIconBG. Untuk ikon media sosial, ikon footer lainnya.
+  colorFooterIconBG: "#171717", // Warna latar ikon footer. Setengah kontras dengan colorFooterBG. Untuk background ikon media sosial, ikon footer lainnya.
+  colorFooterIconBGAlpha: 0.7, // Transparansi latar ikon footer. Untuk efek transparansi pada background ikon media sosial, ikon footer lainnya.
+
+  colorTersier: "#707070", // Warna teks pasif, label kecil, hint, placeholder. Setengah kontras dengan colorSecondary dan colorPrimary. Warna teks minor, untuk disabled button, subtitle, helper text, dll.
+  colorTertiary: "#DFDFDF", // Warna garis batas, outline, divider, batas antar elemen. Setengah kontras dengan colorSecondary dan colorPrimary. Untuk memisahkan antar komponen secara halus, tidak mencolok.
 
   // /src/app/layout.tsx
   proTitle, // layout, SearchWrapper, CoinAccess, CoinDetails, CoinsList, ConnectButtons, ConnectEmbeds, LoginLayout, NFTDetails, NFTsList, HeaderSection, ReusableMessage,
@@ -213,10 +232,13 @@ export const memora = {
   featuredTitle2: "COLLECTIBLES", // featured cards,
   featuredPaid: "/memora/images/featured-paid.png", // featured cards,
   paidTitle: "Paid Virtual Collectibles", // featured cards,
+  paidLink: "/paid", // featured cards,
   featuredFree: "/memora/images/featured-free.png", // featured cards,
   freeTitle: "Free Virtual Collectibles", // featured cards,
+  freeLink: "/free", // featured cards,
   featuredCoin: "/memora/images/featured-coin.png", // featured cards,
   coinTitle: "Redeem Points Reward", // featured cards,
+  coinLink: "/coins", // featured cards,
   featuredAria: "Navigate to", // featured cards,
 
   // reusable loader section

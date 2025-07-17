@@ -32,8 +32,6 @@ export default function PageRouter() {
         "www.inamotion.id",
         "pabrikroti.endhonesa.com",
         "preroti.endhonesa.com",
-        "localhost",
-        "127.0.0.1",
       ]);
       if (validHosts.has(hostname)) {
         setMode("aiueo");

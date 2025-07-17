@@ -19,17 +19,17 @@ export default function FeaturedCards() {
       <div className="w-full grid grid-cols-1 sm:[grid-template-columns:repeat(auto-fit,minmax(0,1fr))] gap-4 sm:gap-8">
         {[
           {
-            href: "/free",
+            href: receipt.freeLink,
             src: receipt.featuredFree,
             alt: receipt.freeTitle,
           },
           {
-            href: "/paid",
+            href: receipt.paidLink,
             src: receipt.featuredPaid,
             alt: receipt.paidTitle,
           },
           {
-            href: "/coins",
+            href: receipt.coinLink,
             src: receipt.featuredCoin,
             alt: receipt.coinTitle,
           },

@@ -16,12 +16,31 @@ const termsUpdate = `Last updated on ${termsMonth} ${termsDate}, ${termsYear}.`;
 
 export const pabrikroti = {
   // colors hex libraries - pabrikroti
-  colorPrimary: "#f2f2f2", // Warna latar utama. Kontras dengan colorSekunder. Untuk background utama halaman atau area besar.
-  colorPrimer: "#2e2e2e", // Warna teks utama. Kontras dengan colorPrimary. Untuk teks normal (judul, isi, deskripsi).
-  colorSecondary: "#e8e8e8", // Warna latar sekunder. Kontras dengan colorSekunder. Untuk isi konten, background komponen kecil (card, section, kontainer dalam).
   colorSekunder: "#5a5a5a", // Warna identitas utama. Dominan, mencolok, brand feel. Selalu konsisten. Untuk tombol, link, badge utama, logo, brand highlight.
-  colorTertiary: "#d3d3d3", // Warna garis batas, outline, divider, batas antar elemen. Untuk memisahkan antar komponen secara halus, tidak mencolok.
-  colorTersier: "#1b1b1b", // Warna teks pasif, label kecil, hint, placeholder. Warna teks minor, untuk disabled button, subtitle, helper text, dll.
+  colorSecondary: "#e8e8e8", // Warna latar sekunder. Kontras dengan colorSekunder. Untuk isi konten, background komponen kecil (card, section, kontainer dalam).
+  colorPrimer: "#2e2e2e", // Warna teks utama. Kontras dengan colorSecondary dan colorPrimary. Untuk teks normal (judul, isi, deskripsi).
+  colorPrimary: "#f2f2f2", // Warna latar utama. Kontras dengan colorSekunder. Untuk background utama halaman atau area besar.
+
+  colorFooterText: "#5a5a5a", // Warna teks footer. Kontras dengan colorFooterBG. Untuk teks footer, link footer, informasi hak cipta.
+  colorFooterBG: "#e8e8e8", // Warna latar footer. Kontras dengan colorFooterText. Untuk background footer, area bawah halaman.
+
+  colorFooterSubsText: "#5a5a5a", // Warna teks subscribe input di footer. Kontras dengan colorFooterSubsBG. Untuk teks input email di footer.
+  colorFooterSubsBorder: "#1b1b1b", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
+  colorFooterSubsInBorder: "#d3d3d3", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
+  colorFooterSubsBG: "#f2f2f2", // Warna latar subscribe input di footer. Untuk background input subscribe footer, area input email.
+
+  colorFooterButtonText: "#e8e8e8", // Warna teks button di footer. Kontras dengan colorFooterButtonBG. Untuk teks footer, link footer, informasi hak cipta.
+  colorFooterButtonBorder: "#1b1b1b", // Warna batas tombol di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
+  colorFooterButtonInBorder: "#d3d3d3", // Warna batas tombol di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
+  colorFooterButtonBG: "#5a5a5a", // Warna latar tombol di footer. Kontras dengan colorFooterBG. Untuk tombol aksi footer, seperti subscribe, contact, atau link penting.
+  colorFooterButtonBGAlpha: 0.7, // Transparansi latar tombol di footer. Untuk efek transparansi pada background tombol di footer.
+
+  colorFooterIcon: "#e8e8e8", // Warna ikon footer. Kontras dengan colorFooterIconBG. Untuk ikon media sosial, ikon footer lainnya.
+  colorFooterIconBG: "#5a5a5a", // Warna latar ikon footer. Setengah kontras dengan colorFooterBG. Untuk background ikon media sosial, ikon footer lainnya.
+  colorFooterIconBGAlpha: 0.7, // Transparansi latar ikon footer. Untuk efek transparansi pada background ikon media sosial, ikon footer lainnya.
+
+  colorTersier: "#1b1b1b", // Warna teks pasif, label kecil, hint, placeholder. Setengah kontras dengan colorSecondary dan colorPrimary. Warna teks minor, untuk disabled button, subtitle, helper text, dll.
+  colorTertiary: "#d3d3d3", // Warna garis batas, outline, divider, batas antar elemen. Setengah kontras dengan colorSecondary dan colorPrimary. Untuk memisahkan antar komponen secara halus, tidak mencolok.
 
   // /src/app/layout.tsx
   proTitle, // layout, SearchWrapper, CoinAccess, CoinDetails, CoinsList, ConnectButtons, ConnectEmbeds, LoginLayout, NFTDetails, NFTsList, HeaderSection, ReusableMessage,
@@ -48,9 +67,9 @@ export const pabrikroti = {
   loginCall: "In The Breads Factory...", // LoginLayout,
   loginReason: {
     text1: `many kinds of `,
-    anchor: `Bread `,
+    anchor: `Bread were Designed, Produced, Programmed, also Distributed.`,
     link: "https://nota.endhonesa.com/profile/breads",
-    text2: ` were Designed, Produced, Programmed, also Distributed.`,
+    text2: ``,
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to eat these", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
@@ -220,10 +239,13 @@ export const pabrikroti = {
   featuredTitle2: "That You Can Eat", // featured cards,
   featuredPaid: "/roti/images/featured-paid.png", // featured cards,
   paidTitle: "All Paid Artisan Breads", // featured cards,
+  paidLink: "/paid", // featured cards,
   featuredFree: "/roti/images/featured-free.png", // featured cards,
   freeTitle: "All Free Artisan Breads", // featured cards,
+  freeLink: "/free", // featured cards,
   featuredCoin: "/roti/images/featured-coin.png", // featured cards,
   coinTitle: "All Batch Breads", // featured cards,
+  coinLink: "/coins", // featured cards,
   featuredAria: "Navigate to", // featured cards,
 
   // reusable loader section

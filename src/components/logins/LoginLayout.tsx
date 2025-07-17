@@ -57,7 +57,8 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
               style={{ color: receipt.colorSekunder }}
               className="inline hover:underline transition-all duration-200">
               {receipt.loginReason.anchor}
-            </Link>{" "}
+            </Link>
+            <br />
             {receipt.loginReason.text2}
           </h2>
         </div>
