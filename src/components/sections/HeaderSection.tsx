@@ -15,7 +15,7 @@ import { hexToRgba } from "@/config/utils";
 
 // Components libraries
 import ConnectButtons from "@/components/logins/ConnectButtons";
-import DropdownMenu from "@/components/sections/DropDownMenu";
+// import DropdownMenu from "@/components/sections/DropDownMenu";
 import QRCodeButton from "@/components/sections/QRCodeButton";
 
 export default function Header() {
@@ -172,7 +172,7 @@ export default function Header() {
             </Link>
           </button> */}
           <QRCodeButton />
-          <DropdownMenu />
+          {/* <DropdownMenu /> */}
         </div>
       </div>
     </header>

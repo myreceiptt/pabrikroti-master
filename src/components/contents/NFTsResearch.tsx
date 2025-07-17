@@ -23,7 +23,7 @@ export default function NFTsResearch() {
     },
     {
       image: "/medias/nfts-card-2.png",
-      name: "Play to Learn, Learn to Own: Exploring NFTs in Educational Board Games",
+      name: "NFTs for Adaptive Learning: A Case Study of iBLOOMING COIN as a Simulation of Educational Value Distribution",
       link: "/medias/nfts-pdf-2.pdf",
     },
     {
