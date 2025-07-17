@@ -17,8 +17,8 @@ export default function ContentFallback() {
   return (
     <main className="grid gap-4 place-items-center">
       <Message
-        message1={receipt.coinFallMessage1}
-        message2={receipt.coinFallMessage2}
+        message1={receipt.contentFallMessage1}
+        message2={receipt.contentFallMessage2}
         message3={receipt.nftsMessage3}
       />
     </main>

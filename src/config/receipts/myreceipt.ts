@@ -48,12 +48,12 @@ export const myreceipt = {
   proUrl, // layout, ConnectButtons, ConnectEmbeds,
   proPublisher: "ZIM SYSTEMS LIMITED", // layout,
   proLocale: "en-US", // layout,
-  proFavicon: "/zim/favicon.ico", // layout,
+  proFavicon: "/favicon.ico", // layout,
   proImage: "https://research.zim-tech.com/preview-image.png", // layout,
   proLang: "en", // layout,
 
   // /src/components/logins/ConnectButtons.tsx
-  proLogo: "/zim/logos/logo.png", // ConnectButtons, ConnectEmbeds, QRCodeButton,
+  proLogo: "/logos/logo.png", // ConnectButtons, ConnectEmbeds, QRCodeButton,
 
   // /src/components/logins/ErrorBoundary.tsx
   proErrorCought: "Error caught in ErrorBoundary:", // ErrorBoundary,
@@ -61,8 +61,8 @@ export const myreceipt = {
   proButton: "Try Again", // ErrorBoundary,
 
   // /src/components/logins/LoginLayout.tsx - disable by nullifying the string
-  loginArt: "/zim/images/login-art.png", // LoginLayout,
-  loginBanner: "/zim/images/login-banner.png", // LoginLayout,
+  loginArt: "/images/login-art.png", // LoginLayout,
+  loginBanner: "/images/login-banner.png", // LoginLayout,
   loginAria: "Call to action for login.", // LoginLayout,
   loginCall: "Let's Step into the Future!", // LoginLayout,
   loginReason: {
@@ -74,7 +74,7 @@ export const myreceipt = {
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
   loginLinkPower: "https://zim-tech.com", // LoginLayout, FooterSection,
-  loginLogoPower: "/zim/images/login-power.png", // LoginLayout,
+  loginLogoPower: "/images/login-power.png", // LoginLayout,
   loginPoweredBy: "Launched by ZIM SYSTEMS LIMITED", // LoginLayout, FooterSection,
 
   // /src/components/sections/DropDownMenu.tsx - disable by nullifying the string
@@ -113,7 +113,7 @@ export const myreceipt = {
   footLicensed: "Officially licensed product of", // FooterSection,
   footPrivacy: "Privacy Policy", // FooterSection,
   footTerms: "Terms of Service", // FooterSection,
-  footPower: "/zim/images/footer-power.png", // FooterSection,
+  footPower: "/images/footer-power.png", // FooterSection,
   footSocial: "Join the community", // FooterSection,
   footGitHub: "", // FooterSection,
   footXTwitter: "", // FooterSection,
@@ -127,7 +127,7 @@ export const myreceipt = {
   footWebsite: "https://www.zim-tech.com/", // FooterSection,
 
   // /src/components/sections/HeaderSection.tsx
-  headerLogo: "/zim/images/header-logo.png", // HeaderSection,
+  headerLogo: "/images/header-logo.png", // HeaderSection,
   headerGo: "Search", // HeaderSection,
   headerSearch: "Search Query", // HeaderSection,
   headerSearchPH: "Enter your search query", // HeaderSection,
@@ -207,14 +207,14 @@ export const myreceipt = {
   visualBlocks: [
     {
       variant: "left", // or "right"
-      image: "/zim/landing/hero-1.png",
+      image: "/landing/hero-1.png",
       title: "Decentralized Craft",
       description: "We respect your local ownership and labor.",
       cta: { text: "Learn More", href: "/about" },
     },
     {
       variant: "right", // or "left"
-      image: "/zim/landing/hero-1.png",
+      image: "/landing/hero-1.png",
       title: "Decentralized Craft",
       description: "We respect your local ownership and labor.",
       cta: { text: "Learn More", href: "/about" },
@@ -229,13 +229,13 @@ export const myreceipt = {
   // featured cards page - hide card by nulled the title
   featuredTitle1: "The Portal Awaits...", // featured cards,
   featuredTitle2: "", // featured cards,
-  featuredPaid: "/zim/images/featured-paid.png", // featured cards,
+  featuredPaid: "/images/featured-paid.png", // featured cards,
   paidTitle: "Explore DAO Research", // featured cards,
-  paidLink: "/paid", // featured cards,
-  featuredFree: "/zim/images/featured-free.png", // featured cards,
+  paidLink: "/others/dao", // featured cards,
+  featuredFree: "/images/featured-free.png", // featured cards,
   freeTitle: "Deep Dive: NFTs Research Hub", // featured cards,
-  freeLink: "/free", // featured cards,
-  featuredCoin: "/zim/images/featured-coin.png", // featured cards,
+  freeLink: "/others/nfts", // featured cards,
+  featuredCoin: "/images/featured-coin.png", // featured cards,
   coinTitle: "Virtual Collectibles", // featured cards,
   coinLink: "/#", // featured cards,
   featuredAria: "Navigate to", // featured cards,
@@ -277,7 +277,7 @@ export const myreceipt = {
   nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
   nftClaimed: "Collected", // nft lister, nft form,
   nftClosed: "Sold Out", // nft lister, nft form, coin lister, coin form,
-  nftListerImage: "/zim/medias/artisan-bread.png", // nft lister, nft form,
+  nftListerImage: "/medias/artisan-bread.png", // nft lister, nft form,
   nftListerName: "The Available NFT", // nft lister, nft form,
   nftEditions: "Edition:", // nft lister,
   nftNoData: "No data available.", // nft lister,
@@ -330,7 +330,7 @@ export const myreceipt = {
   coinButton: "Buy Now", // coin lister, coin form,
   coinNoAccess: "No Access", // coin lister, coin form,
   coinClaimed: "Already Own", // coin lister, coin form,
-  coinListerImage: "/zim/medias/batch-bread.png", // coin lister, coin form,
+  coinListerImage: "/medias/batch-bread.png", // coin lister, coin form,
   coinListerName: "The Available Coin", // coin lister, coin form,
   coinListerSupply: "Supply:", // coin lister, coin details,
   coinListerOf: "of", // coin lister, coin form,
@@ -352,7 +352,7 @@ export const myreceipt = {
   coinAccessMessage:
     "Please get your access by get any available NFT at least one edition.", // coin access,
   coinAccessButton: "Get The Available NFT!", // coin access,
-  coinAccessBanner: "/zim/images/content-banner.png", // coin access,
+  coinAccessBanner: "/images/content-banner.png", // coin access,
 
   // coin form section
   coinFormSupply: "Supply", // coin form,
@@ -385,7 +385,7 @@ export const myreceipt = {
   popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
   popUpP13: "", // coin pop up,
   popUpP14: "", // coin pop up,
-  popUpImage: "/zim/medias/coin-pop-up.gif", // coin pop up,
+  popUpImage: "/medias/coin-pop-up.gif", // coin pop up,
   popUpImageAlt: "FTLK Coin Illustration", // coin pop up,
 
   // terms page
@@ -544,4 +544,9 @@ export const myreceipt = {
       ],
     },
   }, // terms,
+
+  // content fallback page
+  contentFallMessage1: "Invalid URL used.", // content fallback,
+  contentFallMessage2:
+    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };

@@ -9,6 +9,6 @@ import React from "react";
 import ContentFallback from "@/components/contents/ContentFallback";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
-export default function FallbackFT() {
+export default function FallbackContent() {
   return <DynamicLoginPage ContentComponent={ContentFallback} />;
 }

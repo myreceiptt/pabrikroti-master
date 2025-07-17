@@ -550,4 +550,9 @@ export const memora = {
       ],
     },
   }, // terms,
+
+  // content fallback page
+  contentFallMessage1: "Invalid URL used.", // content fallback,
+  contentFallMessage2:
+    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };
