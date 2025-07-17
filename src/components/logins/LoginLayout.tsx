@@ -51,15 +51,23 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
             className="text-left text-sm lg:text-base xl:text-lg font-normal tracking-tighter">
             {receipt.loginReason.text1}{" "}
             <Link
-              href={receipt.loginReason.link}
+              href={receipt.loginReason.link1}
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: receipt.colorSekunder }}
               className="inline hover:underline transition-all duration-200">
-              {receipt.loginReason.anchor}
+              {receipt.loginReason.anchor1}
             </Link>
             <br />
-            {receipt.loginReason.text2}
+            {receipt.loginReason.text2}{" "}
+            <Link
+              href={receipt.loginReason.link2}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: receipt.colorSekunder }}
+              className="inline hover:underline transition-all duration-200">
+              {receipt.loginReason.anchor2}
+            </Link>
           </h2>
         </div>
         <div className="w-full h-auto flex flex-col gap-4 justify-start items-start">

@@ -67,9 +67,12 @@ export const myreceipt = {
   loginCall: "Let's Step into the Future!", // LoginLayout,
   loginReason: {
     text1: `Ready to unlock it? Register now to unlock seamless,`,
-    anchor: ``,
-    link: "",
-    text2: `secure Web3 experiences — all in one place.`,
+    anchor1: ``,
+    link1: "",
+    text2: `secure Web3 experiences — `,
+    anchor2: `all in one place.`,
+    link2: "/zim-web3-research-proof-of-concept.pdf",
+
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,

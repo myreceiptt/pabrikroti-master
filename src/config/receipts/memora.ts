@@ -67,9 +67,11 @@ export const memora = {
   loginCall: "Get Ready!", // LoginLayout,
   loginReason: {
     text1: `Register now to immerse yourself in MeMoRa Experience!`,
-    anchor: ``,
-    link: "",
+    anchor1: ``,
+    link1: "",
     text2: ``,
+    anchor2: ``,
+    link2: "",
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,

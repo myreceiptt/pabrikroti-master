@@ -67,9 +67,11 @@ export const pabrikroti = {
   loginCall: "In The Breads Factory...", // LoginLayout,
   loginReason: {
     text1: `many kinds of `,
-    anchor: `Bread were Designed, Produced, Programmed, also Distributed.`,
-    link: "https://nota.endhonesa.com/profile/breads",
+    anchor1: `Bread were Designed, Produced, Programmed, also Distributed.`,
+    link1: "https://nota.endhonesa.com/profile/breads",
     text2: ``,
+    anchor2: ``,
+    link2: ``,
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to eat these", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
