@@ -25,7 +25,7 @@ export const memora = {
   colorFooterBG: "#F0F0F0", // Warna latar footer. Kontras dengan colorFooterText. Untuk background footer, area bawah halaman.
 
   colorFooterSubsText: "#171717", // Warna teks subscribe input di footer. Kontras dengan colorFooterSubsBG. Untuk teks input email di footer.
-  colorFooterSubsBorder: "#707070", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
+  colorFooterSubsBorder: "#F9F9F9", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
   colorFooterSubsInBorder: "#DFDFDF", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
   colorFooterSubsBG: "#F9F9F9", // Warna latar subscribe input di footer. Untuk background input subscribe footer, area input email.
 
@@ -67,9 +67,11 @@ export const memora = {
   loginCall: "Get Ready!", // LoginLayout,
   loginReason: {
     text1: `Register now to immerse yourself in MeMoRa Experience!`,
-    anchor: ``,
-    link: "",
+    anchor1: ``,
+    link1: "",
     text2: ``,
+    anchor2: ``,
+    link2: "",
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
@@ -550,4 +552,9 @@ export const memora = {
       ],
     },
   }, // terms,
+
+  // content fallback page
+  contentFallMessage1: "Invalid URL used.", // content fallback,
+  contentFallMessage2:
+    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };

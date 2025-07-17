@@ -68,9 +68,11 @@ export const myreceipt = {
   loginCall: "Collect the artworks", // LoginLayout,
   loginReason: {
     text1: `for fun and as a validator, to claim interesting surprises in the future`,
-    anchor: `...`,
-    link: "https://www.inamotion.id/the-whitepaper.pdf",
+    anchor1: `...`,
+    link1: "https://www.inamotion.id/the-whitepaper.pdf",
     text2: ``,
+    anchor2: ``,
+    link2: "",
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
@@ -545,4 +547,9 @@ export const myreceipt = {
       ],
     },
   }, // terms,
+
+  // content fallback page
+  contentFallMessage1: "Invalid URL used.", // content fallback,
+  contentFallMessage2:
+    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };

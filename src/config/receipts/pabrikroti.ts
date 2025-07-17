@@ -25,7 +25,7 @@ export const pabrikroti = {
   colorFooterBG: "#e8e8e8", // Warna latar footer. Kontras dengan colorFooterText. Untuk background footer, area bawah halaman.
 
   colorFooterSubsText: "#5a5a5a", // Warna teks subscribe input di footer. Kontras dengan colorFooterSubsBG. Untuk teks input email di footer.
-  colorFooterSubsBorder: "#1b1b1b", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
+  colorFooterSubsBorder: "#f2f2f2", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek batas footer, seperti garis bawah atau pembatas area footer.
   colorFooterSubsInBorder: "#d3d3d3", // Warna batas subscribe input di footer. Kontras dengan colorFooterBG. Untuk efek invalid atau salah input.
   colorFooterSubsBG: "#f2f2f2", // Warna latar subscribe input di footer. Untuk background input subscribe footer, area input email.
 
@@ -67,9 +67,11 @@ export const pabrikroti = {
   loginCall: "In The Breads Factory...", // LoginLayout,
   loginReason: {
     text1: `many kinds of `,
-    anchor: `Bread were Designed, Produced, Programmed, also Distributed.`,
-    link: "https://nota.endhonesa.com/profile/breads",
+    anchor1: `Bread were Designed, Produced, Programmed, also Distributed.`,
+    link1: "https://nota.endhonesa.com/profile/breads",
     text2: ``,
+    anchor2: ``,
+    link2: "",
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to eat these", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
@@ -556,4 +558,9 @@ export const pabrikroti = {
       ],
     },
   }, // terms,
+
+  // content fallback page
+  contentFallMessage1: "Invalid URL used.", // content fallback,
+  contentFallMessage2:
+    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };
