@@ -141,12 +141,12 @@ export function getActiveReceipt(host?: string): {
 
   // Fallback default
   return {
-    receipt: pabrikroti,
+    receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: erc20sLaunchedPabrikRoti,
-    supportedFTs: tokeksPabrikRoti,
-    displayedTokeks: displayedTokeksPabrikRoti,
+    supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
   };
 }
