@@ -355,7 +355,7 @@ export default function CoinsList() {
   }
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-6 place-items-center">
       {activeAccount?.address && (
         <CheckErc1155
           key={refreshToken}
