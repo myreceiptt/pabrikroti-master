@@ -6,9 +6,9 @@
 import React from "react";
 
 // Components libraries
-import ComingSoon from "@/components/contents/ComingSoon";
+import PerksPage from "@/components/contents/PerksPage";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 
 export default function PagePerks() {
-  return <DynamicLoginPage ContentComponent={ComingSoon} />;
+  return <DynamicLoginPage ContentComponent={PerksPage} />;
 }

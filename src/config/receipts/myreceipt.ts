@@ -67,9 +67,10 @@ export const myreceipt = {
   loginAria: "Call to action for login.", // LoginLayout,
   loginCall: "Log In. Take Off.", // LoginLayout,
   loginReason: {
-    text1: `Your Passport to Web3 Travel.`,
-    anchor1: ``,
-    link1: "",
+    text1: `Your Passport to`,
+    anchor1: `Web3 Travel.`,
+    link1:
+      "/medias/travelconnect-web3-proof-of-concept-coupon-and-perks-tokenization.pdf",
     text2: `Access your journeys, smart bookings and exclusive perks.`,
     anchor2: ``,
     link2: "",
