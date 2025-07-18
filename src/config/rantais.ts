@@ -55,7 +55,7 @@ export const zoraMainnet = zora; // Zora Mainnet
 // export const zoraMainnet = defineChain(7777777); // Zora Mainnet
 
 // All chain and chains combinations - Tentukan Dulu Rantainya.
-export const chain = baseMainnet; // Default Chain
+export const chain = baseSepolia; // Default Chain
 export const chains = [
   baseMainnet, // Native Ether - ETH
   baseSepolia, // Native Ether - ETH

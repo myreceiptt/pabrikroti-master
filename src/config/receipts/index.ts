@@ -58,7 +58,7 @@ const hostMap: Record<
     supportedFTs: tokeksMeMoRa,
     displayedTokeks: displayedTokeksMeMoRa,
   },
-  "motion.endhonesa.com": {
+  "travconn.endhonesa.com": {
     receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
@@ -67,7 +67,7 @@ const hostMap: Record<
     supportedFTs: tokeks,
     displayedTokeks: displayedTokeks,
   },
-  "www.inamotion.id": {
+  "coupon.travelconnect.co": {
     receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
@@ -95,22 +95,22 @@ const hostMap: Record<
     displayedTokeks: displayedTokeksPabrikRoti,
   },
   localhost: {
-    receipt: pabrikroti,
+    receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: erc20sLaunchedPabrikRoti,
-    supportedFTs: tokeksPabrikRoti,
-    displayedTokeks: displayedTokeksPabrikRoti,
+    supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
   },
   "127.0.0.1": {
-    receipt: pabrikroti,
+    receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: erc20sLaunchedPabrikRoti,
-    supportedFTs: tokeksPabrikRoti,
-    displayedTokeks: displayedTokeksPabrikRoti,
+    supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
   },
 };
 
@@ -141,12 +141,12 @@ export function getActiveReceipt(host?: string): {
 
   // Fallback default
   return {
-    receipt: pabrikroti,
+    receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: erc20sLaunchedPabrikRoti,
-    supportedFTs: tokeksPabrikRoti,
-    displayedTokeks: displayedTokeksPabrikRoti,
+    supportedNFTs: tekeks,
+    erc20sLaunched: erc20sLaunched,
+    supportedFTs: tokeks,
+    displayedTokeks: displayedTokeks,
   };
 }

@@ -1,30 +1,30 @@
 // /src/components/sections/HeaderSection.tsx
 
 // External libraries
-import { motion, AnimatePresence } from "framer-motion";
+// import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+// import { useRouter } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
-import { FaSistrix } from "react-icons/fa6";
+// import { FaSistrix } from "react-icons/fa6";
 // import { FaClockRotateLeft, FaUser, FaWallet } from "react-icons/fa6";
 
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
-import { hexToRgba } from "@/config/utils";
+// import { hexToRgba } from "@/config/utils";
 
 // Components libraries
 import ConnectButtons from "@/components/logins/ConnectButtons";
-import DropdownMenu from "@/components/sections/DropDownMenu";
+// import DropdownMenu from "@/components/sections/DropDownMenu";
 import QRCodeButton from "@/components/sections/QRCodeButton";
 
 export default function Header() {
   const { receipt } = getActiveReceipt();
 
-  const [searchQuery, setSearchQuery] = useState("");
+  // const [searchQuery, setSearchQuery] = useState("");
   const [isMobileSearchOpen, setIsMobileSearchOpen] = useState(false);
   const mobileSearchRef = useRef<HTMLDivElement>(null);
-  const router = useRouter();
+  // const router = useRouter();
 
   // Close when clicked outside
   useEffect(() => {
@@ -48,12 +48,12 @@ export default function Header() {
     };
   }, [isMobileSearchOpen]);
 
-  const handleSearch = (e: React.FormEvent) => {
-    e.preventDefault();
-    if (searchQuery.trim()) {
-      router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
-    }
-  };
+  // const handleSearch = (e: React.FormEvent) => {
+  //   e.preventDefault();
+  //   if (searchQuery.trim()) {
+  //     router.push(`/search?query=${encodeURIComponent(searchQuery)}`);
+  //   }
+  // };
 
   return (
     <header
@@ -78,7 +78,7 @@ export default function Header() {
 
       <div className="w-1/2 flex justify-end gap-4">
         {/* Search Bar (Desktop View: Min Width 640px) */}
-        <form
+        {/* <form
           onSubmit={handleSearch}
           style={{
             backgroundColor: receipt.colorPrimary,
@@ -98,12 +98,12 @@ export default function Header() {
             style={{ color: hexToRgba(receipt.colorSekunder, 0.7) }}
             className="ml-2 w-full bg-transparent outline-hidden text-xs md:text-sm"
           />
-        </form>
+        </form> */}
 
         {/* Icons Section */}
         <div ref={mobileSearchRef} className="flex space-x-4">
           {/* Mobile Search Button (Below 640px) */}
-          <button
+          {/* <button
             onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
             style={{
               color: receipt.colorSecondary,
@@ -113,10 +113,10 @@ export default function Header() {
             className="sm:hidden w-10 h-10 flex items-center justify-center text-xl border rounded-lg cursor-pointer"
             aria-label="Mobile Search Button">
             <FaSistrix />
-          </button>
+          </button> */}
 
           {/* Mobile Search Input (Visible When Button Clicked) */}
-          <AnimatePresence>
+          {/* <AnimatePresence>
             {isMobileSearchOpen && (
               <motion.form
                 key="mobile-search"
@@ -152,7 +152,7 @@ export default function Header() {
                 </button>
               </motion.form>
             )}
-          </AnimatePresence>
+          </AnimatePresence> */}
 
           {/* Other Buttons */}
           <ConnectButtons />
@@ -172,7 +172,7 @@ export default function Header() {
             </Link>
           </button> */}
           <QRCodeButton />
-          <DropdownMenu />
+          {/* <DropdownMenu /> */}
         </div>
       </div>
     </header>
