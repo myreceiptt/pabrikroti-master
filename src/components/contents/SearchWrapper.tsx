@@ -363,7 +363,7 @@ export default function SearchWrapper() {
   }
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-6 place-items-center">
       <Title title1={receipt.searchTitle} title2={query} />
 
       <DropDownSorter sortOption={sortOption} setSortOption={setSortOption} />

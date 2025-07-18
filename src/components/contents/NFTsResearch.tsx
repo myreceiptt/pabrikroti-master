@@ -35,7 +35,7 @@ export default function NFTsResearch() {
   ];
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-6 place-items-center">
       <Title title1="Deep Dive:" title2="NFTs Research Hub" />
 
       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">

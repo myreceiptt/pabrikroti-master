@@ -367,7 +367,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
   }
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-6 place-items-center">
       <Title title1={title1} title2={title2} />
 
       <DropDownSorter sortOption={sortOption} setSortOption={setSortOption} />
