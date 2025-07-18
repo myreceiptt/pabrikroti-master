@@ -61,10 +61,10 @@ export default function PerksPage() {
               <div className="grid grid-cols-1 gap-2">
                 <h2
                   style={{ color: receipt.colorPrimer }}
-                  className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-2">
+                  className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1">
                   {item.name}
                 </h2>
-                <h3>{item.text}</h3>
+                <h3 className="line-clamp-1">{item.text}</h3>
               </div>
             </div>
           </motion.div>
