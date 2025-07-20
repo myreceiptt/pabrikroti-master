@@ -64,7 +64,9 @@ export default function PerksPage() {
                   className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1">
                   {item.name}
                 </h2>
-                <h3 className="line-clamp-1">{item.text}</h3>
+                <h3 className="text-left text-base sm:text-xs md:text-sm lg:text-base line-clamp-1">
+                  {item.text}
+                </h3>
               </div>
             </div>
           </motion.div>
