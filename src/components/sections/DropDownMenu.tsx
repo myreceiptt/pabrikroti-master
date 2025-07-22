@@ -85,195 +85,144 @@ export default function DropdownMenu() {
             }}
             className="absolute right-0 z-40 mt-1 w-56 origin-top-right text-sm border rounded-lg divide-y divide-double">
             {/* Section 1: Home */}
-            <li
-              onClick={() => setIsOpen(!isOpen)}
-              style={liStyle("/")}
-              className={liClass("/")}>
-              <Link href="/" className={linkClass("/")}>
-                {receipt.ddMenuHome}
-              </Link>
-            </li>
+            {receipt.ddMenuHome && (
+              <li
+                onClick={() => setIsOpen(false)}
+                style={liStyle("/")}
+                className={liClass("/")}>
+                <Link href="/" className={linkClass("/")}>
+                  {receipt.ddMenuHome}
+                </Link>
+              </li>
+            )}
 
-            {/* Sub Section 1: Home Navigation */}
-            <ul className="pl-4 rounded-lg divide-y divide-double">
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/#what")}
-                className={liClass("/#what")}>
-                <Link href="/#what" className={linkClass("/#what")}>
-                  {receipt.ddMenuWhat}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/#why")}
-                className={liClass("/#why")}>
-                <Link href="/#why" className={linkClass("/#why")}>
-                  {receipt.ddMenuWhy}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/#how")}
-                className={liClass("/#how")}>
-                <Link href="/#how" className={linkClass("/#how")}>
-                  {receipt.ddMenuHow}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/#when")}
-                className={liClass("/#when")}>
-                <Link href="/#when" className={linkClass("/#when")}>
-                  {receipt.ddMenuWhen}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/#where")}
-                className={liClass("/#where")}>
-                <Link href="/#where" className={linkClass("/#where")}>
-                  {receipt.ddMenuWhere}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/#who")}
-                className={liClass("/#who")}>
-                <Link href="/#who" className={linkClass("/#who")}>
-                  {receipt.ddMenuWho}
-                </Link>
-              </li>
-            </ul>
+            {/* Sub Section 1 */}
+            {[
+              { href: "/#what", label: receipt.ddMenuWhat },
+              { href: "/#why", label: receipt.ddMenuWhy },
+              { href: "/#how", label: receipt.ddMenuHow },
+              { href: "/#when", label: receipt.ddMenuWhen },
+              { href: "/#where", label: receipt.ddMenuWhere },
+              { href: "/#who", label: receipt.ddMenuWho },
+            ].filter((item) => item.label).length > 0 && (
+              <ul className="pl-4 rounded-lg divide-y divide-double">
+                {[
+                  { href: "/#what", label: receipt.ddMenuWhat },
+                  { href: "/#why", label: receipt.ddMenuWhy },
+                  { href: "/#how", label: receipt.ddMenuHow },
+                  { href: "/#when", label: receipt.ddMenuWhen },
+                  { href: "/#where", label: receipt.ddMenuWhere },
+                  { href: "/#who", label: receipt.ddMenuWho },
+                ]
+                  .filter((item) => item.label)
+                  .map((item) => (
+                    <li
+                      key={item.href}
+                      onClick={() => setIsOpen(false)}
+                      style={liStyle(item.href)}
+                      className={liClass(item.href)}>
+                      <Link href={item.href} className={linkClass(item.href)}>
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            )}
 
-            {/* Section 2: Featured Token */}
-            <li
-              onClick={() => setIsOpen(!isOpen)}
-              style={liStyle("/featured")}
-              className={liClass("/featured")}>
-              <Link href="/featured" className={linkClass("/featured")}>
-                {receipt.ddMenuFeatured}
-              </Link>
-            </li>
+            {/* Section 2: Featured */}
+            {receipt.ddMenuFeatured && (
+              <li
+                onClick={() => setIsOpen(false)}
+                style={liStyle("/featured")}
+                className={liClass("/featured")}>
+                <Link href="/featured" className={linkClass("/featured")}>
+                  {receipt.ddMenuFeatured}
+                </Link>
+              </li>
+            )}
 
-            {/* Sub Section 2: Featured Navigation */}
-            <ul className="pl-4 rounded-lg divide-y divide-double">
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/free")}
-                className={liClass("/free")}>
-                <Link href="/free" className={linkClass("/free")}>
-                  {receipt.ddMenuFree}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/paid")}
-                className={liClass("/paid")}>
-                <Link href="/paid" className={linkClass("/paid")}>
-                  {receipt.ddMenuPaid}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/coins")}
-                className={liClass("/coins")}>
-                <Link href="/coins" className={linkClass("/coins")}>
-                  {receipt.ddMenuCoins}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/market")}
-                className={liClass("/market")}>
-                <Link
-                  href="/market"
-                  target="_blank"
-                  className={linkClass("/market")}>
-                  {receipt.ddMenuMarket}
-                </Link>
-              </li>
-            </ul>
+            {/* Sub Section 2 */}
+            {[
+              { href: "/free", label: receipt.ddMenuFree },
+              { href: "/paid", label: receipt.ddMenuPaid },
+              { href: "/coins", label: receipt.ddMenuCoins },
+              { href: "/market", label: receipt.ddMenuMarket },
+            ].filter((item) => item.label).length > 0 && (
+              <ul className="pl-4 rounded-lg divide-y divide-double">
+                {[
+                  { href: "/free", label: receipt.ddMenuFree },
+                  { href: "/paid", label: receipt.ddMenuPaid },
+                  { href: "/coins", label: receipt.ddMenuCoins },
+                  { href: "/market", label: receipt.ddMenuMarket },
+                ]
+                  .filter((item) => item.label)
+                  .map((item) => (
+                    <li
+                      key={item.href}
+                      onClick={() => setIsOpen(false)}
+                      style={liStyle(item.href)}
+                      className={liClass(item.href)}>
+                      <Link href={item.href} className={linkClass(item.href)}>
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            )}
 
-            {/* Section 3: More Features */}
-            <li
-              onClick={() => setIsOpen(!isOpen)}
-              style={liStyle("/more")}
-              className={liClass("/more")}>
-              <Link href="/more" target="_blank" className={linkClass("/more")}>
-                {receipt.ddMenuMore}
-              </Link>
-            </li>
+            {/* Section 3: More */}
+            {receipt.ddMenuMore && (
+              <li
+                onClick={() => setIsOpen(false)}
+                style={liStyle("/more")}
+                className={liClass("/more")}>
+                <Link
+                  href="/more"
+                  target="_blank"
+                  className={linkClass("/more")}>
+                  {receipt.ddMenuMore}
+                </Link>
+              </li>
+            )}
 
-            {/* Sub Section 3: More Navigation */}
-            <ul className="pl-4 rounded-lg divide-y divide-double">
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/publish")}
-                className={liClass("/publish")}>
-                <Link
-                  href="/publish"
-                  target="_blank"
-                  className={linkClass("/publish")}>
-                  {receipt.ddMenuDeploy}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/publish/nft")}
-                className={liClass("/publish/nft")}>
-                <Link
-                  href="/publish/nft"
-                  target="_blank"
-                  className={linkClass("/publish/nft")}>
-                  {receipt.ddMenuPublishNFT}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/publish/ft")}
-                className={liClass("/publish/ft")}>
-                <Link
-                  href="/publish/ft"
-                  target="_blank"
-                  className={linkClass("/publish/ft")}>
-                  {receipt.ddMenuPublishFT}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/dashboard")}
-                className={liClass("/dashboard")}>
-                <Link
-                  href="/dashboard"
-                  target="_blank"
-                  className={linkClass("/dashboard")}>
-                  {receipt.ddMenuDashBoard}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle(`${receipt.ddMenuContactLink}`)}
-                className={liClass(`${receipt.ddMenuContactLink}`)}>
-                <Link
-                  href={receipt.ddMenuContactLink}
-                  target="_blank"
-                  className={linkClass(`${receipt.ddMenuContactLink}`)}>
-                  {receipt.ddMenuContact}
-                </Link>
-              </li>
-              <li
-                onClick={() => setIsOpen(!isOpen)}
-                style={liStyle("/terms")}
-                className={liClass("/terms")}>
-                <Link
-                  href="/terms"
-                  target="_blank"
-                  className={linkClass("/terms")}>
-                  {receipt.ddMenuTerms}
-                </Link>
-              </li>
-            </ul>
+            {/* Sub Section 3 */}
+            {[
+              { href: "/publish", label: receipt.ddMenuDeploy },
+              { href: "/publish/nft", label: receipt.ddMenuPublishNFT },
+              { href: "/publish/ft", label: receipt.ddMenuPublishFT },
+              { href: "/dashboard", label: receipt.ddMenuDashBoard },
+              { href: receipt.ddMenuContactLink, label: receipt.ddMenuContact },
+              { href: "/terms", label: receipt.ddMenuTerms },
+            ].filter((item) => item.label).length > 0 && (
+              <ul className="pl-4 rounded-lg divide-y divide-double">
+                {[
+                  { href: "/publish", label: receipt.ddMenuDeploy },
+                  { href: "/publish/nft", label: receipt.ddMenuPublishNFT },
+                  { href: "/publish/ft", label: receipt.ddMenuPublishFT },
+                  { href: "/dashboard", label: receipt.ddMenuDashBoard },
+                  {
+                    href: receipt.ddMenuContactLink,
+                    label: receipt.ddMenuContact,
+                  },
+                  { href: "/terms", label: receipt.ddMenuTerms },
+                ]
+                  .filter((item) => item.label)
+                  .map((item) => (
+                    <li
+                      key={item.href}
+                      onClick={() => setIsOpen(false)}
+                      style={liStyle(item.href)}
+                      className={liClass(item.href)}>
+                      <Link
+                        href={item.href}
+                        target="_blank"
+                        className={linkClass(item.href)}>
+                        {item.label}
+                      </Link>
+                    </li>
+                  ))}
+              </ul>
+            )}
 
             <div
               onClick={() => setIsOpen(!isOpen)}

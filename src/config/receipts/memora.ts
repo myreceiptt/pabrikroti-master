@@ -93,7 +93,7 @@ export const memora = {
   ddMenuPaid: "Paid MeMoRa", // DropDownMenu,
   ddMenuCoins: "BON Voyage", // DropDownMenu,
   ddMenuMarket: "", // DropDownMenu,
-  ddMenuMore: "Read More, OiOi!", // DropDownMenu,
+  ddMenuMore: "Read More", // DropDownMenu,
   ddMenuDeploy: "", // DropDownMenu,
   ddMenuPublishNFT: "", // DropDownMenu,
   ddMenuPublishFT: "", // DropDownMenu,
@@ -125,8 +125,7 @@ export const memora = {
   footDiscord: "", // FooterSection,
   footYouTube: "https://www.youtube.com/@voyageweb3", // FooterSection,
   footEmail: "mailto:hello@voyage.co.id", // FooterSection,
-  footWhatsApp:
-    "https://api.whatsapp.com/send?phone=6281808038000&text=Hello%2C%20Voyagers!%20Help%20us%20integrate%20decentralized%20technologies%20into%20our%20operations%20and%20business%20models%2C%20please!", // FooterSection,
+  footWhatsApp: "https://api.whatsapp.com/send?phone=6281808038000", // FooterSection,
   footWebsite: "", // FooterSection,
 
   // /src/components/sections/HeaderSection.tsx
@@ -178,14 +177,22 @@ export const memora = {
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
       image: "/roti/landing/slider-0.png",
-      cta: { text: "Get Started", href: "/coins", target: "_blank" },
+      cta: {
+        text: "Get Started",
+        href: "/coins",
+        target: "_blank",
+      },
     },
     {
       title: "Programmed Batch Breads",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
       image: "/roti/landing/slider-1.png",
-      cta: { text: "Get Started", href: "/coins", target: "_blank" },
+      cta: {
+        text: "Get Started",
+        href: "/coins",
+        target: "_blank",
+      },
     },
   ],
 
@@ -248,6 +255,7 @@ export const memora = {
 
   // search wrapper page
   fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
+  searchLoader: "Ups! Your query mismatch.", // search wrapper,
   searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
     "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,
@@ -257,6 +265,7 @@ export const memora = {
   searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
 
   // nfts list page
+  nftsFTGated: false, // nfts list, nft details,
   nftsTitle1Free: "All Free", // nfts list,
   nftsTitle2Free: "Collectibles", // nfts list,
   nftsTitle1Paid: "All Paid", // nfts list,
@@ -295,6 +304,13 @@ export const memora = {
   nftMessage1: "The collectible ID not found.", // nft details,
   nftMessage2:
     "The specified collectible ID was not found. Please try again later or return to the home page.", // nft details,
+  nftAccessRedirect: "/coins", // nft details
+
+  // nft access section
+  nftAccessMessage:
+    "Please get your access by get any point rewards at least not zero balance.", // nft access,
+  nftAccessButton: "Get The Point Rewards!", // nft access,
+  nftAccessBanner: "/memora/images/content-banner.png", // nft access,
 
   // nft form section
   nftFormByLink: "https://memora.voyage.co.id/", // nft form,
@@ -325,6 +341,7 @@ export const memora = {
   coinsMessage1: "No claimable points", // coins list,
   coinsMessage2:
     "There are no claimable points available right now. Please try again later or return to the home page.", // coins list,
+  coinsNFTGated: true, // coins list, coin details,
   coinsTitle1: "Claim All", // coins list,
   coinsTitle2: "Poins Reward", // coins list,
   coinsAria: "Refresh points data.", // coins list,
@@ -349,7 +366,7 @@ export const memora = {
   coinMessage2:
     "The specified address of the point was not found. Please try again later or return to the home page.", // coin details,
   coinAccessRedirect: "/featured", // coin details
-  coinAccessTitle: "You don't have access!", // coin details,
+  coinAccessTitle: "You don't have access!", // coin details, nft details,
 
   // coin access section
   coinAccessMessage:
@@ -366,35 +383,34 @@ export const memora = {
   coinFormPerWallet: "supply per holder.", // coin form,
 
   // coin pop up section
-  popUpTitle: "$BON Dosh!!!!", // coin pop up,
-  popUpP1: "At a certain point in time… in the Realm of Reality.", // coin pop up,
-  popUpP2:
-    "On EARTH #474, after traversing 4.5 billion years in the vastness of the cosmos, a group of individuals embarked on an extraordinary journey. They did not merely traverse land, but also crossed the oceans and even ventured into the boundless expanse of space. Thus, the VOYAGE began—not merely a physical expedition, but a pursuit of values, encounters, and growth.", // coin pop up,
-  popUpP3:
-    "As time unfolded, their efforts met challenges and opportunities alike. Revenue flowed in and out, weaving a pattern akin to the ceaseless tides of the sea. Every meeting with a new soul, every crossroads encountered, every farewell, and every joyous reunion—each left an indelible mark upon the tapestry of this great journey.", // coin pop up,
-  popUpP4:
-    "The call &quot;BON VOYAGE!&quot; grew louder, reverberating not only in the minds of those undertaking the VOYAGE but also weaving itself into the very fabric of decentralised data traffic. What was once a mere expression of well-wishes, BON had now evolved into something far greater—a unit of measure for the VOYAGE itself.", // coin pop up,
-  popUpP5: "", // coin pop up,
-  popUpP6: "", // coin pop up,
-  popUpP7: "", // coin pop up,
-  popUpP8: "", // coin pop up,
-  popUpUlLi1: "🔹 How far has the VOYAGE taken them?", // coin pop up,
-  popUpUlLi2: "🔹 How much value has been forged along the way?", // coin pop up,
-  popUpUlLi3: "🔹 How many encounters have shaped the path?", // coin pop up,
-  popUpUlLi4: "🔹 How much revenue has been channelled and exchanged?", // coin pop up,
-  popUpUlLi5: "", // coin pop up,
-  popUpUlLi6: "", // coin pop up,
-  popUpP9:
-    "BON stands as a measure that immortalises experience, a token of equivalence (ERC-20) that encapsulates the influence of every participant in the VOYAGE.", // coin pop up,
-  popUpP10:
-    "BON is not just a figure—it is proof of the steps taken, the values cultivated, and the impact left behind.", // coin pop up,
-  popUpP11:
-    "And at the culmination of every journey—whether at its inception or after traversing great distances—one call continues to resonate, carrying forth the spirit of adventure and purpose:", // coin pop up,
-  popUpP12: "BON VOYAGE! 🚀", // coin pop up,
-  popUpP13: "🍌☕🍌☕", // coin pop up,
-  popUpP14: "Prof. NOTA v.11.11.11", // coin pop up,
+  popUpTitle: `$BON Dosh!!!!`, // coin pop up,
+  popUpP1: `At a certain point in time… in the Realm of Reality.`, // coin pop up,
+  popUpP2: `On EARTH #474, after traversing 4.5 billion years in the vastness of the cosmos, a group of individuals embarked on an extraordinary journey. They did not merely traverse land, but also crossed the oceans and even ventured into the boundless expanse of space. Thus, the VOYAGE began—not merely a physical expedition, but a pursuit of values, encounters, and growth.`, // coin pop up,
+  popUpP3: `As time unfolded, their efforts met challenges and opportunities alike. Revenue flowed in and out, weaving a pattern akin to the ceaseless tides of the sea. Every meeting with a new soul, every crossroads encountered, every farewell, and every joyous reunion—each left an indelible mark upon the tapestry of this great journey.`, // coin pop up,
+  popUpP4: `The call &quot;BON VOYAGE!&quot; grew louder, reverberating not only in the minds of those undertaking the VOYAGE but also weaving itself into the very fabric of decentralised data traffic. What was once a mere expression of well-wishes, BON had now evolved into something far greater—a unit of measure for the VOYAGE itself.`, // coin pop up,
+  popUpP5: ``, // coin pop up,
+  popUpP6: ``, // coin pop up,
+  popUpP7: ``, // coin pop up,
+  popUpP8: ``, // coin pop up,
+  popUpUlLi1: `🔹 How far has the VOYAGE taken them?`, // coin pop up,
+  popUpUlLi2: `🔹 How much value has been forged along the way?`, // coin pop up,
+  popUpUlLi3: `🔹 How many encounters have shaped the path?`, // coin pop up,
+  popUpUlLi4: `🔹 How much revenue has been channelled and exchanged?`, // coin pop up,
+  popUpUlLi5: ``, // coin pop up,
+  popUpUlLi6: ``, // coin pop up,
+  popUpP9: `BON stands as a measure that immortalises experience, a token of equivalence (ERC-20) that encapsulates the influence of every participant in the VOYAGE.`, // coin pop up,
+  popUpP10: `BON is not just a figure—it is proof of the steps taken, the values cultivated, and the impact left behind.`, // coin pop up,
+  popUpP11: `And at the culmination of every journey—whether at its inception or after traversing great distances—one call continues to resonate, carrying forth the spirit of adventure and purpose:`, // coin pop up,
+  popUpP12: `BON VOYAGE! 🚀`, // coin pop up,
+  popUpP13: `🍌☕🍌☕`, // coin pop up,
+  popUpP14: `Prof. NOTA v.11.11.11`, // coin pop up,
   popUpImage: "/memora/medias/coin-pop-up.gif", // coin pop up,
-  popUpImageAlt: "BON VOYAGE Token Illustration", // coin pop up,
+  popUpImageAlt: `BON VOYAGE Token Illustration`, // coin pop up,
+
+  // content fallback page
+  contentFallLoader: `Don't rush, take it slow.`, // content fallback,
+  contentFallMessage1: `Invalid URL used.`, // content fallback,
+  contentFallMessage2: `Please use a valid page address in the URL or return to the home page and start over.`, // content fallback,
 
   // terms page
   proName, // terms,
@@ -552,9 +568,4 @@ export const memora = {
       ],
     },
   }, // terms,
-
-  // content fallback page
-  contentFallMessage1: "Invalid URL used.", // content fallback,
-  contentFallMessage2:
-    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };

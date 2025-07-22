@@ -35,6 +35,7 @@ import NFTDescription from "@/components/nfts/NFTDescription";
 import Loader from "@/components/sections/ReusableLoader";
 
 interface NFTFormProps {
+  hasAccess: boolean | null;
   dropContract: ThirdwebContract;
   nftChain: Chain;
   nftId: bigint;
@@ -54,6 +55,7 @@ interface NFTFormProps {
 }
 
 export default function NFTForm({
+  hasAccess,
   dropContract,
   nftChain,
   nftId,
@@ -172,32 +174,35 @@ export default function NFTForm({
   let buttonLabel = receipt.nftButton;
   let buttonDisabled = false;
 
-  if (currentTime < startTime) {
+  const safeReason = (reason ?? "").toLowerCase();
+
+  if (hasAccess === null || hasAccess === false) {
+    // Tidak punya akses
+    buttonLabel = receipt.coinNoAccess;
+    buttonDisabled = true;
+  } else if (currentTime < startTime) {
     // Belum waktunya
     buttonLabel = `${receipt.nftSoon} ${getCountdownString(
       startTime,
       currentTime
     )}`;
     buttonDisabled = true;
-  } else {
-    if (!isClaimable) {
-      // Tidak bisa diklaim karena alasan teknis lainnya
-      const safeReason = (reason ?? "").toLowerCase();
-      if (safeReason.includes("dropclaimexceedlimit")) {
-        buttonLabel = receipt.nftClaimed;
-      } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-        buttonLabel = receipt.nftClosed;
-      } else {
-        buttonLabel = receipt.nftClosed; // fallback
-      }
-      buttonDisabled = true;
-    } else if (adjustedBalance < adjustedPrice) {
-      // Saldo tidak cukup
-      buttonLabel = receipt.nftInsufficient;
-      buttonDisabled = true;
+  } else if (!isClaimable) {
+    // Tidak bisa diklaim karena alasan teknis lainnya
+    if (safeReason.includes("dropclaimexceedlimit")) {
+      buttonLabel = receipt.nftClaimed;
+    } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+      buttonLabel = receipt.nftClosed;
+    } else {
+      buttonLabel = receipt.nftClosed; // fallback
     }
-    // else: semua aman, button tetap aktif dengan label default
+    buttonDisabled = true;
+  } else if (adjustedBalance < adjustedPrice) {
+    // Saldo tidak cukup
+    buttonLabel = receipt.nftInsufficient;
+    buttonDisabled = true;
   }
+  // else: semua aman, button tetap aktif dengan label default
 
   return (
     <div className="w-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">

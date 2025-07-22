@@ -1,8 +1,7 @@
 // /src/config/receipts/myreceipt.ts
 
 // All receipts should be exported from this file.
-const proTitle =
-  "Inamotion - Full Service with Motion Graphic and Creative Support";
+const proTitle = "Inamotion - Motion Graphic and Creative Support";
 const proUrl = "https://www.inamotion.id";
 const proName = "Inamotion";
 const proAlias1 = "Inamotion";
@@ -178,14 +177,22 @@ export const myreceipt = {
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
       image: "/roti/landing/slider-0.png",
-      cta: { text: "Get Started", href: "/coins", target: "_blank" },
+      cta: {
+        text: "Get Started",
+        href: "/coins",
+        target: "_blank",
+      },
     },
     {
       title: "Programmed Batch Breads",
       subtitle: "Digitally baked. Publicly shared.",
       description: "We tokenize culture and rewards.",
       image: "/roti/landing/slider-1.png",
-      cta: { text: "Get Started", href: "/coins", target: "_blank" },
+      cta: {
+        text: "Get Started",
+        href: "/coins",
+        target: "_blank",
+      },
     },
   ],
 
@@ -248,6 +255,7 @@ export const myreceipt = {
 
   // search wrapper page
   fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
+  searchLoader: "Ups! Your query mismatch.", // search wrapper,
   searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
     "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,
@@ -257,6 +265,7 @@ export const myreceipt = {
   searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
 
   // nfts list page
+  nftsFTGated: false, // nfts list, nft details,
   nftsTitle1Free: "Curated", // nfts list,
   nftsTitle2Free: "NFT Artworks", // nfts list,
   nftsTitle1Paid: "Curated", // nfts list,
@@ -295,6 +304,13 @@ export const myreceipt = {
   nftMessage1: "The NFT ID not found.", // nft details,
   nftMessage2:
     "The specified NFT ID was not found. Please try again later or return to the home page.", // nft details,
+  nftAccessRedirect: "/coins", // nft details
+
+  // nft access section
+  nftAccessMessage:
+    "Please get your access by get any FTLK Token at least not zero balance.", // nft access,
+  nftAccessButton: "Get The FTLK Token!", // nft access,
+  nftAccessBanner: "/images/content-banner.png", // nft access,
 
   // nft form section
   nftFormByLink: "https://far.futuloka.io/", // nft form,
@@ -325,13 +341,14 @@ export const myreceipt = {
   coinsMessage1: "No claimable coins", // coins list,
   coinsMessage2:
     "There are no claimable coin available right now. Please try again later or return to the home page.", // coins list,
+  coinsNFTGated: true, // coins list, coin details,
   coinsTitle1: "The Futuloka", // coins list,
   coinsTitle2: "Future Coins", // coins list,
   coinsAria: "Refresh coins data.", // coins list,
 
   // coin lister section
   coinButton: "Buy Now", // coin lister, coin form,
-  coinNoAccess: "No Access", // coin lister, coin form,
+  coinNoAccess: "No Access", // coin lister, coin form, nft lister, nft form,
   coinClaimed: "Already Own", // coin lister, coin form,
   coinListerImage: "/medias/batch-bread.png", // coin lister, coin form,
   coinListerName: "The Available Coin", // coin lister, coin form,
@@ -348,8 +365,8 @@ export const myreceipt = {
   coinMessage1: "The coin address not found.", // coin details,
   coinMessage2:
     "The specified address of the coin was not found. Please try again later or return to the home page.", // coin details,
-  coinAccessRedirect: "/paid", // coin details
-  coinAccessTitle: "You don't have access!", // coin details,
+  coinAccessRedirect: "/featured", // coin details
+  coinAccessTitle: "You don't have access!", // coin details, nft details,
 
   // coin access section
   coinAccessMessage:
@@ -366,30 +383,34 @@ export const myreceipt = {
   coinFormPerWallet: "supply per holder.", // coin form,
 
   // coin pop up section
-  popUpTitle: "FTLK Coin", // coin pop up,
-  popUpP1: "At a certain point in time… in the Universe of Reality.", // coin pop up,
+  popUpTitle: `FTLK Coin`, // coin pop up,
+  popUpP1: `At a certain point in time… in the Universe of Reality.`, // coin pop up,
   popUpP2: `In the ever-evolving landscape of Indonesia's creative ecosystem, Futuloka is undergoing a major transformation—shifting from an event-oriented festival to a program-based platform with long-term goals.`, // coin pop up,
   popUpP3: `This change is not simply a pivot in format, but a strategic reimagining of how the initiative can more meaningfully contribute to the future of Indonesian art, culture, and technology. As a core unit of Spektakel, Futuloka is now positioned as an open innovation laboratory, designed to foster sustainable exploration, collaboration, and knowledge-building by leveraging blockchain technology.`, // coin pop up,
   popUpP4: `A program-based approach means that Futuloka is no longer built around an annual event. Instead, it is built around values, goals, and consistent activities that engage participants over weeks, months, and eventually years.`, // coin pop up,
-  popUpP5:
-    "These programs serve different audiences—from creators and developers to curators, collectors, and the public—but they are united by a common aim: to explore how technology can enhance the depth, reach, and resilience of Indonesian culture.", // coin pop up,
+  popUpP5: `These programs serve different audiences—from creators and developers to curators, collectors, and the public—but they are united by a common aim: to explore how technology can enhance the depth, reach, and resilience of Indonesian culture.`, // coin pop up,
   popUpP6: `Futuloka's interest in blockchain is not about following a trend—it is about addressing structural issues within Indonesia's art and cultural industries.`, // coin pop up,
   popUpP7: `Many artists and creators, especially those outside the major urban centers, face significant challenges in monetizing their work, protecting their intellectual property, or reaching wider audiences.`, // coin pop up,
   popUpP8: `Blockchain technology, particularly when used thoughtfully, can provide tools for:`, // coin pop up,
-  popUpUlLi1: "Digital provenance and ownership", // coin pop up,
-  popUpUlLi2: "Royalty tracking and automated compensation", // coin pop up,
-  popUpUlLi3: "Direct creator-audience relationships", // coin pop up,
-  popUpUlLi4: "Collective decision-making and community governance", // coin pop up,
-  popUpUlLi5: "Preservation of intangible cultural heritage in digital forms", // coin pop up,
-  popUpUlLi6: "", // coin pop up,
+  popUpUlLi1: `Digital provenance and ownership`, // coin pop up,
+  popUpUlLi2: `Royalty tracking and automated compensation`, // coin pop up,
+  popUpUlLi3: `Direct creator-audience relationships`, // coin pop up,
+  popUpUlLi4: `Collective decision-making and community governance`, // coin pop up,
+  popUpUlLi5: `Preservation of intangible cultural heritage in digital forms`, // coin pop up,
+  popUpUlLi6: ``, // coin pop up,
   popUpP9: `These potentials are not theoretical—they are within reach, but only if creators have access to knowledge, networks, and support. Futuloka exists to fill that gap.`, // coin pop up,
   popUpP10: `This is not just a new format—it's a new foundation.`, // coin pop up,
-  popUpP11: "So, are we the future, OiOi!?", // coin pop up,
-  popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
-  popUpP13: "", // coin pop up,
-  popUpP14: "", // coin pop up,
+  popUpP11: `So, are we the future, OiOi!?`, // coin pop up,
+  popUpP12: `Prof. NOTA v.11.11.11`, // coin pop up,
+  popUpP13: ``, // coin pop up,
+  popUpP14: ``, // coin pop up,
   popUpImage: "/medias/coin-pop-up.png", // coin pop up,
-  popUpImageAlt: "FTLK Coin Illustration", // coin pop up,
+  popUpImageAlt: `FTLK Coin Illustration`, // coin pop up,
+
+  // content fallback page
+  contentFallLoader: `Don't rush, take it slow.`, // content fallback,
+  contentFallMessage1: `Invalid URL used.`, // content fallback,
+  contentFallMessage2: `Please use a valid page address in the URL or return to the home page and start over.`, // content fallback,
 
   // terms page
   proName, // terms,
@@ -547,9 +568,4 @@ export const myreceipt = {
       ],
     },
   }, // terms,
-
-  // content fallback page
-  contentFallMessage1: "Invalid URL used.", // content fallback,
-  contentFallMessage2:
-    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };

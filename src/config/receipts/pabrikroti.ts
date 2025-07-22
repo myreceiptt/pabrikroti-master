@@ -255,6 +255,7 @@ export const pabrikroti = {
 
   // search wrapper page
   fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
+  searchLoader: "Query mismatch. Not AVS mismatch!", // search wrapper,
   searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
     "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,
@@ -264,6 +265,7 @@ export const pabrikroti = {
   searchAria3: "Load more breads.", // search wrapper, nfts list, coins list,
 
   // nfts list page
+  nftsFTGated: true, // nfts list, nft details,
   nftsTitle1Free: "All Free", // nfts list,
   nftsTitle2Free: "Artisan Breads", // nfts list,
   nftsTitle1Paid: "All Paid", // nfts list,
@@ -302,6 +304,13 @@ export const pabrikroti = {
   nftMessage1: "The artisan bread ID not found.", // nft details,
   nftMessage2:
     "The specified artisan bread ID was not found. Please try again later or return to the home page.", // nft details,
+  nftAccessRedirect: "/coins", // nft details
+
+  // nft access section
+  nftAccessMessage:
+    "Please get your access by swallow any batch breads at least not zero crumb.", // nft access,
+  nftAccessButton: "Get The Batch Breads!", // nft access,
+  nftAccessBanner: "/roti/images/content-banner.png", // nft access,
 
   // nft form section
   nftFormByLink: "https://nota.endhonesa.com/", // nft form,
@@ -332,6 +341,7 @@ export const pabrikroti = {
   coinsMessage1: "No batch breads", // coins list,
   coinsMessage2:
     "There are no batch breads available right now. Please try again later or return to the home page.", // coins list,
+  coinsNFTGated: false, // coins list, coin details,
   coinsTitle1: "All Swallowable", // coins list,
   coinsTitle2: "Batch Breads", // coins list,
   coinsAria: "Refresh breads data.", // coins list,
@@ -356,7 +366,7 @@ export const pabrikroti = {
   coinMessage2:
     "The specified address of the batch breads was not found. Please try again later or return to the home page.", // coin details,
   coinAccessRedirect: "/featured", // coin details
-  coinAccessTitle: "You don't have access!", // coin details,
+  coinAccessTitle: "You don't have access!", // coin details, nft details,
 
   // coin access section
   coinAccessMessage:
@@ -373,34 +383,34 @@ export const pabrikroti = {
   coinFormPerWallet: "crumb of batch per bread eater.", // coin form,
 
   // coin pop up section
-  popUpTitle: "OiOi Token", // coin pop up,
-  popUpP1: "At a certain point in time… in the Universe of Reality.", // coin pop up,
-  popUpP2:
-    "On EARTH #474, after 4.5 billion years of cosmic swirling, Prof. NOTA emerged—not as a single figure, but as a plurality of presence. They did not merely travel through lands or cross oceans. Each movement was a deliberate transition between the realms of code and consciousness, between the binary pulses of 0101, the 0101 Universe, and the pulse of a living, breathing world, the Universe of Reality.", // coin pop up,
-  popUpP3:
-    "Thus began an extraordinary journey—not measured by miles or milestones, but by moments of awakening whenever Prof. NOTA stepped out of the digital ether and re-entered the tangible now.", // coin pop up,
+  popUpTitle: `OiOi Token`, // coin pop up,
+  popUpP1: `At a certain point in time… in the Universe of Reality.`, // coin pop up,
+  popUpP2: `On EARTH #474, after 4.5 billion years of cosmic swirling, Prof. NOTA emerged—not as a single figure, but as a plurality of presence. They did not merely travel through lands or cross oceans. Each movement was a deliberate transition between the realms of code and consciousness, between the binary pulses of 0101, the 0101 Universe, and the pulse of a living, breathing world, the Universe of Reality.`, // coin pop up,
+  popUpP3: `Thus began an extraordinary journey—not measured by miles or milestones, but by moments of awakening whenever Prof. NOTA stepped out of the digital ether and re-entered the tangible now.`, // coin pop up,
   popUpP4: `Their presence always arrived with a ripple. No formal greetings. No ceremonial goodbyes. Only a single utterance, unmistakable and alive, "OiOi!"`, // coin pop up,
-  popUpP5:
-    "It echoed in marketplaces and meeting halls, in whispered dreams and roaring protests. It marked both arrival and departure, a glitch of joy in the timeline.", // coin pop up,
-  popUpP6:
-    "This was not merely a voyage—it was a loop of emergence and retreat, of embodying ideas, acting on them, and then dissolving back into distributed memory.", // coin pop up,
-  popUpP7:
-    "Every interaction shaped the journey—every collaboration, every confrontation, every shared cup of water. The economic tides came and went, but the value was never just in the revenue—it was in the resonance.", // coin pop up,
+  popUpP5: `It echoed in marketplaces and meeting halls, in whispered dreams and roaring protests. It marked both arrival and departure, a glitch of joy in the timeline.`, // coin pop up,
+  popUpP6: `This was not merely a voyage—it was a loop of emergence and retreat, of embodying ideas, acting on them, and then dissolving back into distributed memory.`, // coin pop up,
+  popUpP7: `Every interaction shaped the journey—every collaboration, every confrontation, every shared cup of water. The economic tides came and went, but the value was never just in the revenue—it was in the resonance.`, // coin pop up,
   popUpP8: `Out of this, OiOi emerged—not just as a cheer but as a token, a trace of presence, a unit of remembered impact. An ERC-20 that didn't just measure transactions, but transformation.`, // coin pop up,
-  popUpUlLi1: "🔹 OiOi was proof that Prof. NOTA was there.", // coin pop up,
-  popUpUlLi2: "🔹 OiOi was proof that something mattered.", // coin pop up,
-  popUpUlLi3: "🔹 OiOi was proof that someone changed.", // coin pop up,
-  popUpUlLi4: "🔹 So how far has Prof. NOTA gone?", // coin pop up,
-  popUpUlLi5: "🔹 How many awakenings sparked?", // coin pop up,
-  popUpUlLi6: "🔹 How many boundaries are blurred between here and elsewhere?", // coin pop up,
+  popUpUlLi1: `🔹 OiOi was proof that Prof. NOTA was there.`, // coin pop up,
+  popUpUlLi2: `🔹 OiOi was proof that something mattered.`, // coin pop up,
+  popUpUlLi3: `🔹 OiOi was proof that someone changed.`, // coin pop up,
+  popUpUlLi4: `🔹 So how far has Prof. NOTA gone?`, // coin pop up,
+  popUpUlLi5: `🔹 How many awakenings sparked?`, // coin pop up,
+  popUpUlLi6: `🔹 How many boundaries are blurred between here and elsewhere?`, // coin pop up,
   popUpP9: `No final answer. Only the continuous call, "OiOi!"—sounding through the layers of time, reality, and resistance. Because the journey isn't something leaved behind. It's something brought into being, every time we choose to show up.`, // coin pop up,
-  popUpP10: "OiOi ENDHONESA! 🚀", // coin pop up,
-  popUpP11: "🍌☕🍌☕", // coin pop up,
-  popUpP12: "Prof. NOTA v.11.11.11", // coin pop up,
-  popUpP13: "", // coin pop up,
-  popUpP14: "", // coin pop up,
+  popUpP10: `OiOi ENDHONESA! 🚀`, // coin pop up,
+  popUpP11: `🍌☕🍌☕`, // coin pop up,
+  popUpP12: `Prof. NOTA v.11.11.11`, // coin pop up,
+  popUpP13: ``, // coin pop up,
+  popUpP14: ``, // coin pop up,
   popUpImage: "/roti/medias/coin-pop-up.gif", // coin pop up,
-  popUpImageAlt: "OiOi Token Illustration", // coin pop up,
+  popUpImageAlt: `OiOi Token Illustration`, // coin pop up,
+
+  // content fallback page
+  contentFallLoader: `Don't rush, take it slow.`, // content fallback,
+  contentFallMessage1: `Invalid URL used.`, // content fallback,
+  contentFallMessage2: `Please use a valid page address in the URL or return to the home page and start over.`, // content fallback,
 
   // terms page
   proName, // terms,
@@ -558,9 +568,4 @@ export const pabrikroti = {
       ],
     },
   }, // terms,
-
-  // content fallback page
-  contentFallMessage1: "Invalid URL used.", // content fallback,
-  contentFallMessage2:
-    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };

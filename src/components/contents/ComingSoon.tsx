@@ -11,7 +11,7 @@ export default function ComingSoon() {
   const { receipt } = getActiveReceipt();
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-7 place-items-center">
       <Loader message={receipt.csLoader} />
 
       <Message

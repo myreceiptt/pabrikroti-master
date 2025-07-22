@@ -1,4 +1,9 @@
-# PABRIK ROTI [![version](https://img.shields.io/badge/version-2.4.74-blue)](https://github.com/myreceiptt/pabrikroti-master/releases/tag/v.2.4.74-inamotion) [![status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/myreceiptt/pabrikroti-master/blob/preview/SECURITY.md#-supported-versions) [![Build Status](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) [![Deployed to Vercel](https://img.shields.io/badge/Vercel-deployed-success?logo=vercel)](https://preroti.endhonesa.com/)
+# PABRIK ROTI
+
+[![version](https://img.shields.io/badge/version-2.4.74-blue)](https://github.com/myreceiptt/pabrikroti-master/releases/tag/v.2.4.74-inamotion) _Latest Release_  
+[![status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/myreceiptt/pabrikroti-master/blob/preview/SECURITY.md#-supported-versions) _Maintenance Status_  
+[![Build Status](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) _CI Status_  
+[![Deployed to Vercel](https://img.shields.io/badge/Vercel-deployed-success?logo=vercel)](https://preroti.endhonesa.com/) _Staging Site_
 
 > "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by its community, and baked through the heat of shared struggles."
 >
@@ -6,14 +11,28 @@
 
 ---
 
-## Staging 2.4.74 by Ina Motion
+## 📚 Table of Contents
+
+- [Quick Start](#-quick-start)
+- [Licensing & Usage](#-licensing--usage)
+- [Manifestos](#-manifestos)
+- [General Information](#%E2%84%B9%EF%B8%8F-general-information)
+- [What is PABRIKROTI?](#️-what-is-pabrikroti)
+- [Key Features](#-key-features)
+- [Getting Started](#%EF%B8%8F-getting-started)
+- [Resources](#-resources)
+- [Contributing](#-contributing)
+
+---
+
+## 📦 Staging 2.4.74 by Ina Motion
 
 Link #1: [www.inamotion.id](https://www.inamotion.id/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://www.inamotion.id/)  
 Link #2: [motion.endhonesa.com](https://motion.endhonesa.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://motion.endhonesa.com/)
 
 ---
 
-## Quick Start
+## 🚀 Quick Start
 
 ```bash
 yarn && yarn dev
@@ -25,9 +44,9 @@ yarn && yarn dev
 
 ---
 
-## 📜 Licenses
+## 📜 Licensing & Usage
 
-This project is protected under a [**Custom Limited License**](./LICENSE) by [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/). Usage is only allowed for cultural, educational, and women- or child-focused projects approved by Prof. NOTA.
+This project is protected under a [**Custom Limited License**](./LICENSE) [![License](https://img.shields.io/badge/license-Prof.NOTA%20Proprietary-orange.svg)](./LICENSE) by [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/). See [PRICING.md](./PRICING.md) for usage tiers and [LICENSE](./LICENSE) for terms. Free usage is only allowed for cultural, and educational, for women- or child-focused projects approved by Prof. NOTA.
 
 License available in multiple languages:
 
@@ -38,11 +57,12 @@ License available in multiple languages:
 - 🇲🇾 [Bahasa Malaysia](./licenses/LICENSE_ms-MY.md)
 - 🇦🇪 [العربية – الإمارات](./licenses/LICENSE_ar-AE.md)
 
-> 📩 For permission or inquiries, contact: [nota@endhonesa.com](mailto:nota@endhonesa.com)
+📩 Want to collaborate, deploy under your own brand, or inquire about licensing and permissions?  
+Reach out to us at: [nota@endhonesa.com](mailto:nota@endhonesa.com)
 
 ---
 
-## 📜 Manifestos
+## 📖 Manifestos
 
 If you already have obtained the license, please read and understand the manifesto from [Prof. NOTA & Prof. NOTA Inc.](https://nota.endhonesa.com/) before starting to use it. Each deployment must respect the ideological foundation of Prof. NOTA Inc.
 
@@ -57,7 +77,7 @@ Manifestos are available in:
 
 ---
 
-## 📜 General Information
+## ℹ️ General Information
 
 **PABRIK ROTI: Programmed Bread Factory for Web3 Distribution**  
 _Developed and maintained by [Prof. NOTA Inc.](https://nota.endhonesa.com)_
@@ -105,49 +125,49 @@ PABRIKROTI operates as a **decentralized digital production space**, where each 
 
 ## 🛠️ Getting Started
 
-### Install dependencies
+### 📦 Install dependencies
 
 ```bash
 yarn
 ```
 
-### Check outdated dependencies
+### 🔍 Check outdated dependencies
 
 ```bash
 yarn outdated
 ```
 
-### Upgrade dependencies interactively
+### ⬆️ Upgrade dependencies interactively
 
 ```bash
 yarn upgrade-interactive --latest
 ```
 
-### Cleaning and re-install dependencies
+### 🧹 Cleaning and re-install dependencies
 
 ```bash
 yarn rm -rf node_modules yarn.lock && yarn install
 ```
 
-### Run development server
+### ▶️ Run development server
 
 ```bash
 yarn dev
 ```
 
-### Lint and check all the code quality
+### 🧪 Lint and check all the code quality
 
 ```bash
 yarn run lint
 ```
 
-### Build for production
+### 🏗️ Build for production
 
 ```bash
 yarn build
 ```
 
-### Preview the production
+### 🔍 Preview the production
 
 ```bash
 yarn start
@@ -155,7 +175,7 @@ yarn start
 
 ---
 
-## 📜 Resources
+## 📦 Resources
 
 - [Prof. NOTA Inc.](https://nota.endhonesa.com/)
 - [Prof. NOTA Console](https://prompt.endhonesa.com/)
@@ -191,7 +211,7 @@ If you have questions, feel free to open an issue or reach out via the Prof. NOT
 
 ---
 
-### Join Prof. NOTA Discord
+### 🫂 Join Prof. NOTA Discord
 
 For feedback, questions, or cultural-technical collaboration, join Prof. NOTA discord at [https://discord.gg/5KrsT6MbFm](https://discord.gg/5KrsT6MbFm).
 

@@ -321,7 +321,7 @@ export default function CoinsList() {
   // Placeholder loader
   if (isLoading) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
         <Loader message={receipt.loaderChecking} />
 
         {/* Bottom Section - Background Image */}
@@ -344,7 +344,9 @@ export default function CoinsList() {
   // Fallback message for no coinListToShow
   if (error || coinListToShow.length === 0) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
+        <Loader message={receipt.searchLoader} />
+
         <Message
           message1={error ?? receipt.coinsMessage1}
           message2={receipt.coinsMessage2}
@@ -355,12 +357,13 @@ export default function CoinsList() {
   }
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-7 place-items-center">
       {activeAccount?.address && (
         <CheckErc1155
           key={refreshToken}
           activeAddress={activeAccount.address}
           onAccessChange={setHasAccess}
+          shouldCheck={receipt.coinsNFTGated}
         />
       )}
 

@@ -329,7 +329,7 @@ export default function SearchWrapper() {
   // Placeholder loader
   if (loading || nextNFTId === undefined) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
         <Loader message={receipt.loaderChecking} />
 
         {/* Bottom Section - Background Image */}
@@ -352,7 +352,9 @@ export default function SearchWrapper() {
   // Fallback message for no nftListToShow
   if (error || searchResults.length === 0) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
+        <Loader message={receipt.searchLoader} />
+
         <Message
           message1={error ?? receipt.searchMessage1}
           message2={receipt.searchMessage2}
@@ -363,7 +365,7 @@ export default function SearchWrapper() {
   }
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-7 place-items-center">
       <Title title1={receipt.searchTitle} title2={query} />
 
       <DropDownSorter sortOption={sortOption} setSortOption={setSortOption} />

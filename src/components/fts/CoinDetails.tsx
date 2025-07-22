@@ -359,7 +359,7 @@ export default function CoinDetails() {
   // Placeholder loader
   if (loading || coinAddress === "") {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
         <Loader message={receipt.loaderChecking} />
 
         {/* Bottom Section - Background Image */}
@@ -382,7 +382,9 @@ export default function CoinDetails() {
   // Fallback message coinAddress not found
   if (error) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
+        <Loader message={receipt.contentFallLoader} />
+
         <Message
           message1={error}
           message2={receipt.coinMessage2}
@@ -393,12 +395,13 @@ export default function CoinDetails() {
   }
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-7 place-items-center">
       {activeAccount?.address && (
         <CheckErc1155
           key={refreshToken}
           activeAddress={activeAccount.address}
           onAccessChange={setHasAccess}
+          shouldCheck={receipt.coinsNFTGated}
         />
       )}
       {hasAccess === null && (

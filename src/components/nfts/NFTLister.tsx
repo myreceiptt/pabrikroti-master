@@ -20,6 +20,7 @@ import { getCountdownString, MAX_UINT256 } from "@/config/utils";
 import Loader from "@/components/sections/ReusableLoader";
 
 interface NFTListerProps {
+  hasAccess: boolean | null;
   dropContract: ThirdwebContract;
   nftId: bigint;
   nftIdString: string;
@@ -35,6 +36,7 @@ interface NFTListerProps {
 }
 
 export default function NFTLister({
+  hasAccess,
   dropContract,
   nftId,
   nftIdString,
@@ -89,32 +91,35 @@ export default function NFTLister({
   let buttonLabel = receipt.nftButton;
   let buttonDisabled = false;
 
-  if (currentTime < startTime) {
+  const safeReason = (reason ?? "").toLowerCase();
+
+  if (hasAccess === null || hasAccess === false) {
+    // Belum punya akses
+    buttonLabel = receipt.coinNoAccess;
+    buttonDisabled = true;
+  } else if (currentTime < startTime) {
     // Belum waktunya
     buttonLabel = `${receipt.nftSoon} ${getCountdownString(
       startTime,
       currentTime
     )}`;
     buttonDisabled = true;
-  } else {
-    if (!isClaimable) {
-      // Tidak bisa diklaim karena alasan teknis lainnya
-      const safeReason = (reason ?? "").toLowerCase();
-      if (safeReason.includes("dropclaimexceedlimit")) {
-        buttonLabel = receipt.nftClaimed;
-      } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-        buttonLabel = receipt.nftClosed;
-      } else {
-        buttonLabel = receipt.nftClosed; // fallback
-      }
-      buttonDisabled = true;
-    } else if (adjustedBalance < adjustedPrice) {
-      // Saldo tidak cukup
-      buttonLabel = receipt.nftInsufficient;
-      buttonDisabled = true;
+  } else if (!isClaimable) {
+    // Tidak bisa diklaim karena alasan teknis lainnya
+    if (safeReason.includes("dropclaimexceedlimit")) {
+      buttonLabel = receipt.nftClaimed;
+    } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+      buttonLabel = receipt.nftClosed;
+    } else {
+      buttonLabel = receipt.nftClosed; // fallback
     }
-    // else: semua aman, button tetap aktif dengan label default
+    buttonDisabled = true;
+  } else if (adjustedBalance < adjustedPrice) {
+    // Saldo tidak cukup
+    buttonLabel = receipt.nftInsufficient;
+    buttonDisabled = true;
   }
+  // else: semua aman, button tetap aktif dengan label default
 
   return (
     <div
@@ -125,7 +130,13 @@ export default function NFTLister({
       className="w-full grid grid-cols-1 gap-4 p-4 border rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl">
       {isLoading ? (
         <Loader message={receipt.loaderChecking} />
-      ) : nft ? (
+      ) : !nft ? (
+        <h2
+          style={{ color: receipt.colorTersier }}
+          className="text-left text-sm font-medium">
+          {receipt.nftNoData}
+        </h2>
+      ) : (
         <>
           <Link href={`/token/${nftIdString}`}>
             <MediaRenderer
@@ -135,6 +146,7 @@ export default function NFTLister({
               className="rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
             />
           </Link>
+
           <div className="grid grid-cols-1 gap-2">
             <h2
               style={{ color: receipt.colorPrimer }}
@@ -184,12 +196,6 @@ export default function NFTLister({
             {buttonLabel}
           </button>
         </>
-      ) : (
-        <h2
-          style={{ color: receipt.colorTersier }}
-          className="text-left text-sm font-medium">
-          {receipt.nftNoData}
-        </h2>
       )}
     </div>
   );
