@@ -403,7 +403,7 @@ export const myreceipt = {
   popUpImageAlt: "FTLK Coin Illustration", // coin pop up,
 
   // others page
-  contentAccessMode: "AND", // AND | OR | RELAXED, perks page,
+  contentAccessMode: "OR", // AND | OR | RELAXED, perks page,
   contentNFTGated: true, // perks page,
   contentFTGated: true, // perks page,
 
