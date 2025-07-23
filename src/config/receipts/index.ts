@@ -38,6 +38,7 @@ const hostMap: Record<
     erc20sLaunched: typeof erc20sLaunched;
     supportedFTs: SupportedFTs;
     displayedTokeks: typeof displayedTokeks;
+    shouldCheckAccess: boolean;
   }
 > = {
   "memora.endhonesa.com": {
@@ -48,6 +49,7 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunchedMeMoRa,
     supportedFTs: tokeksMeMoRa,
     displayedTokeks: displayedTokeksMeMoRa,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "memora.voyage.co.id": {
     receipt: memora,
@@ -57,6 +59,7 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunchedMeMoRa,
     supportedFTs: tokeksMeMoRa,
     displayedTokeks: displayedTokeksMeMoRa,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "travconn.endhonesa.com": {
     receipt: myreceipt,
@@ -66,6 +69,7 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunched,
     supportedFTs: tokeks,
     displayedTokeks: displayedTokeks,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "coupon.travelconnect.co": {
     receipt: myreceipt,
@@ -75,6 +79,7 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunched,
     supportedFTs: tokeks,
     displayedTokeks: displayedTokeks,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "pabrikroti.endhonesa.com": {
     receipt: pabrikroti,
@@ -84,6 +89,7 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunchedPabrikRoti,
     supportedFTs: tokeksPabrikRoti,
     displayedTokeks: displayedTokeksPabrikRoti,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "preroti.endhonesa.com": {
     receipt: pabrikroti,
@@ -93,6 +99,7 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunchedPabrikRoti,
     supportedFTs: tokeksPabrikRoti,
     displayedTokeks: displayedTokeksPabrikRoti,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   localhost: {
     receipt: myreceipt,
@@ -102,6 +109,7 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunched,
     supportedFTs: tokeks,
     displayedTokeks: displayedTokeks,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "127.0.0.1": {
     receipt: myreceipt,
@@ -111,6 +119,7 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunched,
     supportedFTs: tokeks,
     displayedTokeks: displayedTokeks,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
 };
 
@@ -123,6 +132,7 @@ export function getActiveReceipt(host?: string): {
   erc20sLaunched: typeof erc20sLaunched;
   supportedFTs: SupportedFTs;
   displayedTokeks: typeof displayedTokeks;
+  shouldCheckAccess: boolean;
 } {
   let resolvedHost = "";
 
@@ -148,5 +158,6 @@ export function getActiveReceipt(host?: string): {
     erc20sLaunched: erc20sLaunched,
     supportedFTs: tokeks,
     displayedTokeks: displayedTokeks,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each receipt (nftsFTGated and coinsNFTGated).
   };
 }

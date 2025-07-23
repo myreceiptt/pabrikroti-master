@@ -21,6 +21,7 @@ import { download } from "thirdweb/storage";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
+import { CheckErc20 } from "@/config/checker";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
@@ -65,6 +66,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
   const listRef = useRef<HTMLDivElement>(null);
 
   // Ensure state variables are properly declared
+  const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [refreshToken, setRefreshToken] = useState(Date.now());
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [visibleCount, setVisibleCount] = useState(INITIAL_ITEMS);
@@ -333,7 +335,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
   // Placeholder loader
   if (loading || nextNFTId === undefined) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
         <Loader message={receipt.loaderChecking} />
 
         {/* Bottom Section - Background Image */}
@@ -356,7 +358,9 @@ export default function NFTsList({ variant }: NFTsListProps) {
   // Fallback message for no nftListToShow
   if (error || nftListToShow.length === 0) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
+        <Loader message={receipt.searchLoader} />
+
         <Message
           message1={error ?? receipt.nftsMessage1}
           message2={receipt.nftsMessage2}
@@ -367,7 +371,16 @@ export default function NFTsList({ variant }: NFTsListProps) {
   }
 
   return (
-    <main className="grid gap-4 lg:gap-6 place-items-center">
+    <main className="grid gap-4 lg:gap-7 place-items-center">
+      {activeAccount?.address && (
+        <CheckErc20
+          key={refreshToken}
+          activeAddress={activeAccount.address}
+          onAccessChange={setHasAccess}
+          shouldCheck={receipt.nftsFTGated}
+        />
+      )}
+
       <Title title1={title1} title2={title2} />
 
       <DropDownSorter sortOption={sortOption} setSortOption={setSortOption} />
@@ -380,6 +393,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}>
             <NFTLister
+              hasAccess={hasAccess}
               dropContract={erc1155Launched}
               nftId={nft.nftId}
               nftIdString={nft.nftIdString}

@@ -248,6 +248,7 @@ export const memora = {
 
   // search wrapper page
   fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
+  searchLoader: "Ups! Your query mismatch.", // search wrapper,
   searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
     "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,
@@ -257,6 +258,7 @@ export const memora = {
   searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
 
   // nfts list page
+  nftsFTGated: false, // nfts list, nft details,
   nftsTitle1Free: "All Free", // nfts list,
   nftsTitle2Free: "Collectibles", // nfts list,
   nftsTitle1Paid: "All Paid", // nfts list,
@@ -295,6 +297,13 @@ export const memora = {
   nftMessage1: "The collectible ID not found.", // nft details,
   nftMessage2:
     "The specified collectible ID was not found. Please try again later or return to the home page.", // nft details,
+  nftAccessRedirect: "/coins", // nft details
+
+  // nft access section
+  nftAccessMessage:
+    "Please get your access by get any point rewards at least not zero balance.", // nft access,
+  nftAccessButton: "Get The Point Rewards!", // nft access,
+  nftAccessBanner: "/memora/images/content-banner.png", // nft access,
 
   // nft form section
   nftFormByLink: "https://memora.voyage.co.id/", // nft form,
@@ -325,6 +334,7 @@ export const memora = {
   coinsMessage1: "No claimable points", // coins list,
   coinsMessage2:
     "There are no claimable points available right now. Please try again later or return to the home page.", // coins list,
+  coinsNFTGated: true, // coins list, coin details,
   coinsTitle1: "Claim All", // coins list,
   coinsTitle2: "Poins Reward", // coins list,
   coinsAria: "Refresh points data.", // coins list,
@@ -349,7 +359,7 @@ export const memora = {
   coinMessage2:
     "The specified address of the point was not found. Please try again later or return to the home page.", // coin details,
   coinAccessRedirect: "/featured", // coin details
-  coinAccessTitle: "You don't have access!", // coin details,
+  coinAccessTitle: "You don't have access!", // coin details, nft details,
 
   // coin access section
   coinAccessMessage:
@@ -395,6 +405,16 @@ export const memora = {
   popUpP14: "Prof. NOTA v.11.11.11", // coin pop up,
   popUpImage: "/memora/medias/coin-pop-up.gif", // coin pop up,
   popUpImageAlt: "BON VOYAGE Token Illustration", // coin pop up,
+
+  // others page
+  contentAccessMode: "AND", // AND | OR | RELAXED, perks page,
+  contentNFTGated: true, // perks page,
+  contentFTGated: true, // perks page,
+
+  // content fallback page
+  contentFallLoader: `Don't rush, take it slow.`, // content fallback,
+  contentFallMessage1: `Invalid URL used.`, // content fallback,
+  contentFallMessage2: `Please use a valid page address in the URL or return to the home page and start over.`, // content fallback,
 
   // terms page
   proName, // terms,
@@ -552,9 +572,4 @@ export const memora = {
       ],
     },
   }, // terms,
-
-  // content fallback page
-  contentFallMessage1: "Invalid URL used.", // content fallback,
-  contentFallMessage2:
-    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };

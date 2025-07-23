@@ -20,9 +20,11 @@ import { download } from "thirdweb/storage";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
+import { CheckErc20 } from "@/config/checker";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
+import NFTAccess from "@/components/nfts/NFTAccess";
 import NFTForm from "@/components/nfts/NFTForm";
 import Loader from "@/components/sections/ReusableLoader";
 import Message from "@/components/sections/ReusableMessage";
@@ -64,6 +66,7 @@ export default function NFTDetails() {
   const nftId = getNFTIdFromParams(params);
 
   // Ensure state variables are properly declared
+  const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [refreshToken, setRefreshToken] = useState(Date.now());
   const [nft, setNFT] = useState<NFTData | null>(null);
   const [loading, setLoading] = useState(true);
@@ -299,7 +302,7 @@ export default function NFTDetails() {
   // Placeholder loader
   if (loading) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
         <Loader message={receipt.loaderChecking} />
 
         {/* Bottom Section - Background Image */}
@@ -322,7 +325,9 @@ export default function NFTDetails() {
   // Fallback message nftId not found
   if (error) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
+        <Loader message={receipt.contentFallLoader} />
+
         <Message
           message1={error}
           message2={receipt.nftMessage2}
@@ -333,12 +338,46 @@ export default function NFTDetails() {
   }
 
   return (
-    <main className="grid gap-4 place-items-center">
-      {nft && (
+    <main className="grid gap-4 lg:gap-7 place-items-center">
+      {activeAccount?.address && (
+        <CheckErc20
+          key={refreshToken}
+          activeAddress={activeAccount.address}
+          onAccessChange={setHasAccess}
+          shouldCheck={receipt.nftsFTGated}
+        />
+      )}
+      {hasAccess === null && (
+        <>
+          <Loader message={receipt.loaderChecking} />
+
+          {/* Bottom Section - Background Image */}
+          <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
+            <Image
+              src={receipt.nftAccessBanner}
+              alt={receipt.proTitle}
+              width={4096}
+              height={1109}
+              className="rounded-xl md:rounded-2xl lg:rounded-3xl"
+              objectFit="cover"
+              objectPosition="top"
+              priority
+            />
+          </div>
+        </>
+      )}
+      {hasAccess === false && (
+        <NFTAccess
+          onRedirect={() => router.push(receipt.nftAccessRedirect)}
+          message={receipt.coinAccessTitle}
+        />
+      )}
+      {hasAccess === true && nft && (
         <NFTForm
+          hasAccess={hasAccess}
           dropContract={erc1155Launched}
-          setRefreshToken={setRefreshToken}
           {...nft}
+          setRefreshToken={setRefreshToken}
         />
       )}
     </main>

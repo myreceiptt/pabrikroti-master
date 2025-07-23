@@ -14,7 +14,7 @@ export default function FeaturedCards() {
   const { receipt } = getActiveReceipt();
 
   return (
-    <main className="grid gap-4 lg:gap-6 place-items-center">
+    <main className="grid gap-4 lg:gap-7 place-items-center">
       <Title title1={receipt.featuredTitle1} title2={receipt.featuredTitle2} />
       <div className="w-full grid grid-cols-1 sm:[grid-template-columns:repeat(auto-fit,minmax(0,1fr))] gap-4 sm:gap-8">
         {[

@@ -55,7 +55,7 @@ export default function PageRouter() {
     <>
       <Header />
       <div className="flex flex-col gap-4 content-normal md:px-20 py-4 px-4 lg:my-12 md:my-8 my-4">
-        <main className="grid gap-4 place-items-center">
+        <main className="grid gap-4 lg:gap-7 place-items-center">
           <HeroSlider />
           <FeatureGrid />
           <ParagraphText />

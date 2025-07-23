@@ -168,38 +168,35 @@ export default function CoinForm({
   let buttonLabel = receipt.coinButton;
   let buttonDisabled = false;
 
+  const safeReason = (reason ?? "").toLowerCase();
+
   if (hasAccess === null || hasAccess === false) {
     // Tidak punya akses
     buttonLabel = receipt.coinNoAccess;
     buttonDisabled = true;
-  } else {
-    if (currentTime < startTime) {
-      // Belum waktunya
-      buttonLabel = `${receipt.nftSoon} ${getCountdownString(
-        startTime,
-        currentTime
-      )}`;
-      buttonDisabled = true;
+  } else if (currentTime < startTime) {
+    // Belum waktunya
+    buttonLabel = `${receipt.nftSoon} ${getCountdownString(
+      startTime,
+      currentTime
+    )}`;
+    buttonDisabled = true;
+  } else if (!isClaimable) {
+    // Tidak bisa diklaim karena alasan teknis lainnya
+    if (safeReason.includes("dropclaimexceedlimit")) {
+      buttonLabel = receipt.coinClaimed;
+    } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
+      buttonLabel = receipt.nftClosed;
     } else {
-      if (!isClaimable) {
-        // Tidak bisa diklaim karena alasan teknis lainnya
-        const safeReason = (reason ?? "").toLowerCase();
-        if (safeReason.includes("dropclaimexceedlimit")) {
-          buttonLabel = receipt.coinClaimed;
-        } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
-          buttonLabel = receipt.nftClosed;
-        } else {
-          buttonLabel = receipt.nftClosed; // fallback
-        }
-        buttonDisabled = true;
-      } else if (adjustedBalance < adjustedPrice) {
-        // Saldo tidak cukup
-        buttonLabel = receipt.nftInsufficient;
-        buttonDisabled = true;
-      }
-      // else: semua aman, button tetap aktif dengan label default
+      buttonLabel = receipt.nftClosed; // fallback
     }
+    buttonDisabled = true;
+  } else if (adjustedBalance < adjustedPrice) {
+    // Saldo tidak cukup
+    buttonLabel = receipt.nftInsufficient;
+    buttonDisabled = true;
   }
+  // else: semua aman, button tetap aktif dengan label default
 
   return (
     <div className="w-auto grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 lg:gap-12 items-start">

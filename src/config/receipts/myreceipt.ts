@@ -249,6 +249,7 @@ export const myreceipt = {
 
   // search wrapper page
   fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
+  searchLoader: "Ups! Your query mismatch.", // search wrapper,
   searchMessage1: "No data was found.", // search wrapper,
   searchMessage2:
     "No data matching your search terms was found. Please try searching again using other terms or return to the home page.", // search wrapper,
@@ -258,6 +259,7 @@ export const myreceipt = {
   searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
 
   // nfts list page
+  nftsFTGated: false, // nfts list, nft details,
   nftsTitle1Free: "Curated", // nfts list,
   nftsTitle2Free: "NFT Artworks", // nfts list,
   nftsTitle1Paid: "Curated", // nfts list,
@@ -296,6 +298,13 @@ export const myreceipt = {
   nftMessage1: "The NFT ID not found.", // nft details,
   nftMessage2:
     "The specified NFT ID was not found. Please try again later or return to the home page.", // nft details,
+  nftAccessRedirect: "/coins", // nft details
+
+  // nft access section
+  nftAccessMessage:
+    "Please get your access by get any Travel Poin at least not zero balance.", // nft access,
+  nftAccessButton: "Get The Travel Poin!", // nft access,
+  nftAccessBanner: "/images/content-banner.png", // nft access,
 
   // nft form section
   nftFormByLink: "https://travelconnect.co/", // nft form,
@@ -326,13 +335,14 @@ export const myreceipt = {
   coinsMessage1: "No claimable coins", // coins list,
   coinsMessage2:
     "There are no claimable coin available right now. Please try again later or return to the home page.", // coins list,
+  coinsNFTGated: true, // coins list, coin details,
   coinsTitle1: "The Futuloka", // coins list,
   coinsTitle2: "Future Coins", // coins list,
   coinsAria: "Refresh coins data.", // coins list,
 
   // coin lister section
   coinButton: "Buy Now", // coin lister, coin form,
-  coinNoAccess: "No Access", // coin lister, coin form,
+  coinNoAccess: "No Access", // coin lister, coin form, nft lister, nft form,
   coinClaimed: "Already Own", // coin lister, coin form,
   coinListerImage: "/medias/batch-bread.png", // coin lister, coin form,
   coinListerName: "The Available Coin", // coin lister, coin form,
@@ -349,8 +359,8 @@ export const myreceipt = {
   coinMessage1: "The coin address not found.", // coin details,
   coinMessage2:
     "The specified address of the coin was not found. Please try again later or return to the home page.", // coin details,
-  coinAccessRedirect: "/paid", // coin details
-  coinAccessTitle: "You don't have access!", // coin details,
+  coinAccessRedirect: "/featured", // coin details
+  coinAccessTitle: "You don't have access!", // coin details, nft details,
 
   // coin access section
   coinAccessMessage:
@@ -391,6 +401,16 @@ export const myreceipt = {
   popUpP14: "", // coin pop up,
   popUpImage: "/medias/coin-pop-up.png", // coin pop up,
   popUpImageAlt: "FTLK Coin Illustration", // coin pop up,
+
+  // others page
+  contentAccessMode: "AND", // AND | OR | RELAXED, perks page,
+  contentNFTGated: true, // perks page,
+  contentFTGated: true, // perks page,
+
+  // content fallback page
+  contentFallLoader: `Don't rush, take it slow.`, // content fallback,
+  contentFallMessage1: `Invalid URL used.`, // content fallback,
+  contentFallMessage2: `Please use a valid page address in the URL or return to the home page and start over.`, // content fallback,
 
   // terms page
   proName, // terms,
@@ -548,9 +568,4 @@ export const myreceipt = {
       ],
     },
   }, // terms,
-
-  // content fallback page
-  contentFallMessage1: "Invalid URL used.", // content fallback,
-  contentFallMessage2:
-    "Please use a valid page address in the URL or return to the home page and start over.", // content fallback,
 };
