@@ -407,6 +407,24 @@ export const memora = {
   popUpImage: "/memora/medias/coin-pop-up.gif", // coin pop up,
   popUpImageAlt: `BON VOYAGE Token Illustration`, // coin pop up,
 
+  // others page
+  contentAccessMode: "AND", // AND | OR | RELAXED, perks page,
+  contentButtonLabel: "Coming Soon", // perks page,
+  contentImage1: "/memora/medias/content-perks-1.png", // perks page,
+  contentName1: "First Wave Cover", // perks page,
+  contentText1: `We are your mirror, encrypted.`, // perks page,
+  contentImage2: "/memora/medias/content-perks-2.png", // perks page,
+  contentName2: "Pseudonim Post", // perks page,
+  contentText2: `We are Prof. NOTA, and so are you.`, // perks page,
+  contentImage3: "/memora/medias/content-perks-3.png", // perks page,
+  contentName3: "Never Dared to Name", // perks page,
+  contentText3: `We are already part of your story.`, // perks page,
+  contentNFTGated: true, // perks page,
+  contentFTGated: true, // perks page,
+  contentTitle1: "Perks of", // perks page,
+  contentTitle2: "Being Prof. NOTA", // perks page,
+  contentNoAccess: "/memora/medias/content-no-access.png", // perks page,
+
   // content fallback page
   contentFallLoader: `Don't rush, take it slow.`, // content fallback,
   contentFallMessage1: `Invalid URL used.`, // content fallback,

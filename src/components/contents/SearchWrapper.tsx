@@ -13,11 +13,14 @@ import { getContractMetadata } from "thirdweb/extensions/common";
 import {
   canClaim,
   getClaimConditionById,
+  getNFTs,
+  nextTokenIdToMint,
   totalSupply,
 } from "thirdweb/extensions/erc1155";
-import { getNFTs, nextTokenIdToMint } from "thirdweb/extensions/erc1155";
+import { decimals } from "thirdweb/extensions/erc20";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
 import { download } from "thirdweb/storage";
+import { getWalletBalance } from "thirdweb/wallets";
 
 // Components libraries
 import NFTLister from "@/components/nfts/NFTLister";
@@ -27,9 +30,8 @@ import Message from "@/components/sections/ReusableMessage";
 import Title from "@/components/sections/ReusableTitle";
 
 // Blockchain configurations
+import { CheckErc20 } from "@/config/checker";
 import { getActiveReceipt } from "@/config/receipts";
-import { decimals } from "thirdweb/extensions/erc20";
-import { getWalletBalance } from "thirdweb/wallets";
 
 // Interface definition for NFTs
 interface NFTData {
@@ -63,6 +65,7 @@ export default function SearchWrapper() {
   const listRef = useRef<HTMLDivElement>(null);
 
   // Ensure state variables are properly declared
+  const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [refreshToken, setRefreshToken] = useState(Date.now());
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [visibleCount, setVisibleCount] = useState(INITIAL_ITEMS);
@@ -366,6 +369,15 @@ export default function SearchWrapper() {
 
   return (
     <main className="grid gap-4 lg:gap-7 place-items-center">
+      {activeAccount?.address && (
+        <CheckErc20
+          key={refreshToken}
+          activeAddress={activeAccount.address}
+          onAccessChange={setHasAccess}
+          shouldCheck={receipt.nftsFTGated}
+        />
+      )}
+
       <Title title1={receipt.searchTitle} title2={query} />
 
       <DropDownSorter sortOption={sortOption} setSortOption={setSortOption} />
@@ -378,6 +390,7 @@ export default function SearchWrapper() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}>
             <NFTLister
+              hasAccess={hasAccess}
               dropContract={erc1155Launched}
               {...nft}
               refreshToken={refreshToken}
