@@ -60,7 +60,7 @@ export const myreceipt = {
   proError: "Something went wrong. Please try again later.", // ErrorBoundary,
   proButton: "Try Again", // ErrorBoundary,
 
-  // /src/components/logins/LoginLayout.tsx - disable by nullifying the string
+  // /src/components/logins/LoginLayout.tsx - disable loginReason by nullifying the string
   loginArt: "/images/login-art.png", // LoginLayout,
   loginBanner: "/images/login-banner.png", // LoginLayout,
   loginAria: "Call to action for login.", // LoginLayout,
@@ -68,39 +68,40 @@ export const myreceipt = {
   loginReason: {
     text1: `for fun and as a validator, to claim interesting surprises in the future`,
     anchor1: `...`,
-    link1: "https://www.inamotion.id/the-whitepaper.pdf",
+    link1: "https://www.inamotion.id/medias/the-whitepaper.pdf",
     text2: ``,
     anchor2: ``,
     link2: "",
   }, // LoginLayout,
   loginAgreement: "By connecting, you agree to the", // LoginLayout,
   loginTermsPolicy: "Terms of Service & Privacy Policy", // LoginLayout,
-  loginLinkPower: "https://futuloka.io/", // LoginLayout, FooterSection,
+  loginLinkPower: "https://www.inamotion.id/", // LoginLayout, FooterSection,
   loginLogoPower: "/images/login-power.png", // LoginLayout,
-  loginPoweredBy: "Launched by Futuloka", // LoginLayout, FooterSection,
+  loginPoweredBy: "Launched by INAMOTION", // LoginLayout, FooterSection,
 
   // /src/components/sections/DropDownMenu.tsx - disable by nullifying the string
   ddMenuAria: "Drop Down Menu", // DropDownMenu,
-  ddMenuHome: "Welcome, OiOi!", // DropDownMenu,
-  ddMenuWhat: "About", // DropDownMenu,
+  ddMenuHome: "Welcome!", // DropDownMenu,
+  ddMenuWhat: "", // DropDownMenu,
   ddMenuWhy: "", // DropDownMenu,
   ddMenuHow: "", // DropDownMenu,
-  ddMenuWhen: "Program", // DropDownMenu,
+  ddMenuWhen: "", // DropDownMenu,
   ddMenuWhere: "", // DropDownMenu,
-  ddMenuWho: "Features", // DropDownMenu,
-  ddMenuFeatured: "Featured, OiOi!", // DropDownMenu,
+  ddMenuWho: "", // DropDownMenu,
+  ddMenuFeatured: "Featured!", // DropDownMenu,
   ddMenuFree: "", // DropDownMenu,
-  ddMenuPaid: "Paid NFTs", // DropDownMenu,
-  ddMenuCoins: "The FTs", // DropDownMenu,
+  ddMenuPaid: "", // DropDownMenu,
+  ddMenuCoins: "", // DropDownMenu,
   ddMenuMarket: "", // DropDownMenu,
-  ddMenuMore: "Read More, OiOi!", // DropDownMenu,
+  ddMenuContent: "", // DropDownMenu,
+  ddMenuMore: "Read More!", // DropDownMenu,
   ddMenuDeploy: "", // DropDownMenu,
   ddMenuPublishNFT: "", // DropDownMenu,
   ddMenuPublishFT: "", // DropDownMenu,
   ddMenuDashBoard: "", // DropDownMenu,
   ddMenuContactLink: "", // DropDownMenu,
   ddMenuContact: "", // DropDownMenu,
-  ddMenuTerms: "Terms of Use", // DropDownMenu,
+  ddMenuTerms: "The Terms", // DropDownMenu,
 
   // /src/components/sections/DropDownSorter.tsx
   ddSorterSorting: "Sorting", // DropDownSorter,
@@ -110,21 +111,21 @@ export const myreceipt = {
   ddSorterPrice: "Price per Edition", // DropDownSorter,
   ddSorterClaim: "Claimable Status", // DropDownSorter,
 
-  // /src/components/sections/FooterSection.tsx - disable by nullifying the string
+  // /src/components/sections/FooterSection.tsx - disable social link by nullifying the string
   footCopyRight: "All rights reserved.", // FooterSection,
   footLicensed: "Officially licensed product of", // FooterSection,
   footPrivacy: "Privacy Policy", // FooterSection,
   footTerms: "Terms of Service", // FooterSection,
   footPower: "/images/footer-power.png", // FooterSection,
-  footSocial: "Follow our solidarity movement!", // FooterSection,
+  footSocial: "Follow our motions!", // FooterSection,
   footGitHub: "", // FooterSection,
-  footXTwitter: "https://x.com/futuloka", // FooterSection,
+  footXTwitter: "https://x.com/Inamotion21", // FooterSection,
   footLinkedIn: "", // FooterSection,
-  footInstagram: "https://www.instagram.com/futuloka/", // FooterSection,
+  footInstagram: "https://www.instagram.com/inamotion_artworks/", // FooterSection,
   footFacebook: "", // FooterSection,
   footDiscord: "", // FooterSection,
   footYouTube: "", // FooterSection,
-  footEmail: "mailto:kontak@futuloka.io", // FooterSection,
+  footEmail: "mailto:hello@inamotion.id", // FooterSection,
   footWhatsApp: "", // FooterSection,
   footWebsite: "https://www.futuloka.io/", // FooterSection,
 
@@ -148,6 +149,32 @@ export const myreceipt = {
   subscribeButton: "Subscribe", // SubscribeForm,
   subscribeButtonLoading: "Subscribing...", // SubscribeForm,
 
+  // /src/components/landing/HeroSlider.tsx - disable by nullifying the string set
+  heroSlides: [
+    {
+      title: "PABRIKROTI",
+      subtitle: "Crafted Code, Wrapped in Bread.",
+      description: `Build, bake, and broadcast—your digital presence kneaded from secure recipes. PABRIKROTI takes your idea, bakes it into reality with rock-solid security and open-source spirit.`,
+      image: "/landing/slider-1.png",
+      cta: {
+        text: "Let's Get Started",
+        href: "https://github.com/myreceiptt/pabrikroti-master?tab=readme-ov-file#-general-information",
+        target: "_blank",
+      },
+    },
+    {
+      title: "PABRIKROTI",
+      subtitle: "Security You Can Taste.",
+      description: `Powered by secure design, transparent pricing, and an open-source license you can verify. Every "loaf" comes with audit logs, version history, and enterprise support—delivered fresh.`,
+      image: "/landing/slider-2.png",
+      cta: {
+        text: "Explore Pricing",
+        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/PRICING.md",
+        target: "_blank",
+      },
+    },
+  ],
+
   // /src/components/landing/FeatureGrid.tsx - disable by nullifying the string set
   features: [
     {
@@ -167,32 +194,6 @@ export const myreceipt = {
       title: "NFT Claiming",
       description: "Claim digital assets as real bread.",
       cta: { text: "Claim Now", href: "/free" },
-    },
-  ],
-
-  // /src/components/landing/HeroSlider.tsx - disable by nullifying the string set
-  heroSlides: [
-    {
-      title: "Programmed Artisan Breads",
-      subtitle: "Digitally baked. Publicly shared.",
-      description: "We tokenize culture and rewards.",
-      image: "/roti/landing/slider-0.png",
-      cta: {
-        text: "Get Started",
-        href: "/coins",
-        target: "_blank",
-      },
-    },
-    {
-      title: "Programmed Batch Breads",
-      subtitle: "Digitally baked. Publicly shared.",
-      description: "We tokenize culture and rewards.",
-      image: "/roti/landing/slider-1.png",
-      cta: {
-        text: "Get Started",
-        href: "/coins",
-        target: "_blank",
-      },
     },
   ],
 

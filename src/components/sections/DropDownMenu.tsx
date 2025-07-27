@@ -147,6 +147,7 @@ export default function DropdownMenu() {
               { href: "/paid", label: receipt.ddMenuPaid },
               { href: "/coins", label: receipt.ddMenuCoins },
               { href: "/market", label: receipt.ddMenuMarket },
+              { href: "/others/perks", label: receipt.ddMenuContent },
             ].filter((item) => item.label).length > 0 && (
               <ul className="pl-4 rounded-lg divide-y divide-double">
                 {[
@@ -154,6 +155,7 @@ export default function DropdownMenu() {
                   { href: "/paid", label: receipt.ddMenuPaid },
                   { href: "/coins", label: receipt.ddMenuCoins },
                   { href: "/market", label: receipt.ddMenuMarket },
+                  { href: "/others/perks", label: receipt.ddMenuContent },
                 ]
                   .filter((item) => item.label)
                   .map((item) => (

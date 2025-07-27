@@ -7,7 +7,7 @@ const proName = "Breads Factory by Prof. NOTA Inc.";
 const proAlias1 = "Prof. NOTA Inc.";
 const proAlias2 = "Breads Factory";
 const proAddress =
-  "Jl. Nginden Kota 2 No. 27, Baratajaya, Kec. Gubeng, Kota Surabaya, Jawa Timur 60284, INDONESIA";
+  "Jalan-Jalan 47X di Kota Surabaya, Jawa Timur 60000, INDONESIA";
 const proEmail = "nota@endhonesa.com";
 const termsMonth = "Februari";
 const termsDate = "29";
@@ -60,7 +60,7 @@ export const pabrikroti = {
   proError: "Something went wrong. Please eat and try again later.", // ErrorBoundary,
   proButton: "Try Again", // ErrorBoundary,
 
-  // /src/components/logins/LoginLayout.tsx - disable by nullifying the string
+  // /src/components/logins/LoginLayout.tsx - disable loginReason by nullifying the string
   loginArt: "/roti/images/login-art.png", // LoginLayout,
   loginBanner: "/roti/images/login-banner.png", // LoginLayout,
   loginAria: "Call to action for login.", // LoginLayout,
@@ -93,6 +93,7 @@ export const pabrikroti = {
   ddMenuPaid: "Paid Artisan", // DropDownMenu,
   ddMenuCoins: "Batch Breads", // DropDownMenu,
   ddMenuMarket: "Boulangerie", // DropDownMenu,
+  ddMenuContent: "Fortune Breads", // DropDownMenu,
   ddMenuMore: "Baking More!", // DropDownMenu,
   ddMenuDeploy: "Bake Breads", // DropDownMenu,
   ddMenuPublishNFT: "Serves Artisan", // DropDownMenu,
@@ -110,7 +111,7 @@ export const pabrikroti = {
   ddSorterPrice: "Price per Slices", // DropDownSorter,
   ddSorterClaim: "Can Be Swallowed", // DropDownSorter,
 
-  // /src/components/sections/FooterSection.tsx - disable by nullifying the string
+  // /src/components/sections/FooterSection.tsx - disable social link by nullifying the string
   footCopyRight: "Every stomach will be hungry.", // FooterSection,
   footLicensed: "Officially starved and satiated by", // FooterSection,
   footPrivacy: "Privacy Policy", // FooterSection,
@@ -148,6 +149,32 @@ export const pabrikroti = {
   subscribeButton: "Subscribe", // SubscribeForm,
   subscribeButtonLoading: "Subscribing...", // SubscribeForm,
 
+  // /src/components/landing/HeroSlider.tsx - disable by nullifying the string set
+  heroSlides: [
+    {
+      title: "PABRIKROTI",
+      subtitle: "Crafted Code, Wrapped in Bread.",
+      description: `Build, bake, and broadcast—your digital presence kneaded from secure recipes. PABRIKROTI takes your idea, bakes it into reality with rock-solid security and open-source spirit.`,
+      image: "/roti/landing/slider-1.png",
+      cta: {
+        text: "Let's Get Started",
+        href: "https://github.com/myreceiptt/pabrikroti-master?tab=readme-ov-file#-general-information",
+        target: "_blank",
+      },
+    },
+    {
+      title: "PABRIKROTI",
+      subtitle: "Security You Can Taste.",
+      description: `Powered by secure design, transparent pricing, and an open-source license you can verify. Every "loaf" comes with audit logs, version history, and enterprise support—delivered fresh.`,
+      image: "/roti/landing/slider-2.png",
+      cta: {
+        text: "Explore Pricing",
+        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/PRICING.md",
+        target: "_blank",
+      },
+    },
+  ],
+
   // /src/components/landing/FeatureGrid.tsx - disable by nullifying the string set
   features: [
     {
@@ -167,32 +194,6 @@ export const pabrikroti = {
       title: "Batch Breads",
       description: "Claim digital assets as real bread.",
       cta: { text: "Claim Now", href: "/free" },
-    },
-  ],
-
-  // /src/components/landing/HeroSlider.tsx - disable by nullifying the string set
-  heroSlides: [
-    {
-      title: "Pabrik Roti",
-      subtitle: "Digitally baked. Publicly shared.",
-      description: "We tokenize culture and rewards.",
-      image: "/roti/landing/slider-0.png",
-      cta: {
-        text: "Read More",
-        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/README.md#-general-information",
-        target: "_blank",
-      },
-    },
-    {
-      title: "Prof. NOTA Inc.",
-      subtitle: "We do not wait for the future.",
-      description: `We write it—line by line, block by block.`,
-      image: "/roti/landing/slider-1.png",
-      cta: {
-        text: "Read More",
-        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/README.md#-manifestos",
-        target: "_blank",
-      },
     },
   ],
 

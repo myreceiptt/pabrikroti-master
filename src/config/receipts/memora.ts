@@ -60,7 +60,7 @@ export const memora = {
   proError: "Something went wrong. Please try again later.", // ErrorBoundary,
   proButton: "Try Again", // ErrorBoundary,
 
-  // /src/components/logins/LoginLayout.tsx - disable by nullifying the string
+  // /src/components/logins/LoginLayout.tsx - disable loginReason by nullifying the string
   loginArt: "/memora/images/login-art.png", // LoginLayout,
   loginBanner: "/memora/images/login-banner.png", // LoginLayout,
   loginAria: "Call to action for login.", // LoginLayout,
@@ -93,6 +93,7 @@ export const memora = {
   ddMenuPaid: "Paid MeMoRa", // DropDownMenu,
   ddMenuCoins: "BON Voyage", // DropDownMenu,
   ddMenuMarket: "", // DropDownMenu,
+  ddMenuContent: "", // DropDownMenu,
   ddMenuMore: "Read More", // DropDownMenu,
   ddMenuDeploy: "", // DropDownMenu,
   ddMenuPublishNFT: "", // DropDownMenu,
@@ -110,7 +111,7 @@ export const memora = {
   ddSorterPrice: "Price per Edition", // DropDownSorter,
   ddSorterClaim: "Claimable Status", // DropDownSorter,
 
-  // /src/components/sections/FooterSection.tsx - disable by nullifying the string
+  // /src/components/sections/FooterSection.tsx - disable social link by nullifying the string
   footCopyRight: "All rights reserved.", // FooterSection,
   footLicensed: "Officially licensed product of", // FooterSection,
   footPrivacy: "Privacy Policy", // FooterSection,
@@ -148,6 +149,32 @@ export const memora = {
   subscribeButton: "Subscribe", // SubscribeForm,
   subscribeButtonLoading: "Subscribing...", // SubscribeForm,
 
+  // /src/components/landing/HeroSlider.tsx - disable by nullifying the string set
+  heroSlides: [
+    {
+      title: "PABRIKROTI",
+      subtitle: "Crafted Code, Wrapped in Bread.",
+      description: `Build, bake, and broadcast—your digital presence kneaded from secure recipes. PABRIKROTI takes your idea, bakes it into reality with rock-solid security and open-source spirit.`,
+      image: "/memora/landing/slider-1.png",
+      cta: {
+        text: "Let's Get Started",
+        href: "https://github.com/myreceiptt/pabrikroti-master?tab=readme-ov-file#-general-information",
+        target: "_blank",
+      },
+    },
+    {
+      title: "PABRIKROTI",
+      subtitle: "Security You Can Taste.",
+      description: `Powered by secure design, transparent pricing, and an open-source license you can verify. Every "loaf" comes with audit logs, version history, and enterprise support—delivered fresh.`,
+      image: "/memora/landing/slider-2.png",
+      cta: {
+        text: "Explore Pricing",
+        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/PRICING.md",
+        target: "_blank",
+      },
+    },
+  ],
+
   // /src/components/landing/FeatureGrid.tsx - disable by nullifying the string set
   features: [
     {
@@ -167,32 +194,6 @@ export const memora = {
       title: "NFT Claiming",
       description: "Claim digital assets as real bread.",
       cta: { text: "Claim Now", href: "/free" },
-    },
-  ],
-
-  // /src/components/landing/HeroSlider.tsx - disable by nullifying the string set
-  heroSlides: [
-    {
-      title: "Programmed Artisan Breads",
-      subtitle: "Digitally baked. Publicly shared.",
-      description: "We tokenize culture and rewards.",
-      image: "/roti/landing/slider-0.png",
-      cta: {
-        text: "Get Started",
-        href: "/coins",
-        target: "_blank",
-      },
-    },
-    {
-      title: "Programmed Batch Breads",
-      subtitle: "Digitally baked. Publicly shared.",
-      description: "We tokenize culture and rewards.",
-      image: "/roti/landing/slider-1.png",
-      cta: {
-        text: "Get Started",
-        href: "/coins",
-        target: "_blank",
-      },
     },
   ],
 
