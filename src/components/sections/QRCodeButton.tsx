@@ -9,6 +9,7 @@ import { FaQrcode } from "react-icons/fa6";
 
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
+import { hexToRgba } from "@/config/utils";
 
 export default function QRCodeButton() {
   const { receipt } = getActiveReceipt();
@@ -53,7 +54,7 @@ export default function QRCodeButton() {
 
       // Draw white rounded background behind logo
       const padding = 11;
-      ctx.fillStyle = receipt.colorTersier;
+      ctx.fillStyle = receipt.colorSecondary;
       ctx.beginPath();
       ctx.arc(size / 2, size / 2, logoSize / 2 + padding, 0, Math.PI * 2);
       ctx.fill();
@@ -76,8 +77,8 @@ export default function QRCodeButton() {
           <QRCodeCanvas
             value={currentUrl}
             size={1047}
-            bgColor={receipt.colorTersier}
-            fgColor={receipt.colorSecondary}
+            bgColor={receipt.colorPrimer}
+            fgColor={receipt.colorPrimary}
             level="H"
             ref={qrRef}
           />
@@ -88,10 +89,11 @@ export default function QRCodeButton() {
       <button
         onClick={downloadQRCode}
         style={{
-          backgroundColor: receipt.colorTertiary,
-          color: receipt.colorSekunder,
+          color: receipt.colorSecondary,
+          borderColor: receipt.colorTertiary,
+          backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
         }}
-        className="w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer"
+        className="w-10 h-10 flex items-center justify-center text-xl border rounded-lg cursor-pointer"
         aria-label="Download QR Code">
         <FaQrcode />
       </button>

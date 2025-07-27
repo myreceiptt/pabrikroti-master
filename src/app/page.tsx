@@ -7,10 +7,12 @@ import React, { useEffect, useState } from "react";
 
 // Components libraries
 import FeaturedCards from "@/components/contents/FeaturedCards";
-import HeroSection from "@/components/landing/HeroSection";
-import AboutThis from "@/components/landing/AboutThis";
-import MainProgram from "@/components/landing/MainProgram";
-import TheFeatures from "@/components/landing/TheFeatures";
+import FeatureGrid from "@/components/landing/FeatureGrid";
+import HeroSlider from "@/components/landing/HeroSlider";
+import ParagraphText from "@/components/landing/ParagraphText";
+import VideoEmbed from "@/components/landing/VideoEmbed";
+import VisualLeft from "@/components/landing/VisualLeft";
+import VisualRight from "@/components/landing/VisualRight";
 import DynamicLoginPage from "@/components/logins/DynamicLogin";
 import Footer from "@/components/sections/FooterSection";
 import Header from "@/components/sections/HeaderSection";
@@ -24,10 +26,10 @@ export default function PageRouter() {
       const hostname = url.hostname.toLowerCase().trim();
 
       const validHosts = new Set([
-        "far.futuloka.io",
-        "www.futuloka.xyz",
-        "far.futuloka.xyz",
-        "far.endhonesa.com",
+        "motion.endhonesa.com",
+        "www.inamotion.id",
+        "pabrikroti.endhonesa.com",
+        "preroti.endhonesa.com",
         "localhost",
         "127.0.0.1",
       ]);
@@ -55,11 +57,13 @@ export default function PageRouter() {
     <>
       <Header />
       <div className="flex flex-col gap-4 content-normal md:px-20 py-4 px-4 lg:my-12 md:my-8 my-4">
-        <main className="grid gap-4 place-items-center">
-          <HeroSection />
-          <AboutThis />
-          <MainProgram />
-          <TheFeatures />
+        <main className="grid gap-4 lg:gap-7 place-items-center">
+          <HeroSlider />
+          <FeatureGrid />
+          <ParagraphText />
+          <VisualLeft />
+          <VisualRight />
+          <VideoEmbed />
         </main>
       </div>
       <Footer />

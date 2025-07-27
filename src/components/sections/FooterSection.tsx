@@ -10,6 +10,7 @@ import {
   FaDiscord,
   FaEnvelope,
   FaFacebook,
+  FaGithub,
   FaGlobe,
   FaInstagram,
   FaLinkedin,
@@ -30,8 +31,11 @@ export default function Footer() {
 
   return (
     <footer
-      style={{ backgroundColor: receipt.colorTertiary }}
-      className="w-full py-4 px-4 md:px-20">
+      style={{
+        borderColor: receipt.colorTertiary,
+        backgroundColor: receipt.colorFooterBG,
+      }}
+      className="w-full py-4 px-4 md:px-20 border-t">
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
         <div className="w-full flex flex-col">
           {/* Newsletter Signup */}
@@ -40,122 +44,165 @@ export default function Footer() {
         <div className="w-full flex flex-col">
           {/* Social Media Links */}
           <h3
-            style={{ color: receipt.colorSecondary }}
+            style={{ color: receipt.colorFooterText }}
             className="sm:text-end text-center text-xs sm:text-sm md:text-base font-semibold">
-            {receipt.socialTitle}
+            {receipt.footSocial}
           </h3>
           <div className="flex gap-2 mt-2 sm:justify-end justify-center">
-            {receipt.linkXTwitter && (
+            {receipt.footGitHub && (
               <Link
-                href={receipt.linkXTwitter}
+                href={receipt.footGitHub}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
-                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
+                }}
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                <FaGithub />
+              </Link>
+            )}
+
+            {receipt.footXTwitter && (
+              <Link
+                href={receipt.footXTwitter}
+                target="_blank"
+                style={{
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaTwitter />
               </Link>
             )}
 
-            {receipt.linkLinkedIn && (
+            {receipt.footLinkedIn && (
               <Link
-                href={receipt.linkLinkedIn}
+                href={receipt.footLinkedIn}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
-                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaLinkedin />
               </Link>
             )}
 
-            {receipt.linkInstagram && (
+            {receipt.footInstagram && (
               <Link
-                href={receipt.linkInstagram}
+                href={receipt.footInstagram}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
-                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaInstagram />
               </Link>
             )}
 
-            {receipt.linkFacebook && (
+            {receipt.footFacebook && (
               <Link
-                href={receipt.linkFacebook}
+                href={receipt.footFacebook}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
-                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaFacebook />
               </Link>
             )}
 
-            {receipt.linkDiscord && (
+            {receipt.footDiscord && (
               <Link
-                href={receipt.linkDiscord}
+                href={receipt.footDiscord}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
-                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaDiscord />
               </Link>
             )}
 
-            {receipt.linkYouTube && (
+            {receipt.footYouTube && (
               <Link
-                href={receipt.linkYouTube}
+                href={receipt.footYouTube}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
-                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaYoutube />
               </Link>
             )}
 
-            {receipt.linkEmail && (
+            {receipt.footEmail && (
               <Link
-                href={receipt.linkEmail}
+                href={receipt.footEmail}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
-                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaEnvelope />
               </Link>
             )}
 
-            {receipt.linkWhatsApp && (
+            {receipt.footWhatsApp && (
               <Link
-                href={receipt.linkWhatsApp}
+                href={receipt.footWhatsApp}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
-                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaWhatsapp />
               </Link>
             )}
 
-            {receipt.linkWebsite && (
+            {receipt.footWebsite && (
               <Link
-                href={receipt.linkWebsite}
+                href={receipt.footWebsite}
                 target="_blank"
                 style={{
-                  color: receipt.colorPrimer,
-                  backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
+                  color: receipt.colorFooterIcon,
+                  backgroundColor: hexToRgba(
+                    receipt.colorFooterIconBG,
+                    receipt.colorFooterIconBGAlpha
+                  ),
                 }}
                 className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
                 <FaGlobe />
@@ -168,39 +215,41 @@ export default function Footer() {
       {/* Bottom Section */}
       <div
         style={{
-          borderColor: hexToRgba(receipt.colorSekunder, 0.7),
+          borderColor: receipt.colorTertiary,
         }}
         className="w-full border-t mt-4 pt-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
         {/* Copyrights */}
         <div
           style={{
-            color: receipt.colorSecondary,
+            color: receipt.colorFooterText,
           }}
           className="w-full text-xs text-center sm:text-left">
           <p>
-            &copy; {new Date().getFullYear()} {receipt.entityAlias1}.{" "}
-            {receipt.copyRight}
+            &copy; {new Date().getFullYear()} {receipt.proAlias1}.{" "}
+            {receipt.footCopyRight}
           </p>
-          <p>{`${receipt.officiallyLicensed} ${receipt.entityAlias1}.`}</p>
+          <p>
+            {receipt.footLicensed} {receipt.proAlias1}.
+          </p>
           <div className="flex justify-center sm:justify-start gap-4 mt-2">
             <Link
               href="/terms"
               target="_blank"
               style={{
-                color: receipt.colorSecondary,
+                color: receipt.colorFooterText,
               }}
-              className="text-xs text-center sm:text-left">
-              {receipt.anchorTerms} & {receipt.anchorPrivacy}
+              className="text-xs text-center sm:text-left hover:underline">
+              {receipt.footTerms} & {receipt.footPrivacy}
             </Link>
           </div>
         </div>
 
         {/* Logo & Powered By */}
         <div className="w-full flex justify-center sm:justify-end cursor-pointer">
-          <Link href={receipt.linkPower} target="_blank">
+          <Link href={receipt.loginLinkPower} target="_blank">
             <Image
-              src={receipt.footerPower}
-              alt={receipt.poweredBy}
+              src={receipt.footPower}
+              alt={receipt.loginPoweredBy}
               width={563}
               height={75}
             />

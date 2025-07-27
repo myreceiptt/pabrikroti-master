@@ -14,22 +14,22 @@ export default function FeaturedCards() {
   const { receipt } = getActiveReceipt();
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-7 place-items-center">
       <Title title1={receipt.featuredTitle1} title2={receipt.featuredTitle2} />
       <div className="w-full grid grid-cols-1 sm:[grid-template-columns:repeat(auto-fit,minmax(0,1fr))] gap-4 sm:gap-8">
         {[
           {
-            href: "/free",
+            href: receipt.freeLink,
             src: receipt.featuredFree,
             alt: receipt.freeTitle,
           },
           {
-            href: "/paid",
+            href: receipt.paidLink,
             src: receipt.featuredPaid,
             alt: receipt.paidTitle,
           },
           {
-            href: "/coins",
+            href: receipt.coinLink,
             src: receipt.featuredCoin,
             alt: receipt.coinTitle,
           },
@@ -47,7 +47,7 @@ export default function FeaturedCards() {
                   height={1225}
                   alt={alt}
                   priority
-                  className="rounded-3xl"
+                  className="rounded-2xl sm:rounded-xl md:rounded-2xl lg:rounded-3xl"
                 />
               </button>
             </Link>

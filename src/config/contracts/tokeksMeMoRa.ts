@@ -110,7 +110,7 @@ export const displayedTokeksMeMoRa = {
 };
 
 // Launched FT contracts
-export const memoraErc20sLaunched = [
+export const erc20sLaunchedMeMoRa = [
   {
     address: erc20BONBase.address,
     name: bonDoshName,

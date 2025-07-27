@@ -22,20 +22,20 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
   return (
     <div
       style={{
-        backgroundColor: hexToRgba(receipt.colorTersier, 0.5),
+        backgroundColor: hexToRgba(receipt.colorSekunder, 0.5),
       }}
       className="fixed inset-0 flex items-center justify-center backdrop-blur-xs z-50">
       {/* Pop-up Box */}
       <div
         style={{
-          backgroundColor: receipt.colorPrimary,
+          backgroundColor: receipt.colorSecondary,
         }}
-        className="rounded-2xl shadow-lg relative w-[89vw] h-[89vh] sm:w-[74vw] sm:h-[74vh] lg:w-[47vw] lg:h-[47vh] flex flex-col">
+        className="rounded-xl md:rounded-2xl lg:rounded-3xl shadow-lg relative w-[89vw] h-[89vh] sm:w-[74vw] sm:h-[74vh] lg:w-[47vw] lg:h-[47vh] flex flex-col">
         {/* Close Button */}
         <button
           style={{
-            color: receipt.colorSekunder,
-            backgroundColor: receipt.colorTertiary,
+            color: receipt.colorSecondary,
+            backgroundColor: receipt.colorSekunder,
           }}
           className="absolute top-3 right-3 w-10 h-10 flex items-center justify-center text-xl rounded-lg cursor-pointer"
           onClick={onClose}>
@@ -46,14 +46,14 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
         <div className="p-6 overflow-y-auto flex-1">
           <h2
             style={{
-              color: receipt.colorSecondary,
+              color: receipt.colorPrimer,
             }}
             className="text-xl font-semibold text-left mb-2">
             {receipt.popUpTitle}
           </h2>
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP1}
@@ -61,7 +61,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP2}
@@ -69,7 +69,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP3}
@@ -77,7 +77,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP4}
@@ -85,7 +85,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP5}
@@ -93,7 +93,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP6}
@@ -101,7 +101,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP7}
@@ -109,7 +109,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP8}
@@ -117,7 +117,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <ul
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             <li>{receipt.popUpUlLi1}</li>
@@ -130,7 +130,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP9}
@@ -138,7 +138,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP10}
@@ -146,7 +146,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP11}
@@ -154,7 +154,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
           <br />
           <p
             style={{
-              color: receipt.colorSekunder,
+              color: receipt.colorPrimer,
             }}
             className="text-sm font-medium">
             {receipt.popUpP12}
@@ -165,7 +165,7 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
             alt={receipt.popUpImageAlt}
             width={747}
             height={747}
-            className="rounded-3xl w-full"
+            className="rounded-xl md:rounded-2xl lg:rounded-3xl w-full"
             unoptimized
           />
         </div>

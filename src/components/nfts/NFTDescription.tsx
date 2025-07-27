@@ -17,26 +17,24 @@ export default function NFTDescription({
   id,
 }: NFTDescriptionProps) {
   const { receipt } = getActiveReceipt();
-
-  const [isExpanded, setIsExpanded] = useState(false);
-
   const paragraphs = description
     .split("\n")
     .filter((line) => line.trim() !== "");
-
   const words = description.split(" ");
   const limitedText = words.slice(0, 27).join(" ");
   const limitedParagraphs = limitedText
     .split("\n")
     .filter((line) => line.trim() !== "");
-
   const isLongDescription = words.length > 27;
+
+  // Ensure state variables are properly declared
+  const [isExpanded, setIsExpanded] = useState(false);
 
   return (
     <>
       <div
         style={{
-          color: receipt.colorSekunder,
+          color: receipt.colorPrimer,
         }}
         className="w-full flex flex-col items-start gap-2">
         {isExpanded
@@ -66,7 +64,7 @@ export default function NFTDescription({
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    color: receipt.colorSecondary,
+                    color: receipt.colorSekunder,
                   }}
                   className="text-xs font-medium hover:underline cursor-pointer">
                   {receipt.nftMeMoRa}
@@ -80,7 +78,7 @@ export default function NFTDescription({
                   target="_blank"
                   rel="noopener noreferrer"
                   style={{
-                    color: receipt.colorSecondary,
+                    color: receipt.colorSekunder,
                   }}
                   className="text-xs font-medium hover:underline cursor-pointer">
                   {receipt.nftEndhonesa}
@@ -92,7 +90,7 @@ export default function NFTDescription({
           {/* Read More / Read Less */}
           <p
             style={{
-              color: receipt.colorSecondary,
+              color: receipt.colorSekunder,
             }}
             className="text-xs font-medium hover:underline cursor-pointer"
             onClick={() => setIsExpanded(!isExpanded)}>

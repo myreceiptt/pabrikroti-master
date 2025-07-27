@@ -4,14 +4,18 @@
 
 We follow a modular release structure tied to tenant-specific deployments. Only stable branches with production deployments are eligible for ongoing security updates.
 
-| Version | Status        |
-| ------- | ------------- |
-| 2.4.x   | Supported     |
-| 2.2-3.x | Supported     |
-| 2.1.11  | Not supported |
-| 1.1-3.3 | Deprecated    |
-| 0.1.0   | Init          |
-| 0101    | OiOi          |
+| Version | Codename | Status     | Relation                                                                     |
+| ------- | -------- | ---------- | ---------------------------------------------------------------------------- |
+| 2.4.xx  | preview  | Supported  | [Dev. Branch](https://github.com/myreceiptt/pabrikroti-master/tree/memora)   |
+| 2.4.66  | travconn | Supported  | [Beta Branch](https://github.com/myreceiptt/pabrikroti-master/tree/travconn) |
+| 2.4.47  | zim      | Supported  | [Beta Branch](https://github.com/myreceiptt/pabrikroti-master/tree/zim)      |
+| 2.4.44  | memora   | Supported  | [Beta Branch](https://github.com/myreceiptt/pabrikroti-master/tree/memora)   |
+| 2.3.33  | far      | Supported  | [LTS Branch](https://github.com/myreceiptt/pabrikroti-master/tree/far)       |
+| 2.2.22  | istiqlal | Supported  | [LTS Branch](https://github.com/myreceiptt/pabrikroti-master/tree/istiqlal)  |
+| 2.1.11  | ngelaras | Deprecated | [Cloned Here](https://github.com/myreceiptt/pabrikroti-ngelaras)             |
+| 1.3.3   | bukhari  | Deprecated | [Cloned Here](https://github.com/myreceiptt/pabrikroti-bukhari)              |
+| 1.1.3   | labx     | Deprecated | [Cloned Here](https://github.com/myreceiptt/pabrikroti-labx)                 |
+| 0.1.0   | init     | Deprecated | [Cloned Here](https://github.com/myreceiptt/pabrikroti-init)                 |
 
 If you're using a customized fork or internal derivative based on PABRIKROTI, we recommend merging upstream patches manually or contacting our security team.
 
@@ -43,7 +47,7 @@ Please include:
 
 ---
 
-## 🙅 Do Not...
+## 🙅 Do Not Do These
 
 - Publish exploits before coordinated disclosure
 - Open GitHub issues for vulnerabilities

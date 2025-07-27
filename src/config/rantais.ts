@@ -12,7 +12,7 @@ import {
   zora,
 } from "thirdweb/chains";
 
-// All chains should be exported and defined from this file, including any custom chain using `defineChain`.
+// All chains should be exported and defined from this file, including any custom chain using defineChain.
 export const avalancheC = avalanche; // Avalanche C-Chain
 // export const avalancheC = defineChain(43114); // Avalanche C-Chain
 

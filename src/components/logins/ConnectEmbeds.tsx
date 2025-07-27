@@ -15,7 +15,7 @@ export default function ConnectEmbeds() {
 
   const embedStyle: React.CSSProperties = {
     width: "100%",
-    background: "transparent",
+    background: "white",
   };
 
   return (
@@ -44,30 +44,30 @@ export default function ConnectEmbeds() {
         showThirdwebBranding={false}
         theme={lightTheme({
           colors: {
-            accentButtonBg: receipt.colorSecondary, // Button for Retry & Try Again
-            accentButtonText: receipt.colorSekunder, // Button for Retry & Try Again
-            accentText: receipt.colorSecondary, // Hyperlink text for Terms & Privacy
+            accentButtonBg: receipt.colorSekunder, // Button for Retry & Try Again
+            accentButtonText: receipt.colorSecondary, // Button for Retry & Try Again
+            accentText: receipt.colorPrimer, // Hyperlink text for Terms & Privacy
             borderColor: receipt.colorTertiary, // All border color
             // connectedButtonBg: string;
             // connectedButtonBgHover: string;
-            // danger: string;
+            danger: receipt.colorTersier,
             // inputAutofillBg: string;
-            // modalBg: string;
+            // modalBg: receipt.colorSecondary,
             // modalOverlayBg: string;
             // primaryButtonBg: string;
             // primaryButtonText: string;
-            primaryText: receipt.colorSekunder, // Passkey & Connect a Wallet text
+            primaryText: receipt.colorPrimer, // Phone number, Passkey & Connect a Wallet
             // scrollbarBg: string;
             // secondaryButtonBg: string;
             // secondaryButtonHoverBg: string;
-            secondaryButtonText: receipt.colorSekunder, // Google & Apple text
+            secondaryButtonText: receipt.colorPrimer, // Google & Apple text
             // secondaryIconColor: string;
             // secondaryIconHoverBg: string;
             // secondaryIconHoverColor: string;
-            // secondaryText: string;
+            secondaryText: receipt.colorPrimer,
             selectedTextBg: receipt.colorSekunder,
-            selectedTextColor: receipt.colorPrimary,
-            // separatorLine: string;
+            selectedTextColor: receipt.colorSecondary,
+            separatorLine: receipt.colorTertiary,
             // skeletonBg: string;
             // success: string;
             // tertiaryBg: string;

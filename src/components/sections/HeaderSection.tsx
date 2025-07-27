@@ -11,6 +11,7 @@ import { FaSistrix } from "react-icons/fa6";
 
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
+import { hexToRgba } from "@/config/utils";
 
 // Components libraries
 import ConnectButtons from "@/components/logins/ConnectButtons";
@@ -57,8 +58,8 @@ export default function Header() {
   return (
     <header
       style={{
-        backgroundColor: receipt.colorPrimary,
         borderColor: receipt.colorTertiary,
+        backgroundColor: receipt.colorSecondary,
       }}
       className="w-full flex items-center justify-between py-4 px-4 md:px-20 bg-transparent border-b">
       {/* Logo Section */}
@@ -79,20 +80,22 @@ export default function Header() {
         {/* Search Bar (Desktop View: Min Width 640px) */}
         <form
           onSubmit={handleSearch}
-          style={{ backgroundColor: receipt.colorTertiary }}
+          style={{
+            backgroundColor: receipt.colorPrimary,
+          }}
           className="w-full hidden sm:flex items-center justify-center px-4 py-2 rounded-lg">
           <FaSistrix
             onClick={handleSearch}
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: hexToRgba(receipt.colorSekunder, 0.7) }}
             className="w-5 h-5 cursor-pointer"
           />
           <input
             type="text"
             aria-label={receipt.headerSearch}
-            placeholder={receipt.searchPlaceholder}
+            placeholder={receipt.headerSearchPH}
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            style={{ color: receipt.colorSecondary }}
+            style={{ color: hexToRgba(receipt.colorSekunder, 0.7) }}
             className="ml-2 w-full bg-transparent outline-hidden text-xs md:text-sm"
           />
         </form>
@@ -103,10 +106,11 @@ export default function Header() {
           <button
             onClick={() => setIsMobileSearchOpen(!isMobileSearchOpen)}
             style={{
-              backgroundColor: receipt.colorTertiary,
-              color: receipt.colorSekunder,
+              color: receipt.colorSecondary,
+              borderColor: receipt.colorTertiary,
+              backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
             }}
-            className="sm:hidden w-10 h-10 flex items-center justify-center text-xl rounded-lg"
+            className="sm:hidden w-10 h-10 flex items-center justify-center text-xl border rounded-lg cursor-pointer"
             aria-label="Mobile Search Button">
             <FaSistrix />
           </button>
@@ -121,25 +125,28 @@ export default function Header() {
                 exit={{ opacity: 0, y: -10, scale: 0.95 }}
                 transition={{ duration: 0.47, ease: "easeOut" }}
                 onSubmit={handleSearch}
-                style={{ backgroundColor: receipt.colorTertiary }}
-                className="absolute top-16 left-0 w-full px-4 py-2 flex items-center shadow-md z-10">
+                style={{
+                  borderColor: receipt.colorTertiary,
+                  backgroundColor: receipt.colorPrimary,
+                }}
+                className="absolute top-16 left-0 w-full px-4 py-2 flex items-center shadow-md z-10 border rounded-lg">
                 <FaSistrix
                   onClick={handleSearch}
-                  style={{ color: receipt.colorSekunder }}
+                  style={{ color: hexToRgba(receipt.colorSekunder, 0.7) }}
                   className="w-5 h-5 cursor-pointer"
                 />
                 <input
                   type="text"
                   aria-label={receipt.headerSearch}
-                  placeholder={receipt.searchPlaceholder}
+                  placeholder={receipt.headerSearchPH}
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  style={{ color: receipt.colorSecondary }}
+                  style={{ color: hexToRgba(receipt.colorSekunder, 0.7) }}
                   className="ml-2 w-full bg-transparent outline-none text-sm"
                 />
                 <button
                   type="submit"
-                  style={{ color: receipt.colorSecondary }}
+                  style={{ color: hexToRgba(receipt.colorSekunder, 0.7) }}
                   className="text-sm font-semibold px-4 cursor-pointer">
                   {receipt.headerGo}
                 </button>

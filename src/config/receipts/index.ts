@@ -9,8 +9,8 @@ import {
   erc1155TryError,
   erc20sLaunched,
   factoryNOTA,
-  memoraErc20sLaunched,
-  pabrikrotiErc20sLaunched,
+  erc20sLaunchedMeMoRa,
+  erc20sLaunchedPabrikRoti,
   SupportedFTs,
   SupportedNFTs,
   tekeks,
@@ -24,7 +24,7 @@ import { memora } from "@/config/receipts/memora";
 import { myreceipt } from "@/config/receipts/myreceipt";
 import { pabrikroti } from "@/config/receipts/pabrikroti";
 
-// Use `typeof` from one of the receipt (structure must same)
+// Use typeof from one of the receipt (structure must same)
 type ReceiptType = typeof myreceipt;
 
 // Domain-based or Subdomain-based config mapping
@@ -38,6 +38,7 @@ const hostMap: Record<
     erc20sLaunched: typeof erc20sLaunched;
     supportedFTs: SupportedFTs;
     displayedTokeks: typeof displayedTokeks;
+    shouldCheckAccess: boolean;
   }
 > = {
   "memora.endhonesa.com": {
@@ -45,18 +46,20 @@ const hostMap: Record<
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155MeMoRa1,
     supportedNFTs: tekeksMeMoRa,
-    erc20sLaunched: memoraErc20sLaunched,
+    erc20sLaunched: erc20sLaunchedMeMoRa,
     supportedFTs: tokeksMeMoRa,
     displayedTokeks: displayedTokeksMeMoRa,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "memora.voyage.co.id": {
     receipt: memora,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155MeMoRa1,
     supportedNFTs: tekeksMeMoRa,
-    erc20sLaunched: memoraErc20sLaunched,
+    erc20sLaunched: erc20sLaunchedMeMoRa,
     supportedFTs: tokeksMeMoRa,
     displayedTokeks: displayedTokeksMeMoRa,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "motion.endhonesa.com": {
     receipt: myreceipt,
@@ -66,8 +69,9 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunched,
     supportedFTs: tokeks,
     displayedTokeks: displayedTokeks,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
-  "www.inamotion.xyz": {
+  "www.inamotion.id": {
     receipt: myreceipt,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
@@ -75,42 +79,47 @@ const hostMap: Record<
     erc20sLaunched: erc20sLaunched,
     supportedFTs: tokeks,
     displayedTokeks: displayedTokeks,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "pabrikroti.endhonesa.com": {
     receipt: pabrikroti,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: pabrikrotiErc20sLaunched,
+    erc20sLaunched: erc20sLaunchedPabrikRoti,
     supportedFTs: tokeksPabrikRoti,
     displayedTokeks: displayedTokeksPabrikRoti,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "preroti.endhonesa.com": {
     receipt: pabrikroti,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: pabrikrotiErc20sLaunched,
+    erc20sLaunched: erc20sLaunchedPabrikRoti,
     supportedFTs: tokeksPabrikRoti,
     displayedTokeks: displayedTokeksPabrikRoti,
+    shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   localhost: {
     receipt: pabrikroti,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: pabrikrotiErc20sLaunched,
+    erc20sLaunched: erc20sLaunchedPabrikRoti,
     supportedFTs: tokeksPabrikRoti,
     displayedTokeks: displayedTokeksPabrikRoti,
+    shouldCheckAccess: false, // Will be overridden by the shouldCheck value on each component.
   },
   "127.0.0.1": {
     receipt: pabrikroti,
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: pabrikrotiErc20sLaunched,
+    erc20sLaunched: erc20sLaunchedPabrikRoti,
     supportedFTs: tokeksPabrikRoti,
     displayedTokeks: displayedTokeksPabrikRoti,
+    shouldCheckAccess: false, // Will be overridden by the shouldCheck value on each component.
   },
 };
 
@@ -123,6 +132,7 @@ export function getActiveReceipt(host?: string): {
   erc20sLaunched: typeof erc20sLaunched;
   supportedFTs: SupportedFTs;
   displayedTokeks: typeof displayedTokeks;
+  shouldCheckAccess: boolean;
 } {
   let resolvedHost = "";
 
@@ -145,8 +155,9 @@ export function getActiveReceipt(host?: string): {
     factoryAddress: factoryNOTA,
     erc1155Launched: erc1155TryError,
     supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: pabrikrotiErc20sLaunched,
+    erc20sLaunched: erc20sLaunchedPabrikRoti,
     supportedFTs: tokeksPabrikRoti,
     displayedTokeks: displayedTokeksPabrikRoti,
+    shouldCheckAccess: false, // Will be overridden by the shouldCheck value on each component.
   };
 }

@@ -67,7 +67,7 @@ export default function Subscribe() {
   return (
     <>
       <h3
-        style={{ color: receipt.colorSecondary }}
+        style={{ color: receipt.colorFooterText }}
         className="text-center sm:text-left text-xs sm:text-sm md:text-base font-semibold">
         {receipt.subscribeTitle}
       </h3>
@@ -81,20 +81,27 @@ export default function Subscribe() {
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             style={{
+              color: receipt.colorFooterSubsText,
               borderColor: isInvalid
-                ? receipt.colorPrimer
-                : hexToRgba(receipt.colorSekunder, 0.7),
-              color: receipt.colorSecondary,
+                ? receipt.colorFooterSubsInBorder
+                : receipt.colorFooterSubsBorder,
+              backgroundColor: receipt.colorFooterSubsBG,
             }}
-            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border rounded-l-lg bg-transparent focus:outline-none"
+            className="text-xs md:text-sm w-2/3 lg:w-3/5 px-2 py-0 border rounded-l-lg focus:outline-none"
             disabled={loading}
             aria-invalid={isInvalid}
           />
           <button
             type="submit"
             style={{
-              backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
-              color: receipt.colorPrimer,
+              color: receipt.colorFooterButtonText,
+              borderColor: isInvalid
+                ? receipt.colorFooterButtonInBorder
+                : receipt.colorFooterButtonBorder,
+              backgroundColor: hexToRgba(
+                receipt.colorFooterButtonBG,
+                receipt.colorFooterButtonBGAlpha
+              ),
             }}
             className="text-xs md:text-sm px-6 py-2 font-semibold rounded-r-lg cursor-pointer"
             disabled={loading}>
@@ -107,7 +114,7 @@ export default function Subscribe() {
       {statusMessage && (
         <h4
           aria-live="polite"
-          style={{ color: receipt.colorSecondary }}
+          style={{ color: receipt.colorFooterText }}
           className="text-center sm:text-left text-sm font-medium mt-2">
           {statusMessage}
         </h4>

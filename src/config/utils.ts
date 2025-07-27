@@ -48,6 +48,9 @@ export function buildCurrencyMapFromSupportedFTs(
   return map;
 }
 
+// Max. uint256 value in bigint
+export const MAX_UINT256 = 2n ** 256n - 1n;
+
 // fetch eth price
 export async function FetchEthereumPrice(): Promise<number | null> {
   try {
@@ -60,20 +63,4 @@ export async function FetchEthereumPrice(): Promise<number | null> {
     console.error("Error fetching Ethereum price:", error);
     return null;
   }
-}
-
-export function isBeforeStartTime(
-  startTime: Date,
-  now: Date = new Date()
-): boolean {
-  return now < startTime;
-}
-
-export function formatTokenAmount(raw: bigint, decimals: number): string {
-  return (raw / BigInt(10) ** BigInt(decimals)).toString();
-}
-
-export function calculatePrice(tokenIdNumber: number): string {
-  if (isNaN(tokenIdNumber)) return "0.00";
-  return tokenIdNumber >= 23 ? "x.xx" : "0.00";
 }
