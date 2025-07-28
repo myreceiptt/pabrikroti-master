@@ -16,6 +16,7 @@ import {
   totalSupply,
 } from "thirdweb/extensions/erc20";
 import { useActiveAccount } from "thirdweb/react";
+import { download } from "thirdweb/storage";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
@@ -37,17 +38,26 @@ interface CoinData {
   coinImage: string;
   coinBy: string;
   coinLink: string;
-  adjustedPrice: number;
-  currency: string;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
-  adjustedBalance: number;
-  adjustedCoinOwned: number;
-  adjustedSupply: number;
-  adjustedMaxSupply: number;
+  perWallet: bigint;
   adjustedPerWallet: number;
+  adjustedCoinOwned: number;
   claimRemaining: number;
+  adjustedSupply: number;
+  maxClaim: bigint;
+  adjustedMaxSupply: number;
+  currency: string;
+  adjustedPrice: number;
+  adjustedBalance: number;
+}
+
+interface SnapshotEntry {
+  address: string;
+  maxClaimable?: string;
+  price?: string;
+  currency?: string;
 }
 
 function getCoinAddressFromParams(
@@ -61,18 +71,19 @@ function getCoinAddressFromParams(
 
 export default function CoinDetails() {
   const { receipt, erc20sLaunched } = getActiveReceipt();
-
   const activeAccount = useActiveAccount();
   const params = useParams();
   const router = useRouter();
   const coinAddress = getCoinAddressFromParams(params);
 
+  // Ensure state variables are properly declared
   const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [refreshToken, setRefreshToken] = useState(Date.now());
   const [coin, setCoin] = useState<CoinData | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
+  // Fetch any data
   const fetchCoinDetails = useCallback(async () => {
     if (!coinAddress || !activeAccount?.address) return;
 
@@ -93,28 +104,12 @@ export default function CoinDetails() {
         chain: erc20ContractLaunched.chain,
       });
 
+      // Fetch coin metadata
       const coinMetaData = await getContractMetadata({
         contract: erc20Contract,
       });
 
-      const coinDecimals = await decimals({ contract: erc20Contract });
-
-      const coinOwned = await getWalletBalance({
-        address: activeAccount.address,
-        chain: erc20ContractLaunched.chain,
-        client: erc20ContractLaunched.client,
-        tokenAddress: erc20ContractLaunched.address,
-      });
-
-      const coinOwnedRaw = coinOwned.value ?? 0n;
-      const adjustedCoinOwned = Number(coinOwnedRaw) / 10 ** coinDecimals;
-
-      const coinTotalSupply = await totalSupply({
-        contract: erc20Contract,
-      });
-
-      const adjustedSupply = Number(coinTotalSupply) / 10 ** coinDecimals;
-
+      // Fetch claim condition
       const claimCondition = await getActiveClaimCondition({
         contract: erc20Contract,
       });
@@ -125,69 +120,7 @@ export default function CoinDetails() {
         return;
       }
 
-      const adjustedClaimed =
-        Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
-
-      const adjustedMaxClaim =
-        Number(claimCondition.maxClaimableSupply) / 10 ** coinDecimals;
-
-      const adjustedMaxSupply =
-        adjustedMaxClaim + (adjustedSupply - adjustedClaimed);
-
-      const adjustedPerWallet =
-        Number(claimCondition.quantityLimitPerWallet) / 10 ** coinDecimals;
-
-      const claimConditionId = await getActiveClaimConditionId({
-        contract: erc20Contract,
-      });
-
-      const claimedRaw = await readContract({
-        contract: erc20Contract,
-        method:
-          "function getSupplyClaimedByWallet(uint256 _conditionId, address _claimer) view returns (uint256 supplyClaimedByWallet)",
-        params: [claimConditionId, activeAccount.address],
-      });
-
-      const claimRemaining =
-        Number(claimCondition.quantityLimitPerWallet - claimedRaw) /
-        10 ** coinDecimals;
-
-      let currencyDecimals = 18;
-      let balanceRaw = 0n;
-      const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
-
-      if (claimCondition.currency.toLowerCase() !== nativeCurrency) {
-        const currencyContract = getContract({
-          client: erc20ContractLaunched.client,
-          address: claimCondition.currency,
-          chain: erc20ContractLaunched.chain,
-        });
-
-        currencyDecimals = await decimals({ contract: currencyContract });
-
-        const balanceResult = await getWalletBalance({
-          address: activeAccount.address,
-          chain: erc20ContractLaunched.chain,
-          client: erc20ContractLaunched.client,
-          tokenAddress: claimCondition.currency,
-        });
-
-        balanceRaw = balanceResult.value ?? 0n;
-      } else {
-        const balanceResult = await getWalletBalance({
-          address: activeAccount.address,
-          chain: erc20ContractLaunched.chain,
-          client: erc20ContractLaunched.client,
-        });
-
-        currencyDecimals = balanceResult.decimals ?? 18;
-        balanceRaw = balanceResult.value ?? 0n;
-      }
-
-      const adjustedPrice =
-        Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
-      const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
-
+      // Fetch can claim status
       let isClaimable = false;
       let reason: string | null = null;
 
@@ -201,6 +134,7 @@ export default function CoinDetails() {
         isClaimable = claimStatus.result;
         reason = claimStatus.reason ?? null;
       } catch (innerErr) {
+        // Continue if check failed
         isClaimable = false;
         reason = receipt.nftsFailReason;
         console.warn(
@@ -208,6 +142,161 @@ export default function CoinDetails() {
           innerErr
         );
       }
+
+      // Fetch coin decimals
+      const coinDecimals = await decimals({ contract: erc20Contract });
+
+      // Fetch limit per wallet
+      let perWallet = claimCondition.quantityLimitPerWallet;
+
+      // Fetch and adjust limit per wallet
+      let adjustedPerWallet = Number(perWallet) / 10 ** coinDecimals;
+
+      // Fetch coin owned
+      const coinOwned = await getWalletBalance({
+        address: activeAccount.address,
+        chain: erc20ContractLaunched.chain,
+        client: erc20ContractLaunched.client,
+        tokenAddress: erc20ContractLaunched.address,
+      });
+
+      // Adjust coin owned
+      const adjustedCoinOwned =
+        Number(coinOwned.value ?? 0n) / 10 ** coinDecimals;
+
+      // Fetch currency and decimals
+      const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+      let currencyDecimals = 18;
+      let balanceRaw = 0n;
+
+      if (claimCondition.currency.toLowerCase() !== nativeCurrency) {
+        const currencyContract = getContract({
+          client: erc20ContractLaunched.client,
+          address: claimCondition.currency,
+          chain: erc20ContractLaunched.chain,
+        });
+
+        currencyDecimals = await decimals({ contract: currencyContract });
+
+        // Fetch currency balance
+        const balanceResult = await getWalletBalance({
+          address: activeAccount.address,
+          chain: erc20ContractLaunched.chain,
+          client: erc20ContractLaunched.client,
+          tokenAddress: claimCondition.currency,
+        });
+
+        balanceRaw = balanceResult.value ?? 0n;
+      } else {
+        // Native currency balance
+        const balanceResult = await getWalletBalance({
+          address: activeAccount.address,
+          chain: erc20ContractLaunched.chain,
+          client: erc20ContractLaunched.client,
+        });
+
+        currencyDecimals = balanceResult.decimals ?? 18;
+        balanceRaw = balanceResult.value ?? 0n;
+      }
+
+      // Adjust balance
+      const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
+
+      // Adjust price
+      let adjustedPrice =
+        Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
+
+      // Merkle root map from coin metadata
+      const merkleMap = coinMetaData?.merkle as
+        | Record<string, string>
+        | undefined;
+
+      // Fetch override price
+      const currentMerkleRoot = claimCondition.merkleRoot?.toLowerCase();
+      const snapshotUri = merkleMap?.[currentMerkleRoot ?? ""];
+
+      if (snapshotUri && activeAccount?.address) {
+        try {
+          const merkleMetadataRes = await download({
+            client: erc20Contract.client,
+            uri: snapshotUri,
+          });
+
+          const merkleMetadata = await merkleMetadataRes.json();
+
+          const originalEntriesUri = merkleMetadata.originalEntriesUri;
+
+          if (originalEntriesUri) {
+            const entriesRes = await download({
+              client: erc20Contract.client,
+              uri: originalEntriesUri,
+            });
+
+            const entries: SnapshotEntry[] = await entriesRes.json();
+
+            const entry = entries.find(
+              (e) =>
+                e.address?.toLowerCase() === activeAccount.address.toLowerCase()
+            );
+
+            if (entry?.maxClaimable) {
+              const parsedPerWallet = parseFloat(entry.maxClaimable);
+              if (!isNaN(parsedPerWallet)) {
+                perWallet = BigInt(parsedPerWallet * 10 ** coinDecimals);
+                adjustedPerWallet = parsedPerWallet;
+              }
+            }
+
+            if (entry?.price) {
+              const parsedPrice = parseFloat(entry.price);
+              if (!isNaN(parsedPrice)) {
+                adjustedPrice = parsedPrice;
+              }
+            }
+          }
+        } catch (e) {
+          console.warn(receipt.fetchAllowList, e);
+        }
+      }
+
+      // Fetch claim condition id
+      const claimConditionId = await getActiveClaimConditionId({
+        contract: erc20Contract,
+      });
+
+      // Fetch supply claimed by wallet
+      const claimedRaw = await readContract({
+        contract: erc20Contract,
+        method:
+          "function getSupplyClaimedByWallet(uint256 _conditionId, address _claimer) view returns (uint256 supplyClaimedByWallet)",
+        params: [claimConditionId, activeAccount.address],
+      });
+
+      // Calculate claim remaining
+      const claimRemaining =
+        adjustedPerWallet - Number(claimedRaw) / 10 ** coinDecimals;
+
+      // Fetch coin current supply
+      const coinTotalSupply = await totalSupply({
+        contract: erc20Contract,
+      });
+
+      // Adjust coin current supply
+      const adjustedSupply = Number(coinTotalSupply) / 10 ** coinDecimals;
+
+      // Fetch and adjust coin supply based on claim condition
+      const adjustedClaimed =
+        Number(claimCondition.supplyClaimed) / 10 ** coinDecimals;
+
+      // Fetch max. claim based on claim condition
+      const maxClaim = claimCondition.maxClaimableSupply;
+
+      // Adjust max. claim based on claim condition
+      const adjustedMaxClaim = Number(maxClaim) / 10 ** coinDecimals;
+
+      // Calculate and adjust max. supply
+      const adjustedMaxSupply =
+        adjustedMaxClaim + (adjustedSupply - adjustedClaimed);
 
       setCoin({
         coinAddress: erc20ContractLaunched.address,
@@ -218,17 +307,19 @@ export default function CoinDetails() {
         coinImage: coinMetaData.image,
         coinBy: erc20ContractLaunched.by,
         coinLink: erc20ContractLaunched.link,
-        adjustedPrice,
-        currency: claimCondition.currency,
         startTimestamp: claimCondition.startTimestamp,
         isClaimable,
         reason,
-        adjustedBalance,
-        adjustedCoinOwned,
-        adjustedSupply,
-        adjustedMaxSupply,
+        perWallet,
         adjustedPerWallet,
+        adjustedCoinOwned,
         claimRemaining,
+        adjustedSupply,
+        maxClaim,
+        adjustedMaxSupply,
+        currency: claimCondition.currency,
+        adjustedPrice,
+        adjustedBalance,
       });
 
       setError(null);
@@ -249,22 +340,26 @@ export default function CoinDetails() {
     receipt.coinMessage1,
     receipt.coinSetError,
     receipt.coinsConsoleWarn,
+    receipt.fetchAllowList,
     receipt.nftsError,
     receipt.nftsFailReason,
     receipt.nftsUknownError,
   ]);
 
+  // Refetch FT details
   useEffect(() => {
     if (coinAddress !== "") fetchCoinDetails();
   }, [refreshToken, fetchCoinDetails, coinAddress]);
 
+  // Ensure coinAddress exists, otherwise redirect
   useEffect(() => {
     if (params.coinAddress == null) router.push("/");
   }, [params.coinAddress, router]);
 
+  // Placeholder loader
   if (loading || coinAddress === "") {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
         <Loader message={receipt.loaderChecking} />
 
         {/* Bottom Section - Background Image */}
@@ -274,7 +369,7 @@ export default function CoinDetails() {
             alt={receipt.proTitle}
             width={4096}
             height={1109}
-            className="rounded-3xl"
+            className="rounded-xl md:rounded-2xl lg:rounded-3xl"
             objectFit="cover"
             objectPosition="top"
             priority
@@ -284,9 +379,12 @@ export default function CoinDetails() {
     );
   }
 
+  // Fallback message coinAddress not found
   if (error) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
+        <Loader message={receipt.contentFallLoader} />
+
         <Message
           message1={error}
           message2={receipt.coinMessage2}
@@ -297,12 +395,13 @@ export default function CoinDetails() {
   }
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-7 place-items-center">
       {activeAccount?.address && (
         <CheckErc1155
           key={refreshToken}
           activeAddress={activeAccount.address}
           onAccessChange={setHasAccess}
+          shouldCheck={receipt.coinsNFTGated}
         />
       )}
       {hasAccess === null && (
@@ -316,7 +415,7 @@ export default function CoinDetails() {
               alt={receipt.proTitle}
               width={4096}
               height={1109}
-              className="rounded-3xl"
+              className="rounded-xl md:rounded-2xl lg:rounded-3xl"
               objectFit="cover"
               objectPosition="top"
               priority
@@ -333,8 +432,8 @@ export default function CoinDetails() {
       {hasAccess === true && coin && (
         <CoinForm
           hasAccess={hasAccess}
-          setRefreshToken={setRefreshToken}
           {...coin}
+          setRefreshToken={setRefreshToken}
         />
       )}
     </main>

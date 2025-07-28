@@ -1,0 +1,49 @@
+# File: .github/workflows/ci.yml
+
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+      - preview
+      - memora
+      - far
+      - istiqlal
+      - ngelaras
+      - bukhari
+      - labx
+      - init
+  pull_request:
+    branches:
+      - main
+      - preview
+
+jobs:
+  build:
+    name: Build & Lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js 22
+        uses: actions/setup-node@v3
+        with:
+          node-version: 22
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Inject ENV variables
+        run: |
+          echo "NEXT_PUBLIC_TW_CLIENT_ID=${{ secrets.NEXT_PUBLIC_TW_CLIENT_ID }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_TW_SECRET_KEY=${{ secrets.NEXT_PUBLIC_TW_SECRET_KEY }}" >> $GITHUB_ENV
+          echo "NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=${{ secrets.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY }}" >> $GITHUB_ENV
+
+      - name: Lint project
+        run: yarn lint
+
+      - name: Build project
+        run: yarn build

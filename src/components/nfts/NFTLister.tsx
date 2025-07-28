@@ -14,46 +14,58 @@ import { MediaRenderer, useReadContract } from "thirdweb/react";
 import { client } from "@/config/client";
 import { chainNames } from "@/config/rantais";
 import { getActiveReceipt } from "@/config/receipts";
-import { getCountdownString } from "@/config/utils";
+import { getCountdownString, MAX_UINT256 } from "@/config/utils";
 
 // Components libraries
 import Loader from "@/components/sections/ReusableLoader";
 
 interface NFTListerProps {
+  hasAccess: boolean | null;
   dropContract: ThirdwebContract;
   nftId: bigint;
   nftIdString: string;
-  adjustedPrice: number;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
+  maxClaim: bigint;
   maxSupply: bigint;
+  adjustedPrice: number;
   adjustedBalance: number;
   refreshToken: number;
 }
 
 export default function NFTLister({
+  hasAccess,
   dropContract,
   nftId,
   nftIdString,
-  adjustedPrice,
   startTimestamp,
   isClaimable,
   reason,
   supply,
+  maxClaim,
   maxSupply,
+  adjustedPrice,
   adjustedBalance,
   refreshToken,
 }: NFTListerProps) {
   const { receipt } = getActiveReceipt();
-
   const router = useRouter();
-  const startTime = new Date(Number(startTimestamp) * 1000);
   const chainName = chainNames[dropContract.chain.id] ?? "Unknown Chain";
+  const startTime = new Date(Number(startTimestamp) * 1000);
 
   // Ensure state variables are properly declared
   const [currentTime, setCurrentTime] = useState(new Date());
+
+  // Real-time clock
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   // Fetch NFT metadata
   const {
@@ -75,33 +87,25 @@ export default function NFTLister({
   const nftImage = nftMetadata?.image || receipt.nftListerImage;
   const nftName = nftMetadata?.name || receipt.nftListerName;
 
-  // Real-time clock
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentTime(new Date());
-    }, 1000);
-
-    return () => clearInterval(interval);
-  }, []);
-
   // Determine button status
   let buttonLabel = receipt.nftButton;
   let buttonDisabled = false;
 
-  if (currentTime < startTime) {
+  const safeReason = (reason ?? "").toLowerCase();
+
+  if (hasAccess === null || hasAccess === false) {
+    // Belum punya akses
+    buttonLabel = receipt.coinNoAccess;
+    buttonDisabled = true;
+  } else if (currentTime < startTime) {
     // Belum waktunya
     buttonLabel = `${receipt.nftSoon} ${getCountdownString(
       startTime,
       currentTime
     )}`;
     buttonDisabled = true;
-  } else if (adjustedBalance < adjustedPrice) {
-    // Tidak cukup saldo
-    buttonLabel = receipt.nftInsufficient;
-    buttonDisabled = true;
   } else if (!isClaimable) {
-    // Tidak bisa diklaim karena alasan lain
-    const safeReason = (reason ?? "").toLowerCase();
+    // Tidak bisa diklaim karena alasan teknis lainnya
     if (safeReason.includes("dropclaimexceedlimit")) {
       buttonLabel = receipt.nftClaimed;
     } else if (safeReason.includes("dropclaimexceedmaxsupply")) {
@@ -110,42 +114,59 @@ export default function NFTLister({
       buttonLabel = receipt.nftClosed; // fallback
     }
     buttonDisabled = true;
+  } else if (adjustedBalance < adjustedPrice) {
+    // Saldo tidak cukup
+    buttonLabel = receipt.nftInsufficient;
+    buttonDisabled = true;
   }
+  // else: semua aman, button tetap aktif dengan label default
 
   return (
     <div
       style={{
         borderColor: receipt.colorTertiary,
-        background: receipt.colorPrimary,
+        background: receipt.colorSecondary,
       }}
-      className="w-full grid grid-cols-1 gap-4 p-4 border rounded-3xl">
+      className="w-full grid grid-cols-1 gap-4 p-4 border rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl">
       {isLoading ? (
         <Loader message={receipt.loaderChecking} />
-      ) : nft ? (
+      ) : !nft ? (
+        <h2
+          style={{ color: receipt.colorTersier }}
+          className="text-left text-sm font-medium">
+          {receipt.nftNoData}
+        </h2>
+      ) : (
         <>
           <Link href={`/token/${nftIdString}`}>
             <MediaRenderer
               client={client}
               src={nftImage}
               alt={nftName}
-              className="rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
+              className="rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl w-full hover:scale-95 transition-transform duration-300 ease-in-out"
             />
           </Link>
+
           <div className="grid grid-cols-1 gap-2">
             <h2
-              style={{ color: receipt.colorSekunder }}
-              className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold">
+              style={{ color: receipt.colorPrimer }}
+              className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1">
               {nftName}
             </h2>
             <div
-              style={{ color: receipt.colorSekunder }}
-              className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
+              style={{ color: receipt.colorPrimer }}
+              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium">
               <span>{receipt.nftEditions}</span>
-              {supply.toString()}/{maxSupply.toString()}
+              {supply.toString()}/
+              {maxClaim === MAX_UINT256 ? (
+                <span className="">&#8734;</span>
+              ) : (
+                maxSupply.toString()
+              )}
             </div>
             <h2
-              style={{ color: receipt.colorSekunder }}
-              className="flex items-center gap-2 text-sm sm:text-xs lg:text-sm font-medium">
+              style={{ color: receipt.colorPrimer }}
+              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium">
               <span>
                 {receipt.coinFormOnChain} {chainName}
               </span>
@@ -161,16 +182,13 @@ export default function NFTLister({
               }
             }}
             style={{
-              color: buttonDisabled
-                ? receipt.colorSekunder
-                : receipt.colorSecondary,
-              backgroundColor: buttonDisabled
-                ? "transparent"
-                : receipt.colorTertiary,
+              color: receipt.colorSecondary,
               border: "2px solid",
               borderColor: buttonDisabled
                 ? receipt.colorTertiary
                 : "transparent",
+              backgroundColor: receipt.colorSekunder,
+              opacity: buttonDisabled ? 0.5 : 1,
             }}
             className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
               !buttonDisabled ? "cursor-pointer" : ""
@@ -178,12 +196,6 @@ export default function NFTLister({
             {buttonLabel}
           </button>
         </>
-      ) : (
-        <h2
-          style={{ color: receipt.colorSekunder }}
-          className="text-left text-sm font-medium">
-          {receipt.nftNoData}
-        </h2>
       )}
     </div>
   );

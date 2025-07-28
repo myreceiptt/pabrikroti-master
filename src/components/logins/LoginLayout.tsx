@@ -23,7 +23,7 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
           alt={receipt.proTitle}
           width={1080}
           height={1129}
-          className="absolute inset-0 w-full h-full rounded-r-3xl object-cover object-right"
+          className="absolute inset-0 w-full h-full rounded-2xl md:rounded-xl lg:rounded-2xl object-cover object-right"
           priority
         />
       </div>
@@ -42,43 +42,55 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
         <div id="headers" className="w-full flex flex-col gap-2">
           <h1
             aria-label={receipt.loginAria}
-            style={{ color: receipt.colorSecondary }}
+            style={{ color: receipt.colorPrimer }}
             className="flex text-left text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tighter justify-start align-middle">
             {receipt.loginCall}
           </h1>
           <h2
-            style={{ color: receipt.colorSekunder }}
-            className="flex flex-wrap text-left text-sm lg:text-base xl:text-lg font-normal tracking-tighter justify-start items-center">
-            {receipt.loginReason.text}
+            style={{ color: receipt.colorPrimer }}
+            className="text-left text-sm lg:text-base xl:text-lg font-normal tracking-tighter">
+            {receipt.loginReason.text1}{" "}
             <Link
-              href={receipt.loginReason.link}
+              href={receipt.loginReason.link1}
               target="_blank"
               rel="noopener noreferrer"
+              style={{ color: receipt.colorSekunder }}
               className="inline hover:underline transition-all duration-200">
-              {receipt.loginReason.anchor}
+              {receipt.loginReason.anchor1}
+            </Link>
+            <br />
+            {receipt.loginReason.text2}{" "}
+            <Link
+              href={receipt.loginReason.link2}
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: receipt.colorSekunder }}
+              className="inline hover:underline transition-all duration-200">
+              {receipt.loginReason.anchor2}
             </Link>
           </h2>
         </div>
         <div className="w-full h-auto flex flex-col gap-4 justify-start items-start">
           {children}
           <h4
-            style={{ color: receipt.colorSekunder }}
+            style={{ color: receipt.colorTersier }}
             className="text-left text-xs font-normal">
             {receipt.loginAgreement}{" "}
             <Link
               href="/terms"
               target="_blank"
-              style={{ color: receipt.colorSecondary }}>
+              style={{ color: receipt.colorSekunder }}
+              className="inline hover:underline transition-all duration-200">
               {receipt.loginTermsPolicy}
             </Link>
           </h4>
         </div>
 
         {/* Footerssss */}
-        <Link href={receipt.linkPower} target="_blank">
+        <Link href={receipt.loginLinkPower} target="_blank">
           <Image
-            src={receipt.loginPower}
-            alt={receipt.poweredBy}
+            src={receipt.loginLogoPower}
+            alt={receipt.loginPoweredBy}
             width={1080}
             height={107}
             className="z-0 object-contain w-full"

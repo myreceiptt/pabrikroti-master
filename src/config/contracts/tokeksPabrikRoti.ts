@@ -76,7 +76,7 @@ export const displayedTokeksPabrikRoti = {
 };
 
 // Launched FT contracts
-export const pabrikrotiErc20sLaunched = [
+export const erc20sLaunchedPabrikRoti = [
   {
     address: erc20OiOiBase.address,
     name: oioiTokenName,

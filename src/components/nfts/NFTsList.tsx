@@ -8,6 +8,7 @@ import Image from "next/image";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import { FaRotate } from "react-icons/fa6";
 import { getContract } from "thirdweb";
+import { getContractMetadata } from "thirdweb/extensions/common";
 import {
   canClaim,
   getClaimConditionById,
@@ -16,9 +17,11 @@ import {
 } from "thirdweb/extensions/erc1155";
 import { decimals } from "thirdweb/extensions/erc20";
 import { useActiveAccount, useReadContract } from "thirdweb/react";
+import { download } from "thirdweb/storage";
 import { getWalletBalance } from "thirdweb/wallets";
 
 // Blockchain configurations
+import { CheckErc20 } from "@/config/checker";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
@@ -32,16 +35,26 @@ interface NFTsListProps {
   variant: "free" | "paid";
 }
 
+// Interface definition for NFTs
 interface NFTData {
   nftId: bigint;
   nftIdString: string;
-  adjustedPrice: number;
   startTimestamp: bigint;
   isClaimable: boolean;
   reason: string | null;
   supply: bigint;
+  maxClaim: bigint;
   maxSupply: bigint;
+  initialPrice: number;
+  adjustedPrice: number;
   adjustedBalance: number;
+}
+
+interface SnapshotEntry {
+  address: string;
+  maxClaimable?: string;
+  price?: string;
+  currency?: string;
 }
 
 const INITIAL_ITEMS = 6;
@@ -49,11 +62,11 @@ const ITEMS_PER_LOAD = 3;
 
 export default function NFTsList({ variant }: NFTsListProps) {
   const { receipt, erc1155Launched } = getActiveReceipt();
-
   const activeAccount = useActiveAccount();
   const listRef = useRef<HTMLDivElement>(null);
 
   // Ensure state variables are properly declared
+  const [hasAccess, setHasAccess] = useState<boolean | null>(null);
   const [refreshToken, setRefreshToken] = useState(Date.now());
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [visibleCount, setVisibleCount] = useState(INITIAL_ITEMS);
@@ -86,17 +99,38 @@ export default function NFTsList({ variant }: NFTsListProps) {
 
       const results = await Promise.allSettled(
         nftIds.map(async (nftId) => {
-          // Fetch total supply
-          const nftSupply = await totalSupply({
-            contract: erc1155Launched,
-            id: nftId,
-          });
-
           // Fetch claim condition
           const claimCondition = await getClaimConditionById({
             contract: erc1155Launched,
             tokenId: nftId,
             conditionId: 0n,
+          });
+
+          // Fetch can claim status
+          let isClaimable = false;
+          let reason: string | null = null;
+
+          try {
+            const claimStatus = await canClaim({
+              contract: erc1155Launched,
+              tokenId: nftId,
+              quantity: 1n,
+              claimer: activeAccount?.address || "",
+            });
+
+            isClaimable = claimStatus.result;
+            reason = claimStatus.reason ?? null;
+          } catch (innerErr) {
+            // Continue if check failed
+            isClaimable = false;
+            reason = receipt.nftsFailReason;
+            console.warn(`${receipt.nftsConsoleWarn} ${nftId}`, innerErr);
+          }
+
+          // Fetch total supply
+          const nftSupply = await totalSupply({
+            contract: erc1155Launched,
+            id: nftId,
           });
 
           // Fetch claimed supply based on claim condition
@@ -105,13 +139,13 @@ export default function NFTsList({ variant }: NFTsListProps) {
           // Fetch max. claim supply based on claim condition
           const nftMaxClaim = claimCondition.maxClaimableSupply;
 
-          // Fetch max. supply
+          // Calculate max. supply
           const nftMaxSupply = nftMaxClaim + (nftSupply - nftClaimed);
 
           // Fetch currency and decimals
+          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
           let currencyDecimals = 18;
           let balanceRaw = 0n;
-          const nativeCurrency = "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 
           if (claimCondition.currency.toLowerCase() !== nativeCurrency) {
             const currencyContract = getContract({
@@ -143,41 +177,78 @@ export default function NFTsList({ variant }: NFTsListProps) {
             balanceRaw = balanceResult.value ?? 0n;
           }
 
-          // Adjust price and balance
-          const adjustedPrice =
-            Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
+          // Adjust currency balance
           const adjustedBalance = Number(balanceRaw) / 10 ** currencyDecimals;
 
-          // Fetch can claim status
-          let isClaimable = false;
-          let reason: string | null = null;
+          // Fetch and adjust price
+          const initialPrice =
+            Number(claimCondition.pricePerToken) / 10 ** currencyDecimals;
 
-          try {
-            const claimStatus = await canClaim({
-              contract: erc1155Launched,
-              tokenId: nftId,
-              quantity: 1n,
-              claimer: activeAccount?.address || "",
-            });
+          // Use initial price
+          let adjustedPrice = initialPrice;
 
-            isClaimable = claimStatus.result;
-            reason = claimStatus.reason ?? null;
-          } catch (innerErr) {
-            // Continue if check failed
-            isClaimable = false;
-            reason = receipt.nftsFailReason;
-            console.warn(`${receipt.nftsConsoleWarn} ${nftId}`, innerErr);
+          // Fetch NFT contract metadata
+          const contractMetaData = await getContractMetadata({
+            contract: erc1155Launched,
+          });
+
+          // Merkle root map from nft contract metadata
+          const merkleMap = contractMetaData?.merkle as
+            | Record<string, string>
+            | undefined;
+
+          // Fetch override price
+          const currentMerkleRoot = claimCondition.merkleRoot?.toLowerCase();
+          const snapshotUri = merkleMap?.[currentMerkleRoot ?? ""];
+
+          if (snapshotUri && activeAccount?.address) {
+            try {
+              const merkleMetadataRes = await download({
+                client: erc1155Launched.client,
+                uri: snapshotUri,
+              });
+
+              const merkleMetadata = await merkleMetadataRes.json();
+
+              const originalEntriesUri = merkleMetadata.originalEntriesUri;
+
+              if (originalEntriesUri) {
+                const entriesRes = await download({
+                  client: erc1155Launched.client,
+                  uri: originalEntriesUri,
+                });
+
+                const entries: SnapshotEntry[] = await entriesRes.json();
+
+                const entry = entries.find(
+                  (e) =>
+                    e.address?.toLowerCase() ===
+                    activeAccount.address.toLowerCase()
+                );
+
+                if (entry?.price) {
+                  const parsedPrice = parseFloat(entry.price);
+                  if (!isNaN(parsedPrice)) {
+                    adjustedPrice = parsedPrice;
+                  }
+                }
+              }
+            } catch (e) {
+              console.warn(receipt.fetchAllowList, e);
+            }
           }
 
           return {
             nftId,
             nftIdString: nftId.toString(),
-            adjustedPrice,
             startTimestamp: claimCondition.startTimestamp,
             isClaimable,
             reason,
             supply: nftSupply,
+            maxClaim: nftMaxClaim,
             maxSupply: nftMaxSupply,
+            initialPrice,
+            adjustedPrice,
             adjustedBalance,
           };
         })
@@ -189,7 +260,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
       results.forEach((result) => {
         if (result.status === "fulfilled") {
           const nft = result.value;
-          if (nft.adjustedPrice === 0) free.push(nft);
+          if (nft.initialPrice === 0) free.push(nft);
           else paid.push(nft);
         }
       });
@@ -210,6 +281,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
     nextNFTId,
     activeAccount?.address,
     erc1155Launched,
+    receipt.fetchAllowList,
     receipt.nftsConsoleWarn,
     receipt.nftsError,
     receipt.nftsFailReason,
@@ -263,9 +335,9 @@ export default function NFTsList({ variant }: NFTsListProps) {
   // Placeholder loader
   if (loading || nextNFTId === undefined) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
         <Loader message={receipt.loaderChecking} />
-        
+
         {/* Bottom Section - Background Image */}
         <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
           <Image
@@ -273,7 +345,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
             alt={receipt.proTitle}
             width={4096}
             height={1109}
-            className="rounded-3xl"
+            className="rounded-xl md:rounded-2xl lg:rounded-3xl"
             objectFit="cover"
             objectPosition="top"
             priority
@@ -286,7 +358,9 @@ export default function NFTsList({ variant }: NFTsListProps) {
   // Fallback message for no nftListToShow
   if (error || nftListToShow.length === 0) {
     return (
-      <main className="grid gap-4 place-items-center">
+      <main className="grid gap-4 lg:gap-7 place-items-center">
+        <Loader message={receipt.searchLoader} />
+
         <Message
           message1={error ?? receipt.nftsMessage1}
           message2={receipt.nftsMessage2}
@@ -297,7 +371,16 @@ export default function NFTsList({ variant }: NFTsListProps) {
   }
 
   return (
-    <main className="grid gap-4 place-items-center">
+    <main className="grid gap-4 lg:gap-7 place-items-center">
+      {activeAccount?.address && (
+        <CheckErc20
+          key={refreshToken}
+          activeAddress={activeAccount.address}
+          onAccessChange={setHasAccess}
+          shouldCheck={receipt.nftsFTGated}
+        />
+      )}
+
       <Title title1={title1} title2={title2} />
 
       <DropDownSorter sortOption={sortOption} setSortOption={setSortOption} />
@@ -310,9 +393,19 @@ export default function NFTsList({ variant }: NFTsListProps) {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.3, delay: index * 0.05 }}>
             <NFTLister
+              hasAccess={hasAccess}
               dropContract={erc1155Launched}
+              nftId={nft.nftId}
+              nftIdString={nft.nftIdString}
+              startTimestamp={nft.startTimestamp}
+              isClaimable={nft.isClaimable}
+              reason={nft.reason}
+              supply={nft.supply}
+              maxClaim={nft.maxClaim}
+              maxSupply={nft.maxSupply}
+              adjustedPrice={nft.adjustedPrice}
+              adjustedBalance={nft.adjustedBalance}
               refreshToken={refreshToken}
-              {...nft}
             />
           </motion.div>
         ))}
@@ -326,7 +419,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
             disabled={visibleCount === INITIAL_ITEMS}
             style={{
               color: receipt.colorSecondary,
-              background: receipt.colorTertiary,
+              background: receipt.colorSekunder,
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
@@ -345,7 +438,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
           }}
           style={{
             color: receipt.colorSecondary,
-            background: receipt.colorTertiary,
+            background: receipt.colorSekunder,
           }}
           className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
@@ -367,7 +460,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
             disabled={visibleCount >= nftListToShow.length}
             style={{
               color: receipt.colorSecondary,
-              background: receipt.colorTertiary,
+              background: receipt.colorSekunder,
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= nftListToShow.length ? "" : "cursor-pointer"
