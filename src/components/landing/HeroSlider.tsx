@@ -10,6 +10,7 @@ import React, { useEffect, useState } from "react";
 
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
+import { hexToRgba } from "@/config/utils";
 
 // Components libraries
 import ReusableCTA from "@/components/landing/ReusableCTA";
@@ -31,6 +32,7 @@ export default function HeroSlider() {
       <div
         style={{ background: receipt.colorSecondary }}
         className="relative w-full aspect-[64/27] overflow-hidden rounded-xl md:rounded-2xl lg:rounded-3xl">
+        {/* Slide Image */}
         <AnimatePresence mode="wait">
           <motion.div
             key={currentSlide}
@@ -44,16 +46,20 @@ export default function HeroSlider() {
                 src={slides[currentSlide].image}
                 alt={slides[currentSlide].title}
                 fill
-                className="object-cover rounded-xl md:rounded-2xl lg:rounded-3xl"
                 sizes="100vw"
                 priority
+                className="object-cover rounded-xl md:rounded-2xl lg:rounded-3xl"
               />
             </Link>
           </motion.div>
         </AnimatePresence>
 
-        {/* Overlay content di kanan atas */}
-        <div className="absolute top-4 right-4 sm:top-6 sm:right-6 md:top-8 md:right-8 lg:top-10 lg:right-10 max-w-[60%] text-right z-10">
+        {/* Overlay Content */}
+        <div
+          style={{
+            backgroundColor: hexToRgba(receipt.colorTersier, 0.66),
+          }}
+          className="absolute inset-0 p-3 sm:p-6 md:p-8 lg:p-10 flex items-start justify-end">
           <AnimatePresence mode="wait">
             <motion.div
               key={`text-${currentSlide}`}
@@ -61,35 +67,37 @@ export default function HeroSlider() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 1.11 }}
-              className="flex flex-col items-end gap-2">
+              className="flex flex-col items-end gap-1 w-full max-w-full max-h-full text-right">
+              {/* Title */}
               <h1
                 style={{ color: receipt.colorPrimary }}
-                className="hidden sm:flex text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold drop-shadow-lg">
+                className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md">
                 {slides[currentSlide].title}
               </h1>
 
+              {/* Subtitle */}
               {slides[currentSlide].subtitle && (
                 <h2
                   style={{ color: receipt.colorPrimary }}
-                  className="hidden sm:flex text-sm sm:text-base md:text-lg lg:text-xl drop-shadow-md">
+                  className="text-xs sm:text-base md:text-lg leading-snug drop-shadow-sm">
                   {slides[currentSlide].subtitle}
                 </h2>
               )}
 
+              {/* Description */}
               {slides[currentSlide].description && (
                 <p
                   style={{
                     color: receipt.colorPrimary,
-                    opacity: 0.8,
-                    textShadow: "0 1px 1px rgba(0, 0, 0, 0.25)", // similar to Tailwind's default drop-shadow
                   }}
-                  className="hidden sm:flex text-xs sm:text-sm md:text-base max-w-md">
+                  className="text-[10px] sm:text-sm md:text-base max-w-xs sm:max-w-sm md:max-w-md leading-tight">
                   {slides[currentSlide].description}
                 </p>
               )}
 
+              {/* CTA */}
               {slides[currentSlide].cta && (
-                <div className="mt-2">
+                <div className="mt-1 sm:mt-2">
                   <ReusableCTA
                     text={slides[currentSlide].cta.text}
                     href={slides[currentSlide].cta.href}

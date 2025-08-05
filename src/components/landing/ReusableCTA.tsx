@@ -29,12 +29,12 @@ export default function ReusableCTA({
       href={href}
       target={target || "_self"}
       style={{
-        color: receipt.colorSecondary,
-        backgroundColor: receipt.colorTertiary,
+        color: receipt.colorButtonText,
         border: "2px solid",
         borderColor: "transparent",
+        backgroundColor: receipt.colorButtonBG,
       }}
-      className={`px-4 py-2 sm:px-7 sm:py-2 rounded-lg text-center text-xs sm:text-sm md:text-base lg:text-lg font-semibold hover:opacity-75 transition-all ${
+      className={`rounded-lg px-4 py-2 sm:px-7 text-center text-xs sm:text-sm md:text-sm lg:text-base font-semibold transition-all ${
         className || ""
       }`}>
       {text}

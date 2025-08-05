@@ -7,6 +7,7 @@ import React, { useEffect, useState } from "react";
 
 // Components libraries
 import FeaturedCards from "@/components/contents/FeaturedCards";
+import ScreenTooSmall from "@/components/contents/ScreenTooSmall";
 import FeatureGrid from "@/components/landing/FeatureGrid";
 import HeroSlider from "@/components/landing/HeroSlider";
 import ParagraphText from "@/components/landing/ParagraphText";
@@ -18,36 +19,53 @@ import Footer from "@/components/sections/FooterSection";
 import Header from "@/components/sections/HeaderSection";
 
 export default function PageRouter() {
+  const [isTooSmall, setIsTooSmall] = useState<boolean | null>(null);
   const [mode, setMode] = useState<"abc" | "aiueo" | null>(null);
 
   useEffect(() => {
-    try {
-      const url = new URL(window.location.href);
-      const hostname = url.hostname.toLowerCase().trim();
+    // Check window width to determine if it's too small
+    const checkWidth = () => {
+      setIsTooSmall(window.innerWidth < 474);
+    };
 
-      const validHosts = new Set([
-        "motion.endhonesa.com",
-        "www.inamotion.id",
-        "pabrikroti.endhonesa.com",
-        "preroti.endhonesa.com",
-        "localhost",
-        "127.0.0.1",
-      ]);
-      if (validHosts.has(hostname)) {
-        setMode("aiueo");
-      } else {
-        // Default fallback: treat all others as 'abc'
-        console.warn("Unrecognized hostname:", hostname);
-        setMode("abc");
-      }
-    } catch (error) {
-      console.error("URL parsing failed:", error);
+    // Initial check
+    checkWidth();
+    window.addEventListener("resize", checkWidth);
+
+    // Determine mode based on hostname
+    const url = new URL(window.location.href);
+    const hostname = url.hostname.toLowerCase().trim();
+
+    // Define valid hostnames for 'aiueo' mode
+    const validHosts = new Set([
+      "motion.endhonesa.com",
+      "www.inamotion.id",
+      "pabrikroti.endhonesa.com",
+      "preroti.endhonesa.com",
+      "localhost",
+      "127.0.0.1",
+    ]);
+    if (validHosts.has(hostname)) {
+      setMode("aiueo");
+    } else {
+      // Default fallback: treat all others as 'abc'
+      console.warn("Unrecognized hostname:", hostname);
       setMode("abc");
     }
+
+    // Cleanup event listener on unmount
+    return () => window.removeEventListener("resize", checkWidth);
   }, []);
 
-  if (!mode) return null; // You can replace this with a loading spinner
+  // If the screen is too small or mode is not set, return null
+  if (isTooSmall === null || !mode) return null; // Optionally add spinner
 
+  // If the screen is too small, show a message
+  if (isTooSmall) {
+    return <ScreenTooSmall />;
+  }
+
+  // If the mode is 'abc', render the dynamic login page with FeaturedCards
   if (mode === "abc") {
     return <DynamicLoginPage ContentComponent={FeaturedCards} />;
   }
