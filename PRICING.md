@@ -7,7 +7,7 @@ This document is not just about pricing. It’s about understanding the value, c
 
 ---
 
-## 🥖 STARTER LICENSE — IDR 47.000.000 or [Hold 1 NFT of Prof. NOTA](https://opensea.io/collection/prof-nota)
+## 🥖 STARTER LICENSE — 1 $OiOi or ± 0.747 $ETH or ± 47M IDR or ± 3K USD
 
 Best for small brands, early-stage communities, or pilot projects that need a secure, fully working Web3 app under one label.
 
@@ -19,9 +19,14 @@ Best for small brands, early-stage communities, or pilot projects that need a se
 | ❌ Multi-Tenant Not Allowed              | The license is tied to one project, one brand. You **may not reuse** the same codebase across different tenants, clients, events, or spin-offs. Even if your brand has a sub-brand, it counts as another project. |
 | ✅ No Yearly Fees                        | It’s a one-time payment. No subscription model. No hidden charges.                                                                                                                                                |
 
+Choose one of this way to get this STARTER LICENSE:
+
+- [Hold 1 NFT of Prof. NOTA](https://opensea.io/collection/prof-nota) and show it to us.
+- [Buy $OiOi Token from PABRIKROTI](https://pabrikroti.endhonesa.com/coins) and send it to us.
+
 ---
 
-## 🍞 FULL LICENSE — IDR 111.000.000 or [Hold 1 Ordinal of Prof. NOTA](https://magiceden.io/ordinals/marketplace/nota)
+## 🍞 FULL LICENSE — 2.47 $OiOi or ± 1.747 $ETH or ± 111M IDR or ± 7K USD
 
 Ideal for companies with larger audiences, multi-product use cases, or who plan to scale across several communities or tenants with a single unified infrastructure.
 
@@ -33,9 +38,14 @@ Ideal for companies with larger audiences, multi-product use cases, or who plan 
 | ✅ GitHub Webhook Support          | Our CI/CD helper can be activated to allow push-to-deploy from private forks, ensuring smoother iteration with your devs.                      |
 | ✅ Priority Support via Email/Chat | You will receive structured onboarding and access to Prof. NOTA Inc. team for deployment support (time-boxed).                                 |
 
+Choose one of this way to get this FULL LICENSE:
+
+- [Hold 1 Ordinal of Prof. NOTA](https://magiceden.io/ordinals/marketplace/nota) and show it to us.
+- [Buy $OiOi Token from PABRIKROTI](https://pabrikroti.endhonesa.com/coins) and send it to us.
+
 ---
 
-## 🧬 CUSTOM LICENSE — Bespoke Pricing
+## 🧬 CUSTOM LICENSE — Bespoke Pricing ([Only for the Holder of NFT of Prof. NOTA](https://opensea.io/collection/prof-nota))
 
 Tailored for government-linked projects, identity-centric apps, institutional deployments, or those needing unique integrations and deeper collaboration with Prof. NOTA Inc.
 
@@ -43,10 +53,15 @@ Tailored for government-linked projects, identity-centric apps, institutional de
 | ------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | ✅ Everything in Full License                     | You get all Full License features and freedoms.                                                                                                                                                                    |
 | ✅ DID / Verifiable Credentials Integration       | We will implement decentralized identity standards (e.g., ERC-725/735) so your users can control, verify, and present their identity across apps.                                                                  |
-| ✅ Legal eKYC Integrations (Indonesia-Gov Linked) | Optionally, your platform can integrate with licensed KYC providers recognized by the government or local departments (e.g., DukCaPil Indonesia) through official API and SDK routes.                            |
+| ✅ Legal eKYC Integrations (Indonesia-Gov Linked) | Optionally, your platform can integrate with licensed KYC providers recognized by the government or local departments (e.g., DukCaPil Indonesia) through official API and SDK routes.                              |
 | ✅ Identity Cross-Integration                     | Your app can verify and collaborate with identity systems connected to other tenants or partners within the Prof. NOTA and PabrikRoti ecosystems. Think of it as a digital passport across collaborative networks. |
 | ✅ Custom Hosting Strategy                        | Deploy across sovereign infrastructure or hybrid nodes (Web2 + Web3) with our configuration guidance. We assist with IPFS pinning, cloud configuration, or local deployments.                                      |
 | ✅ Strategy Workshop (1-on-1)                     | Work directly with Prof. NOTA (v.11.11 or relevant persona) to align your tech, message, and roadmap to your movement. Not just dev — but vision.                                                                  |
+
+This is the only way to get this CUSTOM LICENSE:
+
+- [Hold 1 NFT of Prof. NOTA](https://opensea.io/collection/prof-nota) and show it to us.
+- Let's sit, drink, talk, and laugh a lot about the Bespoke Pricing.
 
 ---
 

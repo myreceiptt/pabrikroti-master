@@ -21,6 +21,9 @@ export const myreceipt = {
   colorPrimer: "#2e2e2e", // Warna teks utama. Kontras dengan colorSecondary dan colorPrimary. Untuk teks normal (judul, isi, deskripsi).
   colorPrimary: "#f2f2f2", // Warna latar utama. Kontras dengan colorSekunder. Untuk background utama halaman atau area besar.
 
+  colorButtonText: "#e8e8e8", // Warna teks tombol. Kontras dengan colorButtonBG. Untuk teks tombol aksi utama.
+  colorButtonBG: "#5a5a5a", // Warna latar tombol. Kontras dengan colorButtonText. Untuk tombol aksi utama, seperti submit, save, atau call to action.
+
   colorFooterText: "#5a5a5a", // Warna teks footer. Kontras dengan colorFooterBG. Untuk teks footer, link footer, informasi hak cipta.
   colorFooterBG: "#e8e8e8", // Warna latar footer. Kontras dengan colorFooterText. Untuk background footer, area bawah halaman.
 
@@ -51,6 +54,13 @@ export const myreceipt = {
   proFavicon: "/favicon.ico", // layout,
   proImage: "https://www.inamotion.id/preview-image.png", // layout,
   proLang: "en", // layout,
+
+  // /src/components/contents/ScreenTooSmall.tsx
+  tinyIllustration: "/logos/logo.png", // ScreenTooSmall,
+  tinyTitle: "Screen Too Tiny", // ScreenTooSmall,
+  tinyText: `This playground wasn't built for ant-sized viewports. Rotate your phone to landscape orientation, or borrow a bigger screen from your neighbor.`, // ScreenTooSmall,
+  tinyHint: `Minimum width required: 474px`, // ScreenTooSmall,
+  tinyPunchline: `That's less than half your self-worth. You can do it.`, // ScreenTooSmall,
 
   // /src/components/logins/ConnectButtons.tsx
   proLogo: "/logos/logo.png", // ConnectButtons, ConnectEmbeds, QRCodeButton,
@@ -158,7 +168,7 @@ export const myreceipt = {
       image: "/landing/slider-1.png",
       cta: {
         text: "Let's Get Started",
-        href: "https://github.com/myreceiptt/pabrikroti-master?tab=readme-ov-file#-general-information",
+        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/README.md",
         target: "_blank",
       },
     },
@@ -168,7 +178,7 @@ export const myreceipt = {
       description: `Powered by secure design, transparent pricing, and an open-source license you can verify. Every "loaf" comes with audit logs, version history, and enterprise support—delivered fresh.`,
       image: "/landing/slider-2.png",
       cta: {
-        text: "Explore Pricing",
+        text: "View Pricing Plans",
         href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/PRICING.md",
         target: "_blank",
       },
@@ -178,39 +188,37 @@ export const myreceipt = {
   // /src/components/landing/FeatureGrid.tsx - disable by nullifying the string set
   features: [
     {
-      icon: "🍞",
-      title: "NFT Claiming",
-      description: "Claim digital assets as real bread.",
-      cta: { text: "Claim Now", href: "/free" },
+      icon: "🛡️",
+      title: "Security-First Bakery",
+      description: `Every "build" is scanned, audited, and signed. PABRIKROTI bakes in safety from the first commit.`,
+      cta: { text: "Secure Now", href: "/coins", target: "_blank" },
     },
     {
-      icon: "🍞",
-      title: "NFT Claiming",
-      description: "Claim digital assets as real bread.",
-      cta: { text: "Claim Now", href: "/free" },
+      icon: "⚙️",
+      title: "Open-Source Flavor",
+      description: `From MIT licence to public source, you own the recipe—and can remix it to your taste.`,
+      cta: { text: "Secure Now", href: "/coins", target: "_blank" },
     },
     {
-      icon: "🍞",
-      title: "NFT Claiming",
-      description: "Claim digital assets as real bread.",
-      cta: { text: "Claim Now", href: "/free" },
+      icon: "💰",
+      title: "Transparent Pricing",
+      description:
+        "No hidden fees. Pick your package—Starter, Pro, Enterprise—for predictable costs and scalable growth.",
+      cta: { text: "Secure Now", href: "/coins", target: "_blank" },
     },
   ],
 
   // /src/components/landing/ParagraphText.tsx
   textMin: {
-    title: "Why Bread?",
+    title: "Why PABRIKROTI Works",
     paragraphs: [
-      "Bread is a metaphor for labor, love, and story.",
-      "We issue rewards as bread to be earned, not bought.",
+      `PABRIKROTI isn't just another platform. It's artisanal code infrastructure delivered as a service. You get end-to-end security: hardened builds, policy-driven deployment, automated secrets rotation, and a transparent license model. Combined with prices listed upfront and enterprise support options, you know exactly what you're getting—and at what cost. Everything you need is baked in, no surprises, no sugar-coated terms.`,
     ],
-    cta: { text: "Read the Manifesto", href: "/terms" },
-  },
-
-  // /src/components/landing/VideoEmbed.tsx
-  videoEmbed: {
-    url: "https://www.youtube.com/embed/abcd1234",
-    cta: { text: "Join the Movement", href: "/join" },
+    cta: {
+      text: "See Licensing & Usage",
+      href: "https://github.com/myreceiptt/pabrikroti-master/tree/main?tab=readme-ov-file#-licensing--usage",
+      target: "_blank",
+    },
   },
 
   // /src/components/landing/VisualLeft.tsx - disable by nullifying the string set
@@ -218,19 +226,33 @@ export const myreceipt = {
   visualBlocks: [
     {
       variant: "left", // or "right"
-      image: "/roti/landing/hero-1.png",
-      title: "Decentralized Craft",
-      description: "We respect your local ownership and labor.",
-      cta: { text: "Learn More", href: "/about" },
+      image: "/landing/visual-left-1.jpeg",
+      title: "Security by Design",
+      description: `At PABRIKROTI, security isn't an afterthought—it's baked into every step. From dependency audit and CI/CD pipeline to runtime monitoring and vulnerability scanning, your application is protected at rest, in transit, and live in production. Our SECURITY.md defines all protocols; you can inspect and verify every line.`,
+      cta: {
+        text: "Learn About Security",
+        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/SECURITY.md",
+        target: "_blank",
+      },
     },
     {
       variant: "right", // or "left"
-      image: "/roti/landing/hero-1.png",
-      title: "Decentralized Craft",
-      description: "We respect your local ownership and labor.",
-      cta: { text: "Learn More", href: "/about" },
+      image: "/landing/visual-right-1.jpeg",
+      title: "Pricing That Scales with You",
+      description: `Whether you're testing a prototype or running enterprise-grade workloads, our transparent pricing scales. Starter plan for hobbyists, Pro for developers, Enterprise for organizations. No hidden tiers, no unexpected excess fees—just predictable cost as you grow. PRICING.md makes every detail open and auditable.`,
+      cta: {
+        text: "Browse Pricing",
+        href: "https://github.com/myreceiptt/pabrikroti-master/blob/main/PRICING.md",
+        target: "_blank",
+      },
     },
   ],
+
+  // /src/components/landing/VideoEmbed.tsx
+  videoEmbed: {
+    url: "https://www.youtube.com/embed/abcd1234",
+    cta: { text: "PABRIKROTI in 60 Seconds", href: "/join", target: "_blank" },
+  },
 
   // /src/components/contents/ComingSoon.tsx
   csLoader: "Hang tight...", // ComingSoon,
