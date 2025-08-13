@@ -238,7 +238,7 @@ export const myreceipt = {
     {
       variant: "right", // or "left"
       image: "/landing/visual-right-1.jpeg",
-      title: "Pricing That Scales with You",
+      title: "Pricing That Scales",
       description: `Whether you're testing a prototype or running enterprise-grade workloads, our transparent pricing scales. Starter plan for hobbyists, Pro for developers, Enterprise for organizations. No hidden tiers, no unexpected excess fees—just predictable cost as you grow. PRICING.md makes every detail open and auditable.`,
       cta: {
         text: "Browse Pricing",
@@ -250,8 +250,14 @@ export const myreceipt = {
 
   // /src/components/landing/VideoEmbed.tsx
   videoEmbed: {
-    url: "https://www.youtube.com/embed/abcd1234",
-    cta: { text: "PABRIKROTI in 60 Seconds", href: "/join", target: "_blank" },
+    cover: "/landing/cover-image.png",
+    url: "https://www.youtube.com/embed/j6NiT1lVBTw",
+    title: "PABRIK ROTI in 60 Seconds",
+    cta: {
+      text: `Buy $OiOi Token, /'mʌðəˌfʌkə/`,
+      href: "/coins",
+      target: "_blank",
+    },
   },
 
   // /src/components/contents/ComingSoon.tsx

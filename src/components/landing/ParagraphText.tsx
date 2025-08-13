@@ -24,7 +24,7 @@ export default function ParagraphText() {
         borderColor: receipt.colorTertiary,
         backgroundColor: receipt.colorSecondary,
       }}
-      className="w-full py-4 md:py-8 rounded-xl md:rounded-2xl lg:rounded-3xl border-b"
+      className="w-full py-4 md:py-8 rounded-xl md:rounded-2xl lg:rounded-3xl border"
       id="how">
       <div className="flex flex-col items-center gap-4 px-4 md:px-8">
         <div className="flex flex-col justify-between gap-4 px-4 md:px-8 text-center max-w-4xl mx-auto">
