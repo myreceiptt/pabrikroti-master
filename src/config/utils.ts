@@ -48,8 +48,52 @@ export function buildCurrencyMapFromSupportedFTs(
   return map;
 }
 
-// Max. uint256 value in bigint
+// max. uint256 value in bigint
 export const MAX_UINT256 = 2n ** 256n - 1n;
+
+// helpers domain video
+const ALLOWED_SCHEMES = new Set(["http:", "https:"]);
+
+/** true jika host persis domain atau subdomain-resminya */
+function isSubdomainOf(host: string, domain: string) {
+  return host === domain || host.endsWith("." + domain);
+}
+
+export type Provider = "youtube" | "vimeo" | "dailymotion" | "unknown";
+
+export function detectProvider(input: string | URL): Provider {
+  let u: URL;
+  try {
+    u = typeof input === "string" ? new URL(input) : input;
+  } catch {
+    return "unknown";
+  }
+  if (!ALLOWED_SCHEMES.has(u.protocol)) return "unknown";
+
+  // Normalisasi: lowercase & hapus trailing dot (edge-case DNS)
+  const host = u.hostname.replace(/\.$/, "").toLowerCase();
+
+  // YouTube termasuk domain embed bebas cookie
+  if (
+    isSubdomainOf(host, "youtube.com") ||
+    isSubdomainOf(host, "youtube-nocookie.com") ||
+    isSubdomainOf(host, "youtu.be")
+  ) {
+    return "youtube";
+  }
+
+  // Vimeo (player.vimeo.com dll tercakup)
+  if (isSubdomainOf(host, "vimeo.com")) {
+    return "vimeo";
+  }
+
+  // Dailymotion (+ short domain)
+  if (isSubdomainOf(host, "dailymotion.com") || isSubdomainOf(host, "dai.ly")) {
+    return "dailymotion";
+  }
+
+  return "unknown";
+}
 
 // fetch eth price
 export async function FetchEthereumPrice(): Promise<number | null> {

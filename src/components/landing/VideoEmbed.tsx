@@ -3,31 +3,23 @@
 "use client";
 
 // External libraries
-import React, { useEffect, useMemo, useRef, useState } from "react";
+import type Hls from "hls.js";
 import Image from "next/image";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import ReusableCTA from "@/components/landing/ReusableCTA";
+import { detectProvider } from "@/config/utils";
 
 type EmbedKind = "iframe" | "video";
-
-function detectProvider(u: URL) {
-  const host = u.hostname.replace(/^www\./, "");
-  if (host.includes("youtube.com") || host.includes("youtu.be"))
-    return "youtube";
-  if (host.includes("vimeo.com")) return "vimeo";
-  if (host.includes("dailymotion.com") || host.includes("dai.ly"))
-    return "dailymotion";
-  return "unknown";
-}
 
 function toIframeSrc(raw: string): string | null {
   try {
     const u = new URL(raw);
-    const host = u.hostname.replace(/^www\./, "");
+    const host = u.hostname.replace(/\.$/, "").toLowerCase();
     const provider = detectProvider(u);
 
     const addParams = (url: URL) => {
@@ -74,30 +66,31 @@ function toIframeSrc(raw: string): string | null {
       return addParams(out);
     }
 
-    // Unknown provider → biarkan null; nanti dipilih jalur <video> atau diblok
+    // Unknown provider → jangan pakai iframe raw URL
     return null;
   } catch {
     return null;
   }
 }
 
-function isDirectVideo(url: string) {
-  return /\.(mp4|webm|ogg)(\?.*)?$/i.test(url);
-}
-function isHls(url: string) {
-  return /\.m3u8(\?.*)?$/i.test(url);
-}
+const isDirectVideo = (u: string) => /\.(mp4|webm|ogg)(\?.*)?$/i.test(u);
+const isHls = (u: string) => /\.m3u8(\?.*)?$/i.test(u);
 
 export default function VideoEmbed() {
   const { receipt } = getActiveReceipt();
   const { cover, url, title, cta } = receipt.videoEmbed || {};
+
+  // ==== PENTING: panggil semua hooks dulu, tanpa early return ====
+  const rawUrl = url ?? "";
+  const hasUrl = !!rawUrl;
+
   const [isPlaying, setIsPlaying] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
-  const hlsRef = useRef<any>(null);
+  const hlsRef = useRef<Hls | null>(null);
 
+  // cleanup HLS saat unmount
   useEffect(() => {
     return () => {
-      // cleanup HLS saat unmount/URL berubah
       if (hlsRef.current) {
         hlsRef.current.destroy?.();
         hlsRef.current = null;
@@ -105,102 +98,90 @@ export default function VideoEmbed() {
     };
   }, []);
 
-  if (!url) return null;
-
-  const isM3U8 = useMemo(() => isHls(url), [url]);
-  const isFile = useMemo(() => isDirectVideo(url), [url]);
+  const isM3U8 = useMemo(() => isHls(rawUrl), [rawUrl]);
+  const isFile = useMemo(() => isDirectVideo(rawUrl), [rawUrl]);
 
   // HLS / file langsung → JANGAN cari iframe
   const iframeSrcBase = useMemo(() => {
     if (isM3U8 || isFile) return null;
-    return toIframeSrc(url);
-  }, [isM3U8, isFile, url]);
+    return toIframeSrc(rawUrl);
+  }, [isM3U8, isFile, rawUrl]);
 
   const kind: EmbedKind = useMemo(() => {
     if (isM3U8 || isFile) return "video";
-    // Kalau bukan HLS/file → boleh iframe (YouTube/Vimeo/Dailymotion)
-    return "iframe";
-  }, [isM3U8, isFile]);
+    // iframe hanya jika ada embed URL valid
+    return iframeSrcBase ? "iframe" : "video";
+  }, [isM3U8, isFile, iframeSrcBase]);
 
   // Autoplay params untuk iframe saat user klik Play
   const iframeSrc = useMemo(() => {
-    if (kind !== "iframe" || !isPlaying) return "";
+    if (kind !== "iframe" || !isPlaying || !iframeSrcBase) return "";
     try {
-      const u = new URL(iframeSrcBase ?? url);
+      const u = new URL(iframeSrcBase);
       u.searchParams.set("autoplay", "1");
       u.searchParams.set("mute", "1");
       u.searchParams.set("muted", "1");
       u.searchParams.set("playsinline", "1");
       return u.toString();
     } catch {
-      return iframeSrcBase ?? url;
+      return iframeSrcBase || "";
     }
-  }, [kind, isPlaying, iframeSrcBase, url]);
+  }, [kind, isPlaying, iframeSrcBase]);
 
-  // Saat user klik Play untuk VIDEO: siapkan direct/HLS
+  // Siapkan VIDEO/HLS setelah tombol Play diklik
   useEffect(() => {
     const setup = async () => {
-      if (!isPlaying || kind !== "video" || !videoRef.current) return;
+      if (!isPlaying || kind !== "video" || !videoRef.current || !hasUrl)
+        return;
       const video = videoRef.current;
 
       // Direct MP4/WebM/Ogg → native
       if (!isM3U8) {
         try {
           await video.play();
-        } catch {
-          /* ignore */
-        }
+        } catch {}
         return;
       }
 
       // HLS .m3u8
-      // 1) Safari & browser yang bisa native HLS
       if (video.canPlayType("application/vnd.apple.mpegurl")) {
         try {
-          video.src = url;
+          video.src = rawUrl;
           await video.play();
-        } catch {
-          /* ignore */
-        }
+        } catch {}
         return;
       }
 
-      // 2) Browser non-Safari → dynamic import hls.js
       try {
-        const { default: Hls } = await import("hls.js");
-        if (Hls.isSupported()) {
-          const hls = new Hls({
+        type HlsClass = typeof import("hls.js").default;
+        const { default: HlsCtor } = (await import("hls.js")) as {
+          default: HlsClass;
+        };
+        if (HlsCtor.isSupported()) {
+          const hls = new HlsCtor({
             // optional tuning:
             // lowLatencyMode: true,
             // maxBufferLength: 30,
           });
           hlsRef.current = hls;
           hls.attachMedia(video);
-          hls.loadSource(url);
-          hls.on(Hls.Events.MANIFEST_PARSED, async () => {
+          hls.loadSource(rawUrl);
+          hls.on(HlsCtor.Events.MANIFEST_PARSED, async () => {
             try {
               await video.play();
-            } catch {
-              /* ignore */
-            }
+            } catch {}
           });
         } else {
-          // fallback terakhir
-          video.src = url;
+          video.src = rawUrl;
           try {
             await video.play();
-          } catch {
-            /* ignore */
-          }
+          } catch {}
         }
       } catch {
-        // jika import gagal, fallback set src langsung
-        video.src = url;
+        video.src = rawUrl;
         try {
           await video.play();
-        } catch {
-          /* ignore */
-        }
+        } catch {}
       }
     };
 
@@ -213,9 +194,12 @@ export default function VideoEmbed() {
         hlsRef.current = null;
       }
     };
-  }, [isPlaying, kind, isM3U8, url]);
+  }, [isPlaying, kind, isM3U8, rawUrl, hasUrl]);
 
   const onPlayClick = () => setIsPlaying(true);
+
+  // ==== Setelah semua hooks, barulah boleh early return ====
+  if (!hasUrl) return null;
 
   return (
     <section
@@ -236,7 +220,7 @@ export default function VideoEmbed() {
         )}
 
         {/* IFRAME providers */}
-        {kind === "iframe" && isPlaying && (
+        {kind === "iframe" && isPlaying && iframeSrcBase && (
           <iframe
             src={iframeSrc}
             title={title}
@@ -251,7 +235,7 @@ export default function VideoEmbed() {
           <video
             ref={videoRef}
             className="absolute inset-0 h-full w-full"
-            src={!isM3U8 ? url : undefined} // HLS: src di-attach via hls.js atau native di effect
+            src={!isM3U8 ? rawUrl : undefined} // HLS: src di-attach via hls.js/native
             controls
             playsInline
             preload="metadata"
@@ -266,10 +250,7 @@ export default function VideoEmbed() {
             type="button"
             onClick={onPlayClick}
             aria-label="Play video"
-            className="
-              absolute inset-0 z-20 grid place-items-center
-              focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70
-            ">
+            className="absolute inset-0 z-20 grid place-items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
             <span className="rounded-full bg-black/40 backdrop-blur-md p-5 md:p-6 ring-1 ring-white/20 shadow-lg">
               <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden>
                 <path d="M8 5v14l11-7z" fill="white" />
@@ -280,13 +261,7 @@ export default function VideoEmbed() {
 
         {/* CTA overlay — tengah, sedikit turun; z-30 (di atas Play) */}
         {cta && (
-          <div
-            className="
-              pointer-events-none absolute inset-0 z-30
-              flex items-center justify-center
-              opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100
-              transition-opacity duration-300
-            ">
+          <div className="pointer-events-none absolute inset-0 z-30 flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 md:group-focus-within:opacity-100 transition-opacity duration-300">
             <div className="pointer-events-auto translate-y-14 md:translate-y-16">
               <div className="inline-flex items-center rounded-xl bg-black/35 backdrop-blur-sm ring-1 ring-white/10 shadow-md md:shadow-lg">
                 <ReusableCTA
