@@ -18,24 +18,40 @@ export default function FeatureGrid() {
 
   return (
     <section
-      style={{ background: receipt.colorTersier }}
-      className="w-full py-16 rounded-xl md:rounded-2xl lg:rounded-3xl"
+      style={{ background: receipt.colorPrimer }}
+      className="w-full py-4 md:py-8 rounded-xl md:rounded-2xl lg:rounded-3xl"
       id="why">
-      <div className="max-w-6xl mx-auto px-6 grid gap-8 grid-cols-1 lg:grid-cols-3">
+      <div className="max-full mx-auto px-4 md:px-8 grid gap-4 md:gap-8 grid-cols-1 lg:grid-cols-3">
         {features.map((feat, i) => (
           <div
             key={i}
-            className="flex flex-col justify-between gap-4 bg-white rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl shadow p-6">
+            style={{ background: receipt.colorPrimary }}
+            className="flex flex-col justify-between gap-4 rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl shadow p-4 md:p-6">
             <div>
-              <div className="text-4xl">{feat.icon}</div>
-              <h3 className="text-xl font-bold mt-2">{feat.title}</h3>
-              <p className="text-gray-600">{feat.description}</p>
+              <div
+                style={{ color: receipt.colorPrimer }}
+                className="text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md">
+                {feat.icon}
+              </div>
+              <h3
+                style={{ color: receipt.colorPrimer }}
+                className="text-sm sm:text-base md:text-lg font-bold">
+                {feat.title}
+              </h3>
+              <p
+                style={{
+                  color: receipt.colorPrimer,
+                }}
+                className="text-[10px] sm:text-sm md:text-base leading-tight">
+                {feat.description}
+              </p>
             </div>
             {feat.cta && (
               <ReusableCTA
                 text={feat.cta.text}
                 href={feat.cta.href}
-                className="w-full mt-4 self-start"
+                target={feat.cta.target}
+                className="w-full self-start"
               />
             )}
           </div>
