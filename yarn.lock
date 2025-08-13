@@ -4575,10 +4575,10 @@ tar@^7.4.3:
     mkdirp "^3.0.1"
     yallist "^5.0.0"
 
-thirdweb@^5.105.32:
-  version "5.105.32"
-  resolved "https://registry.yarnpkg.com/thirdweb/-/thirdweb-5.105.32.tgz#4e3bf53a6377940b0ac25a70f966327a07ebdf76"
-  integrity sha512-Ro464iWfa6lRQHrUgHITZbIyPSNWO9Ay+TJb4hI66eGstDVfR1khy5fyMFjgMjL9PwUM5XO0Qp/Kjs/VFpVY1w==
+thirdweb@^5.105.33:
+  version "5.105.33"
+  resolved "https://registry.yarnpkg.com/thirdweb/-/thirdweb-5.105.33.tgz#04697d103eb4ab29ac39d129607f1894d50b0742"
+  integrity sha512-PlwE+PunW6z1bAGkOw02zCByJNCcyaUoXXQhEkDrz8s0CtnmToqdcMMbSzSqeUtpXrO6yzEW9nbxTYFB52U91Q==
   dependencies:
     "@coinbase/wallet-sdk" "4.3.0"
     "@emotion/react" "11.14.0"
