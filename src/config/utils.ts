@@ -95,6 +95,53 @@ export function detectProvider(input: string | URL): Provider {
   return "unknown";
 }
 
+// parser .m3u playlist
+export type M3UItem = {
+  title?: string;
+  duration?: number;
+  url: string;
+};
+
+export function parseM3U(text: string, baseUrl?: string): M3UItem[] {
+  const lines = text
+    .split(/\r?\n/)
+    .map((l) => l.trim())
+    .filter(Boolean);
+
+  const items: M3UItem[] = [];
+  let cur: Partial<M3UItem> = {};
+
+  for (let i = 0; i < lines.length; i++) {
+    const l = lines[i];
+
+    if (l.startsWith("#EXTINF:")) {
+      const m = l.match(/^#EXTINF:([^,]*),(.*)$/);
+      const duration = m?.[1] ? Number(m[1]) : undefined;
+      const title = m?.[2] || undefined;
+      cur = {
+        duration: Number.isFinite(duration) ? duration : undefined,
+        title,
+      };
+      // cari URL sesudah baris EXTINF (skip baris komentar)
+      let j = i + 1;
+      while (j < lines.length && lines[j].startsWith("#")) j++;
+      if (j < lines.length && !lines[j].startsWith("#")) {
+        let u = lines[j];
+        if (baseUrl) u = new URL(u, baseUrl).toString();
+        items.push({ ...cur, url: u });
+        cur = {};
+        i = j;
+      }
+    } else if (!l.startsWith("#")) {
+      // URL tanpa EXTINF (boleh juga)
+      let u = l;
+      if (baseUrl) u = new URL(u, baseUrl).toString();
+      items.push({ url: u });
+    }
+  }
+  return items;
+}
+
 // fetch eth price
 export async function FetchEthereumPrice(): Promise<number | null> {
   try {
