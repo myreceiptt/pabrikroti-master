@@ -100,6 +100,18 @@ export type M3UItem = {
   title?: string;
   duration?: number;
   url: string;
+
+  // === tambahan metadata yang sering ada di EXTINF / EXTVLCOPT ===
+  tvgId?: string; // dari tvg-id="..."
+  tvgLogo?: string; // dari tvg-logo="..." (diresolve relatif ke baseUrl jika perlu)
+  groups?: string[]; // dari group-title="A;B" dan/atau #EXTGRP:A
+  headers?: {
+    // gabungan dari atribut + EXTVLCOPT (EXTVLCOPT override)
+    "User-Agent"?: string;
+    Referer?: string;
+    // simpan opsi lain EXTVLCOPT bila ada (opsional)
+    [key: string]: string | undefined;
+  };
 };
 
 export function parseM3U(text: string, baseUrl?: string): M3UItem[] {
@@ -109,36 +121,138 @@ export function parseM3U(text: string, baseUrl?: string): M3UItem[] {
     .filter(Boolean);
 
   const items: M3UItem[] = [];
-  let cur: Partial<M3UItem> = {};
+
+  // helper: resolve ke absolut bila baseUrl diberikan
+  const toAbs = (u?: string) => {
+    if (!u) return u;
+    try {
+      return baseUrl ? new URL(u, baseUrl).toString() : u;
+    } catch {
+      return u;
+    }
+  };
+
+  // helper: parse atribut key="value" pada EXTINF
+  const parseAttrs = (s: string) => {
+    const out: Record<string, string> = {};
+    const re = /([A-Za-z0-9_-]+)="([^"]*)"/g;
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(s)) !== null) {
+      out[m[1].toLowerCase()] = m[2];
+    }
+    return out;
+  };
 
   for (let i = 0; i < lines.length; i++) {
     const l = lines[i];
 
     if (l.startsWith("#EXTINF:")) {
-      const m = l.match(/^#EXTINF:([^,]*),(.*)$/);
-      const duration = m?.[1] ? Number(m[1]) : undefined;
-      const title = m?.[2] || undefined;
-      cur = {
-        duration: Number.isFinite(duration) ? duration : undefined,
-        title,
-      };
-      // cari URL sesudah baris EXTINF (skip baris komentar)
+      // Pola umum: #EXTINF:<durasi> <attr...>,<Display Name>
+      const m = l.match(/^#EXTINF:([^,]*)(?:,(.*))?$/);
+      const info = (m?.[1] ?? "").trim();
+      const displayName = m?.[2]?.trim() || undefined;
+
+      // durasi = angka pertama di 'info'
+      let duration: number | undefined;
+      const durMatch = info.match(/^-?\d+(?:\.\d+)?/);
+      if (durMatch) {
+        const n = Number(durMatch[0]);
+        if (Number.isFinite(n)) duration = n;
+      }
+
+      // sisa setelah durasi berisi atribut key="value"
+      const attrPart = info.slice(durMatch?.[0]?.length ?? 0).trim();
+      const attrs = parseAttrs(attrPart);
+
+      // ambil metadata dari atribut
+      const tvgId = attrs["tvg-id"] || attrs["tvgid"] || undefined;
+      const tvgLogoRaw = attrs["tvg-logo"] || attrs["tvglogo"] || undefined;
+      const tvgLogo = toAbs(tvgLogoRaw);
+      const groupTitle = attrs["group-title"] || undefined;
+      let groups = groupTitle
+        ? groupTitle
+            .split(";")
+            .map((s) => s.trim())
+            .filter(Boolean)
+        : undefined;
+
+      // header http dari atribut (opsional)
+      const headersFromAttrs: Record<string, string> = {};
+      if (attrs["http-user-agent"])
+        headersFromAttrs["User-Agent"] = attrs["http-user-agent"];
+      if (attrs["http-referrer"])
+        headersFromAttrs["Referer"] = attrs["http-referrer"];
+
+      // kumpulkan EXTVLCOPT (dan #EXTGRP) di antara EXTINF → URL
       let j = i + 1;
-      while (j < lines.length && lines[j].startsWith("#")) j++;
+      const vlcOpts: Record<string, string> = {};
+      let extgrp: string | undefined;
+
+      while (j < lines.length && lines[j].startsWith("#")) {
+        const ln = lines[j];
+
+        if (ln.startsWith("#EXTVLCOPT:")) {
+          const raw = ln.slice("#EXTVLCOPT:".length);
+          const eq = raw.indexOf("=");
+          if (eq > -1) {
+            const key = raw.slice(0, eq).trim().toLowerCase(); // contoh: http-user-agent
+            const val = raw.slice(eq + 1).trim();
+            // petakan beberapa key umum ke header HTTP
+            if (key === "http-user-agent") {
+              vlcOpts["User-Agent"] = val;
+            } else if (key === "http-referrer") {
+              vlcOpts["Referer"] = val;
+            } else {
+              vlcOpts[key] = val; // simpan apa adanya untuk opsi lain
+            }
+          }
+        } else if (ln.startsWith("#EXTGRP:")) {
+          extgrp = ln.slice("#EXTGRP:".length).trim();
+        }
+
+        j++;
+      }
+
+      if (extgrp) {
+        const more = extgrp
+          .split(";")
+          .map((s) => s.trim())
+          .filter(Boolean);
+        groups = groups ? Array.from(new Set([...groups, ...more])) : more;
+      }
+
+      // baris berikutnya (pertama yang bukan komentar) = URL stream
       if (j < lines.length && !lines[j].startsWith("#")) {
         let u = lines[j];
-        if (baseUrl) u = new URL(u, baseUrl).toString();
-        items.push({ ...cur, url: u });
-        cur = {};
-        i = j;
+        u = toAbs(u) || u;
+
+        // gabungkan header (EXTINF attr) kemudian override oleh EXTVLCOPT
+        const headersCombined: Record<string, string> = {
+          ...headersFromAttrs,
+          ...vlcOpts,
+        };
+        const headers =
+          Object.keys(headersCombined).length > 0 ? headersCombined : undefined;
+
+        items.push({
+          title: displayName,
+          duration: typeof duration === "number" ? duration : undefined,
+          url: u,
+          tvgId,
+          tvgLogo,
+          groups,
+          headers,
+        });
+
+        i = j; // lompat ke baris URL
       }
     } else if (!l.startsWith("#")) {
-      // URL tanpa EXTINF (boleh juga)
-      let u = l;
-      if (baseUrl) u = new URL(u, baseUrl).toString();
+      // URL tanpa EXTINF (fallback)
+      const u = toAbs(l) || l;
       items.push({ url: u });
     }
   }
+
   return items;
 }
 

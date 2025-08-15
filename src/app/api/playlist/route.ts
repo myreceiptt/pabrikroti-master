@@ -7,11 +7,8 @@ import { NextResponse } from "next/server";
 import { parseM3U } from "@/config/utils";
 
 const M3U_URL =
-  process.env.M3U_SOURCE_URL ??
-  // Contoh sumber:
-  // - IPTV Org: https://iptv-org.github.io/iptv/index.m3u
-  // - XUMO: https://www.apsattv.com/xumo.m3u
-  "https://www.apsattv.com/xumo.m3u";
+  process.env.NEXT_PUBLIC_M3U_SOURCE_URL ??
+  "https://iptv-org.github.io/iptv/index.m3u";
 
 // Normalisasi + seleksi item
 function selectItems(text: string) {

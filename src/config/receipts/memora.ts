@@ -226,7 +226,7 @@ export const memora = {
   visualBlocks: [
     {
       variant: "left", // or "right"
-      image: "/memora/landing/visual-left-1.jpeg",
+      image: "/memora/landing/visual-left-1.png",
       title: "Security by Design",
       description: `At PABRIKROTI, security isn't an afterthought—it's baked into every step. From dependency audit and CI/CD pipeline to runtime monitoring and vulnerability scanning, your application is protected at rest, in transit, and live in production. Our SECURITY.md defines all protocols; you can inspect and verify every line.`,
       cta: {
@@ -237,7 +237,7 @@ export const memora = {
     },
     {
       variant: "right", // or "left"
-      image: "/memora/landing/visual-right-1.jpeg",
+      image: "/memora/landing/visual-right-1.png",
       title: "Pricing That Scales",
       description: `Whether you're testing a prototype or running enterprise-grade workloads, our transparent pricing scales. Starter plan for hobbyists, Pro for developers, Enterprise for organizations. No hidden tiers, no unexpected excess fees—just predictable cost as you grow. PRICING.md makes every detail open and auditable.`,
       cta: {
@@ -436,7 +436,7 @@ export const memora = {
   popUpImage: "/memora/medias/coin-pop-up.gif", // coin pop up,
   popUpImageAlt: `BON VOYAGE Token Illustration`, // coin pop up,
 
-  // others page
+  // others page - perks page
   contentAccessMode: "AND", // AND | OR | RELAXED, perks page,
   contentButtonLabel: "Coming Soon", // perks page,
   contentImage1: "/memora/medias/content-perks-1.png", // perks page,
@@ -453,6 +453,12 @@ export const memora = {
   contentTitle1: "Perks of", // perks page,
   contentTitle2: "Being Prof. NOTA", // perks page,
   contentNoAccess: "/memora/medias/content-no-access.png", // perks page,
+
+  // others page - adult tv page
+  adultTVTitle: "OiOi TV - ASAP!", // adult tv page,
+  adultTVNotFound: "No broadcasts found.", // adult tv page,
+  adultTVCover: "/roti/medias/m3u8-cover.jpeg", // adult tv page,
+  adultTVFailed: "Failed to fetch broadcasts.", // adult tv page,
 
   // content fallback page
   contentFallLoader: `Don't rush, take it slow.`, // content fallback,

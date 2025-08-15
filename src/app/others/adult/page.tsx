@@ -3,6 +3,9 @@
 // External libraries
 import { headers } from "next/headers";
 
+// Blockchain configurations
+import { getActiveReceipt } from "@/config/receipts";
+
 // Components libraries
 import ClientVideoList, {
   type PlaylistItem,
@@ -35,28 +38,50 @@ async function getInitial(): Promise<{
 }
 
 export default async function AdultPage() {
+  const { receipt } = getActiveReceipt();
+
   try {
     const { items, total, nextOffset } = await getInitial();
     return (
-      <div className="mx-auto max-w-4xl p-4 space-y-4">
-        <h1 className="text-2xl font-bold">Playlist Videos</h1>
-        {items.length ? (
-          <ClientVideoList
-            initialItems={items}
-            total={total}
-            initialNextOffset={nextOffset}
-            pageSize={PAGE_SIZE}
-          />
-        ) : (
-          <p className="text-sm text-gray-500">No videos found.</p>
-        )}
+      <div className="flex flex-col gap-4 content-normal md:px-20 py-4 px-4 lg:my-12 md:my-8 my-4">
+        <main className="grid gap-4 lg:gap-7 place-items-center">
+          <h1
+            style={{ color: receipt.colorPrimer }}
+            className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md">
+            {receipt.adultTVTitle}
+          </h1>
+          {items.length ? (
+            <ClientVideoList
+              initialItems={items}
+              total={total}
+              initialNextOffset={nextOffset}
+              pageSize={PAGE_SIZE}
+            />
+          ) : (
+            <p
+              style={{ color: receipt.colorPrimer }}
+              className="text-[10px] sm:text-sm md:text-base leading-tight">
+              {receipt.adultTVNotFound}
+            </p>
+          )}
+        </main>
       </div>
     );
   } catch {
     return (
-      <div className="mx-auto max-w-4xl p-4 space-y-3">
-        <h1 className="text-2xl font-bold">Playlist Videos</h1>
-        <p className="text-sm text-red-500">Failed to load playlist.</p>
+      <div className="flex flex-col gap-4 content-normal md:px-20 py-4 px-4 lg:my-12 md:my-8 my-4">
+        <main className="grid gap-4 lg:gap-7 place-items-center">
+          <h1
+            style={{ color: receipt.colorPrimer }}
+            className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md">
+            {receipt.adultTVTitle}
+          </h1>
+          <p
+            style={{ color: receipt.colorPrimer }}
+            className="text-[10px] sm:text-sm md:text-base leading-tight">
+            {receipt.adultTVFailed}
+          </p>
+        </main>
       </div>
     );
   }
