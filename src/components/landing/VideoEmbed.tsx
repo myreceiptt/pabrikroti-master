@@ -9,10 +9,10 @@ import React, { useEffect, useMemo, useRef, useState } from "react";
 
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
+import { detectProvider } from "@/config/utils";
 
 // Components libraries
 import ReusableCTA from "@/components/landing/ReusableCTA";
-import { detectProvider } from "@/config/utils";
 
 type EmbedKind = "iframe" | "video";
 

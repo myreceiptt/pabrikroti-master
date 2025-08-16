@@ -25,7 +25,7 @@ export default function PageRouter() {
   useEffect(() => {
     // Check window width to determine if it's too small
     const checkWidth = () => {
-      setIsTooSmall(window.innerWidth < 474);
+      setIsTooSmall(window.innerWidth < 374);
     };
 
     // Initial check

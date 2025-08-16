@@ -67,7 +67,7 @@ export default function HeroSlider() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 1.11 }}
-              className="flex flex-col items-end gap-1 w-full max-w-full max-h-full text-right">
+              className="flex flex-col items-end gap-2 w-full max-w-full max-h-full text-right">
               {/* Title */}
               <h1
                 style={{ color: receipt.colorPrimary }}
