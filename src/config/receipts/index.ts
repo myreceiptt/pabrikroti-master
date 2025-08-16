@@ -92,33 +92,33 @@ const hostMap: Record<
     shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "preroti.endhonesa.com": {
-    receipt: pabrikroti,
+    receipt: memora,
     factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: erc20sLaunchedPabrikRoti,
-    supportedFTs: tokeksPabrikRoti,
-    displayedTokeks: displayedTokeksPabrikRoti,
+    erc1155Launched: erc1155MeMoRa1,
+    supportedNFTs: tekeksMeMoRa,
+    erc20sLaunched: erc20sLaunchedMeMoRa,
+    supportedFTs: tokeksMeMoRa,
+    displayedTokeks: displayedTokeksMeMoRa,
     shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   localhost: {
-    receipt: pabrikroti,
+    receipt: memora,
     factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: erc20sLaunchedPabrikRoti,
-    supportedFTs: tokeksPabrikRoti,
-    displayedTokeks: displayedTokeksPabrikRoti,
+    erc1155Launched: erc1155MeMoRa1,
+    supportedNFTs: tekeksMeMoRa,
+    erc20sLaunched: erc20sLaunchedMeMoRa,
+    supportedFTs: tokeksMeMoRa,
+    displayedTokeks: displayedTokeksMeMoRa,
     shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
   "127.0.0.1": {
-    receipt: pabrikroti,
+    receipt: memora,
     factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: erc20sLaunchedPabrikRoti,
-    supportedFTs: tokeksPabrikRoti,
-    displayedTokeks: displayedTokeksPabrikRoti,
+    erc1155Launched: erc1155MeMoRa1,
+    supportedNFTs: tekeksMeMoRa,
+    erc20sLaunched: erc20sLaunchedMeMoRa,
+    supportedFTs: tokeksMeMoRa,
+    displayedTokeks: displayedTokeksMeMoRa,
     shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   },
 };
@@ -151,13 +151,13 @@ export function getActiveReceipt(host?: string): {
 
   // Fallback default
   return {
-    receipt: pabrikroti,
+    receipt: memora,
     factoryAddress: factoryNOTA,
-    erc1155Launched: erc1155TryError,
-    supportedNFTs: tekeksPabrikRoti,
-    erc20sLaunched: erc20sLaunchedPabrikRoti,
-    supportedFTs: tokeksPabrikRoti,
-    displayedTokeks: displayedTokeksPabrikRoti,
+    erc1155Launched: erc1155MeMoRa1,
+    supportedNFTs: tekeksMeMoRa,
+    erc20sLaunched: erc20sLaunchedMeMoRa,
+    supportedFTs: tokeksMeMoRa,
+    displayedTokeks: displayedTokeksMeMoRa,
     shouldCheckAccess: true, // Will be overridden by the shouldCheck value on each component.
   };
 }
