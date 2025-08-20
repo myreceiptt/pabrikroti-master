@@ -59,7 +59,7 @@ export const pabrikroti = {
   tinyIllustration: "/roti/logos/logo.png", // ScreenTooSmall,
   tinyTitle: "Screen Too Tiny", // ScreenTooSmall,
   tinyText: `This playground wasn't built for ant-sized viewports. Rotate your phone to landscape orientation, or borrow a bigger screen from your neighbor.`, // ScreenTooSmall,
-  tinyHint: `Minimum width required: 474px`, // ScreenTooSmall,
+  tinyHint: `Minimum width required: 374px`, // ScreenTooSmall,
   tinyPunchline: `That's less than half your self-worth. You can do it.`, // ScreenTooSmall,
 
   // /src/components/logins/ConnectButtons.tsx
@@ -91,26 +91,45 @@ export const pabrikroti = {
 
   // /src/components/sections/DropDownMenu.tsx - disable by nullifying the string
   ddMenuAria: "Drop Down Menu", // DropDownMenu,
+  ddMenuLink1: "/", // DropDownMenu,
   ddMenuHome: "Bon Appetite!", // DropDownMenu,
+  ddMenuLink1a: "/#what", // DropDownMenu,
   ddMenuWhat: `Oven Fresh`, // DropDownMenu,
+  ddMenuLink1b: "/#why", // DropDownMenu,
   ddMenuWhy: "House Recipe", // DropDownMenu,
+  ddMenuLink1c: "/#how", // DropDownMenu,
   ddMenuHow: "Crumb Philosophy", // DropDownMenu,
+  ddMenuLink1d: "/#when", // DropDownMenu,
   ddMenuWhen: "Slow Proofed", // DropDownMenu,
+  ddMenuLink1e: "/#where", // DropDownMenu,
   ddMenuWhere: "Secret Sourdough", // DropDownMenu,
+  ddMenuLink1f: "/#who", // DropDownMenu,
   ddMenuWho: "Tasting Room", // DropDownMenu,
+  ddMenuLink2: "/featured", // DropDownMenu,
   ddMenuFeatured: "Full of Flavor", // DropDownMenu,
+  ddMenuLink2a: "/free", // DropDownMenu,
   ddMenuFree: "Free Artisan", // DropDownMenu,
+  ddMenuLink2b: "/paid", // DropDownMenu,
   ddMenuPaid: "Paid Artisan", // DropDownMenu,
+  ddMenuLink2c: "/coins", // DropDownMenu,
   ddMenuCoins: "Batch Breads", // DropDownMenu,
+  ddMenuLink2d: "/market", // DropDownMenu,
   ddMenuMarket: "Boulangerie", // DropDownMenu,
+  ddMenuLink2e: "/others/perks", // DropDownMenu,
   ddMenuContent: "Fortune Breads", // DropDownMenu,
+  ddMenuLink3: "/more", // DropDownMenu,
   ddMenuMore: "Baking More!", // DropDownMenu,
+  ddMenuLink3a: "/publish", // DropDownMenu,
   ddMenuDeploy: "Bake Breads", // DropDownMenu,
+  ddMenuLink3b: "/publish/nft", // DropDownMenu,
   ddMenuPublishNFT: "Serves Artisan", // DropDownMenu,
+  ddMenuLink3c: "/publish/ft", // DropDownMenu,
   ddMenuPublishFT: "Serves Batch", // DropDownMenu,
+  ddMenuLink3d: "/dashboard", // DropDownMenu,
   ddMenuDashBoard: "Bakehouse", // DropDownMenu,
-  ddMenuContactLink: "https://nota.endhonesa.com/contact", // DropDownMenu,
+  ddMenuLink3e: "https://nota.endhonesa.com/contact", // DropDownMenu,
   ddMenuContact: "Contact Us", // DropDownMenu,
+  ddMenuLink3f: "/terms", // DropDownMenu,
   ddMenuTerms: "Terms of Use", // DropDownMenu,
 
   // /src/components/sections/DropDownSorter.tsx
@@ -265,7 +284,7 @@ export const pabrikroti = {
   csMessage1: "Feature in the Oven", // ComingSoon,
   csMessage2: `We're still crafting this feature to perfection. It'll be served warm, functional, and full of flavor—soon!`, // ComingSoon,
 
-  // featured cards page - hide card by nulled the title
+  // /src/components/contents/FeaturedCards.tsx - hide card by nulled the title
   featuredTitle1: "All Breads", // featured cards,
   featuredTitle2: "That You Can Eat", // featured cards,
   featuredPaid: "/roti/images/featured-paid.png", // featured cards,
@@ -279,10 +298,10 @@ export const pabrikroti = {
   coinLink: "/coins", // featured cards,
   featuredAria: "Navigate to", // featured cards,
 
-  // reusable loader section
+  // /src/components/sections/ReusableLoader.tsx
   loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
-  // search wrapper page
+  // /src/components/SearchWrapper.tsx
   fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
   searchLoader: "Query mismatch. Not AVS mismatch!", // search wrapper,
   searchMessage1: "No data was found.", // search wrapper,
@@ -293,7 +312,7 @@ export const pabrikroti = {
   searchAria2: "Refresh search results.", // search wrapper,
   searchAria3: "Load more breads.", // search wrapper, nfts list, coins list,
 
-  // nfts list page
+  // /src/components/nfts/NFTsList.tsx
   nftsFTGated: true, // nfts list, nft details,
   nftsTitle1Free: "All Free", // nfts list,
   nftsTitle2Free: "Artisan Breads", // nfts list,
@@ -312,7 +331,7 @@ export const pabrikroti = {
   nftsNext: "Next", // search wrapper, nfts list, coins list,
   nftsAria: "Refresh all breads data.", // nfts list,
 
-  // nft lister section
+  // /src/components/nfts/NFTLister.tsx
   nftButton: "Swallow Now", // nft lister, nft form,
   nftSoon: "Plating in:", // nft lister, nft form, coin lister, coin form,
   nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
@@ -323,25 +342,25 @@ export const pabrikroti = {
   nftEditions: "Slices of Loaf:", // nft lister,
   nftNoData: "No bread available.", // nft lister,
 
-  // nft fallback page
+  // /src/components/nfts/NFTFallback.tsx
   nftFallMessage1: "No valid artisan bread ID was used.", // nft fallback,
   nftFallMessage2:
     "Please use a valid artisan bread ID in the URL or return to the home page and start over.", // nft fallback,
 
-  // nft details page
+  // /src/components/nfts/NFTDetails.tsx
   nftSetError: "Failed to fetch the artisan bread ID.", // nft details,
   nftMessage1: "The artisan bread ID not found.", // nft details,
   nftMessage2:
     "The specified artisan bread ID was not found. Please try again later or return to the home page.", // nft details,
   nftAccessRedirect: "/coins", // nft details
 
-  // nft access section
+  // /src/components/nfts/NFTAccess.tsx
   nftAccessMessage:
     "Please get your access by swallow any batch breads at least not zero crumb.", // nft access,
   nftAccessButton: "Get The Batch Breads!", // nft access,
   nftAccessBanner: "/roti/images/content-banner.png", // nft access,
 
-  // nft form section
+  // /src/components/nfts/NFTForm.tsx
   nftFormByLink: "https://nota.endhonesa.com/", // nft form,
   nftFormBy: "by", // nft form, coin form,
   nftFormByName: `${proAlias1}`, // nft form,
@@ -356,7 +375,7 @@ export const pabrikroti = {
   nftFormMax: "*Maximum", // nft form, coin form,
   nftFormPerWallet: "slices of loaf per bread eater.", // nft form,
 
-  // nft description section - hide link by nulled the title
+  // /src/components/nfts/NFTDescription.tsx - hide link by nulled the title
   nftMeMoRaTitle: "", // nft description,
   nftMeMoRa: "Read on MeMoRa MarketPlace (SOON)", // nft description,
   nftEndhonesaTitle: "", // nft description,

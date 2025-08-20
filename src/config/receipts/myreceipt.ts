@@ -59,7 +59,7 @@ export const myreceipt = {
   tinyIllustration: "/logos/logo.png", // ScreenTooSmall,
   tinyTitle: "Screen Too Tiny", // ScreenTooSmall,
   tinyText: `This playground wasn't built for ant-sized viewports. Rotate your phone to landscape orientation, or borrow a bigger screen from your neighbor.`, // ScreenTooSmall,
-  tinyHint: `Minimum width required: 474px`, // ScreenTooSmall,
+  tinyHint: `Minimum width required: 374px`, // ScreenTooSmall,
   tinyPunchline: `That's less than half your self-worth. You can do it.`, // ScreenTooSmall,
 
   // /src/components/logins/ConnectButtons.tsx
@@ -76,9 +76,9 @@ export const myreceipt = {
   loginAria: "Call to action for login.", // LoginLayout,
   loginCall: "Collect the artworks", // LoginLayout,
   loginReason: {
-    text1: `for fun and as a validator, to claim interesting surprises in the future`,
-    anchor1: `...`,
-    link1: "https://www.inamotion.id/medias/the-whitepaper.pdf",
+    text1: `for fun and as a validator, to claim interesting surprises in the future...`,
+    anchor1: ``,
+    link1: "",
     text2: ``,
     anchor2: ``,
     link2: "",
@@ -91,27 +91,46 @@ export const myreceipt = {
 
   // /src/components/sections/DropDownMenu.tsx - disable by nullifying the string
   ddMenuAria: "Drop Down Menu", // DropDownMenu,
+  ddMenuLink1: "/", // DropDownMenu,
   ddMenuHome: "Welcome!", // DropDownMenu,
-  ddMenuWhat: "", // DropDownMenu,
-  ddMenuWhy: "", // DropDownMenu,
-  ddMenuHow: "", // DropDownMenu,
-  ddMenuWhen: "", // DropDownMenu,
-  ddMenuWhere: "", // DropDownMenu,
-  ddMenuWho: "", // DropDownMenu,
+  ddMenuLink1a: "/#what", // DropDownMenu,
+  ddMenuWhat: "What", // DropDownMenu,
+  ddMenuLink1b: "/#why", // DropDownMenu,
+  ddMenuWhy: "Why", // DropDownMenu,
+  ddMenuLink1c: "/#how", // DropDownMenu,
+  ddMenuHow: "How", // DropDownMenu,
+  ddMenuLink1d: "/#when", // DropDownMenu,
+  ddMenuWhen: "When", // DropDownMenu,
+  ddMenuLink1e: "/#where", // DropDownMenu,
+  ddMenuWhere: "Where", // DropDownMenu,
+  ddMenuLink1f: "/#who", // DropDownMenu,
+  ddMenuWho: "Who", // DropDownMenu,
+  ddMenuLink2: "/featured", // DropDownMenu,
   ddMenuFeatured: "Featured!", // DropDownMenu,
-  ddMenuFree: "", // DropDownMenu,
-  ddMenuPaid: "", // DropDownMenu,
-  ddMenuCoins: "", // DropDownMenu,
-  ddMenuMarket: "", // DropDownMenu,
-  ddMenuContent: "", // DropDownMenu,
+  ddMenuLink2a: "/free", // DropDownMenu,
+  ddMenuFree: "Free", // DropDownMenu,
+  ddMenuLink2b: "/paid", // DropDownMenu,
+  ddMenuPaid: "Paid", // DropDownMenu,
+  ddMenuLink2c: "/coins", // DropDownMenu,
+  ddMenuCoins: "Coins", // DropDownMenu,
+  ddMenuLink2d: "/market", // DropDownMenu,
+  ddMenuMarket: "Market", // DropDownMenu,
+  ddMenuLink2e: "/others", // DropDownMenu,
+  ddMenuContent: "Others", // DropDownMenu,
+  ddMenuLink3: "/more", // DropDownMenu,
   ddMenuMore: "Read More!", // DropDownMenu,
-  ddMenuDeploy: "", // DropDownMenu,
-  ddMenuPublishNFT: "", // DropDownMenu,
-  ddMenuPublishFT: "", // DropDownMenu,
-  ddMenuDashBoard: "", // DropDownMenu,
-  ddMenuContactLink: "", // DropDownMenu,
-  ddMenuContact: "", // DropDownMenu,
-  ddMenuTerms: "The Terms", // DropDownMenu,
+  ddMenuLink3a: "/publish", // DropDownMenu,
+  ddMenuDeploy: "Publish", // DropDownMenu,
+  ddMenuLink3b: "/publish/nft", // DropDownMenu,
+  ddMenuPublishNFT: "Publish NFT", // DropDownMenu,
+  ddMenuLink3c: "/publish/ft", // DropDownMenu,
+  ddMenuPublishFT: "Publish FT", // DropDownMenu,
+  ddMenuLink3d: "/dashboard", // DropDownMenu,
+  ddMenuDashBoard: "Dashboard", // DropDownMenu,
+  ddMenuLink3e: "#", // DropDownMenu,
+  ddMenuContact: "Contact", // DropDownMenu,
+  ddMenuLink3f: "/terms", // DropDownMenu,
+  ddMenuTerms: "Terms", // DropDownMenu,
 
   // /src/components/sections/DropDownSorter.tsx
   ddSorterSorting: "Sorting", // DropDownSorter,
@@ -137,7 +156,7 @@ export const myreceipt = {
   footYouTube: "", // FooterSection,
   footEmail: "mailto:hello@inamotion.id", // FooterSection,
   footWhatsApp: "", // FooterSection,
-  footWebsite: "https://www.futuloka.io/", // FooterSection,
+  footWebsite: "https://www.inamotion.id/", // FooterSection,
 
   // /src/components/sections/HeaderSection.tsx
   headerLogo: "/images/header-logo.png", // HeaderSection,
@@ -265,24 +284,24 @@ export const myreceipt = {
   csMessage1: "Not Ready Yet", // ComingSoon,
   csMessage2: `Currently under development with care. Stay tuned for something freshly built.`, // ComingSoon,
 
-  // featured cards page - hide card by nulled the title
-  featuredTitle1: "All Fair and Sustainable", // featured cards,
-  featuredTitle2: "Fundraising Model", // featured cards,
-  featuredPaid: "/images/featured-paid.png", // featured cards,
-  paidTitle: "Curated NFT Artworks", // featured cards,
+  // /src/components/contents/FeaturedCards.tsx - hide card by nulled the title
+  featuredTitle1: "Think Creative", // featured cards,
+  featuredTitle2: "Deliver On Time", // featured cards,
+  featuredPaid: "/images/featured-paid.gif", // featured cards,
+  paidTitle: "Art", // featured cards,
   paidLink: "/paid", // featured cards,
-  featuredFree: "/images/featured-free.png", // featured cards,
-  freeTitle: "", // featured cards,
+  featuredFree: "/images/featured-free.gif", // featured cards,
+  freeTitle: "Insight", // featured cards,
   freeLink: "/free", // featured cards,
-  featuredCoin: "/images/featured-coin.png", // featured cards,
-  coinTitle: "FTLK Token for Sale", // featured cards,
+  featuredCoin: "/images/featured-coin.gif", // featured cards,
+  coinTitle: "Reels", // featured cards,
   coinLink: "/coins", // featured cards,
   featuredAria: "Navigate to", // featured cards,
 
-  // reusable loader section
+  // /src/components/sections/ReusableLoader.tsx
   loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
-  // search wrapper page
+  // /src/components/SearchWrapper.tsx
   fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
   searchLoader: "Ups! Your query mismatch.", // search wrapper,
   searchMessage1: "No data was found.", // search wrapper,
@@ -293,12 +312,12 @@ export const myreceipt = {
   searchAria2: "Refresh search results.", // search wrapper,
   searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
 
-  // nfts list page
+  // /src/components/nfts/NFTsList.tsx
   nftsFTGated: false, // nfts list, nft details,
-  nftsTitle1Free: "Curated", // nfts list,
-  nftsTitle2Free: "NFT Artworks", // nfts list,
-  nftsTitle1Paid: "Curated", // nfts list,
-  nftsTitle2Paid: "NFT Artworks", // nfts list,
+  nftsTitle1Free: "Insight of", // nfts list,
+  nftsTitle2Free: "Inamotion", // nfts list,
+  nftsTitle1Paid: "Art from", // nfts list,
+  nftsTitle2Paid: "Inamotion", // nfts list,
   nftsFailReason: "ClaimNotActive", // search wrapper, nfts list, nft details, coins list, coin details,
   nftsConsoleWarn: "canClaim failed for nftId", // search wrapper, nfts list, nft details,
   nftsSetError: "Failed to fetch any available NFT.", // search wrapper, nfts list,
@@ -312,7 +331,7 @@ export const myreceipt = {
   nftsNext: "Next", // search wrapper, nfts list, coins list,
   nftsAria: "Refresh all NFTs data.", // nfts list,
 
-  // nft lister section
+  // /src/components/nfts/NFTLister.tsx
   nftButton: "Collect Now", // nft lister, nft form,
   nftSoon: "Available in:", // nft lister, nft form, coin lister, coin form,
   nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
@@ -323,26 +342,26 @@ export const myreceipt = {
   nftEditions: "Edition:", // nft lister,
   nftNoData: "No data available.", // nft lister,
 
-  // nft fallback page
+  // /src/components/nfts/NFTFallback.tsx
   nftFallMessage1: "No valid NFT ID was used.", // nft fallback,
   nftFallMessage2:
     "Please use a valid NFT ID in the URL or return to the home page and start over.", // nft fallback,
 
-  // nft details page
+  // /src/components/nfts/NFTDetails.tsx
   nftSetError: "Failed to fetch the NFT ID.", // nft details,
   nftMessage1: "The NFT ID not found.", // nft details,
   nftMessage2:
     "The specified NFT ID was not found. Please try again later or return to the home page.", // nft details,
   nftAccessRedirect: "/coins", // nft details
 
-  // nft access section
+  // /src/components/nfts/NFTAccess.tsx
   nftAccessMessage:
-    "Please get your access by get any FTLK Token at least not zero balance.", // nft access,
-  nftAccessButton: "Get The FTLK Token!", // nft access,
+    "Please get your access by get any INAM Token at least not zero balance.", // nft access,
+  nftAccessButton: "Get The INAM Token!", // nft access,
   nftAccessBanner: "/images/content-banner.png", // nft access,
 
-  // nft form section
-  nftFormByLink: "https://far.futuloka.io/", // nft form,
+  // /src/components/nfts/NFTForm.tsx
+  nftFormByLink: "https://www.inamotion.id/", // nft form,
   nftFormBy: "by", // nft form, coin form,
   nftFormByName: `${proAlias1}`, // nft form,
   nftFormEdition: "Edition", // nft form,
@@ -356,7 +375,7 @@ export const myreceipt = {
   nftFormMax: "*Maximum", // nft form, coin form,
   nftFormPerWallet: "edition per holder.", // nft form,
 
-  // nft description section - hide link by nulled the title
+  // /src/components/nfts/NFTDescription.tsx - hide link by nulled the title
   nftMeMoRaTitle: "", // nft description,
   nftMeMoRa: "Read on MeMoRa MarketPlace (SOON)", // nft description,
   nftEndhonesaTitle: "", // nft description,
