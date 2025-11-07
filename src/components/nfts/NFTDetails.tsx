@@ -55,7 +55,7 @@ interface SnapshotEntry {
 
 function getNFTIdFromParams(params: ReturnType<typeof useParams>): bigint {
   const val = params.idNFT;
-  return BigInt(Array.isArray(val) ? val[0] : val ?? "0");
+  return BigInt(Array.isArray(val) ? val[0] : (val ?? "0"));
 }
 
 export default function NFTDetails() {
@@ -197,7 +197,8 @@ export default function NFTDetails() {
 
             const entry = entries.find(
               (e) =>
-                e.address?.toLowerCase() === activeAccount.address.toLowerCase()
+                e.address?.toLowerCase() ===
+                activeAccount.address.toLowerCase(),
             );
 
             if (entry?.maxClaimable) {

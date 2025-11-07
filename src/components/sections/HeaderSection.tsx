@@ -61,7 +61,8 @@ export default function Header() {
         borderColor: receipt.colorTertiary,
         backgroundColor: receipt.colorSecondary,
       }}
-      className="w-full flex items-center justify-between py-4 px-4 md:px-20 bg-transparent border-b">
+      className="w-full flex items-center justify-between py-4 px-4 md:px-20 bg-transparent border-b"
+    >
       {/* Logo Section */}
       <div className="w-full sm:w-1/2 flex justify-start">
         <Link href="/">
@@ -83,7 +84,8 @@ export default function Header() {
           style={{
             backgroundColor: receipt.colorPrimary,
           }}
-          className="w-full hidden sm:flex items-center justify-center px-4 py-2 rounded-lg">
+          className="w-full hidden sm:flex items-center justify-center px-4 py-2 rounded-lg"
+        >
           <FaSistrix
             onClick={handleSearch}
             style={{ color: hexToRgba(receipt.colorSekunder, 0.7) }}
@@ -111,7 +113,8 @@ export default function Header() {
               backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
             }}
             className="sm:hidden w-10 h-10 flex items-center justify-center text-xl border rounded-lg cursor-pointer"
-            aria-label="Mobile Search Button">
+            aria-label="Mobile Search Button"
+          >
             <FaSistrix />
           </button>
 
@@ -129,7 +132,8 @@ export default function Header() {
                   borderColor: receipt.colorTertiary,
                   backgroundColor: receipt.colorPrimary,
                 }}
-                className="absolute top-16 left-0 w-full px-4 py-2 flex items-center shadow-md z-10 border rounded-lg">
+                className="absolute top-16 left-0 w-full px-4 py-2 flex items-center shadow-md z-10 border rounded-lg"
+              >
                 <FaSistrix
                   onClick={handleSearch}
                   style={{ color: hexToRgba(receipt.colorSekunder, 0.7) }}
@@ -147,7 +151,8 @@ export default function Header() {
                 <button
                   type="submit"
                   style={{ color: hexToRgba(receipt.colorSekunder, 0.7) }}
-                  className="text-sm font-semibold px-4 cursor-pointer">
+                  className="text-sm font-semibold px-4 cursor-pointer"
+                >
                   {receipt.headerGo}
                 </button>
               </motion.form>

@@ -53,8 +53,8 @@ export default function PageTerms() {
                   "ul" in typedSection
                     ? typedSection.ul
                     : "items" in typedSection
-                    ? typedSection.items
-                    : undefined
+                      ? typedSection.items
+                      : undefined
                 }
                 orderedList={"ol" in typedSection ? typedSection.ol : undefined}
                 paragraphsAfterList={

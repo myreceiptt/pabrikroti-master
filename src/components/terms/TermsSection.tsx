@@ -30,7 +30,8 @@ export default function TermsSection({
       {/* Section Title */}
       <h3
         style={{ color: receipt.colorPrimer }}
-        className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold uppercase">
+        className="text-base md:text-lg lg:text-xl xl:text-2xl font-semibold uppercase"
+      >
         {title}
       </h3>
 
@@ -39,7 +40,8 @@ export default function TermsSection({
         <p
           key={`p-${i}`}
           style={{ color: receipt.colorPrimer }}
-          className="text-sm font-medium leading-relaxed">
+          className="text-sm font-medium leading-relaxed"
+        >
           {text}
         </p>
       ))}
@@ -51,7 +53,8 @@ export default function TermsSection({
             <li
               key={`ul-${i}`}
               style={{ color: receipt.colorPrimer }}
-              className="text-sm font-medium leading-relaxed">
+              className="text-sm font-medium leading-relaxed"
+            >
               {item}
             </li>
           ))}
@@ -65,7 +68,8 @@ export default function TermsSection({
             <li
               key={`ol-${i}`}
               style={{ color: receipt.colorPrimer }}
-              className="text-sm font-medium leading-relaxed">
+              className="text-sm font-medium leading-relaxed"
+            >
               {item}
             </li>
           ))}
@@ -77,7 +81,8 @@ export default function TermsSection({
         <p
           key={`after-${i}`}
           style={{ color: receipt.colorPrimer }}
-          className="text-sm font-medium leading-relaxed">
+          className="text-sm font-medium leading-relaxed"
+        >
           {text}
         </p>
       ))}

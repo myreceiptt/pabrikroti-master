@@ -20,14 +20,16 @@ export default function Title({ title1, title2 }: TitleProps) {
         style={{
           color: receipt.colorPrimer,
         }}
-        className="text-center sm:text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
+        className="text-center sm:text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold"
+      >
         {title1}
       </h1>
       <h2
         style={{
           color: receipt.colorPrimer,
         }}
-        className="text-center sm:text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
+        className="text-center sm:text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold"
+      >
         {title2}
       </h2>
     </div>

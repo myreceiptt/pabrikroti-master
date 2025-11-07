@@ -89,13 +89,15 @@ export default function PerksPage() {
             key={index}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.05 }}>
+            transition={{ duration: 0.3, delay: index * 0.05 }}
+          >
             <div
               style={{
                 borderColor: receipt.colorTertiary,
                 background: receipt.colorSecondary,
               }}
-              className="w-full grid grid-cols-1 gap-4 p-4 border rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl">
+              className="w-full grid grid-cols-1 gap-4 p-4 border rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl"
+            >
               <Image
                 src={hasAccess ? item.image : receipt.contentNoAccess}
                 alt={`Perk Image ${index + 1}`}
@@ -107,7 +109,8 @@ export default function PerksPage() {
               <div className="grid grid-cols-1 gap-2">
                 <h2
                   style={{ color: receipt.colorPrimer }}
-                  className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1">
+                  className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1"
+                >
                   {item.name}
                 </h2>
                 <h3 className="text-left text-base sm:text-xs md:text-sm lg:text-base line-clamp-1">
@@ -125,7 +128,8 @@ export default function PerksPage() {
                   backgroundColor: receipt.colorSekunder,
                   opacity: 0.5,
                 }}
-                className="w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all cursor-default">
+                className="w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all cursor-default"
+              >
                 {buttonLabel}
               </button>
             </div>

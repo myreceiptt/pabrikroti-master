@@ -101,7 +101,7 @@ export default function NFTLister({
     // Belum waktunya
     buttonLabel = `${receipt.nftSoon} ${getCountdownString(
       startTime,
-      currentTime
+      currentTime,
     )}`;
     buttonDisabled = true;
   } else if (!isClaimable) {
@@ -127,13 +127,15 @@ export default function NFTLister({
         borderColor: receipt.colorTertiary,
         background: receipt.colorSecondary,
       }}
-      className="w-full grid grid-cols-1 gap-4 p-4 border rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl">
+      className="w-full grid grid-cols-1 gap-4 p-4 border rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl"
+    >
       {isLoading ? (
         <Loader message={receipt.loaderChecking} />
       ) : !nft ? (
         <h2
           style={{ color: receipt.colorTersier }}
-          className="text-left text-sm font-medium">
+          className="text-left text-sm font-medium"
+        >
           {receipt.nftNoData}
         </h2>
       ) : (
@@ -150,12 +152,14 @@ export default function NFTLister({
           <div className="grid grid-cols-1 gap-2">
             <h2
               style={{ color: receipt.colorPrimer }}
-              className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1">
+              className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1"
+            >
               {nftName}
             </h2>
             <div
               style={{ color: receipt.colorPrimer }}
-              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium">
+              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium"
+            >
               <span>{receipt.nftEditions}</span>
               {supply.toString()}/
               {maxClaim === MAX_UINT256 ? (
@@ -166,7 +170,8 @@ export default function NFTLister({
             </div>
             <h2
               style={{ color: receipt.colorPrimer }}
-              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium">
+              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium"
+            >
               <span>
                 {receipt.coinFormOnChain} {chainName}
               </span>
@@ -192,7 +197,8 @@ export default function NFTLister({
             }}
             className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
               !buttonDisabled ? "cursor-pointer" : ""
-            }`}>
+            }`}
+          >
             {buttonLabel}
           </button>
         </>

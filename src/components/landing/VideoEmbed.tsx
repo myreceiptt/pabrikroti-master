@@ -59,7 +59,7 @@ function toIframeSrc(raw: string): string | null {
       } else {
         const parts = u.pathname.split("/").filter(Boolean);
         const idx = parts.indexOf("video");
-        id = idx >= 0 ? parts[idx + 1] ?? "" : "";
+        id = idx >= 0 ? (parts[idx + 1] ?? "") : "";
       }
       if (!id) return null;
       const out = new URL(`https://www.dailymotion.com/embed/video/${id}`);
@@ -205,7 +205,8 @@ export default function VideoEmbed() {
     <section
       style={{ backgroundColor: receipt.colorPrimer }}
       className="w-full rounded-xl md:rounded-2xl lg:rounded-3xl"
-      id="who">
+      id="who"
+    >
       <div className="relative group aspect-video w-full overflow-hidden rounded-xl md:rounded-2xl lg:rounded-3xl">
         {/* COVER sebelum playing */}
         {!isPlaying && cover && (
@@ -250,7 +251,8 @@ export default function VideoEmbed() {
             type="button"
             onClick={onPlayClick}
             aria-label="Play video"
-            className="absolute inset-0 z-20 grid place-items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+            className="absolute inset-0 z-20 grid place-items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+          >
             <span className="rounded-full bg-black/40 backdrop-blur-md p-5 md:p-6 ring-1 ring-white/20 shadow-lg">
               <svg width="28" height="28" viewBox="0 0 24 24" aria-hidden>
                 <path d="M8 5v14l11-7z" fill="white" />

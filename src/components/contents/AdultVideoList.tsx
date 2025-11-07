@@ -52,7 +52,7 @@ export default function ClientVideoList({
 
   const [items, setItems] = useState<PlaylistItem[]>(initialItems);
   const [nextOffset, setNextOffset] = useState<number | null>(
-    initialNextOffset
+    initialNextOffset,
   );
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -67,7 +67,7 @@ export default function ClientVideoList({
     try {
       const res = await fetch(
         `/api/playlist?offset=${nextOffset}&limit=${pageSize}`,
-        { cache: "no-store" }
+        { cache: "no-store" },
       );
       if (!res.ok) throw new Error("Failed to load more");
       const data: ApiResponse = await res.json();
@@ -92,7 +92,7 @@ export default function ClientVideoList({
           loadMore();
         }
       },
-      { rootMargin: "200px" }
+      { rootMargin: "200px" },
     );
     io.observe(el);
     return () => io.disconnect();
@@ -116,7 +116,8 @@ export default function ClientVideoList({
                 borderColor: receipt.colorTertiary,
                 backgroundColor: receipt.colorPrimer,
               }}
-              className="rounded-xl border p-3 md:p-4">
+              className="rounded-xl border p-3 md:p-4"
+            >
               {/* HEADER: kiri = title + anchor; kanan = logo */}
               <div className="flex items-start gap-3">
                 <div className="min-w-0 flex-1">
@@ -132,7 +133,8 @@ export default function ClientVideoList({
                         target="_blank"
                         rel="noopener noreferrer"
                         className="text-xs text-blue-400 hover:underline break-all truncate"
-                        title={it.url}>
+                        title={it.url}
+                      >
                         {it.tvgId}
                       </a>
                     </div>
@@ -197,13 +199,15 @@ export default function ClientVideoList({
                       type="button"
                       onClick={() => setActive(idx)}
                       aria-label={`Play ${title}`}
-                      className="absolute inset-0 z-10 grid place-items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70">
+                      className="absolute inset-0 z-10 grid place-items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-white/70"
+                    >
                       <span className="rounded-full bg-black/45 backdrop-blur-md p-5 md:p-6 ring-1 ring-white/20 shadow-lg">
                         <svg
                           width="28"
                           height="28"
                           viewBox="0 0 24 24"
-                          aria-hidden>
+                          aria-hidden
+                        >
                           <path d="M8 5v14l11-7z" fill="white" />
                         </svg>
                       </span>
@@ -237,7 +241,8 @@ export default function ClientVideoList({
           <button
             onClick={loadMore}
             disabled={loading}
-            className="w-full rounded-md bg-white/10 px-3 py-2 text-sm hover:bg-white/20 disabled:opacity-50">
+            className="w-full rounded-md bg-white/10 px-3 py-2 text-sm hover:bg-white/20 disabled:opacity-50"
+          >
             {loading ? "Loading…" : `Load next ${pageSize}`}
           </button>
         </div>

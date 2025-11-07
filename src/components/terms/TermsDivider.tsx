@@ -15,7 +15,8 @@ export default function TermsDivider() {
     <div className="text-center">
       <span
         style={{ color: receipt.colorSekunder }}
-        className="text-xs leading-10">
+        className="text-xs leading-10"
+      >
         &#9673; &#9673; &#9673; &#9673;
       </span>
     </div>

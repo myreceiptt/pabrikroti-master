@@ -31,7 +31,8 @@ export default function HeroSlider() {
     <section id="what" className="w-full">
       <div
         style={{ background: receipt.colorSecondary }}
-        className="relative w-full aspect-[64/27] overflow-hidden rounded-xl md:rounded-2xl lg:rounded-3xl">
+        className="relative w-full aspect-[64/27] overflow-hidden rounded-xl md:rounded-2xl lg:rounded-3xl"
+      >
         {/* Slide Image */}
         <AnimatePresence mode="wait">
           <motion.div
@@ -40,7 +41,8 @@ export default function HeroSlider() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.11 }}
-            className="absolute inset-0">
+            className="absolute inset-0"
+          >
             <Link href={slides[currentSlide].cta.href}>
               <Image
                 src={slides[currentSlide].image}
@@ -59,7 +61,8 @@ export default function HeroSlider() {
           style={{
             backgroundColor: hexToRgba(receipt.colorTersier, 0.66),
           }}
-          className="absolute inset-0 p-3 sm:p-6 md:p-8 lg:p-10 flex items-start justify-end">
+          className="absolute inset-0 p-3 sm:p-6 md:p-8 lg:p-10 flex items-start justify-end"
+        >
           <AnimatePresence mode="wait">
             <motion.div
               key={`text-${currentSlide}`}
@@ -67,11 +70,13 @@ export default function HeroSlider() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -10 }}
               transition={{ duration: 1.11 }}
-              className="flex flex-col items-end gap-2 w-full max-w-full max-h-full text-right">
+              className="flex flex-col items-end gap-2 w-full max-w-full max-h-full text-right"
+            >
               {/* Title */}
               <h1
                 style={{ color: receipt.colorPrimary }}
-                className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md">
+                className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md"
+              >
                 {slides[currentSlide].title}
               </h1>
 
@@ -79,7 +84,8 @@ export default function HeroSlider() {
               {slides[currentSlide].subtitle && (
                 <h2
                   style={{ color: receipt.colorPrimary }}
-                  className="text-xs sm:text-base md:text-lg leading-snug drop-shadow-sm">
+                  className="text-xs sm:text-base md:text-lg leading-snug drop-shadow-sm"
+                >
                   {slides[currentSlide].subtitle}
                 </h2>
               )}
@@ -90,7 +96,8 @@ export default function HeroSlider() {
                   style={{
                     color: receipt.colorPrimary,
                   }}
-                  className="text-[10px] sm:text-sm md:text-base max-w-xs sm:max-w-sm md:max-w-md leading-tight">
+                  className="text-[10px] sm:text-sm md:text-base max-w-xs sm:max-w-sm md:max-w-md leading-tight"
+                >
                   {slides[currentSlide].description}
                 </p>
               )}

@@ -178,7 +178,7 @@ export default function CoinForm({
     // Belum waktunya
     buttonLabel = `${receipt.nftSoon} ${getCountdownString(
       startTime,
-      currentTime
+      currentTime,
     )}`;
     buttonDisabled = true;
   } else if (!isClaimable) {
@@ -203,7 +203,8 @@ export default function CoinForm({
       {/* TokenIcon (Left Column) */}
       <div
         onClick={() => setIsOpen(true)}
-        className="rounded-2xl md:rounded-xl lg:rounded-2xl overflow-hidden w-full">
+        className="rounded-2xl md:rounded-xl lg:rounded-2xl overflow-hidden w-full"
+      >
         <MediaRenderer
           client={client}
           src={coinImage ?? receipt.coinListerImage}
@@ -221,7 +222,8 @@ export default function CoinForm({
           {/* Title */}
           <h1
             style={{ color: receipt.colorPrimer }}
-            className="text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold">
+            className="text-left text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-semibold"
+          >
             {coinName}
           </h1>
         </div>
@@ -229,17 +231,20 @@ export default function CoinForm({
         <div className="flex flex-row gap-2">
           <h1
             style={{ color: receipt.colorTersier }}
-            className="text-left text-sm font-medium">
+            className="text-left text-sm font-medium"
+          >
             {receipt.nftFormBy}
           </h1>
           <span
             style={{ color: receipt.colorTersier }}
-            className="text-3xl leading-6">
+            className="text-3xl leading-6"
+          >
             &#9673;
           </span>
           <h1
             style={{ color: receipt.colorSekunder }}
-            className="text-left text-sm font-medium">
+            className="text-left text-sm font-medium"
+          >
             <Link href={coinLink} target="_blank">
               {coinBy}
             </Link>
@@ -259,28 +264,33 @@ export default function CoinForm({
         <div className="w-full grid grid-cols-8">
           <h2
             style={{ color: receipt.colorTersier }}
-            className="col-span-3 text-left text-xs font-medium">
+            className="col-span-3 text-left text-xs font-medium"
+          >
             {receipt.nftFormPrice}
           </h2>
           <h2
             style={{ color: receipt.colorTersier }}
-            className="col-span-3 text-left text-xs font-medium">
+            className="col-span-3 text-left text-xs font-medium"
+          >
             {receipt.coinFormOwned}
           </h2>
           <h2
             style={{ color: receipt.colorTersier }}
-            className="col-span-2 text-left text-xs font-medium">
+            className="col-span-2 text-left text-xs font-medium"
+          >
             {receipt.nftFormRefresh}
           </h2>
 
           <h2
             style={{ color: receipt.colorPrimer }}
-            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold">
+            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold"
+          >
             {formattedPrice}
           </h2>
           <h2
             style={{ color: receipt.colorPrimer }}
-            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold">
+            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold"
+          >
             {adjustedCoinOwned} {coinSymbol.toUpperCase()}
           </h2>
           <button
@@ -297,14 +307,16 @@ export default function CoinForm({
             }}
             className={`col-span-2 aspect-auto rounded-md text-center text-sm xl:text-lg font-semibold outline-none disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               !isRefreshing ? "cursor-pointer" : ""
-            } flex items-center justify-center`}>
+            } flex items-center justify-center`}
+          >
             <motion.div
               animate={isRefreshing ? { rotate: 360 } : { rotate: 0 }}
               transition={{
                 repeat: isRefreshing ? Infinity : 0,
                 duration: 0.74,
                 ease: "linear",
-              }}>
+              }}
+            >
               <FaRotate />
             </motion.div>
           </button>
@@ -313,25 +325,30 @@ export default function CoinForm({
         <div className="w-full grid grid-cols-8">
           <h2
             style={{ color: receipt.colorTersier }}
-            className="col-span-3 text-left text-xs font-medium">
+            className="col-span-3 text-left text-xs font-medium"
+          >
             {receipt.coinFormSupply}
           </h2>
           <h2
             style={{ color: receipt.colorTersier }}
-            className="col-span-3 text-left text-xs font-medium">
+            className="col-span-3 text-left text-xs font-medium"
+          >
             {receipt.coinFormOnChain}
           </h2>
           <h2
             style={{ color: receipt.colorTersier }}
-            className="col-span-2 text-left text-xs font-medium">
+            className="col-span-2 text-left text-xs font-medium"
+          >
             {receipt.nftFormAmount}
           </h2>
 
           <h2
             style={{ color: receipt.colorPrimer }}
-            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold">
+            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold"
+          >
             <span
-              title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxSupply}`}>
+              title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxSupply}`}
+            >
               {formatNumberCompact(adjustedSupply)}/
               {maxClaim === MAX_UINT256 ? (
                 <span className="">&#8734;</span>
@@ -342,7 +359,8 @@ export default function CoinForm({
           </h2>
           <h2
             style={{ color: receipt.colorPrimer }}
-            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold">
+            className="col-span-3 text-left text-sm lg:text-md xl:text-xl font-semibold"
+          >
             {chainName}
           </h2>
           <input
@@ -421,12 +439,14 @@ export default function CoinForm({
             setPesanKirim(null);
             setPesanSukses(receipt.coinFormSukses);
             setPesanGagal(null);
-          }}>
+          }}
+        >
           {buttonLabel}
         </ClaimButton>
         <h4
           style={{ color: receipt.colorTersier }}
-          className="text-left text-xs font-medium">
+          className="text-left text-xs font-medium"
+        >
           {receipt.nftFormMax}{" "}
           {perWallet === MAX_UINT256 ? (
             <span className="">&#8734;</span>

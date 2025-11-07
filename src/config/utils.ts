@@ -14,12 +14,12 @@ export function hexToRgba(hex: string, alpha: number): string {
 // countdown
 export function getCountdownString(
   startTime: Date,
-  currentTime: Date = new Date()
+  currentTime: Date = new Date(),
 ): string | null {
   if (!startTime) return null;
 
   const totalSeconds = Math.floor(
-    (startTime.getTime() - currentTime.getTime()) / 1000
+    (startTime.getTime() - currentTime.getTime()) / 1000,
   );
   if (totalSeconds <= 0) return null;
 
@@ -33,7 +33,7 @@ export function getCountdownString(
 
 // build the currency map from SupportedFTs
 export function buildCurrencyMapFromSupportedFTs(
-  supportedFTs: SupportedFTs
+  supportedFTs: SupportedFTs,
 ): Record<string, { name: string; symbol: string; icon: string }> {
   const map: Record<string, { name: string; symbol: string; icon: string }> =
     {};
@@ -260,7 +260,7 @@ export function parseM3U(text: string, baseUrl?: string): M3UItem[] {
 export async function FetchEthereumPrice(): Promise<number | null> {
   try {
     const response = await fetch(
-      "https://api.coingecko.com/api/v3/simple/price?x_cg_demo_api_key=CG-gW1zJEU5tLrciQunUxFefDqb&ids=ethereum&vs_currencies=usd"
+      "https://api.coingecko.com/api/v3/simple/price?x_cg_demo_api_key=CG-gW1zJEU5tLrciQunUxFefDqb&ids=ethereum&vs_currencies=usd",
     );
     const data = await response.json();
     return data.ethereum.usd;

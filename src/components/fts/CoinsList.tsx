@@ -111,7 +111,7 @@ export default function CoinsList() {
             reason = receipt.nftsFailReason;
             console.warn(
               `${receipt.coinsConsoleWarn} ${erc20sLaunched.address}`,
-              innerErr
+              innerErr,
             );
           }
 
@@ -218,7 +218,7 @@ export default function CoinsList() {
                 const entry = entries.find(
                   (e) =>
                     e.address?.toLowerCase() ===
-                    activeAccount.address.toLowerCase()
+                    activeAccount.address.toLowerCase(),
                 );
 
                 if (entry?.price) {
@@ -246,7 +246,7 @@ export default function CoinsList() {
             adjustedPrice,
             adjustedBalance,
           };
-        })
+        }),
       );
 
       const coins: CoinData[] = [];
@@ -377,7 +377,8 @@ export default function CoinsList() {
             key={`${coin.coinAddress}_${coin.coinChain.id}`}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.05 }}>
+            transition={{ duration: 0.3, delay: index * 0.05 }}
+          >
             <CoinLister
               hasAccess={hasAccess}
               {...coin}
@@ -399,7 +400,8 @@ export default function CoinsList() {
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
-            }`}>
+            }`}
+          >
             {receipt.nftsPrevious}
           </button>
         )}
@@ -418,14 +420,16 @@ export default function CoinsList() {
           }}
           className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
-          }`}>
+          }`}
+        >
           <motion.div
             animate={isRefreshing ? { rotate: 360 } : { rotate: 0 }}
             transition={{
               repeat: isRefreshing ? Infinity : 0,
               duration: 0.74,
               ease: "linear",
-            }}>
+            }}
+          >
             <FaRotate />
           </motion.div>
         </button>
@@ -440,7 +444,8 @@ export default function CoinsList() {
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= coinListToShow.length ? "" : "cursor-pointer"
-            }`}>
+            }`}
+          >
             {receipt.nftsNext}
           </button>
         )}

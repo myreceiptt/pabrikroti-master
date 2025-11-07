@@ -68,7 +68,8 @@ export default function Subscribe() {
     <>
       <h3
         style={{ color: receipt.colorFooterText }}
-        className="text-center sm:text-left text-xs sm:text-sm md:text-base font-semibold">
+        className="text-center sm:text-left text-xs sm:text-sm md:text-base font-semibold"
+      >
         {receipt.subscribeTitle}
       </h3>
 
@@ -100,11 +101,12 @@ export default function Subscribe() {
                 : receipt.colorFooterButtonBorder,
               backgroundColor: hexToRgba(
                 receipt.colorFooterButtonBG,
-                receipt.colorFooterButtonBGAlpha
+                receipt.colorFooterButtonBGAlpha,
               ),
             }}
             className="text-xs md:text-sm px-6 py-2 font-semibold rounded-r-lg cursor-pointer"
-            disabled={loading}>
+            disabled={loading}
+          >
             {loading ? receipt.subscribeButtonLoading : receipt.subscribeButton}
           </button>
         </div>
@@ -115,7 +117,8 @@ export default function Subscribe() {
         <h4
           aria-live="polite"
           style={{ color: receipt.colorFooterText }}
-          className="text-center sm:text-left text-sm font-medium mt-2">
+          className="text-center sm:text-left text-sm font-medium mt-2"
+        >
           {statusMessage}
         </h4>
       )}
