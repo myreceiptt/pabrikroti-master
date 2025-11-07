@@ -37,8 +37,8 @@
     "hls.js": "^1.6.10",
     "next": "16.0.1",
     "qrcode.react": "^4.2.0",
-    "react": "^19.1.1",
-    "react-dom": "^19.1.1",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-icons": "^5.5.0",
     "thirdweb": "^5.105.37"
   },
