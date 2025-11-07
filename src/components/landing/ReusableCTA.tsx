@@ -36,7 +36,8 @@ export default function ReusableCTA({
       }}
       className={`rounded-lg px-4 py-2 sm:px-7 text-center text-xs sm:text-sm md:text-sm lg:text-base font-semibold transition-all ${
         className || ""
-      }`}>
+      }`}
+    >
       {text}
     </Link>
   );

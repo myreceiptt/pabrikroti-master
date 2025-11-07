@@ -70,7 +70,8 @@ export default function ConnectButtons() {
                 borderColor: receipt.colorTertiary,
                 backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
               }}
-              className="w-10 h-10 flex items-center justify-center text-xl border rounded-lg cursor-pointer">
+              className="w-10 h-10 flex items-center justify-center text-xl border rounded-lg cursor-pointer"
+            >
               <FaUserLarge />
             </button>
           ),

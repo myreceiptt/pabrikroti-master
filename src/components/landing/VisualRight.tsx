@@ -21,17 +21,20 @@ export default function VisualRight() {
   return (
     <section
       className="w-full pb-4 md:pb-8 pt-2 md:pt-0 rounded-xl md:rounded-2xl lg:rounded-3xl flex flex-col-reverse md:flex-row items-center gap-4 md:gap-8"
-      id="where">
+      id="where"
+    >
       <div className="w-full md:w-1/2 flex flex-col items-end gap-4">
         <div className="flex flex-col justify-between gap-4">
           <h2
             style={{ color: receipt.colorPrimer }}
-            className="text-right text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md">
+            className="text-right text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md"
+          >
             {block.title}
           </h2>
           <p
             style={{ color: receipt.colorPrimer }}
-            className="text-right text-[10px] sm:text-sm md:text-base leading-tight line-clamp-none md:line-clamp-4">
+            className="text-right text-[10px] sm:text-sm md:text-base leading-tight line-clamp-none md:line-clamp-4"
+          >
             {block.description}
           </p>
         </div>

@@ -1,7 +1,7 @@
 /* /src/app/global.css */
 
 /* Tailwind CSS Core Import */
-@import 'tailwindcss';
+@import "tailwindcss";
 
 /* Layer: Base — Reset & Global Setup */
 @layer base {

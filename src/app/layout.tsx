@@ -80,7 +80,8 @@ export default async function RootLayout({ children }: RootLayoutProps) {
           color: receipt.colorPrimer,
           backgroundColor: receipt.colorPrimary,
         }}
-        className={inter.className}>
+        className={inter.className}
+      >
         <ThirdwebProvider>{children}</ThirdwebProvider>
         <Analytics />
       </body>

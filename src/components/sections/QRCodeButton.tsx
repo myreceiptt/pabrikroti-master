@@ -94,7 +94,8 @@ export default function QRCodeButton() {
           backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
         }}
         className="w-10 h-10 flex items-center justify-center text-xl border rounded-lg cursor-pointer"
-        aria-label="Download QR Code">
+        aria-label="Download QR Code"
+      >
         <FaQrcode />
       </button>
     </div>

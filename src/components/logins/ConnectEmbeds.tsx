@@ -21,7 +21,8 @@ export default function ConnectEmbeds() {
   return (
     <div
       id="logins"
-      className="w-full h-auto flex flex-col justify-center items-center">
+      className="w-full h-auto flex flex-col justify-center items-center"
+    >
       <ConnectEmbed
         client={client}
         modalSize="compact"

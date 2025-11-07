@@ -105,13 +105,11 @@ PABRIKROTI operates as a **decentralized digital production space**, where each 
 
 - **Flexible Front Page (Multi-Mode)**  
   Depending on the domain/subdomain, the home page renders:
-
   - **Mode `abc`**: Login gateway with featured tokens
   - **Mode `aiueo`**: Landing page for branding & storytelling
 
 - **Web3-Ready & Mobile Optimized**  
   Built with:
-
   - Next.js 15 + App Router
   - React 19 + Server Components
   - Tailwind CSS v4

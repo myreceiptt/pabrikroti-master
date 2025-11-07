@@ -21,7 +21,8 @@ export default function VisualLeft() {
   return (
     <section
       className="w-full pt-4 md:pt-8 pb-2 md:pb-0 rounded-xl md:rounded-2xl lg:rounded-3xl flex flex-col md:flex-row items-center gap-4 md:gap-8"
-      id="when">
+      id="when"
+    >
       <div className="relative w-full md:w-1/2 aspect-[5/3] shrink-0">
         <Image
           src={block.image}
@@ -36,12 +37,14 @@ export default function VisualLeft() {
         <div className="flex flex-col justify-between gap-4">
           <h2
             style={{ color: receipt.colorPrimer }}
-            className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md">
+            className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md"
+          >
             {block.title}
           </h2>
           <p
             style={{ color: receipt.colorPrimer }}
-            className="text-[10px] sm:text-sm md:text-base leading-tight line-clamp-none md:line-clamp-4">
+            className="text-[10px] sm:text-sm md:text-base leading-tight line-clamp-none md:line-clamp-4"
+          >
             {block.description}
           </p>
         </div>

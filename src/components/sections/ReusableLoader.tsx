@@ -16,7 +16,8 @@ export default function Loader({ message }: LoaderProps) {
   return (
     <p
       style={{ color: receipt.colorTersier }}
-      className="text-left text-sm font-medium">
+      className="text-left text-sm font-medium"
+    >
       {message}
     </p>
   );

@@ -36,7 +36,8 @@ export default function NFTDescription({
         style={{
           color: receipt.colorPrimer,
         }}
-        className="w-full flex flex-col items-start gap-2">
+        className="w-full flex flex-col items-start gap-2"
+      >
         {isExpanded
           ? paragraphs.map((line, index) => (
               <p key={index} className="text-left text-sm font-medium">
@@ -66,7 +67,8 @@ export default function NFTDescription({
                   style={{
                     color: receipt.colorSekunder,
                   }}
-                  className="text-xs font-medium hover:underline cursor-pointer">
+                  className="text-xs font-medium hover:underline cursor-pointer"
+                >
                   {receipt.nftMeMoRa}
                 </Link>
               )}
@@ -80,7 +82,8 @@ export default function NFTDescription({
                   style={{
                     color: receipt.colorSekunder,
                   }}
-                  className="text-xs font-medium hover:underline cursor-pointer">
+                  className="text-xs font-medium hover:underline cursor-pointer"
+                >
                   {receipt.nftEndhonesa}
                 </Link>
               )}
@@ -93,7 +96,8 @@ export default function NFTDescription({
               color: receipt.colorSekunder,
             }}
             className="text-xs font-medium hover:underline cursor-pointer"
-            onClick={() => setIsExpanded(!isExpanded)}>
+            onClick={() => setIsExpanded(!isExpanded)}
+          >
             {isExpanded ? receipt.nftReadLess : receipt.nftReadMore}
           </p>
         </div>

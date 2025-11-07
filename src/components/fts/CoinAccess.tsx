@@ -21,12 +21,14 @@ export default function CoinAccess({ message, onRedirect }: CoinAccessProps) {
       <div className="w-full flex flex-col gap-2 items-center justify-center text-center px-0 sm:px-4">
         <h2
           style={{ color: receipt.colorPrimer }}
-          className="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal">
+          className="text-center text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-normal"
+        >
           {message}
         </h2>
         <h3
           style={{ color: receipt.colorSekunder }}
-          className="text-center text-sm font-medium">
+          className="text-center text-sm font-medium"
+        >
           {receipt.coinAccessMessage}
         </h3>
       </div>
@@ -39,7 +41,8 @@ export default function CoinAccess({ message, onRedirect }: CoinAccessProps) {
             backgroundColor: receipt.colorSekunder,
           }}
           className="rounded-lg py-4 px-12 text-base font-semibold cursor-pointer"
-          onClick={onRedirect}>
+          onClick={onRedirect}
+        >
           {receipt.coinAccessButton}
         </button>
       </div>

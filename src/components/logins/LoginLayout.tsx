@@ -43,19 +43,22 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
           <h1
             aria-label={receipt.loginAria}
             style={{ color: receipt.colorPrimer }}
-            className="flex text-left text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tighter justify-start align-middle">
+            className="flex text-left text-3xl lg:text-4xl xl:text-5xl font-normal tracking-tighter justify-start align-middle"
+          >
             {receipt.loginCall}
           </h1>
           <h2
             style={{ color: receipt.colorPrimer }}
-            className="text-left text-sm lg:text-base xl:text-lg font-normal tracking-tighter">
+            className="text-left text-sm lg:text-base xl:text-lg font-normal tracking-tighter"
+          >
             {receipt.loginReason.text1}{" "}
             <Link
               href={receipt.loginReason.link1}
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: receipt.colorSekunder }}
-              className="inline hover:underline transition-all duration-200">
+              className="inline hover:underline transition-all duration-200"
+            >
               {receipt.loginReason.anchor1}
             </Link>
             <br />
@@ -65,7 +68,8 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
               target="_blank"
               rel="noopener noreferrer"
               style={{ color: receipt.colorSekunder }}
-              className="inline hover:underline transition-all duration-200">
+              className="inline hover:underline transition-all duration-200"
+            >
               {receipt.loginReason.anchor2}
             </Link>
           </h2>
@@ -74,13 +78,15 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
           {children}
           <h4
             style={{ color: receipt.colorTersier }}
-            className="text-left text-xs font-normal">
+            className="text-left text-xs font-normal"
+          >
             {receipt.loginAgreement}{" "}
             <Link
               href="/terms"
               target="_blank"
               style={{ color: receipt.colorSekunder }}
-              className="inline hover:underline transition-all duration-200">
+              className="inline hover:underline transition-all duration-200"
+            >
               {receipt.loginTermsPolicy}
             </Link>
           </h4>

@@ -39,7 +39,8 @@ export default function FeaturedCards() {
               <button
                 type="button"
                 aria-label={`${receipt.featuredAria} ${alt}`}
-                className="w-full hover:scale-95 transition-transform duration-300 ease-in-out relative group cursor-pointer">
+                className="w-full hover:scale-95 transition-transform duration-300 ease-in-out relative group cursor-pointer"
+              >
                 {/* Main image */}
                 <Image
                   src={src}
@@ -51,7 +52,7 @@ export default function FeaturedCards() {
                 />
               </button>
             </Link>
-          ) : null
+          ) : null,
         )}
       </div>
     </main>

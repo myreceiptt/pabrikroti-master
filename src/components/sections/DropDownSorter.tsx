@@ -59,7 +59,8 @@ export default function DropDownSorter({
       <label
         htmlFor="sortSelect"
         style={{ color: receipt.colorTersier }}
-        className="text-sm font-medium text-right">
+        className="text-sm font-medium text-right"
+      >
         {receipt.ddSorterSorting}
       </label>
 
@@ -71,7 +72,8 @@ export default function DropDownSorter({
             borderColor: receipt.colorTertiary,
             backgroundColor: receipt.colorSecondary,
           }}
-          className="w-full flex justify-between items-center border rounded-lg px-3 py-1 cursor-pointer">
+          className="w-full flex justify-between items-center border rounded-lg px-3 py-1 cursor-pointer"
+        >
           <span>{labelMap[sortOption]}</span>
           <FaChevronDown
             style={{ color: receipt.colorSekunder }}
@@ -92,7 +94,8 @@ export default function DropDownSorter({
                 borderColor: receipt.colorTertiary,
                 backgroundColor: receipt.colorSekunder,
               }}
-              className="absolute z-50 mt-1 w-full border rounded-lg divide-y divide-double">
+              className="absolute z-50 mt-1 w-full border rounded-lg divide-y divide-double"
+            >
               {sortOptions.map((option) => (
                 <li
                   key={option}
@@ -110,7 +113,8 @@ export default function DropDownSorter({
                     sortOption === option
                       ? "font-semibold cursor-default"
                       : "hover:opacity-75 cursor-pointer"
-                  }`}>
+                  }`}
+                >
                   {labelMap[option]}
                 </li>
               ))}

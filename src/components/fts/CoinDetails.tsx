@@ -61,12 +61,12 @@ interface SnapshotEntry {
 }
 
 function getCoinAddressFromParams(
-  params: ReturnType<typeof useParams>
+  params: ReturnType<typeof useParams>,
 ): string {
   const val = params.coinAddress;
   return Array.isArray(val)
     ? val[0]
-    : val ?? "0x0000000000000000000000000000000000000000";
+    : (val ?? "0x0000000000000000000000000000000000000000");
 }
 
 export default function CoinDetails() {
@@ -88,7 +88,7 @@ export default function CoinDetails() {
     if (!coinAddress || !activeAccount?.address) return;
 
     const erc20ContractLaunched = erc20sLaunched.find(
-      (c) => c.address.toLowerCase() === coinAddress.toLowerCase()
+      (c) => c.address.toLowerCase() === coinAddress.toLowerCase(),
     );
 
     if (!erc20ContractLaunched) {
@@ -139,7 +139,7 @@ export default function CoinDetails() {
         reason = receipt.nftsFailReason;
         console.warn(
           `${receipt.coinsConsoleWarn} ${erc20ContractLaunched.address}`,
-          innerErr
+          innerErr,
         );
       }
 
@@ -236,7 +236,8 @@ export default function CoinDetails() {
 
             const entry = entries.find(
               (e) =>
-                e.address?.toLowerCase() === activeAccount.address.toLowerCase()
+                e.address?.toLowerCase() ===
+                activeAccount.address.toLowerCase(),
             );
 
             if (entry?.maxClaimable) {

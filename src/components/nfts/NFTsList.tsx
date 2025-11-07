@@ -94,7 +94,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
 
     try {
       const nftIds = Array.from({ length: Number(nextNFTId) }, (_, i) =>
-        BigInt(i)
+        BigInt(i),
       );
 
       const results = await Promise.allSettled(
@@ -223,7 +223,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
                 const entry = entries.find(
                   (e) =>
                     e.address?.toLowerCase() ===
-                    activeAccount.address.toLowerCase()
+                    activeAccount.address.toLowerCase(),
                 );
 
                 if (entry?.price) {
@@ -251,7 +251,7 @@ export default function NFTsList({ variant }: NFTsListProps) {
             adjustedPrice,
             adjustedBalance,
           };
-        })
+        }),
       );
 
       const free: NFTData[] = [];
@@ -391,7 +391,8 @@ export default function NFTsList({ variant }: NFTsListProps) {
             key={nft.nftIdString}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.3, delay: index * 0.05 }}>
+            transition={{ duration: 0.3, delay: index * 0.05 }}
+          >
             <NFTLister
               hasAccess={hasAccess}
               dropContract={erc1155Launched}
@@ -423,7 +424,8 @@ export default function NFTsList({ variant }: NFTsListProps) {
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount === INITIAL_ITEMS ? "" : "cursor-pointer"
-            }`}>
+            }`}
+          >
             {receipt.nftsPrevious}
           </button>
         )}
@@ -442,14 +444,16 @@ export default function NFTsList({ variant }: NFTsListProps) {
           }}
           className={`px-4 py-3 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
             !isRefreshing ? "cursor-pointer" : ""
-          }`}>
+          }`}
+        >
           <motion.div
             animate={isRefreshing ? { rotate: 360 } : { rotate: 0 }}
             transition={{
               repeat: isRefreshing ? Infinity : 0,
               duration: 0.74,
               ease: "linear",
-            }}>
+            }}
+          >
             <FaRotate />
           </motion.div>
         </button>
@@ -464,7 +468,8 @@ export default function NFTsList({ variant }: NFTsListProps) {
             }}
             className={`px-4 py-2 text-base font-semibold rounded-lg disabled:opacity-50 transition-all hover:scale-95 active:scale-95 ${
               visibleCount >= nftListToShow.length ? "" : "cursor-pointer"
-            }`}>
+            }`}
+          >
             {receipt.nftsNext}
           </button>
         )}

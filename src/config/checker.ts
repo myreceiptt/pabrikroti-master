@@ -122,7 +122,7 @@ export const CheckErc20 = ({
             console.warn(`Error for ${token.symbol}`, error);
             return false;
           }
-        })
+        }),
       );
 
       const hasToken = results.some(Boolean);

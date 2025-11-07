@@ -46,7 +46,8 @@ export class ErrorBoundary extends React.Component<
           <h2
             role="alert"
             style={{ color: this.receipt.colorPrimer }}
-            className="text-center text-sm font-medium">
+            className="text-center text-sm font-medium"
+          >
             {this.receipt.proError}
           </h2>
           <button
@@ -57,7 +58,8 @@ export class ErrorBoundary extends React.Component<
               borderColor: this.receipt.colorTertiary,
               backgroundColor: this.receipt.colorSekunder,
             }}
-            className="w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all cursor-pointer">
+            className="w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all cursor-pointer"
+          >
             {this.receipt.proButton}
           </button>
         </div>

@@ -35,7 +35,8 @@ export default function Footer() {
         borderColor: receipt.colorTertiary,
         backgroundColor: receipt.colorFooterBG,
       }}
-      className="w-full py-4 px-4 md:px-20 border-t">
+      className="w-full py-4 px-4 md:px-20 border-t"
+    >
       <div className="grid sm:grid-cols-2 grid-cols-1 gap-4">
         <div className="w-full flex flex-col">
           {/* Newsletter Signup */}
@@ -45,7 +46,8 @@ export default function Footer() {
           {/* Social Media Links */}
           <h3
             style={{ color: receipt.colorFooterText }}
-            className="sm:text-end text-center text-xs sm:text-sm md:text-base font-semibold">
+            className="sm:text-end text-center text-xs sm:text-sm md:text-base font-semibold"
+          >
             {receipt.footSocial}
           </h3>
           <div className="flex gap-2 mt-2 sm:justify-end justify-center">
@@ -57,10 +59,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaGithub />
               </Link>
             )}
@@ -73,10 +76,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaTwitter />
               </Link>
             )}
@@ -89,10 +93,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaLinkedin />
               </Link>
             )}
@@ -105,10 +110,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaInstagram />
               </Link>
             )}
@@ -121,10 +127,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaFacebook />
               </Link>
             )}
@@ -137,10 +144,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaDiscord />
               </Link>
             )}
@@ -153,10 +161,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaYoutube />
               </Link>
             )}
@@ -169,10 +178,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaEnvelope />
               </Link>
             )}
@@ -185,10 +195,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaWhatsapp />
               </Link>
             )}
@@ -201,10 +212,11 @@ export default function Footer() {
                   color: receipt.colorFooterIcon,
                   backgroundColor: hexToRgba(
                     receipt.colorFooterIconBG,
-                    receipt.colorFooterIconBGAlpha
+                    receipt.colorFooterIconBGAlpha,
                   ),
                 }}
-                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg">
+                className="w-8 h-8 flex items-center justify-center text-xl m-1 rounded-lg"
+              >
                 <FaGlobe />
               </Link>
             )}
@@ -217,13 +229,15 @@ export default function Footer() {
         style={{
           borderColor: receipt.colorTertiary,
         }}
-        className="w-full border-t mt-4 pt-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4">
+        className="w-full border-t mt-4 pt-4 flex flex-col sm:flex-row justify-center sm:justify-between items-center gap-4"
+      >
         {/* Copyrights */}
         <div
           style={{
             color: receipt.colorFooterText,
           }}
-          className="w-full text-xs text-center sm:text-left">
+          className="w-full text-xs text-center sm:text-left"
+        >
           <p>
             &copy; {new Date().getFullYear()} {receipt.proAlias1}.{" "}
             {receipt.footCopyRight}
@@ -238,7 +252,8 @@ export default function Footer() {
               style={{
                 color: receipt.colorFooterText,
               }}
-              className="text-xs text-center sm:text-left hover:underline">
+              className="text-xs text-center sm:text-left hover:underline"
+            >
               {receipt.footTerms} & {receipt.footPrivacy}
             </Link>
           </div>

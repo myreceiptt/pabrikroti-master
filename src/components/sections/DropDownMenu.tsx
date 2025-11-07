@@ -66,7 +66,8 @@ export default function DropdownMenu() {
           backgroundColor: hexToRgba(receipt.colorSekunder, 0.7),
         }}
         className="w-10 h-10 flex items-center justify-center text-xl border rounded-lg cursor-pointer"
-        aria-label={receipt.ddMenuAria}>
+        aria-label={receipt.ddMenuAria}
+      >
         <FaBars />
       </button>
 
@@ -83,16 +84,19 @@ export default function DropdownMenu() {
               borderColor: receipt.colorTertiary,
               backgroundColor: receipt.colorSekunder,
             }}
-            className="absolute right-0 z-40 mt-1 w-56 origin-top-right text-sm border rounded-lg divide-y divide-double">
+            className="absolute right-0 z-40 mt-1 w-56 origin-top-right text-sm border rounded-lg divide-y divide-double"
+          >
             {/* Section 1: Home */}
             {receipt.ddMenuHome && (
               <li
                 onClick={() => setIsOpen(false)}
                 style={liStyle(receipt.ddMenuLink1)}
-                className={liClass(receipt.ddMenuLink1)}>
+                className={liClass(receipt.ddMenuLink1)}
+              >
                 <Link
                   href={receipt.ddMenuLink1}
-                  className={linkClass(receipt.ddMenuLink1)}>
+                  className={linkClass(receipt.ddMenuLink1)}
+                >
                   {receipt.ddMenuHome}
                 </Link>
               </li>
@@ -122,7 +126,8 @@ export default function DropdownMenu() {
                       key={item.href}
                       onClick={() => setIsOpen(false)}
                       style={liStyle(item.href)}
-                      className={liClass(item.href)}>
+                      className={liClass(item.href)}
+                    >
                       <Link href={item.href} className={linkClass(item.href)}>
                         {item.label}
                       </Link>
@@ -136,10 +141,12 @@ export default function DropdownMenu() {
               <li
                 onClick={() => setIsOpen(false)}
                 style={liStyle(receipt.ddMenuLink2)}
-                className={liClass(receipt.ddMenuLink2)}>
+                className={liClass(receipt.ddMenuLink2)}
+              >
                 <Link
                   href={receipt.ddMenuLink2}
-                  className={linkClass(receipt.ddMenuLink2)}>
+                  className={linkClass(receipt.ddMenuLink2)}
+                >
                   {receipt.ddMenuFeatured}
                 </Link>
               </li>
@@ -167,7 +174,8 @@ export default function DropdownMenu() {
                       key={item.href}
                       onClick={() => setIsOpen(false)}
                       style={liStyle(item.href)}
-                      className={liClass(item.href)}>
+                      className={liClass(item.href)}
+                    >
                       <Link href={item.href} className={linkClass(item.href)}>
                         {item.label}
                       </Link>
@@ -181,11 +189,13 @@ export default function DropdownMenu() {
               <li
                 onClick={() => setIsOpen(false)}
                 style={liStyle(receipt.ddMenuLink3)}
-                className={liClass(receipt.ddMenuLink3)}>
+                className={liClass(receipt.ddMenuLink3)}
+              >
                 <Link
                   href={receipt.ddMenuLink3}
                   target="_blank"
-                  className={linkClass(receipt.ddMenuLink3)}>
+                  className={linkClass(receipt.ddMenuLink3)}
+                >
                   {receipt.ddMenuMore}
                 </Link>
               </li>
@@ -227,11 +237,13 @@ export default function DropdownMenu() {
                       key={item.href}
                       onClick={() => setIsOpen(false)}
                       style={liStyle(item.href)}
-                      className={liClass(item.href)}>
+                      className={liClass(item.href)}
+                    >
                       <Link
                         href={item.href}
                         target="_blank"
-                        className={linkClass(item.href)}>
+                        className={linkClass(item.href)}
+                      >
                         {item.label}
                       </Link>
                     </li>
@@ -242,7 +254,8 @@ export default function DropdownMenu() {
             <div
               onClick={() => setIsOpen(!isOpen)}
               style={{ color: receipt.colorTertiary }}
-              className="flex flex-col divide-y divide-dashed"></div>
+              className="flex flex-col divide-y divide-dashed"
+            ></div>
           </motion.ul>
         )}
       </AnimatePresence>

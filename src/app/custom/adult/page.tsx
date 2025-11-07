@@ -26,7 +26,7 @@ async function getInitial(): Promise<{
 
   const res = await fetch(
     `${origin}/api/playlist?offset=0&limit=${PAGE_SIZE}`,
-    { cache: "no-store" }
+    { cache: "no-store" },
   );
   if (!res.ok) throw new Error("Failed to load playlist page 1");
   const data = await res.json();
@@ -47,7 +47,8 @@ export default async function AdultPage() {
         <main className="grid gap-4 lg:gap-7 place-items-center">
           <h1
             style={{ color: receipt.colorPrimer }}
-            className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md">
+            className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md"
+          >
             {receipt.adultTVTitle}
           </h1>
           {items.length ? (
@@ -60,7 +61,8 @@ export default async function AdultPage() {
           ) : (
             <p
               style={{ color: receipt.colorPrimer }}
-              className="text-[10px] sm:text-sm md:text-base leading-tight">
+              className="text-[10px] sm:text-sm md:text-base leading-tight"
+            >
               {receipt.adultTVNotFound}
             </p>
           )}
@@ -73,12 +75,14 @@ export default async function AdultPage() {
         <main className="grid gap-4 lg:gap-7 place-items-center">
           <h1
             style={{ color: receipt.colorPrimer }}
-            className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md">
+            className="text-sm sm:text-xl md:text-2xl lg:text-3xl font-bold leading-tight drop-shadow-md"
+          >
             {receipt.adultTVTitle}
           </h1>
           <p
             style={{ color: receipt.colorPrimer }}
-            className="text-[10px] sm:text-sm md:text-base leading-tight">
+            className="text-[10px] sm:text-sm md:text-base leading-tight"
+          >
             {receipt.adultTVFailed}
           </p>
         </main>

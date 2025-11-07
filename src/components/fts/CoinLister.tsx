@@ -98,7 +98,7 @@ export default function CoinLister({
     // Belum waktunya
     buttonLabel = `${receipt.nftSoon} ${getCountdownString(
       startTime,
-      currentTime
+      currentTime,
     )}`;
     buttonDisabled = true;
   } else if (!isClaimable) {
@@ -124,7 +124,8 @@ export default function CoinLister({
         borderColor: receipt.colorTertiary,
         background: receipt.colorSecondary,
       }}
-      className="w-full grid grid-cols-1 gap-4 p-4 border rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl">
+      className="w-full grid grid-cols-1 gap-4 p-4 border rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl"
+    >
       {hasAccess === null ? (
         <Loader message={receipt.loaderChecking} />
       ) : (
@@ -134,7 +135,8 @@ export default function CoinLister({
               key={refreshToken}
               address={coinAddress}
               client={client}
-              chain={coinChain}>
+              chain={coinChain}
+            >
               {!hasError ? (
                 <TokenIcon
                   alt={coinName}
@@ -155,15 +157,18 @@ export default function CoinLister({
           <div className="grid grid-cols-1 gap-2">
             <h2
               style={{ color: receipt.colorPrimer }}
-              className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1">
+              className="text-left text-base sm:text-xs md:text-sm lg:text-base font-semibold line-clamp-1"
+            >
               {coinName}
             </h2>
             <div
               style={{ color: receipt.colorPrimer }}
-              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium">
+              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium"
+            >
               <span>{receipt.coinListerSupply}</span>
               <span
-                title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxSupply}`}>
+                title={`${adjustedSupply} ${receipt.coinListerOf} ${adjustedMaxSupply}`}
+              >
                 {formatNumberCompact(adjustedSupply)}/
                 {maxClaim === MAX_UINT256 ? (
                   <span className="">&#8734;</span>
@@ -174,7 +179,8 @@ export default function CoinLister({
             </div>
             <h2
               style={{ color: receipt.colorPrimer }}
-              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium">
+              className="flex items-center gap-2 text-sm sm:text-xs xl:text-sm font-medium"
+            >
               <span>
                 {receipt.coinFormOnChain} {chainName}
               </span>
@@ -200,7 +206,8 @@ export default function CoinLister({
             }}
             className={`w-full rounded-lg p-2 text-base sm:text-xs md:text-sm lg:text-base font-semibold transition-all ${
               !buttonDisabled ? "cursor-pointer" : ""
-            }`}>
+            }`}
+          >
             {buttonLabel}
           </button>
         </>

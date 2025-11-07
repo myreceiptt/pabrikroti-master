@@ -19,12 +19,14 @@ export default function ScreenTooSmall() {
         color: receipt.colorTersier,
         backgroundColor: receipt.colorPrimary,
       }}
-      className="flex items-center justify-center min-h-screen p-6">
+      className="flex items-center justify-center min-h-screen p-6"
+    >
       <motion.div
         initial={{ opacity: 0, y: 40 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.8, ease: "easeOut" }}
-        className="max-w-md text-center">
+        className="max-w-md text-center"
+      >
         <div className="flex justify-center mb-6">
           <Image
             src={receipt.tinyIllustration}
@@ -39,7 +41,8 @@ export default function ScreenTooSmall() {
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ delay: 0.3, duration: 0.6 }}
-          className="text-2xl sm:text-3xl font-bold mb-4">
+          className="text-2xl sm:text-3xl font-bold mb-4"
+        >
           {receipt.tinyTitle}
         </motion.h1>
 
@@ -47,7 +50,8 @@ export default function ScreenTooSmall() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6, duration: 0.6 }}
-          className="mb-3 text-base sm:text-lg">
+          className="mb-3 text-base sm:text-lg"
+        >
           {receipt.tinyText}
         </motion.p>
 
@@ -55,7 +59,8 @@ export default function ScreenTooSmall() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.8, duration: 0.6 }}
-          className="text-sm">
+          className="text-sm"
+        >
           {receipt.tinyHint}
           <br />
           {receipt.tinyPunchline}
