@@ -301,10 +301,20 @@ export default function CoinDetails() {
       setCoin({
         coinAddress: erc20ContractLaunched.address,
         coinChain: erc20ContractLaunched.chain,
-        coinName: coinMetaData.name,
-        coinSymbol: coinMetaData.symbol,
-        coinDescription: coinMetaData.description,
-        coinImage: coinMetaData.image,
+        // coinName: coinMetaData.name,
+        coinName: coinMetaData.name ?? "",
+        // coinSymbol: coinMetaData.symbol,
+        coinSymbol: coinMetaData.symbol ?? "",
+        // coinDescription: coinMetaData.description,
+        coinDescription:
+          typeof coinMetaData.description === "string"
+            ? coinMetaData.description
+            : String(coinMetaData.description ?? ""),
+        // coinImage: coinMetaData.image,
+        coinImage:
+          typeof coinMetaData.image === "string"
+            ? coinMetaData.image
+            : String(coinMetaData.image ?? ""),
         coinBy: erc20ContractLaunched.by,
         coinLink: erc20ContractLaunched.link,
         startTimestamp: claimCondition.startTimestamp,

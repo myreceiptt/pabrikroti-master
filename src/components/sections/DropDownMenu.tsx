@@ -88,9 +88,11 @@ export default function DropdownMenu() {
             {receipt.ddMenuHome && (
               <li
                 onClick={() => setIsOpen(false)}
-                style={liStyle("/")}
-                className={liClass("/")}>
-                <Link href="/" className={linkClass("/")}>
+                style={liStyle(receipt.ddMenuLink1)}
+                className={liClass(receipt.ddMenuLink1)}>
+                <Link
+                  href={receipt.ddMenuLink1}
+                  className={linkClass(receipt.ddMenuLink1)}>
                   {receipt.ddMenuHome}
                 </Link>
               </li>
@@ -98,21 +100,21 @@ export default function DropdownMenu() {
 
             {/* Sub Section 1 */}
             {[
-              { href: "/#what", label: receipt.ddMenuWhat },
-              { href: "/#why", label: receipt.ddMenuWhy },
-              { href: "/#how", label: receipt.ddMenuHow },
-              { href: "/#when", label: receipt.ddMenuWhen },
-              { href: "/#where", label: receipt.ddMenuWhere },
-              { href: "/#who", label: receipt.ddMenuWho },
+              { href: receipt.ddMenuLink1a, label: receipt.ddMenuWhat },
+              { href: receipt.ddMenuLink1b, label: receipt.ddMenuWhy },
+              { href: receipt.ddMenuLink1c, label: receipt.ddMenuHow },
+              { href: receipt.ddMenuLink1d, label: receipt.ddMenuWhen },
+              { href: receipt.ddMenuLink1e, label: receipt.ddMenuWhere },
+              { href: receipt.ddMenuLink1f, label: receipt.ddMenuWho },
             ].filter((item) => item.label).length > 0 && (
               <ul className="pl-4 rounded-lg divide-y divide-double">
                 {[
-                  { href: "/#what", label: receipt.ddMenuWhat },
-                  { href: "/#why", label: receipt.ddMenuWhy },
-                  { href: "/#how", label: receipt.ddMenuHow },
-                  { href: "/#when", label: receipt.ddMenuWhen },
-                  { href: "/#where", label: receipt.ddMenuWhere },
-                  { href: "/#who", label: receipt.ddMenuWho },
+                  { href: receipt.ddMenuLink1a, label: receipt.ddMenuWhat },
+                  { href: receipt.ddMenuLink1b, label: receipt.ddMenuWhy },
+                  { href: receipt.ddMenuLink1c, label: receipt.ddMenuHow },
+                  { href: receipt.ddMenuLink1d, label: receipt.ddMenuWhen },
+                  { href: receipt.ddMenuLink1e, label: receipt.ddMenuWhere },
+                  { href: receipt.ddMenuLink1f, label: receipt.ddMenuWho },
                 ]
                   .filter((item) => item.label)
                   .map((item) => (
@@ -133,9 +135,11 @@ export default function DropdownMenu() {
             {receipt.ddMenuFeatured && (
               <li
                 onClick={() => setIsOpen(false)}
-                style={liStyle("/featured")}
-                className={liClass("/featured")}>
-                <Link href="/featured" className={linkClass("/featured")}>
+                style={liStyle(receipt.ddMenuLink2)}
+                className={liClass(receipt.ddMenuLink2)}>
+                <Link
+                  href={receipt.ddMenuLink2}
+                  className={linkClass(receipt.ddMenuLink2)}>
                   {receipt.ddMenuFeatured}
                 </Link>
               </li>
@@ -143,19 +147,19 @@ export default function DropdownMenu() {
 
             {/* Sub Section 2 */}
             {[
-              { href: "/free", label: receipt.ddMenuFree },
-              { href: "/paid", label: receipt.ddMenuPaid },
-              { href: "/coins", label: receipt.ddMenuCoins },
-              { href: "/market", label: receipt.ddMenuMarket },
-              { href: "/others/perks", label: receipt.ddMenuContent },
+              { href: receipt.ddMenuLink2a, label: receipt.ddMenuFree },
+              { href: receipt.ddMenuLink2b, label: receipt.ddMenuPaid },
+              { href: receipt.ddMenuLink2c, label: receipt.ddMenuCoins },
+              { href: receipt.ddMenuLink2d, label: receipt.ddMenuMarket },
+              { href: receipt.ddMenuLink2e, label: receipt.ddMenuContent },
             ].filter((item) => item.label).length > 0 && (
               <ul className="pl-4 rounded-lg divide-y divide-double">
                 {[
-                  { href: "/free", label: receipt.ddMenuFree },
-                  { href: "/paid", label: receipt.ddMenuPaid },
-                  { href: "/coins", label: receipt.ddMenuCoins },
-                  { href: "/market", label: receipt.ddMenuMarket },
-                  { href: "/others/perks", label: receipt.ddMenuContent },
+                  { href: receipt.ddMenuLink2a, label: receipt.ddMenuFree },
+                  { href: receipt.ddMenuLink2b, label: receipt.ddMenuPaid },
+                  { href: receipt.ddMenuLink2c, label: receipt.ddMenuCoins },
+                  { href: receipt.ddMenuLink2d, label: receipt.ddMenuMarket },
+                  { href: receipt.ddMenuLink2e, label: receipt.ddMenuContent },
                 ]
                   .filter((item) => item.label)
                   .map((item) => (
@@ -176,12 +180,12 @@ export default function DropdownMenu() {
             {receipt.ddMenuMore && (
               <li
                 onClick={() => setIsOpen(false)}
-                style={liStyle("/more")}
-                className={liClass("/more")}>
+                style={liStyle(receipt.ddMenuLink3)}
+                className={liClass(receipt.ddMenuLink3)}>
                 <Link
-                  href="/more"
+                  href={receipt.ddMenuLink3}
                   target="_blank"
-                  className={linkClass("/more")}>
+                  className={linkClass(receipt.ddMenuLink3)}>
                   {receipt.ddMenuMore}
                 </Link>
               </li>
@@ -189,24 +193,33 @@ export default function DropdownMenu() {
 
             {/* Sub Section 3 */}
             {[
-              { href: "/publish", label: receipt.ddMenuDeploy },
-              { href: "/publish/nft", label: receipt.ddMenuPublishNFT },
-              { href: "/publish/ft", label: receipt.ddMenuPublishFT },
-              { href: "/dashboard", label: receipt.ddMenuDashBoard },
-              { href: receipt.ddMenuContactLink, label: receipt.ddMenuContact },
-              { href: "/terms", label: receipt.ddMenuTerms },
+              { href: receipt.ddMenuLink3a, label: receipt.ddMenuDeploy },
+              { href: receipt.ddMenuLink3b, label: receipt.ddMenuPublishNFT },
+              { href: receipt.ddMenuLink3c, label: receipt.ddMenuPublishFT },
+              { href: receipt.ddMenuLink3d, label: receipt.ddMenuDashBoard },
+              { href: receipt.ddMenuLink3e, label: receipt.ddMenuContact },
+              { href: receipt.ddMenuLink3f, label: receipt.ddMenuTerms },
             ].filter((item) => item.label).length > 0 && (
               <ul className="pl-4 rounded-lg divide-y divide-double">
                 {[
-                  { href: "/publish", label: receipt.ddMenuDeploy },
-                  { href: "/publish/nft", label: receipt.ddMenuPublishNFT },
-                  { href: "/publish/ft", label: receipt.ddMenuPublishFT },
-                  { href: "/dashboard", label: receipt.ddMenuDashBoard },
+                  { href: receipt.ddMenuLink3a, label: receipt.ddMenuDeploy },
                   {
-                    href: receipt.ddMenuContactLink,
+                    href: receipt.ddMenuLink3b,
+                    label: receipt.ddMenuPublishNFT,
+                  },
+                  {
+                    href: receipt.ddMenuLink3c,
+                    label: receipt.ddMenuPublishFT,
+                  },
+                  {
+                    href: receipt.ddMenuLink3d,
+                    label: receipt.ddMenuDashBoard,
+                  },
+                  {
+                    href: receipt.ddMenuLink3e,
                     label: receipt.ddMenuContact,
                   },
-                  { href: "/terms", label: receipt.ddMenuTerms },
+                  { href: receipt.ddMenuLink3f, label: receipt.ddMenuTerms },
                 ]
                   .filter((item) => item.label)
                   .map((item) => (

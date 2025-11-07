@@ -59,7 +59,7 @@ export const memora = {
   tinyIllustration: "/memora/logos/logo.png", // ScreenTooSmall,
   tinyTitle: "Screen Too Small", // ScreenTooSmall,
   tinyText: `For the best experience, please rotate your device to landscape mode or switch to a device with a larger screen.`, // ScreenTooSmall,
-  tinyHint: `Minimum screen width required: 474px`, // ScreenTooSmall,
+  tinyHint: `Minimum screen width required: 374px`, // ScreenTooSmall,
   tinyPunchline: ``, // ScreenTooSmall,
 
   // /src/components/logins/ConnectButtons.tsx
@@ -91,26 +91,45 @@ export const memora = {
 
   // /src/components/sections/DropDownMenu.tsx - disable by nullifying the string
   ddMenuAria: "Drop Down Menu", // DropDownMenu,
+  ddMenuLink1: "/", // DropDownMenu,
   ddMenuHome: "Home Page", // DropDownMenu,
+  ddMenuLink1a: "/#what", // DropDownMenu,
   ddMenuWhat: "", // DropDownMenu,
+  ddMenuLink1b: "/#why", // DropDownMenu,
   ddMenuWhy: "", // DropDownMenu,
+  ddMenuLink1c: "/#how", // DropDownMenu,
   ddMenuHow: "", // DropDownMenu,
+  ddMenuLink1d: "/#when", // DropDownMenu,
   ddMenuWhen: "", // DropDownMenu,
+  ddMenuLink1e: "/#where", // DropDownMenu,
   ddMenuWhere: "", // DropDownMenu,
+  ddMenuLink1f: "/#who", // DropDownMenu,
   ddMenuWho: "", // DropDownMenu,
+  ddMenuLink2: "/featured", // DropDownMenu,
   ddMenuFeatured: "Featured", // DropDownMenu,
+  ddMenuLink2a: "/free", // DropDownMenu,
   ddMenuFree: "Free MeMoRa", // DropDownMenu,
+  ddMenuLink2b: "/paid", // DropDownMenu,
   ddMenuPaid: "Paid MeMoRa", // DropDownMenu,
+  ddMenuLink2c: "/coins", // DropDownMenu,
   ddMenuCoins: "BON Voyage", // DropDownMenu,
+  ddMenuLink2d: "/market", // DropDownMenu,
   ddMenuMarket: "", // DropDownMenu,
+  ddMenuLink2e: "/others", // DropDownMenu,
   ddMenuContent: "", // DropDownMenu,
+  ddMenuLink3: "/more", // DropDownMenu,
   ddMenuMore: "Read More", // DropDownMenu,
+  ddMenuLink3a: "/publish", // DropDownMenu,
   ddMenuDeploy: "", // DropDownMenu,
+  ddMenuLink3b: "/publish/nft", // DropDownMenu,
   ddMenuPublishNFT: "", // DropDownMenu,
+  ddMenuLink3c: "/publish/ft", // DropDownMenu,
   ddMenuPublishFT: "", // DropDownMenu,
+  ddMenuLink3d: "/dashboard", // DropDownMenu,
   ddMenuDashBoard: "", // DropDownMenu,
-  ddMenuContactLink: "", // DropDownMenu,
+  ddMenuLink3e: "", // DropDownMenu,
   ddMenuContact: "", // DropDownMenu,
+  ddMenuLink3f: "/terms", // DropDownMenu,
   ddMenuTerms: "Terms of Use", // DropDownMenu,
 
   // /src/components/sections/DropDownSorter.tsx
@@ -265,7 +284,7 @@ export const memora = {
   csMessage1: "Not Ready Yet", // ComingSoon,
   csMessage2: `Currently under development with care. Stay tuned for something freshly built.`, // ComingSoon,
 
-  // featured cards page - hide card by nulled the title
+  // /src/components/contents/FeaturedCards.tsx - hide card by nulled the title
   featuredTitle1: "MEMORA VIRTUAL", // featured cards,
   featuredTitle2: "COLLECTIBLES", // featured cards,
   featuredPaid: "/memora/images/featured-paid.png", // featured cards,
@@ -279,10 +298,10 @@ export const memora = {
   coinLink: "/coins", // featured cards,
   featuredAria: "Navigate to", // featured cards,
 
-  // reusable loader section
+  // /src/components/sections/ReusableLoader.tsx
   loaderChecking: "Loading...", // reusable loader, nfts list, nft lister, nft details, coins list, coin lister, coin details,
 
-  // search wrapper page
+  // /src/components/SearchWrapper.tsx
   fetchAllowList: "Failed to fetch allowlist:", // search wrapper, coins list, coin details, nfts list, nft details,
   searchLoader: "Ups! Your query mismatch.", // search wrapper,
   searchMessage1: "No data was found.", // search wrapper,
@@ -293,7 +312,7 @@ export const memora = {
   searchAria2: "Refresh search results.", // search wrapper,
   searchAria3: "Load more items.", // search wrapper, nfts list, coins list,
 
-  // nfts list page
+  // /src/components/nfts/NFTsList.tsx
   nftsFTGated: false, // nfts list, nft details,
   nftsTitle1Free: "All Free", // nfts list,
   nftsTitle2Free: "Collectibles", // nfts list,
@@ -312,7 +331,7 @@ export const memora = {
   nftsNext: "Next", // search wrapper, nfts list, coins list,
   nftsAria: "Refresh all collectibles data.", // nfts list,
 
-  // nft lister section
+  // /src/components/nfts/NFTLister.tsx
   nftButton: "Collect Now", // nft lister, nft form,
   nftSoon: "Available in:", // nft lister, nft form, coin lister, coin form,
   nftInsufficient: "Insufficient Balance", // nft lister, nft form, coin lister, coin form,
@@ -323,25 +342,25 @@ export const memora = {
   nftEditions: "Edition:", // nft lister,
   nftNoData: "No data available.", // nft lister,
 
-  // nft fallback page
+  // /src/components/nfts/NFTFallback.tsx
   nftFallMessage1: "No valid collectible ID was used.", // nft fallback,
   nftFallMessage2:
     "Please use a valid collectible ID in the URL or return to the home page and start over.", // nft fallback,
 
-  // nft details page
+  // /src/components/nfts/NFTDetails.tsx
   nftSetError: "Failed to fetch the collectible ID.", // nft details,
   nftMessage1: "The collectible ID not found.", // nft details,
   nftMessage2:
     "The specified collectible ID was not found. Please try again later or return to the home page.", // nft details,
   nftAccessRedirect: "/coins", // nft details
 
-  // nft access section
+  // /src/components/nfts/NFTAccess.tsx
   nftAccessMessage:
     "Please get your access by get any point rewards at least not zero balance.", // nft access,
   nftAccessButton: "Get The Point Rewards!", // nft access,
   nftAccessBanner: "/memora/images/content-banner.png", // nft access,
 
-  // nft form section
+  // /src/components/nfts/NFTForm.tsx
   nftFormByLink: "https://memora.voyage.co.id/", // nft form,
   nftFormBy: "by", // nft form, coin form,
   nftFormByName: `${proAlias1}`, // nft form,
@@ -356,7 +375,7 @@ export const memora = {
   nftFormMax: "*Maximum", // nft form, coin form,
   nftFormPerWallet: "edition per collector.", // nft form,
 
-  // nft description section - hide link by nulled the title
+  // /src/components/nfts/NFTDescription.tsx - hide link by nulled the title
   nftMeMoRaTitle: "", // nft description,
   nftMeMoRa: "Read on MeMoRa MarketPlace (SOON)", // nft description,
   nftEndhonesaTitle: "", // nft description,
