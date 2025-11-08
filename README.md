@@ -1,9 +1,13 @@
 # PABRIK ROTI
 
-[![version](https://img.shields.io/badge/version-2.6.0-dev.0-blue)](https://github.com/myreceiptt/pabrikroti-master/releases/tag/v.2.6.0-dev.0) _Latest Release_  
+[![version](https://img.shields.io/github/v/release/myreceiptt/pabrikroti-master?display_name=tag&color=blue)](https://github.com/myreceiptt/pabrikroti-master/releases/latest) _Latest Release_  
+[![dev](https://img.shields.io/github/package-json/v/myreceiptt/pabrikroti-master?branch=preview&filename=package.json&label=dev&color=orange)](https://github.com/myreceiptt/pabrikroti-master/commits/preview) _Current Dev_  
+[![Build (main)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) _CI Status_  
+[![Build (preview)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg?branch=preview)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) _CI Status_  
 [![status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/myreceiptt/pabrikroti-master/blob/preview/SECURITY.md#-supported-versions) _Maintenance Status_  
-[![Build Status](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) _CI Status_  
-[![Deployed to Vercel](https://img.shields.io/badge/Vercel-deployed-success?logo=vercel)](https://preroti.endhonesa.com/) _Staging Site_
+[![Vercel](https://img.shields.io/badge/Vercel-deployed-success?logo=vercel)](https://preroti.endhonesa.com/) _Staging Site_
+
+**Diff:** [main → preview](https://github.com/myreceiptt/pabrikroti-master/compare/main...preview)
 
 > "This is not just a factory. This is a rehearsal of freedom—kneaded with code, fermented by its community, and baked through the heat of shared struggles."
 >
@@ -25,9 +29,9 @@
 
 ---
 
-## 📦 Staging 2.6.0-dev.0
+## 📦 Staging Link
 
-Link #1: Link #1: [pabrikroti.endhonesa.com](https://pabrikroti.endhonesa.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://pabrikroti.endhonesa.com/)  
+Link #1: [pabrikroti.endhonesa.com](https://pabrikroti.endhonesa.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://pabrikroti.endhonesa.com/)  
 Link #2: [preroti.endhonesa.com](https://preroti.endhonesa.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://preroti.endhonesa.com/)
 
 ---
