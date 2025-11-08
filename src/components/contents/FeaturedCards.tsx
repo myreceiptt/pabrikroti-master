@@ -49,6 +49,7 @@ export default function FeaturedCards() {
                   alt={alt}
                   priority
                   className="rounded-2xl sm:rounded-xl md:rounded-2xl lg:rounded-3xl"
+                  unoptimized
                 />
               </button>
             </Link>
