@@ -1,6 +1,6 @@
 # PABRIK ROTI
 
-[![version](https://img.shields.io/badge/version-2.4.74-blue)](https://github.com/myreceiptt/pabrikroti-master/releases/tag/v.2.4.74-inamotion) _Latest Release_  
+[![version](https://img.shields.io/badge/version-2.6.0-dev.0-blue)](https://github.com/myreceiptt/pabrikroti-master/releases/tag/v.2.6.0-dev.0) _Latest Release_  
 [![status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/myreceiptt/pabrikroti-master/blob/preview/SECURITY.md#-supported-versions) _Maintenance Status_  
 [![Build Status](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) _CI Status_  
 [![Deployed to Vercel](https://img.shields.io/badge/Vercel-deployed-success?logo=vercel)](https://preroti.endhonesa.com/) _Staging Site_
@@ -25,10 +25,10 @@
 
 ---
 
-## 📦 Staging 2.4.74 by Ina Motion
+## 📦 Staging 2.6.0-dev.0
 
-Link #1: [www.inamotion.id](https://www.inamotion.id/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://www.inamotion.id/)  
-Link #2: [motion.endhonesa.com](https://motion.endhonesa.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://motion.endhonesa.com/)
+Link #1: Link #1: [pabrikroti.endhonesa.com](https://pabrikroti.endhonesa.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://pabrikroti.endhonesa.com/)  
+Link #2: [preroti.endhonesa.com](https://preroti.endhonesa.com/) [![status](https://img.shields.io/badge/deploy-live-brightgreen)](https://preroti.endhonesa.com/)
 
 ---
 
