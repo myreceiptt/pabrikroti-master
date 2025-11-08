@@ -8,6 +8,7 @@ import Link from "next/link";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import Title from "@/components/sections/ReusableTitle";
 
 export default function FeaturedCards() {
@@ -42,14 +43,13 @@ export default function FeaturedCards() {
                 className="w-full hover:scale-95 transition-transform duration-300 ease-in-out relative group cursor-pointer"
               >
                 {/* Main image */}
-                <Image
+                <SmartGIFImage
                   src={src}
                   width={1080}
                   height={1225}
                   alt={alt}
                   priority
                   className="rounded-2xl sm:rounded-xl md:rounded-2xl lg:rounded-3xl"
-                  unoptimized
                 />
               </button>
             </Link>

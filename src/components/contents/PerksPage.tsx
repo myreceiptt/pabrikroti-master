@@ -11,6 +11,7 @@ import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import { CheckErc1155, CheckErc20 } from "@/config/checker";
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import Title from "@/components/sections/ReusableTitle";
 
 export default function PerksPage() {
@@ -98,7 +99,7 @@ export default function PerksPage() {
               }}
               className="w-full grid grid-cols-1 gap-4 p-4 border rounded-lg sm:rounded-2xl md:rounded-xl lg:rounded-2xl"
             >
-              <Image
+              <SmartGIFImage
                 src={hasAccess ? item.image : receipt.contentNoAccess}
                 alt={`Perk Image ${index + 1}`}
                 width={755}

@@ -14,6 +14,7 @@ import { getActiveReceipt } from "@/config/receipts";
 import { hexToRgba } from "@/config/utils";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import ConnectButtons from "@/components/logins/ConnectButtons";
 import DropdownMenu from "@/components/sections/DropDownMenu";
 import QRCodeButton from "@/components/sections/QRCodeButton";
@@ -66,7 +67,7 @@ export default function Header() {
       {/* Logo Section */}
       <div className="w-full sm:w-1/2 flex justify-start">
         <Link href="/">
-          <Image
+          <SmartGIFImage
             src={receipt.headerLogo}
             alt={receipt.proTitle}
             width={1200}

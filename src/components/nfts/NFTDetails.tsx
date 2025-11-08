@@ -24,6 +24,7 @@ import { CheckErc20 } from "@/config/checker";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import NFTAccess from "@/components/nfts/NFTAccess";
 import NFTForm from "@/components/nfts/NFTForm";
 import Loader from "@/components/sections/ReusableLoader";
@@ -308,7 +309,7 @@ export default function NFTDetails() {
 
         {/* Bottom Section - Background Image */}
         <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
-          <Image
+          <SmartGIFImage
             src={receipt.coinAccessBanner}
             alt={receipt.proTitle}
             width={4096}
@@ -354,7 +355,7 @@ export default function NFTDetails() {
 
           {/* Bottom Section - Background Image */}
           <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
-            <Image
+            <SmartGIFImage
               src={receipt.nftAccessBanner}
               alt={receipt.proTitle}
               width={4096}

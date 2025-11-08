@@ -3,9 +3,11 @@
 "use client";
 
 // External libraries
-import Image from "next/image";
+import Image, { type ImageProps } from "next/image";
+import type { StaticImageData } from "next/image";
 import React from "react";
 
+/** --- Util umum --- */
 function isLocal(src: string) {
   return src.startsWith("/") && !src.startsWith("//");
 }
@@ -15,7 +17,19 @@ const rawLoader: NonNullable<React.ComponentProps<typeof Image>["loader"]> = ({
   src,
 }) => src;
 
-type Props = {
+function toStringSrc(src: string | StaticImageData | undefined): string {
+  if (!src) return "";
+  return typeof src === "string" ? src : ((src as any)?.src ?? "");
+}
+function isGif(src: string | StaticImageData | undefined): boolean {
+  const raw = toStringSrc(src).toLowerCase().split("?")[0];
+  return raw.endsWith(".gif");
+}
+
+/** ----------------------------------------------------------------
+ *  A) SmartTVImage — perilaku lama (logo/poster remote pakai rawLoader + unoptimized)
+ *  ---------------------------------------------------------------- */
+type TVProps = {
   src?: string;
   alt: string;
   className?: string;
@@ -25,7 +39,7 @@ type Props = {
   height?: number;
 };
 
-export default function SmartImage({
+export default function SmartTVImage({
   src,
   alt,
   className,
@@ -33,7 +47,7 @@ export default function SmartImage({
   sizes,
   width,
   height,
-}: Props) {
+}: TVProps) {
   if (!src) return <div className={className} aria-hidden />;
 
   // 1) Asset lokal → <Image> normal
@@ -74,6 +88,52 @@ export default function SmartImage({
       loader={rawLoader}
       unoptimized
       referrerPolicy="no-referrer"
+    />
+  );
+}
+
+/** ----------------------------------------------------------------
+ *  B) SmartGIFImage — otomatis unoptimized jika .gif; selain itu optimized
+ *  ---------------------------------------------------------------- */
+type GIFProps = Omit<ImageProps, "unoptimized" | "src"> & {
+  src: string | StaticImageData;
+};
+
+export function SmartGIFImage({
+  src,
+  alt,
+  className,
+  fill,
+  sizes,
+  width,
+  height,
+  ...rest
+}: GIFProps) {
+  const unopt = isGif(src);
+
+  if (fill) {
+    return (
+      <Image
+        src={src as any}
+        alt={alt}
+        className={className}
+        fill
+        sizes={sizes}
+        unoptimized={unopt}
+        {...rest}
+      />
+    );
+  }
+
+  return (
+    <Image
+      src={src as any}
+      alt={alt}
+      className={className}
+      width={width ?? 48}
+      height={height ?? 48}
+      unoptimized={unopt}
+      {...rest}
     />
   );
 }

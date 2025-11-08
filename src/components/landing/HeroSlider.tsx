@@ -13,6 +13,7 @@ import { getActiveReceipt } from "@/config/receipts";
 import { hexToRgba } from "@/config/utils";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import ReusableCTA from "@/components/landing/ReusableCTA";
 
 export default function HeroSlider() {
@@ -44,7 +45,7 @@ export default function HeroSlider() {
             className="absolute inset-0"
           >
             <Link href={slides[currentSlide].cta.href}>
-              <Image
+              <SmartGIFImage
                 src={slides[currentSlide].image}
                 alt={slides[currentSlide].title}
                 fill

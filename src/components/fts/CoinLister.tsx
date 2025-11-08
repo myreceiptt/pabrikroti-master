@@ -17,6 +17,7 @@ import { getActiveReceipt } from "@/config/receipts";
 import { getCountdownString, MAX_UINT256 } from "@/config/utils";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import Loader from "@/components/sections/ReusableLoader";
 
 interface CoinListerProps {
@@ -144,7 +145,7 @@ export default function CoinLister({
                   onError={() => setHasError(true)}
                 />
               ) : (
-                <Image
+                <SmartGIFImage
                   src={receipt.coinListerImage}
                   alt={coinName ?? receipt.coinListerName}
                   width={755}

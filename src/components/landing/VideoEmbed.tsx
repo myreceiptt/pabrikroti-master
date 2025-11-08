@@ -12,6 +12,7 @@ import { getActiveReceipt } from "@/config/receipts";
 import { detectProvider } from "@/config/utils";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import ReusableCTA from "@/components/landing/ReusableCTA";
 
 type EmbedKind = "iframe" | "video";
@@ -210,7 +211,7 @@ export default function VideoEmbed() {
       <div className="relative group aspect-video w-full overflow-hidden rounded-xl md:rounded-2xl lg:rounded-3xl">
         {/* COVER sebelum playing */}
         {!isPlaying && cover && (
-          <Image
+          <SmartGIFImage
             src={cover}
             alt={title ?? "Video cover"}
             fill

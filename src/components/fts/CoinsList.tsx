@@ -24,6 +24,7 @@ import { CheckErc1155 } from "@/config/checker";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import CoinLister from "@/components/fts/CoinLister";
 import DropDownSorter from "@/components/sections/DropDownSorter";
 import Loader from "@/components/sections/ReusableLoader";
@@ -326,7 +327,7 @@ export default function CoinsList() {
 
         {/* Bottom Section - Background Image */}
         <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
-          <Image
+          <SmartGIFImage
             src={receipt.coinAccessBanner}
             alt={receipt.proTitle}
             width={4096}
