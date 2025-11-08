@@ -24,6 +24,7 @@ import { CheckErc1155 } from "@/config/checker";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import CoinAccess from "@/components/fts/CoinAccess";
 import CoinForm from "@/components/fts/CoinForm";
 import Loader from "@/components/sections/ReusableLoader";
@@ -375,7 +376,7 @@ export default function CoinDetails() {
 
         {/* Bottom Section - Background Image */}
         <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
-          <Image
+          <SmartGIFImage
             src={receipt.coinAccessBanner}
             alt={receipt.proTitle}
             width={4096}
@@ -421,7 +422,7 @@ export default function CoinDetails() {
 
           {/* Bottom Section - Background Image */}
           <div className="bottom-0 left-0 w-full h-full mt-4 md:mt-8 lg:mt-12">
-            <Image
+            <SmartGIFImage
               src={receipt.coinAccessBanner}
               alt={receipt.proTitle}
               width={4096}

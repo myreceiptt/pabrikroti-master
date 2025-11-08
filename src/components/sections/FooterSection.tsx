@@ -24,6 +24,7 @@ import { getActiveReceipt } from "@/config/receipts";
 import { hexToRgba } from "@/config/utils";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import Subscribe from "@/components/sections/SubscribeForm";
 
 export default function Footer() {
@@ -262,7 +263,7 @@ export default function Footer() {
         {/* Logo & Powered By */}
         <div className="w-full flex justify-center sm:justify-end cursor-pointer">
           <Link href={receipt.loginLinkPower} target="_blank">
-            <Image
+            <SmartGIFImage
               src={receipt.footPower}
               alt={receipt.loginPoweredBy}
               width={563}
