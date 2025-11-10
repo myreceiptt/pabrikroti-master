@@ -153,6 +153,8 @@ git commit -m "<tipe>(<lingkup>): <deskripsi-singkat>"
    git push -u origin <tipe>/<kata-kunci>
    # Contoh:
    # git push -u origin fix/images-optimize-gif
+   # Setara dengan:
+   # git push --set-upstream origin <tipe>/<kata-kunci>
    ```
 
 2. Buat PR dari **cabang tugas** ke `preview`:
