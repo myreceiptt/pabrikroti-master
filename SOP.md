@@ -219,6 +219,8 @@ Akan selalu ada **tugas terakhir** (task audit-RC); menutup pintu dapur, mencata
    # git commit -m "release(audit-RC): cut 2.6.0-rc.0 (freeze in preview)"
 
    git push -u origin release/audit-rc-X.Y.Z
+   # Setara dengan:
+   # git push --set-upstream origin release/audit-rc-X.Y.Z
    ```
 
 6. Buat PR dari **cabang audit-RC** ke `preview`:
@@ -362,8 +364,8 @@ Saat semua wangi, setelah matang, dan handover benar-benar live:
 
   ```bash
   git checkout preview
-  git branch -D release/vX.Y.Z-<kodenama>
-  git push origin :release/vX.Y.Z-<kodenama>
+  git branch -d release/vX.Y.Z-<kodenama>
+  git push origin --delete release/vX.Y.Z-<kodenama>
   ```
 
 - Catat di buku kuitansi pengiriman (wajib); tambahkan satu baris ke `.deliveries/ledger.jsonl`:
@@ -402,6 +404,9 @@ Reset `preview` agar **identik** dengan `main`, lalu set **awal siklus**:
 git checkout preview
 git reset --hard origin/main
 # Samakan SHA & riwayat, dinolkan selisihnya.
+
+git push -f origin preview
+# Paksa remote preview ikut sama.
 
 yarn version --new-version X.Y.Z-dev.0 --no-git-tag-version
 # Contoh:
