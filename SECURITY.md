@@ -2,22 +2,9 @@
 
 ## 🧩 Supported Versions
 
-We follow a modular release structure tied to tenant-specific deployments. Only stable branches with production deployments are eligible for ongoing security updates.
+We use a modular, license-scoped release model: only license holders receive **a handed-over repository** with a tagged stable release; ongoing support is advisory-only (consultation, guidance, direction) and is provided solely for handed-over releases that are actively **run in production and intended for further development**, with all execution (updates, security tasks, implementations) performed by the Licensee.
 
-| Version | Codename | Status     | Relation                                                                     |
-| ------- | -------- | ---------- | ---------------------------------------------------------------------------- |
-| 2.4.xx  | preview  | Supported  | [Dev. Branch](https://github.com/myreceiptt/pabrikroti-master/tree/memora)   |
-| 2.4.66  | travconn | Supported  | [Beta Branch](https://github.com/myreceiptt/pabrikroti-master/tree/travconn) |
-| 2.4.47  | zim      | Supported  | [Beta Branch](https://github.com/myreceiptt/pabrikroti-master/tree/zim)      |
-| 2.4.44  | memora   | Supported  | [Beta Branch](https://github.com/myreceiptt/pabrikroti-master/tree/memora)   |
-| 2.3.33  | far      | Supported  | [LTS Branch](https://github.com/myreceiptt/pabrikroti-master/tree/far)       |
-| 2.2.22  | istiqlal | Supported  | [LTS Branch](https://github.com/myreceiptt/pabrikroti-master/tree/istiqlal)  |
-| 2.1.11  | ngelaras | Deprecated | [Cloned Here](https://github.com/myreceiptt/pabrikroti-ngelaras)             |
-| 1.3.3   | bukhari  | Deprecated | [Cloned Here](https://github.com/myreceiptt/pabrikroti-bukhari)              |
-| 1.1.3   | labx     | Deprecated | [Cloned Here](https://github.com/myreceiptt/pabrikroti-labx)                 |
-| 0.1.0   | init     | Deprecated | [Cloned Here](https://github.com/myreceiptt/pabrikroti-init)                 |
-
-If you're using a customized fork or internal derivative based on PABRIKROTI, we recommend merging upstream patches manually or contacting our security team.
+Read the **release notes** on all [**PABRIKROTI's release**](https://github.com/myreceiptt/pabrikroti-master/releases).
 
 ---
 
