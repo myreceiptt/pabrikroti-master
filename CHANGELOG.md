@@ -2,12 +2,21 @@
 
 ## [Unreleased]
 
+### ✅ Perubahan Utama - YYYY-MM-DD
+
+- ...
+
+---
+
+## v2.6.7
+
 ### ✅ Perubahan Utama - 2025-11-11
 
 - feat(image): tambah `SmartGIFImage` (otomatis `unoptimized` untuk `.gif`)
 - docs(readme): badge dinamis + tautan diff main↔preview
 - docs(sop): standar operasional prosedur, `SOP.md`.
-- ...
+
+---
 
 ## v2.5.0
 

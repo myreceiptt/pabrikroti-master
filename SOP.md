@@ -301,22 +301,26 @@ git checkout -b release/vX.Y.Z-<kodenama>
 - Pindahkan catatan dari `## [Unreleased]` ke bab baru `## [X.Y.Z – <kodenama>]` di `CHANGELOG.md`:
   - Cantumkan tanggal (pakai hari rilis).
   - Kosongkan `## [Unreleased]` untuk siklus berikut.
-- Buat tag final (di **release-branch**):
-
-  ```bash
-  git tag -a vX.Y.Z-<kodenama> -m "Release X.Y.Z (<kodenama>)"
-  # Contoh:
-  # git tag -a v2.6.0-pinjol -m "Release X.Y.Z (pinjol)"
-  ```
-
-- Lalu commit dan dorong **release-branch**:
+- Lalu commit:
 
   ```bash
   git add -A
   git commit -m "release(branch): X.Y.Z (<kodenama>) — <deskripsi-singkat>"
   # Contoh:
   # git commit -m "release(branch): 2.6.0 (pinjol) — finalize changelog"
+  ```
 
+- Buat tag final (di **release-branch**):
+
+  ```bash
+  git tag -a vX.Y.Z-<kodenama> -m "Release X.Y.Z (<kodenama>)"
+  # Contoh:
+  # git tag -a v2.6.0-pinjol -m "Release 2.6.0 (pinjol)"
+  ```
+
+- Lalu dorong dorong **release-branch**:
+
+  ```bash
   git push --set-upstream origin release/vX.Y.Z-<kodenama>
   git push --tags
   ```
