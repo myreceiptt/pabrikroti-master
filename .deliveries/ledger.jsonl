@@ -1,1 +1,2 @@
 {"date": "2025-11-11","codename": "pinjol","version": "2.6.7","handover_commit": "bf34ed24a3423f56bc4e364763a758191f952cb7","preview_commit": "8e8493149438457c3494a0c15524d18f877d5157","release_repo": "git@github.com:myreceiptt/pabrikroti-pinjol.git","tag": "v2.6.7-pinjol"}
+{"date": "2025-11-12","codename": "inaready","version": "2.7.0","handover_commit": "237348e1d90954072a393dee29561e71d9091f46","preview_commit": "8946d681552540accba80d7801b7ed6565eefad0","release_repo": "git@github.com:myreceiptt/pabrikroti-inaready.git","tag": "v2.7.0-inaready"}
