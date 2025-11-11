@@ -322,7 +322,14 @@ git checkout -b release/vX.Y.Z-<kodenama>
 
   ```bash
   git push --set-upstream origin release/vX.Y.Z-<kodenama>
-  git push --tags
+  # Dorong branch.
+  # Contoh:
+  # git push --set-upstream origin release/v2.6.0-pinjol
+
+  git push origin vX.Y.Z-<kodenama>
+  # Dorong tag.
+  # Contoh:
+  # git push origin v2.6.0-pinjol
   ```
 
 - Buat **GitHub Release**:
@@ -342,15 +349,18 @@ git checkout -b release/vX.Y.Z-<kodenama>
 - Dorong isi **release-branch** sebagai `main` di repo `pabrikroti-<kodenama>`:
 
   ```bash
-  git remote add handover git@github.com:myreceiptt/pabrikroti-<kodenama>.git
+  git remote add handover https://github.com/myreceiptt/pabrikroti-<kodenama>.git
   # Contoh:
-  # git remote add handover git@github.com:myreceiptt/pabrikroti-pinjol.git
+  # git remote add handover https://github.com/myreceiptt/pabrikroti-pinjol.git
 
   git push --set-upstream handover release/vX.Y.Z-<kodenama>:main
   # Contoh:
   # git push --set-upstream handover release/v2.6.0-pinjol:main
 
-  git push handover --tags
+  git push handover vX.Y.Z-<kodenama>
+  # Dorong HANYA tag rilis yang relevan.
+  # Contoh:
+  # git push handover v2.6.0-pinjol
   ```
 
 - Buat **GitHub Release** untuk repo `pabrikroti-<kodenama>`, lampirkan:
@@ -383,6 +393,7 @@ Saat semua wangi, setelah matang, dan handover benar-benar live:
 
   ```bash
   git checkout preview
+  git pull --ff-only
   git branch -d release/vX.Y.Z-<kodenama>
   git push origin --delete release/vX.Y.Z-<kodenama>
   ```
@@ -403,7 +414,7 @@ Saat semua wangi, setelah matang, dan handover benar-benar live:
 - Lalu commit dan dorong `preview`:
 
   ```bash
-  git add .deliveries/ledger.jsonl
+  git add -A
   git commit -m "ops(delivery): X.Y.Z <kodenama> → handover recorded"
   git push
   ```
