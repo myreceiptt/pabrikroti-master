@@ -170,7 +170,6 @@ git commit -m "<tipe>(<lingkup>): <deskripsi-singkat>"
    ```bash
    git checkout preview
    git pull --ff-only
-
    git branch -d <tipe>/<kata-kunci>
    # Hapus di lokal.
 
@@ -221,6 +220,8 @@ Akan selalu ada **tugas terakhir** (task audit-RC); menutup pintu dapur, mencata
    git push -u origin release/audit-rc-X.Y.Z
    # Setara dengan:
    # git push --set-upstream origin release/audit-rc-X.Y.Z
+   # Jika mengulangi, gunakan:
+   # git push origin release/audit-rc-X.Y.Z
    ```
 
 6. Buat PR dari **cabang audit-RC** ke `preview`:
@@ -238,6 +239,7 @@ Akan selalu ada **tugas terakhir** (task audit-RC); menutup pintu dapur, mencata
 
      ```bash
      git checkout release/audit-rc-X.Y.Z
+     git pull --ff-only
      git reset --hard origin/preview
      # Samakan SHA & riwayat, dinolkan selisihnya.
 
@@ -254,6 +256,8 @@ Akan selalu ada **tugas terakhir** (task audit-RC); menutup pintu dapur, mencata
 9. Hapus **cabang audit-RC**:
 
    ```bash
+   git checkout preview
+   git pull --ff-only
    git branch -d release/audit-rc-X.Y.Z
    # Hapus di lokal.
 
