@@ -234,7 +234,18 @@ Akan selalu ada **tugas terakhir** (task audit-RC); menutup pintu dapur, mencata
 
 8. Staging (dari `preview`):
    - Cicipi roti di staging — live testing (uji RC).
-   - Jika ada bug saat uji RC, perbaiki dengan mengulang langkah nomor 2, 3, 4, 5, 6, 7, lalu 8 (langkah ini).
+   - Jika ada bug saat uji RC, reset `release/audit-rc-X.Y.Z` agar **identik** dengan `preview`:
+
+     ```bash
+     git checkout release/audit-rc-X.Y.Z
+     git reset --hard origin/preview
+     # Samakan SHA & riwayat, dinolkan selisihnya.
+
+     git push -f origin release/audit-rc-X.Y.Z
+     # Paksa remote preview ikut sama.
+     ```
+
+   - Lalu perbaiki dengan mengulang langkah nomor 2, 3, 4, 5, 6, 7, lalu 8 (langkah ini).
    - Pastikan selalu **menaikkan** RC: `-rc.1`, `-rc.2`, … kalau mengulang langkah di atas.
    - Jika uji RC berjalan lancar, tidak ada bug, audit-RC sukses dan selesai.
 
