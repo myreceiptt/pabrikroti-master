@@ -8,7 +8,17 @@
 
 ---
 
-## v2.6.7
+## v2.7.0 - inaready
+
+### ✅ Perubahan Utama - 2025-11-12
+
+- docs(readme): fix the dynamic badge for dev. version and status.
+- chore(package): remove the codename data.
+- docs(security): fix the description of supported version, and remove the table.
+
+---
+
+## v2.6.7 - pinjol
 
 ### ✅ Perubahan Utama - 2025-11-11
 
@@ -18,7 +28,7 @@
 
 ---
 
-## v2.5.0
+## v2.5.0 -
 
 ### ✅ Perubahan Utama - 2025-11-08
 

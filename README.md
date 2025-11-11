@@ -1,7 +1,7 @@
 # PABRIK ROTI
 
 [![version](https://img.shields.io/github/v/release/myreceiptt/pabrikroti-master?display_name=tag&color=blue)](https://github.com/myreceiptt/pabrikroti-master/releases/latest) _Latest Release_  
-[![dev](https://img.shields.io/github/package-json/v/myreceiptt/pabrikroti-master?branch=preview&filename=package.json&label=dev&color=orange)](https://github.com/myreceiptt/pabrikroti-master/commits/preview) _Current Dev_  
+[![dev](https://img.shields.io/github/package-json/v/myreceiptt/pabrikroti-master/preview?filename=package.json&label=dev&color=orange)](https://github.com/myreceiptt/pabrikroti-master/commits/preview) _Current Dev_  
 [![Build (main)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) _CI Status_  
 [![Build (preview)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml/badge.svg?branch=preview)](https://github.com/myreceiptt/pabrikroti-master/actions/workflows/ci.yml) _CI Status_  
 [![status](https://img.shields.io/badge/status-active-brightgreen)](https://github.com/myreceiptt/pabrikroti-master/blob/preview/SECURITY.md#-supported-versions) _Maintenance Status_  
@@ -114,10 +114,10 @@ PABRIKROTI operates as a **decentralized digital production space**, where each 
 
 - **Web3-Ready & Mobile Optimized**  
   Built with:
-  - Next.js 15 + App Router
-  - React 19 + Server Components
-  - Tailwind CSS v4
-  - ThirdWeb SDK v5
+  - Latest Next.js + App Router
+  - Latest React + Server Components
+  - Latest Tailwind CSS
+  - Latest ThirdWeb SDK
   - Prof. NOTA Inc. Protocol
 
 - **Ethical Licensing & Multilingual Manifestos**  
@@ -205,7 +205,7 @@ yarn lint
 
 To keep our code clean and consistent.
 
-If you have questions, feel free to open an issue or reach out via the Prof. NOTA community Discord.
+For more detail, read [`SOP.md'](SOP.md) and if you have questions, feel free to open an issue or reach out via the Prof. NOTA community Discord.
 
 > ✊ You’re not just contributing code — you’re shaping how the people eat, learn, and resist.
 >

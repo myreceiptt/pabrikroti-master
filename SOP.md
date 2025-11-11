@@ -81,6 +81,7 @@ git checkout -b <tipe>/<kata-kunci>
 Edit seperlunya dan selalu lakukan:
 
 ```bash
+yarn prettier --check .
 yarn prettier --write .
 # Prettier merapikan partitur.
 
@@ -382,6 +383,11 @@ git checkout -b release/vX.Y.Z-<kodenama>
 - Isi PR merangkum rilis (boleh merujuk ke Release di repo `pabrikroti-<kodenama>`).
 - **Squash & Merge**.
 - **Tidak ada tag dan release notes di `preview`**—kita biarkan bersih.
+- Lakukan cek cepat dengan ini:
+
+  ```bash
+  git show vX.Y.Z-<kodenama> --no-patch --decorate
+  ```
 
 ---
 
@@ -423,6 +429,17 @@ Saat semua wangi, setelah matang, dan handover benar-benar live:
 - Isi PR merangkum rilis (boleh merujuk ke Release di repo `pabrikroti-<kodenama>`).
 - **Squash & Merge**.
 - **Tidak ada tag dan release notes di `main`**—kita biarkan bersih.
+- Lakukan cek cepat dengan ini:
+
+  ```bash
+  git fetch origin --prune
+  git branch -a | grep release/vX.Y.Z-<kodenama> || echo "✔ branch bersih"
+  git rev-parse --short origin/preview
+  git rev-parse --short origin/main
+  git merge-base --is-ancestor origin/preview origin/main && echo "✔ main memuat preview"
+  tail -n1 .deliveries/ledger.jsonl
+  git tag --contains origin/main | grep v2.6.7-pinjol || echo "✔ tidak ada tag di main"
+  ```
 
 ---
 
@@ -432,6 +449,7 @@ Reset `preview` agar **identik** dengan `main`, lalu set **awal siklus**:
 
 ```bash
 git checkout preview
+git pull --ff-only
 git reset --hard origin/main
 # Samakan SHA & riwayat, dinolkan selisihnya.
 
@@ -445,6 +463,9 @@ yarn version --new-version X.Y.Z-dev.0 --no-git-tag-version
 
 git commit -am "chore(version): start next cycle"
 git push
+node -p "require('./package.json').version"
+git rev-parse --short origin/main
+git rev-parse --short origin/preview
 ```
 
 > _Di sinilah orkestra mengganti partitur; major naik panggung berikut, minor mengisi babak tengah, patch jadi improvisasi halus._
