@@ -4,10 +4,17 @@
 
 ### ✅ Perubahan Utama - YYYY-MM-DD
 
+- ...
+
+---
+
+## v2.7.0 - inaready
+
+### ✅ Perubahan Utama - 2025-11-12
+
 - docs(readme): fix the dynamic badge for dev. version and status.
 - chore(package): remove the codename data.
 - docs(security): fix the description of supported version, and remove the table.
-- ...
 
 ---
 
