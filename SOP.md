@@ -402,6 +402,7 @@ Saat semua wangi, setelah matang, dan handover benar-benar live:
   git pull --ff-only
   git branch -d release/vX.Y.Z-<kodenama>
   git push origin --delete release/vX.Y.Z-<kodenama>
+  # git remote remove handover
   ```
 
 - Catat di buku kuitansi pengiriman (wajib); tambahkan satu baris ke `.deliveries/ledger.jsonl`:
@@ -429,17 +430,6 @@ Saat semua wangi, setelah matang, dan handover benar-benar live:
 - Isi PR merangkum rilis (boleh merujuk ke Release di repo `pabrikroti-<kodenama>`).
 - **Squash & Merge**.
 - **Tidak ada tag dan release notes di `main`**—kita biarkan bersih.
-- Lakukan cek cepat dengan ini:
-
-  ```bash
-  git fetch origin --prune
-  git branch -a | grep release/vX.Y.Z-<kodenama> || echo "✔ branch bersih"
-  git rev-parse --short origin/preview
-  git rev-parse --short origin/main
-  git merge-base --is-ancestor origin/preview origin/main && echo "✔ main memuat preview"
-  tail -n1 .deliveries/ledger.jsonl
-  git tag --contains origin/main | grep v2.6.7-pinjol || echo "✔ tidak ada tag di main"
-  ```
 
 ---
 
@@ -456,6 +446,15 @@ git reset --hard origin/main
 git push -f origin preview
 # Paksa remote preview ikut sama.
 
+git fetch origin --prune
+git branch -a | grep release/vX.Y.Z-<kodenama> || echo "✔ branch bersih"
+git rev-parse --short origin/preview
+git rev-parse --short origin/main
+git merge-base --is-ancestor origin/preview origin/main && echo "✔ main memuat preview"
+tail -n1 .deliveries/ledger.jsonl
+git tag --contains origin/main | grep vX.Y.Z-<kodenama> || echo "✔ tidak ada tag di main"
+# Lakukan cek cepat di atas.
+
 yarn version --new-version X.Y.Z-dev.0 --no-git-tag-version
 # Contoh:
 # 2.6.1-dev.0 / 2.7.0-dev.0 / 3.0.0-dev.0
@@ -463,9 +462,12 @@ yarn version --new-version X.Y.Z-dev.0 --no-git-tag-version
 
 git commit -am "chore(version): start next cycle"
 git push
+# Commit dan dorong ke remote.
+
 node -p "require('./package.json').version"
 git rev-parse --short origin/main
 git rev-parse --short origin/preview
+# Lakukan check cepat di atas.
 ```
 
 > _Di sinilah orkestra mengganti partitur; major naik panggung berikut, minor mengisi babak tengah, patch jadi improvisasi halus._
