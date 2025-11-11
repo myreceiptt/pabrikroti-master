@@ -6,10 +6,9 @@
   "author": "Prof. NOTA",
   "license": "UNLICENSED - SEE LICENSE IN LICENSE",
   "receipt": {
-    "codename": "inamotion",
-    "publisher": "Inamotion"
+    "publisher": "Prof. NOTA Inc."
   },
-  "homepage": "https://nota.endhonesa.com/profile/breads",
+  "homepage": "https://pabrikroti.endhonesa.com/",
   "keywords": [
     "nextjs",
     "typescript",
