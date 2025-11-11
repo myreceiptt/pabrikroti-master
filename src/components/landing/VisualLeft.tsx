@@ -10,6 +10,7 @@ import React from "react";
 import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
 import ReusableCTA from "@/components/landing/ReusableCTA";
 
 export default function VisualLeft() {
@@ -24,7 +25,7 @@ export default function VisualLeft() {
       id="when"
     >
       <div className="relative w-full md:w-1/2 aspect-[5/3] shrink-0">
-        <Image
+        <SmartGIFImage
           src={block.image}
           alt={block.title}
           fill

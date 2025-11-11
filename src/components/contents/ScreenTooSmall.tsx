@@ -10,6 +10,9 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
+// Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
+
 export default function ScreenTooSmall() {
   const { receipt } = getActiveReceipt();
 
@@ -28,7 +31,7 @@ export default function ScreenTooSmall() {
         className="max-w-md text-center"
       >
         <div className="flex justify-center mb-6">
-          <Image
+          <SmartGIFImage
             src={receipt.tinyIllustration}
             alt="Rotate Device Illustration"
             width={200}

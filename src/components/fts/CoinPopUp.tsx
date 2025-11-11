@@ -9,6 +9,9 @@ import { FaXmark } from "react-icons/fa6";
 import { getActiveReceipt } from "@/config/receipts";
 import { hexToRgba } from "@/config/utils";
 
+// Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
+
 interface CoinPopUpProps {
   isOpen: boolean;
   onClose: () => void;
@@ -177,13 +180,12 @@ export default function CoinPopUp({ isOpen, onClose }: CoinPopUpProps) {
             {receipt.popUpP12}
           </p>
           <br />
-          <Image
+          <SmartGIFImage
             src={receipt.popUpImage}
             alt={receipt.popUpImageAlt}
             width={747}
             height={747}
             className="rounded-xl md:rounded-2xl lg:rounded-3xl w-full"
-            unoptimized
           />
         </div>
       </div>

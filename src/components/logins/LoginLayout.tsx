@@ -8,6 +8,9 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
+// Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
+
 interface LoginLayoutProps {
   children: React.ReactNode;
 }
@@ -18,7 +21,7 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
   return (
     <div className="w-full h-screen grid grid-cols-1 md:grid-cols-2">
       <div className="w-full relative hidden md:block overflow-hidden">
-        <Image
+        <SmartGIFImage
           src={receipt.loginArt}
           alt={receipt.proTitle}
           width={1080}
@@ -30,7 +33,7 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
       <div className="w-full flex flex-col gap-4 md:gap-8 lg:gap-12 items-center justify-center py-4 px-4 md:px-8 lg:px-12">
         {/* Headerssss */}
         <Link href="/">
-          <Image
+          <SmartGIFImage
             src={receipt.loginBanner}
             alt={receipt.proTitle}
             width={1080}
@@ -94,7 +97,7 @@ export default function LoginLayout({ children }: LoginLayoutProps) {
 
         {/* Footerssss */}
         <Link href={receipt.loginLinkPower} target="_blank">
-          <Image
+          <SmartGIFImage
             src={receipt.loginLogoPower}
             alt={receipt.loginPoweredBy}
             width={1080}

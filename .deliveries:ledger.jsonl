@@ -1,0 +1,8 @@
+{
+  "date": "2025-11-11",
+  "codename": "<kodenama>",
+  "version": "X.Y.Z",
+  "preview_commit": "<shortSHA>",
+  "release_repo": "git@github.com:myreceiptt/pabrikroti-<kodenama>.git",
+  "tag": "vX.Y.Z-<kodenama>"
+}

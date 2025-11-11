@@ -7,6 +7,9 @@ import React from "react";
 // Blockchain configurations
 import { getActiveReceipt } from "@/config/receipts";
 
+// Components libraries
+import { SmartGIFImage } from "@/components/contents/SmartImage";
+
 interface NFTAccessProps {
   message: string;
   onRedirect: () => void;
@@ -49,7 +52,7 @@ export default function NFTAccess({ message, onRedirect }: NFTAccessProps) {
 
       {/* Bottom Section - Background Image */}
       <div className="bottom-0 left-0 w-full h-full">
-        <Image
+        <SmartGIFImage
           src={receipt.nftAccessBanner}
           alt={receipt.proTitle}
           width={4096}

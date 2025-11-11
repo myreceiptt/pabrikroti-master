@@ -11,7 +11,7 @@ import { getActiveReceipt } from "@/config/receipts";
 
 // Components libraries
 import HlsPlayer from "@/components/contents/HlsPlayer";
-import SmartImage from "@/components/contents/SmartImage";
+import SmartTVImage from "@/components/contents/SmartImage";
 
 export type PlaylistItem = {
   title?: string;
@@ -152,7 +152,7 @@ export default function ClientVideoList({
                 <div className="shrink-0">
                   {it.tvgLogo ? (
                     <div className="relative h-12 w-12 rounded-md bg-white/5 ring-1 ring-white/10 overflow-hidden grid place-items-center">
-                      <SmartImage
+                      <SmartTVImage
                         src={it.tvgLogo}
                         alt={`${it.tvgId || title} logo`}
                         className="object-contain p-1"
@@ -174,7 +174,7 @@ export default function ClientVideoList({
                 <div className="relative aspect-video w-full overflow-hidden rounded-lg">
                   {/* poster/preview saat belum playing */}
                   {!playing && poster && (
-                    <SmartImage
+                    <SmartTVImage
                       src={receipt.adultTVCover}
                       alt={`${title} poster`}
                       className="object-cover"
