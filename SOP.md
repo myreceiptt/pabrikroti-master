@@ -224,7 +224,7 @@ Akan selalu ada **tugas terakhir** (task audit-RC); menutup pintu dapur, mencata
    ```
 
 6. Buat PR dari **cabang audit-RC** ke `preview`:
-   - Judul: `release: X.Y.Z-rc.0 (audit-RC)`
+   - Judul: `release: X.Y.Z-rc.N (audit-RC)`
    - Deskripsi berisi poin-poin perubahan (kalau ada).
 
 7. **Squash & Merge** ke `preview`:
