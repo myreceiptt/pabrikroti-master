@@ -28,24 +28,26 @@ jobs:
 
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Node.js 22
-        uses: actions/setup-node@v3
+      - name: Setup Node.js 24
+        uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 24
+
+      - name: Enable Corepack
+        run: corepack enable
 
       - name: Install dependencies
-        run: yarn install
+        run: corepack yarn install --immutable
 
       - name: Inject ENV variables
         run: |
           echo "NEXT_PUBLIC_TW_CLIENT_ID=${{ secrets.NEXT_PUBLIC_TW_CLIENT_ID }}" >> $GITHUB_ENV
-          echo "NEXT_PUBLIC_TW_SECRET_KEY=${{ secrets.NEXT_PUBLIC_TW_SECRET_KEY }}" >> $GITHUB_ENV
           echo "NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY=${{ secrets.NEXT_PUBLIC_WEB3FORMS_ACCESS_KEY }}" >> $GITHUB_ENV
 
       - name: Lint project
-        run: yarn lint
+        run: corepack yarn lint
 
       - name: Build project
-        run: yarn build
+        run: corepack yarn build
