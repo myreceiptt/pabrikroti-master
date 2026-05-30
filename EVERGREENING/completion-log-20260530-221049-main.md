@@ -69,3 +69,9 @@ This run is only for the `main` branch cycle. The `preview` branch must be handl
 
 - No feature behavior was intentionally changed.
 - This branch is ready for manual inspection before commit/merge handling requested by Prof. NOTA.
+
+## Deployment Follow-up — 2026-05-31
+
+- Vercel deployment failed because Vercel invoked Yarn Classic 1.22.19 while `package.json` requires Yarn Modern 4.12.0.
+- Added `vercel.json` so Vercel install/build commands call Yarn through Corepack.
+- Updated GitHub Actions to avoid invoking Yarn before Corepack is active and to run install/lint/build through `corepack yarn`.
