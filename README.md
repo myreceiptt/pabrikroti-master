@@ -39,7 +39,9 @@ Link #2: [preroti.endhonesa.com](https://preroti.endhonesa.com/) [![status](http
 ## 🚀 Quick Start
 
 ```bash
-yarn && yarn dev
+nvm use
+corepack yarn install
+corepack yarn dev
 ```
 
 > If you find this useful, consider starring ⭐ the repository! Please!
@@ -130,49 +132,83 @@ PABRIKROTI operates as a **decentralized digital production space**, where each 
 ### 📦 Install dependencies
 
 ```bash
-yarn
+nvm use
+corepack yarn install
 ```
 
 ### 🔍 Check outdated dependencies
 
 ```bash
-yarn outdated
+corepack yarn npm outdated --recursive
 ```
 
 ### ⬆️ Upgrade dependencies interactively
 
 ```bash
-yarn upgrade-interactive --latest
+corepack yarn up --interactive
 ```
 
 ### 🧹 Cleaning and re-install dependencies
 
 ```bash
-yarn rm -rf node_modules yarn.lock && yarn install
+rm -rf node_modules .next
+corepack yarn install
 ```
 
 ### ▶️ Run development server
 
 ```bash
-yarn dev
+corepack yarn dev
 ```
 
 ### 🧪 Lint and check all the code quality
 
 ```bash
-yarn run lint
+corepack yarn lint
 ```
 
 ### 🏗️ Build for production
 
 ```bash
-yarn build
+corepack yarn build
 ```
 
 ### 🔍 Preview the production
 
 ```bash
-yarn start
+corepack yarn start
+```
+
+---
+
+## 🌱 EVERGREEN Maintenance
+
+This branch was maintained under the Prof. NOTA EVERGREEN Standard as the **main** branch cycle for a Class A app repo.
+
+- Runtime target: **Node.js 24.x** (`.nvmrc`, `package.json#engines`)
+- Package manager: **Yarn Modern 4.12.0** (`packageManager: yarn@4.12.0`)
+- Install mode: `nodeLinker: node-modules` in `.yarnrc.yml` for Next.js/Web3 compatibility
+- Lockfile: `yarn.lock`
+- Build command: `corepack yarn build`
+- Lint command: `corepack yarn lint`
+
+Current Evergreen notes:
+
+- Monthly and quarterly dependency updates were applied on top of `main`.
+- Next.js is aligned to `16.2.6`; React is aligned to `19.2.6`; Thirdweb is aligned to `5.120.0`.
+- GitHub Actions now uses Node.js 24 and `yarn install --immutable`.
+- `NEXT_PUBLIC_TW_SECRET_KEY` was removed from example/CI public env handling because a secret key must not be exposed through `NEXT_PUBLIC_*`.
+- `@types/node@25` is intentionally deferred because this repo targets Node.js 24.x.
+- `eslint@10` and `typescript@6` remain deferred until the Next/TypeScript/Web3 lint stack proves compatible.
+
+Recommended Evergreen checks:
+
+```bash
+nvm use
+corepack yarn install --immutable
+corepack yarn npm audit --severity moderate --recursive
+corepack yarn lint
+corepack yarn build
 ```
 
 ---
@@ -200,7 +236,7 @@ If you believe in the mission of PABRIKROTI and want to help improve it, follow 
 Before submitting your PR, make sure to run:
 
 ```bash
-yarn lint
+corepack yarn lint
 ```
 
 To keep our code clean and consistent.
