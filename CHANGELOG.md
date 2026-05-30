@@ -4,6 +4,7 @@
 
 ### ✅ Perubahan Utama - YYYY-MM-DD
 
+- docs(sop): update and add some missing command.
 - ...
 
 ---
